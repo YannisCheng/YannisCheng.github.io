@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android, 开发，安卓，ANdroid studio，java" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#Python3  06-闭包+匿名+装饰器+偏函数  2017年07月15日15:13:01参考：http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html  ###闭包 闭包是函数式编程的重要语法结构，python是以`函数对象`为基础的，python一切皆对象。函数这一语法结构也是一个对象。 定义解释  在一个内部函数里，对在外部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:url" content="http://yoursite.com/2017/10/23/Python3  06-闭包+匿名+装饰器+偏函数/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="#Python3  06-闭包+匿名+装饰器+偏函数  2017年07月15日15:13:01参考：http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html  ###闭包 闭包是函数式编程的重要语法结构，python是以`函数对象`为基础的，python一切皆对象。函数这一语法结构也是一个对象。 定义解释  在一个内部函数里，对在外部">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T01:33:21.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YannisCheng&#39;s Technology Blogs">
+<meta name="twitter:description" content="#Python3  06-闭包+匿名+装饰器+偏函数  2017年07月15日15:13:01参考：http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html  ###闭包 闭包是函数式编程的重要语法结构，python是以`函数对象`为基础的，python一切皆对象。函数这一语法结构也是一个对象。 定义解释  在一个内部函数里，对在外部">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/23/Python3  06-闭包+匿名+装饰器+偏函数/"/>
+
+
+
+
+
+  <title> | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/23/Python3  06-闭包+匿名+装饰器+偏函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T23:51:37+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-24T09:33:21+08:00">
+                2017-10-24
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,894 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#Python3  06-闭包+匿名+装饰器+偏函数</p>
+<blockquote>
+<p>2017年07月15日15:13:01<br>参考：<a href="http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html" target="_blank" rel="external">http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html</a></p>
+</blockquote>
+<p>###闭包</p>
+<pre><code>闭包是函数式编程的重要语法结构，python是以`函数对象`为基础的，python一切皆对象。函数这一语法结构也是一个对象。
+</code></pre><p><strong>定义解释</strong></p>
+<ul>
+<li>在一个内部函数里，对在外部作用域的（非全局）变量进行引用，那么内部函数就认为是闭包<code>closure</code></li>
+<li>‘闭包’是‘词法闭包’的简称，是指应用了自由变量的函数。这个被引用的自由变量的将和这个函数一同存在，即使已经离开了创造它的环境也不例外。</li>
+<li>‘闭包’是由函数和其他相关的引用环境组合而成的实体。闭包在运行时可以有多个实例，不同的引用环境和相同的函数组合可以产生不同的实例。</li>
+<li>‘python’中的闭包：一个闭包就是你调用了一个函数A，这个函数A返回了一个函数B给你。而这个函数B就叫做闭包，在调用函数A时传递的参数就是自由变量。</li>
+</ul>
+<p><em>闭包实际上就是一个简化的类，它提高了代码的复用性</em></p>
+<p><strong><em>闭包函数代码示例</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">闭包示例代码</span></div><div class="line"><span class="string">inner_func就是一个闭包函数，它引用自由变量name。</span></div><div class="line"><span class="string">name就是inner_func()的环境变量</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func01</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_func</span><span class="params">(age)</span>:</span></div><div class="line">        print(<span class="string">'name: '</span>, name, <span class="string">'age: '</span>, age)</div><div class="line">    <span class="keyword">return</span> inner_func</div><div class="line"></div><div class="line">bb = func01(<span class="string">'cwj'</span>)</div><div class="line">bb(<span class="number">25</span>)  <span class="comment"># name:  cwj age:  25</span></div></pre></td></tr></table></figure>
+<p>####关于闭包函数的使用问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''错误的闭包函数  1 闭包函数中， 闭包中的变量m不会修改外部函数中m的值。'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></div><div class="line">    m = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fool</span><span class="params">()</span>:</span></div><div class="line">        m = <span class="number">11</span></div><div class="line">        print(m)</div><div class="line">    print(m)  <span class="comment"># 0</span></div><div class="line">    fool()  <span class="comment"># 11</span></div><div class="line">    print(m)  <span class="comment"># 0</span></div><div class="line"></div><div class="line">print(foo())</div><div class="line"></div><div class="line"></div><div class="line"><span class="string">'''错误的闭包函数  2 '''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo2</span><span class="params">()</span>:</span></div><div class="line">    a = <span class="number">1</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fool2</span><span class="params">()</span>:</span></div><div class="line">        <span class="comment"># a = a +1  # UnboundLocalError: local variable 'a' referenced before assignment</span></div><div class="line">        <span class="keyword">return</span> a  <span class="comment"># 1</span></div><div class="line">    <span class="keyword">return</span> fool2</div><div class="line">ccc = foo2()  <span class="comment"># 此时：ccc = fool2，ccc只是获得到了一个对象</span></div><div class="line">print(ccc())  <span class="comment"># 此时：ccc = fool2(), ccc获取到的是一个实例</span></div><div class="line"></div><div class="line"></div><div class="line">flist = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="comment"># 编写 1</span></div><div class="line">    <span class="comment"># def foo3(x):</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo3</span><span class="params">(x, y = i)</span>:</span></div><div class="line">        <span class="comment"># 编写 1 的输出</span></div><div class="line">        <span class="comment"># print(x + i)</span></div><div class="line">        print(x + y)</div><div class="line">    flist.append(foo3)</div><div class="line"><span class="keyword">for</span> f <span class="keyword">in</span> flist:</div><div class="line">    f(<span class="number">2</span>)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">编写 1 的运行结果为：</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">结果是4,4,4。这是因为当把函数加入flist列表里时，python还没有给i赋值，</span></div><div class="line"><span class="string">只有当执行时，再去找i的值是什么，这时在第一个for循环结束以后，i的值是2，</span></div><div class="line"><span class="string">所以以上代码的执行结果是4,4,4.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">编写 2 的运行结果为：</span></div><div class="line"><span class="string">2</span></div><div class="line"><span class="string">3</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">在程序里面经常会出现这类的循环语句，Python的问题就在于，当循环结束以后，</span></div><div class="line"><span class="string">循环体中的临时变量i不会销毁，而是继续存在于执行环境中。</span></div><div class="line"><span class="string">还有一个python的现象是，python的函数只有在执行时，才会去找函数体里的变量的值</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure>
+<p>####闭包的作用</p>
+<blockquote>
+<p>参考：<br><a href="http://www.jb51.net/article/54498.htm" target="_blank" rel="external">http://www.jb51.net/article/54498.htm</a></p>
+</blockquote>
+<pre><code>闭包主要在函数开发中使用
+</code></pre><ul>
+<li><strong>当闭包函数执行完毕后，仍然能够保持住当前的运行环境</strong></li>
+<li><strong>闭包可以根据外部作用域的局部变量来得到不同的结果</strong></li>
+</ul>
+<p>####引用：闭包与并行运算</p>
+<blockquote>
+<p>闭包有效的减少了函数所需定义的参数数目。这对于并行运算来说有重要的意义。在并行运算的环境下，我们可以让每台电脑负责一个函数，然后将一台电脑的输出和下一台电脑的输入串联起来。最终，我们像流水线一样工作，从串联的电脑集群一端输入数据，从另一端输出数据。这样的情境最适合只有一个参数输入的函数。闭包就可以实现这一目的。</p>
+<p>并行运算正称为一个热点。这也是函数式编程又热起来的一个重要原因。函数式编程早在1950年代就已经存在，但应用并不广泛。然而，我们上面描述的流水线式的工作并行集群过程，正适合函数式编程。由于函数式编程这一天然优势，越来越多的语言也开始加入对函数式编程范式的支持。</p>
+</blockquote>
+<p>##匿名函数</p>
+<p>####定义</p>
+<p> 匿名函数由关键字<code>lambda</code>表示。<code>:</code>前面的参数名表示函数的参数，<code>:</code>后面的表达式表示为函数执行具体操作的表达式。</p>
+<p> ####特点</p>
+<ul>
+<li>python对匿名函数的支持有限，只能在一些简单的情况下使用匿名函数</li>
+<li>匿名函数有个数限制，<em>只能有一个表达式</em>，不用写<code>return</code>，返回值就是该表达式的结果。 </li>
+</ul>
+<p><strong><em>代码示例</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''匿名函数的使用 - 1'''</span></div><div class="line">print(list(map(<span class="keyword">lambda</span> x: x*x, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])))  <span class="comment"># [1, 4, 9, 16]</span></div><div class="line"></div><div class="line"><span class="string">'''匿名函数的使用 - 2'''</span></div></pre></td></tr></table></figure>
+<p>##装饰器</p>
+<p>####定义</p>
+<pre><code>在代码运行期间动态增加功能的方式，称之为“装饰器(decorator)”
+</code></pre><p><strong><em>代码示例</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''原函数</span></div><div class="line"><span class="string">def now():</span></div><div class="line"><span class="string">    print('2017-07-16')</span></div><div class="line"><span class="string">now()  # 2017-07-16</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="string">'''定义一个 now() 的 装饰器函数 log()'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func_origin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_func</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">        print(<span class="string">'call %s()'</span> % func_origin.__name__)</div><div class="line">        <span class="comment"># 因为log()是一个decorator，所以接受一个函数作为参数，并返回一个函数。</span></div><div class="line">        <span class="comment"># 返回原函数所具有的功能</span></div><div class="line">        <span class="keyword">return</span> func_origin(*args, **kwargs)</div><div class="line">    <span class="keyword">return</span> add_func</div><div class="line"></div><div class="line"><span class="string">'''使用 装饰器函数 log()'''</span></div><div class="line"><span class="meta">@log</span></div><div class="line"><span class="comment"># @log 等价于 now = log(now)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'2017-07-16'</span>)</div><div class="line"></div><div class="line"><span class="string">'''调用被装饰器装饰的函数now()'''</span></div><div class="line">now()</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">运行结果：</span></div><div class="line"><span class="string">call now()</span></div><div class="line"><span class="string">2017-07-16</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">释义：</span></div><div class="line"><span class="string">由于log()是一个decorator，返回一个函数，所以，原来的now()函数仍然存在，</span></div><div class="line"><span class="string">只是现在同名的now变量指向了新的函数，于是调用now()将执行新函数，即在log()函数中返回的wrapper()函数。</span></div><div class="line"><span class="string">wrapper()函数的参数定义是(*args, **kw)，因此，wrapper()函数可以接受任意参数的调用。</span></div><div class="line"><span class="string">在wrapper()函数内，首先打印日志，再紧接着调用原始函数。</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="string">'''需要传入参数的decorator, 即：3层嵌套'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log2</span><span class="params">(text)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrap</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">            print(<span class="string">'%s %s()'</span> % (text, func.__name__))</div><div class="line">            <span class="comment"># return func(*args, **kwargs)</span></div><div class="line">            <span class="keyword">return</span> func()  <span class="comment"># 输出结果中有：2017-07-16</span></div><div class="line">            <span class="comment"># return func  # 输出结果中没有：2017-07-16</span></div><div class="line">        <span class="keyword">return</span> wrap</div><div class="line">    <span class="keyword">return</span> decorator</div><div class="line"></div><div class="line"><span class="string">'''3层嵌套的使用'''</span></div><div class="line"><span class="comment">#@log2('execute')</span></div><div class="line"><span class="comment"># @log2 等价于 now2 = log2('execute')(now2)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now2</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'2017-07-16'</span>)</div><div class="line">now2 = log2(<span class="string">'execute'</span>)(now2)</div><div class="line">now2()</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">运行结果：</span></div><div class="line"><span class="string">def now():</span></div><div class="line"><span class="string">print('2017-07-16')</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="string">'''函数也是对象，它有__name__等属性，但经过decorator装饰之后的函数，</span></div><div class="line"><span class="string">它们的__name__已经从原来的'now2'变成了wrap'''</span></div><div class="line">print(now2.__name__)  <span class="comment"># wrap</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log3</span><span class="params">(text)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator3</span><span class="params">(func3)</span>:</span></div><div class="line"><span class="meta">        @functools.wraps(func3)</span></div><div class="line">        <span class="comment"># 词条语句等价于</span></div><div class="line">        <span class="comment"># wrap3.__name__ = func3.__name__</span></div><div class="line">        <span class="comment"># 需要把原始函数的__name__等属性复制到wrap3()函数中，否则，有些依赖函数签名的代码执行就会出错。</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrap3</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">            print(<span class="string">'%s %s()'</span> % (text, func3.__name__))</div><div class="line">            <span class="comment"># return func3()</span></div><div class="line">            func3()</div><div class="line">        <span class="keyword">return</span> wrap3</div><div class="line">    <span class="keyword">return</span> decorator3</div><div class="line"></div><div class="line"><span class="meta">@log3('execute')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now3</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'2017-07-16'</span>)</div><div class="line"></div><div class="line">now3()</div><div class="line">print(<span class="string">'now3 name is : '</span>, now3.__name__)</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">运行结果</span></div><div class="line"><span class="string">execute now3()</span></div><div class="line"><span class="string">2017-07-16</span></div><div class="line"><span class="string">now3 name is :  now3</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure>
+<p>##偏函数</p>
+<p>####定义</p>
+<pre><code>当函数的参数个数太多，需要简化时，使用`functools.partial`可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
+</code></pre><p> <strong><em>代码示例</em></strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int2 = functools.partial(int, base=<span class="number">2</span>)</div><div class="line"><span class="comment">#等价于</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">int2</span><span class="params">(x, base=<span class="number">2</span>)</span>:</span></div><div class="line">    <span class="keyword">return</span> int(x, base)</div></pre></td></tr></table></figure>
+<ul>
+<li><code>functools.partial</code>的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个<code>新的函数</code>，调用这个新函数会更简单。</li>
+<li>创建偏函数时，实际上可以接收<code>函数对象</code>、<code>*args</code>和<code>**kw</code>这3个参数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/10/23/Python3  06-闭包+匿名+装饰器+偏函数/" title="">http://yoursite.com/2017/10/23/Python3  06-闭包+匿名+装饰器+偏函数/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/23/Python3  05-函数式编程-函数作为返回值/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/23/Python3  08-模块/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">37.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

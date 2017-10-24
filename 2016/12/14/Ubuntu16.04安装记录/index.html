@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,命令,Ubuntu," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ubuntu16.04安装记录 以下省略“sudo”命令表示是在root权限下运行的  ubuntu16.04使用参考网址  Linux使用设置 &amp;gt;&amp;gt;网页    http://m.blog.csdn.net/article/details?id=51049513Linux命令大全 &amp;gt;&amp;gt;网页    http://www.runoob.com/linux/linux-comma">
+<meta name="keywords" content="Linux,命令,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu16.04安装记录">
+<meta property="og:url" content="http://yoursite.com/2016/12/14/Ubuntu16.04安装记录/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Ubuntu16.04安装记录 以下省略“sudo”命令表示是在root权限下运行的  ubuntu16.04使用参考网址  Linux使用设置 &amp;gt;&amp;gt;网页    http://m.blog.csdn.net/article/details?id=51049513Linux命令大全 &amp;gt;&amp;gt;网页    http://www.runoob.com/linux/linux-comma">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T17:28:52.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu16.04安装记录">
+<meta name="twitter:description" content="Ubuntu16.04安装记录 以下省略“sudo”命令表示是在root权限下运行的  ubuntu16.04使用参考网址  Linux使用设置 &amp;gt;&amp;gt;网页    http://m.blog.csdn.net/article/details?id=51049513Linux命令大全 &amp;gt;&amp;gt;网页    http://www.runoob.com/linux/linux-comma">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/14/Ubuntu16.04安装记录/"/>
+
+
+
+
+
+  <title>Ubuntu16.04安装记录 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Ubuntu16.04安装记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu16.04安装记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T00:00:00+08:00">
+                2016-12-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T01:28:52+08:00">
+                2017-10-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统/" itemprop="url" rel="index">
+                    <span itemprop="name">系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,124 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ubuntu16-04安装记录"><a href="#Ubuntu16-04安装记录" class="headerlink" title="Ubuntu16.04安装记录"></a>Ubuntu16.04安装记录</h1><blockquote>
+<p>以下省略“sudo”命令表示是在root权限下运行的</p>
+</blockquote>
+<h2 id="ubuntu16-04使用参考网址"><a href="#ubuntu16-04使用参考网址" class="headerlink" title="ubuntu16.04使用参考网址"></a>ubuntu16.04使用参考网址</h2><blockquote>
+<p> Linux使用设置 &gt;&gt;网页<br>    <a href="http://m.blog.csdn.net/article/details?id=51049513" target="_blank" rel="external">http://m.blog.csdn.net/article/details?id=51049513</a><br>Linux命令大全 &gt;&gt;网页<br>    <a href="http://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="external">http://www.runoob.com/linux/linux-command-manual.html</a><br>Linux命令大全–支持在线搜寻<br>    <a href="http://man.linuxde.net/" target="_blank" rel="external">http://man.linuxde.net/</a><br>文档手册中心 –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/" target="_blank" rel="external">http://man.chinaunix.net/</a><br>Linux Kernel –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html" target="_blank" rel="external">http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html</a><br>Linux Git使用 &gt;&gt;网页<br>    <a href="http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1" target="_blank" rel="external">http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1</a><br>以下省略“sudo”命令表示是在root权限下运行的</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="root登录"><a href="#root登录" class="headerlink" title="root登录"></a>root登录</h2><ol>
+<li><p>先设定一个root的密码：</p>
+<pre><code>sudo passwd root
+</code></pre></li>
+<li><p>root 登陆：</p>
+<pre><code>su root
+cp -p /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
+vi /etc/lightdm/lightdm.conf
+</code></pre></li>
+<li><p>在lightdm.conf最后增加一行：</p>
+<pre><code>greeter-show-manual-login=true
+</code></pre></li>
+<li>重启后，即可用root登入。</li>
+</ol>
+<h2 id="系统没有声音"><a href="#系统没有声音" class="headerlink" title="系统没有声音"></a>系统没有声音</h2><p>Ubuntu在root用户下，为了安全考虑默认关闭系统的声音。</p>
+<ol>
+<li><p>将root加到pulse和pulse-access组：</p>
+<pre><code>usermod -a -G pulse-access root
+gpasswd -a root pulse
+gpasswd -a root pulse-access
+</code></pre></li>
+<li><p>编辑/etc/default/pulseaudio文件</p>
+<pre><code>cp -p /etc/default/pulseaudio/etc/default/pulseaudio.bak
+vim /etc/default/pulseaudio
+</code></pre></li>
+<li><p>修改以下两处</p>
+<pre><code>PULSEAUDIO_SYSTEM_START=1
+DISALLOW_MODULE_LOADING=0
+</code></pre></li>
+<li>改为1和0，表示允许运行在system环境，允许动态加载模块。</li>
+<li>重启计算机</li>
+</ol>
+<h2 id="有声音但在“系统设置”中无法调节声音："><a href="#有声音但在“系统设置”中无法调节声音：" class="headerlink" title="有声音但在“系统设置”中无法调节声音："></a>有声音但在“系统设置”中无法调节声音：</h2><ol>
+<li><p>运行：</p>
+<pre><code>gedit /root/.profile
+</code></pre></li>
+<li><p>在文件的最后添加：</p>
+<pre><code>pulseaudio --start --log-target=syslog
+</code></pre></li>
+<li><p>当在“系统设置”中出现“伪声音”时，且无法实际调节声音时：</p>
+<pre><code>apt install pavucontrol
+pavucontrol
+</code></pre></li>
+</ol>
+<h2 id="系统正常耳机没有声音"><a href="#系统正常耳机没有声音" class="headerlink" title="系统正常耳机没有声音"></a>系统正常耳机没有声音</h2><blockquote>
+<p>参考网址：<a href="http://www.linuxdiyf.com/linux/25529.html" target="_blank" rel="external">http://www.linuxdiyf.com/linux/25529.html</a></p>
+</blockquote>
+<ol>
+<li><p>终端运行</p>
+<pre><code>alsamixer
+</code></pre></li>
+<li>按M键把关闭的都大开（关闭的都显示的是MM），然后调节到合适的位置，白色为宜</li>
+<li>最后一项Independ显示为ON表示耳机和音箱只能有一个有声音，按M键关闭则表示耳机和音箱可以同时有声音 （–未进行测试–）</li>
+<li><p>若耳机还是没声音，可是试着运行</p>
+<pre><code>gedit /etc/modprobe.d/alsa-base.conf
+</code></pre></li>
+<li><p>在最后一行加入</p>
+<pre><code>#enable headphoneoptions snd-hda-intel power_save=10 power_save_controller=N model=6stack-dig
+</code></pre></li>
+<li><p>然后运行</p>
+<pre><code>apt-get remove alsa-base
+</code></pre></li>
+<li><p>然后重启</p>
+<pre><code>shutdown -r now
+</code></pre></li>
+<li><p>重启后运行</p>
+<pre><code>apt-get install alsa-base
+</code></pre></li>
+</ol>
+<h2 id="ubuntu16-04系统字体变成方框问题"><a href="#ubuntu16-04系统字体变成方框问题" class="headerlink" title="ubuntu16.04系统字体变成方框问题"></a>ubuntu16.04系统字体变成方框问题</h2><p>进入到字体的目录下/usr/share/fonts/，输入下面的命令：</p>
+<pre><code>cd /usr/share/fonts/
+</code></pre><h2 id="制作ubuntu16-04app启动图标"><a href="#制作ubuntu16-04app启动图标" class="headerlink" title="制作ubuntu16.04app启动图标"></a>制作ubuntu16.04app启动图标</h2><blockquote>
+<p>2016年12月15日15:40:42</p>
+</blockquote>
+<ol>
+<li><p>在文件所在目录下新建一个Studio.desktop文件,并用gedit打开,然后将下面的内容复制进去并修改.</p>
+<pre><code>[Desktop Entry]
+Name=应用的名称
+Type=Application（不改）
+Icon=你的AndroidStudio解压目录的绝对路径/android-studio/bin/studio.png
+Exec=sh 你的AndroidStudio解压目录的绝对路径/android-studio/bin/studio.sh
+</code></pre></li>
+<li><p>保存退出(注意：每一行后面都不能有空格,否则失败)</p>
+</li>
+<li>右键该文件–&gt;属性–&gt;权限–&gt;选择“允许作为程序执行文件”,此时发现图标变了,双击打开App</li>
+</ol>
+<h2 id="安装ADB"><a href="#安装ADB" class="headerlink" title="安装ADB"></a>安装ADB</h2><blockquote>
+<p>2017年01月30日 星期一 15时57分56秒<br> 参考：<br>    <a href="http://www.itdadao.com/articles/c15a299707p0.html" target="_blank" rel="external">http://www.itdadao.com/articles/c15a299707p0.html</a><br>    <a href="http://www.jianshu.com/p/8768e5bccfa8" target="_blank" rel="external">http://www.jianshu.com/p/8768e5bccfa8</a></p>
+</blockquote>
+<ol>
+<li><p>若apt-get install 失败：</p>
+<pre><code>sudo add-apt-repository  ppa:phablet-team/tools (原始ppa更好)
+sudo apt-get update
+sudo apt-get install android-tools-adb
+</code></pre></li>
+<li><p>出现异常：</p>
+<pre><code>E: 无法获得锁 /var/lib/dpkg/lock – open (11: 资源临时不可用)
+E: 无法对管理目录(/var/lib/dpkg/)加锁，是不是另一个包管理程序在使用它？
+</code></pre><p>解决办法：</p>
+<pre><code>删除有问题的文件
+</code></pre></li>
+</ol>
+<h2 id="安装-JDK-Eclipse-Apache-Tomcat"><a href="#安装-JDK-Eclipse-Apache-Tomcat" class="headerlink" title="安装 JDK + Eclipse + Apache Tomcat"></a>安装 JDK + Eclipse + Apache Tomcat</h2><blockquote>
+<p>2016年12月14日15:32:34<br>以下省略“sudo”命令表示是在root权限下运行的</p>
+</blockquote>
+<h3 id="JDK8"><a href="#JDK8" class="headerlink" title="JDK8"></a>JDK8</h3><ol>
+<li><p>（下载地址）</p>
+<pre><code>http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz
+</code></pre></li>
+<li><p>在所在的文件夹目录下，可以直接打开terminal，跳过以下两句操作，直接进行环境配置</p>
+<pre><code>cd /Downloads
+tar -zxvf jdk-8u101-linux-x64.tar.gz
+</code></pre></li>
+</ol>
+<p>3.配置环境变量</p>
+<pre><code>gedit /etc/profile
+</code></pre><ol>
+<li><p>在文件末尾添加以下内容：</p>
+<pre><code>export JAVA_HOME=/home/lt/Java/jdk1.8.0_101(你的Jdk目录)
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+</code></pre></li>
+<li><p>更新文件（必须执行）</p>
+<pre><code>source /etc/profile
+</code></pre></li>
+<li><p>notice！若在终端中出现:程序 ‘javac’ 已包含在下列软件包中：</p>
+<pre><code>update-alternatives --install /usr/bin/javac javac /root/文档/jdk1.8.0_112/bin/javac 300
+update-alternatives --install /usr/bin/java java /root/文档/jdk1.8.0_112/bin/java 300
+</code></pre></li>
+</ol>
+<h3 id="Eclipse（eclipse安装工具）"><a href="#Eclipse（eclipse安装工具）" class="headerlink" title="Eclipse（eclipse安装工具）"></a>Eclipse（eclipse安装工具）</h3><ol>
+<li><p>（下载地址）</p>
+<pre><code>https://www.eclipse.org/downloads/download.php?file=/oomph/epp/neon/R/eclipse-inst-linux64.tar.gz
+</code></pre></li>
+<li><p>解压</p>
+<pre><code>tar -zxcf eclipse-inst-linux64.tar.gz
+</code></pre></li>
+<li>进入解后目录下,双击eclipse.inst运行安装程序</li>
+<li><p>若有安装错误执行</p>
+<pre><code>mkdir jre
+cd jre
+ln -s （你的JDK目录/bin bin）
+</code></pre><h3 id="Tomcat9"><a href="#Tomcat9" class="headerlink" title="Tomcat9"></a>Tomcat9</h3></li>
+<li><p>（下载地址）</p>
+<pre><code>http://tomcat.apache.org/download-90.cgi
+</code></pre></li>
+<li><p>在所在的文件夹目录下，可以直接打开terminal，跳过以下两句操作，直接进行环境配置</p>
+<pre><code>cd Downloads/
+unzip apache-tomcat-9.0.0.M9.zip
+</code></pre></li>
+<li><p>配置环境变量：</p>
+<pre><code>export CATLINA_HOME=/home/lt/Java/apache-tomcat-9.0.0.M9（文件所在路径）
+sourse /etc/profile
+</code></pre></li>
+</ol>
+<h2 id="安装MySQL-WorkBrench"><a href="#安装MySQL-WorkBrench" class="headerlink" title="安装MySQL+WorkBrench"></a>安装MySQL+WorkBrench</h2><blockquote>
+<p>2016年12月15日15:54:09<br> 以下省略“sudo”命令表示是在root权限下运行的</p>
+</blockquote>
+<h3 id="ubuntu16-04安装mysql5-7"><a href="#ubuntu16-04安装mysql5-7" class="headerlink" title="ubuntu16.04安装mysql5.7"></a>ubuntu16.04安装mysql5.7</h3><p>未用sudo apt-get update<br>未用sudo apt-get upgrade</p>
+<pre><code>apt-get install mysql-server mysql-client
+apt-get install libmysqlclient-dev
+</code></pre><p> 自动安装会装上5.7的client端，中间会弹出提示框输入root的密码<br> 安装完成之后检查是否成功。socket处于 listen 状态则表示安装成功</p>
+<pre><code>netstat -tap | grep mysql
+</code></pre><p>未用sudo groupadd mysql<br>未用sudo useradd -r -g mysql mysql</p>
+<p>修改密码<br> 未用sudo /usr/bin/mysqladmin -u root password</p>
+<p> 登陆mysql数据库可以通过如下命令：</p>
+<pre><code>mysql -u root -p
+-u 用户名， -p 用户密码，输入后提示输入密码，此时输入密码就可以登录到mysql
+</code></pre><h3 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h3><pre><code>apt-get install mysql-workbench
+</code></pre><h2 id="安装RabbitVCS"><a href="#安装RabbitVCS" class="headerlink" title="安装RabbitVCS"></a>安装RabbitVCS</h2><blockquote>
+<p>2017年02月06日 星期一 14时04分24秒<br>参考：<a href="http://blog.csdn.net/catshitone/article/details/48022315" target="_blank" rel="external">http://blog.csdn.net/catshitone/article/details/48022315</a></p>
+</blockquote>
+<p><em>注：</em><br>    安装完毕后，注销LogOut，重新登录，在文件夹和文件夹内点击鼠标右键就用RabbitVCS操作工具了。<br>    如果不能正常运行则输入：</p>
+<pre><code>sudo apt-get install python-nautilus python-configobj python-gtk2 python-glade2 python-svn python-dbus python-dulwich subversion meld
+</code></pre><p>再次更新软件包库：</p>
+<pre><code>sudo apt-get update
+</code></pre><p>注销LogOut，重新登录即可。</p>
+<h2 id="安装Terminator"><a href="#安装Terminator" class="headerlink" title="安装Terminator"></a>安装Terminator</h2><blockquote>
+<p>2017年02月06日 星期一 15时53分34秒<br>参考：<br>    <a href="http://www.jianshu.com/p/cee2de32ca28" target="_blank" rel="external">http://www.jianshu.com/p/cee2de32ca28</a></p>
+</blockquote>
+<ol>
+<li><p>安装：</p>
+<pre><code>apt-get install terminator
+</code></pre></li>
+<li><p>卸载：</p>
+<pre><code>apt-get remove terminator
+</code></pre></li>
+<li><p>快捷键(自定义之后的):</p>
+<pre><code>水平分割终端  : Ctrl+O
+垂直分割终端  : Ctrl+E
+搜索         : Ctrl+F
+复制         : Ctrl+C
+粘贴         : Ctrl+V
+clear屏幕    : Ctrl+G
+关闭当前终端  : Ctrl+W
+退出当前窗口  : Ctrl+Q
+变化当前窗口位置 ：super+R
+全屏状态           : F11
+在垂直分割的终端中将分割条向右移动 :Ctrl+Right
+在垂直分割的终端中将分割条向左移动 :Ctrl+Left
+隐藏/显示滚动条 :Ctrl+Shift+S
+</code></pre></li>
+</ol>
+<ol>
+<li><p>配置文件（可参考）：</p>
+<pre><code>[global_config]
+  handle_size = -3
+  enabled_plugins = CustomCommandsMenu, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_fg_color = &quot;#000000&quot;
+  suppress_multiple_term_dialog = True
+  title_transmit_bg_color = &quot;#3e3838&quot;
+  inactive_color_offset = 1.0
+[keybindings]
+[profiles]
+  [[default]]
+    palette = &quot;#000000:#5a8e1c:#2d5f5f:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#868e09:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff&quot;
+    background_image = &quot;&quot;
+    background_darkness = 0.68
+    scrollback_lines = 3000
+    background_type = transparent
+    use_system_font =
+    scroll_background = False
+    show_titlebar = False
+    cursor_shape = ibeam
+    font = Liberation Mono 12
+    background_color = &quot;#0e2424&quot;
+    foreground_color = &quot;#e8e8e8&quot;
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = &quot;&quot;
+      size = 925, 570
+[plugins]
+</code></pre></li>
+</ol>
+<h2 id="ubuntu安装Wine"><a href="#ubuntu安装Wine" class="headerlink" title="ubuntu安装Wine"></a>ubuntu安装Wine</h2><blockquote>
+<p>参考：<a href="http://www.ubuntukylin.com/ukylin/forum.php?mod=viewthread&amp;tid=27068" target="_blank" rel="external">http://www.ubuntukylin.com/ukylin/forum.php?mod=viewthread&amp;tid=27068</a></p>
+</blockquote>
+<ol>
+<li><p>安装源</p>
+<pre><code>sudo add-apt-repository ppa:wine/wine-builds
+sudo apt-get update
+</code></pre></li>
+<li><p>安装wine</p>
+<pre><code>apt-get install wine1.8
+</code></pre></li>
+<li><p>卸载wine<br>  1).卸载wine主程序，在终端里输入：</p>
+<pre><code>sudo apt-get remove --purge wine
+</code></pre><p>  2).然后删除wine的目录文件：</p>
+<pre><code>rm -r ~/.wine
+</code></pre><p>  3).卸载残留不用的软件包：</p>
+<pre><code>sudo apt-get autoremove
+</code></pre></li>
+<li>终端中输入wine，检测是否安装完成</li>
+</ol>
+<h2 id="ubuntu安装WebStorm"><a href="#ubuntu安装WebStorm" class="headerlink" title="ubuntu安装WebStorm"></a>ubuntu安装WebStorm</h2><blockquote>
+<p>2017年02月16日 星期四 12时31分00秒<br> 参考：<a href="https://quanru.github.io/2016/04/17/%E4%BD%BF%E7%94%A8%20Linux%20%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91Web%E5%89%8D%E7%AB%AF/" target="_blank" rel="external">https://quanru.github.io/2016/04/17/%E4%BD%BF%E7%94%A8%20Linux%20%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91Web%E5%89%8D%E7%AB%AF/</a><br>webstorm使用快捷键参考：<br>    <a href="http://blog.csdn.net/zghekuiwu/article/details/54382145" target="_blank" rel="external">http://blog.csdn.net/zghekuiwu/article/details/54382145</a><br>    <a href="https://github.com/damao/Intellij-IDEA-F2E#%E6%B3%A8%E5%86%8C" target="_blank" rel="external">https://github.com/damao/Intellij-IDEA-F2E#%E6%B3%A8%E5%86%8C</a></p>
+</blockquote>
+<ol>
+<li><p>下载：</p>
+<pre><code>http://www.jetbrains.com/webstorm/index.html
+</code></pre></li>
+<li><p>解压下载的 gz 包，在bin/下运行：</p>
+<pre><code>./webstorm.sh
+</code></pre></li>
+<li>WebStorm 默认情况下是需要收费的，可以申请为开源项目的贡献者来获得 licenses。</li>
+<li>安装完成后，在 File - Settings - Plugins，选择需要安装的插件，例如 AngularJS、Markdown 等。</li>
+<li>在 File - Settings - Directories 下，通过 Add content Root 来设置我们的项目路径</li>
+<li>在 File - Settings - JavaScript - Libraries 下，勾选想要支持的库，建议全部勾上（如 NodeJS）。</li>
+<li>在 File - Settings - Editor - Colors &amp; Fonts - Font 下，选择自己想要的主题， 然后 Save as… 保存自己想要的主题名称，设置字体为Ubuntu Mono， 字体设置为 16（貌似有点小，相当于 Eclipse 下的 12）</li>
+<li>在 File - Settings - Appearance 下，勾选 Show line numbers 选项。</li>
+<li><p>破解方式：选择line server 方式，输入：</p>
+<pre><code>http://idea.iteblog.com/key.php
+</code></pre></li>
+</ol>
+<h2 id="安装ubuntu主题"><a href="#安装ubuntu主题" class="headerlink" title="安装ubuntu主题"></a>安装ubuntu主题</h2><blockquote>
+<p>2016年12月15日14:54:25</p>
+</blockquote>
+<ol>
+<li><p>安装主题管理工具：</p>
+<pre><code>apt-get install unity-tweak-tool
+</code></pre></li>
+<li><p>安装主题</p>
+<pre><code>apt-add-repository ppa:numix/ppa
+apt-get update
+apt-get install numix-icon-theme-circle        //安装图标
+apt-get install numix-gtk-theme            //安装主题
+</code></pre><p> 　</p>
+</li>
+<li><p>安装docky（Mac桌面下方的启动器）</p>
+<blockquote>
+<p>参考网址：<a href="http://www.aichengxu.com/view/992905" target="_blank" rel="external">http://www.aichengxu.com/view/992905</a><br>参考网址：<a href="http://www.noobslab.com/2014/11/mbuntu-macbuntu-1410-transformation.html" target="_blank" rel="external">http://www.noobslab.com/2014/11/mbuntu-macbuntu-1410-transformation.html</a></p>
+</blockquote>
+<pre><code>install docky
+add-apt-repository ppa:docky-core/ppa
+apt-get update
+apt-get install docky
+apt-get remove docky docky
+</code></pre></li>
+</ol>
+<h2 id="安装XX-Net"><a href="#安装XX-Net" class="headerlink" title="安装XX-Net"></a>安装XX-Net</h2><blockquote>
+<p>2017年02月04日 星期六 17时17分36秒</p>
+</blockquote>
+<ol>
+<li>安装xx-net</li>
+<li>安装firefox或者chrome</li>
+<li><p>设置：</p>
+<pre><code>  系统设置 --&gt; 网络 --&gt; 网络代理 --&gt;
+  方法：自动
+配置：http://127.0.0.1:8086/proxy.pac
+全局配置
+</code></pre></li>
+<li>重点：<br> 此项目来自GitHub，可以直接clone到本地<br> 需要使用到Google AppID，以此进行服务器部署，以达到真正上网的目的</li>
+</ol>
+<h2 id="使用host科学上网"><a href="#使用host科学上网" class="headerlink" title="使用host科学上网"></a>使用host科学上网</h2><blockquote>
+<p>2016年12月15日16:04:07<br>使用host文件进行翻墙<br>参考链接：<a href="https://laod.cn/hosts/2016-google-hosts.html" target="_blank" rel="external">https://laod.cn/hosts/2016-google-hosts.html</a></p>
+</blockquote>
+<h2 id="安装sbulime-text3"><a href="#安装sbulime-text3" class="headerlink" title="安装sbulime text3"></a>安装sbulime text3</h2><blockquote>
+<p>2017年 01月 28日 星期六 15:05:31 CST<br>安装参考：<br>    <a href="http://www.cnblogs.com/unflynaomi/p/5704293.html" target="_blank" rel="external">http://www.cnblogs.com/unflynaomi/p/5704293.html</a></p>
+</blockquote>
+<ol>
+<li>汉化，中文输入问题参考：<br> <a href="http://blog.csdn.net/u013453604/article/details/48002127" target="_blank" rel="external">http://blog.csdn.net/u013453604/article/details/48002127</a></li>
+<li>汉化，无法输入中文资源：<br> <a href="http://download.csdn.net/detail/u013453604/9049633" target="_blank" rel="external">http://download.csdn.net/detail/u013453604/9049633</a></li>
+<li>不能输入中文问题参考：<br> <a href="http://www.cnblogs.com/mo-wang/p/5120484.html（步骤不全，修改的内容全面）" target="_blank" rel="external">http://www.cnblogs.com/mo-wang/p/5120484.html（步骤不全，修改的内容全面）</a><br> <a href="http://www.liuqianfei.com/article/3e51f07d254b464995b0f4c94cc1d69c（步骤全面）" target="_blank" rel="external">http://www.liuqianfei.com/article/3e51f07d254b464995b0f4c94cc1d69c（步骤全面）</a></li>
+<li>配置java，python，markdown：<br> <a href="http://www.jianshu.com/p/58bf9e4d5b32" target="_blank" rel="external">http://www.jianshu.com/p/58bf9e4d5b32</a></li>
+<li><p>安装步骤：</p>
+<pre><code>sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install sublime-text-installer
+</code></pre></li>
+<li><p>安装：python3</p>
+<pre><code>apt install python3-pip
+</code></pre></li>
+<li><p>卸载 sublime text 命令：</p>
+<pre><code>sudo apt-get remove sublime-text-installer
+</code></pre></li>
+<li>启动sublime text3<br> 在terminal终端中输入：subl</li>
+<li>打开指定的文件：<br> subl 文件名</li>
+<li><p>解决sublime无法输入中文的问题<br>在进行所有操作时首先进行依赖包的安装：<br>代码依赖于 gtk 2.0，编译 c 需要安装 build-essential。</p>
+<pre><code>sudo apt-get install build-essential libgtk2.0-dev
+</code></pre></li>
+<li><p>如果路径中含有空格，你必须使用双引号将路径括起来：</p>
+<pre><code>$ subl &amp;quot;~/Documents/test/my test file.txt&amp;quot;
+</code></pre></li>
+<li><p>解决无法输入中文问题 - 2017年03月12日 星期日 15时17分24秒 </p>
+<blockquote>
+<p>参考：<a href="http://www.jianshu.com/p/03a9092c73e2" target="_blank" rel="external">http://www.jianshu.com/p/03a9092c73e2</a><br>亲测有效！</p>
+</blockquote>
+</li>
+<li><p>解决事件输入问题</p>
+<blockquote>
+<p>参考：<a href="https://my.oschina.net/antsky/blog/491146" target="_blank" rel="external">https://my.oschina.net/antsky/blog/491146</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="WPS字体缺失"><a href="#WPS字体缺失" class="headerlink" title="WPS字体缺失"></a>WPS字体缺失</h2><ol>
+<li><p>下载缺失的字体文件，然后复制到Linux系统中的/usr/share/fonts文件夹中。</p>
+<pre><code>国外下载地址：https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip
+国内下载地址：https://pan.baidu.com/s/1eS6xIzosudo cp * /usr/share/fonts
+</code></pre></li>
+<li><p>执行以下命令,生成字体的索引信息：</p>
+<pre><code>sudo mkfontscale
+sudo mkfontdir
+</code></pre></li>
+<li><p>运行fc-cache命令更新字体缓存。</p>
+<pre><code>sudo fc-cache
+</code></pre></li>
+<li><p>重启wps即可，字体缺失的提示不再出现。</p>
+</li>
+<li><p>WPS不能输入中文问题</p>
+<blockquote>
+<p>参考:<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=48&amp;t=476937" target="_blank" rel="external">http://forum.ubuntu.org.cn/viewtopic.php?f=48&amp;t=476937</a><br>原因：环境变量未正确设置，以上可以直接针对wps设置。</p>
+</blockquote>
+</li>
+</ol>
+<p>解决办法,终端输入:</p>
+<pre><code>gedit /usr/bin/wps
+</code></pre><p>在此文件中输入一下内容,#!/bin/bash之后:</p>
+<pre><code>export XMODIFIERS=&quot;@im=fcitx&quot;
+export QT_IM_MODULE=&quot;fcitx&quot;
+</code></pre><h2 id="安装WeChat"><a href="#安装WeChat" class="headerlink" title="安装WeChat"></a>安装WeChat</h2><blockquote>
+<p>2016年12月13日22:43:53</p>
+</blockquote>
+<ol>
+<li><p>安装linux微信：</p>
+<blockquote>
+<p>下载地址:<a href="https://github.com/geeeeeeeeek/electronic-wechat/releases" target="_blank" rel="external">https://github.com/geeeeeeeeek/electronic-wechat/releases</a></p>
+</blockquote>
+<pre><code>apt-get install git
+git clone https://github.com/geeeeeeeeek/electronic-wechat.git
+cd electronic-wechat
+apt-get install npm
+apt-get install nodejs-legacy
+npm install &amp;&amp; npm start
+</code></pre></li>
+<li><p>官方推荐的安装方法：<br> To clone and run this repository you’ll need Git and Node.js (which comes with npm) installed on your computer. From your command line:<br> Clone this repository<br> git clone <a href="https://github.com/geeeeeeeeek/electronic-wechat.git#" target="_blank" rel="external">https://github.com/geeeeeeeeek/electronic-wechat.git#</a> Go into the repositorycd electronic-wechat# Install dependencies and run the app<br> npm install &amp;&amp; npm start<br> To pack into an app, simply type one of these:<br> npm run build:osx<br> npm run build:linux</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2016/12/14/Ubuntu16.04安装记录/" title="Ubuntu16.04安装记录">http://yoursite.com/2016/12/14/Ubuntu16.04安装记录/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/命令/" rel="tag"># 命令</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/Alias 的使用/" rel="next" title="Alias 的使用">
+                <i class="fa fa-chevron-left"></i> Alias 的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/09/Linux vim 命令/" rel="prev" title="Linux vim 命令">
+                Linux vim 命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu16-04安装记录"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu16.04安装记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu16-04使用参考网址"><span class="nav-number">1.1.</span> <span class="nav-text">ubuntu16.04使用参考网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#root登录"><span class="nav-number">1.2.</span> <span class="nav-text">root登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统没有声音"><span class="nav-number">1.3.</span> <span class="nav-text">系统没有声音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有声音但在“系统设置”中无法调节声音："><span class="nav-number">1.4.</span> <span class="nav-text">有声音但在“系统设置”中无法调节声音：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统正常耳机没有声音"><span class="nav-number">1.5.</span> <span class="nav-text">系统正常耳机没有声音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu16-04系统字体变成方框问题"><span class="nav-number">1.6.</span> <span class="nav-text">ubuntu16.04系统字体变成方框问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作ubuntu16-04app启动图标"><span class="nav-number">1.7.</span> <span class="nav-text">制作ubuntu16.04app启动图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ADB"><span class="nav-number">1.8.</span> <span class="nav-text">安装ADB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-JDK-Eclipse-Apache-Tomcat"><span class="nav-number">1.9.</span> <span class="nav-text">安装 JDK + Eclipse + Apache Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK8"><span class="nav-number">1.9.1.</span> <span class="nav-text">JDK8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eclipse（eclipse安装工具）"><span class="nav-number">1.9.2.</span> <span class="nav-text">Eclipse（eclipse安装工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat9"><span class="nav-number">1.9.3.</span> <span class="nav-text">Tomcat9</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySQL-WorkBrench"><span class="nav-number">1.10.</span> <span class="nav-text">安装MySQL+WorkBrench</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu16-04安装mysql5-7"><span class="nav-number">1.10.1.</span> <span class="nav-text">ubuntu16.04安装mysql5.7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装客户端"><span class="nav-number">1.10.2.</span> <span class="nav-text">安装客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装RabbitVCS"><span class="nav-number">1.11.</span> <span class="nav-text">安装RabbitVCS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Terminator"><span class="nav-number">1.12.</span> <span class="nav-text">安装Terminator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu安装Wine"><span class="nav-number">1.13.</span> <span class="nav-text">ubuntu安装Wine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu安装WebStorm"><span class="nav-number">1.14.</span> <span class="nav-text">ubuntu安装WebStorm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ubuntu主题"><span class="nav-number">1.15.</span> <span class="nav-text">安装ubuntu主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装XX-Net"><span class="nav-number">1.16.</span> <span class="nav-text">安装XX-Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用host科学上网"><span class="nav-number">1.17.</span> <span class="nav-text">使用host科学上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装sbulime-text3"><span class="nav-number">1.18.</span> <span class="nav-text">安装sbulime text3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WPS字体缺失"><span class="nav-number">1.19.</span> <span class="nav-text">WPS字体缺失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装WeChat"><span class="nav-number">1.20.</span> <span class="nav-text">安装WeChat</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">37.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
