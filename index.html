@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android-Sutdio常用插件/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android Sutdio 使用快人一步/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -285,7 +285,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android-Sutdio常用插件/" itemprop="url">Android Sutdio常用插件</a></h1>
+                <a class="post-title-link" href="/Android Sutdio 使用快人一步/" itemprop="url">Android Sutdio 使用快人一步</a></h1>
         
 
         <div class="post-meta">
@@ -313,7 +313,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T20:06:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T21:41:35+08:00">
                 2017-10-25
               </time>
             
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  866 字
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -446,7 +446,61 @@
       
         
           
-            
+            <p>写在前面：</p>
+<pre><code>一直认为，我们应该把有限的精力放在自己最为重要的点上，能一手带过的就一手带过。
+</code></pre><ol>
+<li>插件安装位置：<code>Android Studio -&gt; Preferences -&gt; Plugins</code>。<strong>快捷键：<code>⌘ + ,</code></strong><br>敲出<code>⌘</code>：<code>control + cmmand + space</code>，之后进行选择</li>
+<li><p>使用频率最高的2个快捷键：</p>
+<ul>
+<li><code>⌘ + n</code>：各种自动生成。</li>
+<li><code>control + t</code> 各位看官自己瞧瞧：</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2021.23.39.png" alt="Github set up-w300"></p>
+</li>
+</ol>
+<h2 id="代码规范-Alibaba-Java-Coding-Guidelines"><a href="#代码规范-Alibaba-Java-Coding-Guidelines" class="headerlink" title="代码规范 - Alibaba Java Coding Guidelines"></a>代码规范 - Alibaba Java Coding Guidelines</h2><p>阿里巴巴Java开发规约的插件。安装后在Android Studio显示为：<img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2020.20.15.png" alt="GitHub set up-w100"><br>可选择实时监测，也可以关闭检测。</p>
+<h2 id="真机无线调试-Android-WiFi-ADB"><a href="#真机无线调试-Android-WiFi-ADB" class="headerlink" title="真机无线调试 - Android WiFi ADB"></a>真机无线调试 - Android WiFi ADB</h2><p>通过WIFI连接手机和电脑。<br>数据线插入你的手机，然后点击Connect，显示State = Connect后拔掉数据线即可。<br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2020.23.33.png" alt="GitHub set up-w300"></p>
+<h2 id="View注解绑定-Android-ButterKnife-Zelezny"><a href="#View注解绑定-Android-ButterKnife-Zelezny" class="headerlink" title="View注解绑定 - Android ButterKnife Zelezny"></a>View注解绑定 - Android ButterKnife Zelezny</h2><p>ButterKnife是一个专注于Android系统的View注入框架,可以减少大量的findViewById以及setOnClickListener代码，可视化一键生成。<br><strong>快捷键：<code>⌘ + n</code></strong><br>使用时必须要将<code>光标</code>悬浮于 <img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2020.37.08.png" alt="Github set up-w300"> <code>activity_main</code>之上才能有效。</p>
+<h3 id="控件的点击事件异常时"><a href="#控件的点击事件异常时" class="headerlink" title="控件的点击事件异常时"></a>控件的点击事件异常时</h3><ol>
+<li>只是在Java代码中写明了方法，但是并没有在XML代码中使用<code>onClick=&quot;&quot;</code>来描述此方法</li>
+<li>在Java代码中只是声明了方法，当时并没有在方法中声明参数：<code>(View view)</code>。如果不写此参数，将会导致在调用方法时，找不到<code>View中的 指定id</code> 值。</li>
+</ol>
+<h3 id="空指针异常："><a href="#空指针异常：" class="headerlink" title="空指针异常："></a>空指针异常：</h3><blockquote>
+<p>参考：<a href="http://blog.csdn.net/blueamertj/article/details/51517191" target="_blank" rel="external">http://blog.csdn.net/blueamertj/article/details/51517191</a></p>
+</blockquote>
+<ol>
+<li><p>在 <code>app模块</code> 的 <code>gradle</code> 编译文件 <code>build.gradle</code> 加入下列代码：</p>
+<pre><code>apply plugin: &apos;com.neenbedankt.android-apt&apos; 
+</code></pre></li>
+</ol>
+<ol>
+<li><p>在 <code>app模块</code> 的 <code>gradle</code> 编译文件 <code>build.gradle</code> 中的 <code>dependencies</code>中加入</p>
+<pre><code>apt &apos;com.jakewharton:butterknife-compiler:8.0.1&apos;
+compile &apos;com.jakewharton:butfe:8.0.1&apos;
+</code></pre></li>
+<li><p>在 <code>项目</code> 的 <code>gradle</code> 编译文件 <code>build.gradle</code> 文件，在 <code>dependencies</code> 中加入</p>
+<pre><code>classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;
+</code></pre></li>
+</ol>
+<h2 id="自动findViewById-Prettify"><a href="#自动findViewById-Prettify" class="headerlink" title="自动findViewById() - Prettify"></a>自动findViewById() - Prettify</h2><p>据Layout自动生成findViewById。<br>使用方式同<code>ButterKnife</code><br><strong>快捷键：<code>⌘ + n</code> 后选择 <code>View Variables</code> 或者 <code>View Fields</code></strong><br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2021.11.59.png" alt="Github set up-w300"><br><strong>区别：</strong></p>
+<ul>
+<li>前者<code>View Variables</code>生成的是<code>私有变量</code></li>
+<li>后者 <code>View Fields</code>生成的是<code>成员变量</code></li>
+</ul>
+<h2 id="Json数据格式化-GsonFormat"><a href="#Json数据格式化-GsonFormat" class="headerlink" title="Json数据格式化 - GsonFormat"></a>Json数据格式化 - GsonFormat</h2><p>GsonFormat是一个快速格式化json数据，自动生成实体类参数的插件。<br><strong>快捷键：<code>⌘ + n</code> 后选择 <code>GsonFormat</code></strong>。<br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2020.44.23.png" alt="Github set up-w500"></p>
+<h2 id="Parcelable自动生成-ParcelableGenerator"><a href="#Parcelable自动生成-ParcelableGenerator" class="headerlink" title="Parcelable自动生成 - ParcelableGenerator"></a>Parcelable自动生成 - ParcelableGenerator</h2><p>自动生成Parcelable接口所需的代码。</p>
+<ul>
+<li><code>Serializable</code>的作用是为了<code>保存对象的属性</code>到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。</li>
+<li><p>而Serializable可将<code>数据持久化</code>方便保存，所以在需要保存或网络传输数据时选择Serializable，因为android不同版本Parcelable可能不同，所以不推荐使用Parcelable进行数据持久化。</p>
+</li>
+<li><p>Android的<code>Parcelable</code>的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些<code>数据仅在内存中存在</code>，Parcelable是通过IBinder通信的消息的载体。</p>
+</li>
+<li>Parcelable的性能比Serializable好，在内存开销方面较小，所以在内存间数据传输时推荐使用Parcelable，如activity间传输数据。</li>
+</ul>
+<p><strong>快捷键：<code>⌘ + n</code></strong><br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2020.52.54.png" alt="Github set up-w300"></p>
+<h2 id="Android-Material-Design-风格图标全集-Android-Material-Design-Icon-Generator"><a href="#Android-Material-Design-风格图标全集-Android-Material-Design-Icon-Generator" class="headerlink" title="Android Material Design 风格图标全集 - Android Material Design Icon Generator"></a>Android Material Design 风格图标全集 - Android Material Design Icon Generator</h2><p>通过此库可以获取<code>MD风格</code>的所有图标，更让人惊喜的是：选中的图标会自动生成各种 <code>drawable 文件夹</code>的图标，而且可以<code>自定义颜色</code>，绝对让人惊喜。<br><strong>快捷键：<code>⌥ + ⌘ + n</code></strong><br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2021.33.19.png" alt="Github set up-w300"></p>
+<p>选择指定图标以及自定义颜色。<br><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-25%2021.31.25.png" alt="Github set up-w500"></p>
+
           
         
       
@@ -1690,206 +1744,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  11-面向对象+枚举/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Python3  11-面向对象+枚举/" itemprop="url">Python3  11-面向对象+枚举</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T00:00:00+08:00">
-                2017-07-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:13:32+08:00">
-                2017-10-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  177 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p><code>Python</code>中<code>Enum</code>枚举的实现：<a href="http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html" target="_blank" rel="external">http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html</a></p>
-</blockquote>
-<p>定义常量的一般方法：定义变量<br>推荐的方法为：将枚举类型定义一个<code>class</code>类型。每个常量都是<code>class</code>的唯一实例<br>python提供了Enum来实现枚举功能</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Python3  11-面向对象+枚举/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  13-错误+测试+调试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2272,6 +2126,206 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  11-面向对象+枚举/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Python3  11-面向对象+枚举/" itemprop="url">Python3  11-面向对象+枚举</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T00:00:00+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:13:32+08:00">
+                2017-10-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  177 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p><code>Python</code>中<code>Enum</code>枚举的实现：<a href="http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html" target="_blank" rel="external">http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html</a></p>
+</blockquote>
+<p>定义常量的一般方法：定义变量<br>推荐的方法为：将枚举类型定义一个<code>class</code>类型。每个常量都是<code>class</code>的唯一实例<br>python提供了Enum来实现枚举功能</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Python3  11-面向对象+枚举/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2417,7 +2471,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.8k</span>
+    <span title="Site words total count">39.7k</span>
   
 </div>
 
