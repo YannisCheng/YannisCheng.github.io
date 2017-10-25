@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="10-面向对象+定制对象在编写一个基础类的基础上，为其重写某些魔法方法。  python其他内置魔法方法： https://docs.python.org/3/reference/datamodel.html#special-method-nameshttp://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.htmlpython常用魔法方">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3  10-面向对象+定制对象">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/Python3  10-面向对象+定制对象/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="10-面向对象+定制对象在编写一个基础类的基础上，为其重写某些魔法方法。  python其他内置魔法方法： https://docs.python.org/3/reference/datamodel.html#special-method-nameshttp://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.htmlpython常用魔法方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-25T00:50:29.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3  10-面向对象+定制对象">
+<meta name="twitter:description" content="10-面向对象+定制对象在编写一个基础类的基础上，为其重写某些魔法方法。  python其他内置魔法方法： https://docs.python.org/3/reference/datamodel.html#special-method-nameshttp://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.htmlpython常用魔法方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/18/Python3  10-面向对象+定制对象/"/>
+
+
+
+
+
+  <title>Python3  10-面向对象+定制对象 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/18/Python3  10-面向对象+定制对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python3  10-面向对象+定制对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T00:00:00+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T08:50:29+08:00">
+                2017-10-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,464 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="10-面向对象-定制对象"><a href="#10-面向对象-定制对象" class="headerlink" title="10-面向对象+定制对象"></a>10-面向对象+定制对象</h1><pre><code>在编写一个基础类的基础上，为其重写某些魔法方法。
+</code></pre><blockquote>
+<p>python其他内置魔法方法： <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank" rel="external">https://docs.python.org/3/reference/datamodel.html#special-method-names</a><br><a href="http://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.html" target="_blank" rel="external">http://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.html</a><br>python常用魔法方法的实现：<a href="http://www.cnblogs.com/scolia/p/5690210.html" target="_blank" rel="external">http://www.cnblogs.com/scolia/p/5690210.html</a></p>
+</blockquote>
+<p><strong>魔法方法有：</strong><br>-1.<code>__new__()</code>：对象的创建，是一个静态方法，第一个参数是<code>cls</code>。(不可能是<code>self</code>，因为对象还没创建，哪来的<code>self</code>)—提示<code>单例模式</code>与此有关。<br>0.<code>__init__()</code>：对象的初始化， 是一个实例方法，第一个参数是<code>self</code>。<br>1.<code>__slots__()</code>：约束要绑定的临时变量<br>2.<code>__len__()</code>：让类作用于len()<br>3.<code>__str__()</code>：类似于<code>java</code>中的toString()，返回用户看到的字符串<br>4.<code>__repe__()</code>：返回开发者看到的字符串<br>5.<code>__iter__()</code>：将一个类被用于<code>for...in</code>循环中，返回一个迭代对象<br>6.<code>__getitem__()</code>：像<code>list</code>那样按照下标取出元素，要在其中处理<code>slice切片</code>、<code>step步长</code><br>7.<code>__getattr__()</code>：当调用不存在的属性时，<code>Python</code>解释器会试图调用<code>__getattr__(self, &#39;attr&#39;)</code>来尝试获得属性。只有在没有找到属性的情况下，才调用<code>__getattr__</code>，已有的属性将不会在<code>__getattr__</code>中查找。而且，实际上可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段。<br>8.<code>__call__()</code></p>
+<a id="more"></a>
+<h2 id="iter-配合-next-使用"><a href="#iter-配合-next-使用" class="headerlink" title="__iter__() 配合 __next__()使用"></a><code>__iter__()</code> 配合 <code>__next__()</code>使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># 构造方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        self._name = name</div><div class="line">        self.a, self.sum = <span class="number">1</span>, <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="comment"># 使本类可以迭代</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self</div><div class="line"></div><div class="line">    <span class="comment"># 具体的迭代方法，此方法的实现是关键</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></div><div class="line">        self.sum = self.sum + self.a</div><div class="line">        <span class="keyword">if</span> self.sum &gt; <span class="number">10</span>:</div><div class="line">            <span class="keyword">raise</span> StopIteration</div><div class="line">        <span class="keyword">return</span> self.sum</div><div class="line"></div><div class="line">    <span class="comment"># 重写 toString()方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'Person name is '</span> + self._name</div><div class="line"></div><div class="line">    __repr__ = __str__</div><div class="line"></div><div class="line">    <span class="string">'''测试'''</span></div><div class="line">person = Person(<span class="string">"cwj"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 重写 __str__() 之后的效果</span></div><div class="line">print(Person(<span class="string">"cwj"</span>))  <span class="comment"># Person name is cwj</span></div><div class="line">print(person)  <span class="comment"># Person name is cwj</span></div><div class="line"></div><div class="line">print(isinstance(person, Iterator))  <span class="comment"># True</span></div><div class="line">print(isinstance(person, Iterable))  <span class="comment"># True</span></div><div class="line">l = []</div><div class="line"></div><div class="line"><span class="comment"># 遍历Person序列，此时Person是一个Iterator</span></div><div class="line"><span class="keyword">for</span> n <span class="keyword">in</span> person:</div><div class="line">    l.append(n)</div><div class="line">    print(n)</div><div class="line"></div><div class="line"><span class="comment"># 将一个类遍历后得到的结果赋值给l序列</span></div><div class="line">print(l)  <span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">1</span></div><div class="line"><span class="string">2</span></div><div class="line"><span class="string">3</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">5</span></div><div class="line"><span class="string">6</span></div><div class="line"><span class="string">7</span></div><div class="line"><span class="string">8</span></div><div class="line"><span class="string">9</span></div><div class="line"><span class="string">10</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure>
+<h2 id="getitme-配合-setitme-使用"><a href="#getitme-配合-setitme-使用" class="headerlink" title="__getitme__()配合__setitme__()使用"></a><code>__getitme__()</code>配合<code>__setitme__()</code>使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DictDemo</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.dict = &#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> self.dict:</div><div class="line">            <span class="keyword">return</span> self.dict[item]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'不存在'</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        self.dict[key] = value</div><div class="line"></div><div class="line">    <span class="string">'''测试'''</span></div><div class="line">dictD = DictDemo()</div><div class="line">dictD[<span class="string">'1'</span>] = <span class="string">'cwj'</span></div><div class="line">dictD.__setitem__(<span class="string">'1'</span>,<span class="string">'234'</span>)</div><div class="line">print(dictD.__getitem__(<span class="string">'1'</span>))  <span class="comment"># 234</span></div><div class="line">print(dictD[<span class="string">'2'</span>])  <span class="comment"># 不存在</span></div></pre></td></tr></table></figure>
+<p><strong><em>一个实现<code>迭代</code>、<code>容器</code>的例子</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''Animal类 自定义魔法函数'''</span></div><div class="line"><span class="keyword">from</span> pip._vendor.requests.packages.urllib3.connectionpool <span class="keyword">import</span> xrange</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">创建一个模拟字典的类，这个类的内部维护了两个列表，</span></div><div class="line"><span class="string">key 负责储存键，value 负责储存值，两个列表通过索引的一一对应，从而达到模拟字典的目的</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        self.key = []</div><div class="line">        self.value = []</div><div class="line">        self.key.append(key)</div><div class="line">        self.value.append(value)</div><div class="line">        self.__index = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="comment"># __len__方法，按照协议，这个方法应该返回容器的长度</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> len(self.key)</div><div class="line"></div><div class="line">    <span class="comment"># __getitem__方法。这个方法会在a['scolia']时，调用a.__getitem__('scolia')。</span></div><div class="line">    <span class="comment"># 也就是说这个方法定义了元素的获取.</span></div><div class="line">    <span class="comment"># 先找到 key 列表中建的索引，然后用索引去 value 列表中找对应的元素，然后将其返回</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> self.key:</div><div class="line">            <span class="keyword">return</span> self.value[self.key.index(item)]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'不存在'</span></div><div class="line"></div><div class="line">    <span class="comment"># __setitem__(self, key, value)方法定义了 a['scolia'] = 'good' 这种操作时的行为，</span></div><div class="line">    <span class="comment"># 此时将会调用a.__setitem__('scolia', 'good') 因为是绑定方法，所以self是自动传递的</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.key:</div><div class="line">            self.key.append(key)</div><div class="line">            self.value.append(value)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            __index = self.key.index(key)</div><div class="line">            self.value[__index] = value</div><div class="line"></div><div class="line">    <span class="comment"># __delitem__(self, key)方法定义了del a['scolia'] 这类操作时候的行为，</span></div><div class="line">    <span class="comment"># 里面的‘scolia’就作为参数传进去</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delitem__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.key:</div><div class="line">            __index = self.key.index(key)</div><div class="line">            <span class="keyword">del</span> self.key[__index]</div><div class="line">            <span class="keyword">del</span> self.value[__index]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"key值不存在"</span></div><div class="line"></div><div class="line">    <span class="string">'''只有实现里以上四个方法，就可以当做可变容器来使用了。'''</span></div><div class="line"></div><div class="line">    <span class="comment">#  __str__ 是对应于 str() 函数，在类的表示中会继续讨论，这里是为了 print 语句好看才加进去的，</span></div><div class="line">    <span class="comment"># 因为print语句默认就是调用str()函数</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        l = []</div><div class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> xrange(len(self.key)):</div><div class="line">            __key = self.key[index]</div><div class="line">            __value = self.value[index]</div><div class="line">            result = __key,__value</div><div class="line">            l.append(result)</div><div class="line">        <span class="keyword">return</span> str(l)</div><div class="line"></div><div class="line">    <span class="comment"># 实现一个__iter__方法，这个方法负责返回一个迭代器</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self</div><div class="line"></div><div class="line">    <span class="comment"># 内部实现了next（python3.x为__next__）方法，真正负责迭代的实现。</span></div><div class="line">    <span class="comment"># 当迭代器内的元素用尽之后，任何的进一步调用都之后触发 StopIteration 异常</span></div><div class="line">    <span class="comment"># 一般会在一个类里同时实现这两种方法（即是可迭代对象又是迭代器），此时__iter__方法只要返回self就足够的了</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__index == len(self.key):</div><div class="line">            self.__index = <span class="number">0</span></div><div class="line">            <span class="keyword">raise</span> StopIteration()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            __key = self.key[self.__index]</div><div class="line">            __value = self.value[self.__index]</div><div class="line">            result = __key, __value</div><div class="line">            self.__index += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> result</div><div class="line"></div><div class="line">    <span class="comment"># __contains__实现了成员判断，这里我们更关心value列表中的数据，所以判断的是value列表。</span></div><div class="line">    <span class="comment"># 该方法要求返回布尔值。</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> self.value:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="comment"># __reversed__(self)方法返回一个倒序后的副本，这里体现了有序性</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reversed__</span><span class="params">(self)</span>:</span></div><div class="line">        __result = self.value</div><div class="line">        __result.reverse()</div><div class="line">        <span class="keyword">return</span> __result</div><div class="line"></div><div class="line"><span class="string">'''实际测试'''</span></div><div class="line">m = Animal(<span class="string">'1'</span>, <span class="string">'cwj'</span>)</div><div class="line">print(m)  <span class="comment"># [('1', 'cwj')]</span></div><div class="line">print(m.__len__())  <span class="comment"># 1</span></div><div class="line">m[<span class="string">'2'</span>] = <span class="string">'ddd'</span></div><div class="line">m[<span class="string">'3'</span>] = <span class="string">'qwe'</span></div><div class="line">m[<span class="string">'2'</span>] = <span class="string">'lkj'</span></div><div class="line"></div><div class="line">print(m)  <span class="comment"># [('1', 'cwj'), ('2', 'lkj'), ('3', 'qwe')]</span></div><div class="line">print(m.__len__())  <span class="comment"># 3</span></div><div class="line"></div><div class="line"><span class="keyword">del</span> m[<span class="string">'3'</span>]</div><div class="line"></div><div class="line">print(m)  <span class="comment"># [('1', 'cwj'), ('2', 'lkj')]</span></div><div class="line">print(m.__len__())  <span class="comment"># 2</span></div><div class="line"></div><div class="line">print(reversed(m))  <span class="comment"># ['lkj', 'cwj']</span></div><div class="line"></div><div class="line">print(<span class="string">'cwj'</span> <span class="keyword">in</span> m)  <span class="comment"># True</span></div></pre></td></tr></table></figure>
+<h2 id="类的切片操作"><a href="#类的切片操作" class="headerlink" title="类的切片操作"></a>类的<code>切片</code>操作</h2><blockquote>
+<p>参考：<a href="http://www.cnblogs.com/scolia/p/5690210.html" target="_blank" rel="external">http://www.cnblogs.com/scolia/p/5690210.html</a></p>
+</blockquote>
+<p>代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Slices</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></div><div class="line">        self._x = x</div><div class="line">        self._index = <span class="number">-1</span></div><div class="line"></div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    # __getitem__()实现支持for循环</span></div><div class="line"><span class="string">    def __getitem__(self, item):</span></div><div class="line"><span class="string">        if isinstance(self._x, list):</span></div><div class="line"><span class="string">            self._index += 1</span></div><div class="line"><span class="string">            return self._x[self._index]</span></div><div class="line"><span class="string">        else:</span></div><div class="line"><span class="string">            raise '参数类型错误'</span></div><div class="line"><span class="string">     '''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></div><div class="line"></div><div class="line">        <span class="comment"># print(item.start, item.stop, item.step)  # 1 2 1</span></div><div class="line">        <span class="comment"># return item   # slice(1, 2, 1)</span></div><div class="line">        <span class="keyword">if</span> isinstance(item, slice):</div><div class="line">            <span class="keyword">return</span> self._x[item.start:item.stop:item.step]</div><div class="line"></div><div class="line"><span class="string">'''测试Slices类'''</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">s = Slices([1, 2, 3, 4])</span></div><div class="line"><span class="string">for n in s:</span></div><div class="line"><span class="string">    print(n)</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">s2 = Slices('1234')</span></div><div class="line"><span class="string">for n in s2:</span></div><div class="line"><span class="string">    print(n)</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">s3 = Slices([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</div><div class="line"></div><div class="line"><span class="comment"># 当直接返回item参数时的结果</span></div><div class="line"><span class="comment"># print(s3[1:4:1])  # slice(1, 2, 1)</span></div><div class="line">print(s3[<span class="number">1</span>:<span class="number">4</span>:<span class="number">1</span>])  <span class="comment"># [2, 3, 4]</span></div><div class="line">print(s3[<span class="number">-4</span>:<span class="number">-2</span>])  <span class="comment"># [2, 3]</span></div><div class="line">print(s3[<span class="number">-3</span>:<span class="number">-1</span>])  <span class="comment"># [3, 4]</span></div><div class="line">print(s3[<span class="number">-5</span>:])  <span class="comment"># [1, 2, 3, 4, 5]</span></div><div class="line">print(s3[:])  <span class="comment"># [1, 2, 3, 4, 5]</span></div><div class="line">print(s3[<span class="number">-1</span>::<span class="number">-1</span>])  <span class="comment"># [5, 4, 3, 2, 1]</span></div><div class="line">print(s3[<span class="number">-1</span>:])  <span class="comment"># [5]</span></div><div class="line">``` </div><div class="line"></div><div class="line"><span class="comment">## `__getattr__()`</span></div><div class="line"></div><div class="line">正常情况下，当我们调用类的`方法`或`属性`时，如果不存在，就会报错。如：</div><div class="line"></div><div class="line">```python</div><div class="line">AttributeError: <span class="string">'Student'</span> object has no attribute <span class="string">'score'</span></div></pre></td></tr></table></figure>
+<p>要避免这个错误，<code>Python</code>有一个机制：写一个<code>__getattr__()</code>方法，动态返回一个属性。<br>当调用不存在的属性时，比如<code>color</code>，<code>Python</code>解释器会试图调用<code>__getattr__(self, &#39;color&#39;)</code>来尝试获得属性，这样我们就有机会返回<code>color</code>的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 返回不存在的属性与函数</span></div><div class="line"><span class="comment"># 作用：可以针对完全动态的情况作调用</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">    <span class="comment"># 返回未定义的属性</span></div><div class="line">    <span class="keyword">if</span> item == <span class="string">'color'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'您真是 666 啊 ~ 这个属性都鞥猜到'</span></div><div class="line">    <span class="keyword">elif</span> item == <span class="string">'address'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'哈哈哈'</span></div><div class="line">    <span class="comment"># 返回未定义的函数</span></div><div class="line">    <span class="keyword">elif</span> item == <span class="string">'add'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">lambda</span>: <span class="number">100</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="comment"># 注意到任意调用如s.abc都会返回None，这是因为我们定义的__getattr__默认返回就是None</span></div><div class="line">        <span class="comment"># 要让class只响应特定的几个属性,要按照约定，抛出AttributeError错误</span></div><div class="line">        <span class="keyword">raise</span> AttributeError(<span class="string">'\'Student\' object has no attribute \'%s\''</span> % item)</div></pre></td></tr></table></figure>
+<h2 id="call-与-getattr-组合实现URL中的链式-chain-调用"><a href="#call-与-getattr-组合实现URL中的链式-chain-调用" class="headerlink" title="__call__()与__getattr__()组合实现URL中的链式(chain)调用"></a><code>__call__()</code>与<code>__getattr__()</code>组合实现<code>URL</code>中的链式(chain)调用</h2><p>在python中，函数其实是一个对象。如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = abs</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.__name__</div><div class="line"><span class="string">'abs'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">-123</span>)</div><div class="line"><span class="number">123</span></div></pre></td></tr></table></figure>
+<p>由于 f 可以被调用，所以，f 被称为可调用对象。所有的函数都是可调用对象。<br>一个类的实例对象想要变成一个可调用的对象，只需要实现一个魔法方法<code>__call__()</code>。</p>
+<p><strong><code>可调用对象</code>与<code>一般对象</code></strong></p>
+<ul>
+<li>可调用对象：obj.name(‘source’).age。即：既可以使用<code>.</code>调用属性或方法，也可以使用<code>obj()</code>以一种<code>函数样式</code>使用此对象。此时调用<code>obj(arg1,arg2,....)</code>就等价于<code>obj.__call__(self,arg1,arg2,...)</code></li>
+<li>一般对象：obj.name。即：只能使用<code>.</code>调用属性或方法。</li>
+</ul>
+<p>因为<code>__call__()</code>魔法方法的加入，因此<code>python</code>的<code>函数</code>与<code>对象</code>之间的概念被模糊了</p>
+<p>URL中的链式调用，这样无论API怎么变，SDK都可以根据URL实现完全动态的调用，而且，不随API的增加而改变，代码示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''URLChain类'''</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">URLChain</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, path = <span class="string">''</span>)</span>:</span></div><div class="line">        self.__path = path</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="comment"># 实现参考：https://zhidao.baidu.com/question/1865282935722979707.html</span></div><div class="line">        <span class="comment"># 返回一个 URLChain 对象，这个时候里面的path就是''+'/'+'api'='/api'，此时self = /api</span></div><div class="line">        print(<span class="string">'\'self.__path is\' :'</span> + self.__path + <span class="string">'       , \'item is\' : '</span> + item + <span class="string">' ， 之前self为：'</span>, self)</div><div class="line">        <span class="comment"># 即：上一个 '%s/%s' 的数值代替：构造函数中 path = ''中 '' 的具体数值，相当于重新构造了一个对象，</span></div><div class="line">        <span class="comment"># 在即将的调用的返回值中表示参数self.__path的值, 新传入的参数赋值给item</span></div><div class="line">        <span class="keyword">return</span> URLChain(<span class="string">'%s/%s'</span> % (self.__path, item))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.__path</div><div class="line"></div><div class="line">    __repr__ = __str__</div><div class="line"></div><div class="line">    <span class="comment"># 将此类的实例对象变成一个可调用的对象</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, path)</span>:</span></div><div class="line">        print(<span class="string">'__call__  之前self is : '</span>, self)</div><div class="line">        print(<span class="string">'__call__ path is : '</span> + path)</div><div class="line">        <span class="keyword">return</span> URLChain(<span class="string">'%s/%s'</span> % (self.__path, path))</div><div class="line"></div><div class="line"><span class="string">'''调用URLChian类'''</span></div><div class="line">chain = URLChain()</div><div class="line">print(chain.api.server.user.friends)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">'self.__path is' :       , 'item is' : api ， 之前self为： </span></div><div class="line"><span class="string">'self.__path is' :/api       , 'item is' : server ， 之前self为： /api</span></div><div class="line"><span class="string">'self.__path is' :/api/server       , 'item is' : user ， 之前self为： /api/server</span></div><div class="line"><span class="string">'self.__path is' :/api/server/user       , 'item is' : friends ， 之前self为： /api/server/user</span></div><div class="line"><span class="string">/api/server/user/friends</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="comment"># 当执行 ('cwj') 这一个参数时调用的是 URLChian的 __call__()</span></div><div class="line">print(chain.api.server(<span class="string">'cwj'</span>).friends)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">'self.__path is' :       , 'item is' : api ， 之前self为： </span></div><div class="line"><span class="string">'self.__path is' :/api       , 'item is' : server ， 之前self为： /api</span></div><div class="line"><span class="string">__call__  之前self is :  /api/server</span></div><div class="line"><span class="string">__call__ path is : cwj</span></div><div class="line"><span class="string">'self.__path is' :/api/server/cwj       , 'item is' : friends ， 之前self为： /api/server/cwj</span></div><div class="line"><span class="string">/api/server/cwj/friends</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure></p>
+<h2 id="callable-的使用：判断一个变量是函数还是对象"><a href="#callable-的使用：判断一个变量是函数还是对象" class="headerlink" title="callable()的使用：判断一个变量是函数还是对象"></a>callable()的使用：判断一个变量是<code>函数</code>还是<code>对象</code></h2><p>代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 判断一个对象是否能被调用，能被调用的对象就是一个Callable对象,函数和自定义的带有__call__()的类实例对象返回值是True：</span></div><div class="line">print(callable(chain))  <span class="comment"># True URLChian实现了__call__()魔法方法</span></div><div class="line">print(callable(dictD))  <span class="comment"># False</span></div><div class="line">print(callable(abs))  <span class="comment"># True</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/07/18/Python3  10-面向对象+定制对象/" title="Python3  10-面向对象+定制对象">http://yoursite.com/2017/07/18/Python3  10-面向对象+定制对象/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/17/Python3  09-面向对象+临时变量、方法+@property+多继承/" rel="next" title="Python3  09-面向对象+临时变量、方法+@property+多继承">
+                <i class="fa fa-chevron-left"></i> Python3  09-面向对象+临时变量、方法+@property+多继承
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/Python3  13-错误+测试+调试/" rel="prev" title="Python3  13-错误+测试+调试">
+                Python3  13-错误+测试+调试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#10-面向对象-定制对象"><span class="nav-number">1.</span> <span class="nav-text">10-面向对象+定制对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#iter-配合-next-使用"><span class="nav-number">1.1.</span> <span class="nav-text">__iter__() 配合 __next__()使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getitme-配合-setitme-使用"><span class="nav-number">1.2.</span> <span class="nav-text">__getitme__()配合__setitme__()使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的切片操作"><span class="nav-number">1.3.</span> <span class="nav-text">类的切片操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-与-getattr-组合实现URL中的链式-chain-调用"><span class="nav-number">1.4.</span> <span class="nav-text">__call__()与__getattr__()组合实现URL中的链式(chain)调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#callable-的使用：判断一个变量是函数还是对象"><span class="nav-number">1.5.</span> <span class="nav-text">callable()的使用：判断一个变量是函数还是对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">38.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
