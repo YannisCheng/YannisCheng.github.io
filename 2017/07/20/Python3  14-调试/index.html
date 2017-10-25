@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="14-调试调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10">
+<meta name="description" content="调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10 / nd">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  14-调试">
 <meta property="og:url" content="http://yoursite.com/2017/07/20/Python3  14-调试/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="14-调试调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10">
+<meta property="og:description" content="调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10 / nd">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T00:56:06.402Z">
+<meta property="og:updated_time" content="2017-10-25T01:13:59.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  14-调试">
-<meta name="twitter:description" content="14-调试调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10">
+<meta name="twitter:description" content="调试方法 .print()打印用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。 assert断言凡是用print()来辅助查看的地方，都可以用断言assert来替代。代码示例： 1234567def foo(s):    n = int(s)    assert n != 0, &apos;n is zero!&apos;    return 10 / nd">
 
 
 
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T08:56:06+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:13:59+08:00">
                 2017-10-25
               </time>
             
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,128 字
+                  1,125 字
                 </span>
               
 
@@ -429,7 +429,7 @@
       
 
       
-        <h1 id="14-调试"><a href="#14-调试" class="headerlink" title="14-调试"></a>14-调试</h1><h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p><strong>方法</strong></p>
+        <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p><strong>方法</strong></p>
 <h3 id="print-打印"><a href="#print-打印" class="headerlink" title=".print()打印"></a>.<code>print()</code>打印</h3><p>用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。</p>
 <h3 id="assert断言"><a href="#assert断言" class="headerlink" title="assert断言"></a><code>assert</code>断言</h3><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>assert</code>来替代。<br>代码示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(s)</span>:</span></div><div class="line">    n = int(s)</div><div class="line">    <span class="keyword">assert</span> n != <span class="number">0</span>, <span class="string">'n is zero!'</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span> / n</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    foo(<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
@@ -703,7 +703,7 @@ handlers | 如果指定，这应该是已经创建的迭代处理程序，将被
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#14-调试"><span class="nav-number">1.</span> <span class="nav-text">14-调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">1.1.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#print-打印"><span class="nav-number">1.1.1.</span> <span class="nav-text">.print()打印</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assert断言"><span class="nav-number">1.1.2.</span> <span class="nav-text">assert断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logging日志"><span class="nav-number">1.1.3.</span> <span class="nav-text">logging日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试器pdb-–-有了PyCharm目前不考虑此种方式"><span class="nav-number">1.1.4.</span> <span class="nav-text">.调试器pdb – 有了PyCharm目前不考虑此种方式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">1.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#print-打印"><span class="nav-number">1.1.</span> <span class="nav-text">.print()打印</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assert断言"><span class="nav-number">1.2.</span> <span class="nav-text">assert断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logging日志"><span class="nav-number">1.3.</span> <span class="nav-text">logging日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试器pdb-–-有了PyCharm目前不考虑此种方式"><span class="nav-number">1.4.</span> <span class="nav-text">.调试器pdb – 有了PyCharm目前不考虑此种方式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -737,7 +737,7 @@ handlers | 如果指定，这应该是已经创建的迭代处理程序，将被
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.9k</span>
+    <span title="Site words total count">38.7k</span>
   
 </div>
 

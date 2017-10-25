@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="15-I/O关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味">
+<meta name="description" content="关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味着在文本模式">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  15-I&#x2F;O">
 <meta property="og:url" content="http://yoursite.com/2017/07/21/Python3  15-I:O/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="15-I/O关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味">
+<meta property="og:description" content="关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味着在文本模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T00:58:41.888Z">
+<meta property="og:updated_time" content="2017-10-25T01:14:08.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  15-I&#x2F;O">
-<meta name="twitter:description" content="15-I/O关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味">
+<meta name="twitter:description" content="关于Open()源码文档打开文件并返回流。失败时提高IOError。 文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&amp;apos;r&amp;apos;，这意味着在文本模式">
 
 
 
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T08:58:41+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:14:08+08:00">
                 2017-10-25
               </time>
             
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,155 字
+                  1,152 字
                 </span>
               
 
@@ -429,7 +429,7 @@
       
 
       
-        <h1 id="15-I-O"><a href="#15-I-O" class="headerlink" title="15-I/O"></a>15-I/O</h1><h2 id="关于Open-源码文档"><a href="#关于Open-源码文档" class="headerlink" title="关于Open()源码文档"></a>关于<code>Open()</code>源码文档</h2><p>打开文件并返回流。失败时提高IOError。</p>
+        <h2 id="关于Open-源码文档"><a href="#关于Open-源码文档" class="headerlink" title="关于Open()源码文档"></a>关于<code>Open()</code>源码文档</h2><p>打开文件并返回流。失败时提高IOError。</p>
 <pre><code>文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&apos;r&apos;，这意味着在文本模式下打开阅读。其他常见的值是“w”用于写入（截断文件已存在），“x”用于创建和写入新文件，“a”用于附加（在某些Unix系统上，这意味着所有写入都附加到无论当前查找位置如何，文件的结尾）。在文本模式下，如果未指定编码，则使用的编码与平台相关：调用locale.getpreferredencoding（False）以获取当前语言环境编码。 （用于读取和写入原始字节使用二进制模式并保留编码未指定。）可用的模式有：
 </code></pre><a id="more"></a>
 <pre><code>    &apos;r&apos;开放阅读（默认）
@@ -669,7 +669,7 @@ errors是一个可选的字符串，指定如何处理编码错误 - 此参数�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#15-I-O"><span class="nav-number">1.</span> <span class="nav-text">15-I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Open-源码文档"><span class="nav-number">1.1.</span> <span class="nav-text">关于Open()源码文档</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Open-源码文档"><span class="nav-number">1.</span> <span class="nav-text">关于Open()源码文档</span></a></li></ol></div>
             
 
           </div>
@@ -703,7 +703,7 @@ errors是一个可选的字符串，指定如何处理编码错误 - 此参数�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.9k</span>
+    <span title="Site words total count">38.7k</span>
   
 </div>
 
