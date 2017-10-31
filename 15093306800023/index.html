@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android, 开发，安卓，ANdroid studio，java" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于google在中国 参考：http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba7a6020ba4843e97732b4a506793ac57270777a5d20d6216df3f4beb802103321450b58cc9f85dabbb855c2f9f2644676cf55666d20ed">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:url" content="http://yannischeng.com/15093306800023/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="关于google在中国 参考：http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba7a6020ba4843e97732b4a506793ac57270777a5d20d6216df3f4beb802103321450b58cc9f85dabbb855c2f9f2644676cf55666d20ed">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-30T02:32:10.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YannisCheng&#39;s Technology Blogs">
+<meta name="twitter:description" content="关于google在中国 参考：http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba7a6020ba4843e97732b4a506793ac57270777a5d20d6216df3f4beb802103321450b58cc9f85dabbb855c2f9f2644676cf55666d20ed">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/15093306800023/"/>
+
+
+
+
+
+  <title> | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/15093306800023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T10:31:20+08:00">
+                2017-10-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-30T10:32:10+08:00">
+                2017-10-30
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,815 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/15093306800023/" title="">http://yannischeng.com/15093306800023/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于google在中国"><a href="#关于google在中国" class="headerlink" title="关于google在中国"></a>关于google在中国</h1><blockquote>
+<p>参考：<a href="http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba7a6020ba4843e97732b4a506793ac57270777a5d20d6216df3f4beb802103321450b58cc9f85dabbb855c2f9f2644676cf55666d20edfc05151b134d71ab7a043a1fcb27384afa1cec211168f44050dd6b7d3015c03ca18ad5464feecc21450084ca7e83464e8590073d97c1e&amp;p=877fc64ad49d11a058ee9f265c0e8c&amp;newp=9e769a47928102f60dbd9b7e0e1d88231610db2151dcc44324b9d71fd325001c1b69e7bd22291502d2c37c6204a54b5ee9fa3577321766dada9fca458ae7c46c6dcb7e61&amp;user=baidu&amp;fm=sc&amp;query=%D6%D0%B9%FA%BD%FB%D6%B9%B7%AD%C7%BD%C7%B0%D2%F2%BA%F3%B9%FB&amp;qid=f0d233f800000c6d&amp;p1=3" target="_blank" rel="external">http://cache.baiducontent.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba7a6020ba4843e97732b4a506793ac57270777a5d20d6216df3f4beb802103321450b58cc9f85dabbb855c2f9f2644676cf55666d20edfc05151b134d71ab7a043a1fcb27384afa1cec211168f44050dd6b7d3015c03ca18ad5464feecc21450084ca7e83464e8590073d97c1e&amp;p=877fc64ad49d11a058ee9f265c0e8c&amp;newp=9e769a47928102f60dbd9b7e0e1d88231610db2151dcc44324b9d71fd325001c1b69e7bd22291502d2c37c6204a54b5ee9fa3577321766dada9fca458ae7c46c6dcb7e61&amp;user=baidu&amp;fm=sc&amp;query=%D6%D0%B9%FA%BD%FB%D6%B9%B7%AD%C7%BD%C7%B0%D2%F2%BA%F3%B9%FB&amp;qid=f0d233f800000c6d&amp;p1=3</a><br>ZT：Google被封事件真相</p>
+</blockquote>
+<p>去年底回国了一次，跟几个圈内的朋友聊了聊，其中有百度的员工，虽然所得不多，但初步证实了我由来已久关于Google在国内被封是有公司在背后操作的猜测，非常巧的是新年后在硅谷接待了一位老同学一家，我这位老同学的先生在ZF相关部门工作，恰恰了解Google被封这个事，从他那里证实了国内搜索引擎公司百度(baidu.com)前前后后暗中操作Google被封及Google使用功能受限的一些传言。</p>
+<p>我最早怀疑百度的理由非常简单：一是百度公司是Google被封唯一的受益者， Google被封之时，也刚好是国内主要门户更换搜索引擎服务商的时间段，这个事件后，门户网站视Google如洪水猛兽，网易、新浪、雅虎中国、搜狐这样的公司不得不选择了百度的产品，百度从中获利近两百万美元。二是百度作为国内搜索引擎界的知名公司，恐怕没有人比他们更了解Google，对于Google中有些什么有害信息，或者对Google的一些功能进行限制的技术实现手段上，百度是专家。整个Google事件，百度有动机，有条件。</p>
+<p>根据我前后接触四五个与这件事有关的朋友的说法，大概整理出百度操作Google事件的经过：</p>
+<p>2001年中，百度的一个副总即开始与ZF有关部门谈Google中”有害信息”的问题，但当时百度接触的人级别比较低，百度的想法也只是想通过ZF向使用Google的一些中文网站施加压力，另一方面有关官员也认为Google的服务器在国外，同时在国内影响不大，所以也只是根据百度的举报抽查过用Google服务的网易一两次，并没有什么大的风波。</p>
+<p>2002年的时候百度最为害怕Goolge，因为这时传言Google的Founder将访华，Google也准备在年底正式进入中国市场，同时百度最大的客户新浪、搜狐也正在和Google接触，有在年内与百度的合同结束后换用Google的意向。面对这种情况，有点像是对百度宣判了死刑，所以百度开始变得疯狂，专门制定了一个针对Google的计划。</p>
+<p>根据朋友的说法，从公司层面，百度分三类整理了Google含有所谓政治问题、宗教问题、情色问题的材料，每一类材料多达数百页A4纸，定期向有关部门提交，百度并提供数据证明中国网民经常在查找这些东西。虽然人们在使用Google时，可能不足几万分之一的情况是search这些”不良信息”，但由于百度是国内最大的搜索引擎公司，他们提供的数据却说明中国网民有多达近10个百分点的比例在经常搜索”不良信息”，这样的数据给ZF有关部门造成了很大的影响，觉得Google中的”不良信息”对中国网民危害巨大。</p>
+<p>从用户层面，百度也动用了非常多的人力和财力操作这个事，包括组织一些员工和兼职进行信函举报，即以用户身份给有关部门写信投诉Google”危害社会”，”危害中国互联网”，”危害青少年身心健康”，从我在ZF部门工作的朋友所称，这一招是非常有效的，对最后有关部门的决策起到了重要作用。</p>
+<p>从高层路线，经过一年的打基础，百度的CEO和VP开始能接触到有一定级别的官员，并适机的传递一些Google中众所周知的特别要害的”有害信息”情况，这也是后来Google被封时民间传言Google所含有特别要害的”有害信息”到达ZF一定级别官员的一个重要途径之一。</p>
+<p>2002年9月，中国5600万网民的不幸，历时一年多的阴谋策划后，百度的计划得逞了，有关部门封杀了Google。虽然这一事件前前后后网上传言众多，但可以肯定的是，没有搜索引擎公司百度的幕后操作，就不会有封杀全球最伟大的搜索引擎Google。Google假如进入中国市场，对百度的打击是毁灭性的，但一个精心策划的阴谋使得百度公司不仅逃过一劫，还能长治久安，并且当年就通过向本来可能是Google客户的Sohu、Sina、网易、中国雅虎卖自己的搜索引擎服务获利近两百万美元。</p>
+<p>更为让人吃惊的是，据有人称，Google被封杀后，篡改Google DNS指向的人中即有百度。这一推测其实也很容易成立：虽然篡改DNS违反中国法律，但百度在当时特定情况下断定ZF不会追查此事，所以在整死Google后还分Google的残骸，篡改DNS，把访问Google的用户引到百度网站，为了分散网民的注意，又把其它如北大天网、ENet等一些不相干的网站拉下水。其实有聪明的用户稍加分析就可以明白，中国提供搜索引擎的网站那么多，但Google被篡改的DNS后指向的网站为什么只有百度一个是真正概念上的搜索引擎呢？而没有比较知名的搜索网站sohu、sina、yahoo？</p>
+<p>虽然Google被封杀已成昨日烟云，但今天的Google中文的使用仍然在国内受到很多网络技术的限制。在Google的Keywords、Cache、Spider等程序服务中，Google中文网站受到一套相当完善的技术限制，有朋友称，百度的几名核心程序员参与了这一套Google限制技术的开发和技术支持。Google已经成为互联网上搜索引擎的代名词时，只有中国不能真正的使用他，而这套技术的创意与提供，却正是中国的搜索引擎公司百度。</p>
+<p>因为一个公司的私利、中国5600万网民不能方便的得用互联网查询资料，因为一个公司的阴谋，整个中国互联网的信息利用向走退了一大步。我前后接触了几个与事件相关的人物，通过私下交流中获得一些信息，把事实与内幕记录下来，只是想澄清中国互联网发展史上的一个令人震惊的事实，让众人明白一个问题：是谁在为中国的搜索引擎服务做贡献，是谁在残害中国的搜索引擎服务。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android插件化开发相关/" rel="next" title="Android插件开发相关">
+                <i class="fa fa-chevron-left"></i> Android插件开发相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android-Studio使用快人一步2 快捷键/" rel="prev" title="Android Studio 快捷键">
+                Android Studio 快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于google在中国"><span class="nav-number">1.</span> <span class="nav-text">关于google在中国</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="0,0,0" opacity='0.5' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
