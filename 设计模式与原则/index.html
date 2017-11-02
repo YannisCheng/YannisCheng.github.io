@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  关键字：面向接口编程PrinciPle：原则">
+<meta name="description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  Patterns：模式PrinciPle：原则">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式">
-<meta property="og:url" content="http://yannischeng.com/设计模式/index.html">
+<meta property="og:url" content="http://yannischeng.com/设计模式与原则/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  关键字：面向接口编程PrinciPle：原则">
+<meta property="og:description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  Patterns：模式PrinciPle：原则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T17:12:11.678Z">
+<meta property="og:updated_time" content="2017-11-02T16:10:36.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
-<meta name="twitter:description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  关键字：面向接口编程PrinciPle：原则">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/self_study/article/details/51234377  Patterns：模式PrinciPle：原则">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/设计模式/"/>
+  <link rel="canonical" href="http://yannischeng.com/设计模式与原则/"/>
 
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/设计模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/设计模式与原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T01:12:11+08:00">
-                2017-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T00:10:36+08:00">
+                2017-11-03
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  408 字
+                  1,293 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -415,7 +415,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/设计模式/" title="设计模式">http://yannischeng.com/设计模式/</a>
+    <a href="http://yannischeng.com/设计模式与原则/" title="设计模式">http://yannischeng.com/设计模式与原则/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -437,36 +437,34 @@
         <blockquote>
 <p>参考：<a href="http://blog.csdn.net/self_study/article/details/51234377" target="_blank" rel="external">http://blog.csdn.net/self_study/article/details/51234377</a></p>
 </blockquote>
-<p>关键字：<strong>面向接口编程</strong><br>PrinciPle：原则</p>
+<p><strong>Patterns：模式</strong><br><strong>PrinciPle：原则</strong></p>
 <a id="more"></a>
 <hr>
-<h1 id="6大OOP："><a href="#6大OOP：" class="headerlink" title="6大OOP："></a>6大OOP：</h1><h2 id="OCP–开闭原则："><a href="#OCP–开闭原则：" class="headerlink" title="OCP–开闭原则："></a>OCP–开闭原则：</h2><p><strong>what</strong></p>
-<pre><code>编写代码应该：面向扩展开放，对修改关闭。尽量不要通过修改现有代码来满足需求
-</code></pre><p><strong>why</strong></p>
-<pre><code>要利用扩展来适应变更。    
-</code></pre><p><strong>How</strong></p>
-<pre><code>能用接口别用抽象，能用抽象别用具体类。
-</code></pre><h2 id="SRP–单一职责原则："><a href="#SRP–单一职责原则：" class="headerlink" title="SRP–单一职责原则："></a>SRP–单一职责原则：</h2><p><strong>what</strong></p>
-<pre><code>一个类，一个方法只做一件事。
-</code></pre><h2 id="LSP–里氏替换原则："><a href="#LSP–里氏替换原则：" class="headerlink" title="LSP–里氏替换原则："></a>LSP–里氏替换原则：</h2><p><strong>what</strong></p>
-<pre><code>所有引用基类的地方都能透明的使用子类的对象
-</code></pre><p><strong>how</strong></p>
-<pre><code>子类必须完全实现父类的方法。
-子类可以拥有自己的属性和方法。
-子类覆盖或实现父类方法时参数范围可以扩大
-子类覆盖或实现父类方法时返回值范围可以缩小
-</code></pre><h2 id="DIP–依赖倒置原则："><a href="#DIP–依赖倒置原则：" class="headerlink" title="DIP–依赖倒置原则："></a>DIP–依赖倒置原则：</h2><p><strong>what</strong></p>
-<pre><code>模块间的依赖应该通过抽象发生，具体类之间不应该有依赖关系
-接口或者抽象不依赖于实现类，否则就失去了抽象接口的意义
-实现  依赖于  接口或者抽象即：底层依赖于高层
-</code></pre><h2 id="ISP–接口隔离原则："><a href="#ISP–接口隔离原则：" class="headerlink" title="ISP–接口隔离原则："></a>ISP–接口隔离原则：</h2><p><strong>what</strong></p>
-<pre><code>使用接口时应该建立单一的接口，不应该建立过于臃肿的接口
-接口应该 “专” 而非 “多”即：提供独立单一的接口。
-</code></pre><h2 id="LKP–最少知识原则："><a href="#LKP–最少知识原则：" class="headerlink" title="LKP–最少知识原则："></a>LKP–最少知识原则：</h2><p><strong>what</strong></p>
-<pre><code>一个对象应该对 “其他对象”有最少的了解。
-即：一个类对于另一个类而言，尽量减少“public”，对外只提供一个简洁的访问
-自己的方法尽量自己创建，
-</code></pre>
+<h1 id="设计原则（６大）："><a href="#设计原则（６大）：" class="headerlink" title="设计原则（６大）："></a>设计原则（６大）：</h1><h2 id="1-OCP-开闭原则："><a href="#1-OCP-开闭原则：" class="headerlink" title="1. OCP - 开闭原则："></a>1. OCP - 开闭原则：</h2><p><strong>what</strong><br>　　编写代码应该：面向扩展开放，对修改关闭。<br>　　尽量不要通过修改现有代码来满足需求。<br><strong>How</strong><br>　　要利用扩展来适应变更。<br>　　接口 优于 抽象，抽象 优于 具体类。<br>　　针对接口编程，而不是针对实现。<br>　　多用组合，少用继承。</p>
+<h2 id="2-SRP–单一职责原则："><a href="#2-SRP–单一职责原则：" class="headerlink" title="2. SRP–单一职责原则："></a>2. SRP–单一职责原则：</h2><p><strong>what</strong><br>　　一个类、一个方法只做一件事。<br><strong>how</strong><br>　　一个类应该只有一个引起变化的原因。避免潜在错误。</p>
+<h2 id="3-LSP–里氏替换原则："><a href="#3-LSP–里氏替换原则：" class="headerlink" title="3. LSP–里氏替换原则："></a>3. LSP–里氏替换原则：</h2><p><strong>what</strong><br>　　所有引用基类的地方都能透明的使用子类的对象。<br><strong>how</strong><br>　　子类必须完全实现父类的方法。<br>　　子类可以拥有自己的属性和方法。<br>　　子类覆盖或实现父类方法时参数范围可以扩大。<br>　　子类覆盖或实现父类方法时返回值范围可以缩小。</p>
+<h2 id="4-DIP–依赖倒置原则："><a href="#4-DIP–依赖倒置原则：" class="headerlink" title="4. DIP–依赖倒置原则："></a>4. DIP–依赖倒置原则：</h2><p><strong>what</strong><br>　　模块间的依赖应该通过抽象发生，具体类之间不应该有依赖关系。<br>　　接口或者抽象不依赖于实现类，否则就失去了抽象接口的意义。<br>　　实现  依赖于  接口或者抽象即：底层依赖于高层。<br><strong>how</strong><br>　　针对接口编程，而不是针对实现。<br>　　别打电话给我，我打电话给你。</p>
+<h2 id="5-ISP–接口隔离原则："><a href="#5-ISP–接口隔离原则：" class="headerlink" title="5. ISP–接口隔离原则："></a>5. ISP–接口隔离原则：</h2><p><strong>what</strong><br>　　使用接口时应该建立单一的接口，不应该建立过于臃肿的接口。<br>　　接口应该 “专” 而非 “多”即：提供独立单一的接口。</p>
+<h2 id="6-LKP–最少知识原则："><a href="#6-LKP–最少知识原则：" class="headerlink" title="6. LKP–最少知识原则："></a>6. LKP–最少知识原则：</h2><p><strong>what</strong><br>　　一个对象应该对 “其他对象”有最少的了解。<br><strong>how</strong><br>　　一个类对于另一个类而言，尽量减少“public”，对外只提供一个简洁的访问<br>    自己的方法。</p>
+<hr>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="1-观察者模式"><a href="#1-观察者模式" class="headerlink" title="1. 观察者模式"></a>1. 观察者模式</h2><p>　　定义了对象之间的一对多依赖，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</p>
+<h2 id="2-装饰者模式"><a href="#2-装饰者模式" class="headerlink" title="2. 装饰者模式"></a>2. 装饰者模式</h2><p>　　动态的将责任附加到对象上，若要扩展功能，装饰者模式提供了比“继承”更有弹性的替代方案。</p>
+<h2 id="3-简单工厂模式"><a href="#3-简单工厂模式" class="headerlink" title="3. 简单工厂模式"></a>3. 简单工厂模式</h2><p>　　不是一个真正的模式，但是同“抽象工厂模式”和“工厂方法模式”一样，被用于封装创建对象的代码。</p>
+<h2 id="4-抽象工厂模式"><a href="#4-抽象工厂模式" class="headerlink" title="4. 抽象工厂模式"></a>4. 抽象工厂模式</h2><p>　　提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</p>
+<h2 id="5-工厂方法模式"><a href="#5-工厂方法模式" class="headerlink" title="5. 工厂方法模式"></a>5. 工厂方法模式</h2><p>　　定义了一个创建对象的接口，但由子类决定实例化的类是哪一个。工厂方法模式让类把实例化推迟到子类。</p>
+<h2 id="6-单例模式"><a href="#6-单例模式" class="headerlink" title="6. 单例模式"></a>6. 单例模式</h2><p>　　确保一个类只有一个实例，并提供一个全局的访问点。</p>
+<h2 id="7-命令模式"><a href="#7-命令模式" class="headerlink" title="7. 命令模式"></a>7. 命令模式</h2><p>　　将“请求”封装成对象，以便使用不同的请求、队列、或者日志来参数化其他对象。命令模式也支持可撤销的操作。</p>
+<h2 id="8-适配器模式"><a href="#8-适配器模式" class="headerlink" title="8. 适配器模式"></a>8. 适配器模式</h2><p>　　将一个类的接口转换为期望的另一个接口，让原本接口不兼容的类可以兼容。</p>
+<h2 id="9-模板模式"><a href="#9-模板模式" class="headerlink" title="9. 模板模式"></a>9. 模板模式</h2><p>　　定义一个算法的骨架，将算法中的某些步骤延迟到子类中具体实现。使得子类在不改变算法结构的情况下，重新定义算法中的某些步骤。</p>
+<h2 id="10-代理模式-保护"><a href="#10-代理模式-保护" class="headerlink" title="10. 代理模式 - 保护"></a>10. 代理模式 - 保护</h2><p>　　为另一个对象提供一个替身或占位符以访问这个对象，是基于访问权控制对对象的访问。</p>
+<h2 id="11-代理模式-虚拟"><a href="#11-代理模式-虚拟" class="headerlink" title="11. 代理模式 - 虚拟"></a>11. 代理模式 - 虚拟</h2><p>　　作为创建开销大的对象的代表，虚拟代理经常是直到我们真正需要一个对象时才创建真正的对象。当对象在创建前和创建中时，由虚拟代理来扮演真正对象的替身，待真正对象创建后，虚拟代理就会将请求直接给真正的对象。</p>
+<h2 id="12-代理模式-远程"><a href="#12-代理模式-远程" class="headerlink" title="12. 代理模式 - 远程"></a>12. 代理模式 - 远程</h2><p>　　好比远程对象的本地代表。</p>
+<h2 id="13-迭代器模式"><a href="#13-迭代器模式" class="headerlink" title="13. 迭代器模式"></a>13. 迭代器模式</h2><p>　　提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露器内部的表示。</p>
+<h2 id="14-组合模式"><a href="#14-组合模式" class="headerlink" title="14. 组合模式"></a>14. 组合模式</h2><p>　　允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合模式能让客户以一致的方式处理个别对象及组合对象。</p>
+<h2 id="15-外观模式"><a href="#15-外观模式" class="headerlink" title="15. 外观模式"></a>15. 外观模式</h2><p>　　提供了一个统一的接口，用来访问子系统中的一群接口。外观模式定义了一个高层接口，让子系统更容易使用。外观模式不仅简化一个接口，而且将客户以组件的一个子系统中解耦。</p>
+<h2 id="16-策略模式"><a href="#16-策略模式" class="headerlink" title="16. 策略模式"></a>16. 策略模式</h2><p>　　定义了算法族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</p>
+<h2 id="17-状态模式"><a href="#17-状态模式" class="headerlink" title="17. 状态模式"></a>17. 状态模式</h2><p>　　允许对象在内部状态改变时改变它的行为，使对象看起来好像修改了它的类。</p>
+
       
     </div>
     
@@ -497,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Builder模式/" rel="prev" title="Builder模式">
-                Builder模式 <i class="fa fa-chevron-right"></i>
+              <a href="/原型模式/" rel="prev" title="原型模式">
+                原型模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +591,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -604,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -653,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6大OOP："><span class="nav-number">1.</span> <span class="nav-text">6大OOP：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OCP–开闭原则："><span class="nav-number">1.1.</span> <span class="nav-text">OCP–开闭原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SRP–单一职责原则："><span class="nav-number">1.2.</span> <span class="nav-text">SRP–单一职责原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LSP–里氏替换原则："><span class="nav-number">1.3.</span> <span class="nav-text">LSP–里氏替换原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DIP–依赖倒置原则："><span class="nav-number">1.4.</span> <span class="nav-text">DIP–依赖倒置原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ISP–接口隔离原则："><span class="nav-number">1.5.</span> <span class="nav-text">ISP–接口隔离原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LKP–最少知识原则："><span class="nav-number">1.6.</span> <span class="nav-text">LKP–最少知识原则：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则（６大）："><span class="nav-number">1.</span> <span class="nav-text">设计原则（６大）：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-OCP-开闭原则："><span class="nav-number">1.1.</span> <span class="nav-text">1. OCP - 开闭原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SRP–单一职责原则："><span class="nav-number">1.2.</span> <span class="nav-text">2. SRP–单一职责原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-LSP–里氏替换原则："><span class="nav-number">1.3.</span> <span class="nav-text">3. LSP–里氏替换原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DIP–依赖倒置原则："><span class="nav-number">1.4.</span> <span class="nav-text">4. DIP–依赖倒置原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-ISP–接口隔离原则："><span class="nav-number">1.5.</span> <span class="nav-text">5. ISP–接口隔离原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-LKP–最少知识原则："><span class="nav-number">1.6.</span> <span class="nav-text">6. LKP–最少知识原则：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">2.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-观察者模式"><span class="nav-number">2.1.</span> <span class="nav-text">1. 观察者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-装饰者模式"><span class="nav-number">2.2.</span> <span class="nav-text">2. 装饰者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-简单工厂模式"><span class="nav-number">2.3.</span> <span class="nav-text">3. 简单工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-抽象工厂模式"><span class="nav-number">2.4.</span> <span class="nav-text">4. 抽象工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-工厂方法模式"><span class="nav-number">2.5.</span> <span class="nav-text">5. 工厂方法模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-单例模式"><span class="nav-number">2.6.</span> <span class="nav-text">6. 单例模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-命令模式"><span class="nav-number">2.7.</span> <span class="nav-text">7. 命令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-适配器模式"><span class="nav-number">2.8.</span> <span class="nav-text">8. 适配器模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-模板模式"><span class="nav-number">2.9.</span> <span class="nav-text">9. 模板模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-代理模式-保护"><span class="nav-number">2.10.</span> <span class="nav-text">10. 代理模式 - 保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-代理模式-虚拟"><span class="nav-number">2.11.</span> <span class="nav-text">11. 代理模式 - 虚拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-代理模式-远程"><span class="nav-number">2.12.</span> <span class="nav-text">12. 代理模式 - 远程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-迭代器模式"><span class="nav-number">2.13.</span> <span class="nav-text">13. 迭代器模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-组合模式"><span class="nav-number">2.14.</span> <span class="nav-text">14. 组合模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-外观模式"><span class="nav-number">2.15.</span> <span class="nav-text">15. 外观模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-策略模式"><span class="nav-number">2.16.</span> <span class="nav-text">16. 策略模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-状态模式"><span class="nav-number">2.17.</span> <span class="nav-text">17. 状态模式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -687,7 +685,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.3k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 

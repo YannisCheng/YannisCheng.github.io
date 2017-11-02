@@ -519,8 +519,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-31T20:59:07+08:00">
-                2017-10-31
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:01+08:00">
+                2017-11-02
               </time>
             
           </span>
@@ -618,7 +618,8 @@
 
       
         
-          <p>python的学习在今天又开始了：人生苦短，我用python。<br>安装Scrapy需要使用到：pip（python2）、pip3（python3），由于之前已经安装，此处忽略。</p>
+          <p>python的学习在今天又开始了：<br><strong>人生苦短，我用python。</strong></p>
+<p>安装Scrapy需要使用到：pip（python2）、pip3（python3），由于之前已经安装，此处忽略。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Python3  16-安装爬虫工具Scrapy/#more" rel="contents">
@@ -1966,8 +1967,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:14:08+08:00">
-                2017-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:13+08:00">
+                2017-11-02
               </time>
             
           </span>
@@ -2118,7 +2119,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  14-单元测试/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  14-调试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -2137,7 +2138,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  14-单元测试/" itemprop="url">Python3  14-单元测试</a></h1>
+                <a class="post-title-link" href="/Python3  14-调试/" itemprop="url">Python3  14-调试</a></h1>
         
 
         <div class="post-meta">
@@ -2165,8 +2166,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:16:20+08:00">
-                2017-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:17+08:00">
+                2017-11-02
               </time>
             
           </span>
@@ -2215,7 +2216,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  493 字
+                  1,123 字
                 </span>
               
 
@@ -2231,7 +2232,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -2264,20 +2265,13 @@
 
       
         
-          <ul>
-<li>“测试驱动开发”（TDD：Test-Driven Development）– 单元测试</li>
-<li>是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</li>
-</ul>
-<h2 id="在pycharm中创建单元测试"><a href="#在pycharm中创建单元测试" class="headerlink" title="在pycharm中创建单元测试"></a>在pycharm中创建单元测试</h2><blockquote>
-<p>创建参考：<a href="http://blog.csdn.net/u013088062/article/details/50183789" target="_blank" rel="external">http://blog.csdn.net/u013088062/article/details/50183789</a><br>一个案例：<a href="http://www.cnblogs.com/iamjqy/p/7155315.html" target="_blank" rel="external">http://www.cnblogs.com/iamjqy/p/7155315.html</a></p>
-</blockquote>
-<p>具体创建过程参考python文件夹的<code>.png</code>图片。</p>
-<ul>
-<li>选中待要编写测试代码的类名 –&gt; 右键 选择 <code>Go To</code> –&gt; <code>Test Object</code></li>
-</ul>
+          <p><strong>方法</strong></p>
+<h3 id="print-打印"><a href="#print-打印" class="headerlink" title=".print()打印"></a>.<code>print()</code>打印</h3><p>用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。</p>
+<h3 id="assert断言"><a href="#assert断言" class="headerlink" title="assert断言"></a><code>assert</code>断言</h3><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>assert</code>来替代。<br>代码示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(s)</span>:</span></div><div class="line">    n = int(s)</div><div class="line">    <span class="keyword">assert</span> n != <span class="number">0</span>, <span class="string">'n is zero!'</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span> / n</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    foo(<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  14-单元测试/#more" rel="contents">
+            <a class="btn" href="/Python3  14-调试/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2379,7 +2373,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2390,7 +2384,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2457,7 +2451,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.3k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 

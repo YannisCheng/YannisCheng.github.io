@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="所有命令均在ubuntu16.04环境下完成，在不同环境下可能会有差异">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T02:32:50.187Z">
+<meta property="og:updated_time" content="2017-11-02T08:03:43.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alias 的使用">
 <meta name="twitter:description" content="所有命令均在ubuntu16.04环境下完成，在不同环境下可能会有差异">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-31T10:32:50+08:00">
-                2017-10-31
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:03:43+08:00">
+                2017-11-02
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  427 字
+                  568 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -467,23 +467,60 @@
 </code></pre></li>
 </ol>
 <p><strong>注：</strong><br>    对于以上两中方式，必须使用：<br>        source ~/.bash_aliases<br>    命令更新文件，否则自定义快捷键将不会被找到，无法起作用。</p>
-<h1 id="个人快捷命令组合："><a href="#个人快捷命令组合：" class="headerlink" title="个人快捷命令组合："></a>个人快捷命令组合：</h1><pre><code>alias ll=&apos;ls -l&apos;
-alias la=&quot;ls -la&quot;
+<h1 id="个人快捷命令组合："><a href="#个人快捷命令组合：" class="headerlink" title="个人快捷命令组合："></a>个人快捷命令组合：</h1><blockquote>
+<p>ls 查询字段释义：<a href="http://blog.csdn.net/sjzs5590/article/details/8254527" target="_blank" rel="external">http://blog.csdn.net/sjzs5590/article/details/8254527</a><br>更多详细使用参考：用户目录下的 <code>.bash_profile</code></p>
+</blockquote>
+<pre><code># Alias
+alias ll=&apos;ls -lh -G&apos;
+alias la=&quot;ls -lah -G&quot;
 
-alias ohb=&apos;open /Users/yannischeng/HexoBLog/&apos;
-alias ohbs=&apos;open /Users/yannischeng/HexoBLog/source/_posts&apos;
-alias oup=&apos;open /Users/yannischeng/.bash_profile&apos;
+# 显示size
+alias lls=&apos;ls -lSGh&apos;
+alias las=&quot;ls -laSGh&quot;
 
-alias chbl=&apos;cd /Users/yannischeng/HexoBLog&apos;
-alias chbsl=&apos;cd /Users/yannischeng/HexoBLog/source/_posts&apos;
-alias cup=&apos;cd /Users/yannischeng/&apos;
+# 显示行号
+alias lln=&apos;ls -lh | nl&apos;
+alias lan=&quot;ls -lah | nl&quot;
 
+alias llns=&apos;ls -lSh | nl&apos;
+alias lans=&quot;ls -laSh | nl&quot;
+
+alias grep=&apos;grep --color&apos;
+
+# Hexo
+alias ohb=&apos;open &quot;/Users/yannischeng/Documents/HexoBLog&quot;&apos;
+alias ohbs=&apos;open &quot;/Users/yannischeng/Documents/HexoBLog/source/_posts&quot;&apos;
+
+alias chbl=&apos;cd &quot;/Users/yannischeng/Documents/HexoBLog&quot;&apos;
+alias chbsl=&apos;cd &quot;/Users/yannischeng/Documents/HexoBLog/source/_posts&quot;&apos;
+
+
+# python project
+alias opp=&apos;open /Users/yannischeng/PycharmProjects/First_Python_Project&apos;
+alias cppl=&apos;cd /Users/yannischeng/PycharmProjects/First_Python_Project&apos;
+
+
+# .bash_profile
 alias sup=&apos;source .bash_profile&apos;
+alias oup=&apos;open /Users/yannischeng/.bash_profile&apos;
+alias cupl=&apos;cd /Users/yannischeng/&apos;
 
+
+# open app
 alias om=&apos;open /Applications/MWeb.app&apos;
 alias oas=&apos;open /Applications/&quot;Android Studio&quot;.app&apos;
 alias osb=&apos;open /Applications/&quot;Sublime Text&quot;.app&apos;
 alias ogc=&apos;open /Applications/&quot;Google Chrome&quot;.app&apos;
+alias opc=&apos;open /Applications/PyCharm.app&apos;
+alias owc=&apos;open /Applications/WeChat.app&apos;
+alias od=&apos;open /Applications/Dictionary.app&apos;
+alias owm=&apos;open /Applications/NeteaseMusic.app&apos;
+
+# login mysql
+alias lms=&apos;mysql -u root -p&apos;
+
+# mytree
+alias mtree=&quot;find . -print | sed -e &apos;s;[^/]*/;|____;g;s;____|; |;g&apos;&quot;
 </code></pre>
       
     </div>
@@ -611,7 +648,7 @@ alias ogc=&apos;open /Applications/&quot;Google Chrome&quot;.app&apos;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -622,7 +659,7 @@ alias ogc=&apos;open /Applications/&quot;Google Chrome&quot;.app&apos;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -705,7 +742,7 @@ alias ogc=&apos;open /Applications/&quot;Google Chrome&quot;.app&apos;
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.3k</span>
+    <span title="Site words total count">47.3k</span>
   
 </div>
 
