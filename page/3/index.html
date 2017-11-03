@@ -673,7 +673,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  05-函数式编程-高阶函数/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  04-迭代器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -692,7 +692,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  05-函数式编程-高阶函数/" itemprop="url">Python3  05-函数式编程-高阶函数</a></h1>
+                <a class="post-title-link" href="/Python3  04-迭代器/" itemprop="url">Python3  04-迭代器</a></h1>
         
 
         <div class="post-meta">
@@ -720,7 +720,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:05+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:13+08:00">
                 2017-11-02
               </time>
             
@@ -770,7 +770,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,121 字
+                  248 字
                 </span>
               
 
@@ -786,7 +786,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -819,12 +819,19 @@
 
       
         
-          <pre><code>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
-`Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。
-</code></pre>
+          <p> <strong><em>能够使用for循环的数据类型有以下几种：</em></strong></p>
+<ul>
+<li>集合：<code>list</code>、<code>tuple</code>、<code>set</code>、<code>dict</code></li>
+<li>构建类型<code>generator</code>，带<code>yield</code>的generator function</li>
+<li>字符串类型：<code>str</code></li>
+</ul>
+<blockquote>
+<p>复习：可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterable</code>对象。<br>需要导包：<code>from collections import Iterable</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance)(x, Iterable)</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  05-函数式编程-高阶函数/#more" rel="contents">
+            <a class="btn" href="/Python3  04-迭代器/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1069,7 +1076,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  04-迭代器/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  05-函数式编程-高阶函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -1088,7 +1095,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  04-迭代器/" itemprop="url">Python3  04-迭代器</a></h1>
+                <a class="post-title-link" href="/Python3  05-函数式编程-高阶函数/" itemprop="url">Python3  05-函数式编程-高阶函数</a></h1>
         
 
         <div class="post-meta">
@@ -1116,7 +1123,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:05+08:00">
                 2017-11-02
               </time>
             
@@ -1166,7 +1173,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  248 字
+                  1,121 字
                 </span>
               
 
@@ -1182,7 +1189,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -1215,19 +1222,12 @@
 
       
         
-          <p> <strong><em>能够使用for循环的数据类型有以下几种：</em></strong></p>
-<ul>
-<li>集合：<code>list</code>、<code>tuple</code>、<code>set</code>、<code>dict</code></li>
-<li>构建类型<code>generator</code>，带<code>yield</code>的generator function</li>
-<li>字符串类型：<code>str</code></li>
-</ul>
-<blockquote>
-<p>复习：可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterable</code>对象。<br>需要导包：<code>from collections import Iterable</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance)(x, Iterable)</div></pre></td></tr></table></figure>
+          <pre><code>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
+`Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  04-迭代器/#more" rel="contents">
+            <a class="btn" href="/Python3  05-函数式编程-高阶函数/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2096,7 +2096,7 @@ Hello World
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  01-基础-基本数据类型/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.comLinux:Unix系统文件结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -2115,7 +2115,7 @@ Hello World
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  01-基础-基本数据类型/" itemprop="url">Python3  01-基础-基本数据类型</a></h1>
+                <a class="post-title-link" href="Linux:Unix系统文件结构/" itemprop="url">Linux/Unix系统文件结构</a></h1>
         
 
         <div class="post-meta">
@@ -2143,8 +2143,8 @@ Hello World
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:32+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:07:52+08:00">
+                2017-10-25
               </time>
             
           </span>
@@ -2162,8 +2162,8 @@ Hello World
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
+                  <a href="/categories/系统/" itemprop="url" rel="index">
+                    <span itemprop="name">系统</span>
                   </a>
                 </span>
 
@@ -2193,7 +2193,7 @@ Hello World
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,467 字
+                  3,660 字
                 </span>
               
 
@@ -2209,7 +2209,7 @@ Hello World
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -2242,15 +2242,13 @@ Hello World
 
       
         
-          <pre><code>Python是一种计算机编程语言，使用Unicode编码，支持多语言(动态语言，因为变量本身不固定)。
-是一种解释性语言在运行 .py 文件时需要通过 解释器 进行解释然后显示呢结果。
-区分大小写
-</code></pre><blockquote>
-<p>参考网站：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
-</blockquote>
+          <h2 id="bin"><a href="#bin" class="headerlink" title="/bin"></a>/bin</h2><pre><code>系统有很多放置执行档的目录，但/bin比较特殊。
+因为/bin放置的是在单人维护模式下还能够被操作的指令。
+在/bin底下的指令可以被root与一般帐号所使用，主要有：cat,chmod(修改权限), chown, date, mv, mkdir, cp, bash等等常用的指令。
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  01-基础-基本数据类型/#more" rel="contents">
+            <a class="btn" href="Linux:Unix系统文件结构/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2603,7 +2601,7 @@ Hello World
   
 
 
-<script type="text/javascript" color="0,0,0" opacity='0.5' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>
