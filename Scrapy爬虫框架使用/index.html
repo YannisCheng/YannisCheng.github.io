@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.35.02.png">
-<meta property="og:updated_time" content="2017-11-03T02:52:52.472Z">
+<meta property="og:updated_time" content="2017-11-03T05:49:50.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy爬虫框架使用">
 <meta name="twitter:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm  问：把网站装进爬虫需要几步？答：四步。 1. 新建项目2. 明确目标3. 制作爬虫4. 存储内容">
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T10:52:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T13:49:50+08:00">
                 2017-11-03
               </time>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,175 字
+                  1,282 字
                 </span>
               
 
@@ -574,6 +574,12 @@ class DmozSpider(Spider):
 <h1 id="4-存储内容"><a href="#4-存储内容" class="headerlink" title="4. 存储内容"></a>4. 存储内容</h1><p>保存信息的最简单的方法是通过Feed exports，主要有4种：<code>JSON</code>，<code>JSON lines</code>，<code>CSV</code>，<code>XML</code>。<br>我们将结果用最常用的JSON导出，命令如下：</p>
 <pre><code>scrapy crawl dmoz -o items.json -t json
 </code></pre><p>其中，<code>-o</code> 后面是<code>导出文件名</code>，<code>-t</code> 后面是<code>导出类型</code>。</p>
+<h1 id="Pycharm中运行爬虫程序错误"><a href="#Pycharm中运行爬虫程序错误" class="headerlink" title="Pycharm中运行爬虫程序错误"></a>Pycharm中运行爬虫程序错误</h1><h2 id="1-NameError-global-name-‘DmozItem’-is-not-defined"><a href="#1-NameError-global-name-‘DmozItem’-is-not-defined" class="headerlink" title="1. NameError: global name ‘DmozItem’ is not defined"></a>1. NameError: global name ‘DmozItem’ is not defined</h2><pre><code>File &quot;/Users/yannischeng/PycharmProjects/First_Python_Project/spiderone/spiderone/spiders/dmoe_spider.py&quot;, line 20, in parse
+item = DmozItem()
+NameError: global name &apos;DmozItem&apos; is not defined
+</code></pre><p><strong>解决方案：使用相对导入</strong></p>
+<pre><code>from ..items import DmozItem
+</code></pre><p>第一个点(.) 表示当前目录，第二个点表示上一级父目录。这样做还有一个额外的好处就是你可以随意修改你的包的名称，松耦合。</p>
 
       
     </div>
@@ -761,7 +767,7 @@ class DmozSpider(Spider):
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">1.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">2.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">3.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">4.</span> <span class="nav-text">4. 存储内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">1.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">2.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">3.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">4.</span> <span class="nav-text">4. 存储内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pycharm中运行爬虫程序错误"><span class="nav-number">5.</span> <span class="nav-text">Pycharm中运行爬虫程序错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-NameError-global-name-‘DmozItem’-is-not-defined"><span class="nav-number">5.1.</span> <span class="nav-text">1. NameError: global name ‘DmozItem’ is not defined</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -795,7 +801,7 @@ class DmozSpider(Spider):
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.5k</span>
+    <span title="Site words total count">51.7k</span>
   
 </div>
 
