@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.35.02.png">
-<meta property="og:updated_time" content="2017-11-03T05:49:50.223Z">
+<meta property="og:updated_time" content="2017-11-06T05:11:10.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy爬虫框架使用">
 <meta name="twitter:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm  问：把网站装进爬虫需要几步？答：四步。 1. 新建项目2. 明确目标3. 制作爬虫4. 存储内容">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T13:49:50+08:00">
-                2017-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-06T13:11:10+08:00">
+                2017-11-06
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,282 字
+                  1,686 字
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -447,6 +447,7 @@
 <p><strong>问：把网站装进爬虫需要几步？</strong><br><strong>答：四步。</strong></p>
 <p><strong>1. 新建项目</strong><br><strong>2. 明确目标</strong><br><strong>3. 制作爬虫</strong><br><strong>4. 存储内容</strong></p>
 <a id="more"></a>
+<p><strong>注意：<code># coding=utf-8</code> 使用Scrapy爬虫框架时应该添加此条语句表明注释是<code>中文注释</code></strong></p>
 <h1 id="1-新建项目"><a href="#1-新建项目" class="headerlink" title="1. 新建项目"></a>1. 新建项目</h1><p><strong>使用命令新建一个<code>scrapy</code>项目</strong></p>
 <pre><code>scrapy startproject projectName
 </code></pre><p><strong>建立项目的文件目录</strong></p>
@@ -580,7 +581,33 @@ NameError: global name &apos;DmozItem&apos; is not defined
 </code></pre><p><strong>解决方案：使用相对导入</strong></p>
 <pre><code>from ..items import DmozItem
 </code></pre><p>第一个点(.) 表示当前目录，第二个点表示上一级父目录。这样做还有一个额外的好处就是你可以随意修改你的包的名称，松耦合。</p>
+<h2 id="2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"><a href="#2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？" class="headerlink" title="2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"></a>2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？</h2><blockquote>
+<p>参考：<a href="http://www.jianshu.com/p/c03d968ef68b" target="_blank" rel="external">http://www.jianshu.com/p/c03d968ef68b</a></p>
+</blockquote>
+<p>将爬取到的中文信息存储为<code>json</code>格式的文件时，文字显示就会出现问题，存储为<code>xml</code>时就不会有问题。本要求应该显示的是：<code>摘要</code>，而实际显示的内容为：<code>\&quot;\u6458\u8981</code></p>
+<p><strong>解决方案：使用<code>json包</code>中的<code>json.dumps(dictname,ensure_ascii=False)</code></strong><br>具体案例使用：</p>
+<pre><code>item[&apos;node&apos;] = json.dumps(node.extract(), ensure_ascii=False)
+print(item[&apos;node&apos;])
+摘要: 把系统换到了fedora,记录几个相关的配置
+</code></pre><h2 id="3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错"><a href="#3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错" class="headerlink" title="3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错"></a>3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错</h2><pre><code>[scrapy.core.scraper] ERROR: Spider must return Request, BaseItem, dict or None, got &apos;str&apos; in &lt;GET http://www.cnblogs.com/aLittleBitCool/&gt;
+</code></pre><h2 id="4-scrapy爬虫得到的json文件是ascii码问题"><a href="#4-scrapy爬虫得到的json文件是ascii码问题" class="headerlink" title="4. scrapy爬虫得到的json文件是ascii码问题"></a>4. scrapy爬虫得到的json文件是ascii码问题</h2><blockquote>
+<p>参考：<a href="http://bbs.fishc.com/thread-85672-1-1.html" target="_blank" rel="external">http://bbs.fishc.com/thread-85672-1-1.html</a></p>
+</blockquote>
+<pre><code>import json        #记得添加这两个库
+import codecs
 
+class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名称
+        def __init__(self):                #添加一下初始化方法
+                self.file = codecs.open(&apos;item.json&apos;, &apos;wb&apos;, encoding=&apos;utf-8&apos;)        #item.json指的是你要保存的json格式文件的名称，编码格式一般都是&apos;utf-8&apos;
+        def process_item(self, item, spider):
+                line = json.dumps(dict(item),ensure_ascii=False) + &apos;\n&apos;        #这一句会将你每次返回的字典抓取出来,“ensure_ascii=False”这一句话很重要，如果是True的话就是我们保存的\u4e2d\u56fd这种格式了
+                self.file.write(line)        #写入到文件中
+                return item
+</code></pre><p>将以上内容插入<code>pipelines.py</code>,同时在<code>settings.py</code>中加入</p>
+<pre><code>ITEM_PIPELINES = {
+    &apos;panda.pipelines.PandaPipeline&apos;: 300
+}
+</code></pre>
       
     </div>
     
@@ -696,7 +723,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +734,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -718,7 +745,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -767,7 +794,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">1.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">2.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">3.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">4.</span> <span class="nav-text">4. 存储内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pycharm中运行爬虫程序错误"><span class="nav-number">5.</span> <span class="nav-text">Pycharm中运行爬虫程序错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-NameError-global-name-‘DmozItem’-is-not-defined"><span class="nav-number">5.1.</span> <span class="nav-text">1. NameError: global name ‘DmozItem’ is not defined</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">1.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">2.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">3.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">4.</span> <span class="nav-text">4. 存储内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pycharm中运行爬虫程序错误"><span class="nav-number">5.</span> <span class="nav-text">Pycharm中运行爬虫程序错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-NameError-global-name-‘DmozItem’-is-not-defined"><span class="nav-number">5.1.</span> <span class="nav-text">1. NameError: global name ‘DmozItem’ is not defined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"><span class="nav-number">5.2.</span> <span class="nav-text">2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错"><span class="nav-number">5.3.</span> <span class="nav-text">3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-scrapy爬虫得到的json文件是ascii码问题"><span class="nav-number">5.4.</span> <span class="nav-text">4. scrapy爬虫得到的json文件是ascii码问题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -801,7 +828,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.7k</span>
+    <span title="Site words total count">53.5k</span>
   
 </div>
 

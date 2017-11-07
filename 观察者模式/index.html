@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="被观察者">
+<meta name="description" content="OO基础 ：抽象OO原则 ：封装变化、针对接口编程、松耦合（多用组合，少用继承）观察者模式  ：在对象之间定义一对多的依赖，当一个对象的状态改变，其他对象都会收到通知并自动改变。">
 <meta name="keywords" content="设计模式,阅读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="观察者模式">
 <meta property="og:url" content="http://yannischeng.com/观察者模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="被观察者">
+<meta property="og:description" content="OO基础 ：抽象OO原则 ：封装变化、针对接口编程、松耦合（多用组合，少用继承）观察者模式  ：在对象之间定义一对多的依赖，当一个对象的状态改变，其他对象都会收到通知并自动改变。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-03T03:34:26.420Z">
+<meta property="og:updated_time" content="2017-11-06T14:25:33.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="观察者模式">
-<meta name="twitter:description" content="被观察者">
+<meta name="twitter:description" content="OO基础 ：抽象OO原则 ：封装变化、针对接口编程、松耦合（多用组合，少用继承）观察者模式  ：在对象之间定义一对多的依赖，当一个对象的状态改变，其他对象都会收到通知并自动改变。">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T11:34:26+08:00">
-                2017-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-06T22:25:33+08:00">
+                2017-11-06
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  504 字
+                  883 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -436,54 +436,52 @@
       
 
       
-        <p>被观察者</p>
+        <p><strong>OO基础</strong> ：抽象<br><strong>OO原则</strong> ：封装变化、针对接口编程、松耦合（多用组合，少用继承）<br><strong>观察者模式</strong>  ：在对象之间定义一对多的依赖，当一个对象的状态改变，其他对象都会收到通知并自动改变。</p>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyObject</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(Observer observer)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyData</span><span class="params">(String string)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplObject</span> <span class="keyword">implements</span> <span class="title">MyObject</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"ImplObject"</span>;</div><div class="line">    <span class="keyword">private</span> ArrayList&lt;Observer&gt; list;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ImplObject</span><span class="params">()</span> </span>&#123;</div><div class="line">        list = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span> </span>&#123;</div><div class="line">        list.add(observer);</div><div class="line">        Log.e(TAG, <span class="string">"register list size is : "</span> + list.size() );</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(Observer observer)</span> </span>&#123;</div><div class="line">        list.remove(observer);</div><div class="line">        Log.e(TAG, <span class="string">"unRegister list size is : "</span> + list.size() );</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyData</span><span class="params">(String string)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (Observer o : list) &#123;</div><div class="line">            o.updateData(string);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>被观察者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherSet</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">register</span><span class="params">(WeatherOberver oberver)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(WeatherOberver oberver)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">upData</span><span class="params">(WeatherData weatherData)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 主题（被观察者）</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherSetI</span> <span class="keyword">implements</span> <span class="title">WeatherSet</span></span>&#123;</div><div class="line"></div><div class="line">    List&lt;WeatherOberver&gt; oberverList;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 初始化存储观察者的集合</span></div><div class="line"><span class="comment">     * 模块间的依赖应该是通过 抽象来实现的</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherSetI</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.oberverList = <span class="keyword">new</span> ArrayList&lt;WeatherOberver&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 注册</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> oberver 观察者</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(WeatherOberver oberver)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (oberverList.contains(oberver)) &#123;</div><div class="line">            System.out.println(<span class="string">"注意 : "</span> + oberver.getClass().getName() + <span class="string">" 当前订阅者已经存在，无需订阅"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            oberverList.add(oberver);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 取消注册</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> oberver 观察者</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(WeatherOberver oberver)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"注意："</span> + oberver.getClass().getName() + <span class="string">" 已经不再订阅该消息，bye~bye~"</span>);</div><div class="line">        oberverList.remove(oberver);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 数据更新</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> weatherData 数据Bean类</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * 设计原则：被打电话给我，我打电话给你（上层调用下层，下层不调用上层）</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">upData</span><span class="params">(WeatherData weatherData)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"注意：当前有 "</span> + oberverList.size() + <span class="string">" 位订阅了该消息！"</span>);</div><div class="line">        <span class="keyword">for</span> (WeatherOberver item : oberverList) &#123;</div><div class="line">            item.getData(weatherData);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 数据Bean类</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    <span class="keyword">int</span> pressure;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">(<span class="keyword">int</span> temp, <span class="keyword">int</span> pressure)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.temp = temp;</div><div class="line">        <span class="keyword">this</span>.pressure = pressure;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTemp</span><span class="params">(<span class="keyword">int</span> temp)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.temp = temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPressure</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> pressure;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPressure</span><span class="params">(<span class="keyword">int</span> pressure)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.pressure = pressure;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"WeatherData&#123;"</span> +</div><div class="line">                <span class="string">"temp="</span> + temp +</div><div class="line">                <span class="string">", pressure="</span> + pressure +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>观察者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateData</span><span class="params">(String string)</span></span>;</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;TextView&gt; list;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ImplObserver</span><span class="params">(List&lt;TextView&gt; list)</span> </span>&#123;</div><div class="line">	<span class="keyword">this</span>.list = list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateData</span><span class="params">(String string)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (TextView t : list) &#123;</div><div class="line">	    t.setText(list.indexOf(t) + <span class="string">" 号接收者收到 : "</span> + string);</div><div class="line">	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 观察者 接口</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherOberver</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 数据更新行为</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> weatherData 数据Bean类</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">getData</span><span class="params">(WeatherData weatherData)</span></span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WangObserver</span> <span class="keyword">implements</span> <span class="title">WeatherOberver</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getData</span><span class="params">(WeatherData weatherData)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"WangObserver get data temp is : "</span> + weatherData.getTemp() + <span class="string">", pressure is : "</span> + weatherData.getPressure());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangObserver</span> <span class="keyword">implements</span> <span class="title">WeatherOberver</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getData</span><span class="params">(WeatherData weatherData)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"ZhangObserver get data temp is : "</span> + weatherData.getTemp() + <span class="string">", pressure is : "</span> + weatherData.getPressure());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LiObserver</span> <span class="keyword">implements</span> <span class="title">WeatherOberver</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getData</span><span class="params">(WeatherData weatherData)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"LiObserver get data temp is : "</span> + weatherData.getTemp() + <span class="string">", pressure is : "</span> + weatherData.getPressure());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>应用</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>{
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OberverMain</span> </span>{
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MainActivity"</span>;
-    <span class="keyword">private</span> Button sendBtn;
-    <span class="keyword">private</span> TextView t1,t2,t3;
-    <span class="keyword">private</span> EditText editText;
-    <span class="keyword">private</span> MyObject object;
-    <span class="keyword">private</span> Observer observer;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{
+        WeatherOberver oberverWang = <span class="keyword">new</span> WangObserver();
+        WeatherOberver oberverLi = <span class="keyword">new</span> LiObserver();
+        WeatherOberver oberverZhang = <span class="keyword">new</span> ZhangObserver();
 
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
-    <span class="keyword">super</span>.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+        WeatherSetI set = <span class="keyword">new</span> WeatherSetI();
+        set.register(oberverWang);
+        set.register(oberverLi);
+        set.register(oberverZhang);
 
-    initView();
+        set.upData(<span class="keyword">new</span> WeatherData(<span class="number">12</span>, <span class="number">45</span>));
+        <span class="comment">/**</span>
+<span class="comment">         *  注意：当前有 3 位订阅了该消息！</span>
+<span class="comment">            WangObserver get data temp is : 12, pressure is : 45</span>
+<span class="comment">            LiObserver get data temp is : 12, pressure is : 45</span>
+<span class="comment">            ZhangObserver get data temp is : 12, pressure is : 45</span>
+<span class="comment">         */</span>
 
-    List&lt;TextView&gt; list = <span class="keyword">new</span> ArrayList&lt;TextView&gt;();
-    list.add(t1);
-    list.add(t2);
-    list.add(t3);
-    object = <span class="keyword">new</span> ImplObject();
-    observer = <span class="keyword">new</span> ImplObserver(list);
-    object.register(observer);
-    click();
-    }
+        System.out.println();
+        set.unRegister(oberverLi);
+        set.upData(<span class="keyword">new</span> WeatherData(<span class="number">32</span>, <span class="number">100</span>));
+        <span class="comment">/**</span>
+<span class="comment">         *  注意：observer.LiObserver 已经不再订阅该消息，bye~bye~</span>
+<span class="comment">            注意：当前有 2 位订阅了该消息！</span>
+<span class="comment">            WangObserver get data temp is : 32, pressure is : 100</span>
+<span class="comment">            ZhangObserver get data temp is : 32, pressure is : 100</span>
+<span class="comment">         */</span>
 
-    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">click</span><span class="params">()</span> </span>{
-    sendBtn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
-        <span class="meta">@Override</span>
-        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-            String getStr = editText.getText().toString();
-            object.notifyData(getStr);
-        }
-    });
-    }
-
-    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>{
-    sendBtn = (Button) findViewById(R.id.send);
-    t1 = (TextView) findViewById(R.id.text1);
-    t2 = (TextView) findViewById(R.id.text2);
-    t3 = (TextView) findViewById(R.id.text3);
-    editText = (EditText) findViewById(R.id.edit);
+        System.out.println();
+        set.register(oberverZhang);
+        set.upData(<span class="keyword">new</span> WeatherData(<span class="number">33</span>, <span class="number">97</span>));
+        <span class="comment">/**</span>
+<span class="comment">         *  注意 : observer.ZhangObserver 当前订阅者已经存在，无需订阅</span>
+<span class="comment">            注意：当前有 2 位订阅了该消息！</span>
+<span class="comment">            WangObserver get data temp is : 33, pressure is : 97</span>
+<span class="comment">            ZhangObserver get data temp is : 33, pressure is : 97</span>
+<span class="comment">         */</span>
     }
 }
 </code></pre>
@@ -638,7 +636,7 @@ EventBus.getDefault().post(Object event);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -649,7 +647,7 @@ EventBus.getDefault().post(Object event);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -660,7 +658,7 @@ EventBus.getDefault().post(Object event);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -727,7 +725,7 @@ EventBus.getDefault().post(Object event);
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.7k</span>
+    <span title="Site words total count">53.5k</span>
   
 </div>
 
