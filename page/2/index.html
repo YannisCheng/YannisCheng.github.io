@@ -1761,8 +1761,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:02:22+08:00">
-                2017-11-15
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-16T00:27:48+08:00">
+                2017-11-16
               </time>
             
           </span>
@@ -1860,72 +1860,14 @@
 
       
         
-          
-            <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-12%2011.28.03.png" alt=""></p>
-<h1 id="在Activity中使用menu："><a href="#在Activity中使用menu：" class="headerlink" title="在Activity中使用menu："></a>在Activity中使用menu：</h1><pre><code>/**
-* toolbar menu 的图标点初始化
-* @param menu
-* @return
-*/
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    super.onCreateOptionsMenu(menu);
-    getMenuInflater().inflate(R.menu.tool_bar, menu);
-    return true;
-}    
-</code></pre><h1 id="一个menu文件示例："><a href="#一个menu文件示例：" class="headerlink" title="一个menu文件示例："></a>一个menu文件示例：</h1><p>包括：单个item menu，组item menu</p>
-<pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    tools:context=&quot;.MainActivity&quot;
-&gt;
-    &lt;item
-        android:id=&quot;@+id/choose_day&quot;
-        android:icon=&quot;@drawable/date_choose_bg&quot;
-        android:orderInCategory=&quot;80&quot;
-        android:title=&quot;选择时间范围&quot;
-        app:showAsAction=&quot;always&quot;&gt;
-        &lt;!-- item包含menu表示该menu是item下的子菜单 --&gt;
-        &lt;!--&lt;menu&gt;
-        &amp;lt;!&amp;ndash; 将group中的菜单项放于一个组里面 &amp;ndash;&amp;gt;
-        &lt;group
-            android:id=&quot;@+id/group&quot;
-            android:menuCategory=&quot;secondary&quot;
-            android:visible=&quot;true&quot;&gt;
-        &lt;item
-            android:id=&quot;@+id/today&quot;
-            android:icon=&quot;@drawable/menu_bg&quot;
-            android:orderInCategory=&quot;80&quot;
-            android:title=&quot;今天&quot;
-            app:showAsAction=&quot;never&quot;/&gt;
-        &lt;item
-            android:id=&quot;@+id/week&quot;
-            android:icon=&quot;@drawable/menu_bg&quot;
-            android:orderInCategory=&quot;80&quot;
-            android:title=&quot;本周&quot;
-            app:showAsAction=&quot;never&quot;/&gt;
-        &lt;/group&gt;
-        &lt;/menu&gt;--&gt;
-    &lt;/item&gt;
-    &lt;item
-        android:id=&quot;@+id/recorder_voice&quot;
-        android:icon=&quot;@drawable/recoder_selector&quot;
-        android:orderInCategory=&quot;80&quot;
-        android:title=&quot;点击录音&quot;
-        app:showAsAction=&quot;always&quot;&gt;
-    &lt;/item&gt;
-&lt;/menu&gt;
-</code></pre><h1 id="方法的使用"><a href="#方法的使用" class="headerlink" title="方法的使用"></a>方法的使用</h1><p>在建立actionbar或是toolbar的时候，都会默认的实现两个方法：</p>
-<ul>
-<li><p>onCreateOptionsMenu ：</p>
-<p>  建立菜单，只在页面加载的时候，运行一次，其后就不在运行了，想改变Menu在这里是不可能的。</p>
-</li>
-<li><p>onOptionsItemSelected ：对选中的菜单进行操作</p>
-</li>
-</ul>
-<p>Android提供了一个方法叫onPrepareOptionsMenu，它的功能是在每次点击一个Menu的时候，它就改变一次，所以你想要改变Menu的值，就得在这里运行。</p>
-
-          
+          <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-12%2011.28.03.png" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Android的menu文件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
