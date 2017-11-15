@@ -83,18 +83,22 @@
 
 
 
-<meta name="description" content="不必一味的讨好别人，每个人都有自己的活法。">
+<meta name="description" content="设计原则：依赖倒置原则要依赖抽象，不要依赖具体类。 这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。 这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。">
 <meta name="keywords" content="设计模式,阅读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="抽象工厂模式">
 <meta property="og:url" content="http://yannischeng.com/抽象工厂模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="不必一味的讨好别人，每个人都有自己的活法。">
+<meta property="og:description" content="设计原则：依赖倒置原则要依赖抽象，不要依赖具体类。 这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。 这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-08T03:24:45.658Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png">
+<meta property="og:updated_time" content="2017-11-15T01:06:35.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抽象工厂模式">
-<meta name="twitter:description" content="不必一味的讨好别人，每个人都有自己的活法。">
+<meta name="twitter:description" content="设计原则：依赖倒置原则要依赖抽象，不要依赖具体类。 这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。 这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
 
 
 
@@ -312,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-08T11:24:45+08:00">
-                2017-11-08
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:06:35+08:00">
+                2017-11-15
               </time>
             
           </span>
@@ -362,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  487 字
                 </span>
               
 
@@ -378,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -436,7 +440,26 @@
       
 
       
-        
+        <h1 id="设计原则：依赖倒置原则"><a href="#设计原则：依赖倒置原则" class="headerlink" title="设计原则：依赖倒置原则"></a>设计原则：依赖倒置原则</h1><pre><code>要依赖抽象，不要依赖具体类。
+</code></pre><p><strong>这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。</strong></p>
+<p>这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。</p>
+<a id="more"></a>
+<h2 id="引出问题"><a href="#引出问题" class="headerlink" title="引出问题"></a>引出问题</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png" alt=""></p>
+<p>这样看可能并不会特别直观，但是只要转换为图形……</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png" alt=""></p>
+<p>通过这个图形的，我们已经很直观的能看到问题的所在：有点“牵一发而动全身”的意思。这样的编写违背了面向接口编程的原则，而且耦合程度高：一个类与众多的类之间保持着依赖关系。</p>
+<h2 id="进行倒置"><a href="#进行倒置" class="headerlink" title="进行倒置"></a>进行倒置</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png" alt=""></p>
+<h1 id="依赖倒置原则中的“倒置”究竟“倒”在哪里？"><a href="#依赖倒置原则中的“倒置”究竟“倒”在哪里？" class="headerlink" title="依赖倒置原则中的“倒置”究竟“倒”在哪里？"></a>依赖倒置原则中的“倒置”究竟“倒”在哪里？</h1><p>“倒置”指的是和一般的OO设计思想方式相反，倒置你针对问题进行设计时的思维方式。</p>
+<h1 id="如何避免违反依赖倒置原则："><a href="#如何避免违反依赖倒置原则：" class="headerlink" title="如何避免违反依赖倒置原则："></a>如何避免违反依赖倒置原则：</h1><ul>
+<li>变量不可以持有具体类的引用。 在此例中，使用工厂方法来避免new</li>
+<li>不要让类派生自具体的类。</li>
+<li>不要覆盖基类中已实现的方法 </li>
+</ul>
+<h1 id="抽象工厂模式的定义："><a href="#抽象工厂模式的定义：" class="headerlink" title="抽象工厂模式的定义："></a>抽象工厂模式的定义：</h1><p>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。<br>抽象工厂的任务是定义创建一组产品的接口，接口内的每个方法负责创建一个具体的产品，同时我们利用实现抽象工厂子类来实现这个创建方法。抽象工厂中利用工厂方法实现生产方法是相当自然的做法。</p>
+<hr>
+<p>停止于： 2017-11-08 15:10:25  专向：Android高级进阶</p>
+<hr>
+
       
     </div>
     
@@ -457,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/工厂方法模式/" rel="next" title="工厂模式">
-                <i class="fa fa-chevron-left"></i> 工厂模式
+              <a href="/StarUML的使用/" rel="next" title="StarUML的使用">
+                <i class="fa fa-chevron-left"></i> StarUML的使用
               </a>
             
           </div>
@@ -466,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/自定义View-2 绘制图表：直角坐标系+饼状图/" rel="prev" title="自定义View-2 绘制图表：直角坐标系+饼状图">
+                自定义View-2 绘制图表：直角坐标系+饼状图 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -519,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +586,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -601,6 +637,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则：依赖倒置原则"><span class="nav-number">1.</span> <span class="nav-text">设计原则：依赖倒置原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引出问题"><span class="nav-number">1.1.</span> <span class="nav-text">引出问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进行倒置"><span class="nav-number">1.2.</span> <span class="nav-text">进行倒置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖倒置原则中的“倒置”究竟“倒”在哪里？"><span class="nav-number">2.</span> <span class="nav-text">依赖倒置原则中的“倒置”究竟“倒”在哪里？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何避免违反依赖倒置原则："><span class="nav-number">3.</span> <span class="nav-text">如何避免违反依赖倒置原则：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象工厂模式的定义："><span class="nav-number">4.</span> <span class="nav-text">抽象工厂模式的定义：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -628,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.1k</span>
+    <span title="Site words total count">69.3k</span>
   
 </div>
 

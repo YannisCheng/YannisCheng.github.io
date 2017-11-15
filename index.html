@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/抽象工厂模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-4-Canvas的辅助绘制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -285,7 +285,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/抽象工厂模式/" itemprop="url">抽象工厂模式</a></h1>
+                <a class="post-title-link" href="/自定义View-4-Canvas的辅助绘制/" itemprop="url">自定义View-4 Canvas的辅助绘制</a></h1>
         
 
         <div class="post-meta">
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T11:23:13+08:00">
-                2017-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T14:23:09+08:00">
+                2017-11-15
               </time>
             
 
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-08T11:24:45+08:00">
-                2017-11-08
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T19:46:39+08:00">
+                2017-11-15
               </time>
             
           </span>
@@ -332,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  1,002 字
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -413,7 +413,97 @@
       
         
           
-            
+            <h1 id="裁剪-Clip"><a href="#裁剪-Clip" class="headerlink" title="裁剪 Clip"></a>裁剪 Clip</h1><p><code>Canvas</code>中与<code>Clip</code>有关的方法：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png" alt=""></p>
+<p>共有2类：<code>Path</code>和<code>Rect</code></p>
+<h2 id="Rect裁剪"><a href="#Rect裁剪" class="headerlink" title="Rect裁剪"></a>Rect裁剪</h2><pre><code>canvas.clipRect(left,top,left + 130,top + 150);
+canvas.drawBitmap(bitmap, left, top, paint);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.15.png" alt=""></p>
+<h2 id="Path裁剪"><a href="#Path裁剪" class="headerlink" title="Path裁剪"></a>Path裁剪</h2><pre><code>//圆形抠图
+canvas.save();
+canvas.translate(250,500);
+Path path = new Path();
+path.addCircle(100,200,100, Path.Direction.CW);
+canvas.clipPath(path);
+canvas.drawBitmap(bitmap,0,0,paint);
+canvas.restore();
+
+//心形挖空
+canvas.save();
+canvas.translate(600,500);
+Path path1 = new Path();
+path1.setFillType(Path.FillType.INVERSE_WINDING);
+path1.arcTo(50,100,150,200,135,225,false);
+path1.arcTo(150,100,250,200,180,225,false);
+path1.lineTo(150,300);
+path1.close();
+canvas.clipPath(path1);
+canvas.drawBitmap(bitmap,0,0,paint);
+canvas.restore();
+
+//心形抠图
+canvas.save();
+canvas.translate(1000,500);
+Path path2 = new Path();
+path2.setFillType(Path.FillType.EVEN_ODD);
+path2.arcTo(50,100,150,200,135,225,false);
+path2.arcTo(150,100,250,200,180,225,false);
+path2.lineTo(150,300);
+path2.close();
+canvas.clipPath(path2);
+canvas.drawBitmap(bitmap,0,0,paint);
+canvas.restore();
+</code></pre><p>  <img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.25.png" alt=""></p>
+<h1 id="变换-Canvas，Matrix，Camera"><a href="#变换-Canvas，Matrix，Camera" class="headerlink" title="变换 Canvas，Matrix，Camera"></a>变换 Canvas，Matrix，Camera</h1><h2 id="Canvas变换"><a href="#Canvas变换" class="headerlink" title="Canvas变换"></a>Canvas变换</h2><p>共有4类：</p>
+<ul>
+<li>scale</li>
+<li>translate</li>
+<li>skew</li>
+<li><p>rotate</p>
+<p>他们的使用方式相同，唯一就是参数类型不同。</p>
+<p><strong>skew的使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">   * 斜切</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  canvas.save();</div><div class="line">  canvas.translate(<span class="number">0</span>,<span class="number">200</span>);</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * <span class="doctag">@param</span> sx在X中歪斜的数量</span></div><div class="line"><span class="comment">   * <span class="doctag">@param</span> sy在Y中倾斜的数量</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  canvas.skew(<span class="number">0f</span>,<span class="number">0.5f</span>);</div><div class="line">  canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">  canvas.restore();</div><div class="line">  canvas.save();</div><div class="line">  canvas.translate(<span class="number">700</span>,<span class="number">400</span>);</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * <span class="doctag">@param</span> sx在X中歪斜的数量</span></div><div class="line"><span class="comment">   * <span class="doctag">@param</span> sy在Y中倾斜的数量</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  canvas.skew(-<span class="number">0.5f</span>,<span class="number">0f</span>);</div><div class="line">  canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">  canvas.restore();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.36.png" alt=""></p>
+<h2 id="Matrix变换"><a href="#Matrix变换" class="headerlink" title="Matrix变换"></a>Matrix变换</h2><p><strong>大致使用</strong></p>
+<pre><code>Matrix matrix = new Matrix();
+canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+
+canvas.save();
+matrix.postTranslate(0,300);
+canvas.concat(matrix);
+canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+canvas.restore();
+
+canvas.translate(0,-300);
+canvas.save();
+matrix.preTranslate(0,-300);
+canvas.concat(matrix);
+canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+canvas.restore();
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.49.png" alt=""></p>
+<h2 id="Camera变换中的使用"><a href="#Camera变换中的使用" class="headerlink" title="Camera变换中的使用"></a>Camera变换中的使用</h2><p><code>Canvas</code>和<code>Matrix</code>仅能对图像实现二维效果的是实现，而<code>Camera</code>所在的是空间三维坐标系，能够实现空间变换效果。</p>
+<h3 id="初次实现变换"><a href="#初次实现变换" class="headerlink" title="初次实现变换"></a>初次实现变换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Camera camera = <span class="keyword">new</span> Camera();</div><div class="line">canvas.translate(<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">canvas.save();</div><div class="line">camera.save();</div><div class="line">camera.rotateX(<span class="number">30</span>);</div><div class="line">camera.applyToCanvas(canvas);</div><div class="line">camera.restore();</div><div class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">canvas.restore();</div><div class="line"></div><div class="line">canvas.translate(<span class="number">100</span>,-<span class="number">200</span>);</div><div class="line">canvas.save();</div><div class="line">camera.save();</div><div class="line">camera.rotateY(<span class="number">30</span>);</div><div class="line">camera.applyToCanvas(canvas);</div><div class="line">camera.restore();</div><div class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">canvas.restore();</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.12.52.png" alt=""></p>
+<p>很明显可以看到，在空间坐标系中进行<code>camera</code>变换后，得到的效果已经失真。</p>
+<pre><code>* Android的Camera中的轴是一个控件三维轴：X、Y、Z，3个轴，camera所对应的原点并不是图像的原点，而是三维坐标轴的原点。
+*
+* 所以图像如果想在camera下沿各个轴做&quot;平面（不失真）&quot;的旋转，就要以图像的中心为轴心进行旋转，但是camera不支持设置轴心，所以要通过Canvas进行轴心的再设置。
+*
+* 通过Canvas将图像的中心移动到轴的中心。待旋转结束之后再将图形的轴心移动回之前的位置。
+*
+* 所以，在camera下将图像进行旋转实际的操作步骤是：
+*
+* 1）将图像中心移动至空间坐标系的轴心
+* 2）执行图像的选装
+* 3）恢复图像原来的轴心位置。
+*
+* 通过移动图像的坐标原点后，对图像的X、Y、Z轴分别旋转30度后，三个图像是重合在一起的。即：
+*      他们的轴心是同一个点。
+</code></pre><h3 id="修正之后"><a href="#修正之后" class="headerlink" title="修正之后"></a>修正之后</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对X轴进行30度旋转</span></div><div class="line"><span class="comment">//保存变更前的状态</span></div><div class="line">camera.save();</div><div class="line">canvas.save();</div><div class="line"><span class="comment">//通过canva将三维坐标系的轴心移动至图像的原点，恢复到之前的空间状态。</span></div><div class="line">canvas.translate(center1X, center1Y);</div><div class="line"><span class="comment">//在camera下将图像沿着x轴旋转30度</span></div><div class="line">camera.rotateX(<span class="number">30</span>);</div><div class="line"><span class="comment">//获得在camera下图像的旋转结果，并将结果应用到canvas中.</span></div><div class="line">camera.applyToCanvas(canvas);</div><div class="line"><span class="comment">//通过canva将图像的原点移动至三维坐标系的轴心</span></div><div class="line">canvas.translate(-center1X, -center1Y);</div><div class="line"><span class="comment">//camera处理结束后，恢复到之前的sava状态</span></div><div class="line">camera.restore();</div><div class="line"><span class="comment">//将得到的图像的结果进行绘制。</span></div><div class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line"><span class="comment">//canvas处理结束后，恢复到之前的sava状态</span></div><div class="line">canvas.restore();</div><div class="line"></div><div class="line"><span class="comment">//对Y轴进行30度旋转</span></div><div class="line">canvas.translate(<span class="number">400</span>, <span class="number">0</span>);</div><div class="line">camera.save();</div><div class="line">canvas.save();</div><div class="line">canvas.translate(center1X, center1Y);</div><div class="line">camera.rotateY(<span class="number">30</span>);</div><div class="line">camera.applyToCanvas(canvas);</div><div class="line">canvas.translate(-center1X, -center1Y);</div><div class="line">camera.restore();</div><div class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">canvas.restore();</div><div class="line"></div><div class="line"><span class="comment">//对Z轴进行30度旋转</span></div><div class="line">canvas.translate(<span class="number">400</span>, <span class="number">0</span>);</div><div class="line">camera.save();</div><div class="line">canvas.save();</div><div class="line">canvas.translate(center1X, center1Y);</div><div class="line">camera.rotateZ(<span class="number">30</span>);</div><div class="line">camera.applyToCanvas(canvas);</div><div class="line">canvas.translate(-center1X, -center1Y);</div><div class="line">camera.restore();</div><div class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</div><div class="line">canvas.restore();</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.13.11.png" alt=""></p>
+
           
         
       
@@ -458,7 +548,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/工厂方法模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android7-0新特性-Shortcuts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -477,7 +567,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/工厂方法模式/" itemprop="url">工厂模式</a></h1>
+                <a class="post-title-link" href="/Android7-0新特性-Shortcuts/" itemprop="url">Android7.0新特性-Shortcuts</a></h1>
         
 
         <div class="post-meta">
@@ -489,8 +579,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T15:34:06+08:00">
-                2017-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T22:29:28+08:00">
+                2017-11-14
               </time>
             
 
@@ -505,8 +595,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-08T11:05:57+08:00">
-                2017-11-08
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:39:05+08:00">
+                2017-11-15
               </time>
             
           </span>
@@ -524,8 +614,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -555,7 +645,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  896 字
+                  1,110 字
                 </span>
               
 
@@ -571,7 +661,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -604,10 +694,11 @@
 
       
         
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从pizza生产中使用的<code>简单工厂方法</code>到pizzaStore中使用pizzaStore子类来生产属于自己店的pizza🍕，来理解<code>工厂方法模式</code>。</p>
+          <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>如果你的<code>App targets android7.1（API level25）</code>或者更高，你就可以在你的app中定义快捷方式来支持<code>特殊的actions</code>。这些快捷方式可以显示在启动图标上，快捷方式可以在你的app内让用户快速开始使用命令或者推荐任务。<br><code>Shortcuts</code>是Android7.0的新特性，它的功能就像是类似iphone的<code>3D Touch</code>，选中其中的一条<code>Shortcut</code>后，点击是打开对应的app界面，长按则是将此条<code>Shortcut</code>添加至桌面。</p>
+<p>以<code>网易云音乐</code>为例进行展示。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/工厂方法模式/#more" rel="contents">
+            <a class="btn" href="/Android7-0新特性-Shortcuts/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -655,7 +746,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/简单工厂方法/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-3Paint详细/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -674,7 +765,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/简单工厂方法/" itemprop="url">简单工厂方法</a></h1>
+                <a class="post-title-link" href="/自定义View-3Paint详细/" itemprop="url">自定义View-3 Paint详细</a></h1>
         
 
         <div class="post-meta">
@@ -686,8 +777,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T10:38:36+08:00">
-                2017-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T14:41:20+08:00">
+                2017-11-14
               </time>
             
 
@@ -702,8 +793,416 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-07T16:30:25+08:00">
-                2017-11-07
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T13:59:47+08:00">
+                2017-11-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,149 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>参考：<a href="http://hencoder.com/ui-1-2/" target="_blank" rel="external">http://hencoder.com/ui-1-2/</a></p>
+</blockquote>
+<p>继续更随着学习，用适合自己的方式将成果进行记录。</p>
+<h1 id="Paint类的4个enum"><a href="#Paint类的4个enum" class="headerlink" title="Paint类的4个enum"></a>Paint类的4个enum</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="画笔填充样式-Style"><a href="#画笔填充样式-Style" class="headerlink" title="画笔填充样式 Style"></a>画笔填充样式 Style</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Style</div><div class="line">&#123;</div><div class="line">	FILL(),</div><div class="line">	FILL_AND_STROKE(),</div><div class="line">	STROKE();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/自定义View-3Paint详细/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-2 绘制图表：直角坐标系+饼状图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/自定义View-2 绘制图表：直角坐标系+饼状图/" itemprop="url">自定义View-2 绘制图表：直角坐标系+饼状图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:21:17+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:01:59+08:00">
+                2017-11-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,984 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="分析数据的表现形式"><a href="#分析数据的表现形式" class="headerlink" title="分析数据的表现形式"></a>分析数据的表现形式</h2><ul>
+<li>坐标系</li>
+<li>饼状图</li>
+</ul>
+<h2 id="数据准备，获取图表的："><a href="#数据准备，获取图表的：" class="headerlink" title="数据准备，获取图表的："></a>数据准备，获取图表的：</h2><ul>
+<li>标题</li>
+<li>各个数据项的名称</li>
+<li>各个数据项的数值</li>
+</ul>
+<p>将数据进行封装</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/自定义View-2 绘制图表：直角坐标系+饼状图/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/抽象工厂模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/抽象工厂模式/" itemprop="url">抽象工厂模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T11:23:13+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:06:35+08:00">
+                2017-11-15
               </time>
             
           </span>
@@ -752,7 +1251,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  710 字
+                  487 字
                 </span>
               
 
@@ -768,7 +1267,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -801,15 +1300,12 @@
 
       
         
-          <h1 id="new-实例化问题"><a href="#new-实例化问题" class="headerlink" title="new 实例化问题"></a>new 实例化问题</h1><p>new -&gt; 具体类，针对实现编程：</p>
-<pre><code>Drink drink = new TeaDrink();
-</code></pre><p>上述语句中使用接口让代码更有那弹性，但是还是针对的具体的类。</p>
-<ul>
-<li>针对接口编程，可以隔离掉以后系统可能发生的部分改变。因为是针对接口而编写的，那么通过多态，他可以与任何新类实现该接口。</li>
-</ul>
+          <h1 id="设计原则：依赖倒置原则"><a href="#设计原则：依赖倒置原则" class="headerlink" title="设计原则：依赖倒置原则"></a>设计原则：依赖倒置原则</h1><pre><code>要依赖抽象，不要依赖具体类。
+</code></pre><p><strong>这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。</strong></p>
+<p>这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/简单工厂方法/#more" rel="contents">
+            <a class="btn" href="/抽象工厂模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -904,8 +1400,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-06T16:35:58+08:00">
-                2017-11-06
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:11:15+08:00">
+                2017-11-15
               </time>
             
           </span>
@@ -1007,7 +1503,9 @@
 <p>StarUML使用参考：<a href="http://blog.csdn.net/eyckwu/article/details/53871841" target="_blank" rel="external">http://blog.csdn.net/eyckwu/article/details/53871841</a><br>UML学 : <a href="http://www.uml.org.cn/oobject/201104212.asp" target="_blank" rel="external">http://www.uml.org.cn/oobject/201104212.asp</a><br>各种图（流程图，思维导图，UML，拓扑图，ER图）简介 ：<a href="http://www.cnblogs.com/jiqing9006/p/3344221.html" target="_blank" rel="external">http://www.cnblogs.com/jiqing9006/p/3344221.html</a></p>
 </blockquote>
 <hr>
-<h2 id="文章持续更新中……"><a href="#文章持续更新中……" class="headerlink" title="文章持续更新中……"></a><strong><em>文章持续更新中……</em></strong></h2><h1 id="码云拾遗"><a href="#码云拾遗" class="headerlink" title="码云拾遗"></a>码云拾遗</h1><ul>
+<p><strong>文章持续更新中……</strong></p>
+<hr>
+<h1 id="码云拾遗"><a href="#码云拾遗" class="headerlink" title="码云拾遗"></a>码云拾遗</h1><ul>
 <li><p><strong>明星效应。很简单，在一个领域保持顶尖水平，比在一两个领域保持领先水平和五六个领域保持一般水准都要更有价值、并且收益更好。</strong> </p>
 </li>
 <li><p><strong>有悖常识的真相：让未来更开放的方式，正是专注的去做好一件事情。这个世界上最成功的人，他们在某一领域获得成功之后，可通过经营杠杆进入任何他们想要涉足的领域。而这都得依赖于他们曾极致的专注在做好一件事情上。</strong></p>
@@ -1863,466 +2361,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  16-安装爬虫工具Scrapy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Python3  16-安装爬虫工具Scrapy/" itemprop="url">Python3 16-安装爬虫工具Scrapy</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T19:49:48+08:00">
-                2017-10-31
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:01+08:00">
-                2017-11-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  671 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>python的学习在今天又开始了：<br><strong>人生苦短，我用python。</strong></p>
-<p>安装Scrapy需要使用到：pip（python2）、pip3（python3），由于之前已经安装，此处忽略。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Python3  16-安装爬虫工具Scrapy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android-Studio使用快人一步2 快捷键/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Android-Studio使用快人一步2 快捷键/" itemprop="url">Android Studio 快捷键</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T15:04:34+08:00">
-                2017-10-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-30T15:47:21+08:00">
-                2017-10-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,201 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>键盘快捷键</p>
-<blockquote>
-<p>快捷键参考：<a href="https://developer.android.google.cn/studio/intro/keyboard-shortcuts.html" target="_blank" rel="external">https://developer.android.google.cn/studio/intro/keyboard-shortcuts.html</a><br><strong>Android Studio使用指南</strong>：<a href="https://developer.android.google.cn/studio/projects/android-library.html" target="_blank" rel="external">https://developer.android.google.cn/studio/projects/android-library.html</a></p>
-</blockquote>
-<p><strong>常规</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">说明</th>
-<th style="text-align:left">Windows/Linux</th>
-<th style="text-align:left">Mac</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">全部保存</td>
-<td style="text-align:left">Control + S</td>
-<td style="text-align:left">Command + S</td>
-</tr>
-<tr>
-<td style="text-align:left">同步</td>
-<td style="text-align:left">Control + Alt + Y</td>
-<td style="text-align:left">Command + Option + Y</td>
-</tr>
-<tr>
-<td style="text-align:left">最大化/最小化编辑器</td>
-<td style="text-align:left">Control + Shift + F12</td>
-<td style="text-align:left">Control + Command + F12</td>
-</tr>
-<tr>
-<td style="text-align:left">添加到收藏夹</td>
-<td style="text-align:left">Alt + Shift + F</td>
-<td style="text-align:left">Option + Shift + F</td>
-</tr>
-<tr>
-<td style="text-align:left">使用当前配置文件检查当前文件</td>
-<td style="text-align:left">Alt + Shift + I</td>
-<td style="text-align:left">Option + Shift + I</td>
-</tr>
-<tr>
-<td style="text-align:left">快速切换模式</td>
-<td style="text-align:left">Control +  （反引号）</td>
-<td style="text-align:left">Control + `（反引号）</td>
-</tr>
-<tr>
-<td style="text-align:left">打开设置对话框</td>
-<td style="text-align:left">Control + Alt + S</td>
-<td style="text-align:left">Command + ,（英文逗号）</td>
-</tr>
-<tr>
-<td style="text-align:left">打开项目结构对话框</td>
-<td style="text-align:left">Control + Alt + Shift + S</td>
-<td style="text-align:left">Command + ;（英文分号）</td>
-</tr>
-<tr>
-<td style="text-align:left">在标签和工具窗口之间切换</td>
-<td style="text-align:left">Control + Tab</td>
-<td style="text-align:left">Control + Tab</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Android-Studio使用快人一步2 快捷键/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2374,7 +2417,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2385,7 +2428,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2396,7 +2439,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2463,7 +2506,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.1k</span>
+    <span title="Site words total count">69.3k</span>
   
 </div>
 

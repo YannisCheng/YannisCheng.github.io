@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：http://hencoder.com/ui-1-2/  继续更随着学习，用适合自己的方式将成果进行记录。 Paint类的4个enum12 画笔填充样式 Style123456public static enum Style&amp;#123;	FILL(),	FILL_AND_STROKE(),	STROKE();&amp;#125;">
+<meta name="keywords" content="Android,View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义View-3 Paint详细">
+<meta property="og:url" content="http://yannischeng.com/自定义View-3Paint详细/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="参考：http://hencoder.com/ui-1-2/  继续更随着学习，用适合自己的方式将成果进行记录。 Paint类的4个enum12 画笔填充样式 Style123456public static enum Style&amp;#123;	FILL(),	FILL_AND_STROKE(),	STROKE();&amp;#125;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6gxcusnj20iw04xmzr.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6dq7wudj206l06875e.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6ewf1o5j206d066q4a.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6fmbemdj206u061my4.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6fragq2j20lc089djv.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig74qv8rij30ct05rglp.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig75e27w6j30cp05ewem.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7ak3kqgj30cs0cq74j.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7d34s0jj30lf07t75x.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.21.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.39.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.33.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7ekjh7lj30dw05jq2z.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7epf94aj30dr05eq2x.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.50.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.17.10.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.50.33.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.12.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.29.png">
+<meta property="og:updated_time" content="2017-11-15T05:59:47.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义View-3 Paint详细">
+<meta name="twitter:description" content="参考：http://hencoder.com/ui-1-2/  继续更随着学习，用适合自己的方式将成果进行记录。 Paint类的4个enum12 画笔填充样式 Style123456public static enum Style&amp;#123;	FILL(),	FILL_AND_STROKE(),	STROKE();&amp;#125;">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6gxcusnj20iw04xmzr.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/自定义View-3Paint详细/"/>
+
+
+
+
+
+  <title>自定义View-3 Paint详细 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-3Paint详细/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自定义View-3 Paint详细</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T14:41:20+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T13:59:47+08:00">
+                2017-11-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,149 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/View/" rel="tag"># View</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/自定义View-3Paint详细/" title="自定义View-3 Paint详细">http://yannischeng.com/自定义View-3Paint详细/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="http://hencoder.com/ui-1-2/" target="_blank" rel="external">http://hencoder.com/ui-1-2/</a></p>
+</blockquote>
+<p>继续更随着学习，用适合自己的方式将成果进行记录。</p>
+<h1 id="Paint类的4个enum"><a href="#Paint类的4个enum" class="headerlink" title="Paint类的4个enum"></a>Paint类的4个enum</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="画笔填充样式-Style"><a href="#画笔填充样式-Style" class="headerlink" title="画笔填充样式 Style"></a>画笔填充样式 Style</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Style</div><div class="line">&#123;</div><div class="line">	FILL(),</div><div class="line">	FILL_AND_STROKE(),</div><div class="line">	STROKE();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="画笔线头样式-Cap"><a href="#画笔线头样式-Cap" class="headerlink" title="画笔线头样式 Cap"></a>画笔线头样式 Cap</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Cap</div><div class="line">&#123;</div><div class="line">	BUTT(),</div><div class="line">	ROUND(),</div><div class="line">	SQUARE();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="两条直线相交后的样式-Join"><a href="#两条直线相交后的样式-Join" class="headerlink" title="两条直线相交后的样式 Join"></a>两条直线相交后的样式 Join</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Join</div><div class="line">&#123;</div><div class="line">	BEVEL(),</div><div class="line">	MITER(),</div><div class="line">	ROUND();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文字对齐方式-Align"><a href="#文字对齐方式-Align" class="headerlink" title="文字对齐方式 Align"></a>文字对齐方式 Align</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Align</div><div class="line">&#123;</div><div class="line">	CENTER(),</div><div class="line">	LEFT(),</div><div class="line">	RIGHT();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Paint的功能"><a href="#Paint的功能" class="headerlink" title="Paint的功能"></a>Paint的功能</h1><ul>
+<li><strong>颜色</strong></li>
+<li><strong>效果</strong></li>
+<li><strong>绘制文本</strong></li>
+<li><strong>初始化</strong></li>
+</ul>
+<h1 id="1-颜色"><a href="#1-颜色" class="headerlink" title="1. 颜色"></a>1. 颜色</h1><h2 id="1-1-基本颜色绘制"><a href="#1-1-基本颜色绘制" class="headerlink" title="1.1 基本颜色绘制"></a>1.1 基本颜色绘制</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6gxcusnj20iw04xmzr.jpg" alt=""></p>
+<p>基本颜色绘制表示：基础颜色的设置，分类的标准就是根据不同颜色设置方式。</p>
+<h3 id="Paint-设置颜色的方法："><a href="#Paint-设置颜色的方法：" class="headerlink" title="Paint 设置颜色的方法："></a>Paint 设置颜色的方法：</h3><h4 id="Paint-setColor-ARGB-来设置颜色"><a href="#Paint-setColor-ARGB-来设置颜色" class="headerlink" title="Paint.setColor/ARGB 来设置颜色"></a><code>Paint.setColor/ARGB</code> 来设置颜色</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setColor(Color.parseColor(<span class="string">"#009688"</span>)); </div><div class="line">paint.setColor(Color.BLACK);</div><div class="line">paint.setARGB(<span class="number">100</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<h4 id="Shader-来指定着色方案"><a href="#Shader-来指定着色方案" class="headerlink" title="Shader 来指定着色方案"></a>Shader 来指定着色方案</h4><p>Shader 中文名是“着色器”。</p>
+<blockquote>
+<p>注意：在设置了 Shader 的情况下， <code>Paint.setColor/ARGB</code> 所设置的颜色就不再起作用。</p>
+</blockquote>
+<p>在Android中并不是直接使用“Shader类”，而是使用它的子类：</p>
+<ul>
+<li><strong>LinearGradient（线性渐变）</strong></li>
+<li><strong>RadialGradient（辐射渐变）</strong></li>
+<li><strong>SweepGradient（扫描渐变）</strong></li>
+<li><strong>BitmapShader（Bitmap着色）</strong></li>
+<li><strong>ComposeShader（组合着色）</strong></li>
+</ul>
+<p>其中前三者：LinearGradient（线性渐变）, RadialGradient（辐射渐变）, SweepGradient（扫描渐变）同xml绘制图形中有形同的样式。<br>Shader作为一个基类，包含有一个enum类：</p>
+<pre><code>public enum TileMode {
+        /**
+         * 如果着色器在其原始边界之外绘制，则复制边缘颜色
+         */
+        CLAMP   (0),
+        /**
+         * 重复着色器的图像水平和垂直
+         */
+        REPEAT  (1),
+        /**
+         * 复着色器的图像水平和垂直，交替镜像
+         */
+        MIRROR  (2);
+
+        TileMode(int nativeInt) {
+            this.nativeInt = nativeInt;
+        }
+        final int nativeInt;
+    }    
+</code></pre><h5 id="1-LinearGradient-线性渐变"><a href="#1-LinearGradient-线性渐变" class="headerlink" title="1  LinearGradient 线性渐变"></a>1  LinearGradient 线性渐变</h5><p><strong>使用</strong>：</p>
+<pre><code>Shader shader = new LinearGradient(100, 100, 500, 500, Color.parseColor(&quot;#E91E63&quot;),  
+    Color.parseColor(&quot;#2196F3&quot;), Shader.TileMode.CLAMP);
+paint.setShader(shader);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6dq7wudj206l06875e.jpg" alt=""><br><strong>此类的构造器</strong></p>
+<pre><code> /**
+ * Create a shader that draws a linear gradient along a line.
+ *
+ * @param x0           The x-coordinate for the start of the gradient line
+ * @param y0           The y-coordinate for the start of the gradient line
+ * @param x1           The x-coordinate for the end of the gradient line
+ * @param y1           The y-coordinate for the end of the gradient line
+ * @param colors       The colors to be distributed along the gradient line
+ * @param positions    May be null. The relative positions [0..1] of
+ *                     each corresponding color in the colors array. If this is null,
+ *                     the the colors are distributed evenly along the gradient line.
+ * @param tile         The Shader tiling mode
+*/    
+LinearGradient(float x0, float y0, float x1, float y1, @NonNull @ColorInt int colors[],
+        @Nullable float positions[], @NonNull TileMode tile)
+</code></pre><p><strong>参数：</strong> </p>
+<pre><code>x0 y0 x1 y1：渐变的两个端点的位置 
+color0 color1“ 是端点的颜色 
+tile：端点范围之外的着色规则，类型是 TileMode
+</code></pre><h5 id="2-RadialGradient-辐射渐变"><a href="#2-RadialGradient-辐射渐变" class="headerlink" title="2 RadialGradient 辐射渐变"></a>2 RadialGradient 辐射渐变</h5><p><strong>使用</strong>：</p>
+<pre><code>Shader shader = new RadialGradient(300, 300, 200, Color.parseColor(&quot;#E91E63&quot;),  
+    Color.parseColor(&quot;#2196F3&quot;), Shader.TileMode.CLAMP);
+paint.setShader(shader);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6ewf1o5j206d066q4a.jpg" alt=""></p>
+<p><strong>构造方法</strong>： </p>
+<pre><code>RadialGradient(float centerX, float centerY, float radius, int centerColor, int edgeColor, TileMode tileMode)。
+</code></pre><p><strong>参数</strong>： </p>
+<pre><code>centerX centerY：辐射中心的坐标 
+radius：辐射半径 
+centerColor：辐射中心的颜色 
+edgeColor：辐射边缘的颜色 
+tileMode：辐射范围之外的着色模式。
+</code></pre><h5 id="3-SweepGradient-扫描渐变"><a href="#3-SweepGradient-扫描渐变" class="headerlink" title="3 SweepGradient 扫描渐变"></a>3 SweepGradient 扫描渐变</h5><p><strong>使用</strong>：</p>
+<pre><code>Shader shader = new SweepGradient(300, 300, Color.parseColor(&quot;#E91E63&quot;),  
+    Color.parseColor(&quot;#2196F3&quot;));
+paint.setShader(shader);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6fmbemdj206u061my4.jpg" alt=""></p>
+<p><strong>构造方法</strong>：</p>
+<pre><code>SweepGradient(float cx, float cy, int color0, int color1)
+</code></pre><p><strong>参数</strong>： </p>
+<pre><code>cx cy ：扫描的中心 
+color0：扫描的起始颜色 
+color1：扫描的终止颜色
+</code></pre><h5 id="4-BitmapShader-Bitmap-来着色"><a href="#4-BitmapShader-Bitmap-来着色" class="headerlink" title="4 BitmapShader Bitmap 来着色"></a>4 BitmapShader Bitmap 来着色</h5><p><strong>使用</strong>：</p>
+<pre><code>Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  
+Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);  
+paint.setShader(shader);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/52eb2279ly1fig6fragq2j20lc089djv.jpg" alt=""></p>
+<p>通过使用：<code>drawCircle() + BitmapShader</code>就可以绘制圆形的  Bitmap，不用 <code>drawBitmap()</code> 了（其他形状同理）。</p>
+<p><strong>构造方法</strong>： </p>
+<pre><code>BitmapShader(Bitmap bitmap, Shader.TileMode tileX, Shader.TileMode tileY)
+</code></pre><p><strong>参数</strong>： </p>
+<pre><code>bitmap：用来做模板的 Bitmap 对象 
+tileX：横向的 TileMode 
+tileY：纵向的 TileMode。
+</code></pre><h5 id="5-ComposeShader-混合着色器（两个-Shader-一起使用）"><a href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）" class="headerlink" title="5 ComposeShader 混合着色器（两个 Shader 一起使用）"></a>5 ComposeShader 混合着色器（两个 Shader 一起使用）</h5><p><strong>使用</strong></p>
+<pre><code>// 第一个 Shader：头像的 Bitmap
+Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  
+Shader shader1 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+// 第二个 Shader：从上到下的线性渐变（由透明到黑色）
+Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.batman_logo);  
+Shader shader2 = new BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+// ComposeShader：结合两个 Shader
+Shader shader = new ComposeShader(shader1, shader2, PorterDuff.Mode.SRC_OVER);  
+paint.setShader(shader);
+</code></pre><blockquote>
+<p><code>ComposeShader()</code> 在硬件加速下是不支持两个相同类型的 Shader 的，所以这里也需要关闭硬件加速才能看到效果。<br><strong>如何 关闭硬件加速 ?</strong></p>
+</blockquote>
+<p><strong>构造方法</strong>：</p>
+<pre><code>ComposeShader(Shader shaderA, Shader shaderB, PorterDuff.Mode mode)
+</code></pre><p><strong>参数</strong>： </p>
+<pre><code>shaderA, shaderB：两个相继使用的 Shader 
+mode: 两个 Shader 的叠加模式，即 shaderA 和 shaderB 应该怎样共同绘制。它的类型是  PorterDuff.Mode 。
+</code></pre><p>PorterDuff.Mode 一共有 17 个，可以分为：</p>
+<ul>
+<li>Alpha 合成 (Alpha Compositing)</li>
+<li>混合 (Blending)</li>
+</ul>
+<p>具体使用参考：<a href="http://hencoder.com/ui-1-2/" target="_blank" rel="external">http://hencoder.com/ui-1-2/</a></p>
+<h2 id="1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><a href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤" class="headerlink" title="1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤"></a>1.2 <code>setColorFilter(ColorFilter colorFilter)</code> 颜色过滤</h2><pre><code>对每个像素的颜色进行过滤
+</code></pre><p>在设置了对象的基础颜色之后，再对颜色进行设置就是针对“基础颜色”进行设置，不再是停留在对“对象颜色的填充”方面。<br>Paint通过<code>setColorFilter(ColorFilter filter)</code> 方法设置 ColorFilter。 但是 ColorFilter 并不直接使用，而是使用它的子类：</p>
+<ul>
+<li><strong>LightingColorFilter</strong>：模拟简单的光照效果</li>
+</ul>
+<p><strong>使用</strong></p>
+<pre><code>ColorFilter lightingColorFilter = new LightingColorFilter(0x00ffff, 0x000000);  
+paint.setColorFilter(lightingColorFilter);  
+</code></pre><ul>
+<li><strong>PorterDuffColorFilter</strong></li>
+<li><strong>ColorMatrixColorFilter</strong></li>
+</ul>
+<h2 id="1-3-setXfermode-Xfermode-xfermode"><a href="#1-3-setXfermode-Xfermode-xfermode" class="headerlink" title="1.3 setXfermode(Xfermode xfermode)"></a>1.3 <code>setXfermode(Xfermode xfermode)</code></h2><p>指的是你要绘制的内容和 Canvas 的目标位置的内容应该怎样结合计算出最终的颜色，就是要你以绘制的内容作为源图像，以 View 中已有的内容作为目标图像，选取一个  PorterDuff.Mode 作为绘制内容的颜色处理方案。</p>
+<p><strong>注意事项</strong></p>
+<ol>
+<li>使用离屏缓冲（Off-screen Buffer）</li>
+</ol>
+<p>在绘制之前保存，绘制之后恢复：</p>
+<pre><code>int saved = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG);
+canvas.drawBitmap(rectBitmap, 0, 0, paint); // 画方
+paint.setXfermode(xfermode); // 设置 Xfermode
+canvas.drawBitmap(circleBitmap, 0, 0, paint); // 画圆
+paint.setXfermode(null); // 用完及时清除 Xfermode
+canvas.restoreToCount(saved);
+</code></pre><ol>
+<li>控制好透明区域</li>
+</ol>
+<h1 id="2-效果"><a href="#2-效果" class="headerlink" title="2. 效果"></a>2. 效果</h1><h2 id="2-1-setAntiAlias-boolean-aa-抗锯齿效果"><a href="#2-1-setAntiAlias-boolean-aa-抗锯齿效果" class="headerlink" title="2.1 setAntiAlias (boolean aa) 抗锯齿效果"></a>2.1 <code>setAntiAlias (boolean aa)</code> 抗锯齿效果</h2><p>抗锯齿默认是关闭的，如果需要抗锯齿，需要显式地打开。<br>打开抗锯齿还有一个更方便的方式，可以在初始化的时候就开启抗锯齿：</p>
+<pre><code>Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);  
+</code></pre><h2 id="2-2-setStyle-Paint-Style-style-线条填充效果"><a href="#2-2-setStyle-Paint-Style-style-线条填充效果" class="headerlink" title="2.2 setStyle(Paint.Style style) 线条填充效果"></a>2.2 <code>setStyle(Paint.Style style)</code> 线条填充效果</h2><p>设置图形是线条风格还是填充风格的，也可以二者并用。</p>
+<h2 id="2-3-线条样式效果"><a href="#2-3-线条样式效果" class="headerlink" title="2.3 线条样式效果"></a>2.3 线条样式效果</h2><p>线条形状的一共有 4 个方法：</p>
+<ul>
+<li><strong>setStrokeWidth(float width)</strong> ：设置线条宽度</li>
+<li><p><strong>setStrokeCap(Paint.Cap cap)</strong> ：设置线头的形状。</p>
+<ul>
+<li>BUTT 平头</li>
+<li>ROUND 圆头</li>
+<li>SQUARE 方头</li>
+</ul>
+</li>
+</ul>
+<p>默认为 BUTT。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig74qv8rij30ct05rglp.jpg" alt=""></p>
+<ul>
+<li><p><strong>setStrokeJoin(Paint.Join join)</strong> : 设置拐角的形状。</p>
+<ul>
+<li>MITER 尖角</li>
+<li>BEVEL 平角</li>
+<li>ROUND 圆角</li>
+</ul>
+</li>
+</ul>
+<p>默认为 MITER</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig75e27w6j30cp05ewem.jpg" alt=""></p>
+<ul>
+<li><strong>setStrokeMiter(float miter)</strong> : 是对于 setStrokeJoin() 的补充，设置 MITER 型拐角的延长线的最大值.</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7ak3kqgj30cs0cq74j.jpg" alt=""></p>
+<h2 id="2-4-色彩优化效果"><a href="#2-4-色彩优化效果" class="headerlink" title="2.4 色彩优化效果"></a>2.4 色彩优化效果</h2><ul>
+<li><strong>setDither(boolean dither)</strong> ：设置图像的抖动。</li>
+</ul>
+<p>抖动更多的作用是在图像降低色彩深度绘制时，避免出现大片的色带与色块</p>
+<pre><code>paint.setDither(true);  
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7d34s0jj30lf07t75x.jpg" alt=""></p>
+<ul>
+<li><p><strong>setFilterBitmap(boolean filter)</strong> ：双线性过滤来绘制 Bitmap。<br>图像在放大绘制的时候会出现马赛克现象，如果开启了双线性过滤，就可以让结果图像显得更加平滑</p>
+<pre><code>paint.setFilterBitmap(true); 
+</code></pre></li>
+</ul>
+<h2 id="2-5-setPathEffect-PathEffect-effect-设置轮廓效果"><a href="#2-5-setPathEffect-PathEffect-effect-设置轮廓效果" class="headerlink" title="2.5 setPathEffect(PathEffect effect) 设置轮廓效果"></a>2.5 <code>setPathEffect(PathEffect effect)</code> 设置轮廓效果</h2><p><strong>使用</strong></p>
+<pre><code>PathEffect pathEffect = new DashPathEffect(new float[]{10, 5}, 10);  
+paint.setPathEffect(pathEffect);
+</code></pre><p>共有6 种 PathEffect：</p>
+<pre><code>(1) CornerPathEffect -- 圆角
+(2) DashPathEffect -- 虚线效果
+(3) DiscretePathEffect -- 离散路径效果
+(4) PathDashPathEffect -- 印章路径效果
+(5) ComposePathEffect合并两个特效是有先后顺序的，它会先将第二个参数的PathEffect innerpe的特效作用于路径上，然后再在此加了特效的路径上作用第二个特效。
+(6) SumPathEffect是分别对原始路径分别作用第一个特效和第二个特效。然后再将这两条路径合并，做为最终结果。
+</code></pre><p>分为两类：</p>
+<ul>
+<li><p><strong>单一效果的</strong>  </p>
+<ul>
+<li><p><strong>1. CornerPathEffect</strong> ：把所有拐角变成圆角</p>
+<pre><code>PathEffect pathEffect = new CornerPathEffect(20);  
+paint.setPathEffect(pathEffect);
+</code></pre><p>构造方法 </p>
+<p>  CornerPathEffect(float radius) </p>
+<p>的参数 radius 是圆角的半径。<br>使用</p>
+<p>   //第1组  拐角弧度</p>
+<pre><code>Path path = new Path();
+path.moveTo(100,200);
+path.lineTo(400,50);
+path.lineTo(700,200);
+path.lineTo(1000,70);
+canvas.drawPath(path,paintStyle(Color.GREEN,0,null,0));
+//画布下移
+canvas.translate(0,50);
+canvas.drawPath(path,paintStyle(Color.WHITE,50,null,0));
+canvas.translate(0,50);
+canvas.drawPath(path,paintStyle(Color.YELLOW,100,null,0));
+canvas.translate(0,200);
+
+private Paint paintStyle(int color, int corner, float[] floats, int phase) {
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(5);
+    paint.setColor(color);
+    //设置拐角度数
+    paint.setPathEffect(new CornerPathEffect(corner));
+    //设置间断线
+    if (floats != null) {
+        paint.setPathEffect(new DashPathEffect(floats,phase));
+    }
+    paint.setStyle(Paint.Style.STROKE);
+    return paint;
+}
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.21.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- **2. DiscretePathEffect** ：离散路径效果
+
+        PathEffect pathEffect = new DiscretePathEffect(20, 5);  
+        paint.setPathEffect(pathEffect);
+
+构造方法 
+
+    DiscretePathEffect(float segmentLength, float deviation) 
+
+的两个参数中， segmentLength 是用来拼接的每个线段的长度， deviation 是偏离量。
+
+使用
+
+    //第3组 离散
+        canvas.translate(0,50);
+        canvas.drawPath(path,paintStyle(Color.GREEN,2,14));
+        canvas.translate(0,50);
+        canvas.drawPath(path,paintStyle(Color.WHITE,4,8));
+        canvas.translate(0,50);
+        canvas.drawPath(path,paintStyle(Color.YELLOW,8,4));
+
+        private Paint paintStyle(int color,float someLength, float deviation) {
+            Paint paint = new Paint();
+            paint.setAntiAlias(true);
+            paint.setStrokeWidth(5);
+            paint.setColor(color);
+            /**
+             * segmentLength：表示将原来的路径切成多长的线段。如果值为2，那么这个路径就会被切成一段段由长度为2的小线段。所以这个值越小，所切成的小线段越多；这个值越大，所切成的小线段越少。
+             deviation：表示被切成的每个小线段的可偏移距离。值越大，就表示每个线段的可偏移距离就越大，就显得越凌乱，值越小，每个线段的可偏移原位置的距离就越小。
+             */
+            paint.setPathEffect(new DiscretePathEffect(someLength,deviation));
+            paint.setStyle(Paint.Style.STROKE);
+            return paint;
+        }
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.39.png" alt=""></p>
+<ul>
+<li><p><strong>3. DashPathEffect</strong> ：虚线效果</p>
+<pre><code>PathEffect pathEffect = new DiscretePathEffect(20, 5);  
+paint.setPathEffect(pathEffect);
+</code></pre><p>  使用</p>
+<pre><code>//第2组  间隔线
+    float[] floats = new float[]{30,10};
+    float[] floats2 = new float[]{100,30};
+    float[] floats3 = new float[]{10,30,90,20};
+    /**
+     * 对于intervals[]数组的有两个限定：
+     长度必须大于等于2；因为必须有一个实线段和一个空线段来组成虚线。
+     个数必须为偶数，如果是基数，最后一个数字将被忽略；这个很好理解，因为一组虚线的组成必然是一个实线和一个空线成对组成的。
+     对于phase：开始绘制的偏移值
+     */
+    canvas.translate(0,50);
+    canvas.drawPath(path,paintStyle(Color.GREEN,0,floats,0));
+    canvas.translate(0,50);
+    canvas.drawPath(path,paintStyle(Color.WHITE,50,floats2,50));
+    canvas.translate(0,50);
+    canvas.drawPath(path,paintStyle(Color.YELLOW,100,floats3,100));
+    canvas.translate(0,200);
+
+    private Paint paintStyle(int color, int corner, float[] floats, int phase) {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(5);
+        paint.setColor(color);
+        //设置拐角度数
+        paint.setPathEffect(new CornerPathEffect(corner));
+        //设置间断线
+        if (floats != null) {
+            paint.setPathEffect(new DashPathEffect(floats,phase));
+        }
+        paint.setStyle(Paint.Style.STROKE);
+        return paint;
+    }
+</code></pre><p>  <img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.33.png" alt=""></p>
+</li>
+</ul>
+<pre><code>- **4. PathDashPathEffect** ：印章路径效果
+
+        Path dashPath = ...; // 使用一个三角形来做 dash  
+        PathEffect pathEffect = new PathDashPathEffect(dashPath, 40, 0,  
+                PathDashPathEffectStyle.TRANSLATE);
+        paint.setPathEffect(pathEffect);
+
+构造方法  
+
+    PathDashPathEffect(Path shape, float advance, float phase, PathDashPathEffect.Style style) 
+
+shape ： 参数是用来绘制的 Path ； 
+advance ：是两个相邻的 shape 段之间的间隔，不过注意，这个间隔是两个 shape 段的起点的间隔，而不是前一个的终点和后一个的起点的距离； 
+phase “和  DashPathEffect 中一样，是虚线的偏移；
+style ：是用来指定拐弯改变的时候 shape 的转换方式。style 的类型为 PathDashPathEffect.Style ，是一个 enum ，具体有三个值：
+
+    TRANSLATE：位移
+    ROTATE：旋转
+    MORPH：变体
+
+使用
+
+    Path mPath = new Path();
+    mPath.moveTo(0,20);
+    mPath.lineTo(10,0);
+    mPath.lineTo(20,20);
+    mPath.close();
+    /**
+    *向路径添加一个闭圆轮廓
+    * Direction:方向 cw:顺时针, ccw:逆时针旋转
+    * @param x要添加到路径的圆的中心的x坐标
+    * @param y要添加到路径的圆的中心的y坐标
+    * @param radius要添加到路径的圆的半径
+    * @param dir滚动圆圈轮廓的方向
+    */
+    mPath.addCircle(0,0,3, Path.Direction.CCW);
+    mPath.addCircle(20,0,3, Path.Direction.CW);
+
+    canvas.translate(0,80);//通过变形印章来过渡转角
+    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,30,12,PathDashPathEffect.Style.MORPH));
+    canvas.translate(0,80);//通过旋转印章来过渡转角
+    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,40,12,PathDashPathEffect.Style.ROTATE));
+    canvas.translate(0,80);//通过位移来过渡转角
+    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,80,12,PathDashPathEffect.Style.TRANSLATE));
+
+    private Paint paintStylePashDush(int color, Path shape, float advance, float phase, PathDashPathEffect.Style style) {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(5);
+        paint.setColor(color);
+        /**
+         Path shape:表示印章路径，比如我们下面示例中的三角形加右上角一个点；
+         float advance：表示两个印章路径间的距离,很容易理解，印章间距离越大，间距就越大。
+         float phase：路径绘制偏移距离，与上面DashPathEffect中的float phase参数意义相同
+         Style style：表示在遇到转角时，如何操作印章以使转角平滑过渡，取值有：Style.ROTATE，Style.MORPH，Style.TRANSLATE;
+             Style.ROTATE表示通过旋转印章来过渡转角；
+             Style.MORPH表示通过变形印章来过渡转角；
+             Style.TRANSLATE表示通过位移来过渡转角。
+         */
+        paint.setPathEffect(new PathDashPathEffect(shape,advance,phase,style));
+        paint.setStyle(Paint.Style.STROKE);
+        return paint;
+    }
+
+   ![](http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.45.png)
+</code></pre><ul>
+<li><p><strong>组合效果</strong>  </p>
+<ul>
+<li><p><strong>5. SumPathEffect</strong> ：分别按照两种 PathEffect 分别对目标进行绘制。</p>
+<pre><code>PathEffect dashEffect = new DashPathEffect(new float[]{20, 10}, 0);  
+PathEffect discreteEffect = new DiscretePathEffect(20, 5);  
+pathEffect = new SumPathEffect(dashEffect, discreteEffect);
+</code></pre></li>
+<li><p><strong>6. ComposePathEffect</strong> ：也是一个组合效果类的 PathEffect</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>先对目标 Path 使用一个 PathEffect，然后再对这个改变后的 Path 使用另一个 PathEffect。</p>
+<pre><code>PathEffect dashEffect = new DashPathEffect(new float[]{20, 10}, 0);  
+PathEffect discreteEffect = new DiscretePathEffect(20, 5);  
+pathEffect = new ComposePathEffect(dashEffect, discreteEffect);
+</code></pre><p><strong>两者曲别：</strong></p>
+<p>第 5 种效果是分别将2种效果都绘制出来，2者都可见。<br>第 6 种效果是县绘制第一种效果，然后在第一种效果上再绘制第二种效果，最终呈现的是：在第一种效果上的第二种效果</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7ekjh7lj30dw05jq2z.jpg" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fig7epf94aj30dr05eq2x.jpg" alt=""></p>
+<p>使用</p>
+<pre><code>canvas.translate(0,250);
+    //通过变形印章来过渡转角
+    PathDashPathEffect dashPathEffect = new PathDashPathEffect(mPath,40,0,PathDashPathEffect.Style.TRANSLATE);
+    DiscretePathEffect discretePathEffect = new DiscretePathEffect(20,2);
+    canvas.drawPath(path,paintStyleEffectCompose(Color.GREEN,discretePathEffect,dashPathEffect));
+    canvas.translate(0,140);
+    //通过旋转印章来过渡转角
+    canvas.drawPath(path,paintStyleEffectSum(Color.GREEN,dashPathEffect,discretePathEffect));
+
+    //设置合并两个路径特效效果
+private Paint paintStyleEffectCompose(int color, PathEffect effect1, PathEffect effect2) {
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(5);
+    paint.setColor(color);
+    paint.setPathEffect(new ComposePathEffect(effect1,effect2));
+    paint.setStyle(Paint.Style.STROKE);
+    return paint;
+}
+
+//设置合并两个路径特效效果
+private Paint paintStyleEffectSum(int color, PathEffect effect1, PathEffect effect2) {
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(5);
+    paint.setColor(color);
+    paint.setPathEffect(new SumPathEffect(effect1,effect2));
+    paint.setStyle(Paint.Style.STROKE);
+    return paint;
+}
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.50.png" alt=""></p>
+<p><strong>注意</strong>：<br>PathEffect 在有些情况下不支持硬件加速，需要关闭硬件加速才能正常使用：</p>
+<ul>
+<li><code>Canvas.drawLine()</code> 和 <code>Canvas.drawLines()</code> 方法画直线时，<code>setPathEffect()</code> 是不支持硬件加速的；</li>
+<li>PathDashPathEffect 对硬件加速的支持也有问题，所以当使用 PathDashPathEffect 的时候，最好也把硬件加速关了。</li>
+</ul>
+<h2 id="2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影"><a href="#2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影" class="headerlink" title="2.6 setShadowLayer(float radius, float dx, float dy, int shadowColor)  在之后的绘制内容下面加一层阴影"></a>2.6 <code>setShadowLayer(float radius, float dx, float dy, int shadowColor)</code>  在之后的绘制内容下面加一层阴影</h2><p>如果要清除阴影层，使用 clearShadowLayer() 。</p>
+<p><strong>注意</strong>：<br>在硬件加速开启的情况下， <code>setShadowLayer()</code> 只支持文字的绘制，文字之外的绘制必须关闭硬件加速才能正常绘制阴影。<br>如果 shadowColor 是半透明的，阴影的透明度就使用 shadowColor 自己的透明度；而如果  shadowColor 是不透明的，阴影的透明度就使用 paint 的透明度。</p>
+<h2 id="2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤"><a href="#2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤" class="headerlink" title="2.7 setMaskFilter(MaskFilter maskfilter)基于整个画面来进行过滤"></a>2.7 <code>setMaskFilter(MaskFilter maskfilter)</code>基于整个画面来进行过滤</h2><ul>
+<li><p><strong>BlurMaskFilter</strong> ：模糊效果</p>
+<pre><code>paint.setMaskFilter(new BlurMaskFilter(50, BlurMaskFilter.Blur.NORMAL));
+</code></pre><p>  构造方法 </p>
+<pre><code>BlurMaskFilter(float radius, BlurMaskFilter.Blur style) 
+</code></pre><p>  radius： 参数是模糊的范围<br>  style： 是模糊的类型，共有四种：</p>
+<pre><code>NORMAL: 内外都模糊绘制
+SOLID: 内部正常绘制，外部模糊
+INNER: 内部模糊，外部不绘制
+OUTER: 内部不绘制，外部模糊
+</code></pre><ul>
+<li><strong>EmbossMaskFilter</strong> ：浮雕效果</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-8-获取绘制的-Path"><a href="#2-8-获取绘制的-Path" class="headerlink" title="2.8 获取绘制的 Path"></a>2.8 获取绘制的 Path</h2><p>根据 paint 的设置，计算出绘制 Path 或文字时的 <strong>实际 Path</strong>。<br>实际 Path ，指的就是 drawPath() 的绘制内容的轮廓，要算上线条宽度和设置的 PathEffect。</p>
+<pre><code>getFillPath(src, dst) 
+</code></pre><p>会计算出实际 Path，然后把结果保存在 dst 里。</p>
+<pre><code>getTextPath(String text, int start, int end, float x, float y, Path path)
+getTextPath(char[] text, int index, int count, float x, float y, Path path)
+</code></pre><p>文字的绘制虽然使用 <code>Canvas.drawText()</code> 方法，但其实在下层，文字信息全是被转化成图形，对图形进行绘制的。 <code>getTextPath()</code> 方法，获取的就是目标文字所对应的 Path 。<br>这两个方法， <code>getFillPath()</code> 和 <code>getTextPath()</code> ，就是获取绘制的 Path 的方法。之所以把它们归类到「效果」类方法，是因为它们主要是用于图形和文字的装饰效果的位置计算。</p>
+<h1 id="3-绘制文本"><a href="#3-绘制文本" class="headerlink" title="3 绘制文本"></a>3 绘制文本</h1><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="公共方法"><a href="#公共方法" class="headerlink" title="公共方法"></a>公共方法</h3><pre><code>private Paint paintStyle(int color, Paint.Style style){
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(2);
+    paint.setStyle(style);
+    paint.setColor(color);
+    paint.setTextSize(60);
+    //设置文字对齐方式，取值：align.CENTER、align.LEFT或align.RIGHT
+    paint.setTextAlign(Paint.Align.LEFT);
+    //设置是否为粗体文字
+    paint.setFakeBoldText(false);
+    //设置下划线
+    paint.setUnderlineText(false);
+    //设置字体水平倾斜度，普通斜体字是-0.25
+    paint.setTextSkewX(/*(float) -0.25*/0f);
+    //设置带有删除线效果
+    paint.setStrikeThruText(false);
+    //只会将水平方向拉伸，高度不会变
+    paint.setTextScaleX(0);
+    return paint;
+}
+
+private Paint paintStyleType(int color, Paint.Style style, Typeface typeface){
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(2);
+    paint.setStyle(style);
+    paint.setColor(color);
+    paint.setTextSize(60);
+    paint.setTypeface(typeface);
+    return paint;
+}
+
+
+private Paint paintStyleAlign(int color, Paint.Style style, Paint.Align align){
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStrokeWidth(2);
+    paint.setStyle(style);
+    paint.setColor(color);
+    paint.setTextSize(60);
+    paint.setTextAlign(align);
+    return paint;
+}
+</code></pre><h3 id="基础的文字绘制"><a href="#基础的文字绘制" class="headerlink" title="基础的文字绘制"></a>基础的文字绘制</h3><pre><code>//基线坐标(100,100)
+//第1个 基线坐标(100,100)
+canvas.drawText(strs,100,100,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.LEFT));
+//绘制基线Y轴
+canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
+//绘制基线X轴
+canvas.drawLine(100,0,100,100,paintStyle(Color.RED,Paint.Style.STROKE));
+
+//第2个
+canvas.translate(0,150);
+canvas.drawText(strs,600,100,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.CENTER));
+canvas.drawLine(600,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
+canvas.drawLine(600,0,600,100,paintStyle(Color.RED,Paint.Style.STROKE));
+
+//第3个
+canvas.translate(0,100);
+canvas.drawText(strs,100,100,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.LEFT));
+canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
+canvas.drawLine(100,0,100,100,paintStyle(Color.RED,Paint.Style.STROKE));
+
+//第4个
+canvas.translate(0,100);
+canvas.drawText(strs,600,100,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.RIGHT));
+canvas.drawLine(600,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
+canvas.drawLine(600,0,600,100,paintStyle(Color.RED,Paint.Style.STROKE));
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.17.10.png" alt=""></p>
+<h3 id="FontMetrics-字体的各种度量的类"><a href="#FontMetrics-字体的各种度量的类" class="headerlink" title="FontMetrics 字体的各种度量的类"></a>FontMetrics 字体的各种度量的类</h3><pre><code>/**
+ * 描述给定文本大小字体的各种度量的类。
+   请记住，Y值增加下降，所以这些值将是正的，测量距离上升的值将是负的
+ * 注意:在使用FontMetrics时必须为同一个Paint对象,否则,无法获取文字正确的位置关系
+ */
+Paint paint12 = new Paint();
+paint12.setAntiAlias(true);
+paint12.setStrokeWidth(2);
+paint12.setStyle(Paint.Style.STROKE);
+paint12.setColor(Color.BLACK);
+paint12.setTextSize(180);
+Paint.FontMetrics fontMetrics = paint12.getFontMetrics();
+//可绘制的最高高度所在线
+float top;
+//可绘制的最低高度所在线
+float bottom;
+//系统建议的，绘制单个字符时，字符应当的最高高度所在线
+float ascent;
+//系统建议的，绘制单个字符时，字符应当的最低高度所在线
+float descent;
+/**
+ * 建议在文本行之间添加的额外空格。
+ */
+//fontMetrics.leading;
+top = 100 + fontMetrics.top;
+bottom = 100 + fontMetrics.bottom;
+ascent = 100 + fontMetrics.ascent;
+descent = 100 + fontMetrics.descent;
+
+canvas.translate(-90,300);
+canvas.drawText(strs,100,100,paint12);
+
+//绘制的文字基线
+paint12.setStrokeWidth(2);
+canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
+
+//可绘制的最高高度所在线
+paint12.setColor(Color.RED);
+paint12.setStrokeWidth(4);
+canvas.drawLine(100,top,1080,top,paint12);
+
+//可绘制的最低高度所在线
+paint12.setColor(Color.GREEN);
+paint12.setStrokeWidth(4);
+canvas.drawLine(100,bottom,1080,bottom,paint12);
+
+//系统建议的，绘制单个字符时，字符应当的最高高度所在线
+paint12.setColor(Color.YELLOW);
+paint12.setStrokeWidth(2);
+canvas.drawLine(100,ascent,1080,ascent,paint12);
+
+//系统建议的，绘制单个字符时，字符应当的最低高度所在线
+paint12.setColor(Color.BLACK);
+paint12.setStrokeWidth(2);
+canvas.drawLine(100,descent,1080,descent,paint12);
+
+//文字所占宽度
+float width = paint12.measureText(strs);
+//文字所占高度
+float height = bottom - top;
+Log.e(TAG, &quot;onDraw width: &quot; + width + &quot;, height : &quot; + height);
+
+//绘制文字所占区域的边框
+Path pathRect = new Path();
+RectF rectF2 = new RectF(100,top,width+100,bottom);
+paint12.setColor(Color.BLUE);
+paint12.setStrokeWidth(1);
+pathRect.addRect(rectF2, Path.Direction.CW);
+canvas.drawRect(rectF2,paint12);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.50.33.png" alt=""></p>
+<h3 id="根据路径绘制文字"><a href="#根据路径绘制文字" class="headerlink" title="根据路径绘制文字"></a>根据路径绘制文字</h3><pre><code>PathMeasure measure = new PathMeasure(pathRect,false);
+    int length = (int) measure.getLength();
+    paint12.setTextSize(40);
+    paint12.setColor(Color.RED);
+    canvas.drawText(String.valueOf(length),width,bottom,paint12);
+
+    //根据路径绘制文字
+    paint12.setColor(Color.BLACK);
+    paint12.setTextSize(90);
+    canvas.translate(0,200);
+    Path rectPath = new Path();
+    RectF rectF = new RectF(400,200,1000,800);
+
+    //顺时针
+    rectPath.addRect(rectF, Path.Direction.CW);
+    canvas.drawPath(rectPath,paintStyle(Color.RED,Paint.Style.STROKE));
+    /**
+     * @param hOffset 要添加到文本开始位置的路径上的距离
+     * @param vOffset（ - ）或以下的距离（+）定位文本的路径
+     */
+    paint12.setStyle(Paint.Style.FILL_AND_STROKE);
+    canvas.drawTextOnPath(strs,rectPath,0,0,paint12);
+    paint12.setStyle(Paint.Style.STROKE);
+    canvas.drawTextOnPath(strs,rectPath,20,20,paint12);
+    paint12.setStyle(Paint.Style.STROKE);
+    paint12.setColor(Color.BLUE);
+    canvas.drawTextOnPath(strs,rectPath,-20,-20,paint12);
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.12.png" alt=""></p>
+<p>顺时针</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.29.png" alt=""></p>
+<p>逆时针</p>
+<h1 id="4-初始化类"><a href="#4-初始化类" class="headerlink" title="4 初始化类"></a>4 初始化类</h1><p>这一类方法是用来初始化 Paint 对象，或者是批量设置 Paint 的多个属性的方法。</p>
+<h2 id="4-1-reset"><a href="#4-1-reset" class="headerlink" title="4.1 reset()"></a>4.1 reset()</h2><p>重置 Paint 的所有属性为默认值。相当于重新 new 一个，不过性能当然高一些啦。</p>
+<h2 id="4-2-set-Paint-src"><a href="#4-2-set-Paint-src" class="headerlink" title="4.2 set(Paint src)"></a>4.2 set(Paint src)</h2><p>把 src 的所有属性全部复制过来。相当于调用 src 所有的 get 方法，然后调用这个 Paint 的对应的  set 方法来设置它们。</p>
+<h2 id="4-3-setFlags-int-flags"><a href="#4-3-setFlags-int-flags" class="headerlink" title="4.3 setFlags(int flags)"></a>4.3 setFlags(int flags)</h2><p>批量设置 flags。相当于依次调用它们的 set 方法。例如： </p>
+<pre><code>paint.setFlags(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);  
+</code></pre><p>这行代码，和下面这两行是等价的：</p>
+<pre><code>paint.setAntiAlias(true);  
+paint.setDither(true);
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/自定义View-2 绘制图表：直角坐标系+饼状图/" rel="next" title="自定义View-2 绘制图表：直角坐标系+饼状图">
+                <i class="fa fa-chevron-left"></i> 自定义View-2 绘制图表：直角坐标系+饼状图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android7-0新特性-Shortcuts/" rel="prev" title="Android7.0新特性-Shortcuts">
+                Android7.0新特性-Shortcuts <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint类的4个enum"><span class="nav-number">1.</span> <span class="nav-text">Paint类的4个enum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔填充样式-Style"><span class="nav-number">1.1.</span> <span class="nav-text">画笔填充样式 Style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔线头样式-Cap"><span class="nav-number">1.2.</span> <span class="nav-text">画笔线头样式 Cap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两条直线相交后的样式-Join"><span class="nav-number">1.3.</span> <span class="nav-text">两条直线相交后的样式 Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字对齐方式-Align"><span class="nav-number">1.4.</span> <span class="nav-text">文字对齐方式 Align</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint的功能"><span class="nav-number">2.</span> <span class="nav-text">Paint的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-颜色"><span class="nav-number">3.</span> <span class="nav-text">1. 颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-基本颜色绘制"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 基本颜色绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paint-设置颜色的方法："><span class="nav-number">3.1.1.</span> <span class="nav-text">Paint 设置颜色的方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Paint-setColor-ARGB-来设置颜色"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Paint.setColor/ARGB 来设置颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shader-来指定着色方案"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Shader 来指定着色方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LinearGradient-线性渐变"><span class="nav-number">3.1.1.2.1.</span> <span class="nav-text">1  LinearGradient 线性渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RadialGradient-辐射渐变"><span class="nav-number">3.1.1.2.2.</span> <span class="nav-text">2 RadialGradient 辐射渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-SweepGradient-扫描渐变"><span class="nav-number">3.1.1.2.3.</span> <span class="nav-text">3 SweepGradient 扫描渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-BitmapShader-Bitmap-来着色"><span class="nav-number">3.1.1.2.4.</span> <span class="nav-text">4 BitmapShader Bitmap 来着色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）"><span class="nav-number">3.1.1.2.5.</span> <span class="nav-text">5 ComposeShader 混合着色器（两个 Shader 一起使用）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-setXfermode-Xfermode-xfermode"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 setXfermode(Xfermode xfermode)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-效果"><span class="nav-number">4.</span> <span class="nav-text">2. 效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-setAntiAlias-boolean-aa-抗锯齿效果"><span class="nav-number">4.1.</span> <span class="nav-text">2.1 setAntiAlias (boolean aa) 抗锯齿效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-setStyle-Paint-Style-style-线条填充效果"><span class="nav-number">4.2.</span> <span class="nav-text">2.2 setStyle(Paint.Style style) 线条填充效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-线条样式效果"><span class="nav-number">4.3.</span> <span class="nav-text">2.3 线条样式效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-色彩优化效果"><span class="nav-number">4.4.</span> <span class="nav-text">2.4 色彩优化效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-setPathEffect-PathEffect-effect-设置轮廓效果"><span class="nav-number">4.5.</span> <span class="nav-text">2.5 setPathEffect(PathEffect effect) 设置轮廓效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影"><span class="nav-number">4.6.</span> <span class="nav-text">2.6 setShadowLayer(float radius, float dx, float dy, int shadowColor)  在之后的绘制内容下面加一层阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤"><span class="nav-number">4.7.</span> <span class="nav-text">2.7 setMaskFilter(MaskFilter maskfilter)基于整个画面来进行过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-获取绘制的-Path"><span class="nav-number">4.8.</span> <span class="nav-text">2.8 获取绘制的 Path</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-绘制文本"><span class="nav-number">5.</span> <span class="nav-text">3 绘制文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.1.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公共方法"><span class="nav-number">5.1.1.</span> <span class="nav-text">公共方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础的文字绘制"><span class="nav-number">5.1.2.</span> <span class="nav-text">基础的文字绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FontMetrics-字体的各种度量的类"><span class="nav-number">5.1.3.</span> <span class="nav-text">FontMetrics 字体的各种度量的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据路径绘制文字"><span class="nav-number">5.1.4.</span> <span class="nav-text">根据路径绘制文字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-初始化类"><span class="nav-number">6.</span> <span class="nav-text">4 初始化类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-reset"><span class="nav-number">6.1.</span> <span class="nav-text">4.1 reset()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-set-Paint-src"><span class="nav-number">6.2.</span> <span class="nav-text">4.2 set(Paint src)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-setFlags-int-flags"><span class="nav-number">6.3.</span> <span class="nav-text">4.3 setFlags(int flags)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
