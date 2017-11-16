@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  14-调试/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  15-I:O/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -285,7 +285,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  14-调试/" itemprop="url">Python3  14-调试</a></h1>
+                <a class="post-title-link" href="/Python3  15-I:O/" itemprop="url">Python3  15-I/O</a></h1>
         
 
         <div class="post-meta">
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T00:00:00+08:00">
-                2017-07-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T00:00:00+08:00">
+                2017-07-21
               </time>
             
 
@@ -313,7 +313,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:13+08:00">
                 2017-11-02
               </time>
             
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,123 字
+                  1,152 字
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -412,13 +412,12 @@
 
       
         
-          <p><strong>方法</strong></p>
-<h3 id="print-打印"><a href="#print-打印" class="headerlink" title=".print()打印"></a>.<code>print()</code>打印</h3><p>用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。</p>
-<h3 id="assert断言"><a href="#assert断言" class="headerlink" title="assert断言"></a><code>assert</code>断言</h3><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>assert</code>来替代。<br>代码示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(s)</span>:</span></div><div class="line">    n = int(s)</div><div class="line">    <span class="keyword">assert</span> n != <span class="number">0</span>, <span class="string">'n is zero!'</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span> / n</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    foo(<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
+          <h2 id="关于Open-源码文档"><a href="#关于Open-源码文档" class="headerlink" title="关于Open()源码文档"></a>关于<code>Open()</code>源码文档</h2><p>打开文件并返回流。失败时提高IOError。</p>
+<pre><code>文件是一个文本或字节串，给出要打开的文件的名称（如果文件不在当前工作目录中的路径）或要包装的文件的整数文件描述符。 （如果给出了一个文件描述符，则当返回的I / O对象关闭时，它将被关闭，除非closefd设置为False。）mode是一个可选字符串，用于指定文件打开的方式。它默认为&apos;r&apos;，这意味着在文本模式下打开阅读。其他常见的值是“w”用于写入（截断文件已存在），“x”用于创建和写入新文件，“a”用于附加（在某些Unix系统上，这意味着所有写入都附加到无论当前查找位置如何，文件的结尾）。在文本模式下，如果未指定编码，则使用的编码与平台相关：调用locale.getpreferredencoding（False）以获取当前语言环境编码。 （用于读取和写入原始字节使用二进制模式并保留编码未指定。）可用的模式有：
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  14-调试/#more" rel="contents">
+            <a class="btn" href="/Python3  15-I:O/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -673,7 +672,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  13-错误+测试+调试/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  14-调试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -692,7 +691,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  13-错误+测试+调试/" itemprop="url">Python3  13-错误+测试+调试</a></h1>
+                <a class="post-title-link" href="/Python3  14-调试/" itemprop="url">Python3  14-调试</a></h1>
         
 
         <div class="post-meta">
@@ -704,8 +703,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T00:00:00+08:00">
-                2017-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T00:00:00+08:00">
+                2017-07-20
               </time>
             
 
@@ -720,7 +719,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:17+08:00">
                 2017-11-02
               </time>
             
@@ -770,7 +769,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  445 字
+                  1,123 字
                 </span>
               
 
@@ -786,7 +785,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -819,10 +818,13 @@
 
       
         
-          <h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    可能出错的代码块</span></div><div class="line"><span class="string">    """</span></div><div class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> e:</div><div class="line">    print(<span class="string">'except:'</span>, e)</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    print(<span class="string">'finally...'</span>)</div></pre></td></tr></table></figure>
+          <p><strong>方法</strong></p>
+<h3 id="print-打印"><a href="#print-打印" class="headerlink" title=".print()打印"></a>.<code>print()</code>打印</h3><p>用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。</p>
+<h3 id="assert断言"><a href="#assert断言" class="headerlink" title="assert断言"></a><code>assert</code>断言</h3><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>assert</code>来替代。<br>代码示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(s)</span>:</span></div><div class="line">    n = int(s)</div><div class="line">    <span class="keyword">assert</span> n != <span class="number">0</span>, <span class="string">'n is zero!'</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span> / n</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    foo(<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  13-错误+测试+调试/#more" rel="contents">
+            <a class="btn" href="/Python3  14-调试/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1021,6 +1023,203 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Python3  12-面向对象+元类/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  13-错误+测试+调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Python3  13-错误+测试+调试/" itemprop="url">Python3  13-错误+测试+调试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T00:00:00+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:28+08:00">
+                2017-11-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  445 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    可能出错的代码块</span></div><div class="line"><span class="string">    """</span></div><div class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> e:</div><div class="line">    print(<span class="string">'except:'</span>, e)</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    print(<span class="string">'finally...'</span>)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Python3  13-错误+测试+调试/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2060,207 +2259,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  06-闭包+匿名+装饰器+偏函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Python3  06-闭包+匿名+装饰器+偏函数/" itemprop="url">Python3  06-闭包+匿名+装饰器+偏函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T00:00:00+08:00">
-                2017-07-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:58+08:00">
-                2017-11-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,876 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>参考：<a href="http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html" target="_blank" rel="external">http://www.cnblogs.com/vamei/archive/2012/12/15/2772451.html</a></p>
-</blockquote>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>闭包是函数式编程的重要语法结构，python是以`函数对象`为基础的，python一切皆对象。函数这一语法结构也是一个对象。
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Python3  06-闭包+匿名+装饰器+偏函数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2317,7 +2315,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2406,7 +2404,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">70.1k</span>
+    <span title="Site words total count">70.3k</span>
   
 </div>
 
