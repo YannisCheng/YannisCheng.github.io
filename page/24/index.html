@@ -1,0 +1,3208 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android, 开发，安卓，ANdroid studio，java" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="不必一味的讨好别人，每个人都有自己的活法。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:url" content="http://yannischeng.com/page/24/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="不必一味的讨好别人，每个人都有自己的活法。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YannisCheng&#39;s Technology Blogs">
+<meta name="twitter:description" content="不必一味的讨好别人，每个人都有自己的活法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/page/24/"/>
+
+
+
+
+
+  <title>YannisCheng's Technology Blogs - 不必一味的讨好别人，每个人都有自己的活法。</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/topic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/topic/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  652 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind Help Center</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+<h3>Topic</h3>
+<b>Topic Type</b>
+<h4>XMind has four different topic types: Central Topic, Main topic, Subtopic and Floating Topic.</h4>
+<p><img height="193" width="394" alt="Topic Types" src="images/topic_type.png"></p>
+    <ol>
+        <li><b>Central Topic</b>: As the starting point of any mind map, central topic stands for the core idea of the mind map.</li>
+        <li><b>Main Topic</b>: As the first level of boxes around Central Topic, main topics are the main branches of your core idea.</li>
+        <li><b>Subtopic</b>: They are the child topics of main topic and floating topic. We normally use them to record more details.</li>
+        <li><b>Floating Topic</b>: Not belonging to any other topics, floating topics can be located anywhere on the map as indepandent ideas. Normally, they have a blurry or weak relationship with the other topics</li>
+    </ol>
+<br>
+<b>Create Topic</b>
+<ol>There are several ways to create topics: shortcuts, toolbar, menu commands and mouse.
+    <li>Shortcuts:
+        <ul>
+            <li><span>Enter</span>: creating a main topic or a topic on the same level.</li>
+            <li><span>Tab/Insert</span>: creating a subtopic.</li>
+            <li><span>Shift +Enter</span>: creating a topic on the same level, but before the currently selected topic.</li>
+            <li><span>Ctrl +Enter</span>: creating a parent topic of the currently selected topic.</li>
+        </ul>
+    </li>
+
+    <li>Toolbar: Click the icons below to create the corresponding topics<br>
+    <img height="138" width="243" alt="Topic Icon" src="images/topic_icons.png"></li>
+
+    <li>Menu Commands:<br>
+        <img src="images/topic_menu.png">
+        <ul>
+            <li>Topic：creating a main topic or a topic on the same level.</li>
+            <li>Subtopic: creating a subtopic.</li>
+            <li>Before Topic: creating a topic on the same level, but before the current topic.</li>
+            <li>Parent Topic: creating a parent of the currently selected topic.</li>
+            <li>Floating 'Central' Topic: creating a floating topic which has the same attributes as the central topic.</li>
+            <li>Floating Topic: creating a floating topic which has the same attributes as a main topic.</li>
+        </ul>
+    </li>
+
+    <li>Mouse:
+        <ul>
+            <li>Right-click on the topic: "Insert -> Topic/Subtopic"</li>
+            <li>Double-click on a blank space: Creating a floating topic.</li>
+            <li>Right-click on a blank space: "Floating Topic / Floating 'Central' Topic".</li>
+        </ul>
+    </li>
+</ol>
+<p><b>Note:</b> You should select a topic before creating subtopics.</p>
+
+<h3>Edit Topic</h3>
+<ol>
+    <li>Edit Text</li>
+        <ul>
+            <li>Right-click and choose 'Edit' on the menu.</li>
+            <li>Double click the topic.</li>
+            <li>Press "F2" on your keyboard.</li>
+            <li>Press "Spacebar" on your keyboard.</li>
+        </ul>
+    <li>Delete Topic</li>
+        <ul>
+            <li>Choose "Edit > Delete" on the menu.</li>
+            <li>Right-click and choose 'Delete'.</li>
+            <li>Click delete icon on the toolbar.</li>
+    		<li>Use shortcut key: "Delete"</li>
+        </ul>
+    <li>Set the width of the box</li>
+        <ol>
+            <li>Select a topic, and enter into Edit Mode.</li>
+        	<li>Drag and move the slide on the right of the topic box to change the Topic Width.<br>
+        	<img height="120" width="380" alt="Topic Width" src="images/topic_width.png"></li>
+        </ol>
+</ol>
+<p>Note: The topic width will adjust to the width of the text as you editing, but you can make the width narrower by dragging the slide as described above.</p>
+
+<h3>Topic Properties</h3>
+<ol>
+    <li>Select the topic, and click "View - Properties" from the menu</li>
+    <li>Then, you can make the following changes:
+        <ul>
+            <li>Structure: reorganize the layout of the mind map/ the branch.</li>
+            <li>Style: modify all properties settings by selecting one existing style design.</li>
+            <li>Text: change the text font, size, type, color, and alignment.</li>
+            <li>Shape: select the topic's shape and background color.</li>
+            <li>Border: define the line type, width and color of the topic's border.</li>
+            <li>Line: design the line type, width, and color.</li>
+        </ul>
+    </li>
+</ol>
+<p><img src="images/topic_properties.png"></p>
+
+<h3>Free Position</h3>
+<p>Under the default structure (Map Clockwise) of XMind, we are arrange the topic's position.</p>
+    <ol>
+        <li><b>Ctrl(Alt on Mac) :</b> Copy selected topic(s) to new position.</li>
+        <li><b>Alt(Command on Mac) :</b> Move selected Main Topic(s) to new position as desired.</li>
+        <li><b>Shift :</b> Move selected topic(s) to new position as floating topic(s).</li>
+    </ol>
+
+<h3>Number the topics</h3>
+    <ol>
+        <li>Select multiple topics, and click "View - Properties" from the menu.</li>
+        <li>Set the numbering properties below</li>
+            <ul>
+                <li>Choose number style: There are four styles for choice, and None to cancel number.</li>
+                <li>Inherit parents' number: Enabling this by clicking the icon will let subtopics inherit the number from parents' topics.</li>
+                <li>Pre and Suf: You can enter prefix number in the Pre field to appear before the Number, or enter suffix numbers in the Suf field to appear after "dot".</li>
+            </ul>
+        <p> <img src="images/topic_numbering.png"></p>
+    </ol>
+
+<p class="related-features">You may also be interested in...</p>
+<ul>
+    <li><a href="alignment.html">Alignment</a></li>
+    <li><a href="notes.html">Notes</a></li>
+    <li><a href="boundary.html">Boundary</a></li>
+    <li><a href="label.html">Label</a></li>
+    <li><a href="marker.html">Marker and Legend</a></li>
+    <li><a href="attachment.html">Attachment</a></li>
+    <li><a href="summary.html">Summary</a></li>
+    <li><a href="taskinfo.html">TaskInfo</a></li>
+</ul>
+<p align="right"><a href="index.html">Help Center</a></p>
+</div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/view/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/view/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  123 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind Help Center</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+<h3>View</h3>
+<p>XMind has 19 different views to edit, display and manage your mind  maps. They are<b> <a title="Outline" href="outline.html">Outline</a>, Properties, <a href="spellcheck.html">Spelling</a>, <a href="audio.html">Audio Notes</a>, Black Box, <a href="revisions.html">Editing History</a>, <a href="filter.html">Filter</a>, <a href="notes.html">Notes</a>, <a href="overview.html">Overview</a>, <a href="powerfulsearch.html">Search in Workbook</a>, <a href="clipart.html">Clip Art</a>, <a href="local_share.html">Local Network Sharing</a>, <a href="marker.html">Markers</a>, <a href="theme_and_theme_editor.html">Themes</a>, Web Browser, <a title="TaskInfo" href="taskinfo.html">Taskinfo</a>, <a title="Gantt" href="gantt.html">Gantt</a></b>, Comments, Inspector.</p>
+
+<h4>To open these views</h4>
+<ol>
+    <li>Choose Window on the menu.</li>
+    <li>Select the view you need.</li>
+</ol>
+<p><img alt="Window Menu" src="images/window_menu.png"></p>
+Notes: You can also open the view by clicking the sidebar.
+
+<h4>To move view's position</h4>
+<ol>
+    <li>Select the view.</li>
+    <li>Left-click and hold the mouse to move the view. You can place the view anywhere you want, even out of the XMind.</li>
+</ol>
+
+<p>&nbsp;</p>
+<p class="related-features">You may also be interested at...</p>
+<ul>
+    <li><a href="map_structure.html">Map</a></li>
+</ul>
+<p align="right"><a href="index.html">Help Center</a></p>
+</div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/wallpaper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/wallpaper/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  136 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind Help Center</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+<h3>Wallpaper</h3>
+<p>Wallpaper is a background image that can be used to customize the look of your mind map. You can use the existing wallpaper, or import your own images.</p>
+
+<b>To Add the wallpaper to your map:</b>
+<ol>
+    <li>Select the map, and open <a title="Open Window" href="window.html">Properties View</a>.</li>
+    <li>Click 'Wallpaper...' and select the wallpaper you like in the pop-out dialog.</li>
+    <li>OR, click 'Select local image..' and select your own image from local file directory.</li>
+</ol>
+
+<p>Wallpaper list dialog<br>
+<img alt="Wallpaper list" src="images/wallpaper_list.png"></p>
+
+<b>To Modify or delete the existing wallpaper:</b>
+<ol>
+    <li>Select map, and open <a href="window.html">Properties View</a>
+    <ul>
+        <li>Click the delete icon in the properties view to delete current wallpaper.</li>
+        <li>Change wallpaper opacity by imputing a number or moving the slider.</li>
+    </ul>
+    </li>
+</ol>
+<p><img alt="Wallpaper Properties" src="images/wallpaper.png"></p>
+
+<p class="related-features">You may be also interested in...</p>
+<ul>
+	<li><a href="map_structure.html">Map</a></li>
+	<li><a href="template.html">Template</a></li>
+	<li><a href="theme_and_style.html">Theme and Style</a></li>
+</ul>
+<p align="right"><a href="index.html">Help Center</a></p>
+</div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/workbook_and_multi_sheets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/workbook_and_multi_sheets/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  263 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind Help Center</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+<h3>Workbook and multiple sheets</h3>
+<p>Every XMind file is considered a workbook. And one workbook can maintain multiple sheets, which are separate mind maps. It's so easy to create and modify the sheet.</p>
+<b>To create a new blank sheet:</b>
+<p>There are several ways to create a new blank sheet.</p>
+<ol>
+    <li>Use shortcut 'Ctrl+T'.</li>
+    <li>From Sheet Context Menu:
+        <ol>
+            <li>Right-click on the sheet name on the bottom of the editor viewer.</li>
+            <li>Click New Blank Sheet.</li>
+        </ol>
+    </li>
+    <p><img height="184" width="250" alt="New Blank Sheet" src="images/sheet_contextmenu.png"></p>      
+    <li>From Menu Commands: Insert Menu</li> 
+    <p><img height="301" width="200" alt="New Blank Sheet" src="images/new_sheet.png"></p>  
+</ol>
+<b>New Sheet From Template</b>
+<p>There are 2 ways to create new sheet from template.</p>
+<ol>
+    <li>From Sheet Context Menu:
+        <ol>
+            <li>Right-click on the sheet name on the bottom of the editor viewer.</li>
+            <li>Click New Sheet From Template.</li>
+        </ol>
+    </li>
+    <li>From Menu Commands: Insert Menu</li>
+</ol>
+<b>New Sheet From Topic</b>
+<p>There are several ways to create a new blank sheet.</p>
+<ol>
+    <li>Use shortcut 'Ctrl+Alt+T'.</li>
+    <li>From Menu Commands: Insert Menu</li> 
+    <li>From Topic Context Menu:
+        <ol>
+            <li>Select a topic and right click.</li>
+            <li>Click New Sheet From Topic.</li>
+        <p><img height="223" width="200" alt="New Sheet From Topic" src="images/new_sheet_topic_contextmenu.png"></p>
+        </ol>
+</li></ol>
+<b>Modify Sheet</b>
+<ol>
+    <li>Right-click on the sheet name on the bottom of the editor viewer.</li>
+    <li>From the context menu you can make the following changes:
+        <ul>
+            <li>Rename this sheet.</li>
+            <li>Copy Sheet.</li>
+            <li>Duplicate Sheet.</li>
+            <li>Delete the current sheet from the workbook.</li>
+            <li>New Blank Sheets.</li>
+            <li>New Sheet From Template.</li>
+        </ul>
+    </li>
+</ol>
+<p><img height="184" width="250" alt="New Blank Sheet" src="images/sheet_contextmenu.png"></p>
+Note: All maps in a workbook are separate from each other. They can have different structures, wallpapers, themes, and so on.<p></p>
+
+<p class="related-features">You may also be interested at...</p>
+<ul>
+    <li><a href="map_structure.html">Map</a></li>
+    <li><a href="merge.html">Merge</a></li>
+</ul>
+<p>&nbsp;</p>
+<p align="right"><a href="index.html">Help Center</a></p>
+</div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/xmind_share/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help_3.7.0.201610310454/contents/xmind_share/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  562 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind Help Center</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+<h3>XMind Share</h3>
+<p>XMind Share is a free online service for us to share mind maps with families, friends, colleagues, and even the world! It can also work as the cloud storage of our favoriate maps. More important, we can embed the mind maps on our personal blog and site easily.</p>
+<b>Upload map</b>
+<ol>
+    <li>We need an XMind account, if do not have, please <a href="http://www.xmind.net/signup" target="_blank" rel="external">sign up one</a>.</li>
+	<li>Click <em>Sign into XMind.net</em> under help menu, sign-in with our account.</li>
+	<li>Open or Draw a map</li>
+	<li>Click <b>Upload</b> button on the far right of toolbar</li>
+	<li>Now, in the upload dialog, we should add the map description, change map's privacy, and mofify the thumbnail.</li>
+	<li>Click <b>Upload</b> button on the dialog bottom and upload map.</li>
+</ol>
+<p>Ok, let's check about the upload dialog</p>
+<ul>
+    <li>General, here we can add the description for this map.<br><img alt="general information" src="images/xmind_share_general.png"></li>
+	<li>Privacy, here is the place to set the privacy of map, Pubic, Unlisted, or Private; and if it's downloadable.<br><img alt="XMind Share privacy" src="images/xmind_share_privacy.png"></li>
+	<li>Modify the Thumbnail <br><img alt="XMind Share Thumbnail" src="images/xmind_share_thumbnail.png"></li>
+</ul>
+
+
+<h3>Delete/View/Comment a map</h3>
+<p>When the upload process finishes, clicking <em>My XMind Account</em> option under the help menu, we can see the uploaded maps in XMind inside browser easily. Then we can</p>
+	<ol>
+		<li><b>Delete:</b> move the mouse over the mind map's thumbnail, and click the "Delete" option.</li>
+		<li><b>View:</b> move the mouse over the mind map's thumbnail, and click "View" option.</li>
+		<br><img src="images/account.png">
+		<li><b>Comment</b>: add comments directly under the mind map.</li>
+		<img src="images/upload_comment.png">
+	</ol>
+
+<h3>Map viewer</h3>
+<p><img alt="XMind Share Viewer" src="images/xmind_share_viewer.png"></p>
+<p>In this viewer, we can navigate, download, mark and share the map. </p>
+<ol>
+<li><b>Navigate:</b> Drag and drop or use the scrollbar to navigate the map.</li>
+<li><b>Dowload:</b> Click the download button at the bottom of the map directly.</li>
+<li><b>Mark:</b> Add the map to your favorite maps by clicking the "favorite" button.</li>
+<li><b>Share:</b> You can share the mind map via social networking, email, blog and website.
+	<ol>
+		<li>Social Networking：You can now share the maps on your Pinterest and LindedIn page.</li>
+		<li>Email: Click the "Email" button.</li>
+		<li>Blog &amp; Webstie: Click the "Embed" button, copy and paste the code on the coming dialog to your blog or website</li>
+	</ol>
+<br>
+<img src="images/private_share_xmind.png">
+
+<h3>Three different privacy settings</h3>
+<p>In the privacy page, we know any map can have three kind privacies, <em>Public, Unlisted, and Private</em>. The way to share maps with different
+privacies has a litter differences</p>
+<ul>
+	<li><b>Public Maps</b> has no limitations. They can be seen by any person and searched by search engine. </li>
+	<li><b>Unlisted Map</b> can not be searched by search engine. They are not shown on <a href="http://www.xmind.net/share" target="_blank" rel="external">XMind Share</a> too. People, only
+	who know map's URL, can read it. </li>
+	<li><b>Private Map</b> is available for all XMind users. If you want to share a private with some people, you should click the special <b>Share to</b> button and send
+	the invitation to them. People, who get the invitation email, should at least have a free XMind Account for reading this private map online.</li>
+</ul>
+<p>Now we find that <b>unlisted map</b> should be helpful to share a map in some special stituation, such as at meeting,at class, and etc. And <b>Private Map</b> will be able to play an
+important role in collaborating within a small team, or share some special and important information.</p>
+
+<p>This service is powered by Amazon S3 Service.</p>
+
+<p class="related-features">You may also be interested at...</p>
+<ul>
+    <li><a href="topic.html">Topic</a></li>
+    <li><a href="map_structure.html">Map Structure</a></li>
+</ul>
+<p>&nbsp;</p>
+<p align="right"><a href="index.html">Help Center</a></p>
+</li></ol></div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/search/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  465 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind帮助中心</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<h3>搜索</h3>
+<p>
+    XMIND中您可以一如既往地轻松使用查找/替换功能。方法如下:</p>
+<ol>
+    <li>
+        打开图；
+    </li>
+    <li>
+        按照下列方法打开查找/替换对话框:        <ul>
+            <li>
+                在菜单栏选择&ldquo;编辑 >&nbsp;查找/替换&rdquo;。
+            </li>
+            <li>
+                或者使用快捷键&ldquo;Ctrl+F&rdquo;（Mac用户请使用 Command+F）。
+            </li>
+        </ul>
+    </li>
+    <li>
+        您可以对思维图中的任何文字进行查找/替换。
+    </li>
+</ol>
+<p>
+    <b>查找/替换对话框</b>
+    <br>
+    <img alt="查找/替换对话框" src="images/search_in.jpg">
+</p><h3>在线搜索</h3>
+<p>
+    使用XMIND，您还可以在线搜索文字以及图片。方法如下:</p>
+<p>
+    按照下列步骤在线搜索文字:</p>
+<ol>
+    <li>
+        选中一个或者多个主题；
+    </li>
+    <li>
+        在菜单栏点击“工具 - 在网络上搜索”；
+    </li>
+    <li>
+        XMIND会打开浏览器视图，并显示搜索结果；
+    </li>
+    <li>
+        您可以直接在浏览器视图中选择需要的文字或者URL链接，直接拖拽放入思维图中。
+    </li>
+</ol>
+<p>
+    <img alt="搜索菜单" src="images/search_menu.png">
+</p>
+<p>
+    <img height="300" width="528" alt="文字搜索结果" src="images/search_text.jpg">
+</p>
+<p>
+    <b>按照下列步骤在线搜索图片:</b>
+</p>
+<ol>
+    <li>
+        选中主题；
+    </li>
+    <li>
+        按照下列方法之一开始在线图片搜索:        <ul>
+            <li>
+                在菜单栏选择&ldquo;插入 > 图片 > 来自网络。
+            </li>
+            <li>
+                点击工具栏上的图片按钮，在下拉菜单中选择&ldquo;从Web&rdquo;</li>
+                <img alt="图片搜索图标" src="images/search_imageicon.png">&nbsp;
+            
+            <li>
+                打开鼠标右键菜单，选择&ldquo;图片 > 从Web&rdquo;。
+            </li>
+        </ul>
+    </li>
+    <li>
+        在XMIND的浏览器视图中选择需要的图片，拖放至思维图中即可添加。
+    </li>
+    <li>
+        您可以将一个图片拖放至已经存在的图片，或者至空白处作为一个新的自由主题。
+    </li>
+</ol>
+<p>
+    <img alt="图片搜索展示" src="images/search_image.jpg">
+</p>
+<p>
+    <b>注意:</b>
+</p>
+<ul>
+    <li>
+        在线搜索的过程中，主题的内容将会作为搜索的关键词。
+    </li>
+    <li>
+        您可以按照下列步骤调整您的搜索引擎:        <ol>
+            <li>
+                在菜单栏选择&ldquo;编辑 > 首选项&rdquo;；
+            </li>
+            <li>
+                选择&ldquo;搜索引擎&rdquo;；
+            </li>
+            <li>
+                选择您需要的搜索引擎；
+            </li>
+           
+        </ol>
+    </li>
+    
+</ul>
+<p>
+    <img alt="搜索引擎设置" src="images/preference_search_engine.jpg">
+</p>
+<p>
+    <b>您可能还对下列内容感兴趣:</b>
+</p>
+<ul>
+    <li>
+        <a href="topic.html">主题</a>
+    </li>
+    <li>
+        <a href="view.html">视图</a>
+    </li>
+</ul>
+<p align="right">
+    <a href="index.html">帮助中心</a>
+</p>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+<script type="text/javascript" src="/js/bourbon-loader.js?except=rsh"></script>
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/save_to_evernote/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/save_to_evernote/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  169 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind帮助中心</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+
+<h3>保存到Evernote</h3>
+<p>XMind支持保存思维图的文字，附件以及图片到您的Evernote账户。这样您就可以通过Evernote在不同的电脑同步您的XMind文件并在移动设备上查看。</p>
+	<ol>
+		<li>完成一张思维图；<p></p>
+		</li><li>在菜单栏点击“文件 - 保存到Evernote”；<p></p>
+		</li><li>授权XMind访问您的Evernote账户；<p></p>
+		<img height="380" width="500" src="images/save_to_evernote_authorize.png">
+		</li><li>选择保存内容以及导出笔记本；<p></p>
+		<img src="images/save_to_evernote_settings.png">
+		</li><li>单击“保存”，您就可以在您的Evernote查看保存内容了。</li>
+        <img src="images/save_to_evernote_result.png">
+	</ol>
+<p>注意: 第一次使用此功能时需要授权。</p>
+
+<p class="related-features">您可能还对以下内容感兴趣:</p>
+<ul>
+    <li><a href="export.html">导出</a></li>
+    <li><a href="merge.html">合并图</a></li>
+</ul>
+<p align="right"><a href="index.html">帮助中心</a></p>
+</div>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/resource_bundle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/resource_bundle/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  171 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind帮助中心</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+<div class="help">
+
+<h3>资源包</h3>
+<p>您可打包并导出您的自定义风格、模板、剪贴画和图标到一个XRB文件，和其他人或别的设备共享。</p>
+
+<b>导出资源包</b>
+	<ol>
+		<li>启动XMind并点击“工具 - 导出XMind资源包[Pro]”；</li>
+		<li>在接下来的对话框选择您要导出的选项；</li>
+		<img height="400" width="514" src="images/export_resource_bundle.png">
+		<li>单击“下一步”并选择导出位置。</li>
+	<ol>
+
+<b>导入资源包</b>
+	<ol>
+		<li>点击“工具 - 导入XMind资源包”；</li>
+		<li>选择要导入的资源包文件，文件扩展名为 "**.xrb"；</li>
+		<li>单击“完成”。</li>
+	</ol>
+
+<p class="related-features">您可能还对以下内容感兴趣:</p>
+<ul>
+    <li><a href="template.html">模板</a></li>
+    <li><a href="theme.html">风格</a></li>
+    <li><a href="marker.html">图标</a></li>
+    <li><a href="clipart.html">剪贴画</a></li>
+</ul>
+
+<p align="right"><a href="index.html">帮助中心</a></p>
+</ol></ol></div>
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/relationship/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/relationship/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  333 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind帮助中心</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+    <h3>联系</h3>
+<p>在一张思维图中，如果两个主题、外框或者主题与外框之间有一些关系，您可以通过添加联系将两者连接起来。您可以轻松地添加联系，增加联系的文字描述，以及修改联系的属性。方法如下:</p>
+<p><b>按照下列步骤添加联系: </b></p>
+<ol>
+    <li>选中一个主题或者外框；</li>
+    <li>以下4种方法均可以开始添加联系: <ul>
+        <li>点击工具栏上的联系图标<img alt="联系的图标" src="images/relationship_icon.png">。</li>
+        <li>在菜单中选择&ldquo;插入 > 联系&rdquo;。</li>
+        <li>使用键盘快捷键&ldquo;Ctrl+L&rdquo;（Mac用户请使用 Command ）。</li>
+        <li>鼠标右键选择“插入 - 联系”。</li>
+    </ul>
+    </li>
+    <li>点击目标主题或者外框；</li>
+    <li>如果需要，您可以双击联系上的文字框输入描述。</li>
+</ol>
+<p><br>
+<b>按照下列步骤改变联系的属性:</b></p>
+<ol>
+    <li>选中联系；</li>
+    <li>打开<a href="view.html">属性视图；</a></li>
+    <li>您可以在视图中修改下列设置:    <ul>
+        <li>线的形状、颜色、样式。</li>
+        <li>联系描述文字的字体，大小，颜色等等。</li>
+    </ul>
+    </li>
+</ol>
+<p><img alt="联系的属性" src="images/relationship_properties.jpg"></p>
+<p><b>注意: </b></p>
+<ul>
+    <li>您可以为任意两个主题、外框或者主题与外框之间添加联系。</li>
+    <li>每个主题或者外框都可以有多个联系。</li>
+</ul>
+<p><b>您可能还对以下内容感兴趣: </b></p>
+<ul>
+    <li><a href="topic.html">主题<br>
+    </a></li>
+    <li><a href="boundary.html">外框<br>
+    </a></li>
+    <li><a href="view.html">视图<br>
+    </a></li>
+    <li><a href="summary.html">Summary</a>
+    <p>&nbsp;</p>
+    </li>
+</ul>
+<p align="right">
+<a href="index.html">帮助中心</a>
+</p>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+<script type="text/javascript" src="/js/bourbon-loader.js?except=rsh"></script>
+</body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/alignment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/media/XMind.app/Contents/Eclipse/plugins/org.xmind.ui.help.nl_zh_CN_3.7.0.201610310454/nl/zh/CN/contents/alignment/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-05-19T13:13:58+08:00">
+                2016-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  328 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" id="IconLink" title="Icon">
+<link rel="stylesheet" href="help.css" type="text/css" id="StyleLink" title="CSS" media="all">
+<title>XMind帮助中心</title>
+</head>
+<body>
+<div id="globalheader">
+    <div id="hat-ornmt"><div class="hat-ornmt"></div></div>
+    <div class="wrapf">
+        <div id="logo">
+            <h1><a href="/">XMind</a></h1>
+            <h2>Collaborative Minds</h2>
+        </div>
+        <div id="help_title"></div>
+    </div>
+</div>
+
+<div id="body_content" class="content"><div class="wrapf">
+    <div class="help">
+<h3>排列</h3>
+<p>您可以对思维图中中心主题以外的所有主题进行排列。 方法如下:</p>
+<ol>
+    <li>
+        选中需要排列的主题；
+    </li>
+    <li>
+        按照下列步骤选择合适的排列方法:
+        <ul>
+            <li>
+                在菜单栏选择&ldquo;修改 > 对齐 > 左对齐/水平对齐/右对齐；上端对齐/垂直居中/下端对齐&rdquo;。
+            </li>
+            <li>
+                在菜单栏选择&ldquo;思维图 > 允许主题重叠&rdquo;。
+            </li>
+            <li>
+                在菜单栏选择&ldquo;思维图 > 平铺自由分支&rdquo;。
+            </li>
+            <li>
+                在菜单栏选择&ldquo;思维图 > 重新安排主要分支&rdquo;。
+            </li>
+        </ul>
+    </li>
+</ol>
+<p><img height="400" width="170" alt="Alignment menu" src="images/alignment1.png"></p>
+<p><img alt="Alignment menu2" src="images/alignment2.png"></p>
+<p>这些命令含义如下:</p>
+<ul>
+    <li>
+        左对齐: 所有选中的主题居左对齐。
+    </li>
+    <li>
+        居中对齐: 所有选中主题居中对齐。
+    </li>
+    <li>
+        右对齐: 所有选中的主题居右对齐。
+    </li>
+    <li>
+        上端对齐: 所有选中主题上端对齐。
+    </li>
+    <li>
+        垂直居中: 所有选中主题垂直居中对齐。
+    </li>
+    <li>
+        下端对齐: 所有选中主题下端对齐。
+    </li>
+    <li>
+        允许主题重叠: 所有选中主题在移动过程中可以相互重叠。
+    </li>
+    <li>
+        平铺自由主题: 平铺当前图中所有重叠主题。
+    </li>
+    <li>
+        重新安排主要分支: 当前思维图中的分支主题均回到默认的位置。
+    </li>
+</ul>
+
+<p>
+    &nbsp;
+</p>
+<p>
+    <b>您可能还对下列内容感兴趣&hellip;&hellip;</b>
+</p>
+<ul>
+    <li>
+        <a href="topic.html">主题</a>
+    </li>
+    <li>
+        <a href="map.html">思维图</a>
+    </li>
+</ul>
+<p align="right">
+    <a href="index.html">帮助中心</a>
+</p>
+
+
+</div></div>
+
+<div id="footer"><div class="wrapf">
+    <div class="footer-left">
+        <p>Copyright © 2015, XMind Ltd., All rights reserved.</p>
+    </div>
+</div></div>
+
+<script type="text/javascript" src="/js/bourbon-loader.js?except=rsh"></script>
+</div></body>
+</html>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">307</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">198.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
