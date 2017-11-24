@@ -511,8 +511,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:43+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:40:22+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -614,7 +614,6 @@
 </code></pre><blockquote>
 <p>python其他内置魔法方法： <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank" rel="external">https://docs.python.org/3/reference/datamodel.html#special-method-names</a><br><a href="http://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.html" target="_blank" rel="external">http://www.cnblogs.com/simayixin/archive/2011/05/04/2036295.html</a><br>python常用魔法方法的实现：<a href="http://www.cnblogs.com/scolia/p/5690210.html" target="_blank" rel="external">http://www.cnblogs.com/scolia/p/5690210.html</a></p>
 </blockquote>
-<p><strong>魔法方法有：</strong><br>-1.<code>__new__()</code>：对象的创建，是一个静态方法，第一个参数是<code>cls</code>。(不可能是<code>self</code>，因为对象还没创建，哪来的<code>self</code>)—提示<code>单例模式</code>与此有关。<br>0.<code>__init__()</code>：对象的初始化， 是一个实例方法，第一个参数是<code>self</code>。<br>1.<code>__slots__()</code>：约束要绑定的临时变量<br>2.<code>__len__()</code>：让类作用于len()<br>3.<code>__str__()</code>：类似于<code>java</code>中的toString()，返回用户看到的字符串<br>4.<code>__repe__()</code>：返回开发者看到的字符串<br>5.<code>__iter__()</code>：将一个类被用于<code>for...in</code>循环中，返回一个迭代对象<br>6.<code>__getitem__()</code>：像<code>list</code>那样按照下标取出元素，要在其中处理<code>slice切片</code>、<code>step步长</code><br>7.<code>__getattr__()</code>：当调用不存在的属性时，<code>Python</code>解释器会试图调用<code>__getattr__(self, &#39;attr&#39;)</code>来尝试获得属性。只有在没有找到属性的情况下，才调用<code>__getattr__</code>，已有的属性将不会在<code>__getattr__</code>中查找。而且，实际上可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段。<br>8.<code>__call__()</code></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Python3  10-面向对象+定制对象/#more" rel="contents">
@@ -712,8 +711,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:47+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:40:54+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -811,7 +810,7 @@
 
       
         
-          <h2 id="类的模板"><a href="#类的模板" class="headerlink" title="类的模板"></a>类的模板</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''类模板'''</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, city)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.age = age</div><div class="line">        self.__city = city</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_info</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'self is : '</span>, self) <span class="comment"># self is :  &lt;py_class.Student.Student object at 0x10c92c400&gt;</span></div><div class="line">        <span class="comment"># print(student) 得到的结果为：&lt;py_class.Student.Student object at 0x10c92c400&gt;</span></div><div class="line">        print(<span class="string">'class is : '</span>, self.__class__)  <span class="comment"># class is :  &lt;class 'py_class.Student.Student'&gt;</span></div><div class="line">        print(<span class="string">'%s, %d, %s'</span> % (self.name, self.age, self.__city))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.age == <span class="number">20</span>:</div><div class="line">            print(<span class="string">'age is '</span>, self.age)</div><div class="line">        <span class="keyword">elif</span> self.age &gt; <span class="number">20</span>:</div><div class="line">            print(<span class="string">'too old'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'too young'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_city</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.__city</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_city</span><span class="params">(self, city)</span>:</span></div><div class="line">        self.__city = city</div></pre></td></tr></table></figure>
+          <h2 id="类的模板"><a href="#类的模板" class="headerlink" title="类的模板"></a>类的模板</h2>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Python3  09-面向对象/#more" rel="contents">
@@ -1110,8 +1109,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:54+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:41:06+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -1213,12 +1212,7 @@
 <p>Python所有的内置函数：<a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="external">https://docs.python.org/3/library/functions.html</a></p>
 </blockquote>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><pre><code>在`python`中一个`.py`文件就是一个模块(Module)
-</code></pre><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>提高代码的可维护性</li>
-<li>代码的复用性</li>
-<li>避免函数名和变量名的冲突</li>
-<li>为避免模块名命名冲突，引入了包(每一个包目录下都有一个文件：<code>__init__.py</code>。这个文件是必须存在的，否则python回将这个目录当成普通的目录，而不是一个python包。这个文件可以是空文件，也可以有代码。因为<code>__init__.py</code>本身就是一个模块(<code>mycompany</code>))</li>
-</ul>
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Python3  08-模块/#more" rel="contents">
@@ -2072,7 +2066,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  02-函数-生成器+切片/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Python3  02-数据-序列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -2091,7 +2085,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Python3  02-函数-生成器+切片/" itemprop="url">Python3  02-函数-生成器+切片</a></h1>
+                <a class="post-title-link" href="/Python3  02-数据-序列/" itemprop="url">Python3  02-数据-序列</a></h1>
         
 
         <div class="post-meta">
@@ -2119,8 +2113,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:23+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:41:30+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -2169,7 +2163,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,939 字
+                  1,725 字
                 </span>
               
 
@@ -2185,7 +2179,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -2218,20 +2212,16 @@
 
       
         
-          <pre><code>高级特性——(slice)切片，表示为[::]
-</code></pre><ul>
-<li>切片语法：[1:4:2]</li>
-</ul>
-<blockquote>
+          <hr>
+<p><strong>通过print()结果来区分各种序列类型</strong></p>
 <ul>
-<li>数字’1’ 表示开始的索引位置</li>
-<li>数字’4’ 表示结束的索引位置</li>
-<li>数字’2’ 表示间隔的索引数</li>
-</ul>
-</blockquote>
+<li><code>[]</code>是<code>list</code></li>
+<li><code>()</code>是<code>tuple</code></li>
+<li><code>{}</code>是<code>set</code></li>
+<li><p><code>{key:value, ...}</code>是<code>dict</code></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Python3  02-函数-生成器+切片/#more" rel="contents">
+            <a class="btn" href="/Python3  02-数据-序列/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

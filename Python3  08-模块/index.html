@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module) 优点 提高代码的可维护性 代码的复用性 避免函数名和变量名的冲突 为避免模块名命名冲突，引入了包(每一个包目录下都有一个文件：__init__.py。这个文件是必须存在的，否则python回将这个目">
+<meta name="description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module)">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  08-模块">
 <meta property="og:url" content="http://yannischeng.com/Python3  08-模块/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module) 优点 提高代码的可维护性 代码的复用性 避免函数名和变量名的冲突 为避免模块名命名冲突，引入了包(每一个包目录下都有一个文件：__init__.py。这个文件是必须存在的，否则python回将这个目">
+<meta property="og:description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T07:59:54.355Z">
+<meta property="og:updated_time" content="2017-11-24T02:41:06.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  08-模块">
-<meta name="twitter:description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module) 优点 提高代码的可维护性 代码的复用性 避免函数名和变量名的冲突 为避免模块名命名冲突，引入了包(每一个包目录下都有一个文件：__init__.py。这个文件是必须存在的，否则python回将这个目">
+<meta name="twitter:description" content="Python所有的内置函数：https://docs.python.org/3/library/functions.html  定义在`python`中一个`.py`文件就是一个模块(Module)">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:54+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:41:06+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -438,13 +438,13 @@
 <p>Python所有的内置函数：<a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="external">https://docs.python.org/3/library/functions.html</a></p>
 </blockquote>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><pre><code>在`python`中一个`.py`文件就是一个模块(Module)
-</code></pre><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+</code></pre><a id="more"></a>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>提高代码的可维护性</li>
 <li>代码的复用性</li>
 <li>避免函数名和变量名的冲突</li>
 <li>为避免模块名命名冲突，引入了包(每一个包目录下都有一个文件：<code>__init__.py</code>。这个文件是必须存在的，否则python回将这个目录当成普通的目录，而不是一个python包。这个文件可以是空文件，也可以有代码。因为<code>__init__.py</code>本身就是一个模块(<code>mycompany</code>))</li>
 </ul>
-<a id="more"></a>
 <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 当前模块的文档注释，任何模块代码的第一行字符串都视为该模块文档的注释</span></div><div class="line"><span class="string">'A test module'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 使用'__author__'变量将作者的名字写入此模块</span></div><div class="line">__author__ = <span class="string">'Yannis Cheng'</span></div><div class="line"></div><div class="line"><span class="string">'''以上为python模块的标准文件模板'''</span></div><div class="line"></div><div class="line"><span class="string">'''注意到这两行代码：'''</span></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div><div class="line"><span class="string">'''当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量`__name__`置为`__main__`，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。'''</span></div></pre></td></tr></table></figure>
 <h2 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h2><pre><code>在Python中，安装第三方模块，是通过包管理工具`pip`完成的。
 在Mac或者Linux下可能会并存`Python 3.X`和`Python 2.X`，此时的命令应该为`pip3`

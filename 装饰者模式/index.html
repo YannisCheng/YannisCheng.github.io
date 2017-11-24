@@ -83,20 +83,20 @@
 
 
 
-<meta name="description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭 定义：装饰模式又名包装(Wrapper)模式。装饰者模式动态地将责任添加到对象上，是继承关系的一个替代方案。 描述： 装饰着可以在所委托装饰着的行为之前或者之后添加自己的行为，已达到特定的目的">
+<meta name="description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭">
 <meta name="keywords" content="设计模式,阅读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="装饰者模式">
 <meta property="og:url" content="http://yannischeng.com/装饰者模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭 定义：装饰模式又名包装(Wrapper)模式。装饰者模式动态地将责任添加到对象上，是继承关系的一个替代方案。 描述： 装饰着可以在所委托装饰着的行为之前或者之后添加自己的行为，已达到特定的目的">
+<meta property="og:description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-07%2008.39.41.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-07%2010.18.59.png">
-<meta property="og:updated_time" content="2017-11-07T02:36:14.490Z">
+<meta property="og:updated_time" content="2017-11-24T02:41:59.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="装饰者模式">
-<meta name="twitter:description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭 定义：装饰模式又名包装(Wrapper)模式。装饰者模式动态地将责任添加到对象上，是继承关系的一个替代方案。 描述： 装饰着可以在所委托装饰着的行为之前或者之后添加自己的行为，已达到特定的目的">
+<meta name="twitter:description" content="参考：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html  设计原则：封装变化多用组合，少用继承对扩展开发，对修改关闭">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-07%2008.39.41.png">
 
 
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-07T10:36:14+08:00">
-                2017-11-07
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:41:59+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -443,13 +443,13 @@
 <p> 参考：<a href="http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html" target="_blank" rel="external">http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html</a></p>
 </blockquote>
 <h1 id="设计原则："><a href="#设计原则：" class="headerlink" title="设计原则："></a>设计原则：</h1><p>封装变化<br>多用组合，少用继承<br>对扩展开发，对修改关闭</p>
+<a id="more"></a>
 <h1 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h1><p>装饰模式又名包装(Wrapper)模式。装饰者模式动态地将责任添加到对象上，是继承关系的一个替代方案。</p>
 <h1 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h1><ul>
 <li>装饰着可以在所委托装饰着的行为之前或者之后添加自己的行为，已达到特定的目的。</li>
 <li>通过使用不同的具体装饰类以及这些装饰类的组合，可以创造出很多不同行为的组合。</li>
 <li>装饰着与组件组合时，就是在加入新的行为，新的行为是由组合对象得来的。</li>
 </ul>
-<a id="more"></a>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-07%2008.39.41.png" alt=""></p>
 <h1 id="如何封装的更好："><a href="#如何封装的更好：" class="headerlink" title="如何封装的更好："></a>如何封装的更好：</h1><p>装饰着模式（Decorator） + 工厂模式（Factory） + 生成器模式（Builder）</p>
 <h2 id="装饰模式中的角色有："><a href="#装饰模式中的角色有：" class="headerlink" title="装饰模式中的角色有："></a>装饰模式中的角色有：</h2><ul>

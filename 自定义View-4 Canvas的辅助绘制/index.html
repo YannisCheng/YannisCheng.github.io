@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”  2. 处理的顺序问题：对于一个图片进行多项操作处理时候，实际处理代码的顺序是从下向上的。Canvas的顺序是反着的。 3. 裁剪 ClipCanvas中与Clip有关的方法：  共有2类：Path和">
+<meta name="description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
 <meta name="keywords" content="Android,View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View-4 Canvas的辅助绘制">
 <meta property="og:url" content="http://yannischeng.com/自定义View-4 Canvas的辅助绘制/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”  2. 处理的顺序问题：对于一个图片进行多项操作处理时候，实际处理代码的顺序是从下向上的。Canvas的顺序是反着的。 3. 裁剪 ClipCanvas中与Clip有关的方法：  共有2类：Path和">
+<meta property="og:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.15.png">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-16%2011.55.35.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-16%2011.56.15.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.13.11.png">
-<meta property="og:updated_time" content="2017-11-16T08:35:03.516Z">
+<meta property="og:updated_time" content="2017-11-24T02:42:50.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View-4 Canvas的辅助绘制">
-<meta name="twitter:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”  2. 处理的顺序问题：对于一个图片进行多项操作处理时候，实际处理代码的顺序是从下向上的。Canvas的顺序是反着的。 3. 裁剪 ClipCanvas中与Clip有关的方法：  共有2类：Path和">
+<meta name="twitter:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png">
 
 
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-16T16:35:03+08:00">
-                2017-11-16
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:42:50+08:00">
+                2017-11-24
               </time>
             
           </span>
@@ -455,11 +455,11 @@
 <li>save() : 保存处理之前的状态</li>
 <li>restore() ：恢复 “保存处理之前的状态”</li>
 </ul>
+<a id="more"></a>
 <h1 id="2-处理的顺序问题："><a href="#2-处理的顺序问题：" class="headerlink" title="2. 处理的顺序问题："></a>2. 处理的顺序问题：</h1><p>对于一个图片进行多项操作处理时候，实际处理代码的顺序是从下向上的。<br>Canvas的顺序是反着的。</p>
 <h1 id="3-裁剪-Clip"><a href="#3-裁剪-Clip" class="headerlink" title="3. 裁剪 Clip"></a>3. 裁剪 Clip</h1><p><code>Canvas</code>中与<code>Clip</code>有关的方法：</p>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png" alt=""></p>
 <p>共有2类：<code>Path</code>和<code>Rect</code></p>
-<a id="more"></a>
 <h2 id="3-1-Rect裁剪"><a href="#3-1-Rect裁剪" class="headerlink" title="3.1 Rect裁剪"></a>3.1 Rect裁剪</h2><pre><code>canvas.clipRect(left,top,left + 130,top + 150);
 canvas.drawBitmap(bitmap, left, top, paint);
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.15.png" alt=""></p>
