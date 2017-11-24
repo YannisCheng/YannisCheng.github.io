@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这次描述的是自定义ViewGroup，这其中既包括完全自定义ViewGroup和组合ViewGroup。">
+<meta name="keywords" content="Android,View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义View-7 ViewGroup">
+<meta property="og:url" content="http://yannischeng.com/自定义View-7 ViewGroup/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="这次描述的是自定义ViewGroup，这其中既包括完全自定义ViewGroup和组合ViewGroup。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.17.20.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2016.56.52.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2009.50.32.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2017.06.40.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2010.25.10.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2010.25.36.png">
+<meta property="og:updated_time" content="2017-11-24T02:27:17.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义View-7 ViewGroup">
+<meta name="twitter:description" content="这次描述的是自定义ViewGroup，这其中既包括完全自定义ViewGroup和组合ViewGroup。">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.17.20.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/自定义View-7 ViewGroup/"/>
+
+
+
+
+
+  <title>自定义View-7 ViewGroup | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-7 ViewGroup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自定义View-7 ViewGroup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T13:41:28+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:27:17+08:00">
+                2017-11-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,238 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/View/" rel="tag"># View</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/自定义View-7 ViewGroup/" title="自定义View-7 ViewGroup">http://yannischeng.com/自定义View-7 ViewGroup/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次描述的是<code>自定义ViewGroup</code>，这其中既包括<code>完全自定义ViewGroup</code>和<code>组合ViewGroup</code>。</p>
+<a id="more"></a>
+<h1 id="自定义组合ViewGroup"><a href="#自定义组合ViewGroup" class="headerlink" title="自定义组合ViewGroup"></a>自定义组合ViewGroup</h1><h2 id="1-创建一个自定义ViewGroup的xml文件"><a href="#1-创建一个自定义ViewGroup的xml文件" class="headerlink" title="1. 创建一个自定义ViewGroup的xml文件"></a>1. 创建一个自定义ViewGroup的<code>xml文件</code></h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;com.zhy.autolayout.AutoRelativeLayout</div><div class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:id=<span class="string">"@+id/item_single_view"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"210px"</span></div><div class="line">    android:background=<span class="string">"@color/login_txt"</span></div><div class="line">    android:gravity=<span class="string">"center"</span>&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=<span class="string">"@+id/item_single_iv"</span></div><div class="line">        android:layout_width=<span class="string">"50px"</span></div><div class="line">        android:layout_height=<span class="string">"50px"</span></div><div class="line">        android:layout_centerHorizontal=<span class="string">"true"</span></div><div class="line">        android:layout_marginTop=<span class="string">"6px"</span></div><div class="line">        android:src=<span class="string">"@drawable/ic_launcher"</span>/&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=<span class="string">"@+id/item_single_tv_title"</span></div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">        android:layout_below=<span class="string">"@+id/item_single_iv"</span></div><div class="line">        android:layout_marginTop=<span class="string">"16px"</span></div><div class="line">        android:gravity=<span class="string">"center_horizontal"</span></div><div class="line">        android:text=<span class="string">"信息"</span></div><div class="line">        android:textColor=<span class="string">"@color/button_text_color"</span>/&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=<span class="string">"@+id/item_single_tv_val"</span></div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">        android:layout_below=<span class="string">"@id/item_single_tv_title"</span></div><div class="line">        android:layout_marginTop=<span class="string">"10px"</span></div><div class="line">        android:gravity=<span class="string">"center_horizontal"</span></div><div class="line">        android:text=<span class="string">"1223"</span></div><div class="line">        android:textColor=<span class="string">"@color/button_text_color"</span>/&gt;</div><div class="line"></div><div class="line">&lt;/com.zhy.autolayout.AutoRelativeLayout&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.17.20.png" alt=""></p>
+<h2 id="2-创建一个继承自ViewGroup的自定义类。"><a href="#2-创建一个继承自ViewGroup的自定义类。" class="headerlink" title="2. 创建一个继承自ViewGroup的自定义类。"></a>2. 创建一个继承自<code>ViewGroup</code>的自定义类。</h2><h3 id="2-1-一个原始的自定义类："><a href="#2-1-一个原始的自定义类：" class="headerlink" title="2.1 一个原始的自定义类："></a>2.1 一个原始的自定义类：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewGroup</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context, @Nullable AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-对自定义组合控件中的子控件进行属性设置"><a href="#2-2-对自定义组合控件中的子控件进行属性设置" class="headerlink" title="2.2 对自定义组合控件中的子控件进行属性设置"></a>2.2 对<code>自定义组合控件</code>中的<code>子控件</code>进行<code>属性设置</code></h3><p><strong>使用到的类：</strong> <code>TypedArray</code></p>
+<p><strong>使用的文件：</strong> <code>attrs.xml</code> 文件</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><em>属性的初始化应该放在相应的构造函数中，例如本自定义ViewGroup中的构造过程应该写在第二个构造函数中，写在第三个构造函数中在使用时则不会显示。</em></li>
+<li><p><em>在获取Layout布局文件时，注意参数的设置：</em></p>
+<pre><code>View view = LayoutInflater.from(context).inflate(R.layout.my_view_group_layout,this,true);
+</code></pre><p>  有时，此处参数设置出错，自定义view的控件将不会显示。</p>
+</li>
+</ul>
+<p><strong>此步编写的步骤为：</strong></p>
+<ul>
+<li>获取Layout布局文件</li>
+<li>声明 Layout布局文件中的子控件</li>
+<li>通过 TypedArray 获取 子控件 中的属性值</li>
+<li>为各个子控件设置参数值</li>
+</ul>
+<p>实例为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewGroup</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyViewGroup"</span>;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     2- 声明 xml文件用到的 控件</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    TextView mTextView1,mTextView2;</div><div class="line">    ImageView mImageView;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">        <span class="comment">// 1 - 获取自定义的 xml文件</span></div><div class="line">        View view = LayoutInflater.from(context).inflate(R.layout.my_view_group_layout,<span class="keyword">this</span>,<span class="keyword">true</span>);</div><div class="line">        <span class="comment">// 3 - findViewById</span></div><div class="line">        mTextView1 = view.findViewById(R.id.one_tv);</div><div class="line">        mTextView2 = view.findViewById(R.id.two_tv);</div><div class="line">        mImageView = view.findViewById(R.id.image);</div><div class="line"></div><div class="line">        <span class="comment">// 4 - 通过 TypedArray 获取 attrs文件中的属性值</span></div><div class="line">        <span class="meta">@SuppressLint</span>(<span class="string">"Recycle"</span>)</div><div class="line">        TypedArray array = context.obtainStyledAttributes(attrs,R.styleable.MyViewGroup);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (array != <span class="keyword">null</span>) &#123;</div><div class="line">            String textOneTitle = array.getString(R.styleable.MyViewGroup_textOneTitle);</div><div class="line">            <span class="keyword">float</span> textOneSize = array.getDimension(R.styleable.MyViewGroup_textOneSize,<span class="number">10</span>);</div><div class="line">            String textTwoTitle = array.getString(R.styleable.MyViewGroup_textTwoTitle);</div><div class="line">            <span class="keyword">float</span> textTwoSize = array.getDimension(R.styleable.MyViewGroup_textTwoSize,<span class="number">10</span>);</div><div class="line"></div><div class="line">            <span class="comment">//两种方式均可</span></div><div class="line">            Drawable imgSrc = array.getDrawable(R.styleable.MyViewGroup_imageSrc);</div><div class="line">            <span class="comment">//int imgSrc = array.getResourceId(R.styleable.MyViewGroup_imageSrc,R.drawable.ic_launcher_background);</span></div><div class="line">            <span class="keyword">boolean</span> oneIsShow = array.getBoolean(R.styleable.MyViewGroup_textOneVisible,<span class="keyword">true</span>);</div><div class="line"></div><div class="line">            <span class="keyword">int</span> textOneColor = array.getColor(R.styleable.MyViewGroup_textOneColor, Color.BLACK);</div><div class="line"></div><div class="line">            <span class="keyword">int</span> gracityIndex = array.getInt(R.styleable.MyViewGroup_textTwoGravity, Gravity.CENTER);</div><div class="line"></div><div class="line">            array.recycle();</div><div class="line"></div><div class="line">            Log.e(TAG, <span class="string">"ヽ(｀Д´)ﾉ -&gt; MyViewGroup textOneTitle : "</span> + textOneTitle + <span class="string">", textOneSize : "</span>+ textOneSize + <span class="string">", textTwoTitle : "</span> + textTwoTitle + <span class="string">", textTwoSize : "</span> + textTwoSize);</div><div class="line"></div><div class="line">            <span class="comment">// 5 - 为控件中的各个控件设置参数值</span></div><div class="line">            mTextView1.setText(textOneTitle);</div><div class="line">            mTextView2.setText(textTwoTitle);</div><div class="line">            mTextView1.setTextSize(textOneSize);</div><div class="line">            mTextView2.setTextSize(textTwoSize);</div><div class="line">            mTextView2.setTextColor(textOneColor);</div><div class="line"></div><div class="line">            <span class="comment">//控制子控件的显隐性</span></div><div class="line">            <span class="keyword">if</span> (oneIsShow) &#123;</div><div class="line">                mTextView1.setVisibility(VISIBLE);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                mTextView1.setVisibility(INVISIBLE);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">//设置自定义图片的两种方式</span></div><div class="line">            mImageView.setBackground(imgSrc);</div><div class="line">            <span class="comment">//mImageView.setBackgroundResource(imgSrc);</span></div><div class="line"></div><div class="line">            <span class="keyword">if</span> (gracityIndex == <span class="number">1</span>) &#123;</div><div class="line">                mTextView2.setGravity(Gravity.TOP);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (gracityIndex == <span class="number">2</span>) &#123;</div><div class="line">                mTextView2.setGravity(Gravity.CENTER);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context, @Nullable AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImageView</span><span class="params">(Drawable imageViewId)</span> </span>&#123;</div><div class="line">        mImageView.setBackground(imageViewId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextView1</span><span class="params">(String textView1Title)</span> </span>&#123;</div><div class="line">        mTextView1.setText(textView1Title);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextView2</span><span class="params">(String textView2Title)</span> </span>&#123;</div><div class="line">        mTextView2.setText(textView2Title);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextView1Size</span><span class="params">(<span class="keyword">int</span> textView1Val)</span> </span>&#123;</div><div class="line">        mTextView1.setTextSize(textView1Val);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextView2Size</span><span class="params">(<span class="keyword">int</span> textView2Val)</span> </span>&#123;</div><div class="line">        mTextView2.setTextSize(textView2Val);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextView2Gravity</span><span class="params">(String gravity)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="string">"top"</span>.equals(gravity)) &#123;</div><div class="line">            mTextView2.setGravity(Gravity.TOP);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"center"</span>.equals(gravity)) &#123;</div><div class="line">            mTextView2.setGravity(Gravity.CENTER);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-1-在相应的xml文件中调用自定义的ViewGroup类，实现对此类的调用。"><a href="#3-1-在相应的xml文件中调用自定义的ViewGroup类，实现对此类的调用。" class="headerlink" title="3.1 在相应的xml文件中调用自定义的ViewGroup类，实现对此类的调用。"></a>3.1 在相应的<code>xml文件</code>中调用<code>自定义的ViewGroup类</code>，实现对此类的调用。</h2><p>在这一步中，要想使用自定义view的属性进行数值的设置，首先要声明<code>命名空间</code>：</p>
+<pre><code>xmlns:cwj=&quot;http://schemas.android.com/apk/res-auto&quot;
+</code></pre><p>实际例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:cwj</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"com.yannischeng.custom_view.view_group.MyViewGroupActivity"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">com.yannischeng.custom_view.view_group.MyViewGroup</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneSize</span>=<span class="string">"@dimen/textOneSize1"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneTitle</span>=<span class="string">"大标题"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textTwoSize</span>=<span class="string">"@dimen/textOneSize2"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textTwoTitle</span>=<span class="string">"具体的详细信息"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:imageSrc</span>=<span class="string">"@drawable/maps"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"56dp"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2016.56.52.png" alt=""></p>
+<h2 id="3-2-修改之后布局文件"><a href="#3-2-修改之后布局文件" class="headerlink" title="3.2 修改之后布局文件"></a>3.2 修改之后布局文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">com.yannischeng.custom_view.view_group.MyViewGroup</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/my_view_group"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneSize</span>=<span class="string">"@dimen/textOneSize1"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneTitle</span>=<span class="string">"大标题"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textTwoSize</span>=<span class="string">"@dimen/textOneSize2"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textTwoTitle</span>=<span class="string">"具体的详细信息"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:imageSrc</span>=<span class="string">"@drawable/maps"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneVisible</span>=<span class="string">"false"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textOneColor</span>=<span class="string">"#ff0000"</span></span></div><div class="line"><span class="tag">        <span class="attr">cwj:textTwoGravity</span>=<span class="string">"top"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"56dp"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2009.50.32.png" alt=""></p>
+<h2 id="4-在相应的类中像使用其他控件一样使用自定义ViewGroup类的属性。"><a href="#4-在相应的类中像使用其他控件一样使用自定义ViewGroup类的属性。" class="headerlink" title="4. 在相应的类中像使用其他控件一样使用自定义ViewGroup类的属性。"></a>4. 在相应的类中像使用其他控件一样使用<code>自定义ViewGroup类</code>的<code>属性</code>。</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@BindView</span>(R.id.my_view_group)</div><div class="line">MyViewGroup mMyViewGroup;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_my_view_group);</div><div class="line">    ButterKnife.bind(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">    mMyViewGroup.setTextView1(<span class="string">"标题"</span>);</div><div class="line">    mMyViewGroup.setTextView1Size(<span class="number">14</span>);</div><div class="line">    mMyViewGroup.setTextView2(<span class="string">"小标题"</span>);</div><div class="line">    mMyViewGroup.setTextView2Size(<span class="number">10</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2017.06.40.png" alt=""></p>
+<h2 id="5-为自定义控件添加响应事件"><a href="#5-为自定义控件添加响应事件" class="headerlink" title="5. 为自定义控件添加响应事件"></a>5. 为自定义控件添加响应事件</h2><p>声明一个回调事件接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ClickListener</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">textOneClickListener</span><span class="params">(View view)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">textTwoClickListener</span><span class="params">(View view)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在自定义控件中使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> 点击事件接口</span></div><div class="line"><span class="comment"> */</span></div><div class="line">ClickListener mClickListener = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> 构造方法</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyViewGroup</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">		</div><div class="line">		<span class="comment">//...</span></div><div class="line"></div><div class="line">        mTextView1.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                mClickListener.textOneClickListener(v);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        mTextView2.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                mClickListener.textTwoClickListener(v);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 点击方法声明</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickListener</span><span class="params">(ClickListener listener)</span></span>&#123;</div><div class="line">    mClickListener = listener;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Activity中使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ClickListener mClickListener = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">mMyViewGroup.setClickListener(<span class="keyword">new</span> ClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">textOneClickListener</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        Toast.makeText(MyViewGroupActivity.<span class="keyword">this</span>, <span class="string">"this is textOneClickListener!"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">textTwoClickListener</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        Toast.makeText(MyViewGroupActivity.<span class="keyword">this</span>, <span class="string">"this is textTwoClickListener!"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>点击左侧写有“标题”的按钮：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2010.25.10.png" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-24%2010.25.36.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/权限-FileProvider/" rel="next" title="权限-FileProvider">
+                <i class="fa fa-chevron-left"></i> 权限-FileProvider
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/自定义View-8 TypedArray/" rel="prev" title="自定义View-7 TypedArray">
+                自定义View-7 TypedArray <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义组合ViewGroup"><span class="nav-number">1.</span> <span class="nav-text">自定义组合ViewGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建一个自定义ViewGroup的xml文件"><span class="nav-number">1.1.</span> <span class="nav-text">1. 创建一个自定义ViewGroup的xml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-创建一个继承自ViewGroup的自定义类。"><span class="nav-number">1.2.</span> <span class="nav-text">2. 创建一个继承自ViewGroup的自定义类。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-一个原始的自定义类："><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 一个原始的自定义类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-对自定义组合控件中的子控件进行属性设置"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 对自定义组合控件中的子控件进行属性设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-在相应的xml文件中调用自定义的ViewGroup类，实现对此类的调用。"><span class="nav-number">1.3.</span> <span class="nav-text">3.1 在相应的xml文件中调用自定义的ViewGroup类，实现对此类的调用。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-修改之后布局文件"><span class="nav-number">1.4.</span> <span class="nav-text">3.2 修改之后布局文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-在相应的类中像使用其他控件一样使用自定义ViewGroup类的属性。"><span class="nav-number">1.5.</span> <span class="nav-text">4. 在相应的类中像使用其他控件一样使用自定义ViewGroup类的属性。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-为自定义控件添加响应事件"><span class="nav-number">1.6.</span> <span class="nav-text">5. 为自定义控件添加响应事件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">78.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -266,6 +266,467 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-8 TypedArray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/自定义View-8 TypedArray/" itemprop="url">自定义View-7 TypedArray</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T16:32:15+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T09:44:56+08:00">
+                2017-11-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  588 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h1 id="自定义View中的-attrs-xml-文件设置"><a href="#自定义View中的-attrs-xml-文件设置" class="headerlink" title="自定义View中的 attrs.xml 文件设置"></a>自定义View中的 <code>attrs.xml</code> 文件设置</h1><p>### </p>
+<h2 id="1-文件位置："><a href="#1-文件位置：" class="headerlink" title="1. 文件位置："></a>1. 文件位置：</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2015.03.58.png" alt=""></p>
+<h2 id="2-文件内容（仅供参考）："><a href="#2-文件内容（仅供参考）：" class="headerlink" title="2. 文件内容（仅供参考）："></a>2. 文件内容（仅供参考）：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyViewGroup"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneTitle"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneSize"</span> <span class="attr">format</span>=<span class="string">"integer"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"imageSrc"</span> <span class="attr">format</span>=<span class="string">"reference"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textTwoTitle"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textTwoSize"</span> <span class="attr">format</span>=<span class="string">"integer"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneVisible"</span> <span class="attr">format</span>=<span class="string">"boolean"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="3-属性文件中参数属性的分类："><a href="#3-属性文件中参数属性的分类：" class="headerlink" title="3. 属性文件中参数属性的分类："></a>3. 属性文件中<code>参数属性</code>的分类：</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.41.51.png" alt=""></p>
+<h3 id="4-attrs-xml-文件中-format-取值类型"><a href="#4-attrs-xml-文件中-format-取值类型" class="headerlink" title="4. attrs.xml 文件中 format 取值类型"></a>4. <code>attrs.xml</code> 文件中 <code>format</code> 取值类型</h3><p><strong>1. reference：参考某一资源ID。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"imageSrc"</span> <span class="attr">format</span>=<span class="string">"reference"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:imageSrc=<span class="string">"@drawable/maps"</span></div></pre></td></tr></table></figure>
+<p>在java中获取数值（2种方式）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Drawable imgSrc = array.getDrawable(R.styleable.MyViewGroup_imageSrc);</div><div class="line">mImageView.setBackground(imgSrc);</div><div class="line"></div><div class="line"><span class="keyword">int</span> imgSrc = array.getResourceId(R.styleable.MyViewGroup_imageSrc,R.drawable.ic_launcher_background);</div><div class="line">mImageView.setBackgroundResource(imgSrc);</div></pre></td></tr></table></figure>
+<p><strong>2. color：颜色值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneColor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:textOneColor=<span class="string">"#ff0000"</span></div></pre></td></tr></table></figure>
+<p>在java中获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> textOneColor = array.getColor(R.styleable.MyViewGroup_textOneColor, Color.BLACK);</div><div class="line"></div><div class="line">mTextView2.setTextColor(textOneColor);</div></pre></td></tr></table></figure>
+<p><strong>3. boolean：布尔值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneVisible"</span> <span class="attr">format</span>=<span class="string">"boolean"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:textOneVisible=<span class="string">"false"</span></div></pre></td></tr></table></figure>
+<p>在java中获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">boolean</span> oneIsShow = array.getBoolean(R.styleable.MyViewGroup_textOneVisible,<span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (oneIsShow) &#123;</div><div class="line">    mTextView1.setVisibility(VISIBLE);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    mTextView1.setVisibility(INVISIBLE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>4. dimension：尺寸值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneSize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:textTwoSize=<span class="string">"@dimen/textOneSize2"</span></div></pre></td></tr></table></figure>
+<p>在java中获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span> textOneSize = array.getDimension(R.styleable.MyViewGroup_textOneSize,<span class="number">10</span>);</div><div class="line"></div><div class="line">mTextView1.setTextSize(textOneSize);</div></pre></td></tr></table></figure>
+<p><strong>5. float：浮点值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> = <span class="string">"fromAlpha"</span> <span class="attr">format</span> = <span class="string">"float"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:fromAlpha = <span class="string">"1.0"</span></div></pre></td></tr></table></figure>
+<p><strong>6. integer：整型值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> = <span class="string">"frameDuration"</span> <span class="attr">format</span>=<span class="string">"integer"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:frameDuration = <span class="string">"100"</span></div></pre></td></tr></table></figure>
+<p><strong>7. string：字符串。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneTitle"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:textOneTitle=<span class="string">"大标题"</span></div></pre></td></tr></table></figure>
+<p>在java中使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String textOneTitle = array.getString(R.styleable.MyViewGroup_textOneTitle);</div><div class="line"></div><div class="line">mTextView1.setText(textOneTitle);</div></pre></td></tr></table></figure>
+<p><strong>8. fraction：百分数。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> = <span class="string">"pivotY"</span> <span class="attr">format</span> = <span class="string">"fraction"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:pivotY = <span class="string">"300%"</span></div></pre></td></tr></table></figure>
+<p><strong>9. enum：枚举值。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textTwoGravity"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"top"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"center"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cwj:textTwoGravity=<span class="string">"top"</span></div></pre></td></tr></table></figure>
+<p>在java中获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> gracityIndex = array.getInt(R.styleable.MyViewGroup_textTwoGravity, Gravity.CENTER);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (gracityIndex == <span class="number">1</span>) &#123;</div><div class="line">    mTextView2.setGravity(Gravity.TOP);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (gracityIndex == <span class="number">2</span>) &#123;</div><div class="line">    mTextView2.setGravity(Gravity.CENTER);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>10. flag：位或运算。</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"windowSoftInputMode"</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateUnspecified"</span> <span class="attr">value</span> = <span class="string">"0"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateUnchanged"</span> <span class="attr">value</span> = <span class="string">"1"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateHidden"</span> <span class="attr">value</span> = <span class="string">"2"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateAlwaysHidden"</span> <span class="attr">value</span> = <span class="string">"3"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateVisible"</span> <span class="attr">value</span> = <span class="string">"4"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"stateAlwaysVisible"</span> <span class="attr">value</span> = <span class="string">"5"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"adjustUnspecified"</span> <span class="attr">value</span> = <span class="string">"0x00"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"adjustResize"</span> <span class="attr">value</span> = <span class="string">"0x10"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"adjustPan"</span> <span class="attr">value</span> = <span class="string">"0x20"</span> /&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">flag</span> <span class="attr">name</span> = <span class="string">"adjustNothing"</span> <span class="attr">value</span> = <span class="string">"0x30"</span> /&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:windowSoftInputMode = <span class="string">"stateUnspecified | stateUnchanged　|　stateHidden"</span></div></pre></td></tr></table></figure>
+<p><strong>其他 - 组合属性设置：</strong></p>
+<p>属性的定义</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> = <span class="string">"background"</span> <span class="attr">format</span> = <span class="string">"reference|color"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>属性的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:background = <span class="string">"@drawable/图片ID|#00FF00"</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/自定义View-7 ViewGroup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/自定义View-7 ViewGroup/" itemprop="url">自定义View-7 ViewGroup</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T13:41:28+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:27:17+08:00">
+                2017-11-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,238 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这次描述的是<code>自定义ViewGroup</code>，这其中既包括<code>完全自定义ViewGroup</code>和<code>组合ViewGroup</code>。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/自定义View-7 ViewGroup/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yannischeng.com/权限-FileProvider/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1858,413 +2319,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/抽象工厂模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/抽象工厂模式/" itemprop="url">抽象工厂模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T11:23:13+08:00">
-                2017-11-08
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:06:35+08:00">
-                2017-11-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  487 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="设计原则：依赖倒置原则"><a href="#设计原则：依赖倒置原则" class="headerlink" title="设计原则：依赖倒置原则"></a>设计原则：依赖倒置原则</h1><pre><code>要依赖抽象，不要依赖具体类。
-</code></pre><p><strong>这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。</strong></p>
-<p>这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/抽象工厂模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/StarUML的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/StarUML的使用/" itemprop="url">StarUML的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T13:28:32+08:00">
-                2017-11-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-15T09:11:15+08:00">
-                2017-11-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,368 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>StarUML使用参考：<a href="http://blog.csdn.net/eyckwu/article/details/53871841" target="_blank" rel="external">http://blog.csdn.net/eyckwu/article/details/53871841</a><br>UML学 : <a href="http://www.uml.org.cn/oobject/201104212.asp" target="_blank" rel="external">http://www.uml.org.cn/oobject/201104212.asp</a><br>各种图（流程图，思维导图，UML，拓扑图，ER图）简介 ：<a href="http://www.cnblogs.com/jiqing9006/p/3344221.html" target="_blank" rel="external">http://www.cnblogs.com/jiqing9006/p/3344221.html</a></p>
-</blockquote>
-<hr>
-<p><strong>文章持续更新中……</strong></p>
-<hr>
-<h1 id="码云拾遗"><a href="#码云拾遗" class="headerlink" title="码云拾遗"></a>码云拾遗</h1><ul>
-<li><p><strong>明星效应。很简单，在一个领域保持顶尖水平，比在一两个领域保持领先水平和五六个领域保持一般水准都要更有价值、并且收益更好。</strong> </p>
-</li>
-<li><p><strong>有悖常识的真相：让未来更开放的方式，正是专注的去做好一件事情。这个世界上最成功的人，他们在某一领域获得成功之后，可通过经营杠杆进入任何他们想要涉足的领域。而这都得依赖于他们曾极致的专注在做好一件事情上。</strong></p>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/StarUML的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2321,7 +2375,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2410,7 +2464,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">76.7k</span>
+    <span title="Site words total count">78.5k</span>
   
 </div>
 
