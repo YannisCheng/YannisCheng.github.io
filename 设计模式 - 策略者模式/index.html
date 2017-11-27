@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="设计模式,阅读," />
+  <meta name="keywords" content="阅读,设计模式," />
 
 
 
@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
-<meta name="keywords" content="设计模式,阅读">
+<meta name="description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
+<meta name="keywords" content="阅读,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://yannischeng.com/单例模式/index.html">
+<meta property="og:title" content="策略者模式">
+<meta property="og:url" content="http://yannischeng.com/设计模式 - 策略者模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
+<meta property="og:description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-03T03:34:09.797Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png">
+<meta property="og:updated_time" content="2017-11-06T05:19:55.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式">
-<meta name="twitter:description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
+<meta name="twitter:title" content="策略者模式">
+<meta name="twitter:description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/单例模式/"/>
+  <link rel="canonical" href="http://yannischeng.com/设计模式 - 策略者模式/"/>
 
 
 
 
 
-  <title>单例模式 | YannisCheng's Technology Blogs</title>
+  <title>策略者模式 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -267,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/单例模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/设计模式 - 策略者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -284,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单例模式</h1>
+          <h1 class="post-title" itemprop="name headline">策略者模式</h1>
         
 
         <div class="post-meta">
@@ -296,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T00:00:00+08:00">
-                2017-01-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-26T00:00:00+08:00">
+                2016-10-26
               </time>
             
 
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T11:34:09+08:00">
-                2017-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-06T13:19:55+08:00">
+                2017-11-06
               </time>
             
           </span>
@@ -362,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  488 字
+                  389 字
                 </span>
               
 
@@ -378,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -397,9 +399,9 @@
     
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
             <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -417,7 +419,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/单例模式/" title="单例模式">http://yannischeng.com/单例模式/</a>
+    <a href="http://yannischeng.com/设计模式 - 策略者模式/" title="策略者模式">http://yannischeng.com/设计模式 - 策略者模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -436,79 +438,27 @@
       
 
       
-        <blockquote>
-<p>参考：<a href="http://blog.csdn.net/tanyujing/article/details/14160941" target="_blank" rel="external">http://blog.csdn.net/tanyujing/article/details/14160941</a><br>         <a href="http://blog.csdn.net/sbsujjbcy/article/details/49147839" target="_blank" rel="external">http://blog.csdn.net/sbsujjbcy/article/details/49147839</a></p>
-</blockquote>
-<p>是在内存中维护唯一对象，优点如下：</p>
-<pre><code>1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。
-2.保持程序运行的时候该中始终只有一个实例存在内存中
-</code></pre><a id="more"></a>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><pre><code>public class Singleton{
-    private static volatile Singleton instance == null;
-
-    private Singleton(){
-    }
-
-    public static Singleton getInstance(){
-        if(instance == null){
-            synchronized(Singleton.class){
-                if(instance == null){
-                    instance == new Singleton();
-                }
-            }
-        }
-        return instance;
-    }
-}
-</code></pre><h1 id="关于volatile"><a href="#关于volatile" class="headerlink" title="关于volatile"></a>关于volatile</h1><blockquote>
-<p>参考：<a href="http://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-jtp06197.html</a></p>
-</blockquote>
-<p>概述：<br>        Java 语言中的 volatile 变量可以被看作是一种 “程度较轻的 synchronized”；<br>        与 synchronized 块相比，volatile 变量所需的编码较少，并且运行时开销也较少，<br>        但是它所能实现的功能也仅是 synchronized 的一部分。</p>
-<h1 id="单例模式使用："><a href="#单例模式使用：" class="headerlink" title="单例模式使用："></a>单例模式使用：</h1><ol>
-<li>必须防止外部可以调用构造函数进行实例化，因此构造函数必须私有化。</li>
-<li>必须定义一个静态函数获得该单例</li>
-<li>单例使用volatile修饰</li>
-<li>使用synchronized 进行同步处理，并且双重判断是否为null，<br>在synchronized (Singleton.class)里面又进行了是否为null的判断，<br>这是因为一个线程进入了该代码，如果另一个线程在等待，这时候前一个线程创建<br>了一个实例出来完毕后，另一个线程获得锁进入该同步代码，实例已经存在，没必<br>要再次创建，因此这个判断是否是null还是必须的。</li>
+        <p>仅仅知道<code>抽象</code>、<code>继承</code>、<code>多态</code>、<code>封装</code>并不会马上让你变成好的面向对象设计者。<br>设计大师关注的是<code>弹性</code>、<code>可维护</code>、<code>可应付改变</code>的设计。</p>
+<a id="more"></a>
+<h1 id="软件开发的一个不变真理："><a href="#软件开发的一个不变真理：" class="headerlink" title="软件开发的一个不变真理："></a>软件开发的一个不变真理：</h1><p>CHANGE。</p>
+<h1 id="策略模式（Strategy-Pattern）定义："><a href="#策略模式（Strategy-Pattern）定义：" class="headerlink" title="策略模式（Strategy Pattern）定义："></a>策略模式（Strategy Pattern）定义：</h1><pre><code>定义算法族（一组行为），分别封装起来（定义成为不同的接口），让他们之间可以互相替换。
+此模式让算法（行为类）之间的变化独立于算法的使用者（调用类）。
+</code></pre><h1 id="OO设置原则："><a href="#OO设置原则：" class="headerlink" title="OO设置原则："></a>OO设置原则：</h1><ol>
+<li><p>封装变化:</p>
+<pre><code>a)找出应用中可能需要变化之处，把他们独立出来——封装，不要和固定的代码混在一起。
+b)把会变化的部分取出并封装起来，以后便可以轻易的改动活着扩充此部分，而不影响不需要变化的部分（每个设计模式背后的精神所在）。
+</code></pre></li>
+<li><p>针对接口编程（针对超类型编程），而不是针对实现编程：</p>
+<pre><code>a)针对接口编程：关键是利用多态（运行时动态的改变行为）。
+b)针对超类型编程：变量的声明类型应该是超类型（一个抽象类或一个接口）
+</code></pre></li>
+<li><p>多用组合，少用继承：</p>
+<pre><code>“有一个”可能比“是一个”好。
+</code></pre></li>
 </ol>
-<h1 id="单例的并发测试：见参考。"><a href="#单例的并发测试：见参考。" class="headerlink" title="单例的并发测试：见参考。"></a>单例的并发测试：见参考。</h1><h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><pre><code>public class ActivityManager {
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>书中“鸭子”的实现：<br>    将“飞行”、“鸣叫”这些行为（鸭子的自身属性）抽象成“飞行接口”、“鸣叫接口”，之后再将“行为接口”具体实现，组合至具体的“鸭子类“中。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png" alt="">        </p>
 
-    private static volatile ActivityManager instance;
-    private Stack&lt;Activity&gt; mActivityStack = new Stack&lt;Activity&gt;();
-
-    private ActivityManager(){
-
-    }
-
-    public static ActivityManager getInstance(){
-    if (instance == null) {
-    synchronized (ActivityManager.class) {
-        if (instance == null) {
-            instance = new ActivityManager();
-        }
-    }
-    return instance;
-    }
-
-    public void addActicity(Activity act){
-    mActivityStack.push(act);
-    }
-
-    public void removeActivity(Activity act){
-    mActivityStack.remove(act);
-    }
-
-    public void killMyProcess(){
-    int nCount = mActivityStack.size();
-    for (int i = nCount - 1; i &gt;= 0; i--) {
-        Activity activity = mActivityStack.get(i);
-        activity.finish();
-    }
-
-    mActivityStack.clear();
-    android.os.Process.killProcess(android.os.Process.myPid());
-    }
-}
-</code></pre>
       
     </div>
     
@@ -529,18 +479,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux vim 命令/" rel="next" title="Linux vim 命令">
-                <i class="fa fa-chevron-left"></i> Linux vim 命令
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/设计模式与原则/" rel="prev" title="设计模式与原则">
-                设计模式与原则 <i class="fa fa-chevron-right"></i>
+              <a href="/Alias 的使用/" rel="prev" title="Alias 的使用">
+                Alias 的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -635,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -646,7 +592,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -695,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于volatile"><span class="nav-number">2.</span> <span class="nav-text">关于volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式使用："><span class="nav-number">3.</span> <span class="nav-text">单例模式使用：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例的并发测试：见参考。"><span class="nav-number">4.</span> <span class="nav-text">单例的并发测试：见参考。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实际应用"><span class="nav-number">5.</span> <span class="nav-text">实际应用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件开发的一个不变真理："><span class="nav-number">1.</span> <span class="nav-text">软件开发的一个不变真理：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式（Strategy-Pattern）定义："><span class="nav-number">2.</span> <span class="nav-text">策略模式（Strategy Pattern）定义：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OO设置原则："><span class="nav-number">3.</span> <span class="nav-text">OO设置原则：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-number">4.</span> <span class="nav-text">实践</span></a></li></ol></div>
             
 
           </div>
@@ -729,7 +675,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.5k</span>
+    <span title="Site words total count">79.8k</span>
   
 </div>
 

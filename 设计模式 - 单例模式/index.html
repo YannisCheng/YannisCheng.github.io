@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="设计模式,阅读," />
+  <meta name="keywords" content="阅读,设计模式," />
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="builder实例">
-<meta name="keywords" content="设计模式,阅读">
+<meta name="description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
+<meta name="keywords" content="阅读,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Builder模式">
-<meta property="og:url" content="http://yannischeng.com/Builder模式/index.html">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yannischeng.com/设计模式 - 单例模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="builder实例">
+<meta property="og:description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-03T03:34:18.952Z">
+<meta property="og:updated_time" content="2017-11-03T03:34:09.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Builder模式">
-<meta name="twitter:description" content="builder实例">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/tanyujing/article/details/14160941         http://blog.csdn.net/sbsujjbcy/article/details/49147839  是在内存中维护唯一对象，优点如下： 1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。 2.保持程序运行的时候该中始终只有">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Builder模式/"/>
+  <link rel="canonical" href="http://yannischeng.com/设计模式 - 单例模式/"/>
 
 
 
 
 
-  <title>Builder模式 | YannisCheng's Technology Blogs</title>
+  <title>单例模式 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Builder模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/设计模式 - 单例模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Builder模式</h1>
+          <h1 class="post-title" itemprop="name headline">单例模式</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T00:00:00+08:00">
-                2017-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T00:00:00+08:00">
+                2017-01-12
               </time>
             
 
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T11:34:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T11:34:09+08:00">
                 2017-11-03
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  788 字
+                  488 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -397,9 +397,9 @@
     
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
             <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -417,7 +417,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/Builder模式/" title="Builder模式">http://yannischeng.com/Builder模式/</a>
+    <a href="http://yannischeng.com/设计模式 - 单例模式/" title="单例模式">http://yannischeng.com/设计模式 - 单例模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -436,169 +436,78 @@
       
 
       
-        <h2 id="builder实例"><a href="#builder实例" class="headerlink" title="builder实例"></a>builder实例</h2><a id="more"></a>
-<pre><code>public class Person {
-    private String name;
-    private String address;
-    private int age;
-    private int height;
-    private int weight;
+        <blockquote>
+<p>参考：<a href="http://blog.csdn.net/tanyujing/article/details/14160941" target="_blank" rel="external">http://blog.csdn.net/tanyujing/article/details/14160941</a><br>         <a href="http://blog.csdn.net/sbsujjbcy/article/details/49147839" target="_blank" rel="external">http://blog.csdn.net/sbsujjbcy/article/details/49147839</a></p>
+</blockquote>
+<p>是在内存中维护唯一对象，优点如下：</p>
+<pre><code>1.对于那些比较耗内存的类，只实例化一次可以大大提高性能，尤其是在移动开发中。
+2.保持程序运行的时候该中始终只有一个实例存在内存中
+</code></pre><a id="more"></a>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><pre><code>public class Singleton{
+    private static volatile Singleton instance == null;
 
-    //外部类提供一个私有构造函数供内部类调用，在该构造函数中完成成员变量的赋值，
-    //取值为Builder对象中对应的值
-    private Person(Builder builder){
-        this.name = builder.name;
-        this.address = builder.address;
-        this.age = builder.age;
-        this.height = builder.height;
-        this.weight = builder.weight;
+    private Singleton(){
     }
 
-    public String getName() {
-      return name;
-    }
-
-    public void setName(String name) {
-      this.name = name;
-    }
-
-    public String getAddress() {
-      return address;
-    }
-
-    public void setAddress(String address) {
-      this.address = address;
-    }
-
-    public int getAge() {
-      return age;
-    }
-
-    public void setAge(int age) {
-      this.age = age;
-    }
-
-    public int getHeight() {
-      return height;
-    }
-
-    public void setHeight(int height) {
-      this.height = height;
-    }
-
-    public int getWeight() {
-      return weight;
-    }
-
-    public void setWeight(int weight) {
-      this.weight = weight;
-    }
-
-    @Override
-    public String toString() {
-    return &quot;Person{&quot; +
-            &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
-            &quot;, address=&apos;&quot; + address + &apos;\&apos;&apos; +
-            &quot;, age=&quot; + age +
-            &quot;, height=&quot; + height +
-            &quot;, weight=&quot; + weight +
-            &apos;}&apos;;
-    }
-
-    //定义一个静态内部类Builder，内部的成员变量和外部类一样
-    public static class Builder{
-
-        private String name;
-        private String address;
-        private int age;
-        private int height;
-        private int weight;
-
-        //Builder类通过一系列的方法用于成员变量的赋值，并返回当前对象本身（this）
-        public Builder name(String name){
-            this.name = name;
-            return this;
+    public static Singleton getInstance(){
+        if(instance == null){
+            synchronized(Singleton.class){
+                if(instance == null){
+                    instance == new Singleton();
+                }
+            }
         }
-
-        public Builder address(String address){
-            this.address = address;
-            return this;
-        }
-
-        public Builder age(int age){
-            this.age = age;
-            return this;
-        }
-
-        public Builder height(int height){
-            this.height = height;
-            return this;
-        }
-
-        public Builder weight(int weight){
-            this.weight = weight;
-            return this;
-        }
-
-        //Builder类提供一个build方法或者create方法用于创建对应的外部类，
-        //该方法内部调用了外部类的一个私有构造函数，该构造函数的参数就是内部类Builder
-        public Person build(){
-            return new Person(this);
-        }
+        return instance;
     }
 }
-</code></pre><p>使用实例</p>
-<pre><code>public class MainActivity extends AppCompatActivity {
-    private static final String TAG = &quot;MainActivity&quot;;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+</code></pre><h1 id="关于volatile"><a href="#关于volatile" class="headerlink" title="关于volatile"></a>关于volatile</h1><blockquote>
+<p>参考：<a href="http://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-jtp06197.html</a></p>
+</blockquote>
+<p>概述：<br>        Java 语言中的 volatile 变量可以被看作是一种 “程度较轻的 synchronized”；<br>        与 synchronized 块相比，volatile 变量所需的编码较少，并且运行时开销也较少，<br>        但是它所能实现的功能也仅是 synchronized 的一部分。</p>
+<h1 id="单例模式使用："><a href="#单例模式使用：" class="headerlink" title="单例模式使用："></a>单例模式使用：</h1><ol>
+<li>必须防止外部可以调用构造函数进行实例化，因此构造函数必须私有化。</li>
+<li>必须定义一个静态函数获得该单例</li>
+<li>单例使用volatile修饰</li>
+<li>使用synchronized 进行同步处理，并且双重判断是否为null，<br>在synchronized (Singleton.class)里面又进行了是否为null的判断，<br>这是因为一个线程进入了该代码，如果另一个线程在等待，这时候前一个线程创建<br>了一个实例出来完毕后，另一个线程获得锁进入该同步代码，实例已经存在，没必<br>要再次创建，因此这个判断是否是null还是必须的。</li>
+</ol>
+<h1 id="单例的并发测试：见参考。"><a href="#单例的并发测试：见参考。" class="headerlink" title="单例的并发测试：见参考。"></a>单例的并发测试：见参考。</h1><h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><pre><code>public class ActivityManager {
 
-        Person person1 = new Person.Builder().
-                name(&quot;张三&quot;).
-                address(&quot;河北&quot;).
-                age(24).
-                height(177).
-                build();
-        Log.e(TAG, person1.toString());
+    private static volatile ActivityManager instance;
+    private Stack&lt;Activity&gt; mActivityStack = new Stack&lt;Activity&gt;();
 
-        Person person2 = new Person.Builder().
-                name(&quot;刻有&quot;).
-                address(&quot;拉萨&quot;).
-                height(159).
-                weight(65).
-                build();
-        Log.e(TAG, person2.toString() );
+    private ActivityManager(){
 
-        Person person3 = new Person.Builder().
-                name(&quot;利盟&quot;).
-                address(&quot;陕西&quot;).
-                age(24).
-                height(188).
-                weight(65).
-                build();
-        Log.e(TAG, person3.toString() );
+    }
 
-        Person person4 = new Person.Builder().
-                name(&quot;由张&quot;).
-                address(&quot;广西&quot;).
-                age(34).
-                height(177).
-                weight(55).
-                build();
-        Log.e(TAG, person4.toString() );
+    public static ActivityManager getInstance(){
+    if (instance == null) {
+    synchronized (ActivityManager.class) {
+        if (instance == null) {
+            instance = new ActivityManager();
+        }
+    }
+    return instance;
+    }
+
+    public void addActicity(Activity act){
+    mActivityStack.push(act);
+    }
+
+    public void removeActivity(Activity act){
+    mActivityStack.remove(act);
+    }
+
+    public void killMyProcess(){
+    int nCount = mActivityStack.size();
+    for (int i = nCount - 1; i &gt;= 0; i--) {
+        Activity activity = mActivityStack.get(i);
+        activity.finish();
+    }
+
+    mActivityStack.clear();
+    android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
-</code></pre><h2 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h2><pre><code>在Builder类里定义了一份与Person类一模一样的变量，通过一系列的成员函数进行设置属性值，
-但是返回值都是this，也就是都是Builder对象，最后提供了一个build函数用于创建Person对象，
-返回的是Person对象，对应的构造函数在Person类中进行定义，也就是构造函数的入参是Builder对象，
-然后依次对自己的成员变量进行赋值，对应的值都是Builder对象中的值。
-</code></pre><h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><pre><code>创建过程变得清晰，对应的值属性一目了然，可读性大大增强。
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code>定义一个静态内部类Builder，内部的成员变量和外部类一样
-Builder类通过一系列的方法用于成员变量的赋值，并返回当前对象本身（this）
-Builder类提供一个build方法或者create方法用于创建对应的外部类，该方法内部调用了外部类的一个私有构造函数，该构造函数的参数就是内部类Builder
-外部类提供一个私有构造函数供内部类调用，在该构造函数中完成成员变量的赋值，取值为Builder对象中对应的值
 </code></pre>
       
     </div>
@@ -620,8 +529,8 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/观察者模式/" rel="next" title="观察者模式">
-                <i class="fa fa-chevron-left"></i> 观察者模式
+              <a href="/Ubuntu 桌面使用命令/" rel="next" title="Ubuntu 桌面使用命令">
+                <i class="fa fa-chevron-left"></i> Ubuntu 桌面使用命令
               </a>
             
           </div>
@@ -630,8 +539,8 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/原型模式/" rel="prev" title="原型模式">
-                原型模式 <i class="fa fa-chevron-right"></i>
+              <a href="/设计模式与原则/" rel="prev" title="设计模式与原则">
+                设计模式与原则 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -715,7 +624,7 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,7 +635,7 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -737,7 +646,7 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -786,7 +695,7 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#builder实例"><span class="nav-number">1.</span> <span class="nav-text">builder实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述："><span class="nav-number">2.</span> <span class="nav-text">描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">4.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于volatile"><span class="nav-number">2.</span> <span class="nav-text">关于volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式使用："><span class="nav-number">3.</span> <span class="nav-text">单例模式使用：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例的并发测试：见参考。"><span class="nav-number">4.</span> <span class="nav-text">单例的并发测试：见参考。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实际应用"><span class="nav-number">5.</span> <span class="nav-text">实际应用</span></a></li></ol></div>
             
 
           </div>
@@ -820,7 +729,7 @@ Builder类提供一个build方法或者create方法用于创建对应的外部�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.5k</span>
+    <span title="Site words total count">79.8k</span>
   
 </div>
 

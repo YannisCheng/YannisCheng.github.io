@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="设计模式,阅读," />
+  <meta name="keywords" content="阅读,设计模式," />
 
 
 
@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
-<meta name="keywords" content="设计模式,阅读">
+<meta name="description" content="参考：http://blog.csdn.net/self_study/article/details/51628486  说明创建一个抽象类方法，里面写有代理与主题共同的方法。 public abstract class MyObject {     //代理与实际主题的共同方法     public abstract void operate(); }">
+<meta name="keywords" content="阅读,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="策略者模式">
-<meta property="og:url" content="http://yannischeng.com/策略者模式/index.html">
+<meta property="og:title" content="代理模式">
+<meta property="og:url" content="http://yannischeng.com/设计模式 - 代理模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
+<meta property="og:description" content="参考：http://blog.csdn.net/self_study/article/details/51628486  说明创建一个抽象类方法，里面写有代理与主题共同的方法。 public abstract class MyObject {     //代理与实际主题的共同方法     public abstract void operate(); }">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png">
-<meta property="og:updated_time" content="2017-11-06T05:19:55.666Z">
+<meta property="og:updated_time" content="2017-11-03T03:34:12.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="策略者模式">
-<meta name="twitter:description" content="仅仅知道抽象、继承、多态、封装并不会马上让你变成好的面向对象设计者。设计大师关注的是弹性、可维护、可应付改变的设计。">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png">
+<meta name="twitter:title" content="代理模式">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/self_study/article/details/51628486  说明创建一个抽象类方法，里面写有代理与主题共同的方法。 public abstract class MyObject {     //代理与实际主题的共同方法     public abstract void operate(); }">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/策略者模式/"/>
+  <link rel="canonical" href="http://yannischeng.com/设计模式 - 代理模式/"/>
 
 
 
 
 
-  <title>策略者模式 | YannisCheng's Technology Blogs</title>
+  <title>代理模式 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -269,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/策略者模式/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/设计模式 - 代理模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -286,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">策略者模式</h1>
+          <h1 class="post-title" itemprop="name headline">代理模式</h1>
         
 
         <div class="post-meta">
@@ -298,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-26T00:00:00+08:00">
-                2016-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T00:00:00+08:00">
+                2017-03-10
               </time>
             
 
@@ -314,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-06T13:19:55+08:00">
-                2017-11-06
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T11:34:12+08:00">
+                2017-11-03
               </time>
             
           </span>
@@ -364,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  389 字
+                  786 字
                 </span>
               
 
@@ -380,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -399,9 +397,9 @@
     
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
             <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -419,7 +417,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/策略者模式/" title="策略者模式">http://yannischeng.com/策略者模式/</a>
+    <a href="http://yannischeng.com/设计模式 - 代理模式/" title="代理模式">http://yannischeng.com/设计模式 - 代理模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -438,26 +436,61 @@
       
 
       
-        <p>仅仅知道<code>抽象</code>、<code>继承</code>、<code>多态</code>、<code>封装</code>并不会马上让你变成好的面向对象设计者。<br>设计大师关注的是<code>弹性</code>、<code>可维护</code>、<code>可应付改变</code>的设计。</p>
-<a id="more"></a>
-<h1 id="软件开发的一个不变真理："><a href="#软件开发的一个不变真理：" class="headerlink" title="软件开发的一个不变真理："></a>软件开发的一个不变真理：</h1><p>CHANGE。</p>
-<h1 id="策略模式（Strategy-Pattern）定义："><a href="#策略模式（Strategy-Pattern）定义：" class="headerlink" title="策略模式（Strategy Pattern）定义："></a>策略模式（Strategy Pattern）定义：</h1><pre><code>定义算法族（一组行为），分别封装起来（定义成为不同的接口），让他们之间可以互相替换。
-此模式让算法（行为类）之间的变化独立于算法的使用者（调用类）。
-</code></pre><h1 id="OO设置原则："><a href="#OO设置原则：" class="headerlink" title="OO设置原则："></a>OO设置原则：</h1><ol>
-<li><p>封装变化:</p>
-<pre><code>a)找出应用中可能需要变化之处，把他们独立出来——封装，不要和固定的代码混在一起。
-b)把会变化的部分取出并封装起来，以后便可以轻易的改动活着扩充此部分，而不影响不需要变化的部分（每个设计模式背后的精神所在）。
-</code></pre></li>
-<li><p>针对接口编程（针对超类型编程），而不是针对实现编程：</p>
-<pre><code>a)针对接口编程：关键是利用多态（运行时动态的改变行为）。
-b)针对超类型编程：变量的声明类型应该是超类型（一个抽象类或一个接口）
-</code></pre></li>
-<li><p>多用组合，少用继承：</p>
-<pre><code>“有一个”可能比“是一个”好。
-</code></pre></li>
-</ol>
-<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>书中“鸭子”的实现：<br>    将“飞行”、“鸣叫”这些行为（鸭子的自身属性）抽象成“飞行接口”、“鸣叫接口”，之后再将“行为接口”具体实现，组合至具体的“鸭子类“中。</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-06%2013.17.52.png" alt="">        </p>
+        <blockquote>
+<p>参考：<a href="http://blog.csdn.net/self_study/article/details/51628486" target="_blank" rel="external">http://blog.csdn.net/self_study/article/details/51628486</a></p>
+</blockquote>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>创建一个抽象类方法，里面写有代理与主题共同的方法。</p>
+<pre><code>public abstract class MyObject {
+    //代理与实际主题的共同方法
+    public abstract void operate();
+}
+</code></pre><a id="more"></a>
+<p>真实主题</p>
+<pre><code>public class RealObject extends MyObject {
+    @Override
+    public void operate() {
+    System.out.println(&quot;这是来自RealObject的方法处理&quot;);
+    }
+}
+</code></pre><p>代理主题</p>
+<pre><code>public class ProxyObject extends MyObject {
+
+    private RealObject realObject;
+    //在此类中调用真实的主题，因为是代理主题“代理”真实主题中的方法，需要用到真实主题的引用
+    public ProxyObject(RealObject realObject) {
+    this.realObject = realObject;
+    }
+
+    @Override
+    public void operate() {
+    System.out.println(&quot;在处理“RealObject”之前，处理代理模式中自己的方法处理&quot;);
+    //在此处调用真实主题中的同名方法。
+    realObject.operate();
+    System.out.println(&quot;在处理“RealObject”之后，处理代理模式中自己的方法处理&quot;);
+    }
+}
+</code></pre><p>测试</p>
+<pre><code>public class Proxy_DesignPattern {
+    public static void main(String[] args){
+    ProxyObject proxyObject = new ProxyObject(new RealObject());
+    proxyObject.operate();
+    }
+}
+/**
+ * 输出结果：
+ * 在处理“RealObject”之前，处理代理模式中自己的方法处理
+   这是来自RealObject的方法处理
+   在处理“RealObject”之后，处理代理模式中自己的方法处理
+ */
+</code></pre><h1 id="代理模式的角色："><a href="#代理模式的角色：" class="headerlink" title="代理模式的角色："></a>代理模式的角色：</h1><p><strong>Subject：抽象主题类</strong><br>    该类的主要职责是声明真实主题与代理的共同接口方法，该类既可以是一个抽象类，也可以是一个接口；</p>
+<p><strong>RealSubjct：真实主题类</strong><br>    该类也称为被委托类或被代理类，该类定义了代理所表示的真实对象，由其执行具体的业务逻辑方法，而客户端则通过代理类间接地调用真实主题类中定义的方法；</p>
+<p><strong>ProxySubject：代理类</strong><br>    该类也称为委托类或代理类，该类持有一个对真实主题类的引用，在其所实现的接口方法中调用真实主题类中对应的接口方法，以此起到代理的作用；</p>
+<p><strong>Client：客户类</strong><br>    即使用代理类的部分。</p>
+<h1 id="代理模式根据实际使用的场景也可以分为以下几种："><a href="#代理模式根据实际使用的场景也可以分为以下几种：" class="headerlink" title="代理模式根据实际使用的场景也可以分为以下几种："></a>代理模式根据实际使用的场景也可以分为以下几种：</h1><p><strong>远程代理（Remote Proxy）</strong><br>    为某个在不同的内存地址空间的对象提供局部代理，使系统可以将 Server 部分的实现隐藏，以便 Client 可以不必考虑 Server 的存在，类似于 C/S 模式（主要拦截并控制远程方法的调用，做代理防火墙之类的）；</p>
+<p><strong>虚拟代理（Virtual Proxy）</strong><br>    使用一个代理对象标识一个十分耗资源的对象，并在真正需要时才创建，实现一个延迟加载的机制；</p>
+<p><strong>保护代理（Protection Proxy）</strong><br>    使用代理控制对原始对象的访问，该类型的代理通常被用于原始对象有不同访问权限的情况；</p>
+<p><strong>智能引用（Smart Proxy）</strong><br>    在访问原始对象时执行一些自己的附加操作并对指向原始对象的引用计数；</p>
+<p><strong>写时拷贝（克隆）代理（Copy-on-write Proxy）</strong><br>    其实是虚拟代理的一个分支，提供了拷贝大对象的时候只有在对象真正变化后才会进行拷贝（克隆）的操作，即延迟拷贝。</p>
 
       
     </div>
@@ -479,14 +512,18 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/设计模式 - 原型模式/" rel="next" title="原型模式">
+                <i class="fa fa-chevron-left"></i> 原型模式
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Alias 的使用/" rel="prev" title="Alias 的使用">
-                Alias 的使用 <i class="fa fa-chevron-right"></i>
+              <a href="/设计模式 - 装饰者模式/" rel="prev" title="装饰者模式">
+                装饰者模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -570,7 +607,7 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -581,7 +618,7 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -592,7 +629,7 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -641,7 +678,7 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件开发的一个不变真理："><span class="nav-number">1.</span> <span class="nav-text">软件开发的一个不变真理：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式（Strategy-Pattern）定义："><span class="nav-number">2.</span> <span class="nav-text">策略模式（Strategy Pattern）定义：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OO设置原则："><span class="nav-number">3.</span> <span class="nav-text">OO设置原则：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-number">4.</span> <span class="nav-text">实践</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式的角色："><span class="nav-number">2.</span> <span class="nav-text">代理模式的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式根据实际使用的场景也可以分为以下几种："><span class="nav-number">3.</span> <span class="nav-text">代理模式根据实际使用的场景也可以分为以下几种：</span></a></li></ol></div>
             
 
           </div>
@@ -675,7 +712,7 @@ b)针对超类型编程：变量的声明类型应该是超类型（一个抽象
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.5k</span>
+    <span title="Site words total count">79.8k</span>
   
 </div>
 
