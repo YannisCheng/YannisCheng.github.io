@@ -83,15 +83,20 @@
 
 
 
+<meta name="description" content="常用易错点总结">
 <meta name="keywords" content="Android,Kit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kit">
 <meta property="og:url" content="http://yannischeng.com/Kit/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="常用易错点总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-29T03:08:30.596Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20161024205117384.png">
+<meta property="og:updated_time" content="2017-12-29T03:32:15.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kit">
+<meta name="twitter:description" content="常用易错点总结">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/20161024205117384.png">
 
 
 
@@ -309,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-29T11:08:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-29T11:32:15+08:00">
                 2017-12-29
               </time>
             
@@ -359,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  368 字
                 </span>
               
 
@@ -375,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -433,7 +438,17 @@
       
 
       
-        <a id="more"></a>
+        <h1 id="常用易错点总结"><a href="#常用易错点总结" class="headerlink" title="常用易错点总结"></a>常用易错点总结</h1><a id="more"></a>
+<h2 id="1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><a href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l" class="headerlink" title="1. String 类的replace方法替换字符串“无效”、“不起作用”原因l"></a>1. String 类的<code>replace方法</code>替换字符串“无效”、“不起作用”原因l</h2><blockquote>
+<p>参考： <a href="http://blog.csdn.net/huqingpeng321/article/details/52915324" target="_blank" rel="external">http://blog.csdn.net/huqingpeng321/article/details/52915324</a></p>
+</blockquote>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/20161024205117384.png" alt=""></p>
+<p>没有特殊字符的话，则返回的是同一个对象的引用；若出现特殊字符，则new一个新的对象,替换之前的对象。</p>
+<h3 id="实际使用："><a href="#实际使用：" class="headerlink" title="实际使用："></a>实际使用：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 存储待遍历img地址</div><div class="line">List&lt;String&gt; array = MatchHtmlValue.match(tempHtml,&quot;img&quot;, &quot;src&quot;);</div><div class="line">StringBuilder builder = new StringBuilder();</div><div class="line">// 执行遍历</div><div class="line">for (int i = 0; i &lt; array.size(); i++) &#123;</div><div class="line">    String oldHtmlVal = array.get(i);</div><div class="line">    String newHtmlVal = MyCommon.URL_BASE_IMG + array.get(i);</div><div class="line">    // ！！！ 此处执行替换时必须重新生成一个新的String串</div><div class="line">    builder.append(tempHtml.replace(oldHtmlVal,newHtmlVal));</div><div class="line">&#125;</div><div class="line">// 字符串拼接</div><div class="line">html.append(&quot;联系电话为：&quot; + tel);</div><div class="line">html.append(builder);</div><div class="line">                *//*html.append(getServerInfo.getData().getDesc().replace(&quot;/public/upload/20171213/31d2fd1460e2471bd0fbbb59689c9c50.png&quot;,&quot;http://192.168.31.178:8088/public/upload/20171213/31d2fd1460e2471bd0fbbb59689c9c50.png&quot;));*//*</div><div class="line">Log.e(TAG, &quot;ヽ(｀Д´)ﾉ -&gt; onSuccess tel : &quot; + tel + &quot;; \n html : &quot; + html);</div><div class="line">htmlStr = html.toString();</div><div class="line">CommonWebViewSets.setHtmlCode(mServerWebView,htmlStr);</div></pre></td></tr></table></figure>
+<h2 id="2-通过正则表达式获取html标签中的指定属性值"><a href="#2-通过正则表达式获取html标签中的指定属性值" class="headerlink" title="2. 通过正则表达式获取html标签中的指定属性值"></a>2. 通过正则表达式获取html标签中的指定属性值</h2><blockquote>
+<p>参考：<a href="http://blog.csdn.net/andybbc/article/details/50556668" target="_blank" rel="external">http://blog.csdn.net/andybbc/article/details/50556668</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class MatchHtmlElementAttrValue &#123;  </div><div class="line">      </div><div class="line">    /** </div><div class="line">     * 获取指定HTML标签的指定属性的值 </div><div class="line">     * @param source 要匹配的源文本 </div><div class="line">     * @param element 标签名称 </div><div class="line">     * @param attr 标签的属性名称 </div><div class="line">     * @return 属性值列表 </div><div class="line">     */  </div><div class="line">    public static List&lt;String&gt; match(String source, String element, String attr) &#123;  </div><div class="line">        List&lt;String&gt; result = new ArrayList&lt;String&gt;();  </div><div class="line">        String reg = &quot;&lt;&quot; + element + &quot;[^&lt;&gt;]*?\\s&quot; + attr + &quot;=[&apos;\&quot;]?(.*?)[&apos;\&quot;]?\\s.*?&gt;&quot;;  </div><div class="line">        Matcher m = Pattern.compile(reg).matcher(source);  </div><div class="line">        while (m.find()) &#123;  </div><div class="line">            String r = m.group(1);  </div><div class="line">            result.add(r);  </div><div class="line">        &#125;  </div><div class="line">        return result;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    public static void main(String[] args) &#123;  </div><div class="line">        String source = &quot;&lt;a title=中国体育报 href=&apos;&apos;&gt;aaa&lt;/a&gt;&lt;a title=&apos;北京日报&apos; href=&apos;&apos;&gt;bbb&lt;/a&gt;&quot;;  </div><div class="line">        List&lt;String&gt; list = match(source, &quot;a&quot;, &quot;title&quot;);  </div><div class="line">        System.out.println(list);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +623,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用易错点总结"><span class="nav-number">1.</span> <span class="nav-text">常用易错点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.1.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.1.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.2.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -626,7 +666,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">83.7k</span>
+    <span title="Site words total count">84.1k</span>
   
 </div>
 
