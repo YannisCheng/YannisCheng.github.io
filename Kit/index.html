@@ -92,7 +92,7 @@
 <meta property="og:description" content="常用总结">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20161024205117384.png">
-<meta property="og:updated_time" content="2018-01-17T16:50:11.725Z">
+<meta property="og:updated_time" content="2018-01-24T02:10:22.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kit">
 <meta name="twitter:description" content="常用总结">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-18T00:50:11+08:00">
-                2018-01-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-24T10:10:22+08:00">
+                2018-01-24
               </time>
             
           </span>
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,161 字
+                  1,295 字
                 </span>
               
 
@@ -468,6 +468,11 @@
 <h3 id="7-2-处理后的时间转换为时间戳"><a href="#7-2-处理后的时间转换为时间戳" class="headerlink" title="7.2 处理后的时间转换为时间戳"></a>7.2 处理后的时间转换为时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">strNew[<span class="number">0</span>] = year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day;</div><div class="line">Date date = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    date = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).parse(strNew[<span class="number">0</span>]);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125;</div><div class="line">unixTimestamp = date.getTime() / <span class="number">1000</span>;</div></pre></td></tr></table></figure>
 <p><strong>关键：</strong> parse()</p>
 <p>得到的时间：2018-01-17<br>处理后的时间戳1：Wed Jan 17 00:00:00 GMT-05:00 2018<br>处理后的时间戳2：1516165200</p>
+<h3 id="7-3-java中时间戳与时间格式的转换"><a href="#7-3-java中时间戳与时间格式的转换" class="headerlink" title="7.3 java中时间戳与时间格式的转换"></a>7.3 java中时间戳与时间格式的转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"><span class="comment"> * 将时间转换为时间戳</span></div><div class="line"><span class="comment"> */</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParseException</span>&#123;</div><div class="line">    String res;</div><div class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">    Date date = simpleDateFormat.parse(s);</div><div class="line">    <span class="keyword">long</span> ts = date.getTime();</div><div class="line">    res = String.valueOf(ts);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"><span class="comment"> * 将时间戳转换为时间</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">stampToDate</span><span class="params">(String s)</span></span>&#123;</div><div class="line">    String res;</div><div class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</div><div class="line">    Date date = <span class="keyword">new</span> Date(lt);</div><div class="line">    res = simpleDateFormat.format(date);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><a href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。" class="headerlink" title="8. Java - Collections 集合操作的静态多态方法，是一个工具类。"></a>8. Java - Collections 集合操作的静态多态方法，是一个工具类。</h2><blockquote>
+<p>参考：<a href="http://blog.csdn.net/qq924862077/article/details/48022135" target="_blank" rel="external">http://blog.csdn.net/qq924862077/article/details/48022135</a></p>
+</blockquote>
 
       
     </div>
@@ -584,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -595,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -606,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -655,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-java中时间戳与时间格式的转换"><span class="nav-number">1.9.3.</span> <span class="nav-text">7.3 java中时间戳与时间格式的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><span class="nav-number">1.10.</span> <span class="nav-text">8. Java - Collections 集合操作的静态多态方法，是一个工具类。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -689,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">93.1k</span>
+    <span title="Site words total count">96.7k</span>
   
 </div>
 
