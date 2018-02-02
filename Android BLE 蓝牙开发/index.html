@@ -83,18 +83,22 @@
 
 
 
-<meta name="description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms">
+<meta name="description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms部分图片来源：https://www.youtube.com/watch?v=vUbFB1Qypg8">
 <meta name="keywords" content="Android.蓝牙">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android BLE 蓝牙开发">
 <meta property="og:url" content="http://yannischeng.com/Android BLE 蓝牙开发/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms">
+<meta property="og:description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms部分图片来源：https://www.youtube.com/watch?v=vUbFB1Qypg8">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-02T00:23:11.846Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/4985212-4eb4addccb3fe853.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png">
+<meta property="og:updated_time" content="2018-02-02T02:31:49.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android BLE 蓝牙开发">
-<meta name="twitter:description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms">
+<meta name="twitter:description" content="参考文章：https://www.jianshu.com/p/3a372af38103android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms部分图片来源：https://www.youtube.com/watch?v=vUbFB1Qypg8">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/4985212-4eb4addccb3fe853.png">
 
 
 
@@ -312,7 +316,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-02T08:23:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-02T10:31:49+08:00">
                 2018-02-02
               </time>
             
@@ -362,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,491 字
+                  4,023 字
                 </span>
               
 
@@ -378,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15 分钟
+                  17 分钟
                 </span>
               
             </div>
@@ -435,7 +439,7 @@
 
       
         <blockquote>
-<p>参考文章：<a href="https://www.jianshu.com/p/3a372af38103" target="_blank" rel="external">https://www.jianshu.com/p/3a372af38103</a><br>android developers：<a href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms" target="_blank" rel="external">https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms</a></p>
+<p>参考文章：<a href="https://www.jianshu.com/p/3a372af38103" target="_blank" rel="external">https://www.jianshu.com/p/3a372af38103</a><br>android developers：<a href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms" target="_blank" rel="external">https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms</a><br>部分图片来源：<a href="https://www.youtube.com/watch?v=vUbFB1Qypg8" target="_blank" rel="external">https://www.youtube.com/watch?v=vUbFB1Qypg8</a></p>
 </blockquote>
 <a id="more"></a>
 <h1 id="BLE-Bluetooth-Low-Energy-低功耗蓝牙"><a href="#BLE-Bluetooth-Low-Energy-低功耗蓝牙" class="headerlink" title="BLE (Bluetooth Low Energy) 低功耗蓝牙"></a>BLE (Bluetooth Low Energy) 低功耗蓝牙</h1><p>Android 4.3（API级别18）引入了以低功耗蓝牙（BLE）为中心角色的内置平台支持，并提供应用程序可用于发现设备，查询服务和传输信息的API</p>
@@ -445,7 +449,8 @@
 <li>与Google Beacons等接近传感器进行互动，为用户提供基于当前位置的定制体验。</li>
 </ul>
 <p>与经典蓝牙相比，蓝牙低功耗（BLE）旨在显着降低功耗。 这允许Android应用程序与具有更严格电源要求的BLE设备（如接近传感器，心率监视器和健身设备）进行通信。</p>
-<h1 id="关键术语（Key-Terms）和-概念（Concepts）"><a href="#关键术语（Key-Terms）和-概念（Concepts）" class="headerlink" title="关键术语（Key Terms）和 概念（Concepts）"></a>关键术语（Key Terms）和 概念（Concepts）</h1><ul>
+<h1 id="关键术语（Key-Terms）和-概念（Concepts）"><a href="#关键术语（Key-Terms）和-概念（Concepts）" class="headerlink" title="关键术语（Key Terms）和 概念（Concepts）"></a>关键术语（Key Terms）和 概念（Concepts）</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/4985212-4eb4addccb3fe853.png" alt=""></p>
+<ul>
 <li><strong>通用属性配置文件 Generic Attribute Profile（GATT）</strong>：GATT配置文件是通过BLE链接发送和接收被称为“属性”的短小数据的通用规范。目前所有的低能耗应用程序都基于GATT。<ul>
 <li>蓝牙SIG为低能耗设备定义了许多配置文件。 配置文件是设备如何在特定应用程序中工作的规范。 请注意，设备可以实现多个配置文件。 例如，一个设备可以包含一个心率监测器和一个电池电量检测器。</li>
 </ul>
@@ -460,6 +465,7 @@
 <li><strong>中央（Central）</strong> 与 <strong>周边（Peripheral）</strong>。这适用于BLE连接本身。处于中心角色的设备扫描，寻找广告，并且在外围角色中的设备进行广告。</li>
 <li><strong>GATT服务器</strong> 与 <strong>GATT客户端</strong>。这决定了两台设备在建立连接后如何相互通话。</li>
 </ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png" alt=""></p>
 <p>为了理解这个区别，假设你有一个Android手机和一个BLE设备的活动追踪器。 手机支持中心角色; 活动跟踪器支持外设角色（建立一个BLE连接，你需要每两个事物中只有一个支持外围设备的人不能彼此交谈，也不能只支持两个事物）。</p>
 <p>一旦手机和活动追踪器建立了连接，他们就开始将GATT元数据转移到另一个。根据他们传输的数据的种类，其中一个或另一个可能充当服务器。例如，如果活动跟踪器想要将传感器数据报告给电话，则活动跟踪器可以充当服务器。如果活动跟踪器想要从手机接收更新，那么手机作为服务器可能是有意义的。</p>
 <p>在本文档中使用的示例中，Android应用程序（在Android设备上运行）是GATT客户端。该应用程序从GATT服务器获取数据，GATT服务器是支持心率档案的BLE心率监测器。但你也可以设计你的Android应用程序来扮演GATT服务器的角色。有关更多信息，请参阅BluetoothGattServer。</p>
@@ -502,7 +508,8 @@
 <p>以下是<strong>BluetoothAdapter.LeScanCallback</strong>的一个实现，它是用于<strong>传递BLE扫描结果</strong>的接口🤔：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private LeDeviceListAdapter mLeDeviceListAdapter;</div><div class="line">...</div><div class="line">// Device scan callback.</div><div class="line">private BluetoothAdapter.LeScanCallback mLeScanCallback =</div><div class="line">        new BluetoothAdapter.LeScanCallback() &#123;</div><div class="line">    @Override</div><div class="line">    public void onLeScan(final BluetoothDevice device, int rssi,</div><div class="line">            byte[] scanRecord) &#123;</div><div class="line">        runOnUiThread(new Runnable() &#123;</div><div class="line">           @Override</div><div class="line">           public void run() &#123;</div><div class="line">               mLeDeviceListAdapter.addDevice(device);</div><div class="line">               mLeDeviceListAdapter.notifyDataSetChanged();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line">   &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><strong>注意</strong>：<br>您<strong>只能</strong>扫描蓝牙LE设备或扫描经典蓝牙设备，如蓝牙中所述。您<strong>无法同时</strong>扫描Bluetooth LE和传统设备。</p>
-<h1 id="连接到GATT服务器（发送数据的BLE设备）"><a href="#连接到GATT服务器（发送数据的BLE设备）" class="headerlink" title="连接到GATT服务器（发送数据的BLE设备）"></a>连接到GATT服务器（发送数据的BLE设备）</h1><p>与BLE设备交互的<strong>第一步是连接到它</strong>，更具体地说，连接到设备上的GATT服务器。 要连接到BLE设备上的GATT服务器，请使用<strong>connectGatt（）</strong>方法。 此方法有三个参数：一个<strong>Context</strong>对象，<strong>autoConnect</strong>（布尔值，指示<strong>是否</strong>在BLE设备<strong>变为可用时自动连接</strong>）以及对<strong>BluetoothGattCallback</strong>的引用：</p>
+<h1 id="连接到GATT服务器（发送数据的BLE设备）"><a href="#连接到GATT服务器（发送数据的BLE设备）" class="headerlink" title="连接到GATT服务器（发送数据的BLE设备）"></a>连接到GATT服务器（发送数据的BLE设备）</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png" alt=""></p>
+<p>与BLE设备交互的<strong>第一步是连接到它</strong>，更具体地说，连接到设备上的GATT服务器。 要连接到BLE设备上的GATT服务器，请使用<strong>connectGatt（）</strong>方法。 此方法有三个参数：一个<strong>Context</strong>对象，<strong>autoConnect</strong>（布尔值，指示<strong>是否</strong>在BLE设备<strong>变为可用时自动连接</strong>）以及对<strong>BluetoothGattCallback</strong>的引用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mBluetoothGatt = device.connectGatt(this, false, mGattCallback);</div></pre></td></tr></table></figure>
 <p>这将连接到由BLE设备托管的GATT服务器，并返回一个BluetoothGatt实例，然后您可以使用该实例来执行GATT客户端操作。 调用者（Android应用程序）是GATT客户端。 BluetoothGattCallback用于向客户端传递结果，例如连接状态，以及任何其他GATT客户端操作</p>
 <p>在这个例子中，BLE应用程序提供了一个Activity（DeviceControlActivity）来连接，显示数据，并显示设备支持的GATT服务和特性。 根据用户输入，此Activity与一个名为BluetoothLeService的服务进行通信，该服务通过Android BLE API与BLE设备进行交互：</p>
@@ -519,6 +526,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">// Characteristic notification</div><div class="line">public void onCharacteristicChanged(BluetoothGatt gatt,</div><div class="line">        BluetoothGattCharacteristic characteristic) &#123;</div><div class="line">    broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="关闭客户端App"><a href="#关闭客户端App" class="headerlink" title="关闭客户端App"></a>关闭客户端App</h1><p>一旦您的应用程序使用BLE设备，应该调用close（），以便系统可以正确释放资源：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public void close() &#123;</div><div class="line">    if (mBluetoothGatt == null) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    mBluetoothGatt.close();</div><div class="line">    mBluetoothGatt = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Android-BLE-API"><a href="#Android-BLE-API" class="headerlink" title="Android BLE API"></a>Android BLE API</h1><h2 id="BluetoothAdapter"><a href="#BluetoothAdapter" class="headerlink" title="BluetoothAdapter"></a>BluetoothAdapter</h2><p>代表本地设备蓝牙适配器。 BluetoothAdapter允许您<strong>执行基本的蓝牙任务</strong>，例如启动设备发现，查询绑定（配对）设备列表，使用已知的MAC地址实例化BluetoothDevice，并创建BluetoothServerSocket以侦听来自其他设备的连接请求，并启动扫描蓝牙LE设备。</p>
+<p>要获得代表本地蓝牙适配器的BluetoothAdapter，请在<strong>BluetoothManager</strong>上调用getAdapter（）函数。在JELLY_BEAN_MR1和下面，您将需要使用静态getDefaultAdapter（）方法。</p>
+<p>从根本上说，这<strong>是所有蓝牙操作的起点</strong>。一旦你有了本地适配器，你就可以用getBondedDevices（）获得一组代表所有配对设备的BluetoothDevice对象。用startDiscovery（）启动设备发现;或者用listenUsingRfcommWithServiceRecord（String，UUID）创建一个BluetoothServerSocket监听传入的连接请求;或使用startLeScan（LeScanCallback）开始扫描蓝牙LE设备。</p>
+<p><strong>注：</strong><br>大多数方法需要<strong>BLUETOOTH</strong>权限，有些还需要<strong>BLUETOOTH_ADMIN</strong>权限。</p>
+<p><strong>BluetoothAdapter.LeScanCallback</strong>：用于提供LE扫描结果的回调接口。</p>
+<h2 id="BluetoothManager"><a href="#BluetoothManager" class="headerlink" title="BluetoothManager"></a>BluetoothManager</h2><p>用于获取BluetoothAdapter的实例并进行整体蓝牙管理。使用带有BLUETOOTH_SERVICE的getSystemService（java.lang.String）来创建一个BluetoothManager，然后调用getAdapter（）来获得BluetoothAdapter</p>
+<h2 id="BluetoothGatt"><a href="#BluetoothGatt" class="headerlink" title="BluetoothGatt"></a>BluetoothGatt</h2><p>蓝牙GATT配置文件的公共API。</p>
+<p>本课程提供蓝牙GATT功能，以实现与Bluetooth Smart或Smart Ready设备的通信。</p>
+<p>要连接到远程外围设备，请创建一个BluetoothGattCallback并调用connectGatt（Context，boolean，BluetoothGattCallback）来获取此类的一个实例。 使用蓝牙设备发现或BLE扫描过程可以发现支持GATT的设备。</p>
+<h2 id="BluetoothGattCallback"><a href="#BluetoothGattCallback" class="headerlink" title="BluetoothGattCallback"></a>BluetoothGattCallback</h2><p>这个抽象类的作用是实现<strong>BluetoothGatt</strong>的回调。</p>
+<h2 id="BluetoothGattCharacteristic"><a href="#BluetoothGattCharacteristic" class="headerlink" title="BluetoothGattCharacteristic"></a>BluetoothGattCharacteristic</h2><p>代表蓝牙GATT特性。GATT特性是用于构建GATT服务的<strong>基本数据元素</strong>，BluetoothGattService。 该特性包含一个值以及附加信息和可选的GATT描述符BluetoothGattDescriptor。</p>
+<h2 id="BluetoothGattService"><a href="#BluetoothGattService" class="headerlink" title="BluetoothGattService"></a>BluetoothGattService</h2><p>代表一个蓝牙GATT服务。Gatt服务包含一系列BluetoothGattCharacteristic以及引用的服务。</p>
+<h2 id="BluetoothGattDescriptor"><a href="#BluetoothGattDescriptor" class="headerlink" title="BluetoothGattDescriptor"></a>BluetoothGattDescriptor</h2><p>代表一个蓝牙GATT描述符.GATT描述符包含GATT特性的<strong>附加信息</strong>和<strong>属性</strong>，BluetoothGattCharacteristic。 它们可以用来描述特征的特征或控制特征的某些行为。</p>
 
       
     </div>
@@ -549,6 +569,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/关于蓝牙 Bluetooth 技术/" rel="prev" title="关于蓝牙(Bluetooth)技术">
+                关于蓝牙(Bluetooth)技术 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -631,7 +655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">80</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -653,7 +677,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -702,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BLE-Bluetooth-Low-Energy-低功耗蓝牙"><span class="nav-number">1.</span> <span class="nav-text">BLE (Bluetooth Low Energy) 低功耗蓝牙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键术语（Key-Terms）和-概念（Concepts）"><span class="nav-number">2.</span> <span class="nav-text">关键术语（Key Terms）和 概念（Concepts）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#角色（Roles）和责任（Responsibilities）"><span class="nav-number">3.</span> <span class="nav-text">角色（Roles）和责任（Responsibilities）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BLE-权限（Permissions）"><span class="nav-number">4.</span> <span class="nav-text">BLE 权限（Permissions）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置BLE"><span class="nav-number">5.</span> <span class="nav-text">设置BLE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-获取-BluetoothAdapter"><span class="nav-number">5.1.</span> <span class="nav-text">1. 获取 BluetoothAdapter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-启用蓝牙"><span class="nav-number">5.2.</span> <span class="nav-text">2. 启用蓝牙</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找BLE设备"><span class="nav-number">6.</span> <span class="nav-text">查找BLE设备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接到GATT服务器（发送数据的BLE设备）"><span class="nav-number">7.</span> <span class="nav-text">连接到GATT服务器（发送数据的BLE设备）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取BLE属性"><span class="nav-number">8.</span> <span class="nav-text">读取BLE属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收GATT通知"><span class="nav-number">9.</span> <span class="nav-text">接收GATT通知</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭客户端App"><span class="nav-number">10.</span> <span class="nav-text">关闭客户端App</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BLE-Bluetooth-Low-Energy-低功耗蓝牙"><span class="nav-number">1.</span> <span class="nav-text">BLE (Bluetooth Low Energy) 低功耗蓝牙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键术语（Key-Terms）和-概念（Concepts）"><span class="nav-number">2.</span> <span class="nav-text">关键术语（Key Terms）和 概念（Concepts）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#角色（Roles）和责任（Responsibilities）"><span class="nav-number">3.</span> <span class="nav-text">角色（Roles）和责任（Responsibilities）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BLE-权限（Permissions）"><span class="nav-number">4.</span> <span class="nav-text">BLE 权限（Permissions）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置BLE"><span class="nav-number">5.</span> <span class="nav-text">设置BLE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-获取-BluetoothAdapter"><span class="nav-number">5.1.</span> <span class="nav-text">1. 获取 BluetoothAdapter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-启用蓝牙"><span class="nav-number">5.2.</span> <span class="nav-text">2. 启用蓝牙</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找BLE设备"><span class="nav-number">6.</span> <span class="nav-text">查找BLE设备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接到GATT服务器（发送数据的BLE设备）"><span class="nav-number">7.</span> <span class="nav-text">连接到GATT服务器（发送数据的BLE设备）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取BLE属性"><span class="nav-number">8.</span> <span class="nav-text">读取BLE属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收GATT通知"><span class="nav-number">9.</span> <span class="nav-text">接收GATT通知</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭客户端App"><span class="nav-number">10.</span> <span class="nav-text">关闭客户端App</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-BLE-API"><span class="nav-number">11.</span> <span class="nav-text">Android BLE API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothAdapter"><span class="nav-number">11.1.</span> <span class="nav-text">BluetoothAdapter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothManager"><span class="nav-number">11.2.</span> <span class="nav-text">BluetoothManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothGatt"><span class="nav-number">11.3.</span> <span class="nav-text">BluetoothGatt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothGattCallback"><span class="nav-number">11.4.</span> <span class="nav-text">BluetoothGattCallback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothGattCharacteristic"><span class="nav-number">11.5.</span> <span class="nav-text">BluetoothGattCharacteristic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothGattService"><span class="nav-number">11.6.</span> <span class="nav-text">BluetoothGattService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BluetoothGattDescriptor"><span class="nav-number">11.7.</span> <span class="nav-text">BluetoothGattDescriptor</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -736,7 +760,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">104.2k</span>
+    <span title="Site words total count">106.8k</span>
   
 </div>
 
