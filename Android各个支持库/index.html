@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：https://developer.android.google.cn/topic/libraries/support-library/features.html">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android各个支持库">
+<meta property="og:url" content="http://yannischeng.com/Android各个支持库/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="参考：https://developer.android.google.cn/topic/libraries/support-library/features.html">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-05T02:47:47.905Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android各个支持库">
+<meta name="twitter:description" content="参考：https://developer.android.google.cn/topic/libraries/support-library/features.html">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android各个支持库/"/>
+
+
+
+
+
+  <title>Android各个支持库 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android各个支持库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android各个支持库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T10:17:14+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-05T10:47:47+08:00">
+                2018-02-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,728 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android各个支持库/" title="Android各个支持库">http://yannischeng.com/Android各个支持库/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="https://developer.android.google.cn/topic/libraries/support-library/features.html" target="_blank" rel="external">https://developer.android.google.cn/topic/libraries/support-library/features.html</a></p>
+</blockquote>
+<a id="more"></a>
+<p>一般而言，建议添加 v4 支持库和 v7 appcompat 库，因为它们支持一系列 Android 版本，并且可以为推荐的用户界面模式提供 API。</p>
+<h1 id="v4-支持库"><a href="#v4-支持库" class="headerlink" title="v4 支持库"></a>v4 支持库</h1><p>这些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。与其他支持库相比，它们包含的 API 集合最大，包括对应用组件、用户界面功能、辅助功能、数据处理、网络连接以及编程实用工具的支持。</p>
+<p><strong>注意：</strong><br>在支持库修订版 24.2.0 之前，存在一个 v4 支持库。为了提高效率，此库拆分成多个模块。出于向后兼容的考虑，如果您在 Gradle 脚本中列出了 support-v4，您的 APK 将包含所有的 v4 模块。不过，要减少 APK 大小，我们建议仅列出应用需要的特定模块。</p>
+<h2 id="v4-compat-库"><a href="#v4-compat-库" class="headerlink" title="v4 compat 库"></a>v4 compat 库</h2><p>为众多框架 API 提供<strong>兼容性包装器</strong>，例如 Context.obtainDrawable() 和 View.performAccessibilityAction()。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-compat:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v4-core-utils-库"><a href="#v4-core-utils-库" class="headerlink" title="v4 core-utils 库"></a>v4 core-utils 库</h2><p>提供大量<strong>实用程序类</strong>，例如 AsyncTaskLoader 和 PermissionChecker。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-core-utils:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v4-core-ui-库"><a href="#v4-core-ui-库" class="headerlink" title="v4 core-ui 库"></a>v4 core-ui 库</h2><p>实现<strong>各种 UI 相关组件</strong>，例如 ViewPager、NestedScrollView 和 ExploreByTouchHelper。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-core-ui:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v4-media-compat-库"><a href="#v4-media-compat-库" class="headerlink" title="v4 media-compat 库"></a>v4 media-compat 库</h2><p>向后移植<strong>部分媒体框架</strong>，包括 MediaBrowser 和 MediaSession。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-media-compat:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v4-fragment-库"><a href="#v4-fragment-库" class="headerlink" title="v4 fragment 库"></a>v4 fragment 库</h2><p>添加<strong>对使用片段封装用户界面和功能的支持</strong>，从而使应用能够提供可以在大屏幕设备与小屏幕设备之间进行调节的布局。此模块依赖于<strong>compat、core-utils、core-ui 和 media-compat</strong>。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-fragment:24.2.0</div></pre></td></tr></table></figure>
+<h1 id="v7-支持库"><a href="#v7-支持库" class="headerlink" title="v7 支持库"></a>v7 支持库</h1><p>一些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。这些库提供了特定的功能集，并且可以单独添加到应用中，与其他库互不影响。</p>
+<h2 id="v7-appcompat-库"><a href="#v7-appcompat-库" class="headerlink" title="v7 appcompat 库"></a>v7 appcompat 库</h2><p>此库添加了<strong>对操作栏用户界面设计模式的支持</strong>。此库包含对 <strong>Material Design</strong> 用户界面实现的支持。</p>
+<p><strong>注意：</strong>此库依赖于 v4 支持库。</p>
+<p>下面是 v7 appcompat 库中包含的一些关键类：</p>
+<ul>
+<li><strong>ActionBar</strong> - 提供操作栏用户界面模式的实现。如需了解有关使用操作栏的详细信息，请参阅操作栏开发者指南。</li>
+<li><strong>AppCompatActivity</strong> - 添加一个应用 Activity 类，此类可作为使用支持库操作栏实现的 Activity 的基础类。</li>
+<li><strong>AppCompatDialog</strong> - 添加一个对话框类，此类可作为 AppCompat 主题对话框的基础类。</li>
+<li><strong>ShareActionProvider</strong> - 包含对可以添加到操作栏中的标准化分享操作（例如电子邮件或发帖至社交应用）的支持。此库的 Gradle 构建脚本依赖关系标识符如下所示：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:appcompat-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-cardview-库"><a href="#v7-cardview-库" class="headerlink" title="v7 cardview 库"></a>v7 cardview 库</h2><p>此库添加了对 <strong>CardView</strong> 小部件的支持，让您能够在卡片内显示信息，从而使应用具备一致的外观。这些卡片对 Material Design 实现非常有用，并在电视应用布局中广为使用。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:cardview-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-gridlayout-库"><a href="#v7-gridlayout-库" class="headerlink" title="v7 gridlayout 库"></a>v7 gridlayout 库</h2><p>下载 Android 支持库后，此库可以添加对 <strong>GridLayout</strong> 类的支持，让您能够使用网状方格安排用户界面元素。如需了解有关 v7 gridlayout 库 API 的详细信息，请参阅 API 参考中的 android.support.v7.widget 软件包。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:gridlayout-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-mediarouter-库"><a href="#v7-mediarouter-库" class="headerlink" title="v7 mediarouter 库"></a>v7 mediarouter 库</h2><p>此库可以提供 <strong>MediaRouter</strong>、<strong>MediaRouteProvider</strong> 和支持 Google Cast 的相关媒体类。</p>
+<p>一般而言，利用 v7 mediarouter 库中的 API，您可以控制当前设备到外部屏幕、扬声器和其他目标设备的媒体渠道和流的路由。此库包含的 API 可以用于发布应用特定的媒体路由提供程序、发现和选择目标设备，以及检查媒体状态，等等。如需了解有关 v7 mediarouter 库 API 的详细信息，请参阅 API 参考中的 android.support.v7.media 软件包。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:mediarouter-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-palette-库"><a href="#v7-palette-库" class="headerlink" title="v7 palette 库"></a>v7 palette 库</h2><p>v7 palette 支持库包含 <strong>s</strong> 类，此类让您可以<strong>从图像中抽取突出颜色</strong>。例如，音乐应用可以使用 Palette 对象从专辑封面抽取主要颜色，然后使用这些颜色创建一个色彩协调的歌曲标题卡。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:palette-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-recyclerview-库"><a href="#v7-recyclerview-库" class="headerlink" title="v7 recyclerview 库"></a>v7 recyclerview 库</h2><p>recyclerview 库添加了 <strong>RecyclerView</strong> 类。此类能够为 RecyclerView 小部件提供支持，RecyclerView 是一种通过提供有限的数据项窗口有效显示大数据集的视图。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:recyclerview-v7:24.2.0</div></pre></td></tr></table></figure>
+<h2 id="v7-Preference-支持库"><a href="#v7-Preference-支持库" class="headerlink" title="v7 Preference 支持库"></a>v7 Preference 支持库</h2><p>首选项软件包提供的 API 支持添加 preference 对象（例如 CheckBoxPreference 和 ListPreference），方便用户修改 UI 设置。</p>
+<p>v7 Preference 库添加了对接口（例如 Preference.OnPreferenceChangeListener 和 Preference.OnPreferenceClickListener）以及类（例如 CheckBoxPreference 和 ListPreference）的支持。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:preference-v7:24.2.0</div></pre></td></tr></table></figure>
+<h1 id="Dalvik-可执行文件分包支持库"><a href="#Dalvik-可执行文件分包支持库" class="headerlink" title="Dalvik 可执行文件分包支持库"></a>Dalvik 可执行文件分包支持库</h1><p>此库可以为<strong>使用多个 Dalvik Executable (DEX) 文件开发应用提供支持</strong>。引用<strong>超过 65536 个方法</strong>的应用须使用 Dalvik 可执行文件分包配置。如需了解有关使用 Dalvik 可执行文件分包的详细信息，请参阅使用超过 6.4 万种方法开发应用。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:multidex:1.0.0</div></pre></td></tr></table></figure>
+<h1 id="注解支持库"><a href="#注解支持库" class="headerlink" title="注解支持库"></a>注解支持库</h1><p>注解软件包提供的 API <strong>支持向应用中添加注解元数据</strong>。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-annotations:24.2.0</div></pre></td></tr></table></figure>
+<h1 id="设计支持库"><a href="#设计支持库" class="headerlink" title="设计支持库"></a>设计支持库</h1><p>设计软件包提供的 API 支持向应用中添加 <strong>Material Design</strong> 组件和模式。</p>
+<p>设计支持库添加了对应用开发者依赖的各种 Material Design 组件和模式的支持，例如抽屉式导航栏、浮动操作按钮 (FAB)、快捷信息栏和标签页。此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:design:24.2.0</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android传统蓝牙开发/" rel="next" title="Android传统蓝牙开发">
+                <i class="fa fa-chevron-left"></i> Android传统蓝牙开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#v4-支持库"><span class="nav-number">1.</span> <span class="nav-text">v4 支持库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v4-compat-库"><span class="nav-number">1.1.</span> <span class="nav-text">v4 compat 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v4-core-utils-库"><span class="nav-number">1.2.</span> <span class="nav-text">v4 core-utils 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v4-core-ui-库"><span class="nav-number">1.3.</span> <span class="nav-text">v4 core-ui 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v4-media-compat-库"><span class="nav-number">1.4.</span> <span class="nav-text">v4 media-compat 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v4-fragment-库"><span class="nav-number">1.5.</span> <span class="nav-text">v4 fragment 库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v7-支持库"><span class="nav-number">2.</span> <span class="nav-text">v7 支持库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-appcompat-库"><span class="nav-number">2.1.</span> <span class="nav-text">v7 appcompat 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-cardview-库"><span class="nav-number">2.2.</span> <span class="nav-text">v7 cardview 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-gridlayout-库"><span class="nav-number">2.3.</span> <span class="nav-text">v7 gridlayout 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-mediarouter-库"><span class="nav-number">2.4.</span> <span class="nav-text">v7 mediarouter 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-palette-库"><span class="nav-number">2.5.</span> <span class="nav-text">v7 palette 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-recyclerview-库"><span class="nav-number">2.6.</span> <span class="nav-text">v7 recyclerview 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v7-Preference-支持库"><span class="nav-number">2.7.</span> <span class="nav-text">v7 Preference 支持库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dalvik-可执行文件分包支持库"><span class="nav-number">3.</span> <span class="nav-text">Dalvik 可执行文件分包支持库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解支持库"><span class="nav-number">4.</span> <span class="nav-text">注解支持库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计支持库"><span class="nav-number">5.</span> <span class="nav-text">设计支持库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">112.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
