@@ -92,7 +92,8 @@
 <meta property="og:description" content="常用总结">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20161024205117384.png">
-<meta property="og:updated_time" content="2018-01-24T02:10:22.196Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-27%2009.58.17.png">
+<meta property="og:updated_time" content="2018-02-27T02:12:26.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kit">
 <meta name="twitter:description" content="常用总结">
@@ -314,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-24T10:10:22+08:00">
-                2018-01-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-27T10:12:26+08:00">
+                2018-02-27
               </time>
             
           </span>
@@ -364,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,295 字
+                  1,558 字
                 </span>
               
 
@@ -380,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -473,6 +474,26 @@
 <h2 id="8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><a href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。" class="headerlink" title="8. Java - Collections 集合操作的静态多态方法，是一个工具类。"></a>8. Java - Collections 集合操作的静态多态方法，是一个工具类。</h2><blockquote>
 <p>参考：<a href="http://blog.csdn.net/qq924862077/article/details/48022135" target="_blank" rel="external">http://blog.csdn.net/qq924862077/article/details/48022135</a></p>
 </blockquote>
+<h2 id="9-String／StringBuffer／StringBuilder它们之间的区别"><a href="#9-String／StringBuffer／StringBuilder它们之间的区别" class="headerlink" title="9. String／StringBuffer／StringBuilder它们之间的区别"></a>9. String／StringBuffer／StringBuilder它们之间的区别</h2><blockquote>
+<p>参考：<a href="http://mp.weixin.qq.com/s/U1aIOERz7hqeC8JUH-fI6A" target="_blank" rel="external">http://mp.weixin.qq.com/s/U1aIOERz7hqeC8JUH-fI6A</a></p>
+</blockquote>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-27%2009.58.17.png" alt=""></p>
+<h3 id="为什么要引入其它两种字符串处理类"><a href="#为什么要引入其它两种字符串处理类" class="headerlink" title="为什么要引入其它两种字符串处理类?"></a>为什么要引入其它两种字符串处理类?</h3><p>提高字符串连接效率。在大部分情况下，字符串的拼接速度为：<br><strong>StringBuilder &gt; StringBuffer &gt; String</strong></p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
+<li><strong>不可变</strong>。因此每次对其操作改变其变量值，其实是<strong>生成一个新的对象</strong>，然后将变量引用指向新对象，因此速度慢。</li>
+<li><strong>线程安全</strong>。</li>
+<li><strong>存放在常量池</strong>，在编译期已经被确定了。<strong>new String()</strong>不是字符串常量，它有自己的地址空间，<strong>存放在堆空间</strong></li>
+</ul>
+<h3 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h3><ul>
+<li><strong>可变</strong>。对其操作即<strong>直接操作对象指向的引用</strong>，<strong>无需产生新对象</strong>，速度很快；</li>
+<li><strong>线程安全</strong>。在维护多线程的同步等也会消耗一点性能。</li>
+<li><strong>堆空间</strong></li>
+</ul>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><ul>
+<li><strong>可变</strong>。是<strong>jdk5之后新增</strong>的，其用法与StringBuffer完全一致，</li>
+<li><strong>非线程安全</strong>。在<strong>单线程中最佳</strong>，因为其不需要维护线程的安全，因此是最快的。</li>
+<li><strong>堆空间</strong></li>
+</ul>
 
       
     </div>
@@ -589,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -600,7 +621,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -611,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -660,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-java中时间戳与时间格式的转换"><span class="nav-number">1.9.3.</span> <span class="nav-text">7.3 java中时间戳与时间格式的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><span class="nav-number">1.10.</span> <span class="nav-text">8. Java - Collections 集合操作的静态多态方法，是一个工具类。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-java中时间戳与时间格式的转换"><span class="nav-number">1.9.3.</span> <span class="nav-text">7.3 java中时间戳与时间格式的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><span class="nav-number">1.10.</span> <span class="nav-text">8. Java - Collections 集合操作的静态多态方法，是一个工具类。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-String／StringBuffer／StringBuilder它们之间的区别"><span class="nav-number">1.11.</span> <span class="nav-text">9. String／StringBuffer／StringBuilder它们之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要引入其它两种字符串处理类"><span class="nav-number">1.11.1.</span> <span class="nav-text">为什么要引入其它两种字符串处理类?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.11.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuffer"><span class="nav-number">1.11.3.</span> <span class="nav-text">StringBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuilder"><span class="nav-number">1.11.4.</span> <span class="nav-text">StringBuilder</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -694,7 +715,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">112.3k</span>
+    <span title="Site words total count">119.0k</span>
   
 </div>
 
