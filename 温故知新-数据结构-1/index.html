@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="温故知新," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="寄语">
+<meta name="keywords" content="温故知新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="温故知新-数据结构-1">
+<meta property="og:url" content="http://yannischeng.com/温故知新-数据结构-1/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="寄语">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2010.15.28.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2010.18.02.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2013.26.37.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.10.38.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.38.57.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.39.08.png">
+<meta property="og:updated_time" content="2018-03-01T06:26:02.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="温故知新-数据结构-1">
+<meta name="twitter:description" content="寄语">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2010.15.28.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/温故知新-数据结构-1/"/>
+
+
+
+
+
+  <title>温故知新-数据结构-1 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/温故知新-数据结构-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">温故知新-数据结构-1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T14:28:08+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-01T14:26:02+08:00">
+                2018-03-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/温故知新/" itemprop="url" rel="index">
+                    <span itemprop="name">温故知新</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,176 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/温故知新/" rel="tag"># 温故知新</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/温故知新-数据结构-1/" title="温故知新-数据结构-1">http://yannischeng.com/温故知新-数据结构-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="寄语"><a href="#寄语" class="headerlink" title="寄语"></a>寄语</h2><a id="more"></a>
+<hr>
+<p><strong>日、周、月 –&gt;</strong></p>
+<p><strong>郝斌：<br>    　　想要学软件，靠软件吃饭，就要一直学，天天学，几年以后就是高手了，不要想着转行。<br>    　　想要当高手必须要学数据结构，不学数据结构，怎么当高手</strong></p>
+<hr>
+<h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h2><h3 id="1-1-数据结构定义："><a href="#1-1-数据结构定义：" class="headerlink" title="1.1 数据结构定义："></a>1.1 数据结构定义：</h3><ul>
+<li><p><strong>完整：</strong><br>　　把现实中大量而复杂的问题以<strong>特定的数据类型（个体）</strong>和<strong>特定的存储结构（个体间的关系）</strong>保存到主存储器（内存）中，以及在此基础上为实现某一个功能而执行的相应<strong>操作</strong>，这个操作就叫做<strong>算法</strong>。</p>
+</li>
+<li><p><strong>简述：</strong><br>　　数据结构 = 个体 + 个体间的关系<br>　　算法 = 对存储数据的操作</p>
+</li>
+</ul>
+<h3 id="1-2-衡量算法的标准："><a href="#1-2-衡量算法的标准：" class="headerlink" title="1.2 衡量算法的标准："></a>1.2 衡量算法的标准：</h3><ul>
+<li><strong>时间复杂度</strong>：研究中。算法执行过程中大概执行的次数，而非时间。</li>
+<li><strong>空间复杂度</strong>：研究中。算法执行过程中大概所占用的最大内存</li>
+<li><strong>难易程度</strong>：应用中。</li>
+<li>健壮性</li>
+</ul>
+<h3 id="1-3-数据结构重要性："><a href="#1-3-数据结构重要性：" class="headerlink" title="1.3 数据结构重要性："></a>1.3 数据结构重要性：</h3><p>　<strong>程序 = 数据存储（数据结构） ＋ 数据操作（算法） ＋ 可以被计算机执行的语言（语言）</strong>
+　</p>
+<h3 id="1-4-其他"><a href="#1-4-其他" class="headerlink" title="1.4 其他"></a>1.4 其他</h3><ul>
+<li><p><strong>地址</strong>：</p>
+<p>  　　地址 就是 内存单元编号。地址对应的内存中的位置是固定的，但地址对应的内存中的位置的数值是可变的。<br>  　　从0开始的非负整数<br>  　　范围：［0 － 4G-1］
+  　　</p>
+</li>
+<li><p><strong>指针</strong>：</p>
+<p>  　　指针是C语言的灵魂。<br>  　　指针　＜＝＞　地址</p>
+<pre><code>指针变量是存放内存单元地址的变量
+指针本质是一个操作受限的非负整数
+</code></pre></li>
+<li><p><strong>指针分类</strong>：</p>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><p><strong>结构体</strong></p>
+</li>
+<li><strong>动态内存分配和释放</strong></li>
+</ul>
+<h2 id="1-5-存储方式"><a href="#1-5-存储方式" class="headerlink" title="1.5 存储方式"></a>1.5 存储方式</h2><ul>
+<li><strong>1. 线性</strong>：数组<ul>
+<li>数组名：一维数组名是个指针常量，存放的是一维数组的的第一个元素的地址，他的值不能被改变，一维数组名指向的是数组的第一个元素。</li>
+<li>下标：a[i]  &lt;&lt; = = &gt;&gt; *(a +i)</li>
+<li><strong>常见应用</strong>：<ul>
+<li>栈</li>
+<li>队列 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>2. 离散</strong>：链表</li>
+<li><strong>3.</strong> 数组存储不一样，操作不一样，<strong>泛型</strong></li>
+</ul>
+<h2 id="2-指针、指针变量、指针指向"><a href="#2-指针、指针变量、指针指向" class="headerlink" title="2. 指针、指针变量、指针指向"></a>2. 指针、指针变量、指针指向</h2><p> 在函数没有返回值的情况下，通过函数修改实参的值，仅通过获取<strong>实参地址</strong>。</p>
+<h3 id="修改变量地址的写法："><a href="#修改变量地址的写法：" class="headerlink" title="修改变量地址的写法："></a>修改变量地址的写法：</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2010.15.28.png" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2010.18.02.png" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> * p; <span class="comment">// 这个一个指针变量。'p'是变量名字，是内存抽象地址的实例表示;'int *' 表示p变量只能存储‘int类型变量’的地址，即，此时的p仅能存储‘int类型’的地址</span></div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init p address :%X\n"</span>,p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init p value :%D\n"</span>,*p);</div><div class="line">    <span class="keyword">int</span> i = <span class="number">12</span>; <span class="comment">// 这是一个普通变量</span></div><div class="line">    <span class="keyword">int</span> j;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init value : %d, %d, %d\n"</span>,i,j,*p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i address :%X\n"</span>,&amp;i);</div><div class="line">    p = &amp;i; <span class="comment">// int  *p = &amp;i;</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p address :%X\n"</span>,p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value :%D\n"</span>,*p);</div><div class="line">    </div><div class="line">    <span class="comment">// 修改*p的数值</span></div><div class="line">    *p = <span class="number">21</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value %d\n"</span>, *p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i value :%d\n"</span>,i);</div><div class="line">    </div><div class="line">    <span class="comment">// 修改i的数值</span></div><div class="line">    i = <span class="number">33</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value %d\n"</span>, *p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i value :%d\n"</span>,i);</div><div class="line">    </div><div class="line">    j = *p; <span class="comment">// j = i;</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"chagne value : %d, %d, %d\n"</span>,i,j,*p);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">init p address :EFBFF590</div><div class="line">init p value :<span class="number">0</span></div><div class="line">init value : <span class="number">12</span>, <span class="number">0</span>, <span class="number">0</span></div><div class="line">init i address :EFBFF56C</div><div class="line">change p address :EFBFF56C</div><div class="line">change p value :<span class="number">12</span></div><div class="line">change p value <span class="number">21</span></div><div class="line">init i value :<span class="number">21</span></div><div class="line">change p value <span class="number">33</span></div><div class="line">init i value :<span class="number">33</span></div><div class="line">chagne value : <span class="number">33</span>, <span class="number">33</span>, <span class="number">33</span></div></pre></td></tr></table></figure>
+<p><strong>通过方法改变变量的数值</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">// 注意：此处不是定义了一个名字叫做 *p的形参(int *p)，而是定义了一个形参，形参的名字叫做p(int * p),类型是int *</span></div><div class="line"><span class="comment">// 此处有误' ',都不形象参数的类型。</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> * p)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    *p = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> * p; <span class="comment">// 这个一个指针变量。'p'是变量名字，是内存抽象地址的实例表示;'int *' 表示p变量只能存储‘int类型变量’的地址，即，此时的p仅能存储‘int类型’的地址</span></div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init p address :%X\n"</span>,p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init p value :%D\n"</span>,*p);</div><div class="line">    <span class="keyword">int</span> i = <span class="number">12</span>; <span class="comment">// 这是一个普通变量</span></div><div class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init value : %d, %d, %d\n"</span>,i,j,*p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i address :%X\n"</span>,&amp;i);</div><div class="line">    p = &amp;i; <span class="comment">// int  *p = &amp;i;</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p address :%X\n"</span>,p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value :%D\n"</span>,*p);</div><div class="line">    </div><div class="line">    <span class="comment">// 修改*p的数值</span></div><div class="line">    *p = <span class="number">21</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value %d\n"</span>, *p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i value :%d\n"</span>,i);</div><div class="line">    </div><div class="line">    <span class="comment">// 修改i的数值</span></div><div class="line">    i = <span class="number">33</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"change p value %d\n"</span>, *p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"init i value :%d\n"</span>,i);</div><div class="line">    </div><div class="line">    j = *p; <span class="comment">// j = i;</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"chagne value : %d, %d, %d\n"</span>,i,j,*p);</div><div class="line">    </div><div class="line">    func(&amp;j);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"j = %d\n"</span>,j);</div><div class="line">    <span class="comment">// 结果：j = 100</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> * temp)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    *temp = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 仅需要知道一个数组的 首地址 和 数组长度 ，即可操作此数组</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Show_Array</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> len)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    p[<span class="number">2</span>] = <span class="number">33</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, p[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     1</span></div><div class="line"><span class="comment">     2</span></div><div class="line"><span class="comment">     33</span></div><div class="line"><span class="comment">     4</span></div><div class="line"><span class="comment">     5</span></div><div class="line"><span class="comment">     */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">array</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[0] address is %d,*a address is %d\n"</span>,&amp;a[<span class="number">0</span>],a);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"*a + 3 = %d\n"</span>,*a+<span class="number">3</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[0] is %d,*a is %d\n"</span>,a[<span class="number">0</span>],*a);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[4] is %d,*(a+4) is %d\n"</span>,a[<span class="number">4</span>],*(a+<span class="number">4</span>));</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[0] address is %d\n"</span>,&amp;a[<span class="number">0</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[1] address is %d\n"</span>,&amp;a[<span class="number">1</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[2] address is %d\n"</span>,&amp;a[<span class="number">2</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[3] address is %d\n"</span>,&amp;a[<span class="number">3</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[4] address is %d\n"</span>,&amp;a[<span class="number">4</span>]);</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     a[0] address is -272632336,*a address is -272632336</span></div><div class="line"><span class="comment">     a[0] is 1,*a is 1</span></div><div class="line"><span class="comment">     a[4] is 5,*(a+4) is 5</span></div><div class="line"><span class="comment">     </span></div><div class="line"><span class="comment">     a[0] == *(a),a[3] == *(a+3)</span></div><div class="line"><span class="comment">     </span></div><div class="line"><span class="comment">     a[0] address is -272632336</span></div><div class="line"><span class="comment">     a[1] address is -272632332</span></div><div class="line"><span class="comment">     a[2] address is -272632328</span></div><div class="line"><span class="comment">     a[3] address is -272632324</span></div><div class="line"><span class="comment">     a[4] address is -272632320</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    </div><div class="line">    Show_Array(a,<span class="number">5</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a[2] = %d\n"</span>,a[<span class="number">2</span>]);</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     a[2] = 33</span></div><div class="line"><span class="comment">     */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> j = <span class="number">10</span>;</div><div class="line">    func(&amp;j);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"j is %d\n"</span>,j);</div><div class="line">    </div><div class="line">    <span class="built_in">array</span>();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-结构体"><a href="#3-结构体" class="headerlink" title="3. 结构体"></a>3. 结构体</h2><p>描述：</p>
+<ul>
+<li><strong>类似java类，模拟事物</strong></li>
+<li><strong>只有属性，没有方法</strong></li>
+</ul>
+<p>为了表示一些复杂的数据，而普通的基本数据无法满足需要。<br>用户根据自己的实际需要，<strong>自己定义的数据类型，非变量，未分配内存</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 结构体, 数据类型叫：struct Student，</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> sid;</div><div class="line">    <span class="keyword">char</span> name[<span class="number">200</span>];</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"> </div><div class="line">    <span class="comment">// 结构体声明变量</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">stu</span> = &#123;</span><span class="number">101</span>,<span class="string">"zhansan"</span>,<span class="number">32</span>&#125;;</div><div class="line">    <span class="comment">// 访问结构体变量的成员</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d, %s, %d\n"</span>,stu.age,stu.name,stu.age);</div><div class="line">    <span class="comment">// 32, zhansan, 32</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>修改结构体数值方式</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 修改数值方式1</span></div><div class="line">    stu.age = <span class="number">33</span>;</div><div class="line">    <span class="comment">// age = 33</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"age = %d\n"</span>,stu.age);</div><div class="line">    </div><div class="line">    <span class="comment">// 修改数值方式2</span></div><div class="line">    pst = &amp;stu;</div><div class="line">    pst-&gt;age = <span class="number">23</span>;<span class="comment">// pst-&gt;age == (*pst).age == stu.age</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"age age = %d\n"</span>,(*pst).age);</div><div class="line">    <span class="comment">// age age = 23</span></div></pre></td></tr></table></figure>
+<p><code>pst-&gt;age</code><strong>含义</strong>（链表）：pst所指向的结构体变量中的age这个<strong>成员</strong></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>结构体变量之间不能“+ - <em> /”，但是<em>*可以相互赋值</em></em></li>
+<li><strong>普通结构体变量</strong> 和 <strong>结构体指针变量</strong>作为函数传参的问题：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 输出结构体 方式1：整个结构体内存</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">goStruct</span><span class="params">(struct Student stu)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"goStruct data is %d, %s, %d\n"</span>,stu.sid,stu.name,stu.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 输出结构体 方式2：仅传递结构体地址</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">goStructPointer</span><span class="params">(struct Student * stu)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"goStructPointer data is %d, %s, %d\n"</span>,stu-&gt;sid,stu-&gt;name,stu-&gt;age);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>应用函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">stu</span> = &#123;</span><span class="number">101</span>,<span class="string">"zhansan"</span>,<span class="number">32</span>&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 不推荐，耗时、内存</span></div><div class="line">goStruct(stu);</div><div class="line"><span class="comment">// goStruct data is 1111, www, 66</span></div><div class="line">    </div><div class="line"><span class="comment">// 推荐</span></div><div class="line">goStructPointer(&amp;stu);</div><div class="line"><span class="comment">// goStructPointer data is 1111, www, 66</span></div></pre></td></tr></table></figure>
+<h2 id="4-动态内存分配和释放"><a href="#4-动态内存分配和释放" class="headerlink" title="4. 动态内存分配和释放"></a>4. 动态内存分配和释放</h2><p>java中的new 实例：</p>
+<pre><code>A aa = new A();
+</code></pre><p>类似于c中的：</p>
+<pre><code>A * aaM = (A *)malloc(sizeof(A));
+</code></pre><p>主要语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mm_malloc.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">// int类型地址</span></div><div class="line"><span class="keyword">int</span> * mArray = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</div><div class="line"><span class="built_in">free</span>(mArray);</div></pre></td></tr></table></figure>
+<p>完整：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// malloc() 动态函数</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">myMalloc</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> len;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"input length:\n"</span>);</div><div class="line">    </div><div class="line">    <span class="comment">// 手动输入数组长度</span></div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;len);</div><div class="line">    </div><div class="line">    <span class="comment">// int类型地址</span></div><div class="line">    <span class="keyword">int</span> * mArray = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</div><div class="line">    </div><div class="line">    <span class="comment">// 手动初始数组:</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"input array item :\n"</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d, "</span>,&amp;mArray[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 1 2 3 4 5</span></div><div class="line">    </div><div class="line">    <span class="comment">// 遍历数组</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d, "</span>,*(mArray+i));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 1, 2, 3, 4, 5,</span></div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    <span class="built_in">free</span>(mArray);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="comment">//  动态内存</span></div><div class="line">    myMalloc();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2013.26.37.png" alt=""></p>
+<h3 id="跨函数调用内存空间-通过动态申请内存空间"><a href="#跨函数调用内存空间-通过动态申请内存空间" class="headerlink" title="跨函数调用内存空间 -通过动态申请内存空间"></a>跨函数调用内存空间 -通过动态申请内存空间</h3><p>一般情况下，当一个函数调动完毕之后，该函数之前占用的内存将会被释放。<br>下图展示的是，当一个main函数调用另一个fun函数后，fun函数中的变量所占用的内存仍然保留，未释放的例子：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.10.38.png" alt=""></p>
+<p>实例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 动态分配内存</span></div><div class="line"><span class="function">struct StudentA * <span class="title">CreateStudentA</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">StudentA</span> * <span class="title">newSA</span> = (<span class="title">struct</span> <span class="title">StudentA</span> *)<span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">StudentA</span>));</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"newSA address is : %d\n"</span>,&amp;newSA);</div><div class="line">    newSA-&gt;age = <span class="number">120</span>;</div><div class="line">    newSA-&gt;sid = <span class="number">1001</span>;</div><div class="line">    <span class="keyword">return</span> newSA;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 展示内存中的数据</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowStudentA</span><span class="params">(struct StudentA * aa)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"ShowStudentA ：aa = %d , sid = %d \n"</span>, aa-&gt;age, aa-&gt;sid);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">StudentA</span> * <span class="title">sa</span>;</span></div><div class="line">    sa = CreateStudentA();</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"sa address is : %d\n"</span>,&amp;sa);</div><div class="line">    ShowStudentA(sa);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"sa address is : %d\n"</span>,&amp;sa);</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     init sa address is : -272632288</span></div><div class="line"><span class="comment">	newSA address is : -272632328</span></div><div class="line"><span class="comment">	sa address is : -272632288</span></div><div class="line"><span class="comment">	ShowStudentA ：aa = 120 , sid = 1001 </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>图文</strong></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.38.57.png" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-28%2014.39.08.png" alt=""></p>
+<h2 id="5-struct与typedef的使用"><a href="#5-struct与typedef的使用" class="headerlink" title="5. struct与typedef的使用"></a>5. struct与typedef的使用</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">// typedef 的使用</span></div><div class="line"><span class="comment">// typedef的作用就是为已存在的数据类型重新取一个名字，即：别名</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span>  YC;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> sid;</div><div class="line">    <span class="keyword">char</span> name[<span class="number">100</span>];</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">&#125; ST;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</div><div class="line"></div><div class="line">    YC num = <span class="number">100</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"YC's num is %d \n"</span>,num);</div><div class="line">    </div><div class="line">    <span class="comment">//struct Student stu; 等价于 ST stu;</span></div><div class="line">    <span class="comment">//struct Student * stuA; 等价于 ST * stuA;</span></div><div class="line">    ST stu;</div><div class="line">    stu.age = <span class="number">32</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"stu age = %d\n"</span>, stu.age);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">YC's num is <span class="number">100</span> </div><div class="line">stu age = <span class="number">32</span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> sid;</div><div class="line">    <span class="keyword">char</span> name[<span class="number">100</span>];</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">&#125; * PST,ST;</div><div class="line"><span class="comment">// * PS 等价于 struct Student *</span></div><div class="line"><span class="comment">// ST 等价于 struct Student</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/模型/" rel="next" title="模型">
+                <i class="fa fa-chevron-left"></i> 模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/温故知新-数据结构-2/" rel="prev" title="温故知新-数据结构-2">
+                温故知新-数据结构-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#寄语"><span class="nav-number">1.</span> <span class="nav-text">寄语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基础"><span class="nav-number">2.</span> <span class="nav-text">1. 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-数据结构定义："><span class="nav-number">2.1.</span> <span class="nav-text">1.1 数据结构定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-衡量算法的标准："><span class="nav-number">2.2.</span> <span class="nav-text">1.2 衡量算法的标准：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-数据结构重要性："><span class="nav-number">2.3.</span> <span class="nav-text">1.3 数据结构重要性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-其他"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-存储方式"><span class="nav-number">3.</span> <span class="nav-text">1.5 存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-指针、指针变量、指针指向"><span class="nav-number">4.</span> <span class="nav-text">2. 指针、指针变量、指针指向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改变量地址的写法："><span class="nav-number">4.1.</span> <span class="nav-text">修改变量地址的写法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-结构体"><span class="nav-number">5.</span> <span class="nav-text">3. 结构体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-动态内存分配和释放"><span class="nav-number">6.</span> <span class="nav-text">4. 动态内存分配和释放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨函数调用内存空间-通过动态申请内存空间"><span class="nav-number">6.1.</span> <span class="nav-text">跨函数调用内存空间 -通过动态申请内存空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-struct与typedef的使用"><span class="nav-number">7.</span> <span class="nav-text">5. struct与typedef的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">123.1k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
