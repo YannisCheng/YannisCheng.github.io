@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="与RecyclerView使用相关的集合">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecycleView相关">
+<meta property="og:url" content="http://yannischeng.com/RecycleView相关/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="与RecyclerView使用相关的集合">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T07:43:24.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RecycleView相关">
+<meta name="twitter:description" content="与RecyclerView使用相关的集合">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/RecycleView相关/"/>
+
+
+
+
+
+  <title>RecycleView相关 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/RecycleView相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RecycleView相关</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T09:41:42+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-14T15:43:24+08:00">
+                2018-03-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  834 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/RecycleView相关/" title="RecycleView相关">http://yannischeng.com/RecycleView相关/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>与RecyclerView使用相关的集合</p>
+<a id="more"></a>
+<h1 id="1-item-滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用"><a href="#1-item-滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用" class="headerlink" title="1. item 滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用"></a>1. item 滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ItemTouchHelper.Callback mCallback = <span class="keyword">null</span>;</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line"></div><div class="line">mCallback = <span class="keyword">new</span> SimpleItemTouchHelperCallback(mAdapter);</div><div class="line">ItemTouchHelper touchHelper = <span class="keyword">new</span> ItemTouchHelper(mCallback);</div><div class="line">touchHelper.attachToRecyclerView(mRecyclerView);</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onChildDraw</span><span class="params">(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, <span class="keyword">float</span> dX, <span class="keyword">float</span> dY, <span class="keyword">int</span> actionState, <span class="keyword">boolean</span> isCurrentlyActive)</span> </span>&#123;</div><div class="line">        .</div><div class="line">        .</div><div class="line">        .</div><div class="line">        </div><div class="line">                <span class="comment">// 此处的操作是根据 具体的item view布局具体执行的。</span></div><div class="line">                <span class="keyword">if</span> ((<span class="keyword">int</span>) dX &gt; oldDX) &#123;</div><div class="line">                    ((TextView) mViewGroup.getChildAt(<span class="number">1</span>).findViewById(R.id.notice_view)).setText(<span class="string">"松手取消删除"</span>);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    ((TextView) mViewGroup.getChildAt(<span class="number">1</span>).findViewById(R.id.notice_view)).setText(<span class="string">"继续左划删除"</span>);</div><div class="line">                &#125;</div><div class="line">	.</div><div class="line">     .</div><div class="line">     .</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h1 id="2-数据加载滑动处理"><a href="#2-数据加载滑动处理" class="headerlink" title="2. 数据加载滑动处理"></a>2. 数据加载滑动处理</h1><h2 id="2-1-xml局部布局文件"><a href="#2-1-xml局部布局文件" class="headerlink" title="2.1 xml局部布局文件"></a>2.1 xml局部布局文件</h2><p><strong>注意：</strong><br>在布局文件中，<code>SwipeToLoadLayout</code> 、<code>RefreshHeadView</code>、<code>RecyclerView</code> 、 <code>LoadMoreFooterView</code> 控件的 <strong>id值</strong>均是<strong>固定</strong>的，<strong>不可修改</strong>的。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">com.zhy.autolayout.AutoRelativeLayout</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_nodate"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"暂无数据"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">"@color/Deep_Orange_700"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"@dimen/text56"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">"gone"</span>/&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">com.aspsine.swipetoloadlayout.SwipeToLoadLayout</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/swipeToLoadLayout"</span></span></div><div class="line"><span class="tag">        <span class="attr">style</span>=<span class="string">"@style/SwipeToLoadLayout"</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">smallb.com.smallenterpriseserver.view.recycler_view_load_refresh.RefreshHeadView</span></span></div><div class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/swipe_refresh_header"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"300px"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">            /&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></div><div class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/swipe_target"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@color/Grey_100"</span>/&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">smallb.com.smallenterpriseserver.view.recycler_view_load_refresh.LoadMoreFooterView</span></span></div><div class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/swipe_load_more_footer"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"300px"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">com.aspsine.swipetoloadlayout.SwipeToLoadLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">com.zhy.autolayout.AutoRelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="2-2-xml布局中使用到的style样式文件"><a href="#2-2-xml布局中使用到的style样式文件" class="headerlink" title="2.2 xml布局中使用到的style样式文件"></a>2.2 xml布局中使用到的style样式文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- RecyclerView上拉、下拉样式--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"SwipeToLoadLayout"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!--是否可以上拉、下拉刷新--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"refresh_enabled"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"load_more_enabled"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!-- 宽高--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:layout_width"</span>&gt;</span>match_parent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:layout_height"</span>&gt;</span>match_parent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!-- 上拉、下拉持续时间--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"load_more_complete_delay_duration"</span>&gt;</span>50<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"refresh_complete_delay_duration"</span>&gt;</span>50<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!--上拉、下拉最大可拖动量--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"load_more_final_drag_offset"</span>&gt;</span>200px<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"refresh_final_drag_offset"</span>&gt;</span>200px<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!-- 释放上拉、下拉持续的时间--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"release_to_loading_more_scrolling_duration"</span>&gt;</span>1000<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"release_to_refreshing_scrolling_duration"</span>&gt;</span>1000<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="comment">&lt;!-- 设置下拉刷新与上拉加载的样式，其值为classic，above，blew或scale--&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"swipe_style"</span>&gt;</span>blew<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="2-3-java代码中使用-加载控件"><a href="#2-3-java代码中使用-加载控件" class="headerlink" title="2.3 java代码中使用 加载控件"></a>2.3 java代码中使用 加载控件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void connectOK() &#123;</div><div class="line">    mData.setVisibility(View.VISIBLE);</div><div class="line">    mNullData.setVisibility(View.GONE);</div><div class="line"></div><div class="line">    initMyView();</div><div class="line">    initMyData();</div><div class="line">    initSwipeLayout();</div><div class="line">    click();</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void click() &#123;</div><div class="line">	searchBtn.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onClick(View v) &#123;</div><div class="line">            if (mSwipeToLoadLayout.isLoadingMore()) &#123;</div><div class="line">                mSwipeToLoadLayout.setLoadMoreEnabled(false);</div><div class="line">            &#125;</div><div class="line">            mListBeans.clear();</div><div class="line">            list_num = 1;</div><div class="line">            initMyData();</div><div class="line">            mSwipeToLoadLayout.setLoadMoreEnabled(true);</div><div class="line">            mSwipeToLoadLayout.setRefreshing(false);</div><div class="line">        &#125;</div><div class="line">    &#125;);        </div><div class="line">&#125;</div><div class="line"></div><div class="line">// 初始化 刷新、加载控件</div><div class="line">private void initSwipeLayout() &#123;</div><div class="line">    mSwipeToLoadLayout.setRefreshHeaderView(mSwipeRefreshHeader);</div><div class="line">    mSwipeToLoadLayout.setLoadMoreFooterView(mSwipeLoadMoreFooter);</div><div class="line">    mSwipeToLoadLayout.setLoadMoreEnabled(true);</div><div class="line">    mSwipeToLoadLayout.setRefreshEnabled(true);</div><div class="line"></div><div class="line">    //刷新</div><div class="line">    mSwipeToLoadLayout.setOnRefreshListener(new OnRefreshListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onRefresh() &#123;</div><div class="line">            if (mSwipeToLoadLayout.isLoadingMore()) &#123;</div><div class="line">                mSwipeToLoadLayout.setLoadMoreEnabled(false);</div><div class="line">            &#125;</div><div class="line">            mListBeans.clear();</div><div class="line">            list_num = 1;</div><div class="line">            initMyData();</div><div class="line">            mSwipeToLoadLayout.setLoadMoreEnabled(true);</div><div class="line">            mSwipeToLoadLayout.setRefreshing(false);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    //加载更多</div><div class="line">    mSwipeToLoadLayout.setOnLoadMoreListener(new OnLoadMoreListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onLoadMore() &#123;</div><div class="line">            if (mSwipeToLoadLayout.isRefreshing()) &#123;</div><div class="line">                mSwipeToLoadLayout.setRefreshEnabled(false);</div><div class="line">            &#125;</div><div class="line">            list_num = list_num + 1;</div><div class="line">            initMyData();</div><div class="line">            mSwipeToLoadLayout.setRefreshEnabled(true);</div><div class="line">            mSwipeToLoadLayout.setLoadingMore(false);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 在 网络请求获取数据的过程中使用</div><div class="line">private void initMyData() &#123;</div><div class="line">    HttpParams params = new HttpParams();</div><div class="line">    params.put(&quot;idcode&quot;, choseidcode);</div><div class="line">    params.put(&quot;page&quot;, list_num);</div><div class="line">    OkGo.post(MEASURE_HISTORY_PRESSURE).params(params).execute(new StringDialogCallback(mContext) &#123;</div><div class="line">        @Override</div><div class="line">        public void onSuccess(String s, Call call, Response response) &#123;</div><div class="line">            Log.e(&quot;aaaaaa&quot;, s);</div><div class="line">            History_Pressure history_pressure = JSON.parseObject(s, History_Pressure.class);</div><div class="line">            if (history_pressure.getCode() == 100) &#123;</div><div class="line">                if (history_pressure.getData().getList().get(0) != null) &#123;</div><div class="line"></div><div class="line">                    nodataTv.setVisibility(View.GONE);</div><div class="line">                    mSwipeToLoadLayout.setVisibility(View.VISIBLE);</div><div class="line"></div><div class="line">                    if (history_pressure.getData().getList().size() &lt; 10) &#123;</div><div class="line">                        mSwipeToLoadLayout.setLoadMoreEnabled(false);</div><div class="line">                        showToast(HistoryPressureActivity.this, &quot;没有更多数据&quot;);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    if (history_pressure.getData().getList().size() &gt; 0) &#123;</div><div class="line">                        for (History_Pressure.DataBean.ListBean listBean : history_pressure.getData().getList()) &#123;</div><div class="line">                            mListBeans.add(listBean);</div><div class="line">                            mAdapter.notifyDataSetChanged();</div><div class="line">                        &#125;</div><div class="line">                    &#125; else &#123;</div><div class="line">                        showToast(HistoryPressureActivity.this, &quot;没有更多数据&quot;);</div><div class="line">                        mSwipeToLoadLayout.setLoadMoreEnabled(false);</div><div class="line">                    &#125;</div><div class="line">                &#125; else &#123;</div><div class="line">                    if (list_num == 1) &#123;</div><div class="line">                        nodataTv.setVisibility(View.VISIBLE);</div><div class="line">                        mSwipeToLoadLayout.setVisibility(View.GONE);</div><div class="line">                    &#125;</div><div class="line">                    // showToast(HistoryPressureActivity.this, &quot;暂无数据&quot;);</div><div class="line">                    mSwipeToLoadLayout.setLoadMoreEnabled(false);</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                showToast(mContext, &quot;加载数据失败&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 初始化界面中的各个控件</div><div class="line">private void initMyView() &#123;</div><div class="line">    mRecyclerView.setLayoutManager(new LinearLayoutManager(this));</div><div class="line">    mRecyclerView.setItemAnimator(new DefaultItemAnimator());</div><div class="line">    mAdapter = new HealthAdapter(HistoryPressureActivity.this, mListBeans);</div><div class="line">    mRecyclerView.setAdapter(mAdapter);</div><div class="line"></div><div class="line">    lists = new ArrayList&lt;&gt;();</div><div class="line">    mFamilyBeans = new ArrayList&lt;&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="3-适配器"><a href="#3-适配器" class="headerlink" title="3. 适配器"></a>3. 适配器</h1><p>万能适配器：点击事件处理<br>    compile ‘com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15’<br>数据加载、刷新 ：自己的工具类<br>item条目的处理（滑动、位置移动）：自己的工具类   </p>
+<p>使用参考：<a href="https://www.jianshu.com/p/1e20f301272e" target="_blank" rel="external">https://www.jianshu.com/p/1e20f301272e</a><br>官方参考：<a href="http://www.recyclerview.org/" target="_blank" rel="external">http://www.recyclerview.org/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/MVP初探/" rel="next" title="MVP初探">
+                <i class="fa fa-chevron-left"></i> MVP初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-item-滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用"><span class="nav-number">1.</span> <span class="nav-text">1. item 滑动删除、更改位置：SimpleItemTouchHelperCallback类的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-数据加载滑动处理"><span class="nav-number">2.</span> <span class="nav-text">2. 数据加载滑动处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-xml局部布局文件"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 xml局部布局文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-xml布局中使用到的style样式文件"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 xml布局中使用到的style样式文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-java代码中使用-加载控件"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 java代码中使用 加载控件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-适配器"><span class="nav-number">3.</span> <span class="nav-text">3. 适配器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
