@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-29%2016.36.56.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/48f6445af6a94bcc81ae0ef8283c44df.jpeg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/375be0a54ceb4eaca7a665fba1aa545c.jpeg">
-<meta property="og:updated_time" content="2018-04-29T08:48:15.738Z">
+<meta property="og:updated_time" content="2018-04-29T08:52:01.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于TensorFlow">
 <meta name="twitter:description" content="TensorFlow入门，2018年五一节。">
@@ -316,7 +316,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T16:48:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T16:52:01+08:00">
                 2018-04-29
               </time>
             
@@ -520,19 +520,47 @@
 <ul>
 <li><strong>第二代TPU</strong></li>
 </ul>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="1-python版本"><a href="#1-python版本" class="headerlink" title="1. python版本"></a>1. python版本</h2><p>在 <code>终端</code> 环境中，直接输入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">python3 </div><div class="line">``` </div><div class="line"></div><div class="line">即可将python的解释环境切换至python3。</div><div class="line"></div><div class="line"> </div><div class="line"><span class="comment">## 2. 安装 TensorFlow CPU版，环境 macOS、Python3</span></div><div class="line"></div><div class="line">使用**virtualenv**安装</div><div class="line"></div><div class="line">- **<span class="number">1.</span> 安装pip**,若已经安装 `pip` ,忽略此步骤；</div></pre></td></tr></table></figure>
-<p>sudo easy_install pip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">检查 `pip` 更新</div></pre></td></tr></table></figure></p>
-<p>pip install –upgrade pip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **2. 安装 virtualenv**，</div></pre></td></tr></table></figure></p>
-<p>sudo pip install –upgrade virtualenv<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **3. 创建虚拟环境**，此处为`python3`环境，`TensorFlowDir` 为 自己定义的目录文件名</div></pre></td></tr></table></figure></p>
-<p>virtualenv –system-site-packages -p python3 TensorFlowDir # for Python 3.n<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **4. 激活虚拟环境**，如果你的终端运行的是`bash, sh, ksh, or zsh`，注意，此处`TensorFlowDir`为上一条命令中的自定义目录文件名</div></pre></td></tr></table></figure></p>
-<p>source ~/TensorFlowDir/bin/activate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如果是：`csh or tcsh`，执行</div></pre></td></tr></table></figure></p>
-<p>source ~/TensorFlowDir/bin/activate.csh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **5. 安装 TensorFlow 及其所有依赖**</div></pre></td></tr></table></figure></p>
-<p>pip3 install –upgrade tensorflow<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **6. 激活虚拟环境**，其中`TensorFlowDir` 表示创建环境时自定义的 目录文件名</div><div class="line"></div><div class="line">**注意：每打开一个新的 shell 使用 TensorFlow 都必须激活虚拟环境。如果当前虚拟环境没有被激活（也就是提示符不是 TensorFlowDir），执行以下任一命令**</div></pre></td></tr></table></figure></p>
-<p>$ source ~/TensorFlowDir/bin/activate       # bash, sh, ksh, or zsh<br>$ source ~/TensorFlowDir/bin/activate.csh  # csh or tcsh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">提示符变成下面这样说明 TensorFlow 环境已经激活：</div></pre></td></tr></table></figure></p>
-<p>(TensorFlowDirDir) YannisCheng:~ yannischeng$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **7. 退出虚拟环境**</div></pre></td></tr></table></figure></p>
-<p>(TensorFlowDirDir) YannisCheng:~ yannischeng$ deactivate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **8. 卸载TensorFlow 环境**</div></pre></td></tr></table></figure></p>
-<p>rm -r ~/tensorflow<br>```</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="1-python版本"><a href="#1-python版本" class="headerlink" title="1. python版本"></a>1. python版本</h2><p>在 <code>终端</code> 环境中，直接输入 <code>python3</code> 即可将python的解释环境切换至python3。</p>
+<h2 id="2-安装-TensorFlow-CPU版，环境-macOS、Python3"><a href="#2-安装-TensorFlow-CPU版，环境-macOS、Python3" class="headerlink" title="2. 安装 TensorFlow CPU版，环境 macOS、Python3"></a>2. 安装 TensorFlow CPU版，环境 macOS、Python3</h2><p>使用<strong>virtualenv</strong>安装</p>
+<ul>
+<li><strong>1. 安装pip</strong>,若已经安装 <code>pip</code> ,忽略此步骤；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo easy_install pip</div></pre></td></tr></table></figure>
+<p>检查 <code>pip</code> 更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade pip</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>2. 安装 virtualenv</strong>，</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install --upgrade virtualenv</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>3. 创建虚拟环境</strong>，此处为<code>python3</code>环境，<code>TensorFlowDir</code> 为 自己定义的目录文件名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtualenv --system-site-packages -p python3 TensorFlowDir # for Python 3.n</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>4. 激活虚拟环境</strong>，如果你的终端运行的是<code>bash, sh, ksh, or zsh</code>，注意，此处<code>TensorFlowDir</code>为上一条命令中的自定义目录文件名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/TensorFlowDir/bin/activate</div></pre></td></tr></table></figure>
+<p>如果是：<code>csh or tcsh</code>，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/TensorFlowDir/bin/activate.csh</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>5. 安装 TensorFlow 及其所有依赖</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install --upgrade tensorflow</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>6. 激活虚拟环境</strong>，其中<code>TensorFlowDir</code> 表示创建环境时自定义的 目录文件名</li>
+</ul>
+<p><strong>注意：每打开一个新的 shell 使用 TensorFlow 都必须激活虚拟环境。如果当前虚拟环境没有被激活（也就是提示符不是 TensorFlowDir），执行以下任一命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ source ~/TensorFlowDir/bin/activate       # bash, sh, ksh, or zsh</div><div class="line">$ source ~/TensorFlowDir/bin/activate.csh  # csh or tcsh</div></pre></td></tr></table></figure>
+<p>提示符变成下面这样说明 TensorFlow 环境已经激活：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(TensorFlowDirDir) YannisCheng:~ yannischeng$</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>7. 退出虚拟环境</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(TensorFlowDirDir) YannisCheng:~ yannischeng$ deactivate</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>8. 卸载TensorFlow 环境</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -r ~/tensorflow</div></pre></td></tr></table></figure>
 <h2 id="3-异常"><a href="#3-异常" class="headerlink" title="3. 异常"></a>3. 异常</h2><ul>
 <li><strong>1.  tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA</strong></li>
 </ul>
@@ -721,7 +749,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-深度学习"><span class="nav-number">1.1.</span> <span class="nav-text">1. 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TensorFlow"><span class="nav-number">1.2.</span> <span class="nav-text">2. TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-支持多种硬件的平台"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 支持多种硬件的平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-支持多种开发环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 支持多种开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-深入移动端"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 深入移动端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-其他领域"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 其他领域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TensorFlow在中国"><span class="nav-number">1.3.</span> <span class="nav-text">3. TensorFlow在中国</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-python版本"><span class="nav-number">2.1.</span> <span class="nav-text">1. python版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异常"><span class="nav-number">2.2.</span> <span class="nav-text">3. 异常</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-深度学习"><span class="nav-number">1.1.</span> <span class="nav-text">1. 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TensorFlow"><span class="nav-number">1.2.</span> <span class="nav-text">2. TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-支持多种硬件的平台"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 支持多种硬件的平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-支持多种开发环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 支持多种开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-深入移动端"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 深入移动端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-其他领域"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 其他领域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TensorFlow在中国"><span class="nav-number">1.3.</span> <span class="nav-text">3. TensorFlow在中国</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-python版本"><span class="nav-number">2.1.</span> <span class="nav-text">1. python版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装-TensorFlow-CPU版，环境-macOS、Python3"><span class="nav-number">2.2.</span> <span class="nav-text">2. 安装 TensorFlow CPU版，环境 macOS、Python3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异常"><span class="nav-number">2.3.</span> <span class="nav-text">3. 异常</span></a></li></ol></li></ol></div>
             
 
           </div>
