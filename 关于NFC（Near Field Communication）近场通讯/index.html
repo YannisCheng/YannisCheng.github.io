@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目前NFC已经出现了一些应用，例如电子标签识别、刷手机、点对点付款、身份识别、信息记录等">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于NFC（Near Field Communication）近场通讯">
+<meta property="og:url" content="http://yannischeng.com/关于NFC（Near Field Communication）近场通讯/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="目前NFC已经出现了一些应用，例如电子标签识别、刷手机、点对点付款、身份识别、信息记录等">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-20%2014.28.11.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%2022.16.52.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/15241489414850.png">
+<meta property="og:updated_time" content="2018-04-20T06:42:33.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于NFC（Near Field Communication）近场通讯">
+<meta name="twitter:description" content="目前NFC已经出现了一些应用，例如电子标签识别、刷手机、点对点付款、身份识别、信息记录等">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-20%2014.28.11.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/关于NFC（Near Field Communication）近场通讯/"/>
+
+
+
+
+
+  <title>关于NFC（Near Field Communication）近场通讯 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/关于NFC（Near Field Communication）近场通讯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于NFC（Near Field Communication）近场通讯</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T21:28:53+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-20T14:42:33+08:00">
+                2018-04-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,871 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/关于NFC（Near Field Communication）近场通讯/" title="关于NFC（Near Field Communication）近场通讯">http://yannischeng.com/关于NFC（Near Field Communication）近场通讯/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目前NFC已经出现了一些应用，例如电子标签识别、刷手机、点对点付款、身份识别、信息记录等</p>
+<a id="more"></a>
+<p>NFC（Near Field Communication，近场通信）是一种数据传输技术。与<strong>Wi-Fi、蓝牙、红外线</strong>等数据传输技术的一个主要差异就是有效距离一般不能超过4厘米。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-20%2014.28.11.png" alt=""></p>
+<h1 id="使用到的类"><a href="#使用到的类" class="headerlink" title="使用到的类"></a>使用到的类</h1><ul>
+<li><strong>NfcManager</strong> : 用于获取此设备NfcAdapter。可以使用获取实例: getSystemService(Class)</li>
+<li><strong>NfcAdapter</strong> : 代表本地NFC适配器。 它是您进行NFC操作的入口点。您可以通过getDefaultAdapter()或 获取实例getDefaultAdapter(android.content.Context)。</li>
+<li><strong>NdefMessage</strong> :     代表不可变的NDEF消息。这是在设备和标签之间传输携带数据的“记录”的标准格式。您的应用程序可以从ACTION_TAG_DISCOVERED意图中接收这些消息。</li>
+<li><strong>NdefRecord</strong> : 代表不可变的NDEF记录。 它在a中提供，NdefMessage并描述正在共享的数据类型并携带数据本身。</li>
+<li><strong>NfcEvent</strong> : 包装与任何NFC事件相关的信息。</li>
+<li><strong>Tag</strong> : 代表已发现的NFC标签。 </li>
+</ul>
+<h1 id="使用到的接口"><a href="#使用到的接口" class="headerlink" title="使用到的接口"></a>使用到的接口</h1><ul>
+<li><strong>NfcAdapter.CreateBeamUrisCallback</strong> ：</li>
+<li><strong>NfcAdapter.CreateNdefMessageCallback</strong> ：当另一个能够进行NDEF推送的NFC设备（Android Beam）处于范围内时，要调用的回调。 </li>
+<li><strong>NfcAdapter.OnNdefPushCompleteCallback</strong> ： 系统成功将您的NdefMessage 设备交付给其他设备时要调用的回调。 </li>
+<li><strong>NfcAdapter.OnTagRemovedListener</strong> ： 将标记从字段中删除时调用的回调。 </li>
+<li><strong>NfcAdapter.ReaderCallback</strong> ：当前台活动在阅读器模式下运行时系统找到标签时要调用的回调。 </li>
+</ul>
+<h1 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h1><p><strong>NFC</strong>是一组短距离无线技术，通常需要4cm（近场）距离或更短距离才能启动连接。NFC可让您在NFC标签和Android设备之间或两台Android设备之间共享小型有效载荷数据。</p>
+<p>标签的范围可能很复杂：</p>
+<ul>
+<li><strong>简单</strong>的标签：只提供读写语义，有时还有一次性可编程区域，使卡片成为只读。</li>
+<li><strong>更复杂</strong>的标签：提供数学运算，并具有加密硬件来验证对扇区的访问。</li>
+<li><strong>最复杂</strong>的标签：包含操作环境，允许与标签上执行的代码进行复杂的交互。</li>
+</ul>
+<p>存储在标签中的数据也可以用各种格式编写，但许多Android框架API基于称为<strong>NDEF（NFC数据交换格式）</strong>的NFC论坛标准。</p>
+<p>采用NFC的Android设备同时支持三种主要的操作模式：</p>
+<ul>
+<li><strong>读写器模式</strong>：允许NFC设备读取和/或写入无源NFC标签和贴纸。</li>
+<li><strong>P2P模式</strong>：允许NFC设备与其他NFC对等设备交换数据; 此操作模式由Android Beam使用。</li>
+<li><strong>卡模拟模式</strong>：允许NFC设备本身充当NFC卡。然后可以通过外部NFC阅读器访问仿真的NFC卡，例如NFC销售点终端。</li>
+</ul>
+<h1 id="NFC-基础知识"><a href="#NFC-基础知识" class="headerlink" title="NFC 基础知识"></a>NFC 基础知识</h1><p>在使用NDEF数据和Android时有两种主要用例：</p>
+<ul>
+<li>从NFC标签读取NDEF数据</li>
+</ul>
+<p>从NFC标签读取NDEF数据由<strong>标签调度系统</strong>处理,此系统分析发现的NFC标签，对数据进行适当分类，并启动对分类数据感兴趣的应用程序。想要处理扫描的NFC标签的应用程序可以<strong>声明意图过滤器</strong>并<strong>请求处理数据</strong>。</p>
+<ul>
+<li>使用<strong>Android Beam</strong>将NDEF消息从一台设备传送到另一台设备</li>
+</ul>
+<p>Android Beam功能允许设备将NDEF消息推送到另一台设备上，方法是将这些设备一起物理地轻击。这种交互提供了一种比其他无线技术（如蓝牙）更容易发送数据的方式，因为使用NFC时，不需要手动设备发现或配对。当两个设备进入范围时，连接自动启动。Android Beam通过一组NFC API可用，因此任何应用程序都可以在设备之间传输信息。例如，联系人，浏览器和YouTube应用程序使用Android Beam与其他设备共享联系人，网页和视频。</p>
+<h2 id="标签调度系统"><a href="#标签调度系统" class="headerlink" title="标签调度系统"></a>标签调度系统</h2><p>除非在设备的“设置”菜单中禁用NFC，否则Android设备通常会在<strong>屏幕解锁</strong>时查找NFC标签。当Android设备发现NFC标签时，理想的行为是<strong>让最合适的活动处理意图，而不要询问用户使用什么应用程序</strong>。由于设备在<strong>非常短的范围内扫描NFC标签，因此使用户手动选择活动可能会迫使他们将设备从标签移开并中断连接</strong>。所以应该开展活动以仅处理您的活动关心的NFC标签，以<strong>防止活动选择器</strong>出现。</p>
+<p>为了帮助实现这一目标，Android提供了一个<strong>特殊的标签调度系统</strong>，用于<strong>分析扫描的NFC标签</strong>，对其进行<strong>分析</strong>并尝试<strong>定位</strong>对扫描数据感兴趣的<strong>应用程序</strong>。它是这样做的：</p>
+<ul>
+<li><strong>解析NFC标签</strong>并<strong>找出</strong>标识标签中数据有效载荷的<strong>MIME类型</strong>或<strong>URI</strong>。</li>
+<li>将MIME类型或URI和有效负载<strong>封装到意图中</strong>。</li>
+<li>根据意图启动一项活动。</li>
+</ul>
+<h2 id="NFC标签如何映射到MIME类型和URI"><a href="#NFC标签如何映射到MIME类型和URI" class="headerlink" title="NFC标签如何映射到MIME类型和URI"></a>NFC标签如何映射到MIME类型和URI</h2><p>在开始编写NFC应用程序之前，了解 <strong>NFC标签的不同类型</strong>、<strong>标签调度系统解析NFC标签的方式</strong>以及<strong>标签调度系统在检测到NDEF消息时执行的特殊工作</strong>非常重要。</p>
+<p>NDEF数据封装在<strong>NdefMessage包含一个或多个记录（NdefRecord）的消息中</strong>。每个NDEF记录必须按照您要创建的记录类型的规范进行格式良好。</p>
+<p><strong>NDEF数据的操作</strong></p>
+<p>当Android设备驱动的设备<strong>扫描</strong>包含NDEF格式数据的NFC标签时，它会<strong>解析</strong>该消息并<strong>尝试</strong>找出数据的MIME类型或标识URI。</p>
+<p>为此，系统读取<strong>第一个</strong>NdefRecord内容NdefMessage<strong>以确定如何解释整个NDEF消息</strong>（NDEF消息可以具有多个NDEF记录）。在格式良好的NDEF消息中，第一个NdefRecord 包含以下字段：</p>
+<ul>
+<li><strong>3位TNF（类型名称格式）</strong></li>
+</ul>
+<p>指示如何解释可变长度类型字段。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%2022.16.52.png" alt=""></p>
+<ul>
+<li><strong>可变长度类型</strong></li>
+</ul>
+<p>描述记录的类型。如果使用TNF_WELL_KNOWN，使用此字段指定记录类型定义（RTD）。</p>
+<ul>
+<li><strong>可变长度ID</strong></li>
+</ul>
+<p>记录的唯一标识符。此字段不常使用，但如果您需要唯一标识标签，则可以为其创建标识。</p>
+<ul>
+<li><strong>可变长度有效载荷</strong></li>
+</ul>
+<p>您想要读取或写入的实际数据有效载荷。NDEF消息可以包含多个NDEF记录，因此不要假定完整的有效负载位于NDEF消息的第一个NDEF记录中。</p>
+<p><strong>标签调度系统</strong>使用<strong>TNF</strong>和<strong>类型字段</strong>尝试将MIME类型或URI映射到NDEF消息。如果成功，它会将该信息ACTION_NDEF_DISCOVERED与实际有效负载一起封装在意图中。但是，有些情况下，标签调度系统无法根据第一个NDEF记录确定数据的类型。当NDEF数据无法映射到MIME类型或URI，或者NFC标签不包含NDEF数据时，会发生这种情况。在这种情况下，Tag具有关于标签的技术和有效载荷的信息的对象被封装在ACTION_TECH_DISCOVERED意图的内部。</p>
+<p>表1描述了标签调度系统如何将TNF和类型字段映射到MIME类型或URI。它还描述了哪些TNF不能映射到MIME类型或URI。在这些情况下，标签调度系统会回退到 ACTION_TECH_DISCOVERED。</p>
+<p>例如，如果标签调度系统遇到类型记录TNF_ABSOLUTE_URI，它会将该记录的可变长度类型字段映射到URI中。标签调度系统将该URI ACTION_NDEF_DISCOVERED与其他关于标签的信息（例如有效载荷）一起封装在意图的数据字段中。另一方面，如果它遇到类型记录TNF_UNKNOWN，它会创建一个封装标签技术的意图。</p>
+<h2 id="NFC标签如何分配给应用程序"><a href="#NFC标签如何分配给应用程序" class="headerlink" title="NFC标签如何分配给应用程序"></a>NFC标签如何分配给应用程序</h2><p>当标签调度系统<strong>完成创建封装NFC标签</strong>及其<strong>标识信息的意图</strong>时，它将意向发送给感兴趣的应用程序，以针对意图进行过滤。如果多个应用程序可以处理该意图，则显示活动选择器，以便用户可以选择该活动。标签调度系统定义了<strong>三个意图</strong>，按照<strong>从高到低</strong>的顺序列出：</p>
+<ul>
+<li><strong>ACTION_NDEF_DISCOVERED：</strong></li>
+</ul>
+<p>当包含NDEF有效载荷的标签被扫描并且是识别类型时，该意图用于启动Activity。这是最高优先级的意图，并且标签调度系统尽可能在任何其他意图之前尝试用此意图启动一个活动。</p>
+<ul>
+<li><strong>ACTION_TECH_DISCOVERED：</strong></li>
+</ul>
+<p>如果没有活动注册来处理ACTION_NDEF_DISCOVERED 意图，则标签调度系统会尝试以此意图启动应用程序。ACTION_NDEF_DISCOVERED如果扫描的标签包含无法映射到MIME类型或URI的NDEF数据，或者该标签不包含NDEF数据，但是具有已知的标记技术，则此直接启动（无需先启动）。</p>
+<ul>
+<li><strong>ACTION_TAG_DISCOVERED：</strong></li>
+</ul>
+<p>如果没有任何活动处理ACTION_NDEF_DISCOVERED或ACTION_TECH_DISCOVERED 意图，则此意图开始。</p>
+<h2 id="标签调度系统的基本工作方式如下"><a href="#标签调度系统的基本工作方式如下" class="headerlink" title="标签调度系统的基本工作方式如下"></a>标签调度系统的基本工作方式如下</h2><ul>
+<li>尝试使用解析NFC标签（ACTION_NDEF_DISCOVERED或者ACTION_TECH_DISCOVERED）时由标签调度系统创建的意图启动一个活动 。</li>
+<li>如果没有任何活动过滤该意图，请尝试启动具有下一个最低优先级意图的活动（ACTION_TECH_DISCOVERED或者ACTION_TAG_DISCOVERED），直到应用程序过滤该意图或直到标签调度系统尝试所有可能的意图。</li>
+<li>如果没有应用程序筛选任何意图，则不执行任何操作。</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/15241489414850.png" alt=""></p>
+<p>只要有可能，就使用NDEF消息和ACTION_NDEF_DISCOVERED意图，因为它是三者中最具体的。这种意图使您能够在比其他两种意图更合适的时间启动您的应用程序，从而为用户提供更好的体验。</p>
+<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><h3 id="1-在Android清单中请求NFC访问"><a href="#1-在Android清单中请求NFC访问" class="headerlink" title="1. 在Android清单中请求NFC访问"></a>1. 在Android清单中请求NFC访问</h3><p>在访问设备的NFC硬件并正确处理NFC意图之前，请在AndroidManifest.xml文件中声明这些项目：</p>
+<ul>
+<li><uses-permission>用于访问NFC硬件的NFC 元件：</uses-permission></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.NFC&quot; /&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>您的应用程序可以支持的最低SDK版本。<strong>API级别9</strong>仅支持有限的标签分发ACTION_TAG_DISCOVERED，并且只能通过EXTRA_NDEF_MESSAGES额外的方式访问NDEF消息。没有其他标签属性或I / O操作可以访问。<strong>API级别10</strong>包括全面的读写器支持以及前台NDEF推送，而<strong>API level 14</strong>提供了一种使用Android Beam和其他便捷方法将NDEF消息推送到其他设备以创建NDEF记录的更简单的方法。    </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-sdk android:minSdkVersion=&quot;10&quot;/&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>该uses-feature元素使您的应用程序仅在具有NFC硬件的设备上显示在Google Play中：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-feature android:name=&quot;android.hardware.nfc&quot; android:required=&quot;true&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>如果应用程序使用NFC功能，但这些功能是不是你的应用是至关重要的，你可以省略uses-feature元素和检查，看看是否在运行时检查NFC avalailbility getDefaultAdapter() 是null。</p>
+<h3 id="2-过滤NFC-intent"><a href="#2-过滤NFC-intent" class="headerlink" title="2. 过滤NFC intent"></a>2. 过滤NFC intent</h3><p>要扫描想要处理的NFC标签时启动应用程序，您的应用程序可以筛选Android清单中的<strong>一个、两个或全部三个NFC意图</strong></p>
+<p>但是，通常需要筛选ACTION_NDEF_DISCOVERED意图，以便在您的应用程序启动时进行最大限度的控制。<br>ACTION_TECH_DISCOVERED目的是回退ACTION_NDEF_DISCOVERED时没有应用程序过滤器ACTION_NDEF_DISCOVERED或当负载不NDEF。<br>过滤ACTION_TAG_DISCOVERED通常过于笼统。</p>
+<p>许多应用程序会为之前ACTION_NDEF_DISCOVERED或ACTION_TECH_DISCOVERED之前进行过滤ACTION_TAG_DISCOVERED，因此您的应用程序的启动概率较低。</p>
+<p>ACTION_TAG_DISCOVERED仅适用于在没有安装其他应用程序来处理ACTION_NDEF_DISCOVERED或ACTION_TECH_DISCOVERED意图的情况下过滤应用程序的最后手段 。</p>
+<p>由于NFC标签的部署有所不同并且多次不受控制，因此这并非总是可行，因此您可以在必要时回退到其他两个意图。当可以控制写入的标签和数据类型时，建议使用NDEF格式化标签。以下各节介绍如何针对每种意图类型进行过滤。</p>
+<ul>
+<li><strong>ACTION_NDEF_DISCOVERED</strong></li>
+</ul>
+<p>要过滤ACTION_NDEF_DISCOVERED意图，请声明意图过滤器以及要过滤的数据类型。以下示例筛选ACTION_NDEF_DISCOVERED MIME类型为以下内容的意图text/plain：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot;/&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</div><div class="line">    &lt;data android:mimeType=&quot;text/plain&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<p>以下示例以URI形式过滤 <a href="http://developer.android.com/index.html。" target="_blank" rel="external">http://developer.android.com/index.html。</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot;/&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</div><div class="line">   &lt;data android:scheme=&quot;http&quot;</div><div class="line">              android:host=&quot;developer.android.com&quot;</div><div class="line">              android:pathPrefix=&quot;/index.html&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>ACTION_TECH_DISCOVERED</strong></li>
+</ul>
+<p>如果您的action按照ACTION_TECH_DISCOVERED意图进行过滤，则必须创建一个XML资源文件，以指定您的活动在一个tech-list集合内支持的技术。如果某个tech-list集合是标记所支持的技术的子集，则您的活动被视为匹配，您可以通过调用获取该技术getTechList()。</p>
+<p>例如，如果扫描的标签支持MifareClassic，NdefFormatable和NfcA，则您的 tech-list设置必须指定全部三种，两种或一种技术（而不是其他任何技术），以便使您的活动得到匹配。</p>
+<p>以下示例定义了所有技术。你可以删除那些你不需要的。保存这个文件（你可以将它命名为任何你想要的）在 <project-root>/res/xml文件夹中。</project-root></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;resources xmlns:xliff=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</div><div class="line">    &lt;tech-list&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.IsoDep&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcA&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcB&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcF&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcV&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.Ndef&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NdefFormatable&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.MifareClassic&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.MifareUltralight&lt;/tech&gt;</div><div class="line">    &lt;/tech-list&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>您也可以指定多个tech-list集合。每个tech-list 集合都是独立考虑的，如果任何一个tech-list集合是返回的技术的子集，那么您的活动就被认为是匹配 的getTechList()。这提供了AND与OR 匹配技术，语义。以下示例匹配可以支持NfcA和Ndef技术或可以支持NfcB和Ndef技术的标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;resources xmlns:xliff=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</div><div class="line">    &lt;tech-list&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcA&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.Ndef&lt;/tech&gt;</div><div class="line">    &lt;/tech-list&gt;</div><div class="line">&lt;/resources&gt;</div><div class="line"></div><div class="line">&lt;resources xmlns:xliff=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</div><div class="line">    &lt;tech-list&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.NfcB&lt;/tech&gt;</div><div class="line">        &lt;tech&gt;android.nfc.tech.Ndef&lt;/tech&gt;</div><div class="line">    &lt;/tech-list&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>在你的AndroidManifest.xml文件中， 像下面的例子那样，在<meta-data>元素内部的<activity>元素中指定刚创建的资源文件：</activity></meta-data></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;activity&gt;</div><div class="line">	...</div><div class="line">	&lt;intent-filter&gt;</div><div class="line">	    &lt;action android:name=&quot;android.nfc.action.TECH_DISCOVERED&quot;/&gt;</div><div class="line">	&lt;/intent-filter&gt;</div><div class="line">	</div><div class="line">	&lt;meta-data android:name=&quot;android.nfc.action.TECH_DISCOVERED&quot;</div><div class="line">	    android:resource=&quot;@xml/nfc_tech_filter&quot; /&gt;</div><div class="line">	...</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>ACTION_TAG_DISCOVERED</strong></li>
+</ul>
+<p>要过滤ACTION_TAG_DISCOVERED使用以下意图过滤器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.TAG_DISCOVERED&quot;/&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<h2 id="3-从intent获取信息"><a href="#3-从intent获取信息" class="headerlink" title="3. 从intent获取信息"></a>3. 从intent获取信息</h2><p>如果某个action是由于NFC的intent而启动的，则您可以从intent获取有关扫描的NFC标签的信息。intent可以包含以下附加内容，具体取决于扫描的标签：</p>
+<ul>
+<li>EXTRA_TAG（必需）：Tag代表扫描标签的对象。</li>
+<li>EXTRA_NDEF_MESSAGES（可选）：从标签解析的NDEF消息数组。这个额外的ACTION_NDEF_DISCOVERED意图是强制性的 。</li>
+<li>EXTRA_ID （可选）：标签的低级ID。</li>
+</ul>
+<p>要获取这些附加内容，请检查您的活动是否以NFC意图之一启动，以确保扫描标签，然后从意图中获取附加信息。以下示例检查ACTION_NDEF_DISCOVERED 意图并从意图附加中获取NDEF消息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onNewIntent(Intent intent) &#123;</div><div class="line">    super.onNewIntent(intent);</div><div class="line">    ...</div><div class="line">    if (intent != null &amp;&amp; NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) &#123;</div><div class="line">        Parcelable[] rawMessages =</div><div class="line">            intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);</div><div class="line">        if (rawMessages != null) &#123;</div><div class="line">            NdefMessage[] messages = new NdefMessage[rawMessages.length];</div><div class="line">            for (int i = 0; i &lt; rawMessages.length; i++) &#123;</div><div class="line">                messages[i] = (NdefMessage) rawMessages[i];</div><div class="line">            &#125;</div><div class="line">            // Process the messages array.</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者，您可以Tag从intent获取对象，该对象将包含有效内容并允许枚举标记的技术：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);</div></pre></td></tr></table></figure>
+<h3 id="4-创建常见的NDEF记录类型"><a href="#4-创建常见的NDEF记录类型" class="headerlink" title="4. 创建常见的NDEF记录类型"></a>4. 创建常见的NDEF记录类型</h3><p>以下将会介绍创建常见类型的NDEF记录以在使用Android Beam编写NFC标签或发送数据时使用。<br>从Android 4.0（API级别14）开始，该 createUri()方法可以帮助您自动创建URI记录。<br>在开始的Android 4.1（API级别16）， createExternal() 并且createMime()可以帮助您创建MIME和外部类型NDEF记录。<br>尽可能使用这些帮助器方法，以避免在手动创建NDEF记录时出错。</p>
+<p>以下还将会介绍如何为记录创建相应的intent过滤器。所有这些NDEF记录示例应该放在NDEF消息的第一个NDEF记录中，您正在写入标签或发送。</p>
+<p><strong>TNF_ABSOLUTE_URI</strong></p>
+<p>建议使用 RTD_URI类型而不是TNF_ABSOLUTE_URI，因为它更高效。<br>您可以TNF_ABSOLUTE_URI通过以下方式创建NDEF记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NdefRecord uriRecord = new NdefRecord(</div><div class="line">    NdefRecord.TNF_ABSOLUTE_URI ,</div><div class="line">    &quot;http://developer.android.com/index.html&quot;.getBytes(Charset.forName(&quot;US-ASCII&quot;)),</div><div class="line">    new byte[0], new byte[0]);</div></pre></td></tr></table></figure>
+<p>以前的NDEF记录的intent filter 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">    &lt;data android:scheme=&quot;http&quot;</div><div class="line">        android:host=&quot;developer.android.com&quot;</div><div class="line">        android:pathPrefix=&quot;/index.html&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<p><strong>TNF_MIME_MEDIA</strong></p>
+<p>您可以TNF_MIME_MEDIA通过以下方式创建NDEF记录：<br>使用createMime()方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NdefRecord mimeRecord = NdefRecord.createMime(&quot;application/vnd.com.example.android.beam&quot;,</div><div class="line">    &quot;Beam me up, Android&quot;.getBytes(Charset.forName(&quot;US-ASCII&quot;)));</div></pre></td></tr></table></figure>
+<p>NdefRecord手动创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NdefRecord mimeRecord = new NdefRecord(</div><div class="line">    NdefRecord.TNF_MIME_MEDIA ,</div><div class="line">    &quot;application/vnd.com.example.android.beam&quot;.getBytes(Charset.forName(&quot;US-ASCII&quot;)),</div><div class="line">    new byte[0], &quot;Beam me up, Android!&quot;.getBytes(Charset.forName(&quot;US-ASCII&quot;)));</div></pre></td></tr></table></figure>
+<p>以前的NDEF记录的意图过滤器如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">    &lt;data android:mimeType=&quot;application/vnd.com.example.android.beam&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<p><strong>TNF_WELL_KNOWN与RTD_TEXT</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public NdefRecord createTextRecord(String payload, Locale locale, boolean encodeInUtf8) &#123;</div><div class="line">    byte[] langBytes = locale.getLanguage().getBytes(Charset.forName(&quot;US-ASCII&quot;));</div><div class="line">    Charset utfEncoding = encodeInUtf8 ? Charset.forName(&quot;UTF-8&quot;) : Charset.forName(&quot;UTF-16&quot;);</div><div class="line">    byte[] textBytes = payload.getBytes(utfEncoding);</div><div class="line">    int utfBit = encodeInUtf8 ? 0 : (1 &lt;&lt; 7);</div><div class="line">    char status = (char) (utfBit + langBytes.length);</div><div class="line">    byte[] data = new byte[1 + langBytes.length + textBytes.length];</div><div class="line">    data[0] = (byte) status;</div><div class="line">    System.arraycopy(langBytes, 0, data, 1, langBytes.length);</div><div class="line">    System.arraycopy(textBytes, 0, data, 1 + langBytes.length, textBytes.length);</div><div class="line">    NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN,</div><div class="line">    NdefRecord.RTD_TEXT, new byte[0], data);</div><div class="line">    return record;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以前的创建方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">    &lt;data android:mimeType=&quot;text/plain&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<p><strong>TNF_WELL_KNOWN与RTD_URI</strong></p>
+<p>使用 createUri(String) 创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NdefRecord rtdUriRecord1 = NdefRecord.createUri(&quot;http://example.com&quot;);</div></pre></td></tr></table></figure>
+<p>使用  createUri(Uri) 创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Uri uri = new Uri(&quot;http://example.com&quot;);</div><div class="line">NdefRecord rtdUriRecord2 = NdefRecord.createUri(uri);</div></pre></td></tr></table></figure>
+<p>NdefRecord手动创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">byte[] uriField = &quot;example.com&quot;.getBytes(Charset.forName(&quot;US-ASCII&quot;));</div><div class="line">byte[] payload = new byte[uriField.length + 1];              //add 1 for the URI Prefix</div><div class="line">byte payload[0] = 0x01;                                      //prefixes http://www. to the URI</div><div class="line">System.arraycopy(uriField, 0, payload, 1, uriField.length);  //appends URI to payload</div><div class="line">NdefRecord rtdUriRecord = new NdefRecord(</div><div class="line">    NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_URI, new byte[0], payload);</div></pre></td></tr></table></figure>
+<p>以前的创建方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">    &lt;data android:scheme=&quot;http&quot;</div><div class="line">        android:host=&quot;example.com&quot;</div><div class="line">        android:pathPrefix=&quot;&quot; /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<p><strong>TNF_EXTERNAL_TYPE</strong></p>
+<p>使用 createExternal()  方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">byte[] payload; //assign to your data</div><div class="line">String domain = &quot;com.example&quot;; //usually your app&apos;s package name</div><div class="line">String type = &quot;externalType&quot;;</div><div class="line">NdefRecord extRecord = NdefRecord.createExternal(domain, type, payload);</div></pre></td></tr></table></figure>
+<p>NdefRecord手动创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">byte[] payload;</div><div class="line">...</div><div class="line">NdefRecord extRecord = new NdefRecord(</div><div class="line">    NdefRecord.TNF_EXTERNAL_TYPE, &quot;com.example:externalType&quot;, new byte[0], payload);</div></pre></td></tr></table></figure>
+<p>以前的创建方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</div><div class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">    &lt;data android:scheme=&quot;vnd.android.nfc&quot;</div><div class="line">        android:host=&quot;ext&quot;</div><div class="line">        android:pathPrefix=&quot;/com.example:externalType&quot;/&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<h3 id="5-Android应用程序记录-Android-Application-Record-AAR"><a href="#5-Android应用程序记录-Android-Application-Record-AAR" class="headerlink" title="5. Android应用程序记录 Android Application Record (AAR)"></a>5. Android应用程序记录 Android Application Record (AAR)</h3><p>在Android 4.0（API级别14）中引入Android应用程序记录（AAR）可以更强有力地确定您的应用程序在扫描NFC标签时启动。 AAR具有嵌入NDEF记录内的应用程序的包名称。 您可以将AAR添加到NDEF消息的任何NDEF记录中，因为Android会在整个NDEF消息中搜索AAR。 如果它发现AAR，它将根据AAR中的包名称启动应用程序。 如果设备上没有应用程序，则会启动Google Play以下载应用程序。</p>
+<p>如果想要阻止其他应用程序针对相同的意图进行过滤并可能处理您已部署的特定标记，则AAR很有用。AAR仅在应用程序级别受支持，因为包名称约束，而不是在意图过滤的活动级别。</p>
+<p>如果标签包含AAR，则标签分派系统按以下方式分派：</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-7-0-FileProvider/" rel="next" title="Android 7.0 FileProvider">
+                <i class="fa fa-chevron-left"></i> Android 7.0 FileProvider
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/关于TensorFlow/" rel="prev" title="关于TensorFlow">
+                关于TensorFlow <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用到的类"><span class="nav-number">1.</span> <span class="nav-text">使用到的类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用到的接口"><span class="nav-number">2.</span> <span class="nav-text">使用到的接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#释义"><span class="nav-number">3.</span> <span class="nav-text">释义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFC-基础知识"><span class="nav-number">4.</span> <span class="nav-text">NFC 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签调度系统"><span class="nav-number">4.1.</span> <span class="nav-text">标签调度系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFC标签如何映射到MIME类型和URI"><span class="nav-number">4.2.</span> <span class="nav-text">NFC标签如何映射到MIME类型和URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFC标签如何分配给应用程序"><span class="nav-number">4.3.</span> <span class="nav-text">NFC标签如何分配给应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签调度系统的基本工作方式如下"><span class="nav-number">4.4.</span> <span class="nav-text">标签调度系统的基本工作方式如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体使用"><span class="nav-number">4.5.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在Android清单中请求NFC访问"><span class="nav-number">4.5.1.</span> <span class="nav-text">1. 在Android清单中请求NFC访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-过滤NFC-intent"><span class="nav-number">4.5.2.</span> <span class="nav-text">2. 过滤NFC intent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-从intent获取信息"><span class="nav-number">4.6.</span> <span class="nav-text">3. 从intent获取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建常见的NDEF记录类型"><span class="nav-number">4.6.1.</span> <span class="nav-text">4. 创建常见的NDEF记录类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Android应用程序记录-Android-Application-Record-AAR"><span class="nav-number">4.6.2.</span> <span class="nav-text">5. Android应用程序记录 Android Application Record (AAR)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">137.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

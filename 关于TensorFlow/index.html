@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="TensorFlow," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TensorFlow入门，2018年五一节。">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于TensorFlow">
+<meta property="og:url" content="http://yannischeng.com/关于TensorFlow/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="TensorFlow入门，2018年五一节。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-29%2016.36.56.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/48f6445af6a94bcc81ae0ef8283c44df.jpeg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/375be0a54ceb4eaca7a665fba1aa545c.jpeg">
+<meta property="og:updated_time" content="2018-04-29T08:39:09.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于TensorFlow">
+<meta name="twitter:description" content="TensorFlow入门，2018年五一节。">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-29%2016.36.56.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/关于TensorFlow/"/>
+
+
+
+
+
+  <title>关于TensorFlow | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/关于TensorFlow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于TensorFlow</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T08:24:13+08:00">
+                2018-04-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T16:39:09+08:00">
+                2018-04-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,856 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/关于TensorFlow/" title="关于TensorFlow">http://yannischeng.com/关于TensorFlow/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>TensorFlow入门，2018年五一节。</p>
+<a id="more"></a>
+<p><strong>时代发展的综合产物：大数据 + 云计算 = 人工智能</strong></p>
+<p>作为一个Android开发者，其实在人工智能火爆的开始也想着自己怎么能加入到开发的大军中。可是自己却迟迟没有下手，这其中是有很多原因的：如何入手？从哪个方面？哪个领域？哪个方向？以及入手后如何开始，如何使这项学习长期继续下去？有哪些已有成果能作为参考？</p>
+<p>当然最重要的一点：如何与自己目前所做的Android开发联系起来，因为一旦建立联系后，在自己熟悉的领域作为起步，可能得到的成就感和实际效果会好的多。</p>
+<p>在去年就看到了关于<strong>TensorFlow</strong>的消息，当时就对其有了印象。以至于每每想到“人工智能”、“深度学习”这个词汇总是想到他。</p>
+<p>更重要的一点：<strong>Android</strong>与<strong>TensorFlow</strong>都是<strong>Google</strong>的产品，同出一门。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="1-深度学习"><a href="#1-深度学习" class="headerlink" title="1. 深度学习"></a>1. 深度学习</h2><p>深度学习是什么？它能够为我们做什么？如何把这个技术应用到实际场景当中去？</p>
+<p>深度学习并不是一个突然出现的技术领域，它的核心算法就是<strong>神经网络</strong>。神经网络是<strong>一种机器学习的模型</strong>，这个模型主要特点就是，它可以拟合任何数学上的函数，特别是利用大数据反复迭代的一种类似方法来训练好这个模型。</p>
+<p>这个以神经网络模型为核心的深度学习技术，在很多应用领域都可以大大提高过去软件系统需要完成的任务。最经典的应用领域大家肯定很熟悉，就是图像识别。自2012年以来，在这个领域，自动图像识别的错误率从20%一直持续下降到4%左右，已经超过了一个普通人分辨图像的能力。</p>
+<h2 id="2-TensorFlow"><a href="#2-TensorFlow" class="headerlink" title="2. TensorFlow"></a>2. TensorFlow</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-29%2016.36.56.png" alt=""></p>
+<p>Google在2015年10月开源了TensorFlow。</p>
+<p><strong>TensorFlow如何翻译？</strong></p>
+<p><strong>TensorFlow</strong>是谷歌基于DistBelief进行研发的第二代人工智能学习系统，其命名来源于<strong>本身的运行原理</strong>：<strong>Tensor（张量</strong>）意味着N维数组，<strong>Flow（流）</strong>意味着基于数据流图的计算，TensorFlow为张量从流图的一端流动到另一端计算过程。TensorFlow是将复杂的数据结构传输至人工智能神经网中进行分析和处理过程的系统。</p>
+<p>TensorFlow可被用于语音识别或图像识别等多项机器学习和深度学习领域，对2011年开发的深度学习基础架构DistBelief进行了各方面的改进，它可在小到一部智能手机、大到数千台数据中心服务器的各种设备上运行。</p>
+<h3 id="2-1-支持多种硬件的平台"><a href="#2-1-支持多种硬件的平台" class="headerlink" title="2.1 支持多种硬件的平台"></a>2.1 支持多种硬件的平台</h3><p>TensorFlow现在已经演化成一个相当完整的深度学习软件开放平台。它支持CPU、GPU混合搭建的数据中心的训练平台，它也支持将数据中心训练好的模型，相对便捷地部署到不同的移动端应用上，可以支持类似Google自主研发的TPU处理器。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/48f6445af6a94bcc81ae0ef8283c44df.jpeg" alt=""></p>
+<h3 id="2-2-支持多种开发环境"><a href="#2-2-支持多种开发环境" class="headerlink" title="2.2 支持多种开发环境"></a>2.2 支持多种开发环境</h3><p>支持多种硬件的平台是基础，TensorFlow一直以来的一个目标，就是能够帮助<strong>尽量多的开发者</strong>，能够把深度学习的技术利用起来，最终使得广大的用户从中能力得到益处，基于这个想法，TensorFlow一直很重视<strong>多种程序员开发环境的支持</strong>。比如说，开发者可以在<strong>主要的开发环境</strong>中使用TensorFlow。</p>
+<p>TensorFlow在Google内部的应用推广是非常全面和彻底的，比如说TensorFlow很早就帮助Google的核心业务（搜索和广告），实施了深度学习的模型，并且在核心业务上体现了他们的性能。</p>
+<p>在垃圾邮件过滤中，我们也使用了TensorFlow训练的模型，同时在安卓的应用程序推荐上，也上线了TensorFlow的模型等等。很多TensorFlow应用都是发生后台，大多数用户可能没有直接的体验。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/375be0a54ceb4eaca7a665fba1aa545c.jpeg" alt=""></p>
+<h3 id="2-3-深入移动端"><a href="#2-3-深入移动端" class="headerlink" title="2.3 深入移动端"></a>2.3 深入移动端</h3><ul>
+<li><strong>安卓手机自拍功能</strong></li>
+</ul>
+<p>安卓手机最近的版本当中增加了一个自拍功能，这个自拍功能就是通过应用深度学习训练出来的视觉模型，可以非常准确地分离前景像素和后景像素，对前景像素和后景像素分别处理，这样就可以实现背景虚化。<br>实现这种功能，传统上手机厂商需要增加第二个摄像头，这就会增加手机的成本，同时现有的手机就不太容易获得这样的效果，通过新的算法，我们可以实现一些过去可能非常昂贵才能实现的效果。</p>
+<ul>
+<li><strong>智能音箱</strong></li>
+</ul>
+<p>和图像处理一样，语音处理是另一个被深度学习深刻改变的领域，语音识别要比图像处理更早地采用神经网络。<br>产品方面，这些年智能音箱语音主力大行其道，其中一个很大的原因就是<strong>深度学习算法</strong>把语音识别和语音生成的技术门槛大大地降低了，<strong>过去可能需要20—50个博士的团队才能完成的任务，现在下载一个现有模型定制一下，就可以达到同样的效果。</strong>通用的机器学习框架，可以帮助到更多的开发人员，开发出适合特定应用场景的语音应用。</p>
+<ul>
+<li><strong>机器翻译</strong></li>
+</ul>
+<p>现在你可以用手机拍一张照片，手机软件可以自动的识别出图形中的文字，把文字翻译成另外一种语言，看似简单的应用，其实是图像技术和机器翻译技术很自然的结合。</p>
+<ul>
+<li><strong>邮件自动回复功能</strong></li>
+</ul>
+<p>比如说你今天早上收到一份你朋友发的邮件，“晚上是不是要到哪里吃饭”，大多数情况只有三种可能的回答：我会准时到；对不起我没有空不能来；我有空，但是我可能需要晚一点到。</p>
+<p>我们现在邮箱会自动地给你提供三个选择，这样的话在路上看到邮箱，只要一键就可以完成邮件回复，极大方便了用户在手机上处理邮件的效率。</p>
+<h3 id="2-4-其他领域"><a href="#2-4-其他领域" class="headerlink" title="2.4 其他领域"></a>2.4 其他领域</h3><ul>
+<li><strong>AlphaGo</strong></li>
+</ul>
+<p>过去两年努力推进AlphaGo的工作，这就得益于TensorFlow框架本身的帮助，因为TensorFlow可以利用超大计算机集群，支持最新的加速器，AlphaGo团队可以更加专注于算法的研究。</p>
+<ul>
+<li><strong>智能医疗</strong></li>
+</ul>
+<p>由于TensorFlow是一个<strong>通用的框架</strong>，他们可以很方便地<strong>重用现在已有的</strong>图像识别模型或者是自然语言处理的<strong>模型</strong>，针对特定的应用领域和数据，重新训练微调一下模型，就可以在检测视网膜病变任务上面获得超过95%的准确率，这个准确率已经超过了普通眼科专家91%的水平。</p>
+<ul>
+<li><strong>自动驾驶</strong></li>
+</ul>
+<p>在自动驾驶方面，也在利用TensorFlow不断改进自动驾驶系统当中的深度模型，包括对路况场景的分割、雷达信号的处理等等。</p>
+<ul>
+<li><strong>婴儿食品制作</strong></li>
+</ul>
+<p>过去两年我们看到<strong>很多和互联网毫无相关的行业，也开始尝试利用深度学习的技术和方法</strong>，比如说这家公司是一个婴儿食品制作的公司，引进了TensorFlow训练好的智能系统，这个智能系统可以把婴儿食品的原料进行分类，把一些烂掉的苹果和香蕉更准确地排除出去，这样可以准确地控制婴儿食品的质量。</p>
+<ul>
+<li><strong>科学研究——太空</strong></li>
+</ul>
+<p>TensorFlow在计算机科学以外的科学研究上也得到了使用，比如说上个月美国航天总署宣布一项研究成果，美国航天总署有个开普勒计划，他们的科学家和我们的同事联合开发了一个TensorFlow的模型。</p>
+<ul>
+<li><strong>科学研究——海洋</strong></li>
+</ul>
+<p>人们不仅仰望星空，同时我们在回望我们的地球，在这个应用的例子里面，澳大利亚的科学家用TensorFlow开发的图像识别模型，在数万张海洋航拍图照片中，快速并且准确地找到需要保护的大型海洋哺乳类动物，比如说珍惜动物海牛。</p>
+<h2 id="3-TensorFlow在中国"><a href="#3-TensorFlow在中国" class="headerlink" title="3. TensorFlow在中国"></a>3. TensorFlow在中国</h2><ul>
+<li><strong>TensorFlow的中文网站</strong>：<a href="http://www.tensorfly.cn/" target="_blank" rel="external">http://www.tensorfly.cn/</a></li>
+<li><p><strong>公司</strong>：</p>
+<ul>
+<li>京东内部搭建了TensorFlow训练平台，用于开发图像、自然语言相关的模型，并且把他们用到客服广告等领域。</li>
+<li>小米也在尝试类似的技术路线，支持他们生态线上各种特殊的应用。</li>
+<li>网易的有道笔记、网易翻译君也使用了TensorFlow视觉和语言的模型。</li>
+</ul>
+</li>
+<li><p><strong>Eager模式</strong></p>
+</li>
+</ul>
+<p>一个TensorFlow模式，这个模式能够更加有利于前端的开发，便于调试，支持更多动态的编程模式。</p>
+<ul>
+<li><strong>Lite模式</strong></li>
+</ul>
+<p><strong>TensorFlow Lite</strong>模式，这个模式是专门针对<strong>移动</strong>和<strong>嵌入式应用场景</strong>打造的机器学习平台，它的目标是希望<strong>把在云端训练的机器学习模型，更加简单、高效的迁移到移动端上进行部署</strong>。</p>
+<ul>
+<li><strong>第二代TPU</strong></li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="1-python版本"><a href="#1-python版本" class="headerlink" title="1. python版本"></a>1. python版本</h2><p>在 <code>终端</code> 环境中，直接输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">python3 </div><div class="line">``` </div><div class="line"></div><div class="line">即可将python的解释环境切换至python3。</div><div class="line"> </div><div class="line">## 2. 安装 TensorFlow CPU版，环境 macOS、Python3</div><div class="line"></div><div class="line">使用**virtualenv**安装</div><div class="line"></div><div class="line">- **1. 安装pip**,若已经安装 `pip` ,忽略此步骤；</div></pre></td></tr></table></figure>
+<p>sudo easy_install pip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">检查 `pip` 更新</div></pre></td></tr></table></figure></p>
+<p>pip install –upgrade pip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **2. 安装 virtualenv**，</div></pre></td></tr></table></figure></p>
+<p>sudo pip install –upgrade virtualenv<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **3. 创建虚拟环境**，此处为`python3`环境，`TensorFlowDir` 为 自己定义的目录文件名</div></pre></td></tr></table></figure></p>
+<p>virtualenv –system-site-packages -p python3 TensorFlowDir # for Python 3.n<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **4. 激活虚拟环境**，如果你的终端运行的是`bash, sh, ksh, or zsh`，注意，此处`TensorFlowDir`为上一条命令中的自定义目录文件名</div></pre></td></tr></table></figure></p>
+<p>source ~/TensorFlowDir/bin/activate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如果是：`csh or tcsh`，执行</div></pre></td></tr></table></figure></p>
+<p>source ~/TensorFlowDir/bin/activate.csh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **5. 安装 TensorFlow 及其所有依赖**</div></pre></td></tr></table></figure></p>
+<p>pip3 install –upgrade tensorflow<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **6. 激活虚拟环境**，其中`TensorFlowDir` 表示创建环境时自定义的 目录文件名</div><div class="line"></div><div class="line">**注意：每打开一个新的 shell 使用 TensorFlow 都必须激活虚拟环境。如果当前虚拟环境没有被激活（也就是提示符不是 TensorFlowDir），执行以下任一命令**</div></pre></td></tr></table></figure></p>
+<p>$ source ~/TensorFlowDir/bin/activate       # bash, sh, ksh, or zsh<br>$ source ~/TensorFlowDir/bin/activate.csh  # csh or tcsh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">提示符变成下面这样说明 TensorFlow 环境已经激活：</div></pre></td></tr></table></figure></p>
+<p>(TensorFlowDirDir) YannisCheng:~ yannischeng$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **7. 退出虚拟环境**</div></pre></td></tr></table></figure></p>
+<p>(TensorFlowDirDir) YannisCheng:~ yannischeng$ deactivate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **8. 卸载TensorFlow 环境**</div></pre></td></tr></table></figure></p>
+<p>rm -r ~/tensorflow<br>```</p>
+<h2 id="3-异常"><a href="#3-异常" class="headerlink" title="3. 异常"></a>3. 异常</h2><ul>
+<li><strong>1.  tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA</strong></li>
+</ul>
+<p>您的CPU支持未编译使用此TensorFlow二进制文件的说明：AVX2 FMA</p>
+<p>参考：<a href="https://blog.csdn.net/PJ7410/article/details/78886048，" target="_blank" rel="external">https://blog.csdn.net/PJ7410/article/details/78886048，</a> <a href="https://github.com/lakshayg/tensorflow-build" target="_blank" rel="external">https://github.com/lakshayg/tensorflow-build</a><br><a href="https://stackoverflow.com/questions/47068709/your-cpu-supports-instructions-that-this-tensorflow-binary-was-not-compiled-to-u?answertab=votes#tab-top" target="_blank" rel="external">https://stackoverflow.com/questions/47068709/your-cpu-supports-instructions-that-this-tensorflow-binary-was-not-compiled-to-u?answertab=votes#tab-top</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/关于NFC（Near Field Communication）近场通讯/" rel="next" title="关于NFC（Near Field Communication）近场通讯">
+                <i class="fa fa-chevron-left"></i> 关于NFC（Near Field Communication）近场通讯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-深度学习"><span class="nav-number">1.1.</span> <span class="nav-text">1. 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TensorFlow"><span class="nav-number">1.2.</span> <span class="nav-text">2. TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-支持多种硬件的平台"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 支持多种硬件的平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-支持多种开发环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 支持多种开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-深入移动端"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 深入移动端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-其他领域"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 其他领域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TensorFlow在中国"><span class="nav-number">1.3.</span> <span class="nav-text">3. TensorFlow在中国</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-python版本"><span class="nav-number">2.1.</span> <span class="nav-text">1. python版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异常"><span class="nav-number">2.2.</span> <span class="nav-text">3. 异常</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">137.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
