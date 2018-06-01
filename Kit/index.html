@@ -97,7 +97,8 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/1724103-ea242640383ed739.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/activity_lifecycle.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/S80322-14580161.jpg">
-<meta property="og:updated_time" content="2018-05-23T11:36:34.352Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/jheheh.png">
+<meta property="og:updated_time" content="2018-06-01T07:46:53.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kit">
 <meta name="twitter:description" content="常用总结">
@@ -319,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:36:34+08:00">
-                2018-05-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-01T15:46:53+08:00">
+                2018-06-01
               </time>
             
           </span>
@@ -369,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,451 字
+                  2,525 字
                 </span>
               
 
@@ -541,6 +542,14 @@
 <h2 id="17-转义字符"><a href="#17-转义字符" class="headerlink" title="17. 转义字符"></a>17. 转义字符</h2><p>\n 回车换行<br>\t 横向跳到下一制表位置   </p>
 <p>\v 竖向跳格<br>\b 退格<br>\r 回车<br>\f 走纸换页<br>\ 反斜线符”\”<br>\’ 单引号符<br>\ddd 1～3位八进制数所代表的字符<br>\xhh 1～2位十六进制数所代表的字符</p>
 <p>空格的ASC是32，转换为16进制是x20，使用转义字符为 \x20</p>
+<h2 id="18-安装apk时INSTALL-FAILED-NO-MATCHING-ABIS"><a href="#18-安装apk时INSTALL-FAILED-NO-MATCHING-ABIS" class="headerlink" title="18. 安装apk时INSTALL_FAILED_NO_MATCHING_ABIS"></a>18. 安装apk时INSTALL_FAILED_NO_MATCHING_ABIS</h2><blockquote>
+<p>参考：<a href="https://stackoverflow.com/questions/24572052/install-failed-no-matching-abis-when-install-apk" target="_blank" rel="external">https://stackoverflow.com/questions/24572052/install-failed-no-matching-abis-when-install-apk</a></p>
+</blockquote>
+<p>这个错误是由于使用了native libraries 。该native libraries 不支持当前的cpu的体系结构。</p>
+<p>解决方式，在<code>app</code>的<code>build.gradle</code>文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">splits &#123;</div><div class="line">    abi &#123;</div><div class="line">        enable true</div><div class="line">        reset()</div><div class="line">        include &apos;x86&apos;, &apos;armeabi-v7a&apos;</div><div class="line">        universalApk true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改依据：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/jheheh.png" alt=""></p>
 
       
     </div>
@@ -668,7 +677,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -679,7 +688,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -728,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-java中时间戳与时间格式的转换"><span class="nav-number">1.9.3.</span> <span class="nav-text">7.3 java中时间戳与时间格式的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><span class="nav-number">1.10.</span> <span class="nav-text">8. Java - Collections 集合操作的静态多态方法，是一个工具类。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-String／StringBuffer／StringBuilder它们之间的区别"><span class="nav-number">1.11.</span> <span class="nav-text">9. String／StringBuffer／StringBuilder它们之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要引入其它两种字符串处理类"><span class="nav-number">1.11.1.</span> <span class="nav-text">为什么要引入其它两种字符串处理类?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.11.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuffer"><span class="nav-number">1.11.3.</span> <span class="nav-text">StringBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuilder"><span class="nav-number">1.11.4.</span> <span class="nav-text">StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-AS-编译时提示error-please-select-android-sdk"><span class="nav-number">1.12.</span> <span class="nav-text">10. AS 编译时提示error please select android sdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-打开应用时出现“你的手机上未安装应用程序”–实际上该应用已经安装"><span class="nav-number">1.13.</span> <span class="nav-text">11. 打开应用时出现“你的手机上未安装应用程序”–实际上该应用已经安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Git-提示fatal-remote-origin-already-exists-错误解决办法"><span class="nav-number">1.14.</span> <span class="nav-text">12. Git 提示fatal: remote origin already exists 错误解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Http结构图"><span class="nav-number">1.15.</span> <span class="nav-text">13. Http结构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Activity生命周期图"><span class="nav-number">1.16.</span> <span class="nav-text">14. Activity生命周期图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-修改App的包名"><span class="nav-number">1.17.</span> <span class="nav-text">15. 修改App的包名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-App基本UI框架"><span class="nav-number">1.18.</span> <span class="nav-text">16. App基本UI框架</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UI项目主框架：-TabLayout-ViewPager"><span class="nav-number">2.</span> <span class="nav-text">UI项目主框架： TabLayout + ViewPager</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#17-转义字符"><span class="nav-number">2.1.</span> <span class="nav-text">17. 转义字符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用总结"><span class="nav-number">1.</span> <span class="nav-text">常用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Android屏幕适配"><span class="nav-number">1.1.</span> <span class="nav-text">0. Android屏幕适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-类的replace方法替换字符串“无效”、“不起作用”原因l"><span class="nav-number">1.2.</span> <span class="nav-text">1. String 类的replace方法替换字符串“无效”、“不起作用”原因l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际使用："><span class="nav-number">1.2.1.</span> <span class="nav-text">实际使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过正则表达式获取html标签中的指定属性值"><span class="nav-number">1.3.</span> <span class="nav-text">2. 通过正则表达式获取html标签中的指定属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Android-输入框与键盘之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">3.Android 输入框与键盘之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TextView跑马灯效果"><span class="nav-number">1.5.</span> <span class="nav-text">4. TextView跑马灯效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-账户相关属性正则表达式"><span class="nav-number">1.6.</span> <span class="nav-text">5. 账户相关属性正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将多次Toast弹出改为一次弹出"><span class="nav-number">1.7.</span> <span class="nav-text">6. 将多次Toast弹出改为一次弹出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据-转-json"><span class="nav-number">1.8.</span> <span class="nav-text">7. 数据 转 json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-关于-时间-与-时间戳"><span class="nav-number">1.9.</span> <span class="nav-text">7. 关于 时间 与 时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-js中时间戳转换为时间"><span class="nav-number">1.9.1.</span> <span class="nav-text">7.1 js中时间戳转换为时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-处理后的时间转换为时间戳"><span class="nav-number">1.9.2.</span> <span class="nav-text">7.2 处理后的时间转换为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-java中时间戳与时间格式的转换"><span class="nav-number">1.9.3.</span> <span class="nav-text">7.3 java中时间戳与时间格式的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Java-Collections-集合操作的静态多态方法，是一个工具类。"><span class="nav-number">1.10.</span> <span class="nav-text">8. Java - Collections 集合操作的静态多态方法，是一个工具类。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-String／StringBuffer／StringBuilder它们之间的区别"><span class="nav-number">1.11.</span> <span class="nav-text">9. String／StringBuffer／StringBuilder它们之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要引入其它两种字符串处理类"><span class="nav-number">1.11.1.</span> <span class="nav-text">为什么要引入其它两种字符串处理类?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.11.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuffer"><span class="nav-number">1.11.3.</span> <span class="nav-text">StringBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuilder"><span class="nav-number">1.11.4.</span> <span class="nav-text">StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-AS-编译时提示error-please-select-android-sdk"><span class="nav-number">1.12.</span> <span class="nav-text">10. AS 编译时提示error please select android sdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-打开应用时出现“你的手机上未安装应用程序”–实际上该应用已经安装"><span class="nav-number">1.13.</span> <span class="nav-text">11. 打开应用时出现“你的手机上未安装应用程序”–实际上该应用已经安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Git-提示fatal-remote-origin-already-exists-错误解决办法"><span class="nav-number">1.14.</span> <span class="nav-text">12. Git 提示fatal: remote origin already exists 错误解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Http结构图"><span class="nav-number">1.15.</span> <span class="nav-text">13. Http结构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Activity生命周期图"><span class="nav-number">1.16.</span> <span class="nav-text">14. Activity生命周期图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-修改App的包名"><span class="nav-number">1.17.</span> <span class="nav-text">15. 修改App的包名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-App基本UI框架"><span class="nav-number">1.18.</span> <span class="nav-text">16. App基本UI框架</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UI项目主框架：-TabLayout-ViewPager"><span class="nav-number">2.</span> <span class="nav-text">UI项目主框架： TabLayout + ViewPager</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#17-转义字符"><span class="nav-number">2.1.</span> <span class="nav-text">17. 转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-安装apk时INSTALL-FAILED-NO-MATCHING-ABIS"><span class="nav-number">2.2.</span> <span class="nav-text">18. 安装apk时INSTALL_FAILED_NO_MATCHING_ABIS</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -762,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">156.2k</span>
+    <span title="Site words total count">159.7k</span>
   
 </div>
 

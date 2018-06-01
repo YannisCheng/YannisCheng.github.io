@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="注解,反射," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：https://blog.csdn.net/wzgiceman/article/details/53406248参考：https://blog.csdn.net/wzgiceman/article/details/53483665参考：https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html参考：https://blo">
+<meta name="keywords" content="注解,反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java注解、反射">
+<meta property="og:url" content="http://yannischeng.com/Java注解、反射/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="参考：https://blog.csdn.net/wzgiceman/article/details/53406248参考：https://blog.csdn.net/wzgiceman/article/details/53483665参考：https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html参考：https://blo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.24.21.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.30.01.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.40.22.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.44.55.png">
+<meta property="og:updated_time" content="2018-06-01T03:47:08.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java注解、反射">
+<meta name="twitter:description" content="参考：https://blog.csdn.net/wzgiceman/article/details/53406248参考：https://blog.csdn.net/wzgiceman/article/details/53483665参考：https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html参考：https://blo">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.24.21.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Java注解、反射/"/>
+
+
+
+
+
+  <title>Java注解、反射 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Java注解、反射/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java注解、反射</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T09:43:39+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-01T11:47:08+08:00">
+                2018-06-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,422 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/注解/" rel="tag"># 注解</a>
+          
+            <a href="/tags/反射/" rel="tag"># 反射</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Java注解、反射/" title="Java注解、反射">http://yannischeng.com/Java注解、反射/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="https://blog.csdn.net/wzgiceman/article/details/53406248" target="_blank" rel="external">https://blog.csdn.net/wzgiceman/article/details/53406248</a><br>参考：<a href="https://blog.csdn.net/wzgiceman/article/details/53483665" target="_blank" rel="external">https://blog.csdn.net/wzgiceman/article/details/53483665</a><br>参考：<a href="https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html" target="_blank" rel="external">https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html</a><br>参考：<a href="https://blog.csdn.net/BabyGoodMorning/article/details/76349855" target="_blank" rel="external">https://blog.csdn.net/BabyGoodMorning/article/details/76349855</a></p>
+</blockquote>
+<a id="more"></a>
+<p><strong>使用注解的作用</strong></p>
+<ul>
+<li><p>更早的发现程序的问题或者错误</p>
+</li>
+<li><p>更好的增加代码的描述能力</p>
+</li>
+<li><p>更加利于我们的一些规范约束</p>
+</li>
+</ul>
+<h1 id="0-注解：Annotation"><a href="#0-注解：Annotation" class="headerlink" title="0. 注解：Annotation"></a>0. 注解：Annotation</h1><p>在Java中，注解(Annotation)引入始于Java5，用来描述Java代码的元数据，通常情况下注解不会直接影响代码的执行，尽管有些注解可以用来做到影响代码执行。</p>
+<ul>
+<li><strong>Annotation</strong> 是代码里的特殊标记，这些标记可以在<strong>编译、类加载、运行</strong>时被读取，并执行相应的处理。通过使用Annotation，程序开发人员可以在不改变原有逻辑的情况下，在源文件嵌入一些补充信息。代码分析工具、开发工具和部署工具可以通过这些补充信息进行验证或者进行部署。</li>
+<li><strong>Annotation</strong> 提供了一条为程序元素设置元数据的方法，从某些方面来看，Annotation就像修饰符一样被使用，可用于修饰包、类、构造器、方法、成员变量、参数、局部变量的声明，这些信息被存储在Annotation的“name=value”对中。</li>
+<li>需要指出的是：Annotation不能影响程序代码的执行，无论增加、删除Annotation，代码都始终如一地执行。如果希望让程序中的Annotation能在运行时起一定的作用，只有通过某种配套的工具对Annotation中的信息进行访问的处理，访问和处理Annotation的工具统称APT（Annotation Processing Tool）。</li>
+</ul>
+<h2 id="0-1-元数据（MetaData）"><a href="#0-1-元数据（MetaData）" class="headerlink" title="0.1 元数据（MetaData）"></a>0.1 元数据（MetaData）</h2><blockquote>
+<p>参考：<a href="http://www.ruanyifeng.com/blog/2007/03/metadata.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2007/03/metadata.html</a></p>
+</blockquote>
+<p><strong>元数据</strong>是用来<strong>描述数据的数据</strong>（Data that describes other data）。</p>
+<p><strong>一个列子：</strong><br> 一张RAW格式的数码照片，我们直接看到的照片是数据，而看不到的附加<code>EXIF信息</code>则是对于照片的额外描述。此时<code>EXIF信息</code>就是照片的<strong>元数据</strong>。级：<code>EXIF信息</code>是描述<code>照片本身</code>之外的数据。</p>
+<h2 id="0-2-java从源码到运行有3个阶段："><a href="#0-2-java从源码到运行有3个阶段：" class="headerlink" title="0.2 java从源码到运行有3个阶段："></a>0.2 java从源码到运行有3个阶段：</h2><ul>
+<li>source </li>
+<li>class </li>
+<li>runtime</li>
+</ul>
+<h2 id="0-3-功能"><a href="#0-3-功能" class="headerlink" title="0.3 功能"></a>0.3 功能</h2><ul>
+<li>生成文档。这是最常见的，也是 java 最早提供的注解。常用的有 @param @return 等。</li>
+<li>跟踪代码依赖性，实现替代配置文件功能。比较常见的是spring 2.5 开始的基于注解配置。作用就是减少配置。现在的框架基本都 使用了这种配置来减少配置文件的数量</li>
+<li>在编译时进行格式检查。如 @override</li>
+</ul>
+<h2 id="0-4-Java内置注解"><a href="#0-4-Java内置注解" class="headerlink" title="0.4 Java内置注解"></a>0.4 Java内置注解</h2><ul>
+<li>@Deprecated</li>
+<li>@Override</li>
+<li>@SuppressWarnings</li>
+</ul>
+<h4 id="Deprecated：已过时"><a href="#Deprecated：已过时" class="headerlink" title="@Deprecated：已过时"></a>@Deprecated：已过时</h4><p>这个注释是一个<strong>标记注释</strong>。<br>所谓标记注释，就是在源程序中加入这个标记后，并不影响程序的编译，但有时编译器会显示一些警告信息。</p>
+<h4 id="Override：限定重写父类的方法"><a href="#Override：限定重写父类的方法" class="headerlink" title="@Override：限定重写父类的方法"></a>@Override：限定重写父类的方法</h4><h4 id="SuppressWarnings：抑制编译器警告"><a href="#SuppressWarnings：抑制编译器警告" class="headerlink" title="@SuppressWarnings：抑制编译器警告"></a>@SuppressWarnings：抑制编译器警告</h4><p>当我们的一个方法调用了弃用的方法或者进行不安全的类型转换，编译器会生成警告。我们可以为这个方法增加@SuppressWarnings注解，来抑制编译器生成警告<br>可以修饰的元素为类，方法，方法参数，属性，局部变量</p>
+<h2 id="0-5-注解类型（元Annotation）"><a href="#0-5-注解类型（元Annotation）" class="headerlink" title="0.5 注解类型（元Annotation）"></a>0.5 注解类型（元Annotation）</h2><ul>
+<li>@Documented</li>
+<li>@Inherited</li>
+<li>@Retention</li>
+<li>@Target</li>
+</ul>
+<h4 id="Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><a href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化" class="headerlink" title="@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化"></a>@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</h4><p>该类型应用于注解那些影响客户使用带注释(comment)的元素声明的类型。如果类型声明是用Documented来注解的，这种类型的注解被作为被标注的程序成员的公共API</p>
+<h4 id="Inherited：表示注解类型能被自动继承"><a href="#Inherited：表示注解类型能被自动继承" class="headerlink" title="@Inherited：表示注解类型能被自动继承"></a>@Inherited：表示注解类型能被自动继承</h4><p>如果用户在当前类中查询这个元注解类型并且当前类的声明中不包含这个元注解类型，那么也将自动查询当前类的父类是否存在Inherited元注解，这个动作将被重复执行知道这个标注类型被找到，或者是查询到顶层的父类。</p>
+<p>即：如果某个类使用了A Annotation（定义该Annotation时使用了@Inherited修饰）修饰，则其子类将自动具有A注释。</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Inherited</div><div class="line">public @interface Ety &#123;</div><div class="line">    @Deprecated</div><div class="line">    String value();</div><div class="line">    @Deprecated</div><div class="line">    String name();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Retention：表示该注解类型的注解保留的时长"><a href="#Retention：表示该注解类型的注解保留的时长" class="headerlink" title="@Retention：表示该注解类型的注解保留的时长"></a>@Retention：表示该注解类型的注解保留的时长</h4><p>当注解类型声明中没有@Retention元注解，则默认保留策略为RetentionPolicy.CLASS。关于保留策略(RetentionPolicy)是<strong>枚举类</strong>型，共定义3种保留方式</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOURCE</td>
+<td>注解仅存在于源码中，在class字节码文件中不包含</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>存在Java源文件，以及经编译器后生成的Class字节码文件，但在运行时VM不再保留注释</td>
+</tr>
+<tr>
+<td>RUNTIME</td>
+<td>存在源文件、编译生成的Class字节码文件，以及保留在运行时VM中，可通过反射性地读取注解</td>
+</tr>
+</tbody>
+</table>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Inherited</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface Ety &#123;</div><div class="line">    @Deprecated</div><div class="line">    String value();</div><div class="line">    @Deprecated</div><div class="line">    String name();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Target：表示注解类型所适用的程序元素的种类"><a href="#Target：表示注解类型所适用的程序元素的种类" class="headerlink" title="@Target：表示注解类型所适用的程序元素的种类"></a>@Target：表示注解类型所适用的程序元素的种类</h4><p>当注解类型声明中没有@Target元注解，则默认为可适用所有的程序元素。如果存在指定的@Target元注解，则编译器强制实施相应的使用限制。关于程序元素(ElementType)是枚举类型，共定义8种程序元素</p>
+<table>
+<thead>
+<tr>
+<th>ElementType</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TYPE</td>
+<td>类、接口（包括注解类型）或枚举声明</td>
+</tr>
+<tr>
+<td>CONSTRUCTOR</td>
+<td>构造方法声明</td>
+</tr>
+<tr>
+<td>PACKAGE</td>
+<td>包声明</td>
+</tr>
+<tr>
+<td>LOCAL_VARIABLE</td>
+<td>局部变量声明</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>方法声明</td>
+</tr>
+<tr>
+<td>ANNOTATION_TYPE</td>
+<td>注解类型声明</td>
+</tr>
+<tr>
+<td>PARAMETER</td>
+<td>参数声明</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>字段声明（包括枚举常量）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="0-6-自定义Annotation"><a href="#0-6-自定义Annotation" class="headerlink" title="0.6 自定义Annotation"></a>0.6 自定义Annotation</h2><h4 id="0-6-1-自定义"><a href="#0-6-1-自定义" class="headerlink" title="0.6.1 自定义"></a>0.6.1 自定义</h4><p><strong>自定义方式 1 ：无成员变量</strong></p>
+<p>定义新的Annotation类型使用<code>@interface</code>关键字，它用于定义新的Annotation类型。定义一个新的Annotation类型与定义一个<code>接口</code>非常像，如下代码可定义一个简单的Annotation：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>自定义方式 2 ：有成员变量</strong></p>
+<p>Annotation还可以<strong>带成员变量</strong>，Annotation的成员变量在Annotation定义中以<strong>无参数方法</strong>的形式声明。其<strong>方法名</strong>和<strong>返回值</strong>定义了该成员的<strong>名字</strong>和<strong>类型</strong>。如下代码可以定义一个有成员变量的Annotation：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">    int value();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>自定义方式 3 ：有成员变量</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">    int value() default 90;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="0-6-2-使用"><a href="#0-6-2-使用" class="headerlink" title="0.6.2  使用"></a>0.6.2  使用</h4><p>定义了该Annotation之后，就可以在程序任何地方来使用该Annotation，使用Annotation时的语法非常类似于public、final这样的修饰符。<br>通常可用于修饰程序中的类、方法、变量、接口等定义，通常我们会把Annotation放在所有修饰符之前，而且由于使用Annotation时可能还需要为其成员变量指定值，因而Annotation长度可能比较长，所以通常把Annotation另放一行，如下程序所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class MyBean &#123;</div><div class="line"></div><div class="line">    @AValue(value = 48)</div><div class="line">    private int valueDeal;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;MyBean&#123;&quot; +</div><div class="line">                &quot;valueDeal=&quot; + valueDeal +</div><div class="line">                &apos;&#125;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="1-反射：提取-Annotation-的信息"><a href="#1-反射：提取-Annotation-的信息" class="headerlink" title="1. 反射：提取 Annotation 的信息"></a>1. 反射：提取 Annotation 的信息</h1><p><strong>Annotation接口</strong>是所有<code>Annotation类型</code>的父接口。</p>
+<p>Java在<code>java.lang.reflect包</code>下有<code>AnnotateElement接口</code>，该接口代表程序中可以接受注释的<strong>程序元素</strong>，该接口主要有如下几个<strong>实现类</strong>（注意以下是类）：</p>
+<ul>
+<li>Package：类的包定义。</li>
+<li>Class：类定义。</li>
+<li>Constructor：构造器定义。</li>
+<li>Field：类的成员变量定义。</li>
+<li>Method：类的方法定义。</li>
+</ul>
+<p>java.lang.reflect包下主要包含一些实现反射功能工具类，实际上，java.lang.reflect包提供的反射API扩充了读取运行时Annotation的能力。当一个Annotation类型被定义为运行时Annotation后，该注解才是运行时可见，当class文件被装载时被保存在class文件中的Annotation才会被虚拟机读取。</p>
+<p>AnnotatedElement接口是所有程序元素（如Class、Method、Constructor）的父接口，所以程序通过反射获取了某个类的AnnotatedElement对象（如Class、Method、Constructor）之后，程序就可以调用该对象的如下三个方法来访问Annotation信息：</p>
+<ul>
+<li><strong>getAnnotation(Class<t> annotationClass);</t></strong>  //返回该程序元素上存在的、指定类型的注释，如果该类型的注释不存在，则返回null。</li>
+<li><strong>Annotation[] getAnnotations();</strong>      //返回该程序元素上存在的所有注释。</li>
+<li><strong>boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass);</strong>     //判断该程序元素上是否包含指定类型的注解，存在则返回true，否则返回false。</li>
+</ul>
+<h2 id="1-1-Field-注解、反射"><a href="#1-1-Field-注解、反射" class="headerlink" title="1.1 Field 注解、反射"></a>1.1 Field 注解、反射</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author wenjia.Cheng  cwj1714@163.com</div><div class="line"> * @date 2018/5/31</div><div class="line"> * 生成一个 自定义注解</div><div class="line"> */</div><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">    int value();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author wenjia.Cheng  cwj1714@163.com</div><div class="line"> * @date 2018/5/31</div><div class="line"> * 使用注解的类</div><div class="line"> */</div><div class="line">public class MyBean &#123;</div><div class="line"></div><div class="line">    @AValue(value = 48)</div><div class="line">    private int valueDeal;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;MyBean&#123;&quot; +</div><div class="line">                &quot;valueDeal=&quot; + valueDeal +</div><div class="line">                &apos;&#125;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author wenjia.Cheng  cwj1714@163.com</div><div class="line"> * @date 2018/5/31</div><div class="line"> * 反射、注解的使用</div><div class="line"> */</div><div class="line">public class MainTest &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * bingo ： 反射 reflect</div><div class="line">     * 首先反射注解，那么保留策略必须是Runtime，也就是@Retention(RetentionPolicy.RUNTIME)</div><div class="line">     * @param args .</div><div class="line">     */</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">        try &#123;</div><div class="line">            // 获取成员变量</div><div class="line">            Field field = MyBean.class.getDeclaredField(&quot;valueDeal&quot;);</div><div class="line">            System.out.println(&quot;field is : &quot; + field.toString());</div><div class="line"></div><div class="line">            // 设置此元素可访问</div><div class="line">            field.setAccessible(true);</div><div class="line"></div><div class="line">            // 判断此元素是否是AValue中的注解</div><div class="line">            if (field.isAnnotationPresent(AValue.class)) &#123;</div><div class="line">                // 获取定义在 MyBean类 中的 成员变量 所属的注解 AValue</div><div class="line">                AValue aValue = field.getAnnotation(AValue.class);</div><div class="line">                // 从 AValue 中获取 value 属性的值</div><div class="line">                int valueRel = aValue.value();</div><div class="line"></div><div class="line">                // 将获取到的 数值 赋值到 具体使用注解的类中</div><div class="line">                MyBean myBean = new MyBean();</div><div class="line">                field.setInt(myBean, valueRel);</div><div class="line">                //验证结果</div><div class="line">                System.out.println(myBean);</div><div class="line">            &#125; else &#123;</div><div class="line">                System.out.println(&quot;不是&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (NoSuchFieldException | IllegalAccessException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * 当 定义为：int value() default 100; 调用为：@AValue()/@AValue时 ：MyBean&#123;valueDeal=100&#125;</div><div class="line">     * 当 定义为：int value() default 100;或者 int value(); 调用为：@AValue(48)/@AValue(value = 48)时 ：MyBean&#123;valueDeal=48&#125;</div><div class="line">     */</div></pre></td></tr></table></figure>
+<h2 id="1-2-Method-注解、反射"><a href="#1-2-Method-注解、反射" class="headerlink" title="1.2 Method 注解、反射"></a>1.2 Method 注解、反射</h2><p>自定义注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@Target(ElementType.METHOD)</div><div class="line">public @interface Login &#123;</div><div class="line"></div><div class="line">    String username() default &quot;zhangsan&quot;;</div><div class="line"></div><div class="line">    String password() default &quot;123456&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>反射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class MethoidMainTest &#123;</div><div class="line"></div><div class="line">    @Login</div><div class="line">    public void info()&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws NoSuchMethodException &#123;</div><div class="line"></div><div class="line">        // 通过反射获取info方法</div><div class="line">        Method method = MethoidMainTest.class.getMethod(&quot;info&quot;);</div><div class="line"></div><div class="line">        // 判断此方法是否存在 @Login 注解</div><div class="line">        if (method.isAnnotationPresent(Login.class)) &#123;</div><div class="line">            System.out.println(&quot;info方法上存在@Login注释&quot;);</div><div class="line">            // 获取此方法上的所有注释</div><div class="line">            Annotation[] annotations = method.getAnnotations();</div><div class="line"></div><div class="line">            for (Annotation annotation : annotations) &#123;</div><div class="line">                if (annotation != null &amp;&amp; annotation instanceof Login) &#123;</div><div class="line">                    String name = ((Login) annotation).username();</div><div class="line">                    String pwd = ((Login) annotation).password();</div><div class="line">                    System.out.println(&quot;name: &quot; + name + &quot;, pwd :&quot; + pwd);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(annotations);</div><div class="line"></div><div class="line">        &#125; else &#123;</div><div class="line">            System.out.println(&quot;info方法上 不 存在@Login注释&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1-3-Method-注解、反射"><a href="#1-3-Method-注解、反射" class="headerlink" title="1.3 Method 注解、反射"></a>1.3 Method 注解、反射</h2><p>自定义注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.METHOD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface Test &#123;</div><div class="line"></div><div class="line">    String testName() default &quot;hahaha&quot;;</div><div class="line">    String testPwd() default &quot;00000&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Junit &#123;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test1() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void test2() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void test3() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test4() &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>反射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class ClassMainTest &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        try &#123;</div><div class="line">            Class classes = Class.forName(&quot;com.example.shortcutsmy.reflect_class.Junit&quot;);</div><div class="line"></div><div class="line">            System.out.println(&quot;classes name is : &quot; + classes.getName());</div><div class="line"></div><div class="line">           //Method[] methods = Junit.class.getDeclaredMethods();</div><div class="line">            Method[] methods = classes.getDeclaredMethods();</div><div class="line"></div><div class="line">            for (Method m : methods) &#123;</div><div class="line">                System.out.println(&quot;method name is : &quot; + m.getName());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            //测试的数量</div><div class="line">            int checkCount = 0;</div><div class="line">            //未测试的数量</div><div class="line">            int uncheckCount = 0;</div><div class="line"></div><div class="line">            for (Method m : methods) &#123;</div><div class="line">                if (m.isAnnotationPresent(Test.class)) &#123;</div><div class="line">                    Annotation[] annotations = m.getAnnotations();</div><div class="line"></div><div class="line">                    for (Annotation a : annotations) &#123;</div><div class="line">                        String name = ((Test)a).testName();</div><div class="line">                        String pwd = ((Test)a).testPwd();</div><div class="line"></div><div class="line">                        System.out.println(&quot;name is : &quot; + name + &quot;, pwd is : &quot; + pwd);</div><div class="line">                    &#125;</div><div class="line">                    checkCount++;</div><div class="line">                &#125; else &#123;</div><div class="line">                    uncheckCount++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(&quot;测试的方法有&quot; + checkCount);</div><div class="line">            System.out.println(&quot;未测试的方法有&quot; + uncheckCount);</div><div class="line"></div><div class="line">        &#125; catch (ClassNotFoundException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="2-Android-注解"><a href="#2-Android-注解" class="headerlink" title="2. Android-注解"></a>2. Android-注解</h1><blockquote>
+<p>参考：<a href="https://blog.csdn.net/wzgiceman/article/details/53483665" target="_blank" rel="external">https://blog.csdn.net/wzgiceman/article/details/53483665</a></p>
+</blockquote>
+<p>##2.1 Android注解给我们提供了三种主要和其他注释供我们使用：</p>
+<ul>
+<li><p>IntDef和StringDef注解；</p>
+</li>
+<li><p>资源类型注解；</p>
+</li>
+<li><p>Null注解；</p>
+</li>
+<li><p>其他实用注解</p>
+</li>
+</ul>
+<p>###2.1.1 一个使用 <code>IntDef注解</code> 替代枚举</p>
+<p><strong>使用注解修饰参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class UserInter &#123;</div><div class="line">    public static final int CHILDE = 0x1;</div><div class="line">    public static final int MAN = 0x2;</div><div class="line">    public static final int GIRL = 0x3;</div><div class="line">    public static final int OTHER = 0x4;</div><div class="line"></div><div class="line">    @Documented</div><div class="line">    @Retention(RetentionPolicy.RUNTIME)</div><div class="line">    @IntDef(&#123;CHILDE, MAN, GIRL&#125;)</div><div class="line">    public @interface UInter&#123;&#125;</div><div class="line"></div><div class="line"></div><div class="line">    private int mUType;</div><div class="line"></div><div class="line">    public int getUserType()&#123;</div><div class="line">        return mUType;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setUertType(@UInter int type)&#123;</div><div class="line">        this.mUType = type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setUertType2(@IdRes int type)&#123;</div><div class="line">        this.mUType = type;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>调用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UserInter userInter = new UserInter();</div><div class="line">userInter.setUertType(UserInter.CHILDE);</div><div class="line">// userInter.setUertType(UserInter.OTHER);</div></pre></td></tr></table></figure>
+<h3 id="2-1-2-资源类型注解"><a href="#2-1-2-资源类型注解" class="headerlink" title="2.1.2 资源类型注解"></a>2.1.2 资源类型注解</h3><p>资源注解是为了防止我们在使用程序资源的时候，错误传递资源类型给函数，导致程序错误。</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AnimRes</td>
+<td>动画</td>
+</tr>
+<tr>
+<td>AnimatorRes</td>
+<td>animator资源类型</td>
+</tr>
+<tr>
+<td>AnyRes</td>
+<td>任何资源类型</td>
+</tr>
+<tr>
+<td>ArrayRes</td>
+<td>数组资源类型</td>
+</tr>
+<tr>
+<td>AttrRes</td>
+<td>属性资源类型</td>
+</tr>
+<tr>
+<td>BoolRes</td>
+<td>bool类型资源类型</td>
+</tr>
+<tr>
+<td>ColorRes</td>
+<td>颜色资源类型</td>
+</tr>
+<tr>
+<td>DimenRes</td>
+<td>长度资源类型</td>
+</tr>
+<tr>
+<td>DrawableRes</td>
+<td>图片资源类型</td>
+</tr>
+<tr>
+<td>IdRes</td>
+<td>资源id</td>
+</tr>
+<tr>
+<td>InterpolatorRes</td>
+<td>动画插值器</td>
+</tr>
+<tr>
+<td>LayoutRes</td>
+<td>layout资源</td>
+</tr>
+<tr>
+<td>MenuRes</td>
+<td>me</td>
+<td>nu资源</td>
+</tr>
+<tr>
+<td>RawRes</td>
+<td>raw资源</td>
+</tr>
+<tr>
+<td>StringRes</td>
+<td>字符串资源</td>
+</tr>
+<tr>
+<td>StyleRes</td>
+<td>style资源</td>
+</tr>
+<tr>
+<td>StyleableRes</td>
+<td>Styleable资源类型</td>
+</tr>
+<tr>
+<td>TransitionRes</td>
+<td>transition资源类型</td>
+</tr>
+<tr>
+<td>XmlRes    xml</td>
+<td>资源</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-1-3-Null注解"><a href="#2-1-3-Null注解" class="headerlink" title="2.1.3 Null注解"></a>2.1.3 Null注解</h3><p>null注解对应的有两个详细的注解：</p>
+<ul>
+<li><p>@NonNull：不能为空</p>
+</li>
+<li><p>@Nullable：可以为空</p>
+</li>
+</ul>
+<h3 id="2-1-4-其他注解"><a href="#2-1-4-其他注解" class="headerlink" title="2.1.4 其他注解"></a>2.1.4 其他注解</h3><h4 id="2-1-4-1-Threading-注解"><a href="#2-1-4-1-Threading-注解" class="headerlink" title="2.1.4.1 Threading 注解"></a>2.1.4.1 Threading 注解</h4><p>thread注解是帮助我们指定方法在特定线程中执行处理，如果和指定的线程不一致，抛出异常；Threading 注解类型：</p>
+<ul>
+<li><p>@UiThread： UI线程</p>
+</li>
+<li><p>@MainThread ：主线程</p>
+</li>
+<li><p>@WorkerThread： 子线程</p>
+</li>
+<li><p>@BinderThread ： 绑定线程</p>
+</li>
+</ul>
+<h4 id="2-1-4-2-Value-Constraints注解"><a href="#2-1-4-2-Value-Constraints注解" class="headerlink" title="2.1.4.2 Value Constraints注解"></a>2.1.4.2 Value Constraints注解</h4><ul>
+<li><p><strong>@Size</strong>    </p>
+<p>这里size定了一个参数<code>length</code>的最小和最大长度</p>
+<p><strong>当搭配 <code>String</code> 使用时</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">private void testDo(@Size(min = 1,max = 2)String s)&#123;</div><div class="line">    Log.e(&quot;tag&quot;,&quot;--------&gt;&quot;+s);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 使用效果为</p>
+<p> <img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.24.21.png" alt=""></p>
+<p> 此时，<code>max = 2</code> 表示的是 String 类型的参数的 <code>长度</code><br>即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;22&quot; length = 2, 2 &lt;= max;</div><div class="line">&quot;223&quot; length = 3, 3 &gt;= max;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>@IntRange</strong></p>
+<p>IntRange是用来指定<code>int类型范围</code>的注解</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">private void setSizet(@IntRange(from = 1, to = 20) int s)&#123;</div><div class="line">    Log.e(TAG, &quot;ヽ(｀Д´)ﾉ -&gt; setStrTest : &quot; + s);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 运行结果</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.30.01.png" alt=""></p>
+<ul>
+<li><p><strong>@FloatRange</strong></p>
+<p>同 @IntRange  使用。</p>
+</li>
+<li><p><strong>@CallSuper</strong></p>
+<p>@CallSuper注解主要是用来强调在覆盖父类方法时，需要实现父类的方法，及时调用对应的super.<em>*</em>方法,当用@CallSuper修饰了该方法，如果子类覆盖的后没有实现对呀的super方法会抛出异常。</p>
+</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.40.22.png" alt=""></p>
+<ul>
+<li><p><strong>@CheckResult</strong></p>
+<p>假设你定义了一个方法返回一个值，你期望调用者用这个值做些事情，那么你可以使用@CheckResult注解标注这个方法，强制用户定义一个相应的返回值，使用它。</p>
+</li>
+</ul>
+<pre><code>public class ResultClass {
+
+    @CheckResult
+    public int getParam(){
+        return 11;
+    }
+}
+</code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.44.55.png" alt=""></p>
+<h1 id="3-注解-在java各个阶段的状态？"><a href="#3-注解-在java各个阶段的状态？" class="headerlink" title="3. 注解 在java各个阶段的状态？"></a>3. 注解 在java各个阶段的状态？</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android库-aar/" rel="next" title="Android库-aar">
+                <i class="fa fa-chevron-left"></i> Android库-aar
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-注解：Annotation"><span class="nav-number">1.</span> <span class="nav-text">0. 注解：Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-元数据（MetaData）"><span class="nav-number">1.1.</span> <span class="nav-text">0.1 元数据（MetaData）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2-java从源码到运行有3个阶段："><span class="nav-number">1.2.</span> <span class="nav-text">0.2 java从源码到运行有3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-3-功能"><span class="nav-number">1.3.</span> <span class="nav-text">0.3 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-4-Java内置注解"><span class="nav-number">1.4.</span> <span class="nav-text">0.4 Java内置注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deprecated：已过时"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">@Deprecated：已过时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Override：限定重写父类的方法"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">@Override：限定重写父类的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SuppressWarnings：抑制编译器警告"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">@SuppressWarnings：抑制编译器警告</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-5-注解类型（元Annotation）"><span class="nav-number">1.5.</span> <span class="nav-text">0.5 注解类型（元Annotation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inherited：表示注解类型能被自动继承"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">@Inherited：表示注解类型能被自动继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Retention：表示该注解类型的注解保留的时长"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">@Retention：表示该注解类型的注解保留的时长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Target：表示注解类型所适用的程序元素的种类"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">@Target：表示注解类型所适用的程序元素的种类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-6-自定义Annotation"><span class="nav-number">1.6.</span> <span class="nav-text">0.6 自定义Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-6-1-自定义"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">0.6.1 自定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0-6-2-使用"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">0.6.2  使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-反射：提取-Annotation-的信息"><span class="nav-number">2.</span> <span class="nav-text">1. 反射：提取 Annotation 的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Field-注解、反射"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 Field 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Method-注解、反射"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 Method 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Method-注解、反射"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 Method 注解、反射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Android-注解"><span class="nav-number">3.</span> <span class="nav-text">2. Android-注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-资源类型注解"><span class="nav-number">3.0.1.</span> <span class="nav-text">2.1.2 资源类型注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-Null注解"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.1.3 Null注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-其他注解"><span class="nav-number">3.0.3.</span> <span class="nav-text">2.1.4 其他注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-1-Threading-注解"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">2.1.4.1 Threading 注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-2-Value-Constraints注解"><span class="nav-number">3.0.3.2.</span> <span class="nav-text">2.1.4.2 Value Constraints注解</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注解-在java各个阶段的状态？"><span class="nav-number">4.</span> <span class="nav-text">3. 注解 在java各个阶段的状态？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">159.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
