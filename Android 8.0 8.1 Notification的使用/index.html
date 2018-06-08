@@ -83,21 +83,21 @@
 
 
 
-<meta name="description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309  起因 - 设置“Notification”后，状态栏并没有任何提示最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，">
+<meta name="description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
 <meta name="keywords" content="Android,Android版本新特性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 8.0&#x2F;8.1 Notification的使用">
 <meta property="og:url" content="http://yannischeng.com/Android 8.0 8.1 Notification的使用/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309  起因 - 设置“Notification”后，状态栏并没有任何提示最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，">
+<meta property="og:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.44.27.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.40.55.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.38.10.png">
-<meta property="og:updated_time" content="2018-02-27T06:02:25.940Z">
+<meta property="og:updated_time" content="2018-06-08T07:07:11.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 8.0&#x2F;8.1 Notification的使用">
-<meta name="twitter:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309  起因 - 设置“Notification”后，状态栏并没有任何提示最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.44.27.png">
 
 
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-27T14:02:25+08:00">
-                2018-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:07:11+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,277 字
+                  1,278 字
                 </span>
               
 
@@ -443,8 +443,10 @@
         <blockquote>
 <p>参考：<a href="http://blog.csdn.net/rentee/article/details/78303532" target="_blank" rel="external">http://blog.csdn.net/rentee/article/details/78303532</a><br>非常全面的参考：<a href="https://www.jianshu.com/p/d2051a785309" target="_blank" rel="external">https://www.jianshu.com/p/d2051a785309</a></p>
 </blockquote>
-<h1 id="起因-设置“Notification”后，状态栏并没有任何提示"><a href="#起因-设置“Notification”后，状态栏并没有任何提示" class="headerlink" title="起因 - 设置“Notification”后，状态栏并没有任何提示"></a>起因 - 设置“Notification”后，状态栏并没有任何提示</h1><p>最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，这让我颇为郁闷。</p>
 <a id="more"></a>
+<p>[TOC]</p>
+<h1 id="起因-设置“Notification”后，状态栏并没有任何提示"><a href="#起因-设置“Notification”后，状态栏并没有任何提示" class="headerlink" title="起因 - 设置“Notification”后，状态栏并没有任何提示"></a>起因 - 设置“Notification”后，状态栏并没有任何提示</h1><p>最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，这让我颇为郁闷。</p>
+<!-- more -->
 <p>然后开始查看别人是怎么写的，但是同样并没有任何效果。然后我意识到我的系统版本时<strong>Android 8.1</strong>。设置方式已经变了。</p>
 <p>一个前版本的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Notification.Builder builder = new Notification.Builder(this);</div><div class="line">   Intent intent = new Intent(this, TraceActivity.class);</div><div class="line">   Bitmap icon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_person_pin_circle_cyan_700_24dp);</div><div class="line">   //设置pendingIntent</div><div class="line">   builder.setContentIntent(PendingIntent.getActivity(this, 0, intent, 0))</div><div class="line">           .setLargeIcon(icon)</div><div class="line">           .setContentTitle(&quot;领队定位&quot;)</div><div class="line">           .setSmallIcon(R.drawable.ic_person_pin_circle_white_18dp)</div><div class="line">           .setContentText(&quot;定位服务正在运行中……&quot;);</div><div class="line">   NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">   manager.notify(1, builder.build());</div></pre></td></tr></table></figure>
@@ -508,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Android 8.0:8.1 自动填写/" rel="prev" title="Android 8.0/8.1 自动填写">
-                Android 8.0/8.1 自动填写 <i class="fa fa-chevron-right"></i>
+              <a href="/WebView的使用/" rel="prev" title="WebView的使用">
+                WebView的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -698,7 +700,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

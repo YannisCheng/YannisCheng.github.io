@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！ `Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。">
+<meta name="description" content="人生苦短，我用Python">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  05-函数式编程-高阶函数">
 <meta property="og:url" content="http://yannischeng.com/Python3  05-函数式编程-高阶函数/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！ `Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。">
+<meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T08:00:05.733Z">
+<meta property="og:updated_time" content="2018-06-08T08:16:04.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  05-函数式编程-高阶函数">
-<meta name="twitter:description" content="函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！ `Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。">
+<meta name="twitter:description" content="人生苦短，我用Python">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:05+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:16:04+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,121 字
+                  1,129 字
                 </span>
               
 
@@ -434,10 +434,14 @@
       
 
       
-        <pre><code>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
+        <p><strong>人生苦短，我用Python</strong></p>
+<a id="more"></a>
+<hr>
+<p>[TOC]</p>
+<hr>
+<pre><code>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
 `Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。
-</code></pre><a id="more"></a>
-<h2 id="函数与变量互指"><a href="#函数与变量互指" class="headerlink" title="函数与变量互指"></a>函数与变量互指</h2><p>代码示例</p>
+</code></pre><h2 id="函数与变量互指"><a href="#函数与变量互指" class="headerlink" title="函数与变量互指"></a>函数与变量互指</h2><p>代码示例</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">x = abs  <span class="comment"># 函数名其实也是一个变量，变量之间是可以互指。</span></div><div class="line">print(x(<span class="number">-10</span>))  <span class="comment"># 10。此时，x就是一个求'绝对值'的函数</span></div><div class="line">abs = <span class="number">10</span></div><div class="line">print(abs)  <span class="comment"># 10</span></div><div class="line">print(abs(<span class="number">10</span>))  <span class="comment"># TypeError: 'int' object is not callable。此时的abs已经不是一个函数，而是一个值为10的变量。</span></div></pre></td></tr></table></figure>
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><pre><code>将函数作为参数传入另一个函数，这样的函数被称为高阶函数。
 </code></pre><p>代码示例</p>
@@ -492,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  04-迭代器/" rel="next" title="Python3  04-迭代器">
-                <i class="fa fa-chevron-left"></i> Python3  04-迭代器
+              <a href="/Python3  02-函数-返回值/" rel="next" title="Python3  02-函数-返回值">
+                <i class="fa fa-chevron-left"></i> Python3  02-函数-返回值
               </a>
             
           </div>
@@ -502,8 +506,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  06-闭包+匿名+装饰器+偏函数/" rel="prev" title="Python3  06-闭包+匿名+装饰器+偏函数">
-                Python3  06-闭包+匿名+装饰器+偏函数 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  05-函数式编程-函数作为返回值/" rel="prev" title="Python3  05-函数式编程-函数作为返回值">
+                Python3  05-函数式编程-函数作为返回值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -587,7 +591,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -692,7 +696,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

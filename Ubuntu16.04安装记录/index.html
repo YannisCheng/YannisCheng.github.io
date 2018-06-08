@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="以下省略“sudo”命令表示是在root权限下运行的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T02:39:28.101Z">
+<meta property="og:updated_time" content="2018-06-08T08:06:38.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04安装记录">
 <meta name="twitter:description" content="以下省略“sudo”命令表示是在root权限下运行的">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:39:28+08:00">
-                2017-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:06:38+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,118 字
+                  3,121 字
                 </span>
               
 
@@ -442,9 +442,11 @@
 <p>以下省略“sudo”命令表示是在root权限下运行的</p>
 </blockquote>
 <a id="more"></a>
+<p>[TOC]</p>
 <h2 id="ubuntu16-04使用参考网址"><a href="#ubuntu16-04使用参考网址" class="headerlink" title="ubuntu16.04使用参考网址"></a>ubuntu16.04使用参考网址</h2><blockquote>
-<p> Linux使用设置 &gt;&gt;网页<br>    <a href="http://m.blog.csdn.net/article/details?id=51049513" target="_blank" rel="external">http://m.blog.csdn.net/article/details?id=51049513</a><br>Linux命令大全 &gt;&gt;网页<br>    <a href="http://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="external">http://www.runoob.com/linux/linux-command-manual.html</a><br>Linux命令大全–支持在线搜寻<br>    <a href="http://man.linuxde.net/" target="_blank" rel="external">http://man.linuxde.net/</a><br>文档手册中心 –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/" target="_blank" rel="external">http://man.chinaunix.net/</a><br>Linux Kernel –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html" target="_blank" rel="external">http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html</a><br>Linux Git使用 &gt;&gt;网页<br>    <a href="http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1" target="_blank" rel="external">http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1</a><br>以下省略“sudo”命令表示是在root权限下运行的</p>
+<p> Linux使用设置 &gt;&gt;网页<br>    <a href="http://m.blog.csdn.net/article/details?id=51049513" target="_blank" rel="external">http://m.blog.csdn.net/article/details?id=51049513</a><br> Linux命令大全 &gt;&gt;网页<br>    <a href="http://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="external">http://www.runoob.com/linux/linux-command-manual.html</a><br> Linux命令大全–支持在线搜寻<br>    <a href="http://man.linuxde.net/" target="_blank" rel="external">http://man.linuxde.net/</a><br> 文档手册中心 –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/" target="_blank" rel="external">http://man.chinaunix.net/</a><br> Linux Kernel –ChinaUnix &gt;&gt;网页<br>    <a href="http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html" target="_blank" rel="external">http://man.chinaunix.net/tech/lyceum/linuxK/tlk.html</a><br> Linux Git使用 &gt;&gt;网页<br>    <a href="http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1" target="_blank" rel="external">http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023&amp;spm=a2hzp.8244740.0.0&amp;from=y1.7-1.1</a></p>
 </blockquote>
+<p>以下省略“sudo”命令表示是在root权限下运行的</p>
 <h2 id="root登录"><a href="#root登录" class="headerlink" title="root登录"></a>root登录</h2><ol>
 <li><p>先设定一个root的密码：</p>
 <pre><code>sudo passwd root
@@ -457,7 +459,8 @@ vi /etc/lightdm/lightdm.conf
 <li><p>在lightdm.conf最后增加一行：</p>
 <pre><code>greeter-show-manual-login=true
 </code></pre></li>
-<li>重启后，即可用root登入。</li>
+<li><p>重启后，即可用root登入。</p>
+</li>
 </ol>
 <h2 id="系统没有声音"><a href="#系统没有声音" class="headerlink" title="系统没有声音"></a>系统没有声音</h2><p>Ubuntu在root用户下，为了安全考虑默认关闭系统的声音。</p>
 <ol>
@@ -474,7 +477,8 @@ vim /etc/default/pulseaudio
 <pre><code>PULSEAUDIO_SYSTEM_START=1
 DISALLOW_MODULE_LOADING=0
 </code></pre></li>
-<li>改为1和0，表示允许运行在system环境，允许动态加载模块。</li>
+<li><p>改为1和0，表示允许运行在system环境，允许动态加载模块。</p>
+</li>
 <li>重启计算机</li>
 </ol>
 <h2 id="有声音但在“系统设置”中无法调节声音："><a href="#有声音但在“系统设置”中无法调节声音：" class="headerlink" title="有声音但在“系统设置”中无法调节声音："></a>有声音但在“系统设置”中无法调节声音：</h2><ol>
@@ -496,7 +500,8 @@ pavucontrol
 <li><p>终端运行</p>
 <pre><code>alsamixer
 </code></pre></li>
-<li>按M键把关闭的都大开（关闭的都显示的是MM），然后调节到合适的位置，白色为宜</li>
+<li><p>按M键把关闭的都大开（关闭的都显示的是MM），然后调节到合适的位置，白色为宜</p>
+</li>
 <li>最后一项Independ显示为ON表示耳机和音箱只能有一个有声音，按M键关闭则表示耳机和音箱可以同时有声音 （–未进行测试–）</li>
 <li><p>若耳机还是没声音，可是试着运行</p>
 <pre><code>gedit /etc/modprobe.d/alsa-base.conf
@@ -543,11 +548,11 @@ sudo apt-get install android-tools-adb
 <li><p>出现异常：</p>
 <pre><code>E: 无法获得锁 /var/lib/dpkg/lock – open (11: 资源临时不可用)
 E: 无法对管理目录(/var/lib/dpkg/)加锁，是不是另一个包管理程序在使用它？
-</code></pre><p>解决办法：</p>
-<pre><code>删除有问题的文件
 </code></pre></li>
 </ol>
-<h2 id="安装-JDK-Eclipse-Apache-Tomcat"><a href="#安装-JDK-Eclipse-Apache-Tomcat" class="headerlink" title="安装 JDK + Eclipse + Apache Tomcat"></a>安装 JDK + Eclipse + Apache Tomcat</h2><blockquote>
+<p>解决办法：</p>
+<pre><code>删除有问题的文件
+</code></pre><h2 id="安装-JDK-Eclipse-Apache-Tomcat"><a href="#安装-JDK-Eclipse-Apache-Tomcat" class="headerlink" title="安装 JDK + Eclipse + Apache Tomcat"></a>安装 JDK + Eclipse + Apache Tomcat</h2><blockquote>
 <p>2016年12月14日15:32:34<br>以下省略“sudo”命令表示是在root权限下运行的</p>
 </blockquote>
 <h3 id="JDK8"><a href="#JDK8" class="headerlink" title="JDK8"></a>JDK8</h3><ol>
@@ -587,7 +592,9 @@ update-alternatives --install /usr/bin/java java /root/文档/jdk1.8.0_112/bin/j
 <pre><code>mkdir jre
 cd jre
 ln -s （你的JDK目录/bin bin）
-</code></pre><h3 id="Tomcat9"><a href="#Tomcat9" class="headerlink" title="Tomcat9"></a>Tomcat9</h3></li>
+</code></pre></li>
+</ol>
+<h3 id="Tomcat9"><a href="#Tomcat9" class="headerlink" title="Tomcat9"></a>Tomcat9</h3><ol>
 <li><p>（下载地址）</p>
 <pre><code>http://tomcat.apache.org/download-90.cgi
 </code></pre></li>
@@ -632,6 +639,8 @@ apt-get install libmysqlclient-dev
 <li><p>卸载：</p>
 <pre><code>apt-get remove terminator
 </code></pre></li>
+</ol>
+<ol>
 <li><p>快捷键(自定义之后的):</p>
 <pre><code>水平分割终端  : Ctrl+O
 垂直分割终端  : Ctrl+E
@@ -703,7 +712,8 @@ sudo apt-get update
 </code></pre><p>  3).卸载残留不用的软件包：</p>
 <pre><code>sudo apt-get autoremove
 </code></pre></li>
-<li>终端中输入wine，检测是否安装完成</li>
+<li><p>终端中输入wine，检测是否安装完成</p>
+</li>
 </ol>
 <h2 id="ubuntu安装WebStorm"><a href="#ubuntu安装WebStorm" class="headerlink" title="ubuntu安装WebStorm"></a>ubuntu安装WebStorm</h2><blockquote>
 <p>2017年02月16日 星期四 12时31分00秒<br> 参考：<a href="https://quanru.github.io/2016/04/17/%E4%BD%BF%E7%94%A8%20Linux%20%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91Web%E5%89%8D%E7%AB%AF/" target="_blank" rel="external">https://quanru.github.io/2016/04/17/%E4%BD%BF%E7%94%A8%20Linux%20%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91Web%E5%89%8D%E7%AB%AF/</a><br>webstorm使用快捷键参考：<br>    <a href="http://blog.csdn.net/zghekuiwu/article/details/54382145" target="_blank" rel="external">http://blog.csdn.net/zghekuiwu/article/details/54382145</a><br>    <a href="https://github.com/damao/Intellij-IDEA-F2E#%E6%B3%A8%E5%86%8C" target="_blank" rel="external">https://github.com/damao/Intellij-IDEA-F2E#%E6%B3%A8%E5%86%8C</a></p>
@@ -715,7 +725,8 @@ sudo apt-get update
 <li><p>解压下载的 gz 包，在bin/下运行：</p>
 <pre><code>./webstorm.sh
 </code></pre></li>
-<li>WebStorm 默认情况下是需要收费的，可以申请为开源项目的贡献者来获得 licenses。</li>
+<li><p>WebStorm 默认情况下是需要收费的，可以申请为开源项目的贡献者来获得 licenses。</p>
+</li>
 <li>安装完成后，在 File - Settings - Plugins，选择需要安装的插件，例如 AngularJS、Markdown 等。</li>
 <li>在 File - Settings - Directories 下，通过 Add content Root 来设置我们的项目路径</li>
 <li>在 File - Settings - JavaScript - Libraries 下，勾选想要支持的库，建议全部勾上（如 NodeJS）。</li>
@@ -739,8 +750,8 @@ apt-get install numix-icon-theme-circle        //安装图标
 apt-get install numix-gtk-theme            //安装主题
 </code></pre><p> 　</p>
 </li>
-<li><p>安装docky（Mac桌面下方的启动器）</p>
-<blockquote>
+<li>安装docky（Mac桌面下方的启动器）</li>
+<li><blockquote>
 <p>参考网址：<a href="http://www.aichengxu.com/view/992905" target="_blank" rel="external">http://www.aichengxu.com/view/992905</a><br>参考网址：<a href="http://www.noobslab.com/2014/11/mbuntu-macbuntu-1410-transformation.html" target="_blank" rel="external">http://www.noobslab.com/2014/11/mbuntu-macbuntu-1410-transformation.html</a></p>
 </blockquote>
 <pre><code>install docky
@@ -762,13 +773,16 @@ apt-get remove docky docky
 配置：http://127.0.0.1:8086/proxy.pac
 全局配置
 </code></pre></li>
-<li>重点：<br> 此项目来自GitHub，可以直接clone到本地<br> 需要使用到Google AppID，以此进行服务器部署，以达到真正上网的目的</li>
+<li><p>重点：<br> 此项目来自GitHub，可以直接clone到本地<br> 需要使用到Google AppID，以此进行服务器部署，以达到真正上网的目的</p>
+</li>
 </ol>
-<h2 id="使用host科学上网"><a href="#使用host科学上网" class="headerlink" title="使用host科学上网"></a>使用host科学上网</h2><blockquote>
-<p>2016年12月15日16:04:07<br>使用host文件进行翻墙<br>参考链接：<a href="https://laod.cn/hosts/2016-google-hosts.html" target="_blank" rel="external">https://laod.cn/hosts/2016-google-hosts.html</a></p>
+<h2 id="使用host科学上网"><a href="#使用host科学上网" class="headerlink" title="使用host科学上网"></a>使用host科学上网</h2><p>2016年12月15日16:04:07<br>使用host文件进行翻墙</p>
+<blockquote>
+<p>参考链接：<a href="https://laod.cn/hosts/2016-google-hosts.html" target="_blank" rel="external">https://laod.cn/hosts/2016-google-hosts.html</a></p>
 </blockquote>
-<h2 id="安装sbulime-text3"><a href="#安装sbulime-text3" class="headerlink" title="安装sbulime text3"></a>安装sbulime text3</h2><blockquote>
-<p>2017年 01月 28日 星期六 15:05:31 CST<br>安装参考：<br>    <a href="http://www.cnblogs.com/unflynaomi/p/5704293.html" target="_blank" rel="external">http://www.cnblogs.com/unflynaomi/p/5704293.html</a></p>
+<h2 id="安装sbulime-text3"><a href="#安装sbulime-text3" class="headerlink" title="安装sbulime text3"></a>安装sbulime text3</h2><p>2017年 01月 28日 星期六 15:05:31 CST</p>
+<blockquote>
+<p>安装参考：<br>    <a href="http://www.cnblogs.com/unflynaomi/p/5704293.html" target="_blank" rel="external">http://www.cnblogs.com/unflynaomi/p/5704293.html</a></p>
 </blockquote>
 <ol>
 <li>汉化，中文输入问题参考：<br> <a href="http://blog.csdn.net/u013453604/article/details/48002127" target="_blank" rel="external">http://blog.csdn.net/u013453604/article/details/48002127</a></li>
@@ -786,7 +800,8 @@ sudo apt-get install sublime-text-installer
 <li><p>卸载 sublime text 命令：</p>
 <pre><code>sudo apt-get remove sublime-text-installer
 </code></pre></li>
-<li>启动sublime text3<br> 在terminal终端中输入：subl</li>
+<li><p>启动sublime text3<br> 在terminal终端中输入：subl</p>
+</li>
 <li>打开指定的文件：<br> subl 文件名</li>
 <li><p>解决sublime无法输入中文的问题<br>在进行所有操作时首先进行依赖包的安装：<br>代码依赖于 gtk 2.0，编译 c 需要安装 build-essential。</p>
 <pre><code>sudo apt-get install build-essential libgtk2.0-dev
@@ -795,7 +810,8 @@ sudo apt-get install sublime-text-installer
 <pre><code>$ subl &amp;quot;~/Documents/test/my test file.txt&amp;quot;
 </code></pre></li>
 <li><p>解决无法输入中文问题 - 2017年03月12日 星期日 15时17分24秒 </p>
-<blockquote>
+</li>
+<li><blockquote>
 <p>参考：<a href="http://www.jianshu.com/p/03a9092c73e2" target="_blank" rel="external">http://www.jianshu.com/p/03a9092c73e2</a><br>亲测有效！</p>
 </blockquote>
 </li>
@@ -820,11 +836,11 @@ sudo mkfontdir
 <li><p>重启wps即可，字体缺失的提示不再出现。</p>
 </li>
 <li><p>WPS不能输入中文问题</p>
+</li>
+</ol>
 <blockquote>
 <p>参考:<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=48&amp;t=476937" target="_blank" rel="external">http://forum.ubuntu.org.cn/viewtopic.php?f=48&amp;t=476937</a><br>原因：环境变量未正确设置，以上可以直接针对wps设置。</p>
 </blockquote>
-</li>
-</ol>
 <p>解决办法,终端输入:</p>
 <pre><code>gedit /usr/bin/wps
 </code></pre><p>在此文件中输入一下内容,#!/bin/bash之后:</p>
@@ -879,8 +895,8 @@ npm install &amp;&amp; npm start
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux vim 命令/" rel="prev" title="Linux vim 命令">
-                Linux vim 命令 <i class="fa fa-chevron-right"></i>
+              <a href="/Ubuntu 桌面使用命令/" rel="prev" title="Ubuntu 桌面使用命令">
+                Ubuntu 桌面使用命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -964,7 +980,7 @@ npm install &amp;&amp; npm start
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1069,7 +1085,7 @@ npm install &amp;&amp; npm start
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.30.01.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.40.22.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.44.55.png">
-<meta property="og:updated_time" content="2018-06-01T03:47:08.515Z">
+<meta property="og:updated_time" content="2018-06-08T08:24:36.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java注解、反射">
 <meta name="twitter:description" content="参考：https://blog.csdn.net/wzgiceman/article/details/53406248参考：https://blog.csdn.net/wzgiceman/article/details/53483665参考：https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html参考：https://blo">
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-01T11:47:08+08:00">
-                2018-06-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:24:36+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,422 字
+                  3,411 字
                 </span>
               
 
@@ -445,6 +445,7 @@
 <p>参考：<a href="https://blog.csdn.net/wzgiceman/article/details/53406248" target="_blank" rel="external">https://blog.csdn.net/wzgiceman/article/details/53406248</a><br>参考：<a href="https://blog.csdn.net/wzgiceman/article/details/53483665" target="_blank" rel="external">https://blog.csdn.net/wzgiceman/article/details/53483665</a><br>参考：<a href="https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html" target="_blank" rel="external">https://www.cnblogs.com/be-forward-to-help-others/p/6846821.html</a><br>参考：<a href="https://blog.csdn.net/BabyGoodMorning/article/details/76349855" target="_blank" rel="external">https://blog.csdn.net/BabyGoodMorning/article/details/76349855</a></p>
 </blockquote>
 <a id="more"></a>
+<p>[TOC]</p>
 <p><strong>使用注解的作用</strong></p>
 <ul>
 <li><p>更早的发现程序的问题或者错误</p>
@@ -480,20 +481,20 @@
 <li>@Override</li>
 <li>@SuppressWarnings</li>
 </ul>
-<h4 id="Deprecated：已过时"><a href="#Deprecated：已过时" class="headerlink" title="@Deprecated：已过时"></a>@Deprecated：已过时</h4><p>这个注释是一个<strong>标记注释</strong>。<br>所谓标记注释，就是在源程序中加入这个标记后，并不影响程序的编译，但有时编译器会显示一些警告信息。</p>
-<h4 id="Override：限定重写父类的方法"><a href="#Override：限定重写父类的方法" class="headerlink" title="@Override：限定重写父类的方法"></a>@Override：限定重写父类的方法</h4><h4 id="SuppressWarnings：抑制编译器警告"><a href="#SuppressWarnings：抑制编译器警告" class="headerlink" title="@SuppressWarnings：抑制编译器警告"></a>@SuppressWarnings：抑制编译器警告</h4><p>当我们的一个方法调用了弃用的方法或者进行不安全的类型转换，编译器会生成警告。我们可以为这个方法增加@SuppressWarnings注解，来抑制编译器生成警告<br>可以修饰的元素为类，方法，方法参数，属性，局部变量</p>
+<h3 id="Deprecated：已过时"><a href="#Deprecated：已过时" class="headerlink" title="@Deprecated：已过时"></a>@Deprecated：已过时</h3><p>这个注释是一个<strong>标记注释</strong>。<br>所谓标记注释，就是在源程序中加入这个标记后，并不影响程序的编译，但有时编译器会显示一些警告信息。</p>
+<h3 id="Override：限定重写父类的方法"><a href="#Override：限定重写父类的方法" class="headerlink" title="@Override：限定重写父类的方法"></a>@Override：限定重写父类的方法</h3><h3 id="SuppressWarnings：抑制编译器警告"><a href="#SuppressWarnings：抑制编译器警告" class="headerlink" title="@SuppressWarnings：抑制编译器警告"></a>@SuppressWarnings：抑制编译器警告</h3><p>当我们的一个方法调用了弃用的方法或者进行不安全的类型转换，编译器会生成警告。我们可以为这个方法增加@SuppressWarnings注解，来抑制编译器生成警告<br>可以修饰的元素为类，方法，方法参数，属性，局部变量</p>
 <h2 id="0-5-注解类型（元Annotation）"><a href="#0-5-注解类型（元Annotation）" class="headerlink" title="0.5 注解类型（元Annotation）"></a>0.5 注解类型（元Annotation）</h2><ul>
 <li>@Documented</li>
 <li>@Inherited</li>
 <li>@Retention</li>
 <li>@Target</li>
 </ul>
-<h4 id="Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><a href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化" class="headerlink" title="@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化"></a>@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</h4><p>该类型应用于注解那些影响客户使用带注释(comment)的元素声明的类型。如果类型声明是用Documented来注解的，这种类型的注解被作为被标注的程序成员的公共API</p>
-<h4 id="Inherited：表示注解类型能被自动继承"><a href="#Inherited：表示注解类型能被自动继承" class="headerlink" title="@Inherited：表示注解类型能被自动继承"></a>@Inherited：表示注解类型能被自动继承</h4><p>如果用户在当前类中查询这个元注解类型并且当前类的声明中不包含这个元注解类型，那么也将自动查询当前类的父类是否存在Inherited元注解，这个动作将被重复执行知道这个标注类型被找到，或者是查询到顶层的父类。</p>
+<h3 id="Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><a href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化" class="headerlink" title="@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化"></a>@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</h3><p>该类型应用于注解那些影响客户使用带注释(comment)的元素声明的类型。如果类型声明是用Documented来注解的，这种类型的注解被作为被标注的程序成员的公共API</p>
+<h3 id="Inherited：表示注解类型能被自动继承"><a href="#Inherited：表示注解类型能被自动继承" class="headerlink" title="@Inherited：表示注解类型能被自动继承"></a>@Inherited：表示注解类型能被自动继承</h3><p>如果用户在当前类中查询这个元注解类型并且当前类的声明中不包含这个元注解类型，那么也将自动查询当前类的父类是否存在Inherited元注解，这个动作将被重复执行知道这个标注类型被找到，或者是查询到顶层的父类。</p>
 <p>即：如果某个类使用了A Annotation（定义该Annotation时使用了@Inherited修饰）修饰，则其子类将自动具有A注释。</p>
 <p>eg:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Inherited</div><div class="line">public @interface Ety &#123;</div><div class="line">    @Deprecated</div><div class="line">    String value();</div><div class="line">    @Deprecated</div><div class="line">    String name();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="Retention：表示该注解类型的注解保留的时长"><a href="#Retention：表示该注解类型的注解保留的时长" class="headerlink" title="@Retention：表示该注解类型的注解保留的时长"></a>@Retention：表示该注解类型的注解保留的时长</h4><p>当注解类型声明中没有@Retention元注解，则默认保留策略为RetentionPolicy.CLASS。关于保留策略(RetentionPolicy)是<strong>枚举类</strong>型，共定义3种保留方式</p>
+<h3 id="Retention：表示该注解类型的注解保留的时长"><a href="#Retention：表示该注解类型的注解保留的时长" class="headerlink" title="@Retention：表示该注解类型的注解保留的时长"></a>@Retention：表示该注解类型的注解保留的时长</h3><p>当注解类型声明中没有@Retention元注解，则默认保留策略为RetentionPolicy.CLASS。关于保留策略(RetentionPolicy)是<strong>枚举类</strong>型，共定义3种保留方式</p>
 <table>
 <thead>
 <tr>
@@ -518,7 +519,7 @@
 </table>
 <p>eg:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Inherited</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface Ety &#123;</div><div class="line">    @Deprecated</div><div class="line">    String value();</div><div class="line">    @Deprecated</div><div class="line">    String name();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="Target：表示注解类型所适用的程序元素的种类"><a href="#Target：表示注解类型所适用的程序元素的种类" class="headerlink" title="@Target：表示注解类型所适用的程序元素的种类"></a>@Target：表示注解类型所适用的程序元素的种类</h4><p>当注解类型声明中没有@Target元注解，则默认为可适用所有的程序元素。如果存在指定的@Target元注解，则编译器强制实施相应的使用限制。关于程序元素(ElementType)是枚举类型，共定义8种程序元素</p>
+<h3 id="Target：表示注解类型所适用的程序元素的种类"><a href="#Target：表示注解类型所适用的程序元素的种类" class="headerlink" title="@Target：表示注解类型所适用的程序元素的种类"></a>@Target：表示注解类型所适用的程序元素的种类</h3><p>当注解类型声明中没有@Target元注解，则默认为可适用所有的程序元素。如果存在指定的@Target元注解，则编译器强制实施相应的使用限制。关于程序元素(ElementType)是枚举类型，共定义8种程序元素</p>
 <table>
 <thead>
 <tr>
@@ -561,7 +562,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="0-6-自定义Annotation"><a href="#0-6-自定义Annotation" class="headerlink" title="0.6 自定义Annotation"></a>0.6 自定义Annotation</h2><h4 id="0-6-1-自定义"><a href="#0-6-1-自定义" class="headerlink" title="0.6.1 自定义"></a>0.6.1 自定义</h4><p><strong>自定义方式 1 ：无成员变量</strong></p>
+<h2 id="0-6-自定义Annotation"><a href="#0-6-自定义Annotation" class="headerlink" title="0.6 自定义Annotation"></a>0.6 自定义Annotation</h2><h3 id="0-6-1-自定义"><a href="#0-6-1-自定义" class="headerlink" title="0.6.1 自定义"></a>0.6.1 自定义</h3><p><strong>自定义方式 1 ：无成员变量</strong></p>
 <p>定义新的Annotation类型使用<code>@interface</code>关键字，它用于定义新的Annotation类型。定义一个新的Annotation类型与定义一个<code>接口</code>非常像，如下代码可定义一个简单的Annotation：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>自定义方式 2 ：有成员变量</strong></p>
@@ -569,7 +570,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">    int value();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>自定义方式 3 ：有成员变量</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Target(ElementType.FIELD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AValue &#123;</div><div class="line">    int value() default 90;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="0-6-2-使用"><a href="#0-6-2-使用" class="headerlink" title="0.6.2  使用"></a>0.6.2  使用</h4><p>定义了该Annotation之后，就可以在程序任何地方来使用该Annotation，使用Annotation时的语法非常类似于public、final这样的修饰符。<br>通常可用于修饰程序中的类、方法、变量、接口等定义，通常我们会把Annotation放在所有修饰符之前，而且由于使用Annotation时可能还需要为其成员变量指定值，因而Annotation长度可能比较长，所以通常把Annotation另放一行，如下程序所示：</p>
+<h3 id="0-6-2-使用"><a href="#0-6-2-使用" class="headerlink" title="0.6.2  使用"></a>0.6.2  使用</h3><p>定义了该Annotation之后，就可以在程序任何地方来使用该Annotation，使用Annotation时的语法非常类似于public、final这样的修饰符。<br>通常可用于修饰程序中的类、方法、变量、接口等定义，通常我们会把Annotation放在所有修饰符之前，而且由于使用Annotation时可能还需要为其成员变量指定值，因而Annotation长度可能比较长，所以通常把Annotation另放一行，如下程序所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class MyBean &#123;</div><div class="line"></div><div class="line">    @AValue(value = 48)</div><div class="line">    private int valueDeal;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;MyBean&#123;&quot; +</div><div class="line">                &quot;valueDeal=&quot; + valueDeal +</div><div class="line">                &apos;&#125;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="1-反射：提取-Annotation-的信息"><a href="#1-反射：提取-Annotation-的信息" class="headerlink" title="1. 反射：提取 Annotation 的信息"></a>1. 反射：提取 Annotation 的信息</h1><p><strong>Annotation接口</strong>是所有<code>Annotation类型</code>的父接口。</p>
 <p>Java在<code>java.lang.reflect包</code>下有<code>AnnotateElement接口</code>，该接口代表程序中可以接受注释的<strong>程序元素</strong>，该接口主要有如下几个<strong>实现类</strong>（注意以下是类）：</p>
@@ -768,7 +769,7 @@
     }
 }
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-01%2011.44.55.png" alt=""></p>
-<h1 id="3-注解-在java各个阶段的状态？"><a href="#3-注解-在java各个阶段的状态？" class="headerlink" title="3. 注解 在java各个阶段的状态？"></a>3. 注解 在java各个阶段的状态？</h1>
+
       
     </div>
     
@@ -798,6 +799,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/温故知新-数据结构-4/" rel="prev" title="温故知新-数据结构-4">
+                温故知新-数据结构-4 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -880,7 +885,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -951,7 +956,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-注解：Annotation"><span class="nav-number">1.</span> <span class="nav-text">0. 注解：Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-元数据（MetaData）"><span class="nav-number">1.1.</span> <span class="nav-text">0.1 元数据（MetaData）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2-java从源码到运行有3个阶段："><span class="nav-number">1.2.</span> <span class="nav-text">0.2 java从源码到运行有3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-3-功能"><span class="nav-number">1.3.</span> <span class="nav-text">0.3 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-4-Java内置注解"><span class="nav-number">1.4.</span> <span class="nav-text">0.4 Java内置注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deprecated：已过时"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">@Deprecated：已过时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Override：限定重写父类的方法"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">@Override：限定重写父类的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SuppressWarnings：抑制编译器警告"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">@SuppressWarnings：抑制编译器警告</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-5-注解类型（元Annotation）"><span class="nav-number">1.5.</span> <span class="nav-text">0.5 注解类型（元Annotation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inherited：表示注解类型能被自动继承"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">@Inherited：表示注解类型能被自动继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Retention：表示该注解类型的注解保留的时长"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">@Retention：表示该注解类型的注解保留的时长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Target：表示注解类型所适用的程序元素的种类"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">@Target：表示注解类型所适用的程序元素的种类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-6-自定义Annotation"><span class="nav-number">1.6.</span> <span class="nav-text">0.6 自定义Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-6-1-自定义"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">0.6.1 自定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0-6-2-使用"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">0.6.2  使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-反射：提取-Annotation-的信息"><span class="nav-number">2.</span> <span class="nav-text">1. 反射：提取 Annotation 的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Field-注解、反射"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 Field 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Method-注解、反射"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 Method 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Method-注解、反射"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 Method 注解、反射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Android-注解"><span class="nav-number">3.</span> <span class="nav-text">2. Android-注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-资源类型注解"><span class="nav-number">3.0.1.</span> <span class="nav-text">2.1.2 资源类型注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-Null注解"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.1.3 Null注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-其他注解"><span class="nav-number">3.0.3.</span> <span class="nav-text">2.1.4 其他注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-1-Threading-注解"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">2.1.4.1 Threading 注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-2-Value-Constraints注解"><span class="nav-number">3.0.3.2.</span> <span class="nav-text">2.1.4.2 Value Constraints注解</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注解-在java各个阶段的状态？"><span class="nav-number">4.</span> <span class="nav-text">3. 注解 在java各个阶段的状态？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-注解：Annotation"><span class="nav-number">1.</span> <span class="nav-text">0. 注解：Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-元数据（MetaData）"><span class="nav-number">1.1.</span> <span class="nav-text">0.1 元数据（MetaData）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2-java从源码到运行有3个阶段："><span class="nav-number">1.2.</span> <span class="nav-text">0.2 java从源码到运行有3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-3-功能"><span class="nav-number">1.3.</span> <span class="nav-text">0.3 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-4-Java内置注解"><span class="nav-number">1.4.</span> <span class="nav-text">0.4 Java内置注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deprecated：已过时"><span class="nav-number">1.4.1.</span> <span class="nav-text">@Deprecated：已过时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Override：限定重写父类的方法"><span class="nav-number">1.4.2.</span> <span class="nav-text">@Override：限定重写父类的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SuppressWarnings：抑制编译器警告"><span class="nav-number">1.4.3.</span> <span class="nav-text">@SuppressWarnings：抑制编译器警告</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-5-注解类型（元Annotation）"><span class="nav-number">1.5.</span> <span class="nav-text">0.5 注解类型（元Annotation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Documented：表示含有该注解类型的元素-带有注释的-会通过javadoc或类似工具进行文档化"><span class="nav-number">1.5.1.</span> <span class="nav-text">@Documented：表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inherited：表示注解类型能被自动继承"><span class="nav-number">1.5.2.</span> <span class="nav-text">@Inherited：表示注解类型能被自动继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retention：表示该注解类型的注解保留的时长"><span class="nav-number">1.5.3.</span> <span class="nav-text">@Retention：表示该注解类型的注解保留的时长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target：表示注解类型所适用的程序元素的种类"><span class="nav-number">1.5.4.</span> <span class="nav-text">@Target：表示注解类型所适用的程序元素的种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-6-自定义Annotation"><span class="nav-number">1.6.</span> <span class="nav-text">0.6 自定义Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-6-1-自定义"><span class="nav-number">1.6.1.</span> <span class="nav-text">0.6.1 自定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-6-2-使用"><span class="nav-number">1.6.2.</span> <span class="nav-text">0.6.2  使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-反射：提取-Annotation-的信息"><span class="nav-number">2.</span> <span class="nav-text">1. 反射：提取 Annotation 的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Field-注解、反射"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 Field 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Method-注解、反射"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 Method 注解、反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Method-注解、反射"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 Method 注解、反射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Android-注解"><span class="nav-number">3.</span> <span class="nav-text">2. Android-注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-资源类型注解"><span class="nav-number">3.0.1.</span> <span class="nav-text">2.1.2 资源类型注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-Null注解"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.1.3 Null注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-其他注解"><span class="nav-number">3.0.3.</span> <span class="nav-text">2.1.4 其他注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-1-Threading-注解"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">2.1.4.1 Threading 注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-2-Value-Constraints注解"><span class="nav-number">3.0.3.2.</span> <span class="nav-text">2.1.4.2 Value Constraints注解</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -985,7 +990,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

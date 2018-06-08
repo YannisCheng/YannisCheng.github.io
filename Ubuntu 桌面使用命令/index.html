@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="命令使用参考">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T03:06:50.180Z">
+<meta property="og:updated_time" content="2018-06-08T08:02:45.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 桌面使用命令">
 <meta name="twitter:description" content="命令使用参考">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-08T11:06:50+08:00">
-                2018-03-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:02:45+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,100 字
+                  2,748 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  11 分钟
                 </span>
               
             </div>
@@ -440,6 +440,7 @@
       
         <p>命令使用参考</p>
 <a id="more"></a>
+<p>[TOC]</p>
 <h2 id="桌面环境："><a href="#桌面环境：" class="headerlink" title="桌面环境："></a>桌面环境：</h2><pre><code>super                ：    长按显示启动器快捷信息
 super + 数字     ：    启动指定的应用
 super + D             ：    显示桌面
@@ -523,6 +524,8 @@ cd ~用户名 （进入此用户的home目录）
 </code></pre><h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><pre><code>vim 文件名   （方式1）
 touch 文件名(空)     （方式2）
 echo “输入内容” &gt; 文件名.后缀    （方式3）
+echo “输入内容” &gt;&gt; 文件名.后缀    （方式3: 追加到文件末尾）
+sed (在某一行添加)
 </code></pre><h3 id="修改文件时间-创建文件"><a href="#修改文件时间-创建文件" class="headerlink" title="修改文件时间+创建文件"></a>修改文件时间+创建文件</h3><pre><code>touch(空)
 </code></pre><h3 id="时间分类"><a href="#时间分类" class="headerlink" title="时间分类"></a>时间分类</h3><pre><code>mtime:内容变更时间； ctime：状态时间； atime：接收时间
 touch [-mcadt]
@@ -532,7 +535,9 @@ rm -rf 目录名 （删除非空目录） 慎用
 </code></pre><h3 id="更改组-chgrp"><a href="#更改组-chgrp" class="headerlink" title="更改组    chgrp"></a>更改组    chgrp</h3><pre><code>chgrp [-R] 组名 文件 （R：文件夹递归）
 </code></pre><h3 id="更改拥有者-chown"><a href="#更改拥有者-chown" class="headerlink" title="更改拥有者    chown"></a>更改拥有者    chown</h3><pre><code>chown [-R] 用户名 文件
 chown [-R] 用户名：组名 文件
-</code></pre><h3 id="获取文件名-basename-目录"><a href="#获取文件名-basename-目录" class="headerlink" title="获取文件名    basename 目录"></a>获取文件名    basename 目录</h3><h3 id="获取目录-dirname-目录"><a href="#获取目录-dirname-目录" class="headerlink" title="获取目录    dirname 目录"></a>获取目录    dirname 目录</h3><h3 id="文件预设权限-umask"><a href="#文件预设权限-umask" class="headerlink" title="文件预设权限    umask"></a>文件预设权限    umask</h3><pre><code>umask [-S] (查看权限预设) 022:表示被‘拿掉的权限’,即：u,g-w,o-w
+</code></pre><h3 id="获取文件名"><a href="#获取文件名" class="headerlink" title="获取文件名"></a>获取文件名</h3><pre><code>basename 目录
+</code></pre><h3 id="获取目录"><a href="#获取目录" class="headerlink" title="获取目录"></a>获取目录</h3><pre><code>dirname 目录
+</code></pre><h3 id="文件预设权限-umask"><a href="#文件预设权限-umask" class="headerlink" title="文件预设权限     umask"></a>文件预设权限     umask</h3><pre><code>umask [-S] (查看权限预设) 022:表示被‘拿掉的权限’,即：u,g-w,o-w
 umask 002 （设置权限）
 </code></pre><h3 id="权限的分类"><a href="#权限的分类" class="headerlink" title="权限的分类"></a>权限的分类</h3><pre><code>基本属性 + 隐藏属性 + 特别S属性
 </code></pre><h3 id="更改权限属性-chmod"><a href="#更改权限属性-chmod" class="headerlink" title="更改权限属性    chmod"></a>更改权限属性    chmod</h3><pre><code>chmod [-R] 777 文件名
@@ -629,7 +634,249 @@ x\{m,\}：重复字符x,至少m次，如：&apos;0\{5,\}&apos;匹配至少有5�
 x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&apos;匹配5 -- 10个0的行。 
 .：所有的单个字符。
 *：有字符，长度可以为0。
-</code></pre>
+</code></pre><h3 id="更新tree命令"><a href="#更新tree命令" class="headerlink" title="更新tree命令"></a>更新tree命令</h3><h4 id="安装-tree"><a href="#安装-tree" class="headerlink" title="安装 tree"></a>安装 tree</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">brew install tree</div><div class="line">```	</div><div class="line"></div><div class="line">**解决 `tree` 不能显示 中文 问题：**</div></pre></td></tr></table></figure>
+<p>  tree -N<br>  ```</p>
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p>-1. <strong>清单选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> -a</td>
+<td>列出所有文件</td>
+</tr>
+<tr>
+<td>  -d</td>
+<td>仅列出目录。</td>
+</tr>
+<tr>
+<td>  -l</td>
+<td>遵循像目录这样的符号链接。</td>
+</tr>
+<tr>
+<td>  -f</td>
+<td>打印每个文件的完整路径前缀。</td>
+</tr>
+<tr>
+<td>  -x</td>
+<td>仅保留在当前文件系统上。</td>
+</tr>
+<tr>
+<td>  -L level</td>
+<td>层级目录。</td>
+</tr>
+<tr>
+<td>  -R</td>
+<td>达到最高等级时重新运行树。</td>
+</tr>
+<tr>
+<td>  -P pattern</td>
+<td>仅列出与给定模式相匹配的文件。</td>
+</tr>
+<tr>
+<td>  -I pattern</td>
+<td>不要列出与给定模式匹配的文件。</td>
+</tr>
+<tr>
+<td>  –ignore-case</td>
+<td>模式匹配时忽略大小写。</td>
+</tr>
+<tr>
+<td>  –matchdirs</td>
+<td>在-P模式匹配中包含目录名称。</td>
+</tr>
+<tr>
+<td>  –noreport</td>
+<td>关闭树列表末尾的文件/目录计数。</td>
+</tr>
+<tr>
+<td>  –charset X</td>
+<td>使用字符集X作为终端/ HTML和缩进行输出。</td>
+</tr>
+<tr>
+<td>  –filelimit＃</td>
+<td>不要下载超过＃个文件的dirs。</td>
+</tr>
+<tr>
+<td>  –timefmt <f></f></td>
+<td>根据格式<f>打印和格式化时间。</f></td>
+</tr>
+<tr>
+<td>  -o filename</td>
+<td>输出到文件而不是标准输出</td>
+</tr>
+</tbody>
+</table>
+<p>-2. <strong>文件选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  -q</td>
+<td>将不可打印的字符打印为’？’</td>
+</tr>
+<tr>
+<td>  -N</td>
+<td>按原样打印不可打印的字符。</td>
+</tr>
+<tr>
+<td>  -Q</td>
+<td>用双引号引用文件名。</td>
+</tr>
+<tr>
+<td>  -p</td>
+<td>打印每个文件的保护。</td>
+</tr>
+<tr>
+<td>  -u</td>
+<td>显示文件所有者或UID号码。</td>
+</tr>
+<tr>
+<td>  -g</td>
+<td>显示文件组所有者或GID号码。</td>
+</tr>
+<tr>
+<td>  -s</td>
+<td>打印每个文件的字节大小。</td>
+</tr>
+<tr>
+<td>  -h</td>
+<td>以更易读的方式打印尺寸。</td>
+</tr>
+<tr>
+<td>  –si</td>
+<td>像-h，但在国际单位中使用（幂数为1000）。</td>
+</tr>
+<tr>
+<td>  -D</td>
+<td>打印上次修改日期或（-c）状态更改。</td>
+</tr>
+<tr>
+<td>  -F</td>
+<td>附加’/‘，’=’，’*’，’@’，’</td>
+<td>‘或’&gt;’按照ls -F</td>
+</tr>
+<tr>
+<td>  –inodes</td>
+<td>打印每个文件的inode编号</td>
+</tr>
+<tr>
+<td>  –device</td>
+<td>打印每个文件所属的设备ID号</td>
+</tr>
+</tbody>
+</table>
+<p>-3. <strong>排序选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  -v</td>
+<td>按文本字母数字排序文件。</td>
+</tr>
+<tr>
+<td>  -t</td>
+<td>按上次修改时间对文件进行排序。</td>
+</tr>
+<tr>
+<td>  -c</td>
+<td>按上次状态更改时间对文件进行排序。</td>
+</tr>
+<tr>
+<td>  -U</td>
+<td>保留文件未排序。</td>
+</tr>
+<tr>
+<td>  -r</td>
+<td>反转排序的顺序。</td>
+</tr>
+<tr>
+<td>  –dirsfirst</td>
+<td>列出文件之前的目录（-U禁用）。</td>
+</tr>
+<tr>
+<td>   - sort X</td>
+<td>选择排序：名称，版本，大小，mtime，ctime。</td>
+</tr>
+</tbody>
+</table>
+<p>-4. <strong>图形选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  -i</td>
+<td>不要打印缩进线。</td>
+</tr>
+<tr>
+<td>  -A</td>
+<td>打印ANSI线图形缩进线。</td>
+</tr>
+<tr>
+<td>  -S</td>
+<td>使用CP437（控制台）图形缩进线打印。</td>
+</tr>
+<tr>
+<td>  -n</td>
+<td>始终关闭着色（-C覆盖）。</td>
+</tr>
+<tr>
+<td>  -C</td>
+<td>总是打开彩色。</td>
+</tr>
+</tbody>
+</table>
+<p>-5. <strong>XML / HTML / JSON选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  -X</td>
+<td>打印树的XML表示。</td>
+</tr>
+<tr>
+<td>  -J</td>
+<td>打印出树的JSON表示。</td>
+</tr>
+<tr>
+<td>  -H baseHREF</td>
+<td>以baseHREF作为顶层目录打印HTML格式。</td>
+</tr>
+<tr>
+<td>  -T</td>
+<td>字符串用字符串替换默认的HTML标题和H1标题。</td>
+</tr>
+<tr>
+<td>  –nolinks</td>
+<td>关闭HTML输出中的超链接。</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     
@@ -650,8 +897,8 @@ x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&ap
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux vim 命令/" rel="next" title="Linux vim 命令">
-                <i class="fa fa-chevron-left"></i> Linux vim 命令
+              <a href="/Ubuntu16.04安装记录/" rel="next" title="Ubuntu16.04安装记录">
+                <i class="fa fa-chevron-left"></i> Ubuntu16.04安装记录
               </a>
             
           </div>
@@ -660,8 +907,8 @@ x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&ap
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/设计模式 - 单例模式/" rel="prev" title="单例模式">
-                单例模式 <i class="fa fa-chevron-right"></i>
+              <a href="/Linux vim 命令/" rel="prev" title="Linux vim 命令">
+                Linux vim 命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -745,7 +992,7 @@ x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&ap
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -816,7 +1063,7 @@ x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&ap
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境："><span class="nav-number">1.</span> <span class="nav-text">桌面环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端运行命令-简洁版"><span class="nav-number">2.</span> <span class="nav-text">终端运行命令(简洁版)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.2.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组"><span class="nav-number">2.3.</span> <span class="nav-text">组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户"><span class="nav-number">2.4.</span> <span class="nav-text">用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">2.5.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录与文件查看-ls-aAdfFhilrRSt-目录名-（可以使用×作为匹配符）"><span class="nav-number">2.6.</span> <span class="nav-text">目录与文件查看 ls [-aAdfFhilrRSt] 目录名 （可以使用×作为匹配符）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径切换-cd-文件路径"><span class="nav-number">2.7.</span> <span class="nav-text">路径切换        cd 文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件"><span class="nav-number">2.8.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件时间-创建文件"><span class="nav-number">2.9.</span> <span class="nav-text">修改文件时间+创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间分类"><span class="nav-number">2.10.</span> <span class="nav-text">时间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录-mkdir"><span class="nav-number">2.11.</span> <span class="nav-text">创建目录    mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除目录-rmdir"><span class="nav-number">2.12.</span> <span class="nav-text">删除目录    rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改组-chgrp"><span class="nav-number">2.13.</span> <span class="nav-text">更改组    chgrp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改拥有者-chown"><span class="nav-number">2.14.</span> <span class="nav-text">更改拥有者    chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文件名-basename-目录"><span class="nav-number">2.15.</span> <span class="nav-text">获取文件名    basename 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取目录-dirname-目录"><span class="nav-number">2.16.</span> <span class="nav-text">获取目录    dirname 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件预设权限-umask"><span class="nav-number">2.17.</span> <span class="nav-text">文件预设权限    umask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限的分类"><span class="nav-number">2.18.</span> <span class="nav-text">权限的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改权限属性-chmod"><span class="nav-number">2.19.</span> <span class="nav-text">更改权限属性    chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设定隐藏属性-chattr"><span class="nav-number">2.20.</span> <span class="nav-text">设定隐藏属性    chattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏属性-lsattr"><span class="nav-number">2.21.</span> <span class="nav-text">显示隐藏属性    lsattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID-SGID-SBIT-设定"><span class="nav-number">2.22.</span> <span class="nav-text">SUID,SGID,SBIT    设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的类型-file"><span class="nav-number">2.23.</span> <span class="nav-text">文件的类型    file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件查询"><span class="nav-number">2.24.</span> <span class="nav-text">文件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制"><span class="nav-number">2.25.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动"><span class="nav-number">2.26.</span> <span class="nav-text">移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-rm"><span class="nav-number">2.27.</span> <span class="nav-text">删除        rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要命令："><span class="nav-number">2.28.</span> <span class="nav-text">主要命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细命令："><span class="nav-number">2.29.</span> <span class="nav-text">详细命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看ip地址"><span class="nav-number">2.30.</span> <span class="nav-text">查看ip地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看端口号"><span class="nav-number">2.31.</span> <span class="nav-text">查看端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载已经安装的软件"><span class="nav-number">2.32.</span> <span class="nav-text">卸载已经安装的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新grep命令"><span class="nav-number">2.33.</span> <span class="nav-text">更新grep命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境："><span class="nav-number">1.</span> <span class="nav-text">桌面环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端运行命令-简洁版"><span class="nav-number">2.</span> <span class="nav-text">终端运行命令(简洁版)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.2.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组"><span class="nav-number">2.3.</span> <span class="nav-text">组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户"><span class="nav-number">2.4.</span> <span class="nav-text">用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">2.5.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录与文件查看-ls-aAdfFhilrRSt-目录名-（可以使用×作为匹配符）"><span class="nav-number">2.6.</span> <span class="nav-text">目录与文件查看 ls [-aAdfFhilrRSt] 目录名 （可以使用×作为匹配符）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径切换-cd-文件路径"><span class="nav-number">2.7.</span> <span class="nav-text">路径切换        cd 文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件"><span class="nav-number">2.8.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件时间-创建文件"><span class="nav-number">2.9.</span> <span class="nav-text">修改文件时间+创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间分类"><span class="nav-number">2.10.</span> <span class="nav-text">时间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录-mkdir"><span class="nav-number">2.11.</span> <span class="nav-text">创建目录    mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除目录-rmdir"><span class="nav-number">2.12.</span> <span class="nav-text">删除目录    rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改组-chgrp"><span class="nav-number">2.13.</span> <span class="nav-text">更改组    chgrp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改拥有者-chown"><span class="nav-number">2.14.</span> <span class="nav-text">更改拥有者    chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文件名"><span class="nav-number">2.15.</span> <span class="nav-text">获取文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取目录"><span class="nav-number">2.16.</span> <span class="nav-text">获取目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件预设权限-umask"><span class="nav-number">2.17.</span> <span class="nav-text">文件预设权限     umask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限的分类"><span class="nav-number">2.18.</span> <span class="nav-text">权限的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改权限属性-chmod"><span class="nav-number">2.19.</span> <span class="nav-text">更改权限属性    chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设定隐藏属性-chattr"><span class="nav-number">2.20.</span> <span class="nav-text">设定隐藏属性    chattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏属性-lsattr"><span class="nav-number">2.21.</span> <span class="nav-text">显示隐藏属性    lsattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID-SGID-SBIT-设定"><span class="nav-number">2.22.</span> <span class="nav-text">SUID,SGID,SBIT    设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的类型-file"><span class="nav-number">2.23.</span> <span class="nav-text">文件的类型    file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件查询"><span class="nav-number">2.24.</span> <span class="nav-text">文件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制"><span class="nav-number">2.25.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动"><span class="nav-number">2.26.</span> <span class="nav-text">移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-rm"><span class="nav-number">2.27.</span> <span class="nav-text">删除        rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要命令："><span class="nav-number">2.28.</span> <span class="nav-text">主要命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细命令："><span class="nav-number">2.29.</span> <span class="nav-text">详细命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看ip地址"><span class="nav-number">2.30.</span> <span class="nav-text">查看ip地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看端口号"><span class="nav-number">2.31.</span> <span class="nav-text">查看端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载已经安装的软件"><span class="nav-number">2.32.</span> <span class="nav-text">卸载已经安装的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新grep命令"><span class="nav-number">2.33.</span> <span class="nav-text">更新grep命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新tree命令"><span class="nav-number">2.34.</span> <span class="nav-text">更新tree命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-tree"><span class="nav-number">2.34.1.</span> <span class="nav-text">安装 tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数说明"><span class="nav-number">2.34.2.</span> <span class="nav-text">参数说明</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -850,7 +1097,7 @@ x\{m,n\}：重复字符x，至少m次，不多于n次，如：&apos;0\{5,10\}&ap
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2015.03.58.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.41.51.png">
-<meta property="og:updated_time" content="2017-11-24T02:48:52.045Z">
+<meta property="og:updated_time" content="2018-06-08T07:11:36.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View-8 TypedArray">
 <meta name="twitter:description" content="自定义View中的 attrs.xml 文件设置">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:48:52+08:00">
-                2017-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:11:36+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  588 字
+                  589 字
                 </span>
               
 
@@ -439,11 +439,13 @@
       
 
       
-        <h1 id="自定义View中的-attrs-xml-文件设置"><a href="#自定义View中的-attrs-xml-文件设置" class="headerlink" title="自定义View中的 attrs.xml 文件设置"></a>自定义View中的 <code>attrs.xml</code> 文件设置</h1><a id="more"></a>
+        <p>自定义View中的 <code>attrs.xml</code> 文件设置</p>
+<a id="more"></a>
+<p>[TOC]</p>
 <h2 id="1-文件位置："><a href="#1-文件位置：" class="headerlink" title="1. 文件位置："></a>1. 文件位置：</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2015.03.58.png" alt=""></p>
 <h2 id="2-文件内容（仅供参考）："><a href="#2-文件内容（仅供参考）：" class="headerlink" title="2. 文件内容（仅供参考）："></a>2. 文件内容（仅供参考）：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyViewGroup"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneTitle"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneSize"</span> <span class="attr">format</span>=<span class="string">"integer"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"imageSrc"</span> <span class="attr">format</span>=<span class="string">"reference"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textTwoTitle"</span> <span class="attr">format</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textTwoSize"</span> <span class="attr">format</span>=<span class="string">"integer"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textOneVisible"</span> <span class="attr">format</span>=<span class="string">"boolean"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="3-属性文件中参数属性的分类："><a href="#3-属性文件中参数属性的分类：" class="headerlink" title="3. 属性文件中参数属性的分类："></a>3. 属性文件中<code>参数属性</code>的分类：</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.41.51.png" alt=""></p>
-<h3 id="4-attrs-xml-文件中-format-取值类型"><a href="#4-attrs-xml-文件中-format-取值类型" class="headerlink" title="4. attrs.xml 文件中 format 取值类型"></a>4. <code>attrs.xml</code> 文件中 <code>format</code> 取值类型</h3><p><strong>1. reference：参考某一资源ID。</strong></p>
+<h2 id="3-属性文件中参数属性的分类："><a href="#3-属性文件中参数属性的分类：" class="headerlink" title="3. 属性文件中参数属性的分类："></a>3. 属性文件中<code>参数属性</code>的分类：</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-23%2014.41.51.png" alt=""></p>
+<h2 id="4-attrs-xml-文件中-format-取值类型"><a href="#4-attrs-xml-文件中-format-取值类型" class="headerlink" title="4. attrs.xml 文件中 format 取值类型"></a>4. <code>attrs.xml</code> 文件中 <code>format</code> 取值类型</h2><p><strong>1. reference：参考某一资源ID。</strong></p>
 <p>属性的定义</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"imageSrc"</span> <span class="attr">format</span>=<span class="string">"reference"</span>/&gt;</span></div></pre></td></tr></table></figure>
 <p>属性的使用</p>
@@ -626,7 +628,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -697,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义View中的-attrs-xml-文件设置"><span class="nav-number">1.</span> <span class="nav-text">自定义View中的 attrs.xml 文件设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文件位置："><span class="nav-number">1.1.</span> <span class="nav-text">1. 文件位置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件内容（仅供参考）："><span class="nav-number">1.2.</span> <span class="nav-text">2. 文件内容（仅供参考）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-属性文件中参数属性的分类："><span class="nav-number">1.2.1.</span> <span class="nav-text">3. 属性文件中参数属性的分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-attrs-xml-文件中-format-取值类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">4. attrs.xml 文件中 format 取值类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文件位置："><span class="nav-number">1.</span> <span class="nav-text">1. 文件位置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件内容（仅供参考）："><span class="nav-number">2.</span> <span class="nav-text">2. 文件内容（仅供参考）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-属性文件中参数属性的分类："><span class="nav-number">3.</span> <span class="nav-text">3. 属性文件中参数属性的分类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-attrs-xml-文件中-format-取值类型"><span class="nav-number">4.</span> <span class="nav-text">4. attrs.xml 文件中 format 取值类型</span></a></li></ol></div>
             
 
           </div>
@@ -731,7 +733,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

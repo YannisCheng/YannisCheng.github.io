@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="/bin系统有很多放置执行档的目录，但/bin比较特殊。 因为/bin放置的是在单人维护模式下还能够被操作的指令。 在/bin底下的指令可以被root与一般帐号所使用，主要有：cat,chmod(修改权限), chown, date, mv, mkdir, cp, bash等等常用的指令。">
+<meta name="description" content="总结">
 <meta name="keywords" content="Linux,命令,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux&#x2F;Unix系统文件结构">
 <meta property="og:url" content="http://yannischeng.com/Linux:Unix系统文件结构/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="/bin系统有很多放置执行档的目录，但/bin比较特殊。 因为/bin放置的是在单人维护模式下还能够被操作的指令。 在/bin底下的指令可以被root与一般帐号所使用，主要有：cat,chmod(修改权限), chown, date, mv, mkdir, cp, bash等等常用的指令。">
+<meta property="og:description" content="总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:07:52.272Z">
+<meta property="og:updated_time" content="2018-06-08T08:38:16.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux&#x2F;Unix系统文件结构">
-<meta name="twitter:description" content="/bin系统有很多放置执行档的目录，但/bin比较特殊。 因为/bin放置的是在单人维护模式下还能够被操作的指令。 在/bin底下的指令可以被root与一般帐号所使用，主要有：cat,chmod(修改权限), chown, date, mv, mkdir, cp, bash等等常用的指令。">
+<meta name="twitter:description" content="总结">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:07:52+08:00">
-                2017-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:38:16+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,660 字
+                  3,663 字
                 </span>
               
 
@@ -438,11 +438,13 @@
       
 
       
-        <h2 id="bin"><a href="#bin" class="headerlink" title="/bin"></a>/bin</h2><pre><code>系统有很多放置执行档的目录，但/bin比较特殊。
+        <p>总结</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="bin"><a href="#bin" class="headerlink" title="/bin"></a>/bin</h2><pre><code>系统有很多放置执行档的目录，但/bin比较特殊。
 因为/bin放置的是在单人维护模式下还能够被操作的指令。
 在/bin底下的指令可以被root与一般帐号所使用，主要有：cat,chmod(修改权限), chown, date, mv, mkdir, cp, bash等等常用的指令。
-</code></pre><a id="more"></a>
-<h2 id="boot"><a href="#boot" class="headerlink" title="/boot"></a>/boot</h2><pre><code>主要放置开机会使用到的档案，包括Linux核心档案以及开机选单与开机所需设定档等等。
+</code></pre><h2 id="boot"><a href="#boot" class="headerlink" title="/boot"></a>/boot</h2><pre><code>主要放置开机会使用到的档案，包括Linux核心档案以及开机选单与开机所需设定档等等。
 Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机管理程式，则还会存在/boot/grub/这个目录。
 </code></pre><h2 id="dev"><a href="#dev" class="headerlink" title="/dev"></a>/dev</h2><pre><code>在Linux系统上，任何装置与周边设备都是以档案的型态存在于这个目录当中。 只要通过存取这个目录下的某个档案，就等于存取某个装置。比要重要的档案有/dev/null, /dev/zero, /dev/tty , /dev/lp*, / dev/hd*, /dev/sd*等等
 </code></pre><h2 id="etc"><a href="#etc" class="headerlink" title="/etc"></a>/etc</h2><pre><code>系统主要的设定档几乎都放置在这个目录内，例如人员的帐号密码档、各种服务的启始档等等。 一般来说，这个目录下的各档案属性是可以让一般使用者查阅的，但是只有root有权力修改。 FHS建议不要放置可执行档(binary)在这个目录中。 比较重要的档案有：/etc/inittab, /etc/init.d/, /etc/modprobe.conf, /etc/X11/, /etc/fstab, /etc/sysconfig/等等。 另外，其下重要的目录有：/etc/init.d/ ：所有服务的预设启动script都是放在这里的，例如要启动或者关闭iptables的话： /etc/init.d/iptables start、/etc/init.d/ iptables stop
@@ -508,8 +510,8 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/自定义View-1 三剑客：Canvas + Paint + Path 初步概览/" rel="next" title="自定义View-1 三剑客：Canvas + Paint + Path 初步概览">
-                <i class="fa fa-chevron-left"></i> 自定义View-1 三剑客：Canvas + Paint + Path 初步概览
+              <a href="/Python3  01-基础-基本数据类型/" rel="next" title="Python3  01-基础-基本数据类型">
+                <i class="fa fa-chevron-left"></i> Python3  01-基础-基本数据类型
               </a>
             
           </div>
@@ -518,8 +520,8 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  01-基础-基本数据类型/" rel="prev" title="Python3  01-基础-基本数据类型">
-                Python3  01-基础-基本数据类型 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  02-函数-参数类型/" rel="prev" title="Python3  02-函数-参数类型">
+                Python3  02-函数-参数类型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +605,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -708,7 +710,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

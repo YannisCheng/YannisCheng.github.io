@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
+<meta name="description" content="总结">
 <meta name="keywords" content="Android,View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View-4 Canvas的辅助绘制">
 <meta property="og:url" content="http://yannischeng.com/自定义View-4 Canvas的辅助绘制/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
+<meta property="og:description" content="总结">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.16.15.png">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-16%2011.55.35.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-16%2011.56.15.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.13.11.png">
-<meta property="og:updated_time" content="2017-11-24T02:49:19.445Z">
+<meta property="og:updated_time" content="2018-06-08T07:17:40.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View-4 Canvas的辅助绘制">
-<meta name="twitter:description" content="1. Canvas与Camera中不可忽略的两个方法：对同一个图片对象进行处理时，需要时时注意的两个方法。  save() : 保存处理之前的状态 restore() ：恢复 “保存处理之前的状态”">
+<meta name="twitter:description" content="总结">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png">
 
 
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T10:49:19+08:00">
-                2017-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:17:40+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,865 字
+                  1,868 字
                 </span>
               
 
@@ -450,12 +450,14 @@
       
 
       
-        <h1 id="1-Canvas与Camera中不可忽略的两个方法："><a href="#1-Canvas与Camera中不可忽略的两个方法：" class="headerlink" title="1. Canvas与Camera中不可忽略的两个方法："></a>1. Canvas与Camera中不可忽略的两个方法：</h1><p>对同一个图片对象进行处理时，需要时时注意的两个方法。</p>
+        <p>总结</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="1-Canvas与Camera中不可忽略的两个方法："><a href="#1-Canvas与Camera中不可忽略的两个方法：" class="headerlink" title="1. Canvas与Camera中不可忽略的两个方法："></a>1. Canvas与Camera中不可忽略的两个方法：</h1><p>对同一个图片对象进行处理时，需要时时注意的两个方法。</p>
 <ul>
 <li>save() : 保存处理之前的状态</li>
 <li>restore() ：恢复 “保存处理之前的状态”</li>
 </ul>
-<a id="more"></a>
 <h1 id="2-处理的顺序问题："><a href="#2-处理的顺序问题：" class="headerlink" title="2. 处理的顺序问题："></a>2. 处理的顺序问题：</h1><p>对于一个图片进行多项操作处理时候，实际处理代码的顺序是从下向上的。<br>Canvas的顺序是反着的。</p>
 <h1 id="3-裁剪-Clip"><a href="#3-裁剪-Clip" class="headerlink" title="3. 裁剪 Clip"></a>3. 裁剪 Clip</h1><p><code>Canvas</code>中与<code>Clip</code>有关的方法：</p>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2019.20.34.png" alt=""></p>
@@ -686,7 +688,7 @@ canvas.restore();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -791,7 +793,7 @@ canvas.restore();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。">
+<meta name="description" content="人生苦短，我用Python">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  05-函数式编程-函数作为返回值">
 <meta property="og:url" content="http://yannischeng.com/Python3  05-函数式编程-函数作为返回值/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。">
+<meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T08:00:02.391Z">
+<meta property="og:updated_time" content="2018-06-08T08:15:49.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  05-函数式编程-函数作为返回值">
-<meta name="twitter:description" content="高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。">
+<meta name="twitter:description" content="人生苦短，我用Python">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T16:00:02+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:15:49+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  314 字
+                  322 字
                 </span>
               
 
@@ -434,8 +434,12 @@
       
 
       
-        <p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
+        <p><strong>人生苦短，我用Python</strong></p>
 <a id="more"></a>
+<hr>
+<p>[TOC]</p>
+<hr>
+<p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''求和运算'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_sum</span><span class="params">(*args)</span>:</span></div><div class="line">    add = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> args:</div><div class="line">        add = add + n</div><div class="line">    <span class="keyword">return</span> add</div><div class="line"></div><div class="line">print(add_sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))  <span class="comment"># 15</span></div><div class="line"></div><div class="line"><span class="string">'''将函数 -实例- 作为返回值'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_sum_func</span><span class="params">(*args)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">my_sum</span><span class="params">()</span>:</span></div><div class="line">        add = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> args:</div><div class="line">            add = add + n</div><div class="line">        <span class="keyword">return</span> add</div><div class="line">    <span class="keyword">return</span> my_sum()</div><div class="line"></div><div class="line"><span class="string">'''将函数 -对象- 作为返回值'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_sum_func_02</span><span class="params">(*args)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">my_sum</span><span class="params">()</span>:</span></div><div class="line">        add = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> args:</div><div class="line">            add = add + n</div><div class="line">        <span class="keyword">return</span> add</div><div class="line">    <span class="keyword">return</span> my_sum</div><div class="line"></div><div class="line"><span class="comment"># 调用 add_sum_func()时，返回的不是函数求和的结果，而是求和函数本身，就是延迟了函数结果的实现</span></div><div class="line">print(add_sum_func(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))  <span class="comment"># 15</span></div><div class="line">new_f = add_sum_func(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line">print(new_f)  <span class="comment"># 15</span></div><div class="line"><span class="comment"># print(new_f())  # TypeError: 'int' object is not callable</span></div><div class="line"></div><div class="line">print(add_sum_func_02(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))  <span class="comment"># &lt;function add_sum_func_02.&lt;locals&gt;.my_sum at 0x1021ef8c8&gt;</span></div><div class="line">new_f = add_sum_func_02(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line">print(new_f)  <span class="comment"># &lt;function add_sum_func_02.&lt;locals&gt;.my_sum at 0x1021ef8c8&gt;</span></div><div class="line">print(new_f())  <span class="comment"># 15</span></div><div class="line"></div><div class="line"><span class="string">'''释义'''</span></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">    函数add_sum_func()与add_sum_func_02()的区别除了函数名字上有区别，在其函数内部只有一点不同，即返回值：</span></div><div class="line"><span class="string">        一个是：return my_sum()。带()表示返回的是 函数的数值，即：结果值。</span></div><div class="line"><span class="string">        另一个是：return my_sum。不带()表示返回的是 函数本身，即：函数所在内存的地址。</span></div><div class="line"><span class="string">    通过查看输出的结果可以清晰的对比出两者的不同。</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure>
 
       
@@ -458,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  02-数据-序列/" rel="next" title="Python3  02-数据-序列">
-                <i class="fa fa-chevron-left"></i> Python3  02-数据-序列
+              <a href="/Python3  05-函数式编程-高阶函数/" rel="next" title="Python3  05-函数式编程-高阶函数">
+                <i class="fa fa-chevron-left"></i> Python3  05-函数式编程-高阶函数
               </a>
             
           </div>
@@ -553,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -658,7 +662,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

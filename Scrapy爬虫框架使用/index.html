@@ -83,20 +83,20 @@
 
 
 
-<meta name="description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm  问：把网站装进爬虫需要几步？答：四步。 1. 新建项目2. 明确目标3. 制作爬虫4. 存储内容">
+<meta name="description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm">
 <meta name="keywords" content="Python,Scrapy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy爬虫框架使用">
 <meta property="og:url" content="http://yannischeng.com/Scrapy爬虫框架使用/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm  问：把网站装进爬虫需要几步？答：四步。 1. 新建项目2. 明确目标3. 制作爬虫4. 存储内容">
+<meta property="og:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.35.02.png">
-<meta property="og:updated_time" content="2018-02-01T01:54:41.937Z">
+<meta property="og:updated_time" content="2018-06-08T07:40:24.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy爬虫框架使用">
-<meta name="twitter:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm  问：把网站装进爬虫需要几步？答：四步。 1. 新建项目2. 明确目标3. 制作爬虫4. 存储内容">
+<meta name="twitter:description" content="Scrapy框架使用指南：http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.htmlScrapy零基础使用：http://www.jb51.net/article/57183.htm">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png">
 
 
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-01T09:54:41+08:00">
-                2018-02-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:40:24+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,686 字
+                  1,690 字
                 </span>
               
 
@@ -442,9 +442,10 @@
         <blockquote>
 <p>Scrapy框架使用指南：<a href="http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html</a><br>Scrapy零基础使用：<a href="http://www.jb51.net/article/57183.htm" target="_blank" rel="external">http://www.jb51.net/article/57183.htm</a></p>
 </blockquote>
-<p><strong>问：把网站装进爬虫需要几步？</strong><br><strong>答：四步。</strong></p>
-<p><strong>1. 新建项目</strong><br><strong>2. 明确目标</strong><br><strong>3. 制作爬虫</strong><br><strong>4. 存储内容</strong></p>
 <a id="more"></a>
+<p>[TOC]</p>
+<h1 id="开题"><a href="#开题" class="headerlink" title="开题"></a>开题</h1><p><strong>问：把网站装进爬虫需要几步？</strong><br><strong>答：四步。</strong></p>
+<p><strong>1. 新建项目</strong><br><strong>2. 明确目标</strong><br><strong>3. 制作爬虫</strong><br><strong>4. 存储内容</strong></p>
 <p><strong>注意：<code># coding=utf-8</code> 使用Scrapy爬虫框架时应该添加此条语句表明注释是<code>中文注释</code></strong></p>
 <h1 id="1-新建项目"><a href="#1-新建项目" class="headerlink" title="1. 新建项目"></a>1. 新建项目</h1><p><strong>使用命令新建一个<code>scrapy</code>项目</strong></p>
 <pre><code>scrapy startproject projectName
@@ -573,7 +574,7 @@ class DmozSpider(Spider):
 <h1 id="4-存储内容"><a href="#4-存储内容" class="headerlink" title="4. 存储内容"></a>4. 存储内容</h1><p>保存信息的最简单的方法是通过Feed exports，主要有4种：<code>JSON</code>，<code>JSON lines</code>，<code>CSV</code>，<code>XML</code>。<br>我们将结果用最常用的JSON导出，命令如下：</p>
 <pre><code>scrapy crawl dmoz -o items.json -t json
 </code></pre><p>其中，<code>-o</code> 后面是<code>导出文件名</code>，<code>-t</code> 后面是<code>导出类型</code>。</p>
-<h1 id="Pycharm中运行爬虫程序错误"><a href="#Pycharm中运行爬虫程序错误" class="headerlink" title="Pycharm中运行爬虫程序错误"></a>Pycharm中运行爬虫程序错误</h1><h2 id="1-NameError-global-name-‘DmozItem’-is-not-defined"><a href="#1-NameError-global-name-‘DmozItem’-is-not-defined" class="headerlink" title="1. NameError: global name ‘DmozItem’ is not defined"></a>1. NameError: global name ‘DmozItem’ is not defined</h2><pre><code>File &quot;/Users/yannischeng/PycharmProjects/First_Python_Project/spiderone/spiderone/spiders/dmoe_spider.py&quot;, line 20, in parse
+<h1 id="5-Pycharm中运行爬虫程序错误"><a href="#5-Pycharm中运行爬虫程序错误" class="headerlink" title="5. Pycharm中运行爬虫程序错误"></a>5. Pycharm中运行爬虫程序错误</h1><h2 id="1-NameError-global-name-‘DmozItem’-is-not-defined"><a href="#1-NameError-global-name-‘DmozItem’-is-not-defined" class="headerlink" title="1. NameError: global name ‘DmozItem’ is not defined"></a>1. NameError: global name ‘DmozItem’ is not defined</h2><pre><code>File &quot;/Users/yannischeng/PycharmProjects/First_Python_Project/spiderone/spiderone/spiders/dmoe_spider.py&quot;, line 20, in parse
 item = DmozItem()
 NameError: global name &apos;DmozItem&apos; is not defined
 </code></pre><p><strong>解决方案：使用相对导入</strong></p>
@@ -626,8 +627,8 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/来自他人的编程技巧总结/" rel="next" title="来自他人的编程技巧总结">
-                <i class="fa fa-chevron-left"></i> 来自他人的编程技巧总结
+              <a href="/Mac环境下MySQL的安装与使用/" rel="next" title="Mac环境下MySQL的安装与使用">
+                <i class="fa fa-chevron-left"></i> Mac环境下MySQL的安装与使用
               </a>
             
           </div>
@@ -636,8 +637,8 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/顶级程序员的10条最佳实践/" rel="prev" title="顶级程序员的10条最佳实践">
-                顶级程序员的10条最佳实践 <i class="fa fa-chevron-right"></i>
+              <a href="/StarUML的使用/" rel="prev" title="StarUML的使用">
+                StarUML的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -721,7 +722,7 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -792,7 +793,7 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">1.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">2.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">3.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">4.</span> <span class="nav-text">4. 存储内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pycharm中运行爬虫程序错误"><span class="nav-number">5.</span> <span class="nav-text">Pycharm中运行爬虫程序错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-NameError-global-name-‘DmozItem’-is-not-defined"><span class="nav-number">5.1.</span> <span class="nav-text">1. NameError: global name ‘DmozItem’ is not defined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"><span class="nav-number">5.2.</span> <span class="nav-text">2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错"><span class="nav-number">5.3.</span> <span class="nav-text">3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-scrapy爬虫得到的json文件是ascii码问题"><span class="nav-number">5.4.</span> <span class="nav-text">4. scrapy爬虫得到的json文件是ascii码问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开题"><span class="nav-number">1.</span> <span class="nav-text">开题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建项目"><span class="nav-number">2.</span> <span class="nav-text">1. 新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-明确目标"><span class="nav-number">3.</span> <span class="nav-text">2. 明确目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-爬虫实现"><span class="nav-number">4.</span> <span class="nav-text">3. 爬虫实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-爬"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 爬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-取"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xpath-测试"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 xpath()测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存储内容"><span class="nav-number">5.</span> <span class="nav-text">4. 存储内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Pycharm中运行爬虫程序错误"><span class="nav-number">6.</span> <span class="nav-text">5. Pycharm中运行爬虫程序错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-NameError-global-name-‘DmozItem’-is-not-defined"><span class="nav-number">6.1.</span> <span class="nav-text">1. NameError: global name ‘DmozItem’ is not defined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"><span class="nav-number">6.2.</span> <span class="nav-text">2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错"><span class="nav-number">6.3.</span> <span class="nav-text">3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-scrapy爬虫得到的json文件是ascii码问题"><span class="nav-number">6.4.</span> <span class="nav-text">4. scrapy爬虫得到的json文件是ascii码问题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -826,7 +827,7 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

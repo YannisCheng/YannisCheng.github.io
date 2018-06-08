@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="vim命令vi有3个模式：插入模式、命令模式、低行模式。插入模式：在此模式下可以输入字符，按ESC将回到命令模式。 命令模式：可以移动光标、删除字符等。 低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。">
+<meta name="description" content="Vim使用总结">
 <meta name="keywords" content="Linux,命令,vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux vim 命令">
 <meta property="og:url" content="http://yannischeng.com/Linux vim 命令/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="vim命令vi有3个模式：插入模式、命令模式、低行模式。插入模式：在此模式下可以输入字符，按ESC将回到命令模式。 命令模式：可以移动光标、删除字符等。 低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。">
+<meta property="og:description" content="Vim使用总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:10:26.755Z">
+<meta property="og:updated_time" content="2018-06-08T07:59:26.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux vim 命令">
-<meta name="twitter:description" content="vim命令vi有3个模式：插入模式、命令模式、低行模式。插入模式：在此模式下可以输入字符，按ESC将回到命令模式。 命令模式：可以移动光标、删除字符等。 低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。">
+<meta name="twitter:description" content="Vim使用总结">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-25T09:10:26+08:00">
-                2017-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:59:26+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,314 字
+                  1,320 字
                 </span>
               
 
@@ -438,18 +438,20 @@
       
 
       
-        <h1 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h1><h2 id="vi有3个模式：插入模式、命令模式、低行模式。"><a href="#vi有3个模式：插入模式、命令模式、低行模式。" class="headerlink" title="vi有3个模式：插入模式、命令模式、低行模式。"></a>vi有3个模式：插入模式、命令模式、低行模式。</h2><pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
+        <p>Vim使用总结</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h1><h2 id="vi有3个模式：插入模式、命令模式、低行模式。"><a href="#vi有3个模式：插入模式、命令模式、低行模式。" class="headerlink" title="vi有3个模式：插入模式、命令模式、低行模式。"></a>vi有3个模式：插入模式、命令模式、低行模式。</h2><pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
 命令模式：可以移动光标、删除字符等。
 低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。
-</code></pre><a id="more"></a>
-<h2 id="打开文件、保存、关闭文件-vi命令模式下使用"><a href="#打开文件、保存、关闭文件-vi命令模式下使用" class="headerlink" title="打开文件、保存、关闭文件(vi命令模式下使用)"></a>打开文件、保存、关闭文件(vi命令模式下使用)</h2><pre><code>vi filename     //打开filename文件,文件名称可以不存在
+</code></pre><h2 id="打开文件、保存、关闭文件（vi命令模式下使用）"><a href="#打开文件、保存、关闭文件（vi命令模式下使用）" class="headerlink" title="打开文件、保存、关闭文件（vi命令模式下使用）"></a>打开文件、保存、关闭文件（vi命令模式下使用）</h2><pre><code>vi filename     //打开filename文件,文件名称可以不存在
 :w           //保存文件
 :w filename     //保存至filename文件
 :q              //退出编辑器，如果文件已修改请使用下面的命令
 :q!            //退出编辑器，且不保存
-:wq             //退出编辑器，且保存文件    
+:wq             //退出编辑器，且保存文件
 :wq!        //强制保存内容退出
-</code></pre><h2 id="3-插入文本或行-vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式"><a href="#3-插入文本或行-vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式" class="headerlink" title="3.插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)"></a>3.插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</h2><pre><code>a              //在当前光标位置的右边添加文本
+</code></pre><h2 id="3-插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）"><a href="#3-插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）" class="headerlink" title="3.插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）"></a>3.插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）</h2><pre><code>a              //在当前光标位置的右边添加文本
 A             //在当前行的末尾位置添加文本
 i           //在当前光标位置的左边添加文本
 I              //在当前行的开始处添加文本(非空字符的行首)
@@ -457,38 +459,38 @@ O             //在当前行的上面新建一行
 o             //在当前行的下面新建一行
 R            //替换(覆盖)当前光标位置及后面的若干文本
 J            //合并光标所在行及下一行为一行(依然在命令模式)        
-</code></pre><h2 id="移动光标-vi命令模式下使用"><a href="#移动光标-vi命令模式下使用" class="headerlink" title="移动光标(vi命令模式下使用)"></a>移动光标(vi命令模式下使用)</h2><pre><code>&lt;1&gt;、使用上下左右方向键
+</code></pre><h2 id="移动光标（vi命令模式下使用）"><a href="#移动光标（vi命令模式下使用）" class="headerlink" title="移动光标（vi命令模式下使用）"></a>移动光标（vi命令模式下使用）</h2><pre><code>&lt;1&gt;、使用上下左右方向键
 &lt;2&gt;、命令模式下：
 h          向左、l      向右、j              向下 、k            向上。
 Backspace  向左、空格键 向右、Enter  移动到下一行首、-  移动到上一行首。
 &lt;3&gt;  $        跳至行末，0        跳至行首
-</code></pre><h2 id="删除、恢复字符或行-vi命令模式下使用"><a href="#删除、恢复字符或行-vi命令模式下使用" class="headerlink" title="删除、恢复字符或行(vi命令模式下使用)"></a>删除、恢复字符或行(vi命令模式下使用)</h2><pre><code>x             //删除当前字符
+</code></pre><h2 id="删除、恢复字符或行（vi命令模式下使用）"><a href="#删除、恢复字符或行（vi命令模式下使用）" class="headerlink" title="删除、恢复字符或行（vi命令模式下使用）"></a>删除、恢复字符或行（vi命令模式下使用）</h2><pre><code>x             //删除当前字符
 nx             //删除从光标开始的n个字符
 dd          //删除当前行
 ndd           //向下删除当前行在内的n行
 d&lt;enter&gt;    //删除光标所在行及下一行(共计删除2行)
 u           //撤销上一步操作
 U              //撤销对当前行的所有操作        
-</code></pre><h2 id="搜索-vi命令模式下使用"><a href="#搜索-vi命令模式下使用" class="headerlink" title="搜索(vi命令模式下使用)"></a>搜索(vi命令模式下使用)</h2><pre><code>/vpser         //向光标下搜索vpser字符串
+</code></pre><h2 id="搜索（vi命令模式下使用）"><a href="#搜索（vi命令模式下使用）" class="headerlink" title="搜索（vi命令模式下使用）"></a>搜索（vi命令模式下使用）</h2><pre><code>/vpser         //向光标下搜索vpser字符串
 ?vpser         //向光标上搜索vpser字符串
 n               //向下搜索前一个搜素动作
 N             //向上搜索前一个搜索动作        
-</code></pre><h2 id="跳至指定行-vi命令模式下使用"><a href="#跳至指定行-vi命令模式下使用" class="headerlink" title="跳至指定行(vi命令模式下使用)"></a>跳至指定行(vi命令模式下使用)</h2><pre><code>n            //跳n行
+</code></pre><h2 id="跳至指定行（vi命令模式下使用）"><a href="#跳至指定行（vi命令模式下使用）" class="headerlink" title="跳至指定行（vi命令模式下使用）"></a>跳至指定行（vi命令模式下使用）</h2><pre><code>n            //跳n行
 n+            //向下跳n行
 n-             //向上跳n行
-G               //跳至文件的底部        
+G               //跳至文件的底部    
 gg               //跳至文件顶部        
-</code></pre><h2 id="设置行号-vi命令模式下使用"><a href="#设置行号-vi命令模式下使用" class="headerlink" title="设置行号(vi命令模式下使用)"></a>设置行号(vi命令模式下使用)</h2><pre><code>:set  nu         //显示行号
-:set nonu        //取消显示行号        
-</code></pre><h2 id="复制、粘贴-vi命令模式下使用"><a href="#复制、粘贴-vi命令模式下使用" class="headerlink" title="复制、粘贴(vi命令模式下使用)"></a>复制、粘贴(vi命令模式下使用)</h2><pre><code>yy            //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+</code></pre><h2 id="设置行号（vi命令模式下使用）"><a href="#设置行号（vi命令模式下使用）" class="headerlink" title="设置行号（vi命令模式下使用）"></a>设置行号（vi命令模式下使用）</h2><pre><code>:set  nu         //显示行号
+:set nonu        //取消显示行号    
+</code></pre><h2 id="复制、粘贴（vi命令模式下使用）"><a href="#复制、粘贴（vi命令模式下使用）" class="headerlink" title="复制、粘贴（vi命令模式下使用）"></a>复制、粘贴（vi命令模式下使用）</h2><pre><code>yy            //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
 nyy           //将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
 yw            //复制从光标开始到词尾的字符。
 nyw           //复制从光标开始的n个单词。
 y^          //复制从光标到行首的内容。  
 y$          //复制从光标到行尾的内容。
 p           //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。
-P            //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。        
-</code></pre><h2 id="替换-vi命令模式下使用"><a href="#替换-vi命令模式下使用" class="headerlink" title="替换(vi命令模式下使用)"></a>替换(vi命令模式下使用)</h2><pre><code>:s/old/new          //用new替换行中首次出现的old
+P            //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。
+</code></pre><h2 id="替换（vi命令模式下使用）"><a href="#替换（vi命令模式下使用）" class="headerlink" title="替换（vi命令模式下使用）"></a>替换（vi命令模式下使用）</h2><pre><code>:s/old/new          //用new替换行中首次出现的old
 :s/old/new/g        //用new替换行中所有的old
 :n,m s/old/new/g    //用new替换从n到m行里所有的old
 :%s/old/new/g       //用new替换当前文件里所有的old        
@@ -550,8 +552,8 @@ alt +数字        ：    切换至指定的标签页
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Ubuntu16.04安装记录/" rel="next" title="Ubuntu16.04安装记录">
-                <i class="fa fa-chevron-left"></i> Ubuntu16.04安装记录
+              <a href="/Ubuntu 桌面使用命令/" rel="next" title="Ubuntu 桌面使用命令">
+                <i class="fa fa-chevron-left"></i> Ubuntu 桌面使用命令
               </a>
             
           </div>
@@ -560,8 +562,8 @@ alt +数字        ：    切换至指定的标签页
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Ubuntu 桌面使用命令/" rel="prev" title="Ubuntu 桌面使用命令">
-                Ubuntu 桌面使用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/设计模式 - 单例模式/" rel="prev" title="单例模式">
+                单例模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -645,7 +647,7 @@ alt +数字        ：    切换至指定的标签页
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -716,7 +718,7 @@ alt +数字        ：    切换至指定的标签页
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim命令"><span class="nav-number">1.</span> <span class="nav-text">vim命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vi有3个模式：插入模式、命令模式、低行模式。"><span class="nav-number">1.1.</span> <span class="nav-text">vi有3个模式：插入模式、命令模式、低行模式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件、保存、关闭文件-vi命令模式下使用"><span class="nav-number">1.2.</span> <span class="nav-text">打开文件、保存、关闭文件(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-插入文本或行-vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式"><span class="nav-number">1.3.</span> <span class="nav-text">3.插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动光标-vi命令模式下使用"><span class="nav-number">1.4.</span> <span class="nav-text">移动光标(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除、恢复字符或行-vi命令模式下使用"><span class="nav-number">1.5.</span> <span class="nav-text">删除、恢复字符或行(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索-vi命令模式下使用"><span class="nav-number">1.6.</span> <span class="nav-text">搜索(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳至指定行-vi命令模式下使用"><span class="nav-number">1.7.</span> <span class="nav-text">跳至指定行(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置行号-vi命令模式下使用"><span class="nav-number">1.8.</span> <span class="nav-text">设置行号(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制、粘贴-vi命令模式下使用"><span class="nav-number">1.9.</span> <span class="nav-text">复制、粘贴(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换-vi命令模式下使用"><span class="nav-number">1.10.</span> <span class="nav-text">替换(vi命令模式下使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑其他文件"><span class="nav-number">1.11.</span> <span class="nav-text">编辑其他文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件格式"><span class="nav-number">1.12.</span> <span class="nav-text">修改文件格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">1.13.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中vim编辑注意事项"><span class="nav-number">2.</span> <span class="nav-text">Linux中vim编辑注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中Terminal快捷键的使用"><span class="nav-number">3.</span> <span class="nav-text">Linux中Terminal快捷键的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件："><span class="nav-number">3.1.</span> <span class="nav-text">文件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑："><span class="nav-number">3.2.</span> <span class="nav-text">编辑：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看："><span class="nav-number">3.3.</span> <span class="nav-text">查看：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找："><span class="nav-number">3.4.</span> <span class="nav-text">查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签页："><span class="nav-number">3.5.</span> <span class="nav-text">标签页：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim命令"><span class="nav-number">1.</span> <span class="nav-text">vim命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vi有3个模式：插入模式、命令模式、低行模式。"><span class="nav-number">1.1.</span> <span class="nav-text">vi有3个模式：插入模式、命令模式、低行模式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件、保存、关闭文件（vi命令模式下使用）"><span class="nav-number">1.2.</span> <span class="nav-text">打开文件、保存、关闭文件（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）"><span class="nav-number">1.3.</span> <span class="nav-text">3.插入文本或行（vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动光标（vi命令模式下使用）"><span class="nav-number">1.4.</span> <span class="nav-text">移动光标（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除、恢复字符或行（vi命令模式下使用）"><span class="nav-number">1.5.</span> <span class="nav-text">删除、恢复字符或行（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索（vi命令模式下使用）"><span class="nav-number">1.6.</span> <span class="nav-text">搜索（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳至指定行（vi命令模式下使用）"><span class="nav-number">1.7.</span> <span class="nav-text">跳至指定行（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置行号（vi命令模式下使用）"><span class="nav-number">1.8.</span> <span class="nav-text">设置行号（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制、粘贴（vi命令模式下使用）"><span class="nav-number">1.9.</span> <span class="nav-text">复制、粘贴（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换（vi命令模式下使用）"><span class="nav-number">1.10.</span> <span class="nav-text">替换（vi命令模式下使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑其他文件"><span class="nav-number">1.11.</span> <span class="nav-text">编辑其他文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件格式"><span class="nav-number">1.12.</span> <span class="nav-text">修改文件格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">1.13.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中vim编辑注意事项"><span class="nav-number">2.</span> <span class="nav-text">Linux中vim编辑注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中Terminal快捷键的使用"><span class="nav-number">3.</span> <span class="nav-text">Linux中Terminal快捷键的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件："><span class="nav-number">3.1.</span> <span class="nav-text">文件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑："><span class="nav-number">3.2.</span> <span class="nav-text">编辑：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看："><span class="nav-number">3.3.</span> <span class="nav-text">查看：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找："><span class="nav-number">3.4.</span> <span class="nav-text">查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签页："><span class="nav-number">3.5.</span> <span class="nav-text">标签页：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -750,7 +752,7 @@ alt +数字        ：    切换至指定的标签页
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

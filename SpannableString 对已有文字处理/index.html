@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2  关键类：SpannableString">
+<meta name="description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2">
 <meta name="keywords" content="Android,文字处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对已有文字处理">
 <meta property="og:url" content="http://yannischeng.com/SpannableString 对已有文字处理/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2  关键类：SpannableString">
+<meta property="og:description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2009.27.18.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2009.27.06.png">
@@ -97,10 +97,10 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2011.03.05.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2011.05.09.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/430632-355ef15003cec823.gif">
-<meta property="og:updated_time" content="2017-11-27T03:24:11.413Z">
+<meta property="og:updated_time" content="2018-06-08T08:28:38.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对已有文字处理">
-<meta name="twitter:description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2  关键类：SpannableString">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/fan7983377/article/details/51776782参考：http://www.jianshu.com/p/84067ad289d2">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2009.27.18.png">
 
 
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-27T11:24:11+08:00">
-                2017-11-27
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:28:38+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,178 字
+                  1,179 字
                 </span>
               
 
@@ -446,8 +446,9 @@
         <blockquote>
 <p>参考：<a href="http://blog.csdn.net/fan7983377/article/details/51776782" target="_blank" rel="external">http://blog.csdn.net/fan7983377/article/details/51776782</a><br>参考：<a href="http://www.jianshu.com/p/84067ad289d2" target="_blank" rel="external">http://www.jianshu.com/p/84067ad289d2</a></p>
 </blockquote>
-<p>关键类：<strong>SpannableString</strong></p>
 <a id="more"></a>
+<p>[TOC]</p>
+<p>关键类：<strong>SpannableString</strong></p>
 <h1 id="一、一个实例"><a href="#一、一个实例" class="headerlink" title="一、一个实例"></a>一、一个实例</h1><h2 id="1-更改颜色"><a href="#1-更改颜色" class="headerlink" title="1. 更改颜色"></a>1. 更改颜色</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SpannableString mSpanStartTitle = <span class="keyword">new</span> SpannableString(<span class="string">"点击红色按钮开始录音"</span>);</div><div class="line"><span class="comment">//处理 提示文字的 颜色 样式</span></div><div class="line">ForegroundColorSpan colorSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.parseColor(<span class="string">"#C62828"</span>));</div><div class="line">mSpanStartTitle.setSpan(colorSpan, <span class="number">2</span>, <span class="number">4</span>, Spanned.SPAN_INCLUSIVE_INCLUSIVE);</div><div class="line">mNoticeStartTitle.setText(mSpanStartTitle);</div></pre></td></tr></table></figure>
 <h2 id="样式结果"><a href="#样式结果" class="headerlink" title="样式结果"></a>样式结果</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2009.27.18.png" alt=""></p>
 <h2 id="2-更改字体大小"><a href="#2-更改字体大小" class="headerlink" title="2. 更改字体大小"></a>2. 更改字体大小</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//代操作……</span></div><div class="line">SpannableString mSpanNoticeTitle = <span class="keyword">new</span> SpannableString(<span class="string">"正在录音中……"</span> + <span class="string">"\n"</span> + <span class="string">"点击停止录音"</span>);</div><div class="line"><span class="comment">//处理 提示文字的 大小 样式</span></div><div class="line">RelativeSizeSpan sizeSpan01 = <span class="keyword">new</span> RelativeSizeSpan(<span class="number">0.7f</span>);</div><div class="line">mSpanNoticeTitle.setSpan(sizeSpan01,<span class="number">7</span>,mSpanNoticeTitle.length(),Spanned.SPAN_INCLUSIVE_INCLUSIVE);</div><div class="line"><span class="comment">//处理 提示文字的 下标 样式</span></div><div class="line">SubscriptSpan subscriptSpan = <span class="keyword">new</span> SubscriptSpan();</div><div class="line">mSpanNoticeTitle.setSpan(subscriptSpan, <span class="number">7</span>, mSpanNoticeTitle.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);</div><div class="line">mNoticeRecordingTitle.setText(mSpanNoticeTitle);</div></pre></td></tr></table></figure>
@@ -462,44 +463,44 @@
 <li><code>Spanned.SPAN_EXCLUSIVE_EXCLUSIVE</code> 从起始下标到终了下标，但都不包括起始下标和终了下标</li>
 <li><code>Spanned.SPAN_EXCLUSIVE_INCLUSIVE</code> 从起始下标到终了下标，包括终了下标</li>
 </ul>
-<h1 id="五、Span常用格式"><a href="#五、Span常用格式" class="headerlink" title="五、Span常用格式"></a>五、Span常用格式</h1><h4 id="1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似"><a href="#1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似" class="headerlink" title="1. ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor()类似"></a>1. <code>ForegroundColorSpan</code>，为文本设置前景色，效果和TextView的setTextColor()类似</h4><h4 id="2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类"><a href="#2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类" class="headerlink" title="2. BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground()类"></a>2. <code>BackgroundColorSpan</code>，为文本设置背景色，效果和TextView的setBackground()类</h4><h4 id="3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"><a href="#3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小" class="headerlink" title="3. RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"></a>3. <code>RelativeSizeSpan</code>，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;万丈高楼平地起&quot;);
+<h1 id="五、Span常用格式"><a href="#五、Span常用格式" class="headerlink" title="五、Span常用格式"></a>五、Span常用格式</h1><h2 id="1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似"><a href="#1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似" class="headerlink" title="1. ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor()类似"></a>1. <code>ForegroundColorSpan</code>，为文本设置前景色，效果和TextView的setTextColor()类似</h2><h2 id="2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类"><a href="#2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类" class="headerlink" title="2. BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground()类"></a>2. <code>BackgroundColorSpan</code>，为文本设置背景色，效果和TextView的setBackground()类</h2><h2 id="3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"><a href="#3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小" class="headerlink" title="3. RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"></a>3. <code>RelativeSizeSpan</code>，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;万丈高楼平地起&quot;);
 RelativeSizeSpan sizeSpan04 = new RelativeSizeSpan(1.8f);
 spannableString.setSpan(sizeSpan04, 3, 4, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
-</code></pre><h4 id="4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线"><a href="#4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线" class="headerlink" title="4. StrikethroughSpan，为文本设置中划线，也就是常说的删除线"></a>4. <code>StrikethroughSpan</code>，为文本设置中划线，也就是常说的删除线</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置删除线&quot;);
+</code></pre><h2 id="4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线"><a href="#4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线" class="headerlink" title="4. StrikethroughSpan，为文本设置中划线，也就是常说的删除线"></a>4. <code>StrikethroughSpan</code>，为文本设置中划线，也就是常说的删除线</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置删除线&quot;);
 StrikethroughSpan strikethroughSpan = new StrikethroughSpan();
 spannableString.setSpan(strikethroughSpan, 5, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
-</code></pre><h4 id="5-UnderlineSpan，为文本设置下划线，具体实现方法如下："><a href="#5-UnderlineSpan，为文本设置下划线，具体实现方法如下：" class="headerlink" title="5. UnderlineSpan，为文本设置下划线，具体实现方法如下："></a>5. UnderlineSpan，为文本设置下划线，具体实现方法如下：</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置下划线&quot;);
+</code></pre><h2 id="5-UnderlineSpan，为文本设置下划线，具体实现方法如下："><a href="#5-UnderlineSpan，为文本设置下划线，具体实现方法如下：" class="headerlink" title="5. UnderlineSpan，为文本设置下划线，具体实现方法如下："></a>5. UnderlineSpan，为文本设置下划线，具体实现方法如下：</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置下划线&quot;);
 UnderlineSpan underlineSpan = new UnderlineSpan();
 spannableString.setSpan(underlineSpan, 5, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
-</code></pre><h4 id="6-SuperscriptSpan，设置上标，具体实现方法如下："><a href="#6-SuperscriptSpan，设置上标，具体实现方法如下：" class="headerlink" title="6. SuperscriptSpan，设置上标，具体实现方法如下："></a>6. SuperscriptSpan，设置上标，具体实现方法如下：</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置上标&quot;);
+</code></pre><h2 id="6-SuperscriptSpan，设置上标，具体实现方法如下："><a href="#6-SuperscriptSpan，设置上标，具体实现方法如下：" class="headerlink" title="6. SuperscriptSpan，设置上标，具体实现方法如下："></a>6. SuperscriptSpan，设置上标，具体实现方法如下：</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置上标&quot;);
 SuperscriptSpan superscriptSpan = new SuperscriptSpan();
 spannableString.setSpan(superscriptSpan, 5, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2011.01.08.png" alt=""></p>
-<h4 id="7-SubscriptSpan，设置下标，具体实现方法如下："><a href="#7-SubscriptSpan，设置下标，具体实现方法如下：" class="headerlink" title="7. SubscriptSpan，设置下标，具体实现方法如下："></a>7. SubscriptSpan，设置下标，具体实现方法如下：</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置下标&quot;);
+<h2 id="7-SubscriptSpan，设置下标，具体实现方法如下："><a href="#7-SubscriptSpan，设置下标，具体实现方法如下：" class="headerlink" title="7. SubscriptSpan，设置下标，具体实现方法如下："></a>7. SubscriptSpan，设置下标，具体实现方法如下：</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置下标&quot;);
 SubscriptSpan subscriptSpan = new SubscriptSpan();
 spannableString.setSpan(subscriptSpan, 5, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
 
 #### 8. StyleSpan，为文字设置风格（粗体、斜体），和TextView属性textStyle类似，实现方法如下：
-</code></pre><h4 id="8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”"><a href="#8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”" class="headerlink" title="8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);"></a>8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);</h4><pre><code>StyleSpan styleSpan_B  = new StyleSpan(Typeface.BOLD);
+</code></pre><h2 id="8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”"><a href="#8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”" class="headerlink" title="8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);"></a>8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);</h2><pre><code>StyleSpan styleSpan_B  = new StyleSpan(Typeface.BOLD);
 StyleSpan styleSpan_I  = new StyleSpan(Typeface.ITALIC);
 spannableString.setSpan(styleSpan_B, 5, 7, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 spannableString.setSpan(styleSpan_I, 8, 10, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setHighlightColor(Color.parseColor(&quot;#36969696&quot;));
 textView.setText(spannableString);
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2011.03.05.png" alt=""></p>
-<h4 id="9-ImageSpan，设置文本图片"><a href="#9-ImageSpan，设置文本图片" class="headerlink" title="9. ImageSpan，设置文本图片"></a>9. ImageSpan，设置文本图片</h4><pre><code>SpannableString spannableString = new SpannableString(&quot;在文本中添加表情（表情）&quot;);
+<h2 id="9-ImageSpan，设置文本图片"><a href="#9-ImageSpan，设置文本图片" class="headerlink" title="9. ImageSpan，设置文本图片"></a>9. ImageSpan，设置文本图片</h2><pre><code>SpannableString spannableString = new SpannableString(&quot;在文本中添加表情（表情）&quot;);
 Drawable drawable = getResources().getDrawable(R.mipmap.a9c);
 drawable.setBounds(0, 0, 42, 42);
 ImageSpan imageSpan = new ImageSpan(drawable);
 spannableString.setSpan(imageSpan, 6, 8, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 textView.setText(spannableString);
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-27%2011.05.09.png" alt=""></p>
-<h4 id="10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"><a href="#10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义" class="headerlink" title="10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"></a>10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义</h4><p><strong>注意：</strong></p>
+<h2 id="10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"><a href="#10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义" class="headerlink" title="10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"></a>10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义</h2><p><strong>注意：</strong></p>
 <p>使用ClickableSpan的文本如果想真正实现点击作用，必须为TextView设置<strong>setMovementMethod()</strong>方法，否则没有点击相应，至于setHighlightColor方法则是控制点击是的背景色。</p>
 <pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置点击事件&quot;);
 MyClickableSpan clickableSpan = new MyClickableSpan(&quot;http://www.jianshu.com/users/dbae9ac95c78&quot;);
@@ -532,7 +533,7 @@ class MyClickableSpan extends ClickableSpan {
     }
 }
 </code></pre><p><img src="http://oy991qm3u.bkt.clouddn.com/430632-355ef15003cec823.gif" alt=""></p>
-<h4 id="11-URLSpan，设置超链接文本"><a href="#11-URLSpan，设置超链接文本" class="headerlink" title="11. URLSpan，设置超链接文本"></a>11. URLSpan，设置超链接文本</h4><p>URLSpan就是继承自ClickableSpan，就是重写了父类的onClick事件，用系统自带浏览器打开链接。</p>
+<h2 id="11-URLSpan，设置超链接文本"><a href="#11-URLSpan，设置超链接文本" class="headerlink" title="11. URLSpan，设置超链接文本"></a>11. URLSpan，设置超链接文本</h2><p>URLSpan就是继承自ClickableSpan，就是重写了父类的onClick事件，用系统自带浏览器打开链接。</p>
 <pre><code>SpannableString spannableString = new SpannableString(&quot;为文字设置超链接&quot;);
 URLSpan urlSpan = new URLSpan(&quot;http://www.jianshu.com/users/dbae9ac95c78&quot;);
 spannableString.setSpan(urlSpan, 5, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -655,7 +656,7 @@ textView.setText(spannableString);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,7 +727,7 @@ textView.setText(spannableString);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、一个实例"><span class="nav-number">1.</span> <span class="nav-text">一、一个实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-更改颜色"><span class="nav-number">1.1.</span> <span class="nav-text">1. 更改颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式结果"><span class="nav-number">1.2.</span> <span class="nav-text">样式结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-更改字体大小"><span class="nav-number">1.3.</span> <span class="nav-text">2. 更改字体大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式结果-1"><span class="nav-number">1.4.</span> <span class="nav-text">样式结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、SpannableString"><span class="nav-number">2.</span> <span class="nav-text">二、SpannableString</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、SpannableStringBuilder"><span class="nav-number">3.</span> <span class="nav-text">三、SpannableStringBuilder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、重要方法-setSpan"><span class="nav-number">4.</span> <span class="nav-text">四、重要方法 - setSpan()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Span常用格式"><span class="nav-number">5.</span> <span class="nav-text">五、Span常用格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">1. ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor()类似</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">2. BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground()类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">3. RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">4. StrikethroughSpan，为文本设置中划线，也就是常说的删除线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-UnderlineSpan，为文本设置下划线，具体实现方法如下："><span class="nav-number">5.0.0.5.</span> <span class="nav-text">5. UnderlineSpan，为文本设置下划线，具体实现方法如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-SuperscriptSpan，设置上标，具体实现方法如下："><span class="nav-number">5.0.0.6.</span> <span class="nav-text">6. SuperscriptSpan，设置上标，具体实现方法如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-SubscriptSpan，设置下标，具体实现方法如下："><span class="nav-number">5.0.0.7.</span> <span class="nav-text">7. SubscriptSpan，设置下标，具体实现方法如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”"><span class="nav-number">5.0.0.8.</span> <span class="nav-text">8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-ImageSpan，设置文本图片"><span class="nav-number">5.0.0.9.</span> <span class="nav-text">9. ImageSpan，设置文本图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"><span class="nav-number">5.0.0.10.</span> <span class="nav-text">10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-URLSpan，设置超链接文本"><span class="nav-number">5.0.0.11.</span> <span class="nav-text">11. URLSpan，设置超链接文本</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、一个实例"><span class="nav-number">1.</span> <span class="nav-text">一、一个实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-更改颜色"><span class="nav-number">1.1.</span> <span class="nav-text">1. 更改颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式结果"><span class="nav-number">1.2.</span> <span class="nav-text">样式结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-更改字体大小"><span class="nav-number">1.3.</span> <span class="nav-text">2. 更改字体大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式结果-1"><span class="nav-number">1.4.</span> <span class="nav-text">样式结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、SpannableString"><span class="nav-number">2.</span> <span class="nav-text">二、SpannableString</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、SpannableStringBuilder"><span class="nav-number">3.</span> <span class="nav-text">三、SpannableStringBuilder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、重要方法-setSpan"><span class="nav-number">4.</span> <span class="nav-text">四、重要方法 - setSpan()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Span常用格式"><span class="nav-number">5.</span> <span class="nav-text">五、Span常用格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor-类似"><span class="nav-number">5.1.</span> <span class="nav-text">1. ForegroundColorSpan，为文本设置前景色，效果和TextView的setTextColor()类似</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground-类"><span class="nav-number">5.2.</span> <span class="nav-text">2. BackgroundColorSpan，为文本设置背景色，效果和TextView的setBackground()类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小"><span class="nav-number">5.3.</span> <span class="nav-text">3. RelativeSizeSpan，设置文字相对大小，在TextView原有的文字大小的基础上，相对设置文字大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-StrikethroughSpan，为文本设置中划线，也就是常说的删除线"><span class="nav-number">5.4.</span> <span class="nav-text">4. StrikethroughSpan，为文本设置中划线，也就是常说的删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-UnderlineSpan，为文本设置下划线，具体实现方法如下："><span class="nav-number">5.5.</span> <span class="nav-text">5. UnderlineSpan，为文本设置下划线，具体实现方法如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SuperscriptSpan，设置上标，具体实现方法如下："><span class="nav-number">5.6.</span> <span class="nav-text">6. SuperscriptSpan，设置上标，具体实现方法如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-SubscriptSpan，设置下标，具体实现方法如下："><span class="nav-number">5.7.</span> <span class="nav-text">7. SubscriptSpan，设置下标，具体实现方法如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-SpannableString-spannableString-new-SpannableString-“为文字设置粗体、斜体风格”"><span class="nav-number">5.8.</span> <span class="nav-text">8. SpannableString spannableString = new SpannableString(“为文字设置粗体、斜体风格”);</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-ImageSpan，设置文本图片"><span class="nav-number">5.9.</span> <span class="nav-text">9. ImageSpan，设置文本图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义"><span class="nav-number">5.10.</span> <span class="nav-text">10. ClickableSpan，设置可点击的文本，设置这个属性的文本可以相应用户点击事件，至于点击事件用户可以自定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-URLSpan，设置超链接文本"><span class="nav-number">5.11.</span> <span class="nav-text">11. URLSpan，设置超链接文本</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -760,7 +761,7 @@ textView.setText(spannableString);
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

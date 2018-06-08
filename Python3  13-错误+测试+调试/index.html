@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="错误12345678try:    &quot;&quot;&quot;    可能出错的代码块    &quot;&quot;&quot;except ZeroDivisionError as e:    print(&apos;except:&apos;, e)finally:    print(&apos;finally...&apos;)">
+<meta name="description" content="人生苦短，我用Python">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  13-错误+测试+调试">
 <meta property="og:url" content="http://yannischeng.com/Python3  13-错误+测试+调试/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="错误12345678try:    &quot;&quot;&quot;    可能出错的代码块    &quot;&quot;&quot;except ZeroDivisionError as e:    print(&apos;except:&apos;, e)finally:    print(&apos;finally...&apos;)">
+<meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T07:59:28.115Z">
+<meta property="og:updated_time" content="2018-06-08T08:11:42.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  13-错误+测试+调试">
-<meta name="twitter:description" content="错误12345678try:    &quot;&quot;&quot;    可能出错的代码块    &quot;&quot;&quot;except ZeroDivisionError as e:    print(&apos;except:&apos;, e)finally:    print(&apos;finally...&apos;)">
+<meta name="twitter:description" content="人生苦短，我用Python">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:28+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:11:42+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  445 字
+                  453 字
                 </span>
               
 
@@ -434,8 +434,12 @@
       
 
       
-        <h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    可能出错的代码块</span></div><div class="line"><span class="string">    """</span></div><div class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> e:</div><div class="line">    print(<span class="string">'except:'</span>, e)</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    print(<span class="string">'finally...'</span>)</div></pre></td></tr></table></figure>
+        <p><strong>人生苦短，我用Python</strong></p>
 <a id="more"></a>
+<hr>
+<p>[TOC]</p>
+<hr>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    可能出错的代码块</span></div><div class="line"><span class="string">    """</span></div><div class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> e:</div><div class="line">    print(<span class="string">'except:'</span>, e)</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    print(<span class="string">'finally...'</span>)</div></pre></td></tr></table></figure>
 <h2 id="错误特点"><a href="#错误特点" class="headerlink" title="错误特点"></a>错误特点</h2><ol>
 <li><em><code>Python</code>的错误其实也是<code>class</code>，所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，它不但捕获该类型的错误，还把其子类也“一网打尽”。</em></li>
 <li><em>使用<code>try...except</code>捕获错误还有一个巨大的好处，就是可以跨越多层调用，即：不需要在每个可能出错的地方去捕获错误，只要在合适的层次去捕获错误就可以了。比如函数<code>main()</code>调用<code>foo()</code>，<code>foo()</code>调用<code>bar()</code>，结果<code>bar()</code>出错了。这时，只要<code>main()</code>捕获到了就可以处理<code>bar()</code>中的错误。</em></li>
@@ -473,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  10-面向对象+定制对象/" rel="next" title="Python3  10-面向对象+定制对象">
-                <i class="fa fa-chevron-left"></i> Python3  10-面向对象+定制对象
+              <a href="/Python3  12-面向对象+元类/" rel="next" title="Python3  12-面向对象+元类">
+                <i class="fa fa-chevron-left"></i> Python3  12-面向对象+元类
               </a>
             
           </div>
@@ -483,8 +487,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  11-面向对象+枚举/" rel="prev" title="Python3  11-面向对象+枚举">
-                Python3  11-面向对象+枚举 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  14-单元测试/" rel="prev" title="Python3  14-单元测试">
+                Python3  14-单元测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -673,7 +677,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

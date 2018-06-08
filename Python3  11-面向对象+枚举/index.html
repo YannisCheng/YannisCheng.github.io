@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="Python中Enum枚举的实现：http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html  定义常量的一般方法：定义变量推荐的方法为：将枚举类型定义一个class类型。每个常量都是class的唯一实例python提供了Enum来实现枚举功能">
+<meta name="description" content="人生苦短，我用Python">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  11-面向对象+枚举">
 <meta property="og:url" content="http://yannischeng.com/Python3  11-面向对象+枚举/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Python中Enum枚举的实现：http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html  定义常量的一般方法：定义变量推荐的方法为：将枚举类型定义一个class类型。每个常量都是class的唯一实例python提供了Enum来实现枚举功能">
+<meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T07:59:38.420Z">
+<meta property="og:updated_time" content="2018-06-08T08:12:21.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  11-面向对象+枚举">
-<meta name="twitter:description" content="Python中Enum枚举的实现：http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html  定义常量的一般方法：定义变量推荐的方法为：将枚举类型定义一个class类型。每个常量都是class的唯一实例python提供了Enum来实现枚举功能">
+<meta name="twitter:description" content="人生苦短，我用Python">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:38+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:12:21+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  177 字
+                  185 字
                 </span>
               
 
@@ -434,11 +434,15 @@
       
 
       
-        <blockquote>
+        <p><strong>人生苦短，我用Python</strong></p>
+<a id="more"></a>
+<hr>
+<p>[TOC]</p>
+<hr>
+<blockquote>
 <p><code>Python</code>中<code>Enum</code>枚举的实现：<a href="http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html" target="_blank" rel="external">http://www.cnblogs.com/codingmylife/archive/2013/05/31/3110656.html</a></p>
 </blockquote>
 <p>定义常量的一般方法：定义变量<br>推荐的方法为：将枚举类型定义一个<code>class</code>类型。每个常量都是<code>class</code>的唯一实例<br>python提供了Enum来实现枚举功能</p>
-<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 实现方式1</span></div><div class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</div><div class="line"></div><div class="line">Week = Enum(<span class="string">'WeekInfo'</span>, (<span class="string">'Mon'</span>, <span class="string">'Tue'</span>, <span class="string">'Wed'</span>, <span class="string">'Thu'</span>, <span class="string">'Fri'</span>, <span class="string">'Sat'</span>, <span class="string">'Sun'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 实现方式2</span></div><div class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum, unique</div><div class="line"></div><div class="line"><span class="comment"># @unique装饰器检查保证没有重复值</span></div><div class="line"><span class="meta">@unique</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEnum02</span><span class="params">(Enum)</span>:</span></div><div class="line">    Sun = <span class="number">0</span></div><div class="line">    Mon = <span class="number">1</span></div><div class="line">    Tue = <span class="number">2</span></div><div class="line">    Wed = <span class="number">3</span></div><div class="line">    Thu = <span class="number">4</span></div><div class="line">    Fri = <span class="number">5</span></div><div class="line">    Sta = <span class="number">6</span></div><div class="line"></div><div class="line"><span class="comment"># 遍历Enum</span></div><div class="line"><span class="keyword">for</span> name, value <span class="keyword">in</span> Week.__members__.items():</div><div class="line">    print(name, value, m.value)</div><div class="line"></div><div class="line">print(Week.Mon.value)  <span class="comment"># 1</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">Mon WeekInfo.Mon 1</span></div><div class="line"><span class="string">Tue WeekInfo.Tue 2</span></div><div class="line"><span class="string">Wed WeekInfo.Wed 3</span></div><div class="line"><span class="string">Thu WeekInfo.Thu 4</span></div><div class="line"><span class="string">Fri WeekInfo.Fri 5</span></div><div class="line"><span class="string">Sat WeekInfo.Sat 6</span></div><div class="line"><span class="string">Sun WeekInfo.Sun 7</span></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line"><span class="comment"># 使用MyEnum02</span></div><div class="line">print(MyEnum02(<span class="number">1</span>))  <span class="comment"># MyEnum02.Mon</span></div></pre></td></tr></table></figure>
 
       
@@ -461,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  13-错误+测试+调试/" rel="next" title="Python3  13-错误+测试+调试">
-                <i class="fa fa-chevron-left"></i> Python3  13-错误+测试+调试
+              <a href="/Python3  10-面向对象+定制对象/" rel="next" title="Python3  10-面向对象+定制对象">
+                <i class="fa fa-chevron-left"></i> Python3  10-面向对象+定制对象
               </a>
             
           </div>
@@ -547,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +640,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 

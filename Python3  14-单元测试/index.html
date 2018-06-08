@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="“测试驱动开发”（TDD：Test-Driven Development）– 单元测试 是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  在pycharm中创建单元测试 创建参考：http://blog.csdn.net/u013088062/article/details/50183789一个案例：http://www.cnblogs.com/iamjqy/p/7155315">
+<meta name="description" content="人生苦短，我用Python">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  14-单元测试">
 <meta property="og:url" content="http://yannischeng.com/Python3  14-单元测试/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="“测试驱动开发”（TDD：Test-Driven Development）– 单元测试 是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  在pycharm中创建单元测试 创建参考：http://blog.csdn.net/u013088062/article/details/50183789一个案例：http://www.cnblogs.com/iamjqy/p/7155315">
+<meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T07:59:23.315Z">
+<meta property="og:updated_time" content="2018-06-08T08:38:38.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  14-单元测试">
-<meta name="twitter:description" content="“测试驱动开发”（TDD：Test-Driven Development）– 单元测试 是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  在pycharm中创建单元测试 创建参考：http://blog.csdn.net/u013088062/article/details/50183789一个案例：http://www.cnblogs.com/iamjqy/p/7155315">
+<meta name="twitter:description" content="人生苦短，我用Python">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-02T15:59:23+08:00">
-                2017-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:38:38+08:00">
+                2018-06-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  493 字
+                  501 字
                 </span>
               
 
@@ -434,7 +434,12 @@
       
 
       
-        <ul>
+        <p><strong>人生苦短，我用Python</strong></p>
+<a id="more"></a>
+<hr>
+<p>[TOC]</p>
+<hr>
+<ul>
 <li>“测试驱动开发”（TDD：Test-Driven Development）– 单元测试</li>
 <li>是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</li>
 </ul>
@@ -445,7 +450,6 @@
 <ul>
 <li>选中待要编写测试代码的类名 –&gt; 右键 选择 <code>Go To</code> –&gt; <code>Test Object</code></li>
 </ul>
-<a id="more"></a>
 <h2 id="单元测试实现"><a href="#单元测试实现" class="headerlink" title="单元测试实现"></a>单元测试实现</h2><h3 id="待测试类代码"><a href="#待测试类代码" class="headerlink" title="待测试类代码"></a>待测试类代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDict</span><span class="params">(dict)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, **kwargs)</span>:</span></div><div class="line">        super().__init__(**kwargs)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            <span class="keyword">return</span> self[item]</div><div class="line">        <span class="keyword">except</span> KeyError:</div><div class="line">            <span class="keyword">raise</span> AttributeError(<span class="string">r"'MyDict' object has no attribute '%s'"</span> % item)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        self[key]  = value</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, m, n)</span>:</span></div><div class="line">        print(<span class="string">"%d + %d = %d"</span> % (m, n, (m+n)))</div></pre></td></tr></table></figure>
 <h3 id="单元测试类代码"><a href="#单元测试类代码" class="headerlink" title="单元测试类代码"></a>单元测试类代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> unittest <span class="keyword">import</span> TestCase</div><div class="line"></div><div class="line"><span class="keyword">from</span> py_unittext_14.MyDict <span class="keyword">import</span> MyDict</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestMyDict</span><span class="params">(TestCase)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># setUp与tearDown</span></div><div class="line">    <span class="comment"># 这两个方法会分别在每调用一个测试方法的前后分别被执行。</span></div><div class="line">    <span class="comment"># setUp()和tearDown()方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在setUp()方法中连接数据库，在tearDown()方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'setUp...'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'tearDown...'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_add</span><span class="params">(self)</span>:</span></div><div class="line">        d = MyDict(name=<span class="string">'程文佳'</span>, age=<span class="string">'24'</span>, city=<span class="string">'Tianjin'</span>)</div><div class="line">        self.assertEqual(d.name, <span class="string">'程文佳'</span>)</div><div class="line">        self.assertEqual(d[<span class="string">'name'</span>], <span class="string">'程文佳'</span>)</div><div class="line">        print(d.name)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_add2</span><span class="params">(self)</span>:</span></div><div class="line">        d = MyDict(name=<span class="string">'程文佳'</span>, age=<span class="string">'24'</span>, city=<span class="string">'Tianjin'</span>)</div><div class="line">        d.add(<span class="number">3</span>, <span class="number">4</span>)</div></pre></td></tr></table></figure>
 <h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">setUp...</div><div class="line">程文佳</div><div class="line">tearDown...</div><div class="line"></div><div class="line">setUp...</div><div class="line"><span class="number">3</span> + <span class="number">4</span> = <span class="number">7</span></div><div class="line">tearDown...</div><div class="line"></div><div class="line">Ran <span class="number">2</span> tests <span class="keyword">in</span> <span class="number">0.002</span>s</div><div class="line"></div><div class="line">OK</div></pre></td></tr></table></figure>
@@ -476,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  12-面向对象+元类/" rel="next" title="Python3  12-面向对象+元类">
-                <i class="fa fa-chevron-left"></i> Python3  12-面向对象+元类
+              <a href="/Python3  13-错误+测试+调试/" rel="next" title="Python3  13-错误+测试+调试">
+                <i class="fa fa-chevron-left"></i> Python3  13-错误+测试+调试
               </a>
             
           </div>
@@ -571,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -676,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">159.7k</span>
+    <span title="Site words total count">162.3k</span>
   
 </div>
 
