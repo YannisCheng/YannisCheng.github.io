@@ -85,7 +85,7 @@ $(document).ready(function () {
     toggleEl: $('.sidebar-toggle'),
     dimmerEl: $('#sidebar-dimmer'),
     sidebarEl: $('.sidebar'),
-    isSidebarVisible: false,
+    isSidebarVisible: true,
     init: function () {
       this.toggleEl.on('click', this.clickHandler.bind(this));
       this.dimmerEl.on('click', this.clickHandler.bind(this));
