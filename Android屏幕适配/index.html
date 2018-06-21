@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="屏幕适配总结">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android屏幕适配">
+<meta property="og:url" content="http://yannischeng.com/Android屏幕适配/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="屏幕适配总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/944365-2b5dc928ab334440.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20180104101943074.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/1404647552_9043.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/944365-c583e1356f18e329.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20151123092229176.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-20%2020.58.59.png">
+<meta property="og:updated_time" content="2018-06-21T06:57:50.277Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android屏幕适配">
+<meta name="twitter:description" content="屏幕适配总结">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/944365-2b5dc928ab334440.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android屏幕适配/"/>
+
+
+
+
+
+  <title>Android屏幕适配 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android屏幕适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android屏幕适配</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T08:44:12+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-21T14:57:50+08:00">
+                2018-06-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,524 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android屏幕适配/" title="Android屏幕适配">http://yannischeng.com/Android屏幕适配/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>屏幕适配总结</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/xxf377376701/article/details/78925646" target="_blank" rel="external">https://blog.csdn.net/xxf377376701/article/details/78925646</a><br>参考：<a href="https://www.jianshu.com/p/cd66b7e01d4a" target="_blank" rel="external">https://www.jianshu.com/p/cd66b7e01d4a</a></p>
+</blockquote>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><ul>
+<li><p><strong>计算公式：</strong></p>
+<ul>
+<li><p>px = density（基准比例） * dp;</p>
+</li>
+<li><p>density（基准比例） = dpi / 160;</p>
+</li>
+<li><p>px = dp * (dpi / 160);</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>参数获取方式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DisplayMetrics dm = new DisplayMetrics();</div><div class="line">getWindowManager().getDefaultDisplay().getMetrics(dm);</div><div class="line"></div><div class="line">dm.ydpi;     //得到物理屏幕上 Y 轴方向每英寸的像素</div><div class="line">dm.xdpi;     //得到物理屏幕上 X 轴方向每英寸的像素</div><div class="line"></div><div class="line">dm.density;           //获取当前设备的基准比例</div><div class="line">dm.densityDpi;        //获取系统dpi，随着 build.prop 文件中的代码而改变。</div><div class="line"></div><div class="line">dm.widthPixels;       //获取屏幕宽度的像素数量</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>屏幕尺寸：inch</strong></p>
+<p>手机对角线的物理尺寸，单位：英寸（inch），1英寸=2.54cm。</p>
+</li>
+<li><p><strong>屏幕分辨率：px</strong></p>
+<p>手机在横向、纵向上的像素点数总和。一般描述成屏幕的”宽x高”=AxB。例子：1080x1920，即宽度方向上有1080个像素点，在高度方向上有1920个像素点</p>
+<p>单位：px（pixel），1px=1像素点。</p>
+</li>
+<li><p><strong>屏幕像素密度：dpi</strong></p>
+<p>每英寸的像素点数，单位：dpi（dots per ich）。假设设备内每英寸有160个像素，那么该设备的屏幕像素密度=160dpi。</p>
+<p><strong>安卓手机对于每类手机屏幕大小都有一个相应的屏幕像素密度：</strong></p>
+<p>密度类型|代表的分辨率（px）|屏幕像素密度（dpi）<br>—|—|—<br>低密度（ldpi）|240x320    |120<br>中密度（mdpi）|    320x480    |160<br>高密度（hdpi）|    480x800    |240<br>超高密度（xhdpi）    |720x1280    |320<br>超超高密度（xxhdpi）    |1080x1920    |480</p>
+</li>
+<li><p><strong>屏幕尺寸、分辨率、像素密度 3者关系</strong></p>
+</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/944365-2b5dc928ab334440.png" alt=""></p>
+<ul>
+<li><strong>密度无关像素：dp/dip</strong></li>
+</ul>
+<p>Density-independent pixel，与终端上的实际物理像素点无关，以保证在不同屏幕像素密度的设备上显示相同的效果。</p>
+<p>标准是160dip。<strong>即1dp对应1个pixel</strong>，计算公式如：<code>px = dp * (dpi / 160)</code> 。即：屏幕密度越大，<code>1dp</code> 对应 的像素点越多。</p>
+<ul>
+<li><strong>独立比例像素：sp/sip</strong></li>
+</ul>
+<p>scale-independent pixel，单位：sp。Android开发时用此单位设置文字大小，可根据字体大小首选项进行缩放。</p>
+<ul>
+<li><strong>dp与px的转换</strong></li>
+</ul>
+<p><strong>px = dp * (dpi / 160);</strong></p>
+<p>在Android中，规定以160dpi（即屏幕分辨率为320x480）为基准：1dp=1px</p>
+<table>
+<thead>
+<tr>
+<th>密度类型</th>
+<th>代表的分辨率（px）</th>
+<th>屏幕密度（dpi）</th>
+<th>换算（px/dp）</th>
+<th>比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低密度（ldpi）</td>
+<td>240x320</td>
+<td>120</td>
+<td>1dp=0.75px</td>
+<td>3</td>
+</tr>
+<tr>
+<td>中密度（mdpi）</td>
+<td>320x480</td>
+<td>160</td>
+<td>1dp=1px</td>
+<td>4</td>
+</tr>
+<tr>
+<td>高密度（hdpi）</td>
+<td>480x800</td>
+<td>240</td>
+<td>1dp=1.5px</td>
+<td>6</td>
+</tr>
+<tr>
+<td>超高密度（xhdpi）</td>
+<td>720x1280</td>
+<td>320</td>
+<td>1dp=2px</td>
+<td>8</td>
+</tr>
+<tr>
+<td>超超高密度（xxhdpi）</td>
+<td>1080x1920</td>
+<td>480</td>
+<td>1dp=3px</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Android中资源限定符的 优先级顺序 及 匹配关系</strong></li>
+</ul>
+<p>参考：<a href="https://blog.csdn.net/jamikabin/article/details/50541652" target="_blank" rel="external">https://blog.csdn.net/jamikabin/article/details/50541652</a></p>
+<p>详细：<a href="https://www.jianshu.com/p/1d0bfbdaab17?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="external">https://www.jianshu.com/p/1d0bfbdaab17?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<h1 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h1><p><strong>碎片化</strong></p>
+<ul>
+<li>Android系统</li>
+<li>Android屏幕尺寸</li>
+<li>Android屏幕分辨率</li>
+</ul>
+<p><strong>适配</strong></p>
+<p>本质：使得“布局”、“布局组件”、“图片资源”匹配不同的屏幕尺寸。</p>
+<h2 id="图片资源匹配"><a href="#图片资源匹配" class="headerlink" title="图片资源匹配"></a>图片资源匹配</h2><p><strong>本质：使得图片资源在不同屏幕密度上显示相同的像素效果。</strong></p>
+<ul>
+<li>使用自动拉伸位图：<code>Nine-Patch</code> 的图片类型，后缀名是.9.png，放置在 <code>drawable文件夹即可</code>。</li>
+</ul>
+<p>4个方向 <strong>黑线</strong> 的作用</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/20180104101943074.png" alt=""></p>
+<p> 参考：<br> <a href="https://blog.csdn.net/zhaokaiqiang1992/article/details/45419023#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E4%BC%B8%E4%BD%8D%E5%9B%BE" target="_blank" rel="external">https://blog.csdn.net/zhaokaiqiang1992/article/details/45419023#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E4%BC%B8%E4%BD%8D%E5%9B%BE</a></p>
+<p> <a href="https://www.jb51.net/article/77482.htm" target="_blank" rel="external">https://www.jb51.net/article/77482.htm</a></p>
+<p> <a href="https://blog.csdn.net/oudetu/article/details/78968067" target="_blank" rel="external">https://blog.csdn.net/oudetu/article/details/78968067</a></p>
+<p> UI设计师的.9.PNG：<a href="https://www.zcool.com.cn/article/ZMTExODI4.html" target="_blank" rel="external">https://www.zcool.com.cn/article/ZMTExODI4.html</a></p>
+<ul>
+<li>根据各个密度文件夹 <code>drawable-</code> 生成相关的切图。理论上来说只需要提供一种分辨率规格的图片资源就可以了，重点是选择哪一中屏幕密度的文件夹。</li>
+</ul>
+<hr>
+<h3 id="Android-图片文件处理"><a href="#Android-图片文件处理" class="headerlink" title="Android 图片文件处理"></a>Android 图片文件处理</h3><p>Android SDK会根据 <strong>屏幕密</strong> 度自动选择 <strong>对应的资源文件</strong> 进行渲染加载。如果屏幕所对应的文件夹没有要找的图片，这个时候就需要根据一定的策略去寻找图片了。</p>
+<h4 id="Android系统寻找图片的步骤"><a href="#Android系统寻找图片的步骤" class="headerlink" title="Android系统寻找图片的步骤"></a>Android系统寻找图片的步骤</h4><ol>
+<li>到 对应密度屏幕文件夹 中寻找，有就用；</li>
+<li>若没有，到比此密度文件夹高一级的 密度文件夹 中寻找，有就用；</li>
+<li>若 上一级文件夹也没有，则继续向上级寻找；</li>
+<li>如果到了 顶级密度文件夹中 仍没有图片，则到比自己低的密度文件夹中寻找，以此类推。<strong>注意：若当前查找的密度文件夹为：<code>mhpi</code>，且此文件夹中没有图片，则是直接到<code>drawable</code>中查找。若<code>drawable</code>中没有，则向<code>ldpi</code>文件夹中寻找</strong></li>
+</ol>
+<h4 id="Android-对图片的缩放"><a href="#Android-对图片的缩放" class="headerlink" title="Android 对图片的缩放"></a>Android 对图片的缩放</h4><p>对于放在不同目录下的图片， 系统会按照一定比例对原始的图片进行放大或者缩小，</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/1404647552_9043.png" alt=""></p>
+<hr>
+<h2 id="布局控件匹配-基本"><a href="#布局控件匹配-基本" class="headerlink" title="布局控件匹配-基本"></a>布局控件匹配-基本</h2><p><strong>限定符</strong>的使用参考：<a href="https://blog.csdn.net/lecepin/article/details/51206896" target="_blank" rel="external">https://blog.csdn.net/lecepin/article/details/51206896</a></p>
+<p><strong>本质：使得布局组件在不同屏幕密度上显示相同的像素效果。</strong></p>
+<ul>
+<li>多使用相对布局</li>
+<li><p>使用”wrap_content”、”match_parent”和”weight“来控制视图组件的宽度和高度。</p>
+</li>
+<li><p>使用<strong>密度无关像素</strong> ：由于各种屏幕的像素密度都有所不同，因此相同数量的像素在不同设备上的实际大小也有所差异，这样使用像素（px）定义布局尺寸就会产生问题。<br>因此，使用密度无关像素 dp 或独立比例像素 sp 单位指定尺寸。</p>
+</li>
+</ul>
+<p><strong><code>dp</code>能兼容不同分辨率的设备的原因</strong><br>参考：<a href="https://www.jianshu.com/p/cd66b7e01d4a" target="_blank" rel="external">https://www.jianshu.com/p/cd66b7e01d4a</a></p>
+<p><strong><code>dpi</code> 是内置的，例如在 1920*1080 分辨率的手机上 默认就使用<code>480 的 dpi</code> ，不管的你的尺寸是多大都是这样，除非厂家手动修改了配置文件。</strong></p>
+<p> 亲自尝试一下以验证：</p>
+<p> <strong>.xml文件中：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;TextView    </div><div class="line">  android:id=&quot;@+id/tv&quot;   </div><div class="line">  android:layout_width=&quot;200dp&quot;    </div><div class="line">  android:layout_height=&quot;100dp&quot;    </div><div class="line">  android:text=&quot;Hello World!&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>按照我们之前的公式手动计算，结果应为：</p>
+<pre><code>height = 100 x 445 / 160 = 278.5px
+width  = 200 x 445 / 160 = 556.25px
+</code></pre><p><strong>.java文件中：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">layout = (RelativeLayout)findViewById(R.id.la);</div><div class="line">//要在控件绘制完成后才能获取到相关信息，所以这里要监听绘制状态</div><div class="line">layout.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()     &#123;    </div><div class="line">  public boolean onPreDraw() &#123;        </div><div class="line">    Log.d(&quot;hehehe&quot;, textView.getHeight() + &quot;/&quot; + textView.getWidth());       </div><div class="line">    return true;    </div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>内部实际计算过程为：</p>
+<pre><code>height = 100 x 480 / 160 = 300px
+width  = 200 x 480 / 160 = 600px
+</code></pre><p>这是因为手机中的 <code>/system/build.prop</code> 文件，其中有一行是这样：</p>
+<pre><code>ro.sf.lcd_density=480
+</code></pre><p>这就指定了这个机型使用的<code>dpi</code>是多少。<strong>在系统中使用的全部都是系统 dpi，没有使用物理 dpi，也获取不到物理 dpi。物理 dpi 主要用于厂家对于手机的参数描述。</strong></p>
+<hr>
+<p><strong>但是：</strong></p>
+<p> Android屏幕设备的多样性，如果使用dp来作为度量单位，并不是所有的屏幕的宽度都具备相同的dp长度。</p>
+<p><strong>为什么？</strong><br> 假设我们UI设计图是按屏幕宽度为360dp来设计的，那么在上述设备上，屏幕宽度其实为1080/(440/160)=392.7dp，也就是屏幕是比设计图要宽的。这种情况下， 即使使用dp也是无法在不同设备上显示为同样效果的。 同时还存在部分设备屏幕宽度不足360dp，这时就会导致按360dp宽度来开发实际显示不全的情况。</p>
+<p> 而且上述屏幕尺寸、分辨率和像素密度的关系，很多设备并没有按此规则来实现， 因此dpi的值非常乱，没有规律可循，从而导致使用dp适配效果差强人意。</p>
+<p><strong>所以说：</strong></p>
+<p> <code>dp</code> 解决了<strong>同一数值</strong>在不同分辨率中展示相同（相似）尺寸大小的问题（即<strong>屏幕像素密度匹配</strong>问题）;<br>没有解决设备尺寸大小匹配的问题。（即<strong>屏幕尺寸匹配</strong>问题）。</p>
+<hr>
+<p><strong>总结</strong></p>
+<ul>
+<li>因为屏幕密度（分辨率）不一样，所以不能用固定的px</li>
+<li>因为屏幕宽度不一样，所以要小心的用dp</li>
+</ul>
+<p>因为本质上是希望使得布局组件在不同屏幕密度上显示相同的像素效果，那么，之前是绕了个弯使用dp解决这个问题，==那么到底能不能直接用px解决呢==？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">即根据不同屏幕密度，控件选择对应的像素值大小。</div></pre></td></tr></table></figure>
+<h2 id="升级配置方式1：百分比法"><a href="#升级配置方式1：百分比法" class="headerlink" title="升级配置方式1：百分比法"></a>升级配置方式1：百分比法</h2><ul>
+<li><p><strong>以某一分辨率为基准，生成所有分辨率对应像素数列表</strong></p>
+<ul>
+<li>以某一分辨率为基准，生成所有分辨率对应像素数列表</li>
+<li>将生成像素数列表存放在res目录下对应的values文件下</li>
+<li>根据UI设计师给出设计图上的尺寸，找到对应像素数的单位，然后设置给控件即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-以320x480的分辨率为基准："><a href="#1-以320x480的分辨率为基准：" class="headerlink" title="1. 以320x480的分辨率为基准："></a>1. 以<strong>320x480的分辨率为基准</strong>：</h3><ul>
+<li>将屏幕的宽度分为320份，取值为x1~x320。</li>
+<li><p>将屏幕的高度分为480份，取值为y1~y480。</p>
+<p><strong>lay_x.xml（宽）</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;dimen name=&quot;x1&quot;&gt;1.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x2&quot;&gt;2.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x3&quot;&gt;3.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x4&quot;&gt;4.0px&lt;/dimen&gt;</div><div class="line">	...</div><div class="line">	&lt;dimen name=&quot;x316&quot;&gt;316.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x317&quot;&gt;317.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x318&quot;&gt;318.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x319&quot;&gt;319.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x320&quot;&gt;320px&lt;/dimen&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p><strong>lay_y.xml（高）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;dimen name=&quot;y1&quot;&gt;1.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y2&quot;&gt;2.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y3&quot;&gt;3.0px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y4&quot;&gt;4.0px&lt;/dimen&gt;</div><div class="line">	...</div><div class="line">	&lt;dimen name=&quot;y480&quot;&gt;480px&lt;/dimen&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p><strong>生成其他分辨率的文件</strong></p>
+<p>如：写1080x1920的分辨率</p>
+<pre><code>因为基准是320x480，所以 宽：1080/320=3.375px，高：1920/480=4px。
+</code></pre><p>所以相应文件应该是：</p>
+<p><strong>lay_x.xml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;dimen name=&quot;x1&quot;&gt;3.375px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x2&quot;&gt;6.65px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x3&quot;&gt;10.125px&lt;/dimen&gt;</div><div class="line">	...</div><div class="line">	&lt;dimen name=&quot;x320&quot;&gt;1080px&lt;/dimen&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p><strong>lay_y.xml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;dimen name=&quot;y1&quot;&gt;4px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y2&quot;&gt;8px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y3&quot;&gt;12px&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;y4&quot;&gt;16px&lt;/dimen&gt;</div><div class="line">	...</div><div class="line">	&lt;dimen name=&quot;y480&quot;&gt;1920px&lt;/dimen&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p><strong>不同分辨率下生成不同的像素列表工具：</strong></p>
+<blockquote>
+<p><a href="https://github.com/hongyangAndroid/Android_Blog_Demos/tree/master/blogcodes/src/main/java/com/zhy/blogcodes/genvalues" target="_blank" rel="external">https://github.com/hongyangAndroid/Android_Blog_Demos/tree/master/blogcodes/src/main/java/com/zhy/blogcodes/genvalues</a></p>
+</blockquote>
+<p>例如：需要设置的基准是800x1280，额外支持尺寸：735x1152 ；3200x4500；</p>
+<pre><code>java -jar 文件名.jar 800 1280 735，1152_3200,4500
+</code></pre><h3 id="2-将生成像素数列表存放在res目录下对应的values文件下"><a href="#2-将生成像素数列表存放在res目录下对应的values文件下" class="headerlink" title="2. 将生成像素数列表存放在res目录下对应的values文件下"></a>2. 将生成像素数列表存放在res目录下对应的values文件下</h3><p>将生成像素数列表（lay_x.xml和lay_y.xml）存放在res目录下对应的values文件</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/944365-c583e1356f18e329.jpg" alt=""></p>
+<p><strong>注：</strong></p>
+<ul>
+<li><code>values-480x320</code> 是分辨率限定符</li>
+<li>必须在 <code>默认values</code> 里面也创建对应 <code>默认lay_x.xml</code> 和 <code>lay_y.xml</code> 文件</li>
+</ul>
+<p>lay_x.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">	&lt;dimen name=&quot;x1&quot;&gt;1.0dp&lt;/dimen&gt;</div><div class="line">	&lt;dimen name=&quot;x2&quot;&gt;2.0dp&lt;/dimen&gt;</div><div class="line">	...</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>对于没有生成对应分辨率文件的手机，会使用 <code>默认values</code> 文件夹，如果默认values文件夹没有（即没有对应的分辨率、没有对应dimen）就会报错，从而无法进行屏幕适配。</p>
+<p>对应单位改为dp，而不同于上面的px。因为不知道机型的分辨率，所以默认分辨率文件只好默认为x1=1dp以保证尽量兼容（又回到dp老方法了），这也是这个解决方案的一个弊端.</p>
+</li>
+</ul>
+<h3 id="3-根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可"><a href="#3-根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可" class="headerlink" title="3. 根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可."></a>3. 根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Button</div><div class="line">        android:layout_gravity=&quot;center&quot;</div><div class="line">        android:gravity=&quot;center&quot;</div><div class="line">        android:text=&quot;@string/hello_world&quot;</div><div class="line">        android:layout_width=&quot;@dimen/x160&quot;</div><div class="line">        android:layout_height=&quot;@dimen/y160&quot;/&gt;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>使用的是 <code>px</code> 而非 <code>dp</code> ，未能使用 <code>google</code> 提倡的使用方式。</li>
+<li><code>Material Design</code> 提供的设计规范参考在实际开发中无法得到应用。如：间距一般为 8 的倍数，8，16，32等。</li>
+<li>生成的 <code>values-</code> 文件无法动态覆盖所有机型，只能是手动编写已知机型的相关文件。</li>
+<li>后期维护麻烦。</li>
+</ul>
+<h1 id="AutoLayout-使用"><a href="#AutoLayout-使用" class="headerlink" title="AutoLayout 使用"></a>AutoLayout 使用</h1><blockquote>
+<p>博客：<a href="https://blog.csdn.net/lmj623565791/article/details/49990941" target="_blank" rel="external">https://blog.csdn.net/lmj623565791/article/details/49990941</a><br>GitHub：<a href="https://github.com/hongyangAndroid/AndroidAutoLayout" target="_blank" rel="external">https://github.com/hongyangAndroid/AndroidAutoLayout</a></p>
+</blockquote>
+<p>作者原话：</p>
+<p><strong>那么首先说一下：这个1px并不代表1像素，我在内部会进行百分比化处理，也就是说：720px高度的屏幕，你这里填写72px，占据10%；当这个布局文件运行在任何分辨率的手机上，这个72px都代表10%的高度，这就是本库适配的原理。</strong></p>
+<p>根据设计图的 <code>px</code> 数值<strong>直接</strong>填写到 <code>xml</code> 的标签中。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/20151123092229176.jpg" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><code>AutoLayout</code>的使用方式之一就是在<code>xml文件</code>中的控件标签中直接使用<code>com.zhy.autolayout.AutoLinearLayout</code>。所以在<br><code>AutoAttr</code> 类中：比较<code>auto</code>字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean log = view.getTag() != null &amp;&amp; view.getTag().toString().equals(&quot;auto&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>ScreenUtils</code> 类，设备宽、高数据的获取：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">public class ScreenUtils</div><div class="line">&#123;</div><div class="line"></div><div class="line">    public static int getStatusBarHeight(Context context)</div><div class="line">    &#123;</div><div class="line">        int result = 0;</div><div class="line">        try</div><div class="line">        &#123;</div><div class="line">            int resourceId = context.getResources().getIdentifier(&quot;status_bar_height&quot;, &quot;dimen&quot;, &quot;android&quot;);</div><div class="line">            if (resourceId &gt; 0)</div><div class="line">            &#123;</div><div class="line">                result = context.getResources().getDimensionPixelSize(resourceId);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (Resources.NotFoundException e)</div><div class="line">        &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static int[] getScreenSize(Context context, boolean useDeviceSize)</div><div class="line">    &#123;</div><div class="line"></div><div class="line">        int[] size = new int[2];</div><div class="line"></div><div class="line">        WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        Display d = w.getDefaultDisplay();</div><div class="line">        DisplayMetrics metrics = new DisplayMetrics();</div><div class="line">        d.getMetrics(metrics);</div><div class="line">// since SDK_INT = 1;</div><div class="line">        int widthPixels = metrics.widthPixels;</div><div class="line">        int heightPixels = metrics.heightPixels;</div><div class="line"></div><div class="line">        if (!useDeviceSize)</div><div class="line">        &#123;</div><div class="line">            size[0] = widthPixels;</div><div class="line">            size[1] = heightPixels - getStatusBarHeight(context);</div><div class="line"></div><div class="line">            return size;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">// includes window decorations (statusbar bar/menu bar)</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 14 &amp;&amp; Build.VERSION.SDK_INT &lt; 17)</div><div class="line">            try</div><div class="line">            &#123;</div><div class="line">                widthPixels = (Integer) Display.class.getMethod(&quot;getRawWidth&quot;).invoke(d);</div><div class="line">                heightPixels = (Integer) Display.class.getMethod(&quot;getRawHeight&quot;).invoke(d);</div><div class="line">            &#125; catch (Exception ignored)</div><div class="line">            &#123;</div><div class="line">            &#125;</div><div class="line">// includes window decorations (statusbar bar/menu bar)</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 17)</div><div class="line">            try</div><div class="line">            &#123;</div><div class="line">                Point realSize = new Point();</div><div class="line">                Display.class.getMethod(&quot;getRealSize&quot;, Point.class).invoke(d, realSize);</div><div class="line">                widthPixels = realSize.x;</div><div class="line">                heightPixels = realSize.y;</div><div class="line">            &#125; catch (Exception ignored)</div><div class="line">            &#123;</div><div class="line">            &#125;</div><div class="line">        size[0] = widthPixels;</div><div class="line">        size[1] = heightPixels;</div><div class="line">        return size;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>AutoLayoutConifg</code>类，自己设置的宽、高数据的获取：</li>
+</ul>
+<p>获取在<code>AndroidManifest.xml</code>文件中获取的设置宽、高参数：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-20%2020.58.59.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">private void getMetaData(Context context)</div><div class="line">&#123;</div><div class="line">	...</div><div class="line">    applicationInfo = packageManager.getApplicationInfo(context</div><div class="line">                .getPackageName(), PackageManager.GET_META_DATA);</div><div class="line">        if (applicationInfo != null &amp;&amp; applicationInfo.metaData != null)</div><div class="line">        &#123;</div><div class="line">            mDesignWidth = (int) applicationInfo.metaData.get(KEY_DESIGN_WIDTH);</div><div class="line">            mDesignHeight = (int) applicationInfo.metaData.get(KEY_DESIGN_HEIGHT);</div><div class="line">        &#125;</div><div class="line">     ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>AutoLayoutConifg</code>类在 <code>AutoLayoutHelper</code> 、<code>AutoUtils</code> 、<code>UseDeviceSizeApplication</code> 中被调用</li>
+</ul>
+<p>在 <code>AutoUtils</code> 中的作用为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">会直接将view的LayoutParams上设置的width，height直接进行百分比处理</div></pre></td></tr></table></figure>
+<p>在<code>UseDeviceSizeApplication</code>中进行<code>Application</code>初始化操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class UseDeviceSizeApplication extends Application</div><div class="line">&#123;</div><div class="line">    @Override</div><div class="line">    public void onCreate()</div><div class="line">    &#123;</div><div class="line">        super.onCreate();</div><div class="line">        AutoLayoutConifg.getInstance().useDeviceSize().init(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>AutoLayoutHelper</code>中进行<strong>初始化</strong>和<strong>检查操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">private void initAutoLayoutConfig(ViewGroup host)</div><div class="line">&#123;</div><div class="line">    mAutoLayoutConifg = AutoLayoutConifg.getInstance();</div><div class="line">    mAutoLayoutConifg.init(host.getContext());</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public void adjustChildren()</div><div class="line">&#123;</div><div class="line">    AutoLayoutConifg.getInstance().checkParams();</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>AutoLayoutHelper</code>在<code>AutoLinearLayout</code>中的作用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</div><div class="line">&#123;</div><div class="line">    if (!isInEditMode())</div><div class="line">        mHelper.adjustChildren();</div><div class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>AutoLayoutActivity</code>的作用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class AutoLayoutActivity extends FragmentActivity &#123;</div><div class="line">    private static final String LAYOUT_LINEARLAYOUT = &quot;LinearLayout&quot;;</div><div class="line">    private static final String LAYOUT_FRAMELAYOUT = &quot;FrameLayout&quot;;</div><div class="line">    private static final String LAYOUT_RELATIVELAYOUT = &quot;RelativeLayout&quot;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public View onCreateView(String name, Context context, AttributeSet attrs) &#123;</div><div class="line">        View view = null;</div><div class="line">        if (name.equals(LAYOUT_FRAMELAYOUT)) &#123;</div><div class="line">            view = new AutoFrameLayout(context, attrs);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (name.equals(LAYOUT_LINEARLAYOUT)) &#123;</div><div class="line">            view = new AutoLinearLayout(context, attrs);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (name.equals(LAYOUT_RELATIVELAYOUT)) &#123;</div><div class="line">            view = new AutoRelativeLayout(context, attrs);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (view != null) return view;</div><div class="line"></div><div class="line">        return super.onCreateView(name, context, attrs);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>是做了name的判断，<br>如果是属性中的3中Layout，会自动替换成对应的AutoXXXLayout </p>
+<pre><code>LinearLayout -&gt; AutoLinearLayout
+RelativeLayout -&gt; AutoRelativeLayout
+FrameLayout -&gt; AutoFrameLayout
+</code></pre><p>如果不是，直接调用父类的View onCreateView（String name，Context context，AttributeSet attrs）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android内存相关/" rel="next" title="Android内存相关">
+                <i class="fa fa-chevron-left"></i> Android内存相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配"><span class="nav-number">2.</span> <span class="nav-text">适配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图片资源匹配"><span class="nav-number">2.1.</span> <span class="nav-text">图片资源匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-图片文件处理"><span class="nav-number">2.1.1.</span> <span class="nav-text">Android 图片文件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android系统寻找图片的步骤"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Android系统寻找图片的步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-对图片的缩放"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Android 对图片的缩放</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局控件匹配-基本"><span class="nav-number">2.2.</span> <span class="nav-text">布局控件匹配-基本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级配置方式1：百分比法"><span class="nav-number">2.3.</span> <span class="nav-text">升级配置方式1：百分比法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-以320x480的分辨率为基准："><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 以320x480的分辨率为基准：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将生成像素数列表存放在res目录下对应的values文件下"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 将生成像素数列表存放在res目录下对应的values文件下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 根据UI设计设计图上的尺寸，找到对应像素数的单位，设置给控件即可.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AutoLayout-使用"><span class="nav-number">3.</span> <span class="nav-text">AutoLayout 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">3.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">169.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
