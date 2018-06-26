@@ -91,10 +91,16 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="参考：https://developer.android.google.cn/guide/topics/connectivity/bluetooth.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T07:02:24.963Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/u=1416040336,3208991526&fm=27&gp=0.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/d009b3de9c82d1587b429de9800a19d8bd3e42a2.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/359b033b5bb5c9ea10eb64c0d539b6003af3b3fc.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/1806858-80fcbfee9e8266d2.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/1806858-b642475951354ea2.png">
+<meta property="og:updated_time" content="2018-06-25T08:04:13.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android传统蓝牙开发">
 <meta name="twitter:description" content="参考：https://developer.android.google.cn/guide/topics/connectivity/bluetooth.html">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/u=1416040336,3208991526&fm=27&gp=0.jpg">
 
 
 
@@ -312,8 +318,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:02:24+08:00">
-                2018-06-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-25T16:04:13+08:00">
+                2018-06-25
               </time>
             
           </span>
@@ -362,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,875 字
+                  4,999 字
                 </span>
               
 
@@ -378,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10 分钟
+                  18 分钟
                 </span>
               
             </div>
@@ -439,9 +445,67 @@
 </blockquote>
 <a id="more"></a>
 <p>[TOC]</p>
-<h1 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h1><ul>
-<li><strong>RFCOMM</strong> ：串行电缆仿真协议。</li>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/u=1416040336,3208991526&amp;fm=27&amp;gp=0.jpg" alt=""></p>
+<h1 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h1><p>这项无线技术的名称取自古代丹麦维京国王Harald Blåtand的名字，他以统一了因宗教战争和领土争议而分裂的挪威与丹麦而闻名于世，而这个名字的英文便是Harald Bluetooth。</p>
+<p>“Bluetooth”一词是斯堪的纳维亚语言词汇Blåtand/Blåtann的英语化。这个词的来源是10世纪丹麦和挪威国王蓝牙哈拉尔（丹麦语：Harald Blåtand Gormsen），借国王的绰号“Blåtand”当名称，直接翻译成中文为“蓝牙”（blå＝蓝，tand＝牙）。2006年，蓝牙技术联盟组织已将全球中文译名统一改采直译为“蓝牙”，并注册为该组织的注册商标。</p>
+<p>蓝牙的<strong>标志</strong>是<strong>卢恩字母</strong> Runic letter ior.svg（Hagall，ᚼ）和 Runic letter berkanan.svg（Bjarkan，ᛒ）的组合，也就<strong>是Harald Blåtand的首字母HB的合写</strong>。</p>
+<p>这是一种<strong>无线通讯技术标准</strong>，用来让固定与移动设备，在<strong>短距离间交换数据</strong>，以形成个人局域网（PAN）。其使用短波特高频（UHF）无线电波，经由2.4至2.485 GHz的ISM频段来进行通信。1994年由电信商<strong>爱立信</strong>（Ericsson）发展出这个技术。它最初的设计，是希望创建一个<strong>RS-232数据线</strong>的无线通信替代版本。它能够链接多个设备，克服同步的问题。</p>
+<p>蓝牙2.1+EDR/3.0+HS版本(通常指“<strong>标准蓝牙技术</strong>”)与<strong>蓝牙低能耗(BLE)技术</strong>有许多共同点：它们都是低成本、短距离、可互操作的鲁棒性无线技术，工作在免许可的2.4GHz ISM射频频段。</p>
+<p>重要区别：蓝牙低能耗技术从一开始就设计为<strong>超低功耗(ULP)无线技术</strong>，而标准蓝牙技术<strong>主要是能够构成</strong>“低功耗的”无线连接。</p>
+<h1 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h1><p>蓝牙技术分为<strong>基础率/增强数据率（BR/EDR）</strong>和<strong>低耗能（LE）</strong>两种技术类型。其中BR/EDR型是以点对点网络拓扑结构创建<strong>一对一</strong>设备通信；LE型则使用<strong>点对点（一对一）、广播（一对多）和网格（多对多）等</strong>多种网络拓扑结构</p>
+<h1 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h1><blockquote>
+<p>不同版本的特性，参考:<a href="http://www.eepw.com.cn/article/201709/364609.htm" target="_blank" rel="external">http://www.eepw.com.cn/article/201709/364609.htm</a></p>
+</blockquote>
+<ul>
+<li>第三代，2009年4月21日，蓝牙技术联盟颁布了蓝牙核心规范<strong>3.0版（3.0+HS）</strong>，是一种全新的交替射频技术。蓝牙3.0+HS提高了数据传输速率，集成802.11PAL最高速度可达<strong>24Mbps</strong>。是蓝牙2.0速度的8倍。此外，引入了增强电源控制，<strong>实际空闲功耗明显降低</strong>。</li>
+<li><p>第四代，2010年7月7日，蓝牙技术联盟推出了蓝牙<strong>4.0规范</strong>。其最重要的特性是<strong>支持省电</strong>。Bluetooth 4.0是Bluetooth从诞生至今唯一的一个综合协议规范。还提出了<strong>“低功耗蓝牙”、“传统蓝牙”和“高速蓝牙”</strong>三种模式。</p>
+<ul>
+<li><strong>高速蓝牙主</strong>：攻数据交换与传输；</li>
+<li><strong>传统蓝牙</strong>：则以信息沟通、设备连接为重点；</li>
+<li><p><strong>蓝牙低功耗</strong>：顾名思义，以不需占用太多带宽的设备连接为主。前身其实是<strong>NOKIA开发的Wibree技术</strong>，本是作为一项<strong>专为移动设备开发的极低功耗的移动无线通信技术</strong>，在被SIG接纳并规范化之后重命名为<strong>Bluetooth Low Energy（后简称低功耗蓝牙）</strong>。</p>
+<p>这三种协议规范还能够互相组合搭配、从而实现更广泛的应用模式，此外，Bluetooth 4.0还把蓝牙的传输距离提升到<strong>100米以上（低功耗模式条件下）</strong></p>
+<p>2013年底，蓝牙技术联盟推出了<strong>蓝牙4.1规范</strong>，其目的是为了让 Bluetooth Smart 技术最终成为<strong>物联网(Internet of Things)发展的核心动力</strong>。</p>
+</li>
 </ul>
+</li>
+<li>第五代，在2016年6月宣布<strong>蓝牙5.0</strong>。在有效传输距离上将是4.2LE版本的4倍（<strong>理论上可达300米）</strong>，传输速度将是4.2LE版本的2倍（速度上限为24Mbps）。蓝牙5.0还<strong>支持室内定位导航功能（结合WiFi可以实现精度小于1米的室内定位）</strong>，允许无需配对接受信标的数据（比如广告、Beacon、位置信息等，传输率提高了8倍），针对<strong>物联网</strong>进行了很多底层优化。</li>
+</ul>
+<h1 id="相关名词"><a href="#相关名词" class="headerlink" title="相关名词"></a>相关名词</h1><h2 id="ISM频段"><a href="#ISM频段" class="headerlink" title="ISM频段"></a>ISM频段</h2><p><strong>ISM频段</strong>（Industrial Scientific Medical Band），中文意思分别是<strong>工业的(Industrial)、科学的(Scientific)和医学的(Medical)</strong>，因此顾名思义ISM频段就是各国挪出某一段频段主要开放给工业，科学和医学机构使用。应用这些频段无需许可证或费用，只需要遵守一定的发射功率（一般低于1W），并且不要对其它频段造成干扰即可。ISM频段在各国的规定并不统一。因此无线局域网（IEEE 802.11b/IEEE 802.11g），蓝牙，ZigBee等无线网络，均可工作在2.4GHz频段上。</p>
+<h2 id="RS-232"><a href="#RS-232" class="headerlink" title="RS-232"></a>RS-232</h2><p>个人计算机上的<strong>通讯接口</strong>之一，由电子工业协会(Electronic Industries Association，EIA) 所制定的<strong>异步传输标准接口</strong>。通常 RS-232 接口以9个引脚 (DB-9) 或是25个引脚 (DB-25) 的型态出现，一般个人计算机上会有两组 RS-232 接口，分别称为 COM1 和 COM2。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/d009b3de9c82d1587b429de9800a19d8bd3e42a2.jpg" alt=""></p>
+<h2 id="rs232（9针）接口"><a href="#rs232（9针）接口" class="headerlink" title="rs232（9针）接口"></a>rs232（9针）接口</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/359b033b5bb5c9ea10eb64c0d539b6003af3b3fc.jpg" alt=""></p>
+<h2 id="蓝牙技术联盟（Bluetooth-Special-Interest-Group：SIG）"><a href="#蓝牙技术联盟（Bluetooth-Special-Interest-Group：SIG）" class="headerlink" title="蓝牙技术联盟（Bluetooth Special Interest Group：SIG）"></a>蓝牙技术联盟（Bluetooth Special Interest Group：SIG）</h2><p>其拥有蓝牙的商标，负责制定蓝牙规范、认证制造厂商，授权他们使用蓝牙技术与蓝牙标志，但本身不负责蓝牙设备的设计、生产及贩售。</p>
+<h2 id="蓝牙协议堆栈"><a href="#蓝牙协议堆栈" class="headerlink" title="蓝牙协议堆栈"></a>蓝牙协议堆栈</h2><p>依照其<strong>功能</strong>可分四层：</p>
+<ul>
+<li>核心协议层（HCI、LMP、L2CAP、SDP）</li>
+<li>线缆替换协议层（RFCOMM）</li>
+<li>电话控制协议层（TCS-BIN）</li>
+<li>选用协议层（PPP、TCP、IP、UDP、OBEX、IrMC、WAP、WAE）</li>
+</ul>
+<h2 id="蓝牙规范（Profile）"><a href="#蓝牙规范（Profile）" class="headerlink" title="蓝牙规范（Profile）"></a>蓝牙规范（Profile）</h2><blockquote>
+<p>更多参考：<a href="https://zh.wikipedia.org/wiki/%E8%97%8D%E7%89%99%E8%A6%8F%E7%AF%84" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%E8%97%8D%E7%89%99%E8%A6%8F%E7%AF%84</a></p>
+</blockquote>
+<h3 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h3><p>其是指蓝牙通信在哪<strong>一种用途下应该使用的通信协议和相关的规范</strong>。Profile目的是要确保Bluetooth设备间的互通性（interoperability）。<strong>Profile</strong>中文译名有很多，比如配置文件，剖面，应用协议，轮廓等，每一种翻译代表了一种对于profile的不同理解，<strong> 剖面 </strong>这个说法可能更贴切一点。</p>
+<p>因为profile其实是蓝牙对应于<strong>每一个具体的应用场景</strong>以及<strong>每一种应用</strong>的<strong>不同的协议栈</strong>，也就是说它其实是实现某种功能对应的<strong>自下而上的协议的组合</strong>。类似于对于<strong>横向协议的纵向组合</strong>。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/1806858-80fcbfee9e8266d2.png" alt=""></p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>porile之间也并非平行的关系，他们是<strong>相互依赖组合构成</strong>的，存在<strong>明显的层级关系</strong>的。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/1806858-b642475951354ea2.png" alt=""></p>
+<p>蓝牙1.1定义的profile有13个。SIG认为蓝牙设备有4个最基本的Profile：</p>
+<ul>
+<li><p><strong>通用接入剖面</strong>：General Access Profile（<strong>GAP</strong>）</p>
+<p>  定义两个蓝牙单元如何<strong>发现</strong>对方并<strong>建立连接</strong>，保证两个蓝牙单元，无论其生产厂商及进行的应用，可以通过蓝牙交换信息从而发现个单元支持何种应用。<strong>所有蓝牙单元都必须支持GAP以保证基本的互操作性和共存性</strong>。</p>
+</li>
+<li><p><strong>服务发现应用剖面</strong>：Service Discovery Application Profile（<strong>SDAP</strong>）</p>
+<p>  定义<strong>如何发现蓝牙单元支持的业务</strong>，该剖面可以用来搜索已知的特定业务，也可以用来进行普通业务浏览搜索。</p>
+</li>
+<li><p><strong>串行端口剖面</strong>：Serial Port Profile（<strong>SPP</strong>）</p>
+<p>  定义<strong>如何在两个设备之间建立虚拟串行端口，并用蓝牙将其连接</strong>。采用串行端口剖面可在蓝牙单元上<strong>仿真基于RS-232控制信令的串行线缆</strong>，该剖面可保证高达<strong>128kbit/s</strong>的数据速率。</p>
+</li>
+<li><p><strong>普通对象交换剖面</strong>：General Object Exchange Profile（<strong>GOEP</strong>）</p>
+<p>  定义<strong>处理对象交换</strong>的应用需采用的协议和程序，基于GOEP的应用模型（如文件传输、同步等）假定链路和信道已经建立如GAP所述，GOEP描述从一个蓝牙设备Push数据到另一个蓝牙设备的程序，还规定如何在两个单元之间Pull数据。</p>
+</li>
+</ul>
+<h2 id="干扰"><a href="#干扰" class="headerlink" title="干扰"></a>干扰</h2><p>Bluetooth在2.4GHz的电波干扰问题一直为大家所诟病，特别和无线局域网间的互相干扰问题。有干扰发生时，就以<strong>重新发送数据包</strong>的方法来解决干扰。</p>
 <h1 id="Android-传统蓝牙-Bluetooth-API"><a href="#Android-传统蓝牙-Bluetooth-API" class="headerlink" title="Android 传统蓝牙 Bluetooth API"></a>Android 传统蓝牙 Bluetooth API</h1><p>传统蓝牙适用于电池使用强度较大的操作，例如 Android 设备之间的流式传输和通信等。使用 Bluetooth API，Android 应用可执行以下操作：</p>
 <ul>
 <li>扫描其他蓝牙设备</li>
@@ -525,8 +589,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/关于蓝牙 Bluetooth 技术/" rel="next" title="关于蓝牙(Bluetooth)技术">
-                <i class="fa fa-chevron-left"></i> 关于蓝牙(Bluetooth)技术
+              <a href="/Android BLE 蓝牙开发/" rel="next" title="Android BLE 蓝牙开发">
+                <i class="fa fa-chevron-left"></i> Android BLE 蓝牙开发
               </a>
             
           </div>
@@ -620,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -642,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -691,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#名词"><span class="nav-number">1.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-传统蓝牙-Bluetooth-API"><span class="nav-number">2.</span> <span class="nav-text">Android 传统蓝牙 Bluetooth API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">3.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Android-Bluetooth-API-来完成使用蓝牙进行通信的四项主要任务："><span class="nav-number">3.1.</span> <span class="nav-text">使用 Android Bluetooth API 来完成使用蓝牙进行通信的四项主要任务：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建蓝牙连接所需的类和接口："><span class="nav-number">3.2.</span> <span class="nav-text">创建蓝牙连接所需的类和接口：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothAdapter"><span class="nav-number">3.2.1.</span> <span class="nav-text">BluetoothAdapter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothDevice"><span class="nav-number">3.2.2.</span> <span class="nav-text">BluetoothDevice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothServerSocket"><span class="nav-number">3.2.3.</span> <span class="nav-text">BluetoothServerSocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothClass"><span class="nav-number">3.2.4.</span> <span class="nav-text">BluetoothClass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHeadset"><span class="nav-number">3.2.5.</span> <span class="nav-text">BluetoothHeadset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothA2dp"><span class="nav-number">3.2.6.</span> <span class="nav-text">BluetoothA2dp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealth"><span class="nav-number">3.2.7.</span> <span class="nav-text">BluetoothHealth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealthCallback"><span class="nav-number">3.2.8.</span> <span class="nav-text">BluetoothHealthCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealthAppConfiguration"><span class="nav-number">3.2.9.</span> <span class="nav-text">BluetoothHealthAppConfiguration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothProfile-ServiceListener"><span class="nav-number">3.2.10.</span> <span class="nav-text">BluetoothProfile.ServiceListener</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蓝牙权限"><span class="nav-number">4.</span> <span class="nav-text">蓝牙权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置蓝牙"><span class="nav-number">5.</span> <span class="nav-text">设置蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取BluetoothAdapter，并检测设备是否支持蓝牙"><span class="nav-number">5.1.</span> <span class="nav-text">获取BluetoothAdapter，并检测设备是否支持蓝牙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用蓝牙"><span class="nav-number">5.2.</span> <span class="nav-text">启用蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进行判断之后，监听用户的操作："><span class="nav-number">5.2.1.</span> <span class="nav-text">进行判断之后，监听用户的操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式1：-重写onActivityResult"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">方式1： 重写onActivityResult()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式2：侦听-ACTION-STATE-CHANGED-广播-Intent"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">方式2：侦听 ACTION_STATE_CHANGED 广播 Intent</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找设备"><span class="nav-number">6.</span> <span class="nav-text">查找设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查询已配对的设备"><span class="nav-number">6.1.</span> <span class="nav-text">查询已配对的设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发现设备"><span class="nav-number">6.2.</span> <span class="nav-text">发现设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用可检测性"><span class="nav-number">6.3.</span> <span class="nav-text">启用可检测性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接设备"><span class="nav-number">7.</span> <span class="nav-text">连接设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接为服务器"><span class="nav-number">7.1.</span> <span class="nav-text">连接为服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接为客户端"><span class="nav-number">7.2.</span> <span class="nav-text">连接为客户端</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#蓝牙"><span class="nav-number">1.</span> <span class="nav-text">蓝牙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作方式"><span class="nav-number">2.</span> <span class="nav-text">工作方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发展"><span class="nav-number">3.</span> <span class="nav-text">发展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关名词"><span class="nav-number">4.</span> <span class="nav-text">相关名词</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ISM频段"><span class="nav-number">4.1.</span> <span class="nav-text">ISM频段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RS-232"><span class="nav-number">4.2.</span> <span class="nav-text">RS-232</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rs232（9针）接口"><span class="nav-number">4.3.</span> <span class="nav-text">rs232（9针）接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝牙技术联盟（Bluetooth-Special-Interest-Group：SIG）"><span class="nav-number">4.4.</span> <span class="nav-text">蓝牙技术联盟（Bluetooth Special Interest Group：SIG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝牙协议堆栈"><span class="nav-number">4.5.</span> <span class="nav-text">蓝牙协议堆栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝牙规范（Profile）"><span class="nav-number">4.6.</span> <span class="nav-text">蓝牙规范（Profile）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#释义"><span class="nav-number">4.6.1.</span> <span class="nav-text">释义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">4.6.2.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#干扰"><span class="nav-number">4.7.</span> <span class="nav-text">干扰</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-传统蓝牙-Bluetooth-API"><span class="nav-number">5.</span> <span class="nav-text">Android 传统蓝牙 Bluetooth API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">6.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Android-Bluetooth-API-来完成使用蓝牙进行通信的四项主要任务："><span class="nav-number">6.1.</span> <span class="nav-text">使用 Android Bluetooth API 来完成使用蓝牙进行通信的四项主要任务：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建蓝牙连接所需的类和接口："><span class="nav-number">6.2.</span> <span class="nav-text">创建蓝牙连接所需的类和接口：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothAdapter"><span class="nav-number">6.2.1.</span> <span class="nav-text">BluetoothAdapter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothDevice"><span class="nav-number">6.2.2.</span> <span class="nav-text">BluetoothDevice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothServerSocket"><span class="nav-number">6.2.3.</span> <span class="nav-text">BluetoothServerSocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothClass"><span class="nav-number">6.2.4.</span> <span class="nav-text">BluetoothClass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHeadset"><span class="nav-number">6.2.5.</span> <span class="nav-text">BluetoothHeadset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothA2dp"><span class="nav-number">6.2.6.</span> <span class="nav-text">BluetoothA2dp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealth"><span class="nav-number">6.2.7.</span> <span class="nav-text">BluetoothHealth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealthCallback"><span class="nav-number">6.2.8.</span> <span class="nav-text">BluetoothHealthCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothHealthAppConfiguration"><span class="nav-number">6.2.9.</span> <span class="nav-text">BluetoothHealthAppConfiguration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BluetoothProfile-ServiceListener"><span class="nav-number">6.2.10.</span> <span class="nav-text">BluetoothProfile.ServiceListener</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蓝牙权限"><span class="nav-number">7.</span> <span class="nav-text">蓝牙权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置蓝牙"><span class="nav-number">8.</span> <span class="nav-text">设置蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取BluetoothAdapter，并检测设备是否支持蓝牙"><span class="nav-number">8.1.</span> <span class="nav-text">获取BluetoothAdapter，并检测设备是否支持蓝牙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用蓝牙"><span class="nav-number">8.2.</span> <span class="nav-text">启用蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进行判断之后，监听用户的操作："><span class="nav-number">8.2.1.</span> <span class="nav-text">进行判断之后，监听用户的操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式1：-重写onActivityResult"><span class="nav-number">8.2.1.1.</span> <span class="nav-text">方式1： 重写onActivityResult()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式2：侦听-ACTION-STATE-CHANGED-广播-Intent"><span class="nav-number">8.2.1.2.</span> <span class="nav-text">方式2：侦听 ACTION_STATE_CHANGED 广播 Intent</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找设备"><span class="nav-number">9.</span> <span class="nav-text">查找设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查询已配对的设备"><span class="nav-number">9.1.</span> <span class="nav-text">查询已配对的设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发现设备"><span class="nav-number">9.2.</span> <span class="nav-text">发现设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用可检测性"><span class="nav-number">9.3.</span> <span class="nav-text">启用可检测性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接设备"><span class="nav-number">10.</span> <span class="nav-text">连接设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接为服务器"><span class="nav-number">10.1.</span> <span class="nav-text">连接为服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接为客户端"><span class="nav-number">10.2.</span> <span class="nav-text">连接为客户端</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -725,7 +789,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">168.7k</span>
+    <span title="Site words total count">180.8k</span>
   
 </div>
 
