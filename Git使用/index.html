@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Git的使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T11:42:14.219Z">
+<meta property="og:updated_time" content="2018-06-29T11:47:06.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git使用">
 <meta name="twitter:description" content="Git的使用">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T19:42:14+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T19:47:06+08:00">
                 2018-06-29
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,117 字
+                  2,116 字
                 </span>
               
 
@@ -648,20 +648,57 @@
 <li>创建</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch dev</div><div class="line">git checkout dev</div></pre></td></tr></table></figure>
-<p>等价于：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev</div><div class="line">``` </div><div class="line"></div><div class="line">先**创建dev分支**，后并**自动切换到该分支**。</div><div class="line">注意：使用分支时，先将未提交的文件暂存（stash），然后 `git checkout` 分支名。</div><div class="line"></div><div class="line">- 合并</div><div class="line"></div><div class="line">合并 ‘分支名’到master分支中</div></pre></td></tr></table></figure>
-<p>git merge 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">同上。不同：合并后，连同**时间线**也会一同合并</div></pre></td></tr></table></figure></p>
-<p>git rebase 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 提交，将 ‘分支名‘推送至远程仓库中</div></pre></td></tr></table></figure></p>
-<p>git push origin 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除 分支名</div></pre></td></tr></table></figure></p>
-<p>git branch -d 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">#### 创建Tag</div><div class="line"></div><div class="line">- 查看tag信息</div></pre></td></tr></table></figure></p>
-<p>git tag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 创建普通Tag。这种创建方式的tag默认会在记录的最后提交</div></pre></td></tr></table></figure></p>
-<p>git tag version1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 通过`commit id`指定创建tag的地方</div></pre></td></tr></table></figure></p>
-<p>git tag version1 bs234242（一般6、7位即可）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `-a` 表示指定tag名；`-m` 表示指定注释的文字</div></pre></td></tr></table></figure></p>
-<p>git tag -a version1 -m ”“ daf3413144134<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 删除Tag</div><div class="line"></div><div class="line">- 删除指定参数的tag</div></pre></td></tr></table></figure></p>
-<p>git tag -d 参数（version1）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">- 删除远程仓库中的tag，应先删除本地的tag</div></pre></td></tr></table></figure></p>
-<p>git push origin :refs/tags/version1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行上一条语句，然后再执行此条命令</div><div class="line"></div><div class="line">#### 提交</div><div class="line"></div><div class="line">- 将指定名字的tag推送至远程仓库中</div></pre></td></tr></table></figure></p>
-<p>git push origin tag参数（version1）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 将本地所有的tag推送至远程仓库</div></pre></td></tr></table></figure></p>
-<p>git push origin - -tags<br>```</p>
+<p>等价于</p>
+<pre><code>git checkout -b dev
+</code></pre><p>先<strong>创建dev分支</strong>，后并<strong>自动切换到该分支</strong>。<br>注意：使用分支时，先将未提交的文件暂存（stash），然后 <code>git checkout</code> 分支名。</p>
+<ul>
+<li>合并</li>
+</ul>
+<p>合并 ‘分支名’到master分支中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge 分支名</div></pre></td></tr></table></figure>
+<p>同上。不同：合并后，连同<strong>时间线</strong>也会一同合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase 分支名</div></pre></td></tr></table></figure>
+<ul>
+<li>提交，将 ‘分支名‘推送至远程仓库中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 分支名</div></pre></td></tr></table></figure>
+<ul>
+<li>删除 分支名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d 分支名</div></pre></td></tr></table></figure>
+<h4 id="创建Tag"><a href="#创建Tag" class="headerlink" title="创建Tag"></a>创建Tag</h4><ul>
+<li>查看tag信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag</div></pre></td></tr></table></figure>
+<ul>
+<li>创建普通Tag。这种创建方式的tag默认会在记录的最后提交</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag version1</div></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>commit id</code>指定创建tag的地方</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag version1 bs234242（一般6、7位即可）：</div></pre></td></tr></table></figure>
+<ul>
+<li><code>-a</code> 表示指定tag名；<code>-m</code> 表示指定注释的文字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag -a version1 -m ”“ daf3413144134</div></pre></td></tr></table></figure>
+<h4 id="删除Tag"><a href="#删除Tag" class="headerlink" title="删除Tag"></a>删除Tag</h4><ul>
+<li>删除指定参数的tag</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag -d 参数（version1）</div></pre></td></tr></table></figure>
+<ul>
+<li>删除远程仓库中的tag，应先删除本地的tag</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :refs/tags/version1</div></pre></td></tr></table></figure>
+<p>执行上一条语句，然后再执行此条命令</p>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><ul>
+<li>将指定名字的tag推送至远程仓库中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin tag参数（version1）</div></pre></td></tr></table></figure>
+<ul>
+<li>将本地所有的tag推送至远程仓库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin - -tags</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -845,7 +882,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#版本系统的分类："><span class="nav-number">1.</span> <span class="nav-text">版本系统的分类：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git介绍："><span class="nav-number">2.</span> <span class="nav-text">Git介绍：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git使用"><span class="nav-number">3.</span> <span class="nav-text">Git使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github身份认证："><span class="nav-number">3.1.</span> <span class="nav-text">Github身份认证：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git命令操作："><span class="nav-number">3.2.</span> <span class="nav-text">Git命令操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见Git命令"><span class="nav-number">3.2.1.</span> <span class="nav-text">常见Git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动一个工作区"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">启动一个工作区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对当前变化的工作"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">对当前变化的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查历史和状态"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">检查历史和状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支、合并、差异"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">分支、合并、差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程操作"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">远程操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看相关"><span class="nav-number">3.2.2.</span> <span class="nav-text">查看相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置相关"><span class="nav-number">3.2.3.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库管理"><span class="nav-number">3.2.4.</span> <span class="nav-text">仓库管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容的-add、commit"><span class="nav-number">3.2.4.2.</span> <span class="nav-text">内容的 add、commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push-提交"><span class="nav-number">3.2.4.3.</span> <span class="nav-text">push - 提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pull-更新"><span class="nav-number">3.2.4.4.</span> <span class="nav-text">pull - 更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-回退-checkout（文件回退）-amp-reset（版本回退）"><span class="nav-number">3.2.4.5.</span> <span class="nav-text">git 回退 - checkout（文件回退） & reset（版本回退）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单个文件回退——add之后的。"><span class="nav-number">3.2.4.5.1.</span> <span class="nav-text">单个文件回退——add之后的。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退——commit之后的"><span class="nav-number">3.2.4.5.2.</span> <span class="nav-text">版本回退——commit之后的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">3.2.4.6.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存"><span class="nav-number">3.2.4.7.</span> <span class="nav-text">暂存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支"><span class="nav-number">3.2.4.8.</span> <span class="nav-text">分支</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#版本系统的分类："><span class="nav-number">1.</span> <span class="nav-text">版本系统的分类：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git介绍："><span class="nav-number">2.</span> <span class="nav-text">Git介绍：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git使用"><span class="nav-number">3.</span> <span class="nav-text">Git使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github身份认证："><span class="nav-number">3.1.</span> <span class="nav-text">Github身份认证：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git命令操作："><span class="nav-number">3.2.</span> <span class="nav-text">Git命令操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见Git命令"><span class="nav-number">3.2.1.</span> <span class="nav-text">常见Git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动一个工作区"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">启动一个工作区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对当前变化的工作"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">对当前变化的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查历史和状态"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">检查历史和状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支、合并、差异"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">分支、合并、差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程操作"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">远程操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看相关"><span class="nav-number">3.2.2.</span> <span class="nav-text">查看相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置相关"><span class="nav-number">3.2.3.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库管理"><span class="nav-number">3.2.4.</span> <span class="nav-text">仓库管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容的-add、commit"><span class="nav-number">3.2.4.2.</span> <span class="nav-text">内容的 add、commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push-提交"><span class="nav-number">3.2.4.3.</span> <span class="nav-text">push - 提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pull-更新"><span class="nav-number">3.2.4.4.</span> <span class="nav-text">pull - 更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-回退-checkout（文件回退）-amp-reset（版本回退）"><span class="nav-number">3.2.4.5.</span> <span class="nav-text">git 回退 - checkout（文件回退） & reset（版本回退）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单个文件回退——add之后的。"><span class="nav-number">3.2.4.5.1.</span> <span class="nav-text">单个文件回退——add之后的。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退——commit之后的"><span class="nav-number">3.2.4.5.2.</span> <span class="nav-text">版本回退——commit之后的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">3.2.4.6.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存"><span class="nav-number">3.2.4.7.</span> <span class="nav-text">暂存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支"><span class="nav-number">3.2.4.8.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Tag"><span class="nav-number">3.2.4.9.</span> <span class="nav-text">创建Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除Tag"><span class="nav-number">3.2.4.10.</span> <span class="nav-text">删除Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交"><span class="nav-number">3.2.4.11.</span> <span class="nav-text">提交</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
