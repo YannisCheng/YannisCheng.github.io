@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Git的使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T11:37:36.014Z">
+<meta property="og:updated_time" content="2018-06-29T11:42:14.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git使用">
 <meta name="twitter:description" content="Git的使用">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T19:37:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T19:42:14+08:00">
                 2018-06-29
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,119 字
+                  2,117 字
                 </span>
               
 
@@ -546,8 +546,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global --add user.name 名字 user.email 邮箱</div></pre></td></tr></table></figure>
 <p>删除配置:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global --unset user.name 名字</div></pre></td></tr></table></figure>
-<h3 id="仓库管理"><a href="#仓库管理" class="headerlink" title="仓库管理"></a>仓库管理</h3><p>####创建</p>
-<ul>
+<h3 id="仓库管理"><a href="#仓库管理" class="headerlink" title="仓库管理"></a>仓库管理</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ul>
 <li>1、创建仓库方式1 - 自己创建一个仓库：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
@@ -558,32 +557,99 @@
 <p>此时，git自动把本地的master分支与远程的master分支对应了起来，且远程仓库默认名称为：origin。创建单个文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git touch 文件名</div></pre></td></tr></table></figure>
 <p>注意：提交之后使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">``` </div><div class="line"></div><div class="line">查看仓库中文件的状态</div><div class="line"></div><div class="line">####  内容的 add &amp; commit</div><div class="line"></div><div class="line">- 添加单个文件</div></pre></td></tr></table></figure>
-<p>git add 文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 添加所有未提交的文件</div></pre></td></tr></table></figure></p>
-<p>git add .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 提交注释、说明</div></pre></td></tr></table></figure></p>
-<p>git commit -m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 追加修改，将之前的-m信息改为现在的-m信息</div></pre></td></tr></table></figure></p>
-<p>git commit -amend -m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 将本地代码仓库添加至远程仓库，其中‘origin’指的是远程仓库的名字，是默认的名字。</div></pre></td></tr></table></figure></p>
-<p>git remote add origin git@……<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">注意：提交之后使用</div></pre></td></tr></table></figure></p>
-<p>git log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">查看仓库中文件的提交记录</div><div class="line"></div><div class="line">#### push - 提交</div><div class="line"></div><div class="line">提交修改。其中‘-u’表示将本地master分支内容推送到远程master分支上，并且将两者建立连接，此次建立连接后，后面将不再需要使用此参数。</div></pre></td></tr></table></figure></p>
-<p>git push -u origin master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### pull - 更新</div></pre></td></tr></table></figure></p>
-<p>git pull - -rebase(可选)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### git 回退 - checkout（文件回退） &amp; reset（版本回退）</div><div class="line"></div><div class="line">##### 单个文件回退——add之后的。</div><div class="line"></div><div class="line">- 用版本库中的文件替换工作区的文件，无论是修改还是删除。放弃当前文件所有的内容修改，与上次文件内容相同。</div></pre></td></tr></table></figure></p>
-<p>git checkout 文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 在 `git add` 之后，一般先使用如下命令，将一个文件移除暂存区：</div></pre></td></tr></table></figure></p>
-<p>git reset HEAD 文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后再使用上一条命令</div><div class="line"></div><div class="line">##### 版本回退——commit之后的</div><div class="line"></div><div class="line">- 重新编写注释</div></pre></td></tr></table></figure></p>
-<p>git commit –amend -m “add 1.html file and modify its content<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 回退至上一个版本。HEAD~100：会推至之前的第100个版本。</div></pre></td></tr></table></figure></p>
-<p>git reset - -hard HEAD^<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 删除</div><div class="line"></div><div class="line">删除指定的文件。使用此命令后，自动执行 git add 文件名 操作。</div></pre></td></tr></table></figure></p>
-<p>git rm 文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 暂存</div><div class="line"></div><div class="line">- 将当前修改暂存起来</div></pre></td></tr></table></figure></p>
-<p>git stash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 查看当前暂存的内容</div></pre></td></tr></table></figure></p>
-<p>git stash list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 恢复暂存的内容（不会删除记录）</div></pre></td></tr></table></figure></p>
-<p>git stash apply<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 恢复暂存内容（删除历史记录）</div></pre></td></tr></table></figure></p>
-<p>git stash pop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除记录</div></pre></td></tr></table></figure></p>
-<p>git stash drop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 分支</div><div class="line"></div><div class="line">- 查看当前所有本地分支，其中*表示当前所在的分支</div></pre></td></tr></table></figure></p>
-<p>git branch<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 查看所有的远程分支</div></pre></td></tr></table></figure></p>
-<p>git branch -r<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 查看所有本地和远程的分支</div></pre></td></tr></table></figure></p>
-<p>git branch -a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 查看远程分支</div></pre></td></tr></table></figure></p>
-<p>git remote<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 查看远程分支的详细信息</div></pre></td></tr></table></figure></p>
-<p>git remote -v<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 创建</div></pre></td></tr></table></figure></p>
-<p>git branch dev<br>git checkout dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">等价于：</div></pre></td></tr></table></figure></p>
-<p>git checkout -b dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">先**创建dev分支**，后并**自动切换到该分支**。</div><div class="line">注意：使用分支时，先将未提交的文件暂存（stash），然后 `git checkout` 分支名。</div><div class="line"></div><div class="line">- 合并</div><div class="line"></div><div class="line">合并 ‘分支名’到master分支中</div></pre></td></tr></table></figure></p>
+<pre><code>git status
+</code></pre><p>查看仓库中文件的状态</p>
+<h4 id="内容的-add、commit"><a href="#内容的-add、commit" class="headerlink" title="内容的 add、commit"></a>内容的 add、commit</h4><ul>
+<li>添加单个文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add 文件名</div></pre></td></tr></table></figure>
+<ul>
+<li>添加所有未提交的文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure>
+<ul>
+<li>提交注释、说明</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m</div></pre></td></tr></table></figure>
+<ul>
+<li>追加修改，将之前的-m信息改为现在的-m信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -amend -m</div></pre></td></tr></table></figure>
+<ul>
+<li>将本地代码仓库添加至远程仓库，其中‘origin’指的是远程仓库的名字，是默认的名字。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin git@……</div></pre></td></tr></table></figure>
+<p>注意：提交之后使用 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
+<p>查看仓库中文件的提交记录</p>
+<h4 id="push-提交"><a href="#push-提交" class="headerlink" title="push - 提交"></a>push - 提交</h4><p>提交修改。其中‘-u’表示将本地master分支内容推送到远程master分支上，并且将两者建立连接，此次建立连接后，后面将不再需要使用此参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<h4 id="pull-更新"><a href="#pull-更新" class="headerlink" title="pull - 更新"></a>pull - 更新</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull - -rebase(可选)</div></pre></td></tr></table></figure>
+<h4 id="git-回退-checkout（文件回退）-amp-reset（版本回退）"><a href="#git-回退-checkout（文件回退）-amp-reset（版本回退）" class="headerlink" title="git 回退 - checkout（文件回退） &amp; reset（版本回退）"></a>git 回退 - checkout（文件回退） &amp; reset（版本回退）</h4><h5 id="单个文件回退——add之后的。"><a href="#单个文件回退——add之后的。" class="headerlink" title="单个文件回退——add之后的。"></a>单个文件回退——add之后的。</h5><ul>
+<li>用版本库中的文件替换工作区的文件，无论是修改还是删除。放弃当前文件所有的内容修改，与上次文件内容相同。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout 文件名</div></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>git add</code> 之后，一般先使用如下命令，将一个文件移除暂存区：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset HEAD 文件名</div></pre></td></tr></table></figure>
+<p>然后再使用上一条命令</p>
+<h5 id="版本回退——commit之后的"><a href="#版本回退——commit之后的" class="headerlink" title="版本回退——commit之后的"></a>版本回退——commit之后的</h5><ul>
+<li>重新编写注释</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend -m &quot;add 1.html file and modify its content</div></pre></td></tr></table></figure>
+<ul>
+<li>回退至上一个版本。HEAD~100：会推至之前的第100个版本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset - -hard HEAD^</div></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>删除指定的文件。使用此命令后，自动执行 git add 文件名 操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm 文件名</div></pre></td></tr></table></figure>
+<h4 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a>暂存</h4><ul>
+<li>将当前修改暂存起来</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash</div></pre></td></tr></table></figure>
+<ul>
+<li>查看当前暂存的内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash list</div></pre></td></tr></table></figure>
+<ul>
+<li>恢复暂存的内容（不会删除记录）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash apply</div></pre></td></tr></table></figure>
+<ul>
+<li>恢复暂存内容（删除历史记录）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash pop</div></pre></td></tr></table></figure>
+<ul>
+<li>删除记录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash drop</div></pre></td></tr></table></figure>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><ul>
+<li>查看当前所有本地分支，其中*表示当前所在的分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure>
+<ul>
+<li>查看所有的远程分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -r</div></pre></td></tr></table></figure>
+<ul>
+<li>查看所有本地和远程的分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<ul>
+<li>查看远程分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote</div></pre></td></tr></table></figure>
+<ul>
+<li>查看远程分支的详细信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure>
+<ul>
+<li>创建</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch dev</div><div class="line">git checkout dev</div></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev</div><div class="line">``` </div><div class="line"></div><div class="line">先**创建dev分支**，后并**自动切换到该分支**。</div><div class="line">注意：使用分支时，先将未提交的文件暂存（stash），然后 `git checkout` 分支名。</div><div class="line"></div><div class="line">- 合并</div><div class="line"></div><div class="line">合并 ‘分支名’到master分支中</div></pre></td></tr></table></figure>
 <p>git merge 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">同上。不同：合并后，连同**时间线**也会一同合并</div></pre></td></tr></table></figure></p>
 <p>git rebase 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 提交，将 ‘分支名‘推送至远程仓库中</div></pre></td></tr></table></figure></p>
 <p>git push origin 分支名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除 分支名</div></pre></td></tr></table></figure></p>
@@ -779,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#版本系统的分类："><span class="nav-number">1.</span> <span class="nav-text">版本系统的分类：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git介绍："><span class="nav-number">2.</span> <span class="nav-text">Git介绍：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git使用"><span class="nav-number">3.</span> <span class="nav-text">Git使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github身份认证："><span class="nav-number">3.1.</span> <span class="nav-text">Github身份认证：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git命令操作："><span class="nav-number">3.2.</span> <span class="nav-text">Git命令操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见Git命令"><span class="nav-number">3.2.1.</span> <span class="nav-text">常见Git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动一个工作区"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">启动一个工作区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对当前变化的工作"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">对当前变化的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查历史和状态"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">检查历史和状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支、合并、差异"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">分支、合并、差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程操作"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">远程操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看相关"><span class="nav-number">3.2.2.</span> <span class="nav-text">查看相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置相关"><span class="nav-number">3.2.3.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库管理"><span class="nav-number">3.2.4.</span> <span class="nav-text">仓库管理</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#版本系统的分类："><span class="nav-number">1.</span> <span class="nav-text">版本系统的分类：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git介绍："><span class="nav-number">2.</span> <span class="nav-text">Git介绍：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git使用"><span class="nav-number">3.</span> <span class="nav-text">Git使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github身份认证："><span class="nav-number">3.1.</span> <span class="nav-text">Github身份认证：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git命令操作："><span class="nav-number">3.2.</span> <span class="nav-text">Git命令操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见Git命令"><span class="nav-number">3.2.1.</span> <span class="nav-text">常见Git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动一个工作区"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">启动一个工作区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对当前变化的工作"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">对当前变化的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查历史和状态"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">检查历史和状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支、合并、差异"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">分支、合并、差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程操作"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">远程操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看相关"><span class="nav-number">3.2.2.</span> <span class="nav-text">查看相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置相关"><span class="nav-number">3.2.3.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库管理"><span class="nav-number">3.2.4.</span> <span class="nav-text">仓库管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容的-add、commit"><span class="nav-number">3.2.4.2.</span> <span class="nav-text">内容的 add、commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push-提交"><span class="nav-number">3.2.4.3.</span> <span class="nav-text">push - 提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pull-更新"><span class="nav-number">3.2.4.4.</span> <span class="nav-text">pull - 更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-回退-checkout（文件回退）-amp-reset（版本回退）"><span class="nav-number">3.2.4.5.</span> <span class="nav-text">git 回退 - checkout（文件回退） & reset（版本回退）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单个文件回退——add之后的。"><span class="nav-number">3.2.4.5.1.</span> <span class="nav-text">单个文件回退——add之后的。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退——commit之后的"><span class="nav-number">3.2.4.5.2.</span> <span class="nav-text">版本回退——commit之后的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">3.2.4.6.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存"><span class="nav-number">3.2.4.7.</span> <span class="nav-text">暂存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支"><span class="nav-number">3.2.4.8.</span> <span class="nav-text">分支</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
