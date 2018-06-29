@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/threadpool.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/ArrayDeque.png">
-<meta property="og:updated_time" content="2018-06-29T06:56:12.479Z">
+<meta property="og:updated_time" content="2018-06-29T07:06:18.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程">
 <meta name="twitter:description" content="线程总结">
@@ -317,7 +317,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T14:56:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T15:06:18+08:00">
                 2018-06-29
               </time>
             
@@ -701,7 +701,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private static Handler getMainHandler() &#123;</div><div class="line">    synchronized (AsyncTask.class) &#123;</div><div class="line">        if (sHandler == null) &#123;</div><div class="line">            sHandler = new InternalHandler(Looper.getMainLooper());</div><div class="line">        &#125;</div><div class="line">        return sHandler;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这段源代码中使用到了 <code>Looper.getMainLooper()</code>与 <code>InternalHandler</code>类。其中 <code>InternalHandler</code>类 的源代码描述：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">private static class InternalHandler extends Handler &#123;</div><div class="line">    public InternalHandler(Looper looper) &#123;</div><div class="line">        super(looper);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;RawUseOfParameterizedType&quot;&#125;)</div><div class="line">    @Override</div><div class="line">    public void handleMessage(Message msg) &#123;</div><div class="line">        AsyncTaskResult&lt;?&gt; result = (AsyncTaskResult&lt;?&gt;) msg.obj;</div><div class="line">        switch (msg.what) &#123;</div><div class="line">            case MESSAGE_POST_RESULT:</div><div class="line">                // There is only one result</div><div class="line">                result.mTask.finish(result.mData[0]);</div><div class="line">                break;</div><div class="line">            case MESSAGE_POST_PROGRESS:</div><div class="line">                result.mTask.onProgressUpdate(result.mData);</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>==<strong>注意</strong>：<em>这个static class InternalHandler extends Handler是一个极其关键的一个内部类，</em>因为他实现了 <strong>后台任务和UI主线程之间的切换</strong>==，Internal是<code>内部</code>的意思。</p>
+<p><strong>注意</strong>：<em>这个static class InternalHandler extends Handler是一个极其关键的一个内部类，</em>因为他实现了 <strong>后台任务和UI主线程之间的切换</strong>，Internal是<code>内部</code>的意思。</p>
 <p>在这个类中，尤其要注意 <strong><code>handleMessage(Message msg)</code></strong> 这个方法的重写。因为通过这个方法，对 <strong><code>msg.what</code></strong> 进行了判断：</p>
 <ul>
 <li><p><strong>MESSAGE_POST_RESULT</strong>：表示 <strong>后台任务执行完毕</strong>。<code>AsyncTask</code>类调用 <code>finish(Result result)</code>.</p>
@@ -718,7 +718,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private static class AsyncTaskResult&lt;Data&gt; &#123;</div><div class="line">    final AsyncTask mTask;</div><div class="line">    final Data[] mData;</div><div class="line"></div><div class="line">    AsyncTaskResult(AsyncTask task, Data... data) &#123;</div><div class="line">        mTask = task;</div><div class="line">        mData = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这个私有静态内部类 <code>AsyncTaskResult</code> 的作用就是封装了 <code>AsyncTask</code> 类 和 数据类 <code>Data</code>，对 <strong>当前AsyncTask任务和对应的数据进行整体封装。</strong><br>这个封装写的是极好的，好在对此类的对象使用时，仅通过此对象的某个成员变量就可以完成需要零散变量能完成的任务，将需要的需要用到数据做成一个整体性的类，数据从整体中获取，使得在使用中<strong>不会感到变量繁多，而是通过一种调用的方式</strong>，极好。</p>
 <p><strong><code>InternalHandler</code>类 总结：</strong></p>
-<p>==至此，通过以上分析可以得出的结论是：这个私有静态内部类主要是回调了 <code>onCancelled(result)</code>、<code>onPostExecute(result)</code>、<code>onProgressUpdate(result.mData)</code> 方法，即：<strong><code>InternalHandler</code>类的作用是 <code>AsyncTask</code> 处理任务的后期结果显示阶段</strong>。==</p>
+<p>至此，通过以上分析可以得出的结论是：这个私有静态内部类主要是回调了 <code>onCancelled(result)</code>、<code>onPostExecute(result)</code>、<code>onProgressUpdate(result.mData)</code> 方法，即：<strong><code>InternalHandler</code>类的作用是 <code>AsyncTask</code> 处理任务的后期结果显示阶段</strong>。</p>
 
       
     </div>
@@ -846,7 +846,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -857,7 +857,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -940,7 +940,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">183.5k</span>
+    <span title="Site words total count">185.6k</span>
   
 </div>
 
