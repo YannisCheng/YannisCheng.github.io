@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="《head First 设计模式》">
+<meta name="description" content="《Head First 设计模式》">
 <meta name="keywords" content="阅读,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代理模式">
 <meta property="og:url" content="http://yannischeng.com/设计模式 - 代理模式/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="《head First 设计模式》">
+<meta property="og:description" content="《Head First 设计模式》">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T08:20:48.113Z">
+<meta property="og:updated_time" content="2018-06-28T14:42:31.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理模式">
-<meta name="twitter:description" content="《head First 设计模式》">
+<meta name="twitter:description" content="《Head First 设计模式》">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:20:48+08:00">
-                2018-06-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-28T22:42:31+08:00">
+                2018-06-28
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  793 字
+                  781 字
                 </span>
               
 
@@ -436,15 +436,17 @@
       
 
       
-        <hr>
-<p>《head First 设计模式》</p>
+        <p>《Head First 设计模式》</p>
 <a id="more"></a>
 <p>[TOC]</p>
-<hr>
 <blockquote>
 <p>参考：<a href="http://blog.csdn.net/self_study/article/details/51628486" target="_blank" rel="external">http://blog.csdn.net/self_study/article/details/51628486</a></p>
 </blockquote>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>创建一个抽象类方法，里面写有代理与主题共同的方法。</p>
+<h1 id="代理模式的角色："><a href="#代理模式的角色：" class="headerlink" title="代理模式的角色："></a>代理模式的角色：</h1><p><strong>Subject：抽象主题类</strong><br>    该类的主要职责是声明真实主题与代理的共同接口方法，该类既可以是一个抽象类，也可以是一个接口；</p>
+<p><strong>RealSubjct：真实主题类</strong><br>    该类也称为被委托类或被代理类，该类定义了代理所表示的真实对象，由其执行具体的业务逻辑方法，而客户端则通过代理类间接地调用真实主题类中定义的方法；</p>
+<p><strong>ProxySubject：代理类</strong><br>    该类也称为委托类或代理类，该类持有一个对真实主题类的引用，在其所实现的接口方法中调用真实主题类中对应的接口方法，以此起到代理的作用；</p>
+<p><strong>Client：客户类</strong><br>    即使用代理类的部分。</p>
+<h1 id="代码描述"><a href="#代码描述" class="headerlink" title="代码描述"></a>代码描述</h1><p>创建一个抽象主题类</p>
 <pre><code>public abstract class MyObject {
     //代理与实际主题的共同方法
     public abstract void operate();
@@ -486,11 +488,7 @@
    这是来自RealObject的方法处理
    在处理“RealObject”之后，处理代理模式中自己的方法处理
  */
-</code></pre><h1 id="代理模式的角色："><a href="#代理模式的角色：" class="headerlink" title="代理模式的角色："></a>代理模式的角色：</h1><p><strong>Subject：抽象主题类</strong><br>    该类的主要职责是声明真实主题与代理的共同接口方法，该类既可以是一个抽象类，也可以是一个接口；</p>
-<p><strong>RealSubjct：真实主题类</strong><br>    该类也称为被委托类或被代理类，该类定义了代理所表示的真实对象，由其执行具体的业务逻辑方法，而客户端则通过代理类间接地调用真实主题类中定义的方法；</p>
-<p><strong>ProxySubject：代理类</strong><br>    该类也称为委托类或代理类，该类持有一个对真实主题类的引用，在其所实现的接口方法中调用真实主题类中对应的接口方法，以此起到代理的作用；</p>
-<p><strong>Client：客户类</strong><br>    即使用代理类的部分。</p>
-<h1 id="代理模式根据实际使用的场景也可以分为以下几种："><a href="#代理模式根据实际使用的场景也可以分为以下几种：" class="headerlink" title="代理模式根据实际使用的场景也可以分为以下几种："></a>代理模式根据实际使用的场景也可以分为以下几种：</h1><p><strong>远程代理（Remote Proxy）</strong><br>    为某个在不同的内存地址空间的对象提供局部代理，使系统可以将 Server 部分的实现隐藏，以便 Client 可以不必考虑 Server 的存在，类似于 C/S 模式（主要拦截并控制远程方法的调用，做代理防火墙之类的）；</p>
+</code></pre><h1 id="代理模式根据实际使用的场景也可以分为以下几种："><a href="#代理模式根据实际使用的场景也可以分为以下几种：" class="headerlink" title="代理模式根据实际使用的场景也可以分为以下几种："></a>代理模式根据实际使用的场景也可以分为以下几种：</h1><p><strong>远程代理（Remote Proxy）</strong><br>    为某个在不同的内存地址空间的对象提供局部代理，使系统可以将 Server 部分的实现隐藏，以便 Client 可以不必考虑 Server 的存在，类似于 C/S 模式（主要拦截并控制远程方法的调用，做代理防火墙之类的）；</p>
 <p><strong>虚拟代理（Virtual Proxy）</strong><br>    使用一个代理对象标识一个十分耗资源的对象，并在真正需要时才创建，实现一个延迟加载的机制；</p>
 <p><strong>保护代理（Protection Proxy）</strong><br>    使用代理控制对原始对象的访问，该类型的代理通常被用于原始对象有不同访问权限的情况；</p>
 <p><strong>智能引用（Smart Proxy）</strong><br>    在访问原始对象时执行一些自己的附加操作并对指向原始对象的引用计数；</p>
@@ -516,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/设计模式 - 原型模式/" rel="next" title="原型模式">
-                <i class="fa fa-chevron-left"></i> 原型模式
+              <a href="/设计模式 - 装饰者模式/" rel="next" title="装饰者模式">
+                <i class="fa fa-chevron-left"></i> 装饰者模式
               </a>
             
           </div>
@@ -526,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/设计模式 - 装饰者模式/" rel="prev" title="装饰者模式">
-                装饰者模式 <i class="fa fa-chevron-right"></i>
+              <a href="/自定义View-1 三剑客：Canvas + Paint + Path 初步概览/" rel="prev" title="自定义View-1 三剑客：Canvas + Paint + Path 初步概览">
+                自定义View-1 三剑客：Canvas + Paint + Path 初步概览 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -611,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -682,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式的角色："><span class="nav-number">2.</span> <span class="nav-text">代理模式的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式根据实际使用的场景也可以分为以下几种："><span class="nav-number">3.</span> <span class="nav-text">代理模式根据实际使用的场景也可以分为以下几种：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式的角色："><span class="nav-number">1.</span> <span class="nav-text">代理模式的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码描述"><span class="nav-number">2.</span> <span class="nav-text">代码描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式根据实际使用的场景也可以分为以下几种："><span class="nav-number">3.</span> <span class="nav-text">代理模式根据实际使用的场景也可以分为以下几种：</span></a></li></ol></div>
             
 
           </div>
@@ -716,7 +714,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">180.0k</span>
+    <span title="Site words total count">183.5k</span>
   
 </div>
 
