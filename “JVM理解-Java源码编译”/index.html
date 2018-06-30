@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JVM理解 —— Java代码执行">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“JVM理解-Java源码编译”">
+<meta property="og:url" content="http://yannischeng.com/“JVM理解-Java源码编译”/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="JVM理解 —— Java代码执行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/713721-20160602152821617-738821208.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.58.40.png">
+<meta property="og:updated_time" content="2018-06-30T08:12:27.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“JVM理解-Java源码编译”">
+<meta name="twitter:description" content="JVM理解 —— Java代码执行">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/“JVM理解-Java源码编译”/"/>
+
+
+
+
+
+  <title>“JVM理解-Java源码编译” | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/“JVM理解-Java源码编译”/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“JVM理解-Java源码编译”</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T23:35:15+08:00">
+                2018-06-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T16:12:27+08:00">
+                2018-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,309 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/“JVM理解-Java源码编译”/" title="“JVM理解-Java源码编译”">http://yannischeng.com/“JVM理解-Java源码编译”/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM理解 —— Java代码执行</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<p>Java代码执行机制的3个过程</p>
+<ul>
+<li><strong>编译</strong></li>
+<li><strong>加载</strong></li>
+<li><strong>执行</strong></li>
+</ul>
+<h1 id="Java源码编译机制"><a href="#Java源码编译机制" class="headerlink" title="Java源码编译机制"></a>Java源码编译机制</h1><h2 id="1-分析和输入到符号表（Parse、-Enter）"><a href="#1-分析和输入到符号表（Parse、-Enter）" class="headerlink" title="1. 分析和输入到符号表（Parse、 Enter）"></a>1. 分析和输入到符号表（Parse、 Enter）</h2><h3 id="1-1-分析（Parse）"><a href="#1-1-分析（Parse）" class="headerlink" title="1.1 分析（Parse）"></a>1.1 分析（Parse）</h3><ul>
+<li><strong>词法分析</strong>：将<strong>字符序列</strong>转换为<strong>单词(Token)序列</strong>的过程</li>
+<li><strong>语法分析</strong>：分析单词（token）序列之间的<strong>组合规则</strong>从而获得文本含义，生成 <strong>抽象语法树</strong>。</li>
+</ul>
+<h3 id="1-2-输入（Enter）"><a href="#1-2-输入（Enter）" class="headerlink" title="1.2 输入（Enter）"></a>1.2 输入（Enter）</h3><p>输入过程是将符号输入到 <strong>符号表</strong></p>
+<h2 id="2-注解处理（Annotation-Processing）"><a href="#2-注解处理（Annotation-Processing）" class="headerlink" title="2. 注解处理（Annotation Processing）"></a>2. 注解处理（Annotation Processing）</h2><p>处理用户自定义的 annotation。当注解处理结束后，又进入到 <code>分析和输入</code> 步骤</p>
+<h2 id="3-语义分析和生成class文件（Analyse-and-Generate）"><a href="#3-语义分析和生成class文件（Analyse-and-Generate）" class="headerlink" title="3. 语义分析和生成class文件（Analyse and Generate）"></a>3. 语义分析和生成class文件（Analyse and Generate）</h2><h3 id="3-1-Analyse："><a href="#3-1-Analyse：" class="headerlink" title="3.1 Analyse："></a>3.1 <strong>Analyse</strong>：</h3><p>是基于 <strong>抽象语法树</strong> 进行一些列的语义分析。</p>
+<h3 id="3-2-Generate："><a href="#3-2-Generate：" class="headerlink" title="3.2 Generate："></a>3.2 <strong>Generate</strong>：</h3><p>语义分析结束后开始 <strong>生成<code>class文件</code></strong>。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>先将<strong>实例成员初始化器</strong>收集到<strong>构造器</strong>中，将<strong>静态成员初始化器</strong>收集到<code>&lt;clinit()&gt;</code> 中；</li>
+<li>将<strong>抽象语法树</strong>生成<strong>字节码</strong>，采用的方法时后序遍历语法树，并进行最后的少量代码转换</li>
+<li>最后从<code>符号表</code>生成<code>class</code>文件</li>
+</ul>
+<p><strong>class文件中的信息：</strong></p>
+<ul>
+<li>结构信息：class文件<code>格式版本号</code>及各部分的<code>数量与大小的信息</code></li>
+<li>元数据：可以认为<code>元数据</code>就是对应于java源码中的<code>声明</code>与<code>常量</code>信息。</li>
+<li>方法信息：可以认为对应的就是java源码中的<code>语句</code>与<code>表达式</code>对应的信息</li>
+</ul>
+<h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png" alt=""></p>
+<p>是指将 <code>.class</code> 文件加载到 <code>JVM</code> 中。并形成 <code>class对象</code> 的机制。之后应用就可以对class对象进行实例化并调用，类加载机制可以在运行时<strong>动态加载</strong>外部类、远程网络下载class文件等。  </p>
+<h2 id="JVM加载class文件到内存有2种方式"><a href="#JVM加载class文件到内存有2种方式" class="headerlink" title="JVM加载class文件到内存有2种方式"></a>JVM加载class文件到内存有2种方式</h2><ul>
+<li><strong>隐式加载</strong>：不通调用ClassLoader来加载需要的类，而是通过JVM来自动加载需要的类到内存。例如：当类中继承或者引用某个类时，JVM在解析当前这个类不在内存中时，就会自动将这些类加载到内存中。</li>
+<li><strong>显示加载</strong>：在代码中通过ClassLoader类来加载一个类，例如调用<code>this.getClass.getClassLoader().loadClass()</code>或者<code>Class.forName()</code>。</li>
+</ul>
+<h2 id="类加载机制分为3个阶段："><a href="#类加载机制分为3个阶段：" class="headerlink" title="类加载机制分为3个阶段："></a>类加载机制分为3个阶段：</h2><ul>
+<li><strong>装载</strong>：二进制字节码加载至JVM</li>
+<li><strong>链接</strong>：此过程结束后，即：将<code>二进制字节码</code>转换为<code>class对象</code>。</li>
+<li><strong>初始化</strong>：其作用是为<code>为静态变量赋值、调用&lt;client&gt;()</code>等。</li>
+</ul>
+<h2 id="1-装载（Load）"><a href="#1-装载（Load）" class="headerlink" title="1. 装载（Load）"></a>1. 装载（Load）</h2><p>查找二进制字节码并加载至JVM中，JVM通过类的全名（包名+类名）+类加载器完成类的加载。<br>对于接口或非数组类型的类，其名称即为类名，此种类型的类由所在的ClassLoader负责加载；数组类则是由JVM直接创建的。</p>
+<h2 id="2-链接（Link）"><a href="#2-链接（Link）" class="headerlink" title="2. 链接（Link）"></a>2. 链接（Link）</h2><p>负责对二进制字节码的<strong>格式进行校验</strong>、<strong>初始化</strong>装载类中的<strong>静态变量</strong>及<strong>解析</strong>类中<strong>调用的接口、类</strong>。</p>
+<ul>
+<li>格式校验：二进制字节码格式校验遵循 Java Class File Format。校验结束之后，<strong>JVM初始化类中的静态变量、并为其附默认值</strong>。</li>
+<li>验证：对类中所有属性、方法进行校验。确保要调用的属性、方法存在，以及具备相应的权限。</li>
+</ul>
+<h2 id="3-初始化（Initialize）"><a href="#3-初始化（Initialize）" class="headerlink" title="3. 初始化（Initialize）"></a>3. 初始化（Initialize）</h2><p>执行类中的<strong>静态初始化代码</strong>、<strong>构造器代码</strong>、<strong>静态属性的初始化</strong>。一下4种情况的初始化过程会被触发执行：</p>
+<ul>
+<li>调用了<code>new</code></li>
+<li>反射调用了类中的方法；</li>
+<li>子类调用了初始化</li>
+<li>JVM启动过程中指定的初始化类</li>
+</ul>
+<p>在执行<strong>初始化</strong>过程之前，必须首先完成链接中的校验、准备阶段。</p>
+<h2 id="ClassLoader继承关系"><a href="#ClassLoader继承关系" class="headerlink" title="ClassLoader继承关系"></a>ClassLoader继承关系</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/713721-20160602152821617-738821208.png" alt=""></p>
+<h3 id="（1）-Bootstrap-ClassLoader"><a href="#（1）-Bootstrap-ClassLoader" class="headerlink" title="（1）. Bootstrap ClassLoader"></a>（1）. Bootstrap ClassLoader</h3><p>中文：<code>引导程序 类加载器</code>。</p>
+<p>此类使用C++实现，并非<code>CLassLoader</code>的子类，在代码中无法拿到这个对象。<code>Bootstrap classLoader</code>并不属于<code>JVM</code>的等级层次，它不遵守<code>ClassLoader</code>的加载规则，并没有子类。</p>
+<p>JVM启动时， <code>Bootstrap CLassLoader</code> 也会同时跟着启动，完成 <code>$JAVA_HOME/jre/lib/rt.jar</code> 中所有class文件的加载，如java.lang.<em>、 java.uti.</em>等。</p>
+<p>负责加载完核心类库后，并构造<code>Extension ClassLoader</code>和<code>App ClassLoader</code>类加载器。</p>
+<h3 id="（2）-Extension-ClassLoader"><a href="#（2）-Extension-ClassLoader" class="headerlink" title="（2）. Extension ClassLoader"></a>（2）. Extension ClassLoader</h3><p>加载位于$JAVA_HOME/jre/lib/ext目录下的扩展jar。</p>
+<h3 id="（3）-App-ClassLoader"><a href="#（3）-App-ClassLoader" class="headerlink" title="（3）. App ClassLoader"></a>（3）. App ClassLoader</h3><p>父类是 <code>Extension ClassLoader</code>，加载<code>$CLASSPATH</code>下的<code>目录</code>和<code>jar</code>；它负责加载 <strong>应用程序主函数类</strong>。</p>
+<h3 id="（4）-Custom-ClassLoader"><a href="#（4）-Custom-ClassLoader" class="headerlink" title="（4）. Custom ClassLoader"></a>（4）. Custom ClassLoader</h3><p>要实现自己的类加载器，不管是实现抽象类<code>ClassLoader</code>，还是继承其他的<code>子ClassLoader</code>类，<strong>它的父加载器都是<code>AppClassLoader</code></strong>，因为不管调用哪个父类加载器，<strong>创建的对象都必须最终调用<code>getSystemClassLoader()</code>作为父加载器</strong>，<code>getSystemClassLoader()</code>方法获取到的正是<code>AppClassLoader</code>。</p>
+<h2 id="ClassLoader抽象类的几个关键方法"><a href="#ClassLoader抽象类的几个关键方法" class="headerlink" title="ClassLoader抽象类的几个关键方法"></a><code>ClassLoader</code>抽象类的几个关键方法</h2><ul>
+<li><p><strong>loadClass：</strong> </p>
+<p>此方法是负责加载<strong>指定名字的类</strong>。加载过程为：<br>先从已加载的类中寻找，如果没有再调用<code>parent</code>的<code>loadClass</code>中寻找，如果还是没有，那么从<code>findBootstrapClassOrNull</code>方法中寻找。如果以上都不行，那么执行<code>findClass</code>方法。</p>
+<ul>
+<li>如果要<strong>改变类的加载顺序</strong>，则可以<strong>覆盖此方法</strong>；</li>
+<li>如果<strong>加载顺序相同</strong>，则可通过覆盖<code>findClass</code>方法来 <strong>做特殊处理</strong>。</li>
+</ul>
+<p>源代码为：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">protected Class&lt;?&gt; loadClass(String name, boolean resolve)</div><div class="line">    throws ClassNotFoundException</div><div class="line">&#123;</div><div class="line">        // First, check if the class has already been loaded</div><div class="line">        Class&lt;?&gt; c = findLoadedClass(name);</div><div class="line">        if (c == null) &#123;</div><div class="line">            try &#123;</div><div class="line">                if (parent != null) &#123;</div><div class="line">                    c = parent.loadClass(name, false);</div><div class="line">                &#125; else &#123;</div><div class="line">                    c = findBootstrapClassOrNull(name);</div><div class="line">                &#125;</div><div class="line">            &#125; catch (ClassNotFoundException e) &#123;</div><div class="line">                // ClassNotFoundException thrown if class not found</div><div class="line">                // from the non-null parent class loader</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            if (c == null) &#123;</div><div class="line">                // If still not found, then invoke findClass in order</div><div class="line">                // to find the class.</div><div class="line">                c = findClass(name);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>findLoadedClass</strong></li>
+</ul>
+<p>此方法负责从当前 <code>ClassLoader</code> 实例对象的缓存中寻找已存在的类。</p>
+<ul>
+<li><p><strong>findClass</strong></p>
+</li>
+<li><p><strong>findSystemClass</strong></p>
+</li>
+<li><p><strong>defineClass</strong></p>
+<p>此方法负责将<code>二进制字节码</code> 转换为 <code>class对象</code>，这个方法对自定义加载类非常重要。</p>
+<ul>
+<li>如果二进制的字节码格式<strong>不符合</strong>JVM Class 文件的格式，抛出<code>ClassFormatError</code>异常</li>
+<li>如果生成的类名和二进制字节码中的<strong>不同</strong>，抛出<code>NoClassDefFoundError</code></li>
+<li>如果加载的 <code>class</code> 是受保护的、采用不同签名的、或者类名是以 java开头的，抛出 <code>SecurityException</code></li>
+<li>如果加载的 <code>class</code> 在此<code>ClassLoader</code>中<strong>已经加载</strong>，那么抛出<code>LinkageError</code></li>
+</ul>
+</li>
+<li><p><strong>resolveClass</strong></p>
+<p>此方法完成对<code>Class</code>的链接，如果已经链接过，那么直接返回。</p>
+</li>
+</ul>
+<p>当调用<code>Class.forName</code>来获取一个对应名称的<code>class</code>对象时，<code>JVM</code> 会先从方法栈栈上寻找第一个<code>ClassLoader</code> ，通常也就是执行 <code>Class.forName</code> 所在的类的<code>ClassLoader</code>，来加载此名称的类。</p>
+<p><code>JVM</code>为了保护加载、执行类的安全，他不允许<code>ClassLoader</code>直接卸载已加载了的类。只有JVM才能卸载，当<code>CLassLoader</code>对象没有引用时，此 <code>CLassLoader</code> 对象所加载的类才会被卸载。</p>
+<h1 id="类执行机制"><a href="#类执行机制" class="headerlink" title="类执行机制"></a>类执行机制</h1><p>加载、验证、准备、初始化和卸载这5个阶段的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始，而解析阶段则不一定：它在某些情况下可以在初始化阶段之后再开始，这是为了支持Java语言的运行时绑定（也称为动态绑定或晚期绑定）</p>
+<p>执行完 <code>装载</code> 步骤之后，就可以执行 <code>Class</code>对象的<strong>静态方法</strong>或<strong>实例化对象</strong>的调用。</p>
+<h2 id="1-字节码解释执行方式"><a href="#1-字节码解释执行方式" class="headerlink" title="1. 字节码解释执行方式"></a>1. 字节码解释执行方式</h2><p>在源码编译阶段将源码编译为了<code>JVM字节码</code>，其是一种 <strong>中间代码</strong> 的方式，要由<code>JVM</code>在运行时期对其进行<strong>解释</strong>并<strong>执行</strong>，这种方式成为<strong>字节码解释执行方式</strong>。</p>
+<p>由于采用的<strong>中间码</strong>的方式，<code>JVM</code>有自己的一套指令，对于<strong>面向对象的语言</strong>而言，<strong>最重要的是执行方法的指令</strong>：</p>
+<ul>
+<li><strong>invokestatic</strong>：调用<code>static</code>方法</li>
+<li><strong>invokevirtual</strong>：调用 <code>对象实例</code>的方法</li>
+<li><strong>invokeinterface</strong>：调用 <code>接口</code>的方法</li>
+<li><strong>invokespecial</strong>：调用<code>private方法和编译源码后生成的&lt;init&gt;</code> 方法</li>
+</ul>
+<h3 id="实例分析："><a href="#实例分析：" class="headerlink" title="实例分析："></a>实例分析：</h3><p>源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Demo &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        System.out.println(A.executeA());</div><div class="line">        A a = new A();</div><div class="line">        System.out.println(a.bar());</div><div class="line">        IFoo iFoo = new B();</div><div class="line">        System.out.println(iFoo.bar());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface IFoo &#123;</div><div class="line">    public int bar();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class B implements IFoo &#123;</div><div class="line">    public int bar() &#123;</div><div class="line">        return 3 + 3;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class A &#123;</div><div class="line">    public static int executeA() &#123;</div><div class="line">        return 1 + 2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int bar() &#123;</div><div class="line">        return 2 + 2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 <code>javap -c Demo</code> 命令后，得到的结果为：</p>
+<blockquote>
+<p>字节码指令简介：<a href="https://blog.csdn.net/u013678930/article/details/51942010" target="_blank" rel="external">https://blog.csdn.net/u013678930/article/details/51942010</a><br><a href="https://yq.aliyun.com/articles/7242" target="_blank" rel="external">https://yq.aliyun.com/articles/7242</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">Compiled from &quot;Demo.java&quot;</div><div class="line">public class Demo &#123;</div><div class="line">  public Demo();</div><div class="line">    Code:</div><div class="line">       0: aload_0</div><div class="line">       1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</div><div class="line">       4: return</div><div class="line"></div><div class="line">  public static void main(java.lang.String[]);</div><div class="line">    Code:</div><div class="line">       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">       3: invokestatic  #3                  // Method A.executeA:()I</div><div class="line">       6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">       9: new           #5                  // class A</div><div class="line">      12: dup</div><div class="line">      13: invokespecial #6                  // Method A.&quot;&lt;init&gt;&quot;:()V</div><div class="line">      16: astore_1</div><div class="line">      17: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">      20: aload_1</div><div class="line">      21: invokevirtual #7                  // Method A.bar:()I</div><div class="line">      24: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">      27: new           #8                  // class B</div><div class="line">      30: dup</div><div class="line">      31: invokespecial #9                  // Method B.&quot;&lt;init&gt;&quot;:()V</div><div class="line">      34: astore_2</div><div class="line">      35: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">      38: aload_2</div><div class="line">      39: invokeinterface #10,  1           // InterfaceMethod IFoo.bar:()I</div><div class="line">      44: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">      47: return</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行 <code>javap -verbose Demo</code> 命令后得到的结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line">Classfile /Users/yannischeng/Documents/temp-java/Demo.class</div><div class="line">  Last modified 2018-6-30; size 516 bytes</div><div class="line">  MD5 checksum 3ff0ff6b62d0927861d1f2504682372c</div><div class="line">  Compiled from &quot;Demo.java&quot;</div><div class="line">public class Demo</div><div class="line">  minor version: 0</div><div class="line">  major version: 52</div><div class="line">  flags: ACC_PUBLIC, ACC_SUPER</div><div class="line">Constant pool:</div><div class="line">   #1 = Methodref          #12.#21        // java/lang/Object.&quot;&lt;init&gt;&quot;:()V</div><div class="line">   #2 = Fieldref           #22.#23        // java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">   #3 = Methodref          #5.#24         // A.executeA:()I</div><div class="line">   #4 = Methodref          #25.#26        // java/io/PrintStream.println:(I)V</div><div class="line">   #5 = Class              #27            // A</div><div class="line">   #6 = Methodref          #5.#21         // A.&quot;&lt;init&gt;&quot;:()V</div><div class="line">   #7 = Methodref          #5.#28         // A.bar:()I</div><div class="line">   #8 = Class              #29            // B</div><div class="line">   #9 = Methodref          #8.#21         // B.&quot;&lt;init&gt;&quot;:()V</div><div class="line">  #10 = InterfaceMethodref #30.#28        // IFoo.bar:()I</div><div class="line">  #11 = Class              #31            // Demo</div><div class="line">  #12 = Class              #32            // java/lang/Object</div><div class="line">  #13 = Utf8               &lt;init&gt;</div><div class="line">  #14 = Utf8               ()V</div><div class="line">  #15 = Utf8               Code</div><div class="line">  #16 = Utf8               LineNumberTable</div><div class="line">  #17 = Utf8               main</div><div class="line">  #18 = Utf8               ([Ljava/lang/String;)V</div><div class="line">  #19 = Utf8               SourceFile</div><div class="line">  #20 = Utf8               Demo.java</div><div class="line">  #21 = NameAndType        #13:#14        // &quot;&lt;init&gt;&quot;:()V</div><div class="line">  #22 = Class              #33            // java/lang/System</div><div class="line">  #23 = NameAndType        #34:#35        // out:Ljava/io/PrintStream;</div><div class="line">  #24 = NameAndType        #36:#37        // executeA:()I</div><div class="line">  #25 = Class              #38            // java/io/PrintStream</div><div class="line">  #26 = NameAndType        #39:#40        // println:(I)V</div><div class="line">  #27 = Utf8               A</div><div class="line">  #28 = NameAndType        #41:#37        // bar:()I</div><div class="line">  #29 = Utf8               B</div><div class="line">  #30 = Class              #42            // IFoo</div><div class="line">  #31 = Utf8               Demo</div><div class="line">  #32 = Utf8               java/lang/Object</div><div class="line">  #33 = Utf8               java/lang/System</div><div class="line">  #34 = Utf8               out</div><div class="line">  #35 = Utf8               Ljava/io/PrintStream;</div><div class="line">  #36 = Utf8               executeA</div><div class="line">  #37 = Utf8               ()I</div><div class="line">  #38 = Utf8               java/io/PrintStream</div><div class="line">  #39 = Utf8               println</div><div class="line">  #40 = Utf8               (I)V</div><div class="line">  #41 = Utf8               bar</div><div class="line">  #42 = Utf8               IFoo</div><div class="line">&#123;</div><div class="line">  public Demo();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PUBLIC</div><div class="line">    Code:</div><div class="line">      stack=1, locals=1, args_size=1</div><div class="line">         0: aload_0</div><div class="line">         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</div><div class="line">         4: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 1: 0</div><div class="line"></div><div class="line">  public static void main(java.lang.String[]);</div><div class="line">    descriptor: ([Ljava/lang/String;)V</div><div class="line">    flags: ACC_PUBLIC, ACC_STATIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=3, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: invokestatic  #3                  // Method A.executeA:()I</div><div class="line">         6: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">         9: new           #5                  // class A</div><div class="line">        12: dup</div><div class="line">        13: invokespecial #6                  // Method A.&quot;&lt;init&gt;&quot;:()V</div><div class="line">        16: astore_1</div><div class="line">        17: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">        20: aload_1</div><div class="line">        21: invokevirtual #7                  // Method A.bar:()I</div><div class="line">        24: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">        27: new           #8                  // class B</div><div class="line">        30: dup</div><div class="line">        31: invokespecial #9                  // Method B.&quot;&lt;init&gt;&quot;:()V</div><div class="line">        34: astore_2</div><div class="line">        35: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">        38: aload_2</div><div class="line">        39: invokeinterface #10,  1           // InterfaceMethod IFoo.bar:()I</div><div class="line">        44: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V</div><div class="line">        47: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 3: 0</div><div class="line">        line 4: 9</div><div class="line">        line 5: 17</div><div class="line">        line 6: 27</div><div class="line">        line 7: 35</div><div class="line">        line 9: 47</div><div class="line">&#125;</div><div class="line">SourceFile: &quot;Demo.java&quot;</div></pre></td></tr></table></figure>
+<p>Java 的 JDK 是基于 栈 的体系结构来执行字节码文件，基于栈方式的好处是代码紧凑、体积小。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.58.40.png" alt=""></p>
+<p>线程在创建后，都会产生<code>程序计数器（PC）</code>和 <code>栈（Stack）</code>：</p>
+<ul>
+<li><strong>程序计数器（PC）</strong>：存放了下一条要执行的指令在方法内的偏移量</li>
+<li><strong>栈</strong>：中存放了<code>栈帧</code>，每个方法每次调用都会产生栈帧。</li>
+<li><p><strong>栈帧</strong>：主要分为<code>局部变量区</code>和<code>操作数栈</code></p>
+<ul>
+<li><strong>局部变量区</strong>：用于存放方法中的局部变量和参数</li>
+<li><strong>操作数栈</strong>：用于存放方法执行过程中产生的中间结果</li>
+</ul>
+</li>
+</ul>
+<pre><code>## 2. 编译执行
+
+解释执行效率低，为提升代码的执行性能，JDK提供了将**字节码编译为机器码**的支持。JDK 在执行过程中对**执行效率高的代码**进行编译，对**执行不频繁的代码**则继续使用解释的方式。因此，JDK 又称为：**`Hotspot VM`**，在编译上JDK提供了2种模式：
+
+- **client compiler（-client）**：轻量级。只做少量性能开销比高的优化，占用内存少，适合于桌面交互式应用。
+
+ 在内存器分配策略上，采用`线性扫描寄存器分配算法`。其他的优化有`方法内联`、`去虚拟化‘、`冗余消除``
+
+- **server compiler（-server）**：重量级。采用大量的传统编译优化技巧来进行优化，占用内存多，适合于服务器端使用。与client不同的是：
+
+  - 寄存器分配策略：`传统的图着色寄存器分配算法`。
+  - 优化的范围：全局优化，而不仅仅是一个方法块的优化。
+</code></pre><h2 id="3-反射执行"><a href="#3-反射执行" class="headerlink" title="3. 反射执行"></a>3. 反射执行</h2><p>基于反射可动态调用某对象实例中对应的方法、访问查看对象的属性等，无需在编写代码时就确定要创建的对象。</p>
+<p>反射和直接创建对象实例，调用方法最大的不同在于创建的过程、方法的调用是动态的。<br>如何实现动态调用：<strong>动态生成字节码、并加载到JVM中执行</strong>。</p>
+<p><strong>注意：</strong> 使用<code>getMethod()</code> 相对比较耗性能，一方面是权限的校验，另一方面是所有方法的扫描机Method对象的复制。因此，在使用<code>反射</code>调用多的系统中，应缓存<code>getMethod()</code>返回的Method对象。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/JVM理解/" rel="next" title="JVM理解">
+                <i class="fa fa-chevron-left"></i> JVM理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码编译机制"><span class="nav-number">1.</span> <span class="nav-text">Java源码编译机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-分析和输入到符号表（Parse、-Enter）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 分析和输入到符号表（Parse、 Enter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-分析（Parse）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 分析（Parse）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-输入（Enter）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 输入（Enter）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注解处理（Annotation-Processing）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 注解处理（Annotation Processing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-语义分析和生成class文件（Analyse-and-Generate）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 语义分析和生成class文件（Analyse and Generate）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Analyse："><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Analyse：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Generate："><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Generate：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">2.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM加载class文件到内存有2种方式"><span class="nav-number">2.1.</span> <span class="nav-text">JVM加载class文件到内存有2种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制分为3个阶段："><span class="nav-number">2.2.</span> <span class="nav-text">类加载机制分为3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装载（Load）"><span class="nav-number">2.3.</span> <span class="nav-text">1. 装载（Load）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链接（Link）"><span class="nav-number">2.4.</span> <span class="nav-text">2. 链接（Link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化（Initialize）"><span class="nav-number">2.5.</span> <span class="nav-text">3. 初始化（Initialize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader继承关系"><span class="nav-number">2.6.</span> <span class="nav-text">ClassLoader继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Bootstrap-ClassLoader"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）. Bootstrap ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-Extension-ClassLoader"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）. Extension ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-App-ClassLoader"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）. App ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）-Custom-ClassLoader"><span class="nav-number">2.6.4.</span> <span class="nav-text">（4）. Custom ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader抽象类的几个关键方法"><span class="nav-number">2.7.</span> <span class="nav-text">ClassLoader抽象类的几个关键方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类执行机制"><span class="nav-number">3.</span> <span class="nav-text">类执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-字节码解释执行方式"><span class="nav-number">3.1.</span> <span class="nav-text">1. 字节码解释执行方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例分析："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射执行"><span class="nav-number">3.2.</span> <span class="nav-text">3. 反射执行</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">188.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -83,22 +83,20 @@
 
 
 
-<meta name="description" content="线程总结">
+<meta name="description" content="线程总结-1 Java">
 <meta name="keywords" content="线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程">
-<meta property="og:url" content="http://yannischeng.com/线程/index.html">
+<meta property="og:title" content="线程-1 Java">
+<meta property="og:url" content="http://yannischeng.com/线程-1 Java/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="线程总结">
+<meta property="og:description" content="线程总结-1 Java">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/threadpool.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/ArrayDeque.png">
-<meta property="og:updated_time" content="2018-06-29T07:06:18.788Z">
+<meta property="og:updated_time" content="2018-06-29T15:33:14.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程">
-<meta name="twitter:description" content="线程总结">
+<meta name="twitter:title" content="线程-1 Java">
+<meta name="twitter:description" content="线程总结-1 Java">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/线程/"/>
+  <link rel="canonical" href="http://yannischeng.com/线程-1 Java/"/>
 
 
 
 
 
-  <title>线程 | YannisCheng's Technology Blogs</title>
+  <title>线程-1 Java | YannisCheng's Technology Blogs</title>
   
 
 
@@ -272,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/线程/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/线程-1 Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -289,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线程</h1>
+          <h1 class="post-title" itemprop="name headline">线程-1 Java</h1>
         
 
         <div class="post-meta">
@@ -317,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T15:06:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T23:33:14+08:00">
                 2018-06-29
               </time>
             
@@ -336,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/线程/" itemprop="url" rel="index">
+                    <span itemprop="name">线程</span>
                   </a>
                 </span>
 
@@ -367,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,122 字
+                  5,674 字
                 </span>
               
 
@@ -383,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  33 分钟
+                  23 分钟
                 </span>
               
             </div>
@@ -420,7 +418,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/线程/" title="线程">http://yannischeng.com/线程/</a>
+    <a href="http://yannischeng.com/线程-1 Java/" title="线程-1 Java">http://yannischeng.com/线程-1 Java/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -439,7 +437,7 @@
       
 
       
-        <p>线程总结</p>
+        <p>线程总结-1 Java</p>
 <a id="more"></a>
 <blockquote>
 <p>参考：<a href="https://www.cnblogs.com/xdp-gacl/p/3633936.html" target="_blank" rel="external">https://www.cnblogs.com/xdp-gacl/p/3633936.html</a><br>参考：<a href="https://www.cnblogs.com/wxd0108/p/5479442.html" target="_blank" rel="external">https://www.cnblogs.com/wxd0108/p/5479442.html</a></p>
@@ -613,112 +611,6 @@
 </ul>
 <p><strong>三个方法的具体实现：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</div><div class="line">    return new ThreadPoolExecutor(nThreads, nThreads,</div><div class="line">                                  0L, TimeUnit.MILLISECONDS,</div><div class="line">                                  new LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line">public static ExecutorService newSingleThreadExecutor() &#123;</div><div class="line">    return new FinalizableDelegatedExecutorService</div><div class="line">        (new ThreadPoolExecutor(1, 1,</div><div class="line">                                0L, TimeUnit.MILLISECONDS,</div><div class="line">                                new LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">&#125;</div><div class="line">public static ExecutorService newCachedThreadPool() &#123;</div><div class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</div><div class="line">                                  60L, TimeUnit.SECONDS,</div><div class="line">                                  new SynchronousQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Android-线程处理-AsyncTask"><a href="#Android-线程处理-AsyncTask" class="headerlink" title="Android 线程处理 -  AsyncTask"></a>Android 线程处理 -  AsyncTask</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
-<li><code>AsyncTask</code> 调用、实现了 <strong><code>ThreadPoolExecutor</code>类</strong>、<strong>Executor接口</strong>。并且 <strong>子线程</strong> 和 <strong>UI主线程</strong> 之间切换、数据传递还是通过 <strong>Handler</strong> 和 <strong>Message</strong> 进行处理的。</li>
-<li><code>AsyncTask</code>支持正确、简单地使用UI线程。这个类允许你在后台执行操作并在UI线程上发布结果，而无需操纵Thread和Handler。</li>
-<li><code>AsyncTask</code>被设计为 <strong><code>Thread</code></strong> 和 <strong><code>Handler</code></strong> 的辅助类，并不构成通用的线程框架。</li>
-<li>理想情况下，AsyncTasks应该用于 <strong>短操作（最多几秒）</strong>。如果需要长时间保持线程稳定，强烈建议使用由 <code>java.util.concurrent</code>提供的各种API，例如 <code>Executor</code>，<code>ThreadPoolExecutor</code> 和 <code>FutureTask</code>。</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="AsyncTask-是一个抽象类，只有被继承之后才能使用。"><a href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。" class="headerlink" title="AsyncTask 是一个抽象类，只有被继承之后才能使用。"></a><strong><code>AsyncTask</code></strong> 是一个抽象类，只有被继承之后才能使用。</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png" alt=""></p>
-<p>在 <code>AsyncTask</code> 类的构造方法中，执行了 <code>doInBackground()</code> ，在这个方法中处理传入的参数。将处理后得到的结果传递给 <code>postResult()</code> , 其源代码描述为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private Result postResult(Result result) &#123;</div><div class="line">    @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">    Message message = getHandler().obtainMessage(MESSAGE_POST_RESULT,</div><div class="line">            new AsyncTaskResult&lt;Result&gt;(this, result));</div><div class="line">    message.sendToTarget();</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个方法中，通过 <code>getHandler()</code> 获取 <code>Handler</code> 对象，通过 <code>Message</code> 将 当前 <code>AsyncTask</code> 和 <code>result</code> 结果进行封装后发送至 <code>InternalHandler</code> 类中处理。在这个类中，调用了 <code>onProgressUpdate(result.mData)</code> 、 <code>onCancelled(result)</code> 、<code>onPostExecute(result)</code></p>
-<h3 id="异步任务由-3个泛型类型-定义："><a href="#异步任务由-3个泛型类型-定义：" class="headerlink" title="异步任务由 3个泛型类型 定义："></a>异步任务由 <strong>3个泛型类型</strong> 定义：</h3><ul>
-<li><strong><code>Params</code></strong>：这是发送给任务的参数的类型</li>
-<li><strong><code>Progress</code></strong> ：后台计算期间发布的进度单位的类型</li>
-<li><p><strong><code>Result</code></strong> 后台最终计算结果的类型。</p>
-<p> 如果在实际使用过程中，并没有特定要求3种泛型类型，可以将子类声明为：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MyTask extends AsyncTask(Void，Void，Void) &#123;...&#125;</div></pre></td></tr></table></figure>
-<h3 id="执行异步任务时，会经历-4个步骤"><a href="#执行异步任务时，会经历-4个步骤" class="headerlink" title="执行异步任务时，会经历 4个步骤:"></a>执行异步任务时，会经历 <strong>4个步骤</strong>:</h3><ul>
-<li><p><strong><code>onPreExecute()</code></strong>：在任务执行前在<strong>UI线程</strong>上调用。此步骤通常用于设置任务，例如通过在用户界面中显示进度条。</p>
-<p>此方法是在 <code>executeOnExecutor(Executor exec, Params... params)</code> 中被调用的。</p>
-</li>
-<li><p><strong><code>doInBackground()</code></strong>：在 <code>onPreExecute()</code> 完成执行后立即在后台线程上调用。此步骤用于执行可能需要很 <strong>长时间的后台计算</strong>。<strong>异步任务的参数</strong> 传递给 <strong>此步骤</strong>。<strong>计算结果</strong> 必须通过该步骤返回并返回到最后一步。此步骤还可以使用 <code>publishProgress()</code> 发布 <strong>一个或多个进度单元</strong>。这些值将在UI线程的 <code>onProgressUpdate()</code> 步骤中发布。</p>
-<p>此方法是在 <code>AsyncTask</code> 类的构造方法中被调用的。之所用调用 <code>publishProgress()</code> 能够更新 <code>onProgressUpdate()</code> 是因为：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected final void publishProgress(Progress... values) &#123;</div><div class="line">    if (!isCancelled()) &#123;</div><div class="line">        getHandler().obtainMessage(MESSAGE_POST_PROGRESS, new AsyncTaskResult&lt;Progress&gt;(this, values)).sendToTarget();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p><strong><code>onProgressUpdate()</code></strong> ：在调用 <code>publishProgress()</code> 后在 <strong>UI线程</strong> 上调用。执行的时间是未定义的。此方法用于在后台计算仍在执行时在用户界面中显示任何形式的进度。例如，它可以用来为进度条设置动画效果或在文本字段中显示日志。</p>
-</li>
-<li><p><strong><code>onPostExecute()</code></strong>：在后台 <strong>计算完成后</strong> 在UI线程上调用。后台计算的结果作为参数传递给此步骤。</p>
-</li>
-</ul>
-<h3 id="取消任务"><a href="#取消任务" class="headerlink" title="取消任务"></a><strong>取消任务</strong></h3><ul>
-<li><p>任何时候都可以通过调用 <code>cancel(boolean)</code> 来取消任务。</p>
-</li>
-<li><p>调用此方法将导致对 <code>isCancelled()</code> 的后续调用返回<code>true</code>。<br>在调用此方法后，将在 <code>doInBackground(Object[])</code> 返回后调用<code>onCancelled(Object)</code>而不是 <code>onPostExecute(Object)</code>。</p>
-</li>
-<li><p>为了确保尽快取消任务，如果可能的话（例如在一个循环内部）应该始终从 <code>doInBackground(Object[])</code> 定期检查 <code>isCancelled()</code>的返回值。</p>
-</li>
-</ul>
-<h3 id="线程规则"><a href="#线程规则" class="headerlink" title="线程规则"></a><strong>线程规则</strong></h3><ul>
-<li>AsyncTask类必须在UI线程上加载。</li>
-<li>必须在UI线程上创建任务实例。</li>
-<li>必须在UI线程上调用.</li>
-<li>不要手动调用上面提到的执行任务的4个方法。</li>
-<li>任务 <strong>只能执行一次</strong>（如果尝试执行第二次执行，则会引发异常。</li>
-</ul>
-<h2 id="AsyncTask-中2个在类加载时就进行初始化的static对象"><a href="#AsyncTask-中2个在类加载时就进行初始化的static对象" class="headerlink" title="AsyncTask 中2个在类加载时就进行初始化的static对象"></a><code>AsyncTask</code> 中<strong>2个</strong>在类加载时就进行初始化的<strong>static对象</strong></h2><ul>
-<li><p><strong>Executor THREAD_POOL_EXECUTOR = threadPoolExecutor</strong></p>
-</li>
-<li><p><strong>volatile Executor sDefaultExecutor = SERIAL_EXECUTOR</strong></p>
-</li>
-</ul>
-<h3 id="静态对象1-：public-static-final-Executor-THREAD-POOL-EXECUTOR"><a href="#静态对象1-：public-static-final-Executor-THREAD-POOL-EXECUTOR" class="headerlink" title="静态对象1 ：public static final Executor THREAD_POOL_EXECUTOR;"></a>静态对象1 ：public static final Executor THREAD_POOL_EXECUTOR;</h3><p>此静态对象 <code>THREAD_POOL_EXECUTOR</code> 的实现是通过实现一个 <strong>完整的线程池</strong> 的来初始化的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// 对线程池进行参数配置</div><div class="line">private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();</div><div class="line">private static final int CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 4));</div><div class="line">private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;</div><div class="line">private static final int KEEP_ALIVE_SECONDS = 30;</div><div class="line"></div><div class="line">private static final ThreadFactory sThreadFactory = new ThreadFactory() &#123;</div><div class="line">    private final AtomicInteger mCount = new AtomicInteger(1);</div><div class="line"></div><div class="line">    public Thread newThread(Runnable r) &#123;</div><div class="line">        return new Thread(r, &quot;AsyncTask #&quot; + mCount.getAndIncrement());</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">private static final BlockingQueue&lt;Runnable&gt; sPoolWorkQueue =</div><div class="line">        new LinkedBlockingQueue&lt;Runnable&gt;(128);</div><div class="line"></div><div class="line">/**</div><div class="line"> *可用于并行执行任务的 Executor 。</div><div class="line"> */</div><div class="line">public static final Executor THREAD_POOL_EXECUTOR;</div><div class="line"></div><div class="line">static &#123;</div><div class="line">// 对线程池进行初始化。</div><div class="line">    ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(</div><div class="line">            CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_SECONDS, TimeUnit.SECONDS,</div><div class="line">            sPoolWorkQueue, sThreadFactory);</div><div class="line">    </div><div class="line">    // 设置连接超时        </div><div class="line">    threadPoolExecutor.allowCoreThreadTimeOut(true);</div><div class="line">    </div><div class="line">    // 对象指向。</div><div class="line">    THREAD_POOL_EXECUTOR = threadPoolExecutor;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个 <code>THREAD_POOL_EXECUTOR</code> 对象的执行是在 <code>私有静态内部类SerialExecutor</code> 中的 <code>scheduleNext()</code> 中年被执行的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected synchronized void scheduleNext() &#123;</div><div class="line">    if ((mActive = mTasks.poll()) != null) &#123;</div><div class="line">        THREAD_POOL_EXECUTOR.execute(mActive);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="静态对象2：private-static-volatile-Executor-sDefaultExecutor-SERIAL-EXECUTOR"><a href="#静态对象2：private-static-volatile-Executor-sDefaultExecutor-SERIAL-EXECUTOR" class="headerlink" title="静态对象2：private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;"></a>静态对象2：private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;</h3><p>这个静态对象 <code>sDefaultExecutor</code> 在 <code>AsyncTask</code> 中是实际使用的。而这个静态对象是由</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static final Executor SERIAL_EXECUTOR = new SerialExecutor();</div></pre></td></tr></table></figure>
-<p>得到的，对 <code>Executor SERIAL_EXECUTOR</code> 这个对象的注释是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个 Executor 按顺序一次执行一个任务。这种序列化对特定进程是全局的。</div></pre></td></tr></table></figure>
-<p>而且 <code>Executor SERIAL_EXECUTOR</code> 对象的实现是通过实现 <code>Executor</code> 接口，并重写 <code>execute()</code> 得到的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">private static class SerialExecutor implements Executor &#123;</div><div class="line">    final ArrayDeque&lt;Runnable&gt; mTasks = new ArrayDeque&lt;Runnable&gt;();</div><div class="line">    Runnable mActive;</div><div class="line"></div><div class="line">    public synchronized void execute(final Runnable r) &#123;</div><div class="line">        mTasks.offer(new Runnable() &#123;</div><div class="line">            public void run() &#123;</div><div class="line">                try &#123;</div><div class="line">                    r.run();</div><div class="line">                &#125; finally &#123;</div><div class="line">                    scheduleNext();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        if (mActive == null) &#123;</div><div class="line">            scheduleNext();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected synchronized void scheduleNext() &#123;</div><div class="line">        if ((mActive = mTasks.poll()) != null) &#123;</div><div class="line">            THREAD_POOL_EXECUTOR.execute(mActive);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>既然实现 <code>Executor</code> 接口，那么肯定就要重写 <code>void execute(Runnable command)</code> ，在这个方法中声明了一个 <strong><code>ArrayDeque</code>类</strong> 对象 <code>mTasks</code>。</p>
-<ul>
-<li><strong><code>ArrayDeque</code>类</strong>是一个<strong>实现了 <code>Deque</code>接口的可调整大小的数组类</strong>。</li>
-<li><code>offer()</code> 其作用是 <strong>在此双端队列的末尾插入指定的元素</strong>，</li>
-<li><code>poll()</code>的作用是：<strong>返回由此双端队列表示的队列头部，或者如果此双端队列为空，则返回 null</strong>。</li>
-</ul>
-<p>这段代码的意思是：将一个新的线程对象添加到 可变数组对象 <code>mTasks</code> 中。如果当前这个 线程能够运行，那么执行 <code>r.run()</code>， 否则执行 <code>scheduleNext()</code>。</p>
-<p>其中 <strong><code>ArrayDeque</code>类</strong>的结构继承实现结构为：</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/ArrayDeque.png" alt=""></p>
-<p> <code>offer()</code>  具体实现为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public boolean offer(E e) &#123;</div><div class="line">    return offerLast(e);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public boolean offerLast(E e) &#123;</div><div class="line">    addLast(e);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void addLast(E e) &#123;</div><div class="line">    if (e == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    elements[tail] = e;</div><div class="line">    if ( (tail = (tail + 1) &amp; (elements.length - 1)) == head)</div><div class="line">        doubleCapacity();</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void doubleCapacity() &#123;</div><div class="line">    assert head == tail;</div><div class="line">    int p = head;</div><div class="line">    int n = elements.length;</div><div class="line">    int r = n - p; // number of elements to the right of p</div><div class="line">    int newCapacity = n &lt;&lt; 1;</div><div class="line">    if (newCapacity &lt; 0)</div><div class="line">        throw new IllegalStateException(&quot;Sorry, deque too big&quot;);</div><div class="line">    Object[] a = new Object[newCapacity];</div><div class="line">    System.arraycopy(elements, p, a, 0, r);</div><div class="line">    System.arraycopy(elements, 0, a, r, p);</div><div class="line">    elements = a;</div><div class="line">    head = 0;</div><div class="line">    tail = n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>transient Object[] elements;</code>：存储该双端队列元素的数组。<br><code>transient int head;</code>：deque头部元素的索引（这是将被remove（）或pop（）移除的元素）; 或者如果该deque是空的，则任意数字等于tail。<br><code>transient int tail;</code>：下一个元素将添加到deque尾部的索引（通过addLast（E），add（E）或push（E））。</p>
-<h2 id="AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><a href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化" class="headerlink" title="==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化=="></a>==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化==</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public AsyncTask(@Nullable Looper callbackLooper) &#123;</div><div class="line">    mHandler = callbackLooper == null || callbackLooper == Looper.getMainLooper()</div><div class="line">        ? getMainHandler()</div><div class="line">        : new Handler(callbackLooper);</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过<strong>三目运算符</strong>，判断 <code>mHandler</code> 对象是否为空。</p>
-<ul>
-<li>若 callbackLooper 为空，则执行 getMainHandler()；</li>
-<li>若不为空，则执行 new Handler(callbackLooper)。</li>
-</ul>
-<p>即：这个三目运算符的作用就是 <strong>判断callbackLooper</strong>参数，以决定以哪种方式对 <code>Handler</code> 对象进行实例化。</p>
-<p>其中 <strong>getMainHandler()</strong>这个方法引出了 <code>AsyncTask</code>类中的一下部分方法</p>
-<p><strong>getMainHandler()</strong>源代码描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private static Handler getMainHandler() &#123;</div><div class="line">    synchronized (AsyncTask.class) &#123;</div><div class="line">        if (sHandler == null) &#123;</div><div class="line">            sHandler = new InternalHandler(Looper.getMainLooper());</div><div class="line">        &#125;</div><div class="line">        return sHandler;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这段源代码中使用到了 <code>Looper.getMainLooper()</code>与 <code>InternalHandler</code>类。其中 <code>InternalHandler</code>类 的源代码描述：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">private static class InternalHandler extends Handler &#123;</div><div class="line">    public InternalHandler(Looper looper) &#123;</div><div class="line">        super(looper);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;RawUseOfParameterizedType&quot;&#125;)</div><div class="line">    @Override</div><div class="line">    public void handleMessage(Message msg) &#123;</div><div class="line">        AsyncTaskResult&lt;?&gt; result = (AsyncTaskResult&lt;?&gt;) msg.obj;</div><div class="line">        switch (msg.what) &#123;</div><div class="line">            case MESSAGE_POST_RESULT:</div><div class="line">                // There is only one result</div><div class="line">                result.mTask.finish(result.mData[0]);</div><div class="line">                break;</div><div class="line">            case MESSAGE_POST_PROGRESS:</div><div class="line">                result.mTask.onProgressUpdate(result.mData);</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意</strong>：<em>这个static class InternalHandler extends Handler是一个极其关键的一个内部类，</em>因为他实现了 <strong>后台任务和UI主线程之间的切换</strong>，Internal是<code>内部</code>的意思。</p>
-<p>在这个类中，尤其要注意 <strong><code>handleMessage(Message msg)</code></strong> 这个方法的重写。因为通过这个方法，对 <strong><code>msg.what</code></strong> 进行了判断：</p>
-<ul>
-<li><p><strong>MESSAGE_POST_RESULT</strong>：表示 <strong>后台任务执行完毕</strong>。<code>AsyncTask</code>类调用 <code>finish(Result result)</code>.</p>
-<p><code>finish(Result result)</code> 的源代码描述为：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private void finish(Result result) &#123;</div><div class="line">    if (isCancelled()) &#123;</div><div class="line">        onCancelled(result);</div><div class="line">    &#125; else &#123;</div><div class="line">        onPostExecute(result);</div><div class="line">    &#125;</div><div class="line">    mStatus = Status.FINISHED;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 在调用这个方法时，通过对 <code>isCancelled()</code> 作出判断，以确定在 <code>UI主线程</code> 调用哪个方法，向 <code>UI主线程</code> 传递什么数据。</p>
-<ul>
-<li><strong>MESSAGE_POST_PROGRESS</strong>：表示 后台任务正在 <strong>持续的发送 更新结果</strong>，所以此处调用的 回调方法是：<strong>onProgressUpdate()</strong>。正是因为实在 <code>handleMessage(Message msg)</code> 回调了此方法，所以在使用 <code>AsyncTask</code> 类，重写 <code>onProgressUpdate()</code> 时返回的结果是直接作用在UI主线程里的。 </li>
-</ul>
-<p>在这个私有静态内部类 <code>InternalHandler</code> 中，用到了一个对象 <code>result</code> ，这个对象就是 <code>AsyncTaskResult</code>类的实例化，是 <code>AsyncTask</code> 中的另一个私有静态内部类。</p>
-<p><strong><code>AsyncTaskResult</code></strong>；类源代码描述为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private static class AsyncTaskResult&lt;Data&gt; &#123;</div><div class="line">    final AsyncTask mTask;</div><div class="line">    final Data[] mData;</div><div class="line"></div><div class="line">    AsyncTaskResult(AsyncTask task, Data... data) &#123;</div><div class="line">        mTask = task;</div><div class="line">        mData = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个私有静态内部类 <code>AsyncTaskResult</code> 的作用就是封装了 <code>AsyncTask</code> 类 和 数据类 <code>Data</code>，对 <strong>当前AsyncTask任务和对应的数据进行整体封装。</strong><br>这个封装写的是极好的，好在对此类的对象使用时，仅通过此对象的某个成员变量就可以完成需要零散变量能完成的任务，将需要的需要用到数据做成一个整体性的类，数据从整体中获取，使得在使用中<strong>不会感到变量繁多，而是通过一种调用的方式</strong>，极好。</p>
-<p><strong><code>InternalHandler</code>类 总结：</strong></p>
-<p>至此，通过以上分析可以得出的结论是：这个私有静态内部类主要是回调了 <code>onCancelled(result)</code>、<code>onPostExecute(result)</code>、<code>onProgressUpdate(result.mData)</code> 方法，即：<strong><code>InternalHandler</code>类的作用是 <code>AsyncTask</code> 处理任务的后期结果显示阶段</strong>。</p>
 
       
     </div>
@@ -835,7 +727,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">104</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -846,7 +738,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -857,7 +749,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -906,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#名词释义："><span class="nav-number">1.</span> <span class="nav-text">名词释义：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的状态"><span class="nav-number">2.</span> <span class="nav-text">线程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程状态转换"><span class="nav-number">2.1.</span> <span class="nav-text">线程状态转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本控制方法："><span class="nav-number">2.2.</span> <span class="nav-text">基本控制方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#每个对象都有的方法（机制）"><span class="nav-number">2.3.</span> <span class="nav-text">每个对象都有的方法（机制）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized单独使用"><span class="nav-number">2.3.1.</span> <span class="nav-text">synchronized单独使用:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码块："><span class="nav-number">2.3.1.1.</span> <span class="nav-text">代码块：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接用于方法"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">直接用于方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生产者消费者问题"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">生产者消费者问题</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程：线程池的使用"><span class="nav-number">3.</span> <span class="nav-text">Java并发编程：线程池的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类"><span class="nav-number">3.1.</span> <span class="nav-text">ThreadPoolExecutor类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数中的各个参数含义："><span class="nav-number">3.2.</span> <span class="nav-text">构造函数中的各个参数含义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类实现原理"><span class="nav-number">3.3.</span> <span class="nav-text">ThreadPoolExecutor类实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池状态"><span class="nav-number">3.3.1.</span> <span class="nav-text">线程池状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务的执行过程"><span class="nav-number">3.3.2.</span> <span class="nav-text">任务的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池中的线程初始化"><span class="nav-number">3.3.3.</span> <span class="nav-text">线程池中的线程初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务缓存队列及排队策略"><span class="nav-number">3.3.4.</span> <span class="nav-text">任务缓存队列及排队策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务拒绝策略"><span class="nav-number">3.3.5.</span> <span class="nav-text">任务拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的关闭"><span class="nav-number">3.3.6.</span> <span class="nav-text">线程池的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类使用示例"><span class="nav-number">3.4.</span> <span class="nav-text">ThreadPoolExecutor类使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式1：ThreadPoolExecutor使用"><span class="nav-number">3.4.1.</span> <span class="nav-text">方式1：ThreadPoolExecutor使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式2：Executors使用"><span class="nav-number">3.4.2.</span> <span class="nav-text">方式2：Executors使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-线程处理-AsyncTask"><span class="nav-number">4.</span> <span class="nav-text">Android 线程处理 -  AsyncTask</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">4.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">4.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。"><span class="nav-number">4.2.1.</span> <span class="nav-text">AsyncTask 是一个抽象类，只有被继承之后才能使用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步任务由-3个泛型类型-定义："><span class="nav-number">4.2.2.</span> <span class="nav-text">异步任务由 3个泛型类型 定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行异步任务时，会经历-4个步骤"><span class="nav-number">4.2.3.</span> <span class="nav-text">执行异步任务时，会经历 4个步骤:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消任务"><span class="nav-number">4.2.4.</span> <span class="nav-text">取消任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程规则"><span class="nav-number">4.2.5.</span> <span class="nav-text">线程规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask-中2个在类加载时就进行初始化的static对象"><span class="nav-number">4.3.</span> <span class="nav-text">AsyncTask 中2个在类加载时就进行初始化的static对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象1-：public-static-final-Executor-THREAD-POOL-EXECUTOR"><span class="nav-number">4.3.1.</span> <span class="nav-text">静态对象1 ：public static final Executor THREAD_POOL_EXECUTOR;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象2：private-static-volatile-Executor-sDefaultExecutor-SERIAL-EXECUTOR"><span class="nav-number">4.3.2.</span> <span class="nav-text">静态对象2：private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><span class="nav-number">4.4.</span> <span class="nav-text">==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化==</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#名词释义："><span class="nav-number">1.</span> <span class="nav-text">名词释义：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的状态"><span class="nav-number">2.</span> <span class="nav-text">线程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程状态转换"><span class="nav-number">2.1.</span> <span class="nav-text">线程状态转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本控制方法："><span class="nav-number">2.2.</span> <span class="nav-text">基本控制方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#每个对象都有的方法（机制）"><span class="nav-number">2.3.</span> <span class="nav-text">每个对象都有的方法（机制）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized单独使用"><span class="nav-number">2.3.1.</span> <span class="nav-text">synchronized单独使用:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码块："><span class="nav-number">2.3.1.1.</span> <span class="nav-text">代码块：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接用于方法"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">直接用于方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生产者消费者问题"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">生产者消费者问题</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程：线程池的使用"><span class="nav-number">3.</span> <span class="nav-text">Java并发编程：线程池的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类"><span class="nav-number">3.1.</span> <span class="nav-text">ThreadPoolExecutor类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数中的各个参数含义："><span class="nav-number">3.2.</span> <span class="nav-text">构造函数中的各个参数含义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类实现原理"><span class="nav-number">3.3.</span> <span class="nav-text">ThreadPoolExecutor类实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池状态"><span class="nav-number">3.3.1.</span> <span class="nav-text">线程池状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务的执行过程"><span class="nav-number">3.3.2.</span> <span class="nav-text">任务的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池中的线程初始化"><span class="nav-number">3.3.3.</span> <span class="nav-text">线程池中的线程初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务缓存队列及排队策略"><span class="nav-number">3.3.4.</span> <span class="nav-text">任务缓存队列及排队策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务拒绝策略"><span class="nav-number">3.3.5.</span> <span class="nav-text">任务拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的关闭"><span class="nav-number">3.3.6.</span> <span class="nav-text">线程池的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类使用示例"><span class="nav-number">3.4.</span> <span class="nav-text">ThreadPoolExecutor类使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式1：ThreadPoolExecutor使用"><span class="nav-number">3.4.1.</span> <span class="nav-text">方式1：ThreadPoolExecutor使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式2：Executors使用"><span class="nav-number">3.4.2.</span> <span class="nav-text">方式2：Executors使用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -940,7 +832,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">185.6k</span>
+    <span title="Site words total count">188.9k</span>
   
 </div>
 
