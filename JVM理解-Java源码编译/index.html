@@ -86,17 +86,17 @@
 <meta name="description" content="JVM理解 —— Java代码执行">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="“JVM理解-Java源码编译”">
-<meta property="og:url" content="http://yannischeng.com/“JVM理解-Java源码编译”/index.html">
+<meta property="og:title" content="JVM理解-Java源码编译">
+<meta property="og:url" content="http://yannischeng.com/JVM理解-Java源码编译/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="JVM理解 —— Java代码执行">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/713721-20160602152821617-738821208.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.58.40.png">
-<meta property="og:updated_time" content="2018-06-30T08:12:27.027Z">
+<meta property="og:updated_time" content="2018-06-30T08:25:46.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="“JVM理解-Java源码编译”">
+<meta name="twitter:title" content="JVM理解-Java源码编译">
 <meta name="twitter:description" content="JVM理解 —— Java代码执行">
 <meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/“JVM理解-Java源码编译”/"/>
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-Java源码编译/"/>
 
 
 
 
 
-  <title>“JVM理解-Java源码编译” | YannisCheng's Technology Blogs</title>
+  <title>JVM理解-Java源码编译 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/“JVM理解-Java源码编译”/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/JVM理解-Java源码编译/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -288,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">“JVM理解-Java源码编译”</h1>
+          <h1 class="post-title" itemprop="name headline">JVM理解-Java源码编译</h1>
         
 
         <div class="post-meta">
@@ -316,7 +316,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T16:12:27+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T16:25:46+08:00">
                 2018-06-30
               </time>
             
@@ -419,7 +419,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/“JVM理解-Java源码编译”/" title="“JVM理解-Java源码编译”">http://yannischeng.com/“JVM理解-Java源码编译”/</a>
+    <a href="http://yannischeng.com/JVM理解-Java源码编译/" title="JVM理解-Java源码编译">http://yannischeng.com/JVM理解-Java源码编译/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -567,19 +567,19 @@
 </ul>
 </li>
 </ul>
-<pre><code>## 2. 编译执行
-
-解释执行效率低，为提升代码的执行性能，JDK提供了将**字节码编译为机器码**的支持。JDK 在执行过程中对**执行效率高的代码**进行编译，对**执行不频繁的代码**则继续使用解释的方式。因此，JDK 又称为：**`Hotspot VM`**，在编译上JDK提供了2种模式：
-
-- **client compiler（-client）**：轻量级。只做少量性能开销比高的优化，占用内存少，适合于桌面交互式应用。
-
- 在内存器分配策略上，采用`线性扫描寄存器分配算法`。其他的优化有`方法内联`、`去虚拟化‘、`冗余消除``
-
-- **server compiler（-server）**：重量级。采用大量的传统编译优化技巧来进行优化，占用内存多，适合于服务器端使用。与client不同的是：
-
-  - 寄存器分配策略：`传统的图着色寄存器分配算法`。
-  - 优化的范围：全局优化，而不仅仅是一个方法块的优化。
-</code></pre><h2 id="3-反射执行"><a href="#3-反射执行" class="headerlink" title="3. 反射执行"></a>3. 反射执行</h2><p>基于反射可动态调用某对象实例中对应的方法、访问查看对象的属性等，无需在编写代码时就确定要创建的对象。</p>
+<h2 id="2-编译执行"><a href="#2-编译执行" class="headerlink" title="2. 编译执行"></a>2. 编译执行</h2><p>解释执行效率低，为提升代码的执行性能，JDK提供了将<strong>字节码编译为机器码</strong>的支持。JDK 在执行过程中对<strong>执行效率高的代码</strong>进行编译，对<strong>执行不频繁的代码</strong>则继续使用解释的方式。因此，JDK 又称为：<strong><code>Hotspot VM</code></strong>，在编译上JDK提供了2种模式：</p>
+<ul>
+<li><p><strong>client compiler（-client）</strong>：轻量级。只做少量性能开销比高的优化，占用内存少，适合于桌面交互式应用。</p>
+<p>在内存器分配策略上，采用<code>线性扫描寄存器分配算法</code>。其他的优化有<code>方法内联</code>、<code>去虚拟化‘、</code>冗余消除``</p>
+</li>
+<li><p><strong>server compiler（-server）</strong>：重量级。采用大量的传统编译优化技巧来进行优化，占用内存多，适合于服务器端使用。与client不同的是：</p>
+<ul>
+<li>寄存器分配策略：<code>传统的图着色寄存器分配算法</code>。</li>
+<li>优化的范围：全局优化，而不仅仅是一个方法块的优化。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-反射执行"><a href="#3-反射执行" class="headerlink" title="3. 反射执行"></a>3. 反射执行</h2><p>基于反射可动态调用某对象实例中对应的方法、访问查看对象的属性等，无需在编写代码时就确定要创建的对象。</p>
 <p>反射和直接创建对象实例，调用方法最大的不同在于创建的过程、方法的调用是动态的。<br>如何实现动态调用：<strong>动态生成字节码、并加载到JVM中执行</strong>。</p>
 <p><strong>注意：</strong> 使用<code>getMethod()</code> 相对比较耗性能，一方面是权限的校验，另一方面是所有方法的扫描机Method对象的复制。因此，在使用<code>反射</code>调用多的系统中，应缓存<code>getMethod()</code>返回的Method对象。</p>
 
@@ -765,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码编译机制"><span class="nav-number">1.</span> <span class="nav-text">Java源码编译机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-分析和输入到符号表（Parse、-Enter）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 分析和输入到符号表（Parse、 Enter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-分析（Parse）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 分析（Parse）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-输入（Enter）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 输入（Enter）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注解处理（Annotation-Processing）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 注解处理（Annotation Processing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-语义分析和生成class文件（Analyse-and-Generate）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 语义分析和生成class文件（Analyse and Generate）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Analyse："><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Analyse：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Generate："><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Generate：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">2.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM加载class文件到内存有2种方式"><span class="nav-number">2.1.</span> <span class="nav-text">JVM加载class文件到内存有2种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制分为3个阶段："><span class="nav-number">2.2.</span> <span class="nav-text">类加载机制分为3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装载（Load）"><span class="nav-number">2.3.</span> <span class="nav-text">1. 装载（Load）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链接（Link）"><span class="nav-number">2.4.</span> <span class="nav-text">2. 链接（Link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化（Initialize）"><span class="nav-number">2.5.</span> <span class="nav-text">3. 初始化（Initialize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader继承关系"><span class="nav-number">2.6.</span> <span class="nav-text">ClassLoader继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Bootstrap-ClassLoader"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）. Bootstrap ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-Extension-ClassLoader"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）. Extension ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-App-ClassLoader"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）. App ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）-Custom-ClassLoader"><span class="nav-number">2.6.4.</span> <span class="nav-text">（4）. Custom ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader抽象类的几个关键方法"><span class="nav-number">2.7.</span> <span class="nav-text">ClassLoader抽象类的几个关键方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类执行机制"><span class="nav-number">3.</span> <span class="nav-text">类执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-字节码解释执行方式"><span class="nav-number">3.1.</span> <span class="nav-text">1. 字节码解释执行方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例分析："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射执行"><span class="nav-number">3.2.</span> <span class="nav-text">3. 反射执行</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码编译机制"><span class="nav-number">1.</span> <span class="nav-text">Java源码编译机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-分析和输入到符号表（Parse、-Enter）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 分析和输入到符号表（Parse、 Enter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-分析（Parse）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 分析（Parse）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-输入（Enter）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 输入（Enter）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注解处理（Annotation-Processing）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 注解处理（Annotation Processing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-语义分析和生成class文件（Analyse-and-Generate）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 语义分析和生成class文件（Analyse and Generate）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Analyse："><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Analyse：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Generate："><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Generate：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">2.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM加载class文件到内存有2种方式"><span class="nav-number">2.1.</span> <span class="nav-text">JVM加载class文件到内存有2种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制分为3个阶段："><span class="nav-number">2.2.</span> <span class="nav-text">类加载机制分为3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装载（Load）"><span class="nav-number">2.3.</span> <span class="nav-text">1. 装载（Load）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链接（Link）"><span class="nav-number">2.4.</span> <span class="nav-text">2. 链接（Link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化（Initialize）"><span class="nav-number">2.5.</span> <span class="nav-text">3. 初始化（Initialize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader继承关系"><span class="nav-number">2.6.</span> <span class="nav-text">ClassLoader继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Bootstrap-ClassLoader"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）. Bootstrap ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-Extension-ClassLoader"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）. Extension ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-App-ClassLoader"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）. App ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）-Custom-ClassLoader"><span class="nav-number">2.6.4.</span> <span class="nav-text">（4）. Custom ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader抽象类的几个关键方法"><span class="nav-number">2.7.</span> <span class="nav-text">ClassLoader抽象类的几个关键方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类执行机制"><span class="nav-number">3.</span> <span class="nav-text">类执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-字节码解释执行方式"><span class="nav-number">3.1.</span> <span class="nav-text">1. 字节码解释执行方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例分析："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-编译执行"><span class="nav-number">3.2.</span> <span class="nav-text">2. 编译执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射执行"><span class="nav-number">3.3.</span> <span class="nav-text">3. 反射执行</span></a></li></ol></li></ol></div>
             
 
           </div>
