@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JVM理解 —— 内存管理">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM理解-内存管理">
+<meta property="og:url" content="http://yannischeng.com/JVM理解-内存管理/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="JVM理解 —— 内存管理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2019.51.19.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.10.17.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png">
+<meta property="og:updated_time" content="2018-06-30T14:45:24.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM理解-内存管理">
+<meta name="twitter:description" content="JVM理解 —— 内存管理">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2019.51.19.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-内存管理/"/>
+
+
+
+
+
+  <title>JVM理解-内存管理 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/JVM理解-内存管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM理解-内存管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T16:31:07+08:00">
+                2018-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T22:45:24+08:00">
+                2018-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,184 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/JVM理解-内存管理/" title="JVM理解-内存管理">http://yannischeng.com/JVM理解-内存管理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM理解 —— 内存管理</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<p>Java不是由开发人员来显示分配内存和回收内存，而是由JVM来 <strong>自动管理内存的分配和回收</strong>（又称为：<strong>垃圾回收</strong>、<strong>Garbage Collection：GC</strong>）。</p>
+<p>对于Java开发人员来说，这降低了开发的难度，但是实际使用中遇到的问题就是由于不清楚JVM的内存分配和回收机制，造成内存泄漏，最终导致JVM内存不够用。</p>
+<p>因此对Java开发人员而言，除了内存的 <strong>分配</strong> 和 <strong>回收</strong> 之外，还必须掌握JVM的内存使用状况，以便更加准确判断程序的 <strong>运行状况</strong> 以及进行 <strong>性能调优</strong>。</p>
+<h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><p>JDK遵照 JVM规范进行内存区域的划分，如下：</p>
+<ul>
+<li><strong>JVM方法栈</strong></li>
+<li><strong>JVM方法区</strong></li>
+<li><strong>本地方法区</strong></li>
+<li><strong>JVM堆</strong></li>
+<li><strong>PC寄存器</strong></li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2019.51.19.png" alt=""></p>
+<h2 id="1-JVM方法区"><a href="#1-JVM方法区" class="headerlink" title="1. JVM方法区"></a>1. JVM方法区</h2><p>方法区存放了要加载类的：</p>
+<ul>
+<li>类信息：名称、修饰符等</li>
+<li>类中的静态变量</li>
+<li>类中定义的final类型的常量</li>
+<li>类中的Field消息</li>
+<li>类中的方法信息</li>
+</ul>
+<p>此方法区是<strong>全局共享</strong>的，在一定条件下它也会被<strong>GC</strong>，当方法区域使用的内存超过其允许的大小时，会抛出OOM异常。</p>
+<h2 id="2-堆"><a href="#2-堆" class="headerlink" title="2. 堆"></a>2. 堆</h2><p>堆用于存储<strong>对象实例</strong>及<strong>数组值</strong>。可以认为Java中所有通过 <code>new</code> 创建的<strong>对象的内存</strong>都是在此分配的。堆中对象所占用的<strong>内存</strong>是由<strong>GC进行回收</strong>的。</p>
+<p>为了让内存回收更加高效，JDK从1.2开始对堆采用了 <strong>分代管理</strong> 的方式。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.10.17.png" alt=""></p>
+<h3 id="2-1-新生代（New-Generation）"><a href="#2-1-新生代（New-Generation）" class="headerlink" title="2.1 新生代（New Generation）"></a>2.1 新生代（New Generation）</h3><p>大多数情况下Java程序中所有新建的对象都是从 <strong>新生代</strong> 的内存中分配的。新生代内存由</p>
+<ul>
+<li><strong>Eden Space</strong></li>
+<li>2块相同大小的 <strong>Survivor Space</strong> 构成。</li>
+</ul>
+<p>不同的<strong>GC方式</strong>会以<strong>不同的方式</strong>来划分或者根据运行状态调整 <code>Eden Space</code> 和 <code>Survivor Space</code> 的大小。</p>
+<h3 id="2-2-旧生代（Old-Generation-Tenuring-Generation）"><a href="#2-2-旧生代（Old-Generation-Tenuring-Generation）" class="headerlink" title="2.2 旧生代（Old Generation/Tenuring Generation）"></a>2.2 旧生代（Old Generation/Tenuring Generation）</h3><ul>
+<li>是用于存放 <code>新生代</code> 内存中经过多次垃圾回收后<strong>仍然存活</strong>的对象，例如 <code>缓存对象</code>。</li>
+<li><p>新建的对象也有可能在 <code>旧生代</code> 中直接分配内存。主要由2种情况决定：</p>
+<ul>
+<li>新建对象为大对象</li>
+<li>新建对象为大数组对象，且数组中无引用外部对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3. 本地方法栈"></a>3. 本地方法栈</h2><p>本地方法栈用于支持 <code>native</code> 方法的执行。存储了每个 <code>native</code> 方法调用的状态。<strong>在 <code>JDK</code> 的实现中 <code>本地方法栈</code> 和 <code>JVM方法栈</code> 是同一个</strong>。</p>
+<h2 id="4-PC寄存器-和-JVM方法栈"><a href="#4-PC寄存器-和-JVM方法栈" class="headerlink" title="4. PC寄存器 和 JVM方法栈"></a>4. PC寄存器 和 JVM方法栈</h2><p>每个线程都会创建 <code>PC寄存器</code> 和 <code>JVM方法栈</code>。</p>
+<ul>
+<li><strong>PC寄存器</strong>：占用的可能是 <code>CPU寄存器</code> 或 <code>操作系统内存</code>。</li>
+<li><strong>JVM方法栈</strong>：占用的是 <code>操作系统内存</code>。<code>JVM方法栈</code> 为<strong>线程私有</strong>，其在内存分配上<strong>非常高效</strong>。当方法运行完毕之后，其对应的 <code>栈帧</code> 所占用的内存也会<strong>自动释放</strong>。</li>
+</ul>
+<h1 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h1><h2 id="1-堆分配"><a href="#1-堆分配" class="headerlink" title="1. 堆分配"></a>1. 堆分配</h2><p>Java对象所占用的内存主要是从 <code>堆</code> 上进行分配，<code>堆</code> 是 <strong>所有线程共享</strong> 的，因此在堆上分配内存时是 <strong>需要加锁</strong> 的。这导致了<strong>创建对象开销比较大</strong>。当 <code>堆</code> 上的内存空间不足时，会触发 <code>GC</code> ，如过 <code>GC</code> 后内存空间仍然不足，则抛出 <code>OOM</code>。</p>
+<h2 id="2-TLAB（Thread-Local-Allocation-Buffer）分配"><a href="#2-TLAB（Thread-Local-Allocation-Buffer）分配" class="headerlink" title="2. TLAB（Thread Local Allocation Buffer）分配"></a>2. TLAB（Thread Local Allocation Buffer）分配</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png" alt=""></p>
+<p>JDK 为了提升内存分配效率，会为　<strong>每个新创建的线程</strong>　在 <code>新生代</code>的　<code>Eden Space</code> 上分配一块独立空间。这块空间称为 <code>TLAB（Thread Local Allocation Buffer）</code>，其大小是由JVM根据运行情况而得出的。</p>
+<p>在 <code>TLAB</code> 中分配内存是 <strong>不需要加锁</strong> 的，因此JVM在给线程中的对象分配内存时会尽量在 <code>TLAB</code> 上分配。如果对象过大或者 <code>TLAB</code> 空间已经用完了，则仍然在 <code>堆</code> 上分配内存</p>
+<p>因此在编写Java程序时，通常多个 <strong>小的对象比大的对象</strong>在内存分配上 <strong>更高效</strong>。　</p>
+<h1 id="3-内存回收"><a href="#3-内存回收" class="headerlink" title="3. 内存回收"></a>3. 内存回收</h1><p><code>JVM</code> 通过 <code>GC</code> 来回收 <code>堆</code> 和 <code>栈</code> 中的内存。<br> <strong><code>GC</code> 的基本原理是：</strong></p>
+<ul>
+<li>首先找到程序中不在被使用的对象</li>
+<li>然后回收这些对象所占用的内存</li>
+</ul>
+<p><strong>通常采用收集器的方式是<code>GC</code>，主要的收集器分为：</strong></p>
+<ul>
+<li><strong>引用计数</strong> 收集器</li>
+<li><strong>跟踪</strong> 收集器</li>
+</ul>
+<h2 id="3-1-算法"><a href="#3-1-算法" class="headerlink" title="3.1 算法"></a>3.1 算法</h2><h3 id="3-1-1-引用计数-收集器"><a href="#3-1-1-引用计数-收集器" class="headerlink" title="3.1.1  引用计数 收集器"></a>3.1.1  引用计数 收集器</h3><p> <img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png" alt=""></p>
+<p> <code>引用计数</code> 收集器采用的是 <strong>分散式</strong> 的管理方式，通过 <strong>计数器</strong> 记录是否对 <strong>对象进行引用</strong>。当 <strong>一个对象的引用计数器为0</strong> 时，<strong>说明此对象已经不在被使用，于是进行回收</strong>。</p>
+<p><strong>不足</strong></p>
+<ul>
+<li><p><strong>引用计数器</strong> 需要在每次对对象赋值时进行 <strong>计数器的增减</strong>，它有一定的<strong>消耗</strong>。</p>
+</li>
+<li><p><strong>引用计数器</strong> 对于 <strong>循环引用</strong> 的场景是 <strong>无法实现回收</strong> 的。如：<code>对象B</code> 和 <code>对象C</code> 互相引用时，</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png" alt=""></p>
+<p>对于Java这种面向对象的会形成复杂引用关系的语言而言，<strong>引用计数器</strong> 是非常不合适的，在 JDK 的 GC 实现中 <strong>未采用</strong> 此种方式。</p>
+</li>
+</ul>
+<h3 id="3-1-2-跟踪-收集器"><a href="#3-1-2-跟踪-收集器" class="headerlink" title="3.1.2 跟踪 收集器"></a>3.1.2 跟踪 收集器</h3><p><code>跟踪收集器</code>采用的是 <strong>集中式</strong> 管理方式。<strong>全局记录</strong> 数据的 <strong>引用状态</strong>。</p>
+<p>基于一定条件（定时、空间不足时）的触发 ，使用<strong>跟踪收集器</strong>，执行时需要从 <strong>根集合</strong> 来扫描 <strong>对象的引用关系</strong> ，这可能会造成 <strong>应用程序暂停</strong>。</p>
+<p><strong>实现算法有3种</strong>：</p>
+<ul>
+<li><strong>复制</strong>（Copying）</li>
+<li><strong>标记-删除</strong>（Mark-Sweep）</li>
+<li><strong>标记-压缩</strong>（Mark-Compact）</li>
+</ul>
+<h4 id="3-1-2-1-复制（Copying）"><a href="#3-1-2-1-复制（Copying）" class="headerlink" title="3.1.2.1 复制（Copying）"></a>3.1.2.1 <strong>复制</strong>（Copying）</h4><p>复制采用的方式是：</p>
+<ul>
+<li>从 <strong>根集合</strong> 扫描出 <strong>存活的对象</strong>，</li>
+<li>将 <strong>找到的存活对象</strong> 复制到 <strong>一块新的完全未使用的空间中</strong></li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png" alt=""></p>
+<p><strong>复制特点：</strong></p>
+<p>当要回收的空间中 <strong>存活的对象较少时</strong>，复制算法会比较高效，但是其带来的成本是：要 <strong>增加</strong>一块 <strong>全新的内存空间</strong> 及进行 <strong>对象</strong> 的 <strong>移动</strong></p>
+<h4 id="3-1-2-2-标记-清除（Mark-Sweep）"><a href="#3-1-2-2-标记-清除（Mark-Sweep）" class="headerlink" title="3.1.2.2 标记-清除（Mark-Sweep）"></a>3.1.2.2 <strong>标记-清除</strong>（Mark-Sweep）</h4><p>此种方式采用的是方式：</p>
+<ul>
+<li>从 <strong>根集合</strong> 开始扫描， 对 <strong>存活对象进行标记</strong></li>
+<li>标记完成之后，<strong>再次扫描</strong> 整个空间中 <strong>未标记的对象</strong>，并对其进行回收。</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png" alt=""></p>
+<p><strong>标记-清除 特点：</strong></p>
+<ul>
+<li>此种方式 <strong>不需要进行对象的移动</strong>， 仅对 <strong>不存活的对象</strong> 进行清除。因此在空间中 <strong>存活对象较多</strong> 的情况下，较为高效。</li>
+<li>由于此方式采用的是 <strong>直接回收不存活对象所占用的内存空间</strong>，因此会造成 <strong>内存碎片</strong>。</li>
+</ul>
+<h4 id="3-2-3-标记-压缩（Mark-Compact）"><a href="#3-2-3-标记-压缩（Mark-Compact）" class="headerlink" title="3.2.3 标记-压缩（Mark-Compact）"></a>3.2.3 <strong>标记-压缩</strong>（Mark-Compact）</h4><ul>
+<li>此种方式采用和 <strong>标记-清除</strong> 一样的方式对 <strong>存活对象进行标记</strong></li>
+<li><p>在 <strong>回收不存活对象所占用的内存空间</strong> 后，会将 <strong>其他所有存活的对象</strong> 都往 <strong>左端空闲的空间进行移动</strong>，并 <strong>更新引用其对象的指针</strong>。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png" alt=""></p>
+<p><strong>标记-压缩 特点：</strong></p>
+</li>
+<li><p>需要 <strong>对存活对象进行移动</strong>，成本相对较高</p>
+</li>
+<li><strong>不产生碎片</strong></li>
+</ul>
+<h2 id="3-2-JDK-中-GC-的实现"><a href="#3-2-JDK-中-GC-的实现" class="headerlink" title="3.2 JDK 中 GC 的实现"></a>3.2 <code>JDK</code> 中 GC 的实现</h2><p><code>JDK</code>根据运行的 Java 程序进行分析，发现程序中 <strong>大多数对象存活的时间较短</strong>，只有极少数对象存活时间长。</p>
+<p>基于这个分析，<code>JDK</code> 将 <code>JVM堆</code> 划分成了 </p>
+<ul>
+<li><strong><code>新生代</code></strong></li>
+<li><strong><code>旧生代</code></strong></li>
+</ul>
+<p>而且基于这两种方式提供了 <strong>不同的GC实现方式</strong>。如下：</p>
+<p><img src="" alt=""></p>
+<h3 id="3-2-1-新生代-的-GC-实现方式"><a href="#3-2-1-新生代-的-GC-实现方式" class="headerlink" title="3.2.1. 新生代 的 GC 实现方式"></a>3.2.1. 新生代 的 GC 实现方式</h3><p>JDK认为 <strong>新生代</strong> 中的对象通常 <strong>存活时间较短</strong>，因此选择使用 <strong>复制（Copying）</strong> 算法来实现对 <strong>新生代对象</strong>  的回收。</p>
+<p>根据之前 <strong>复制</strong> 实现方式的说明，执行复制时，需要一块全新的未使用的内存空间来存放存活的对象，而这就是 <strong>新生代</strong> 被划分成 <strong>3块空间（Eden、From、To）</strong> 的原因。</p>
+<ul>
+<li><strong>Eden Space</strong>：存放新创建的对象</li>
+<li><strong>From</strong> 或者 <strong>To</strong> 其中的一块空间用于在 <strong>Minor GC（对新生代对象所占用的内存进行 GC 操作）</strong> 触发时作为 <strong>复制的目标空间</strong>。</li>
+<li>当其中的一块被作为 <strong>复制目标的空间</strong> 时，另一块空间的内容则被 <strong>清空</strong>。这就是 新生代 空间中 <strong>From</strong> 和 <strong>To</strong> 名字的由来。</li>
+</ul>
+<p>JDK 提供了 <strong>3中方式</strong> 来对新生代对象所 <strong>占用的内存</strong> 进行回收：</p>
+<ul>
+<li><strong>串行GC</strong></li>
+<li><strong>并行回收GC</strong></li>
+<li><strong>并行GC</strong></li>
+</ul>
+<h4 id="（1）串行GC（Serial-GC）"><a href="#（1）串行GC（Serial-GC）" class="headerlink" title="（1）串行GC（Serial GC）"></a>（1）串行GC（Serial GC）</h4><h4 id="（2）并行回收GC-（）"><a href="#（2）并行回收GC-（）" class="headerlink" title="（2）并行回收GC （）"></a>（2）并行回收GC （）</h4><h4 id="（3）并行GC"><a href="#（3）并行GC" class="headerlink" title="（3）并行GC"></a>（3）并行GC</h4><h3 id="3-2-2-旧生代-和-持久代-的GC实现方式"><a href="#3-2-2-旧生代-和-持久代-的GC实现方式" class="headerlink" title="3.2.2. 旧生代 和 持久代 的GC实现方式"></a>3.2.2. 旧生代 和 持久代 的GC实现方式</h3><p>JDK 提供了3中方式：</p>
+<ul>
+<li><strong>串行</strong></li>
+<li><strong>并行</strong></li>
+<li><strong>并发</strong></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/JVM理解-Java源码编译/" rel="next" title="JVM理解-Java源码编译">
+                <i class="fa fa-chevron-left"></i> JVM理解-Java源码编译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/JVM理解-线程/" rel="prev" title="JVM理解-线程">
+                JVM理解-线程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存空间"><span class="nav-number">1.</span> <span class="nav-text">内存空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM方法区"><span class="nav-number">1.1.</span> <span class="nav-text">1. JVM方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-堆"><span class="nav-number">1.2.</span> <span class="nav-text">2. 堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新生代（New-Generation）"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 新生代（New Generation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-旧生代（Old-Generation-Tenuring-Generation）"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 旧生代（Old Generation/Tenuring Generation）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">3. 本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PC寄存器-和-JVM方法栈"><span class="nav-number">1.4.</span> <span class="nav-text">4. PC寄存器 和 JVM方法栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存分配"><span class="nav-number">2.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆分配"><span class="nav-number">2.1.</span> <span class="nav-text">1. 堆分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLAB（Thread-Local-Allocation-Buffer）分配"><span class="nav-number">2.2.</span> <span class="nav-text">2. TLAB（Thread Local Allocation Buffer）分配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-内存回收"><span class="nav-number">3.</span> <span class="nav-text">3. 内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-算法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-引用计数-收集器"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1  引用计数 收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-跟踪-收集器"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 跟踪 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-1-复制（Copying）"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">3.1.2.1 复制（Copying）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-2-标记-清除（Mark-Sweep）"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">3.1.2.2 标记-清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-标记-压缩（Mark-Compact）"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">3.2.3 标记-压缩（Mark-Compact）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-JDK-中-GC-的实现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 JDK 中 GC 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-新生代-的-GC-实现方式"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. 新生代 的 GC 实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）串行GC（Serial-GC）"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">（1）串行GC（Serial GC）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）并行回收GC-（）"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">（2）并行回收GC （）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）并行GC"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">（3）并行GC</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-旧生代-和-持久代-的GC实现方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. 旧生代 和 持久代 的GC实现方式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">191.1k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
