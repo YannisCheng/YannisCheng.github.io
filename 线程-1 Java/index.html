@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/threadpool.png">
-<meta property="og:updated_time" content="2018-06-29T15:33:14.739Z">
+<meta property="og:updated_time" content="2018-07-01T05:41:27.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程-1 Java">
 <meta name="twitter:description" content="线程总结-1 Java">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T23:33:14+08:00">
-                2018-06-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T13:41:27+08:00">
+                2018-07-01
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,674 字
+                  5,797 字
                 </span>
               
 
@@ -452,6 +452,12 @@
 </ul>
 <p>在同一个时间点上，<strong>一个CPU</strong>只能支持<strong>一个线程</strong>在执行。因为CPU运行的速度很快，因此我们看起来的感觉就像是多线程一样。</p>
 <p><strong>基本线程类：</strong><code>Thread</code>类，<code>Runnable</code>接口。</p>
+<p><strong>线程优先级：</strong> </p>
+<ul>
+<li>优先级范围：1 - 10；1最低，5是正常级</li>
+<li>在不指定的情况下，所有线程的优先级是一样的。</li>
+<li>线程的优先级应该在start()方法调用之前被设置</li>
+</ul>
 <h1 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h1><h2 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h2><p>关于<strong>阻塞(Blocked)</strong>情况</p>
 <ul>
 <li>调用join()和sleep()方法，sleep()时间结束或被打断，join()中断，IO完成都会回到(Runnable)状态，等待JVM的调度。</li>
@@ -461,7 +467,10 @@
 </ul>
 <p>在Runnable状态的线程是处于被调度的线程，此时的调度顺序是不一定的，有可能刚刚处于Runnable状态的线程，会马上被再次调用。</p>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png" alt=""></p>
-<h2 id="基本控制方法："><a href="#基本控制方法：" class="headerlink" title="基本控制方法："></a>基本控制方法：</h2><table>
+<h2 id="基本控制方法："><a href="#基本控制方法：" class="headerlink" title="基本控制方法："></a>基本控制方法：</h2><blockquote>
+<p>参考：<a href="https://blog.csdn.net/maoyeqiu/article/details/50215123" target="_blank" rel="external">https://blog.csdn.net/maoyeqiu/article/details/50215123</a></p>
+</blockquote>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -487,7 +496,7 @@
 </tr>
 <tr>
 <td>join()</td>
-<td>调用某线程的该方法，将当前线程与该线程“合并”。合并线程后，程序的执行的过程就相当于是执行方法调用的过程</td>
+<td>thread.join()把指定的线程加入到当前线程，可以将两个交替执行的线程合并为顺序执行的线程。比如在线程B中调用了线程A的join()方法，直到线程A执行完毕后，才会继续执行线程B。 </td>
 </tr>
 <tr>
 <td>yield()</td>
@@ -495,11 +504,15 @@
 </tr>
 <tr>
 <td>wait()</td>
-<td>当前线程进入对象的wait pool</td>
+<td>当前线程进入对象的wait pool，让当前线程释放锁，使得其他线程获取锁</td>
 </tr>
 <tr>
 <td>notify()/notifyAll()</td>
-<td>唤醒对象的wait pool中的一个/所有等待的线程</td>
+<td>唤醒对象的wait pool中的一个或者所有等待的线程</td>
+</tr>
+<tr>
+<td>sleep()</td>
+<td>让当前线程睡眠，持有锁</td>
 </tr>
 </tbody>
 </table>
@@ -832,7 +845,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">191.1k</span>
+    <span title="Site words total count">192.3k</span>
   
 </div>
 

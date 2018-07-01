@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png">
-<meta property="og:updated_time" content="2018-06-30T14:45:24.706Z">
+<meta property="og:updated_time" content="2018-06-30T15:33:16.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-内存管理">
 <meta name="twitter:description" content="JVM理解 —— 内存管理">
@@ -321,7 +321,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T22:45:24+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T23:33:16+08:00">
                 2018-06-30
               </time>
             
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,184 字
+                  2,183 字
                 </span>
               
 
@@ -496,7 +496,7 @@
 <p>JDK 为了提升内存分配效率，会为　<strong>每个新创建的线程</strong>　在 <code>新生代</code>的　<code>Eden Space</code> 上分配一块独立空间。这块空间称为 <code>TLAB（Thread Local Allocation Buffer）</code>，其大小是由JVM根据运行情况而得出的。</p>
 <p>在 <code>TLAB</code> 中分配内存是 <strong>不需要加锁</strong> 的，因此JVM在给线程中的对象分配内存时会尽量在 <code>TLAB</code> 上分配。如果对象过大或者 <code>TLAB</code> 空间已经用完了，则仍然在 <code>堆</code> 上分配内存</p>
 <p>因此在编写Java程序时，通常多个 <strong>小的对象比大的对象</strong>在内存分配上 <strong>更高效</strong>。　</p>
-<h1 id="3-内存回收"><a href="#3-内存回收" class="headerlink" title="3. 内存回收"></a>3. 内存回收</h1><p><code>JVM</code> 通过 <code>GC</code> 来回收 <code>堆</code> 和 <code>栈</code> 中的内存。<br> <strong><code>GC</code> 的基本原理是：</strong></p>
+<h1 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h1><p><code>JVM</code> 通过 <code>GC</code> 来回收 <code>堆</code> 和 <code>栈</code> 中的内存。<br> <strong><code>GC</code> 的基本原理是：</strong></p>
 <ul>
 <li>首先找到程序中不在被使用的对象</li>
 <li>然后回收这些对象所占用的内存</li>
@@ -612,8 +612,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/JVM理解-线程/" rel="prev" title="JVM理解-线程">
-                JVM理解-线程 <i class="fa fa-chevron-right"></i>
+              <a href="/JVM理解-线程资源同步和线程之间的交互机制/" rel="prev" title="JVM理解-线程资源同步和线程之间的交互机制">
+                JVM理解-线程资源同步和线程之间的交互机制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -768,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存空间"><span class="nav-number">1.</span> <span class="nav-text">内存空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM方法区"><span class="nav-number">1.1.</span> <span class="nav-text">1. JVM方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-堆"><span class="nav-number">1.2.</span> <span class="nav-text">2. 堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新生代（New-Generation）"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 新生代（New Generation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-旧生代（Old-Generation-Tenuring-Generation）"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 旧生代（Old Generation/Tenuring Generation）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">3. 本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PC寄存器-和-JVM方法栈"><span class="nav-number">1.4.</span> <span class="nav-text">4. PC寄存器 和 JVM方法栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存分配"><span class="nav-number">2.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆分配"><span class="nav-number">2.1.</span> <span class="nav-text">1. 堆分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLAB（Thread-Local-Allocation-Buffer）分配"><span class="nav-number">2.2.</span> <span class="nav-text">2. TLAB（Thread Local Allocation Buffer）分配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-内存回收"><span class="nav-number">3.</span> <span class="nav-text">3. 内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-算法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-引用计数-收集器"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1  引用计数 收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-跟踪-收集器"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 跟踪 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-1-复制（Copying）"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">3.1.2.1 复制（Copying）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-2-标记-清除（Mark-Sweep）"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">3.1.2.2 标记-清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-标记-压缩（Mark-Compact）"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">3.2.3 标记-压缩（Mark-Compact）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-JDK-中-GC-的实现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 JDK 中 GC 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-新生代-的-GC-实现方式"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. 新生代 的 GC 实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）串行GC（Serial-GC）"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">（1）串行GC（Serial GC）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）并行回收GC-（）"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">（2）并行回收GC （）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）并行GC"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">（3）并行GC</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-旧生代-和-持久代-的GC实现方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. 旧生代 和 持久代 的GC实现方式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存空间"><span class="nav-number">1.</span> <span class="nav-text">内存空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM方法区"><span class="nav-number">1.1.</span> <span class="nav-text">1. JVM方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-堆"><span class="nav-number">1.2.</span> <span class="nav-text">2. 堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新生代（New-Generation）"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 新生代（New Generation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-旧生代（Old-Generation-Tenuring-Generation）"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 旧生代（Old Generation/Tenuring Generation）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">3. 本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PC寄存器-和-JVM方法栈"><span class="nav-number">1.4.</span> <span class="nav-text">4. PC寄存器 和 JVM方法栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存分配"><span class="nav-number">2.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆分配"><span class="nav-number">2.1.</span> <span class="nav-text">1. 堆分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLAB（Thread-Local-Allocation-Buffer）分配"><span class="nav-number">2.2.</span> <span class="nav-text">2. TLAB（Thread Local Allocation Buffer）分配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存回收"><span class="nav-number">3.</span> <span class="nav-text">内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-算法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-引用计数-收集器"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1  引用计数 收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-跟踪-收集器"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 跟踪 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-1-复制（Copying）"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">3.1.2.1 复制（Copying）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-2-标记-清除（Mark-Sweep）"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">3.1.2.2 标记-清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-标记-压缩（Mark-Compact）"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">3.2.3 标记-压缩（Mark-Compact）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-JDK-中-GC-的实现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 JDK 中 GC 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-新生代-的-GC-实现方式"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. 新生代 的 GC 实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）串行GC（Serial-GC）"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">（1）串行GC（Serial GC）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）并行回收GC-（）"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">（2）并行回收GC （）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）并行GC"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">（3）并行GC</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-旧生代-和-持久代-的GC实现方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. 旧生代 和 持久代 的GC实现方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -802,7 +802,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">191.1k</span>
+    <span title="Site words total count">192.3k</span>
   
 </div>
 
