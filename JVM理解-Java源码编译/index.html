@@ -91,14 +91,15 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="JVM理解 —— Java代码执行">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/713721-20160602152821617-738821208.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.58.40.png">
-<meta property="og:updated_time" content="2018-06-30T08:25:46.695Z">
+<meta property="og:updated_time" content="2018-07-01T22:39:15.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-Java源码编译">
 <meta name="twitter:description" content="JVM理解 —— Java代码执行">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
 
 
 
@@ -316,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T16:25:46+08:00">
-                2018-06-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-02T06:39:15+08:00">
+                2018-07-02
               </time>
             
           </span>
@@ -335,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -441,6 +442,7 @@
         <p>JVM理解 —— Java代码执行</p>
 <a id="more"></a>
 <p>[TOC]</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png" alt=""></p>
 <p>Java代码执行机制的3个过程</p>
 <ul>
 <li><strong>编译</strong></li>
@@ -458,7 +460,7 @@
 <p><strong>步骤：</strong></p>
 <ul>
 <li>先将<strong>实例成员初始化器</strong>收集到<strong>构造器</strong>中，将<strong>静态成员初始化器</strong>收集到<code>&lt;clinit()&gt;</code> 中；</li>
-<li>将<strong>抽象语法树</strong>生成<strong>字节码</strong>，采用的方法时后序遍历语法树，并进行最后的少量代码转换</li>
+<li>将<strong>抽象语法树</strong>生成<strong>字节码</strong>，采用的方法是后序遍历语法树，并进行最后的少量代码转换</li>
 <li>最后从<code>符号表</code>生成<code>class</code>文件</li>
 </ul>
 <p><strong>class文件中的信息：</strong></p>
@@ -476,7 +478,7 @@
 <h2 id="类加载机制分为3个阶段："><a href="#类加载机制分为3个阶段：" class="headerlink" title="类加载机制分为3个阶段："></a>类加载机制分为3个阶段：</h2><ul>
 <li><strong>装载</strong>：二进制字节码加载至JVM</li>
 <li><strong>链接</strong>：此过程结束后，即：将<code>二进制字节码</code>转换为<code>class对象</code>。</li>
-<li><strong>初始化</strong>：其作用是为<code>为静态变量赋值、调用&lt;client&gt;()</code>等。</li>
+<li><strong>初始化</strong>：其作用是为<code>为静态变量赋值、调用&lt;clinit&gt;()</code>等。</li>
 </ul>
 <h2 id="1-装载（Load）"><a href="#1-装载（Load）" class="headerlink" title="1. 装载（Load）"></a>1. 装载（Load）</h2><p>查找二进制字节码并加载至JVM中，JVM通过类的全名（包名+类名）+类加载器完成类的加载。<br>对于接口或非数组类型的类，其名称即为类名，此种类型的类由所在的ClassLoader负责加载；数组类则是由JVM直接创建的。</p>
 <h2 id="2-链接（Link）"><a href="#2-链接（Link）" class="headerlink" title="2. 链接（Link）"></a>2. 链接（Link）</h2><p>负责对二进制字节码的<strong>格式进行校验</strong>、<strong>初始化</strong>装载类中的<strong>静态变量</strong>及<strong>解析</strong>类中<strong>调用的接口、类</strong>。</p>
@@ -603,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/JVM理解/" rel="next" title="JVM理解">
-                <i class="fa fa-chevron-left"></i> JVM理解
+              <a href="/线程-2 Android/" rel="next" title="线程-2 Android">
+                <i class="fa fa-chevron-left"></i> 线程-2 Android
               </a>
             
           </div>
@@ -709,7 +711,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +722,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -803,7 +805,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">192.3k</span>
+    <span title="Site words total count">193.3k</span>
   
 </div>
 
