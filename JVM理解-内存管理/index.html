@@ -93,14 +93,13 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.55.05.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.10.17.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png">
-<meta property="og:updated_time" content="2018-07-01T08:12:05.544Z">
+<meta property="og:updated_time" content="2018-07-03T02:15:01.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-内存管理">
 <meta name="twitter:description" content="JVM理解 —— 内存管理">
@@ -322,8 +321,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T16:12:05+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-03T10:15:01+08:00">
+                2018-07-03
               </time>
             
           </span>
@@ -471,7 +470,6 @@
 <p>此方法区是<strong>全局共享</strong>的，在一定条件下它也会被<strong>GC</strong>，当方法区域使用的内存超过其允许的大小时，会抛出OOM异常。</p>
 <h2 id="2-堆"><a href="#2-堆" class="headerlink" title="2. 堆"></a>2. 堆</h2><p>堆用于存储<strong>对象实例</strong>及<strong>数组值</strong>。可以认为Java中所有通过 <code>new</code> 创建的<strong>对象的内存</strong>都是在此分配的。堆中对象所占用的<strong>内存</strong>是由<strong>GC进行回收</strong>的。</p>
 <p>为了让内存回收更加高效，JDK从1.2开始对堆采用了 <strong>分代管理</strong> 的方式。</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.10.17.png" alt=""></p>
 <h3 id="2-1-新生代（New-Generation）"><a href="#2-1-新生代（New-Generation）" class="headerlink" title="2.1 新生代（New Generation）"></a>2.1 新生代（New Generation）</h3><p>大多数情况下Java程序中所有新建的对象都是从 <strong>新生代</strong> 的内存中分配的。新生代内存由</p>
 <ul>
 <li><strong>Eden Space</strong></li>
@@ -699,7 +697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -721,7 +719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -804,7 +802,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">193.3k</span>
+    <span title="Site words total count">197.1k</span>
   
 </div>
 

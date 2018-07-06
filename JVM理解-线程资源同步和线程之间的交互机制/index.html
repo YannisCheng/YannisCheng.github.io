@@ -93,9 +93,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2009.40.29.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png">
-<meta property="og:updated_time" content="2018-07-01T08:12:13.774Z">
+<meta property="og:updated_time" content="2018-07-03T02:16:11.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-线程资源同步和线程之间的交互机制">
 <meta name="twitter:description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
@@ -317,8 +318,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T16:12:13+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-03T10:16:11+08:00">
+                2018-07-03
               </time>
             
           </span>
@@ -367,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,054 字
+                  1,069 字
                 </span>
               
 
@@ -482,6 +483,8 @@
 <p><code>unlock</code> 是由线程发起，同步操作  <code>main memory</code> ，去除对象的锁。</p>
 </li>
 </ul>
+<p>整个虚拟机运行时数据区域的情况</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg" alt=""></p>
 <h2 id="JVM保证一下操作是顺序执行的"><a href="#JVM保证一下操作是顺序执行的" class="headerlink" title="JVM保证一下操作是顺序执行的"></a><strong>JVM保证一下操作是顺序执行的</strong></h2><ul>
 <li>同一个线程上的操作一定是顺序的</li>
 <li>对于 <code>main memory</code> 上的 <strong>同一个变量</strong> 的操作一定是顺序执行的，也就是不可能两个请求同时读取变量值。</li>
@@ -644,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -666,7 +669,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -749,7 +752,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">193.3k</span>
+    <span title="Site words total count">197.1k</span>
   
 </div>
 
