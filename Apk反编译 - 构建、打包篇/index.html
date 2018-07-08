@@ -83,18 +83,29 @@
 
 
 
-<meta name="description" content="Apk反编译 - 构建、打包">
+<meta name="description" content="Apk反编译 - 构建、打包  之前总是根据用到的、学习到的知识点进行总结，写博客。但是写的多了，写的时间长了，在写到一个具体的知识点的实现过程时，会有意的意识到，这个知识点可以和之前的某个知识点串起来，而那个知识点又可以和另外知识点连接起来，这样我就在无形之中，将自己的知识点串联了起来，形成了属于我自己、适合我自己的知识体系、系统架构。  这一点是我在一开始写博客时，没有想到的。我一开始的想法仅">
 <meta name="keywords" content="Apk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apk反编译 - 构建、打包篇">
 <meta property="og:url" content="http://yannischeng.com/Apk反编译 - 构建、打包篇/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Apk反编译 - 构建、打包">
+<meta property="og:description" content="Apk反编译 - 构建、打包  之前总是根据用到的、学习到的知识点进行总结，写博客。但是写的多了，写的时间长了，在写到一个具体的知识点的实现过程时，会有意的意识到，这个知识点可以和之前的某个知识点串起来，而那个知识点又可以和另外知识点连接起来，这样我就在无形之中，将自己的知识点串联了起来，形成了属于我自己、适合我自己的知识体系、系统架构。  这一点是我在一开始写博客时，没有想到的。我一开始的想法仅">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-06T02:35:30.429Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.04.37.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.01.1.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.36.16.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.38.39.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.41.58.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.44.30.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.49.35.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2013.35.16.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2013.55.39.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/3606778-b978b976f8d0f591.png">
+<meta property="og:updated_time" content="2018-07-06T09:28:17.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apk反编译 - 构建、打包篇">
-<meta name="twitter:description" content="Apk反编译 - 构建、打包">
+<meta name="twitter:description" content="Apk反编译 - 构建、打包  之前总是根据用到的、学习到的知识点进行总结，写博客。但是写的多了，写的时间长了，在写到一个具体的知识点的实现过程时，会有意的意识到，这个知识点可以和之前的某个知识点串起来，而那个知识点又可以和另外知识点连接起来，这样我就在无形之中，将自己的知识点串联了起来，形成了属于我自己、适合我自己的知识体系、系统架构。  这一点是我在一开始写博客时，没有想到的。我一开始的想法仅">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.04.37.png">
 
 
 
@@ -312,7 +323,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-06T10:35:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-06T17:28:17+08:00">
                 2018-07-06
               </time>
             
@@ -362,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  17 字
+                  2,069 字
                 </span>
               
 
@@ -378,7 +389,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -435,9 +446,105 @@
 
       
         <p>Apk反编译 - 构建、打包</p>
+<ul>
+<li>之前总是根据用到的、学习到的知识点进行总结，写博客。<br>但是写的多了，写的时间长了，在写到一个具体的知识点的实现过程时，会有意的意识到，这个知识点可以和之前的某个知识点串起来，而那个知识点又可以和另外知识点连接起来，这样我就在无形之中，将自己的知识点串联了起来，形成了属于我自己、适合我自己的知识体系、系统架构。</li>
+</ul>
+<p>这一点是我在一开始写博客时，没有想到的。我一开始的想法仅仅是想记录下当前的这个点，方便自己以后日后使用。同样，正是由于这个意外的收获，是我更加坚定了自己写<strong>好博客</strong>、写<strong>有质量的博客</strong>、写<strong>知识系统性的博客</strong>。形成良性循环。</p>
+<ul>
+<li>带着问题工作，思考工作中的每一个环节。</li>
+<li>关注 各个大厂 的 微信技术公众号，从实际的产品中看热门知识点的应用。</li>
+</ul>
 <a id="more"></a>
 <p>[TOC]</p>
-<h1 id="Android构建过程"><a href="#Android构建过程" class="headerlink" title="Android构建过程"></a>Android构建过程</h1><h1 id="Apk打包"><a href="#Apk打包" class="headerlink" title="Apk打包"></a>Apk打包</h1>
+<h1 id="Android构建过程"><a href="#Android构建过程" class="headerlink" title="Android构建过程"></a>Android构建过程</h1><h1 id="Apk打包"><a href="#Apk打包" class="headerlink" title="Apk打包"></a>Apk打包</h1><p>本文的分析方式为：<strong>反向分析。由结果向后倒推</strong>。</p>
+<p>了解 Android 的打包流程，有助于我们做一些 <strong>针对编译期的优化</strong>，包括但不限于提高打包速度，提高 Android 应用的 hack 难度增加安全性，减少 Android 安装包的体积，完成一些自动化的编码，减少编码压力等。</p>
+<h2 id="Apk-文件构成"><a href="#Apk-文件构成" class="headerlink" title="Apk 文件构成"></a>Apk 文件构成</h2><blockquote>
+<p>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzI0NjIzNDkwOA==&amp;mid=2247483789&amp;idx=1&amp;sn=6aed8c7907d5bd9c8a5e7f2c2dcdac2e&amp;scene=1&amp;srcid=0831CCuRJsbJNuz1WxU6uUsI#wechat_redirect" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzI0NjIzNDkwOA==&amp;mid=2247483789&amp;idx=1&amp;sn=6aed8c7907d5bd9c8a5e7f2c2dcdac2e&amp;scene=1&amp;srcid=0831CCuRJsbJNuz1WxU6uUsI#wechat_redirect</a></p>
+</blockquote>
+<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p><code>apk</code> 文件本质上其实是一个 <code>zip包</code>。</p>
+<p>基本的 <code>Apk包内容</code>：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.04.37.png" alt=""></p>
+<p>红色标注部分，这一些文件和文件夹是一个 Android 应用基本都具备的。而其他的一些文件和文件夹则是一些第三方库，或者是其他一些代码生成的。</p>
+<p>不同项目的包的内容的差异：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.01.1.png" alt=""></p>
+<h3 id="1-AndroidManifest-xml"><a href="#1-AndroidManifest-xml" class="headerlink" title="1. AndroidManifest.xml"></a>1. AndroidManifest.xml</h3><p>是 Android 应用的<strong><code>全局配置文件</code></strong> ，它包含了这个应用的很多配置信息，例如包名、版本号、所需权限、注册的服务等。</p>
+<p>可以根据这个文件在相当程度上 <strong>了解这个应用的一些信息</strong> 。该文件在直接解压的状态下是被编译为<strong>二进制的 XML 文件</strong>，是 <strong>无法直接查看</strong> 的。</p>
+<h3 id="2-assets-文件夹"><a href="#2-assets-文件夹" class="headerlink" title="2. assets 文件夹"></a>2. assets 文件夹</h3><p><code>assets 文件</code> 夹用于保存 <strong>需要保持原始文件的资源文件夹</strong>，开发过程中拖了什么到里面，打包完之后里面还是什么。一般用于存放音频，网页（帮助页面之类的），字体等文件。</p>
+<p>主要需要知道的点是它与 <strong>res 文件夹的区分</strong> 以及如何在应用中访问该文件夹的资源，如它可以有多级目录而 res 则只有两级。 </p>
+<p><code>assets 文件</code> 与 <code>res 文件夹</code> 的 <strong>区分</strong></p>
+<ul>
+<li><p><strong>子目录不同</strong>：</p>
+<ul>
+<li>res目录中的资源 <strong>只能存储在相应的子目录</strong> (如res/layout、res/values等)中</li>
+<li>ssets目录中的资源可以 <strong>任意存放</strong>，也可以建立任意层次的子目录</li>
+</ul>
+</li>
+<li><p><strong>引用资源的方式</strong> 不同： </p>
+<ul>
+<li>res目录 中的 <strong>所有资源</strong> 都会在 <strong>R类</strong> 的相应子类中 <strong>生成对应的int类型变量</strong>，需要使用这些变量<br>来引用资源。</li>
+<li>assets目录中的资源需要 <strong>直接使用文件名</strong> 来引用，返回与资源文件对应的 <strong>InputStream对象</strong>，剩下的操作就是普通的Java代码 <strong>输入流</strong> 操作了。</li>
+</ul>
+<p>例如：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">InputStream is1=getResources().getAssets().open(&quot;xyz.xml&quot;);</div><div class="line">InputStream is2=getResources().getAssets().open(&quot;abc/test.db&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>编译时处理方式不同</strong></p>
+<ul>
+<li><code>res目录中</code> 的资源子目录 <strong>除了raw</strong> 外，其他资源目录中的资源文件 <strong>都会被编译</strong>，这也是为什么<br>将APK文件解压后无法直接查看XML格式资源文件内容的原因。</li>
+<li><code>assets与res/raw目录</code> 中的资源文件 <strong>不会做任何处理</strong>，在调用时通过 <strong>流</strong> 的方式，所以将APK解压后，这两个目录中的资源文件都会保持原样。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-dex-文件"><a href="#3-dex-文件" class="headerlink" title="3. dex 文件"></a>3. dex 文件</h3><p>classes.dex 文件是 Android 系统运行于 <code>Dalvik Virtual Machine</code> 上的 <strong><code>可执行文件</code></strong>，也是Android 应用程序的核心所在。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.36.16.png" alt=""></p>
+<p>项目工程中的：</p>
+<ul>
+<li><code>Java 源码</code> 通过 <code>javac</code> 生成 <code>class 文件</code>，</li>
+<li><p>再通过 <code>dx 工具</code> 转换为 <code>classes.dex</code>，</p>
+<p><strong>注意：</strong>  这里有 <code>classes2.dex</code>和 <code>classes3.dex</code>。</p>
+<p>1：这是 <strong>方法数超过一个 dex 的上限，分 dex 的结果</strong>。<br>2：分 dex 在 Android 5.0 之前需要开发者自行完成，5.0 后 dx 自带支持。<br>3：目前一些热补丁有关的技术，主要便是对 dex 做各种处理。 </p>
+</li>
+</ul>
+<h3 id="4-lib-文件夹"><a href="#4-lib-文件夹" class="headerlink" title="4. lib 文件夹"></a>4. lib 文件夹</h3><p>该目录存放着应用需要的 <strong><code>native 库文件</code></strong>：如一些底层实现的图片处理、音视频处理、数据加密的库以 so 库的形式在该文件夹中。</p>
+<p>而该文件夹下有时会 <strong>多一个层级</strong>，这是 <strong>根据不同 <code>CPU型号</code> 而划分</strong> 的，如 <code>ARM</code>，<code>ARM-v7a</code>，<code>x86</code>等。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.38.39.png" alt=""></p>
+<h3 id="5-META-INF-文件夹"><a href="#5-META-INF-文件夹" class="headerlink" title="5. META-INF 文件夹"></a>5. META-INF 文件夹</h3><p>该目录的主要作用是用于保证 APK 的 <strong>完整性</strong> 以及 <strong>安全性</strong>。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.41.58.png" alt=""></p>
+<p>主要有三个文件：</p>
+<ul>
+<li><strong><code>MANIFEST.MF</code></strong>：保存了整个 apk 文件中 <strong><code>所有文件的文件名 + SHA-1后的 base64 编码值</code></strong>。这也就意味着 <code>MANIFEST.MF</code> 象征着 <strong>apk 包的完整性</strong>。</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.44.30.png" alt=""></p>
+<ul>
+<li><strong>CERT.RSA</strong>：这个文件保存了 <strong>公钥</strong> 和 <strong>加密方式</strong> 的信息。</li>
+<li><strong>CERT.SF</strong>：这个文件与 <strong>MANIFEST.MF 的结构一样</strong>，只是其 <strong>编码被被私钥加密</strong>。</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2011.49.35.png" alt=""></p>
+<h3 id="6-res-文件夹"><a href="#6-res-文件夹" class="headerlink" title="6. res 文件夹"></a>6. res 文件夹</h3><p>放的所有文件都会 <strong>被映射到 <code>R 文件</code></strong> 中，生成对应的 <code>资源 ID</code>，便于代码中 <code>通过 ID 直接访问</code>。其中的资源文件包括了动画(anim)，图像(drwable)，布局(layout)，常量值(values)，颜色值(colors)，尺寸值(dimens)，字符串(strings)，自定义样式(styles)、菜单(menu)等。</p>
+<h3 id="7-resource-arsc-文件"><a href="#7-resource-arsc-文件" class="headerlink" title="7. resource.arsc 文件"></a>7. resource.arsc 文件</h3><p>此文件是所有文件中 <strong>结构最复杂</strong> 的。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2013.35.16.png" alt=""></p>
+<p><code>string</code> 的信息最多</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-06%2013.55.39.png" alt=""></p>
+<p><code>resource.arsc</code> 是可以包含 <code>多个 package</code> 的资源的。 然后可以看到一个 Resource Types 的列表。<br>这里看到的是 <code>anim</code> 的 type。 右边显示了有多少个  <code>anim</code>  以及多少项 configurations，以及表的具体内容为 ID - Name - 各个维度的值（在这里即是资源的路径），通过这个可以完成通过 id + 对应的 configuration 获取对应资源的操作。</p>
+<p>资源混淆的原理，就是修改这里 <strong>各个维度的值</strong>，并修改 <strong>对应 res 里面的文件夹</strong> 以及 <strong>文件名实</strong> 现的。</p>
+<h2 id="Android-打包流程"><a href="#Android-打包流程" class="headerlink" title="Android 打包流程"></a>Android 打包流程</h2><blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/8d691b6bf8b4" target="_blank" rel="external">https://www.jianshu.com/p/8d691b6bf8b4</a><br>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzI1NjEwMTM4OA==&amp;mid=2651232113&amp;idx=1&amp;sn=02f413999ab0865e23d272e69b9e6196&amp;scene=1&amp;srcid=0831gT4p6M0NFG5HTTeRHTUC#wechat_redirect" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzI1NjEwMTM4OA==&amp;mid=2651232113&amp;idx=1&amp;sn=02f413999ab0865e23d272e69b9e6196&amp;scene=1&amp;srcid=0831gT4p6M0NFG5HTTeRHTUC#wechat_redirect</a></p>
+</blockquote>
+<p>Android的是如何构建一个APK的？此图是谷歌官方发布的一张.apk打包流程图。</p>
+<p><strong>概述：</strong></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/3606778-b978b976f8d0f591.png" alt=""></p>
+<p><strong>流程概述：</strong></p>
+<ol>
+<li><strong>资源打包</strong>。应用程序的资源文件（res 文件下各个文件），通过AAPT打包成 <code>R.java类（资源索引表）</code>、<code>.arsc文件</code>。</li>
+<li><strong>AIDL处理</strong>。如果有<code>AIDL</code>，则通过 <code>AIDL工具</code>，打包成 <code>Java接口类</code>。</li>
+<li><strong>生成.class文件</strong>。<code>R.java</code> 和 <code>aidl.java</code> 通过 Java编译成为目标的 <code>.class文件</code>。</li>
+<li><strong>dx处理</strong>。<code>第三方jar</code> 或者 <code>lib</code> 通过 <code>.dx工具</code> 打包成 <code>dex文件</code>， <code>.dx工具</code> 的主要作用是将 <strong>Java的字节码</strong> 转换为 <strong>Dalvik的字节码</strong>，在此过程中会 <strong>压缩常量池，消除一些冗余信息</strong>。</li>
+<li><strong>apk打包</strong>。<code>apkbuilder工具</code> 会将所有 <code>未编译的资源文件</code>、<code>.arsc资源</code>、<code>.DEX文件</code>打包到一个完成的 <code>apk文件</code> 中。</li>
+<li><strong>签名</strong>。完成的apk将通过配置了签名文件（调试和释放都有）的 <strong><code>jarsigner工具</code></strong> 对其进行签名。得到一个签名后的APK：signed.apk</li>
+<li><strong>对齐处理</strong>。<code>zipalign工具</code> 对 <code>signed.apk</code> 进行对齐处理，所谓对齐，主要过程是将APK包中所有的资源文件距离文件起始偏移为4字节整数倍，这样通过内存映射访问APK文件时的速度会更快。对齐的作用主要是为了减少运行时内存的使用。</li>
+</ol>
+<h2 id="Android-打包后续"><a href="#Android-打包后续" class="headerlink" title="Android 打包后续"></a>Android 打包后续</h2><h3 id="加固"><a href="#加固" class="headerlink" title="加固"></a>加固</h3><h3 id="快速多渠道包"><a href="#快速多渠道包" class="headerlink" title="快速多渠道包"></a>快速多渠道包</h3><h3 id="资源混淆"><a href="#资源混淆" class="headerlink" title="资源混淆"></a>资源混淆</h3><h3 id="热补丁"><a href="#热补丁" class="headerlink" title="热补丁"></a>热补丁</h3>
       
     </div>
     
@@ -620,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android构建过程"><span class="nav-number">1.</span> <span class="nav-text">Android构建过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apk打包"><span class="nav-number">2.</span> <span class="nav-text">Apk打包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android构建过程"><span class="nav-number">1.</span> <span class="nav-text">Android构建过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apk打包"><span class="nav-number">2.</span> <span class="nav-text">Apk打包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Apk-文件构成"><span class="nav-number">2.1.</span> <span class="nav-text">Apk 文件构成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概览"><span class="nav-number">2.1.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-AndroidManifest-xml"><span class="nav-number">2.1.2.</span> <span class="nav-text">1. AndroidManifest.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-assets-文件夹"><span class="nav-number">2.1.3.</span> <span class="nav-text">2. assets 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-dex-文件"><span class="nav-number">2.1.4.</span> <span class="nav-text">3. dex 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lib-文件夹"><span class="nav-number">2.1.5.</span> <span class="nav-text">4. lib 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-META-INF-文件夹"><span class="nav-number">2.1.6.</span> <span class="nav-text">5. META-INF 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-res-文件夹"><span class="nav-number">2.1.7.</span> <span class="nav-text">6. res 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-resource-arsc-文件"><span class="nav-number">2.1.8.</span> <span class="nav-text">7. resource.arsc 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-打包流程"><span class="nav-number">2.2.</span> <span class="nav-text">Android 打包流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-打包后续"><span class="nav-number">2.3.</span> <span class="nav-text">Android 打包后续</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加固"><span class="nav-number">2.3.1.</span> <span class="nav-text">加固</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速多渠道包"><span class="nav-number">2.3.2.</span> <span class="nav-text">快速多渠道包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源混淆"><span class="nav-number">2.3.3.</span> <span class="nav-text">资源混淆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热补丁"><span class="nav-number">2.3.4.</span> <span class="nav-text">热补丁</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -654,7 +761,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">197.1k</span>
+    <span title="Site words total count">199.2k</span>
   
 </div>
 
