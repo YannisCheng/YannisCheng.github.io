@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="总结">
+<meta name="keywords" content="Android,View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="View-自定义-2 绘制图表：直角坐标系+饼状图">
+<meta property="og:url" content="http://yannischeng.com/View-自定义-2 绘制图表：直角坐标系+饼状图/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-14%2014.26.39.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-14%2014.23.05.png">
+<meta property="og:updated_time" content="2018-07-12T14:05:12.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="View-自定义-2 绘制图表：直角坐标系+饼状图">
+<meta name="twitter:description" content="总结">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-14%2014.26.39.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/View-自定义-2 绘制图表：直角坐标系+饼状图/"/>
+
+
+
+
+
+  <title>View-自定义-2 绘制图表：直角坐标系+饼状图 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/View-自定义-2 绘制图表：直角坐标系+饼状图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">View-自定义-2 绘制图表：直角坐标系+饼状图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:21:17+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:05:12+08:00">
+                2018-07-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,986 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/View/" rel="tag"># View</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/View-自定义-2 绘制图表：直角坐标系+饼状图/" title="View-自定义-2 绘制图表：直角坐标系+饼状图">http://yannischeng.com/View-自定义-2 绘制图表：直角坐标系+饼状图/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结</p>
+<a id="more"></a>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="分析数据的表现形式"><a href="#分析数据的表现形式" class="headerlink" title="分析数据的表现形式"></a>分析数据的表现形式</h2><ul>
+<li>坐标系</li>
+<li>饼状图</li>
+</ul>
+<h2 id="数据准备，获取图表的："><a href="#数据准备，获取图表的：" class="headerlink" title="数据准备，获取图表的："></a>数据准备，获取图表的：</h2><ul>
+<li>标题</li>
+<li>各个数据项的名称</li>
+<li>各个数据项的数值</li>
+</ul>
+<p>将数据进行封装</p>
+<h2 id="在设定item尺寸范围时，需要设定："><a href="#在设定item尺寸范围时，需要设定：" class="headerlink" title="在设定item尺寸范围时，需要设定："></a>在设定item尺寸范围时，需要设定：</h2><ul>
+<li><p>规定好起始位置（X轴或Y轴的startValue）</p>
+<ul>
+<li>坐标系确定好原点（0，0）</li>
+<li>饼状图确定好圆心</li>
+</ul>
+</li>
+<li><p>各个item之间的间隔（space）</p>
+</li>
+<li><p>单个item的宽度或高度（比值）</p>
+<ul>
+<li>直方图、折线图时平均分配item的高度、宽度；</li>
+<li>饼状图时各个数据所占的扇形面积的大小（当前数据所占比例*360）。 </li>
+</ul>
+</li>
+</ul>
+<h2 id="有无特殊要求？"><a href="#有无特殊要求？" class="headerlink" title="有无特殊要求？"></a>有无特殊要求？</h2><h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>标记重点：在自定义图表的实现过程中，尽量使用“对象获取”、“比例化”的数据。</p>
+<h2 id="两个图使用的同一个数据类：PhoneData"><a href="#两个图使用的同一个数据类：PhoneData" class="headerlink" title="两个图使用的同一个数据类：PhoneData"></a>两个图使用的同一个数据类：PhoneData</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> wenjia.Cheng  cwj1714@163.com</span></div><div class="line"><span class="comment"> * <span class="doctag">@date</span> 2017/11/13</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneData</span> </span>&#123;</div><div class="line"></div><div class="line">    String phoneName;</div><div class="line">    <span class="keyword">float</span> phoneValue;</div><div class="line">    <span class="keyword">int</span> phoneColor;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PhoneData</span><span class="params">(String phoneName, <span class="keyword">float</span> phoneValue, <span class="keyword">int</span> phoneColor)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.phoneName = phoneName;</div><div class="line">        <span class="keyword">this</span>.phoneValue = phoneValue;</div><div class="line">        <span class="keyword">this</span>.phoneColor = phoneColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPhoneName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> phoneName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneName</span><span class="params">(String phoneName)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.phoneName = phoneName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getPhoneValue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> phoneValue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneValue</span><span class="params">(<span class="keyword">float</span> phoneValue)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.phoneValue = phoneValue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPhoneColor</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> phoneColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneColor</span><span class="params">(<span class="keyword">int</span> phoneColor)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.phoneColor = phoneColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"PhoneData&#123;"</span> +</div><div class="line">                <span class="string">"phoneName='"</span> + phoneName + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", phoneValue="</span> + phoneValue +</div><div class="line">                <span class="string">", phoneColor="</span> + phoneColor +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="坐标系的实现："><a href="#坐标系的实现：" class="headerlink" title="坐标系的实现："></a>坐标系的实现：</h2><p>一个完整的类，包括注释：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 直角坐标系</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> wenjia.Cheng  cwj1714@163.com</span></div><div class="line"><span class="comment"> * <span class="doctag">@date</span> 2017/11/13</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Histogram</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"Histogram"</span>;</div><div class="line">    <span class="keyword">private</span> String titleName = <span class="string">"直角坐标系"</span>;</div><div class="line">    <span class="keyword">private</span> List&lt;PhoneData&gt; mPhoneData = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> maxVal = <span class="number">0f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> totalVal = <span class="number">0f</span>;</div><div class="line">    <span class="keyword">private</span> Paint mPaint = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> DecimalFormat mDecimalFormat;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Histogram</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Histogram</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Histogram</span><span class="params">(Context context, @Nullable AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">        mPhoneData = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"HuaWei"</span>, <span class="number">38f</span>, Color.RED));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Vivo"</span>, <span class="number">23f</span>, Color.BLUE));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Samsung"</span>, <span class="number">33f</span>, Color.GREEN));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Oppo"</span>, <span class="number">12f</span>, Color.YELLOW));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Apple"</span>, <span class="number">41f</span>, Color.MAGENTA));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"XiaoMi"</span>, <span class="number">17f</span>, Color.LTGRAY));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Pixel2"</span>, <span class="number">6f</span>, Color.DKGRAY));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"HTC"</span>, <span class="number">11f</span>, Color.MAGENTA));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"MOTO"</span>, <span class="number">9f</span>, Color.CYAN));</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (PhoneData item : mPhoneData) &#123;</div><div class="line">            maxVal = Math.max(maxVal, item.getPhoneValue());</div><div class="line">            totalVal = totalVal + item.getPhoneValue();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        dealMaxVal(maxVal);</div><div class="line"></div><div class="line">        Log.d(TAG, <span class="string">"(&gt;^ω^&lt;) -&gt; initData maxVal is : "</span> + maxVal + <span class="string">", totalVal is : "</span> + totalVal);</div><div class="line"></div><div class="line">        mPaint = <span class="keyword">new</span> Paint();</div><div class="line">        mPaint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);</div><div class="line">        mPaint.setColor(Color.BLACK);</div><div class="line"></div><div class="line">        mDecimalFormat = <span class="keyword">new</span> DecimalFormat(<span class="string">".00"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dealMaxVal</span><span class="params">(<span class="keyword">float</span> maxVal)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDraw(canvas);</div><div class="line"></div><div class="line">        initData();</div><div class="line"></div><div class="line">        mPaint.setStrokeWidth(<span class="number">1</span>);</div><div class="line">        mPaint.setTextSize(<span class="number">56</span>);</div><div class="line">        canvas.drawText(titleName, canvas.getWidth() / <span class="number">2</span> - mPaint.measureText(titleName) / <span class="number">2</span>, canvas.getHeight() * <span class="number">0.07f</span>, mPaint);</div><div class="line"></div><div class="line">        mPaint.setColor(Color.BLACK);</div><div class="line">        canvas.translate(canvas.getWidth() * <span class="number">0.1f</span>, canvas.getHeight() * <span class="number">0.9f</span>);</div><div class="line"></div><div class="line">        mPaint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">        <span class="comment">//方式：2,两者均可实现绘制</span></div><div class="line">        canvas.drawLine(<span class="number">0f</span>, <span class="number">0f</span>, canvas.getWidth() * <span class="number">0.8f</span>, <span class="number">0f</span>, mPaint);</div><div class="line">        canvas.drawLine(<span class="number">0f</span>, <span class="number">0f</span>, <span class="number">0f</span>, -canvas.getHeight() * <span class="number">0.8f</span>, mPaint);</div><div class="line"></div><div class="line">        <span class="comment">//item的宽度和间隔</span></div><div class="line">        <span class="keyword">float</span> itemWidth = canvas.getWidth() * <span class="number">0.8f</span> / mPhoneData.size() * <span class="number">0.8f</span>;</div><div class="line">        <span class="keyword">float</span> itemSpace = canvas.getWidth() * <span class="number">0.8f</span> / mPhoneData.size() * <span class="number">0.2f</span>;</div><div class="line"></div><div class="line">        <span class="comment">//绘制直方图</span></div><div class="line">        drawRect(canvas, itemSpace, itemWidth, maxVal);</div><div class="line"></div><div class="line">        <span class="comment">//绘制数值文字</span></div><div class="line">        drawTextValue(canvas, itemSpace, itemWidth, maxVal);</div><div class="line"></div><div class="line">        <span class="comment">//绘制折线</span></div><div class="line">        drawLines(canvas, itemSpace, itemWidth, maxVal);</div><div class="line"></div><div class="line">        <span class="comment">//绘制点</span></div><div class="line">        drawPoint(canvas, itemSpace, itemWidth, maxVal);</div><div class="line"></div><div class="line">        <span class="comment">//绘制最高数值参考线</span></div><div class="line">        drawKindOfValLine(canvas, itemSpace, itemWidth);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawKindOfValLine</span><span class="params">(Canvas canvas, <span class="keyword">float</span> itemSpace, <span class="keyword">float</span> itemWidth)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> maxValIndex = <span class="number">0</span>;</div><div class="line">        mPaint.setColor(Color.BLUE);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">2</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> aveVal = totalVal / mPhoneData.size();</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mPhoneData.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (maxVal == mPhoneData.get(i).getPhoneValue()) &#123;</div><div class="line">                maxValIndex = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//最大值的表示</span></div><div class="line">        <span class="keyword">float</span> valueYMax = -maxVal / maxVal * canvas.getHeight() * <span class="number">0.7f</span>;</div><div class="line">        String maxStr = mDecimalFormat.format(mPhoneData.get(maxValIndex).getPhoneValue());</div><div class="line">        canvas.drawLine(<span class="number">0f</span>, valueYMax, maxValIndex * (itemSpace + itemWidth) + (itemSpace + itemWidth / <span class="number">2</span>), valueYMax, mPaint);</div><div class="line">        canvas.drawText(maxStr, -mPaint.measureText(maxStr) - <span class="number">10f</span>, valueYMax, mPaint);</div><div class="line"></div><div class="line">        <span class="comment">//平均值的表示</span></div><div class="line">        <span class="keyword">float</span> valueYAve = -aveVal / maxVal * canvas.getHeight() * <span class="number">0.7f</span>;</div><div class="line">        String aveStr = mDecimalFormat.format(aveVal);</div><div class="line">        canvas.drawLine(<span class="number">0f</span>, valueYAve, canvas.getWidth() * <span class="number">0.8f</span>, valueYAve, mPaint);</div><div class="line">        canvas.drawText(aveStr, -mPaint.measureText(aveStr) - <span class="number">10f</span>, valueYAve, mPaint);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawRect</span><span class="params">(Canvas canvas, <span class="keyword">float</span> itemSpace, <span class="keyword">float</span> itemWidth, <span class="keyword">float</span> maxVal)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> startXY = <span class="number">0f</span>;</div><div class="line">        mPaint.setTextSize(<span class="number">36</span>);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> (PhoneData item : mPhoneData) &#123;</div><div class="line">            mPaint.setColor(item.getPhoneColor());</div><div class="line"></div><div class="line">            <span class="comment">//绘制X轴文字 - 横向</span></div><div class="line">            canvas.drawText(item.getPhoneName(), startXY + itemSpace + (itemWidth - mPaint.measureText(item.getPhoneName())) / <span class="number">2</span>, <span class="number">60</span>, mPaint);</div><div class="line"></div><div class="line"></div><div class="line">            <span class="comment">//绘制X轴文字 - 有一定角度</span></div><div class="line">           <span class="comment">/* Path path = new Path();</span></div><div class="line"><span class="comment">            path.moveTo(startXY + itemSpace + (itemWidth - mPaint.measureText(item.getPhoneName())) / 2, 30);</span></div><div class="line"><span class="comment">            path.lineTo(startXY + itemSpace + (itemWidth - mPaint.measureText(item.getPhoneName())) / 2 + 30, 30 + mPaint.measureText(item.getPhoneName()));</span></div><div class="line"><span class="comment">            canvas.drawTextOnPath(item.getPhoneName(),path,0,0,mPaint);*/</span></div><div class="line"></div><div class="line">            <span class="comment">//绘制直方图</span></div><div class="line">            canvas.drawRect(startXY + itemSpace, -item.getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span>, startXY + itemSpace + itemWidth, <span class="number">0</span>, mPaint);</div><div class="line"></div><div class="line">            <span class="comment">//重新绘制item的起始点</span></div><div class="line">            startXY += itemSpace + itemWidth;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawTextValue</span><span class="params">(Canvas canvas, <span class="keyword">float</span> itemSpace, <span class="keyword">float</span> itemWidth, <span class="keyword">float</span> maxVal)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> startXY = <span class="number">0f</span>;</div><div class="line">        mPaint.setTextSize(<span class="number">36</span>);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> (PhoneData item : mPhoneData) &#123;</div><div class="line">            mPaint.setColor(item.getPhoneColor());</div><div class="line"></div><div class="line">            <span class="comment">//绘制直方图上方的数值文字</span></div><div class="line">            canvas.drawText(String.valueOf(item.getPhoneValue()), startXY + itemSpace + (itemWidth - mPaint.measureText(String.valueOf(item.getPhoneValue()))) / <span class="number">2</span>, -item.getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span> - <span class="number">20f</span>, mPaint);</div><div class="line"></div><div class="line">            <span class="comment">//重新绘制item的起始点</span></div><div class="line">            startXY += itemSpace + itemWidth;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawPoint</span><span class="params">(Canvas canvas, <span class="keyword">float</span> itemSpace, <span class="keyword">float</span> itemWidth, <span class="keyword">float</span> maxVal)</span> </span>&#123;</div><div class="line">        mPaint.setColor(Color.BLACK);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">20</span>);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line">        <span class="keyword">float</span> startX = itemSpace + itemWidth / <span class="number">2</span>;</div><div class="line">        <span class="keyword">float</span> startY = <span class="number">0f</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mPhoneData.size(); i++) &#123;</div><div class="line">            startY = -mPhoneData.get(i).getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span>;</div><div class="line">            canvas.drawPoint(startX, startY, mPaint);</div><div class="line">            startX = startX + itemSpace + itemWidth;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawLines</span><span class="params">(Canvas canvas, <span class="keyword">float</span> itemSpace, <span class="keyword">float</span> itemWidth, <span class="keyword">float</span> maxVal)</span> </span>&#123;</div><div class="line"></div><div class="line">        mPaint.setColor(Color.BLACK);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">        <span class="keyword">float</span> startX = itemSpace + itemWidth / <span class="number">2</span>;</div><div class="line">        <span class="keyword">float</span> startY = <span class="number">0f</span>;</div><div class="line">        <span class="keyword">float</span> endX = <span class="number">0f</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mPhoneData.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">                startY = -mPhoneData.get(i).getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span>;</div><div class="line">                canvas.drawPoint(startX, startY, mPaint);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                endX = startX + itemSpace + itemWidth;</div><div class="line">                canvas.drawLine(startX, startY, endX, -mPhoneData.get(i).getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span>, mPaint);</div><div class="line">                startY = -mPhoneData.get(i).getPhoneValue() / maxVal * canvas.getHeight() * <span class="number">0.7f</span>;</div><div class="line">                startX = endX;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    <span class="comment">/*  绘制x，y轴</span></div><div class="line"><span class="comment">        方式：1</span></div><div class="line"><span class="comment">        canvas.drawLine(canvas.getWidth() * 0.1f, canvas.getHeight() * 0.9f,canvas.getWidth() * 0.9f,canvas.getHeight() * 0.9f,mPaint);</span></div><div class="line"><span class="comment">        canvas.drawLine(canvas.getWidth() * 0.1f,canvas.getHeight() * 0.9f,canvas.getWidth() * 0.1f,canvas.getHeight() * 0.1f,mPaint);</span></div><div class="line"><span class="comment">        */</span></div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-14%2014.26.39.png" alt=""></p>
+<h2 id="饼状图的实现："><a href="#饼状图的实现：" class="headerlink" title="饼状图的实现："></a>饼状图的实现：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * PieChart 饼状图</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> wenjia.Cheng  cwj1714@163.com</span></div><div class="line"><span class="comment"> * <span class="doctag">@date</span> 2017/11/13</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PieChart</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"PieChart"</span>;</div><div class="line">    <span class="keyword">private</span> String titleName = <span class="string">"饼状图"</span>;</div><div class="line">    <span class="keyword">private</span> List&lt;PhoneData&gt; mPhoneData = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> maxVal = <span class="number">0f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> totalVal = <span class="number">0f</span>;</div><div class="line">    <span class="keyword">private</span> Paint mPaint = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 起始角度</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> startAngle;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 划过角度</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> swepAngle;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 划过角度的一半</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> halfSwepAngle;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 指示文字的标线 X 轴起始点。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> lineStartX;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> lineStartY;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> lineEndX;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> lineEndY;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> radius = <span class="number">0f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> divideStart = <span class="number">90</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> divideEnd = <span class="number">270</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> DecimalFormat decimalFormat;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PieChart</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PieChart</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PieChart</span><span class="params">(Context context, @Nullable AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</div><div class="line">        mPhoneData = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"HuaWei"</span>,<span class="number">38f</span>, Color.RED));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Vivo"</span>,<span class="number">23f</span>,Color.BLUE));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Samsung"</span>,<span class="number">33f</span>,Color.GREEN));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Oppo"</span>,<span class="number">12f</span>,Color.YELLOW));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Apple"</span>,<span class="number">41f</span>,Color.MAGENTA));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"XiaoMi"</span>,<span class="number">17f</span>,Color.LTGRAY));</div><div class="line">        mPhoneData.add(<span class="keyword">new</span> PhoneData(<span class="string">"Pixel2"</span>,<span class="number">6f</span>,Color.DKGRAY));</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (PhoneData item : mPhoneData) &#123;</div><div class="line">            maxVal = Math.max(maxVal,item.getPhoneValue());</div><div class="line">            totalVal = totalVal + item.getPhoneValue();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        mPaint = <span class="keyword">new</span> Paint();</div><div class="line">        mPaint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">1</span>);</div><div class="line">        mPaint.setColor(Color.BLACK);</div><div class="line"></div><div class="line">        <span class="comment">//构造方法的字符格式这里如果小数不足2位,会以0补足.</span></div><div class="line">        decimalFormat=<span class="keyword">new</span> DecimalFormat(<span class="string">"######0.00"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDraw(canvas);</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         圆点坐标：(x0,y0)</span></div><div class="line"><span class="comment">         半径：r</span></div><div class="line"><span class="comment">         角度：a0</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">         则圆上任一点为：（x1,y1）</span></div><div class="line"><span class="comment">         x1   =   x0   +   r   *   cos(ao   *   3.14   /180   )</span></div><div class="line"><span class="comment">         y1   =   y0   +   r   *   sin(ao   *   3.14   /180   )</span></div><div class="line"><span class="comment">         */</span></div><div class="line"></div><div class="line">        initData();</div><div class="line"></div><div class="line">        mPaint.setTextSize(<span class="number">56</span>);</div><div class="line">        canvas.drawText(titleName,canvas.getWidth()/<span class="number">2</span> - mPaint.measureText(titleName)/<span class="number">2</span>, canvas.getHeight() * <span class="number">0.07f</span>,mPaint);</div><div class="line"></div><div class="line">        <span class="comment">//移动画布的原点</span></div><div class="line">        canvas.translate(canvas.getWidth() / <span class="number">2</span>,canvas.getWidth() / <span class="number">2</span> - <span class="number">100f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> length = canvas.getWidth() * <span class="number">0.25f</span>;</div><div class="line">        RectF rectF = <span class="keyword">new</span> RectF(-length, -length,length,length);</div><div class="line">        mPaint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line">        mPaint.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint.setTextSize(<span class="number">36</span>);</div><div class="line">        radius = length;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (PhoneData item : mPhoneData) &#123;</div><div class="line">            mPaint.setColor(item.getPhoneColor());</div><div class="line">            swepAngle = item.getPhoneValue() / totalVal * <span class="number">360f</span>;</div><div class="line">            halfSwepAngle = startAngle + swepAngle / <span class="number">2</span>;</div><div class="line"></div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             *</span></div><div class="line"><span class="comment">             角度=弧度*180/Math.PI</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">             圆点坐标：(x0,y0)</span></div><div class="line"><span class="comment">             半径：r</span></div><div class="line"><span class="comment">             角度：a0</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">             则圆上任一点为：（x1,y1）</span></div><div class="line"><span class="comment">             x1   =   x0   +   r   *   cos(ao   *   3.14   /180   )</span></div><div class="line"><span class="comment">             y1   =   y0   +   r   *   sin(ao   *   3.14   /180   )</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            lineStartX = (<span class="keyword">float</span>) (radius * Math.cos(halfSwepAngle * Math.PI / <span class="number">180</span>));</div><div class="line">            lineStartY = (<span class="keyword">float</span>) (radius * Math.sin(halfSwepAngle * Math.PI / <span class="number">180</span>));</div><div class="line">            lineEndX = (<span class="keyword">float</span>) ((radius + <span class="number">50</span>) * Math.cos(halfSwepAngle * Math.PI / <span class="number">180</span>));</div><div class="line">            lineEndY = (<span class="keyword">float</span>) ((radius + <span class="number">50</span>) * Math.sin(halfSwepAngle * Math.PI / <span class="number">180</span>));</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (maxVal == item.getPhoneValue()) &#123;</div><div class="line">            	<span class="comment">//注意先保存当前canvas</span></div><div class="line">                canvas.save();</div><div class="line">                canvas.translate(lineStartX * <span class="number">0.1f</span>, lineStartY * <span class="number">0.1f</span>);</div><div class="line">                canvas.drawArc(rectF, startAngle, swepAngle - <span class="number">2f</span>, <span class="keyword">true</span>, mPaint);</div><div class="line">                canvas.drawLine(lineStartX,lineStartY,lineEndX,lineEndY,mPaint);</div><div class="line">                <span class="comment">//绘制各个区域的文字</span></div><div class="line">                diffLineLength(canvas, item);</div><div class="line">                <span class="comment">//绘制各个区域的数值</span></div><div class="line">                diffLineVal(canvas, item);</div><div class="line">                <span class="comment">//绘制百分比</span></div><div class="line">                <span class="comment">//diffPercentage(canvas,item);</span></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                canvas.drawArc(rectF,startAngle,swepAngle - <span class="number">2f</span>,<span class="keyword">true</span>,mPaint);</div><div class="line">                canvas.drawLine(lineStartX,lineStartY,lineEndX,lineEndY,mPaint);</div><div class="line">                diffLineLength(canvas, item);</div><div class="line">                diffLineVal(canvas, item);</div><div class="line">                <span class="comment">//diffPercentage(canvas,item);</span></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (maxVal == item.getPhoneValue()) &#123;</div><div class="line">                <span class="comment">// 特殊工作做完之后，再回复之前保存的canvas</span></div><div class="line">                canvas.restore();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            startAngle += swepAngle;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">diffLineLength</span><span class="params">(Canvas canvas, PhoneData item)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (halfSwepAngle &gt; divideStart &amp;&amp; halfSwepAngle &lt;= divideEnd) &#123;</div><div class="line">            canvas.drawLine(lineEndX, lineEndY, lineEndX - <span class="number">100</span>, lineEndY, mPaint);</div><div class="line">            canvas.drawText(item.getPhoneName(), lineEndX - <span class="number">120</span> - mPaint.measureText(item.getPhoneName()), lineEndY, mPaint);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            canvas.drawLine(lineEndX,lineEndY,lineEndX + <span class="number">100</span>,lineEndY,mPaint);</div><div class="line">            canvas.drawText(item.getPhoneName(),lineEndX + <span class="number">120</span>,lineEndY,mPaint);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">diffLineVal</span><span class="params">(Canvas canvas, PhoneData item)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (halfSwepAngle &gt; divideStart &amp;&amp; halfSwepAngle &lt;= divideEnd) &#123;</div><div class="line">            mPaint.setColor(Color.WHITE);</div><div class="line">            canvas.drawText(String.valueOf(item.getPhoneValue()),(lineEndX - (mPaint.measureText(String.valueOf(item.getPhoneValue()))) / <span class="number">2</span>) * <span class="number">0.5f</span>,(lineEndY) * <span class="number">0.5f</span>, mPaint);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mPaint.setColor(Color.WHITE);</div><div class="line">            canvas.drawText(String.valueOf(item.getPhoneValue()),(lineEndX + (mPaint.measureText(String.valueOf(item.getPhoneValue()))) / <span class="number">2</span>) * <span class="number">0.5f</span>,(lineEndY) * <span class="number">0.5f</span>, mPaint);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">diffPercentage</span><span class="params">(Canvas canvas, PhoneData item)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (halfSwepAngle &gt; divideStart &amp;&amp; halfSwepAngle &lt;= divideEnd) &#123;</div><div class="line">            mPaint.setColor(Color.WHITE);</div><div class="line">            canvas.drawText(decimalFormat.format(item.getPhoneValue() / totalVal *<span class="number">100</span>) + <span class="string">"%"</span>,(lineEndX - mPaint.measureText(decimalFormat.format(item.getPhoneValue()))) / <span class="number">2</span>,(lineEndY) * <span class="number">0.5f</span>, mPaint);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mPaint.setColor(Color.WHITE);</div><div class="line">            canvas.drawText(decimalFormat.format(item.getPhoneValue() / totalVal *<span class="number">100</span>) + <span class="string">"%"</span> ,(lineEndX - mPaint.measureText(decimalFormat.format(item.getPhoneValue()))) / <span class="number">2</span>,(lineEndY) * <span class="number">0.5f</span>, mPaint);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-14%2014.23.05.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/设计模式 - 抽象工厂模式/" rel="next" title="抽象工厂模式">
+                <i class="fa fa-chevron-left"></i> 抽象工厂模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/View-自定义-3 Paint详细/" rel="prev" title="View-自定义-3 Paint详细">
+                View-自定义-3 Paint详细 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析数据的表现形式"><span class="nav-number">1.1.</span> <span class="nav-text">分析数据的表现形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据准备，获取图表的："><span class="nav-number">1.2.</span> <span class="nav-text">数据准备，获取图表的：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在设定item尺寸范围时，需要设定："><span class="nav-number">1.3.</span> <span class="nav-text">在设定item尺寸范围时，需要设定：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有无特殊要求？"><span class="nav-number">1.4.</span> <span class="nav-text">有无特殊要求？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体实现"><span class="nav-number">2.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个图使用的同一个数据类：PhoneData"><span class="nav-number">2.1.</span> <span class="nav-text">两个图使用的同一个数据类：PhoneData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标系的实现："><span class="nav-number">2.2.</span> <span class="nav-text">坐标系的实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饼状图的实现："><span class="nav-number">2.3.</span> <span class="nav-text">饼状图的实现：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">201.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

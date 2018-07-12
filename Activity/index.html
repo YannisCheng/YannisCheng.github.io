@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,Activity," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Activity总结">
+<meta name="keywords" content="Android,Activity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity">
+<meta property="og:url" content="http://yannischeng.com/Activity/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Activity总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/activity_lifecycle.png">
+<meta property="og:updated_time" content="2018-07-12T14:26:04.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Activity">
+<meta name="twitter:description" content="Activity总结">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/activity_lifecycle.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Activity/"/>
+
+
+
+
+
+  <title>Activity | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Activity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Activity</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T23:51:19+08:00">
+                2017-06-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:26:04+08:00">
+                2018-07-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,387 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Activity/" rel="tag"># Activity</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Activity/" title="Activity">http://yannischeng.com/Activity/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Activity总结</p>
+<a id="more"></a>
+<h1 id="1-Activity生命周期图"><a href="#1-Activity生命周期图" class="headerlink" title="1. Activity生命周期图"></a>1. Activity生命周期图</h1><h2 id="1-1-典型生命周期"><a href="#1-1-典型生命周期" class="headerlink" title="1.1. 典型生命周期"></a>1.1. 典型生命周期</h2><p>用户参与的情况下，Activity所经过的生命周期。</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/activity_lifecycle.png" alt=""></p>
+<h3 id="1-1-1-生命周期分析"><a href="#1-1-1-生命周期分析" class="headerlink" title="1.1.1. 生命周期分析"></a>1.1.1. 生命周期分析</h3><ul>
+<li><p><strong>onCreate()</strong></p>
+<p>表示Activity正在被创建，可以进行一些初始化的操作。</p>
+</li>
+<li><p><strong>onRestart()</strong></p>
+<p>表示Activity正在重新启动。从不可见变为可见时，此方法就会被调用。若当前Activity执行 onPause() 和 onStop() 方法后，再次回到此Activity时，此方法将会被调用。</p>
+</li>
+<li><p><strong>onStart()</strong></p>
+<p>表示此Activity即将被启动，即将开始时。此时Activity已经可见，但是还在后台，无法和用户交互。</p>
+</li>
+<li><p><strong>onResume()</strong></p>
+<p>表示Activity已经可见，并且出现在前台。</p>
+</li>
+<li><p><strong>onPause()</strong></p>
+<p>表示Activity正在停止。</p>
+</li>
+<li><p><strong>onStop()</strong> </p>
+<p>表示Activity即将停止。可以做一些回收工作，不能太耗时。</p>
+</li>
+<li><p><strong>onDestroy()</strong></p>
+<p>表示Activity即将被销毁。可以做一些回收、资源释放操作。</p>
+</li>
+</ul>
+<h3 id="1-1-2-声明周期执行过程"><a href="#1-1-2-声明周期执行过程" class="headerlink" title="1.1.2. 声明周期执行过程"></a>1.1.2. 声明周期执行过程</h3><ul>
+<li><p><strong>第一次启动</strong></p>
+<pre><code>onCreate() -&gt; onStart() -&gt; onResume()
+</code></pre></li>
+<li><p><strong>当用户打开新的Activity时或者回退到桌面时，调用</strong></p>
+<pre><code>onPause() -&gt; onStop()
+</code></pre></li>
+<li><p><strong>当再次打开原Activity时，调用</strong></p>
+<pre><code>onRestart()-&gt; onStart() -&gt; onResume()
+</code></pre></li>
+<li><p><strong>回退桌面时，调用</strong></p>
+<pre><code>onPause() -&gt; onStop() -&gt; onDestroy()
+</code></pre></li>
+</ul>
+<h3 id="1-1-3-说明"><a href="#1-1-3-说明" class="headerlink" title="1.1.3. 说明"></a>1.1.3. 说明</h3><p>当从当前的Activity A 打开Activity B时，Activity A将先执行 onPause() 方法，然后 Activity B 才执行 第一次启动时调用的声明周期方法。即：旧Activity先 onPause() ， 新Activity再启动。新Activity再启动后，旧Activity执行 onStop() 方法</p>
+<h2 id="1-2-异常生命周期"><a href="#1-2-异常生命周期" class="headerlink" title="1.2. 异常生命周期"></a>1.2. 异常生命周期</h2><p>Activity被系统回收或者由于当前设备的Configuration发生改变而导致的Activity被销毁重建。</p>
+<h3 id="1-2-1-系统配置发生改变导致Activity被杀死并被重建"><a href="#1-2-1-系统配置发生改变导致Activity被杀死并被重建" class="headerlink" title="1.2.1 系统配置发生改变导致Activity被杀死并被重建"></a>1.2.1 系统配置发生改变导致Activity被杀死并被重建</h3><p>在这种状态下的生命周期：</p>
+<ul>
+<li><p><strong>意外时：</strong></p>
+<pre><code>Activity -&gt; onSaveInstanceState() -&gt; onDestroy()
+</code></pre><p><strong>onSaveInstanceState()</strong>用来保存当前Activity状态，此方法将会在 onStop() 之前被调用。</p>
+</li>
+<li><p><strong>重建时：</strong></p>
+<pre><code>Activity -&gt; onCreate() -&gt; onRestoreInstanceState()
+</code></pre></li>
+</ul>
+<h3 id="1-2-2-内存不足导致-低优先级Activity-被杀死"><a href="#1-2-2-内存不足导致-低优先级Activity-被杀死" class="headerlink" title="1.2.2 内存不足导致 低优先级Activity 被杀死"></a>1.2.2 内存不足导致 低优先级Activity 被杀死</h3><ul>
+<li><p><strong>优先级问题</strong></p>
+<ul>
+<li><strong>前台Activity：</strong> 与用户进行交互的Activity，优先级最高</li>
+<li><strong>可见非前台Activity：</strong> 当前Activity弹出了一个对话框，原Activity虽可见，但是用户无法进行交互。</li>
+<li><strong>后台Activity：</strong> 优先级最低</li>
+</ul>
+<p>如果一个进程中没有四大组件在执行，那么这个进程将会很快的被杀死。</p>
+</li>
+</ul>
+<h1 id="2-Activity-启动模式"><a href="#2-Activity-启动模式" class="headerlink" title="2. Activity 启动模式"></a>2. Activity 启动模式</h1><h2 id="2-1-启动模式-4种："><a href="#2-1-启动模式-4种：" class="headerlink" title="2.1. 启动模式 - 4种："></a>2.1. 启动模式 - 4种：</h2><p><strong>使用：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:launchMode=&quot;standard&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>standard：</strong>标准模式。</p>
+<p>对应Activity的 Flags ：<strong>FLAG_ACTIVITY_NEW_TASK</strong>  </p>
+<p>当搭配<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>时，连同此Activity在内的Activity都要一同出栈。</p>
+<p>每次启动一个Activity都会创建一个新的实例，不论这个实例是否已经存在。此模式下的Activity会默认进入启动它的Activity的所属栈中。</p>
+</li>
+<li><p><strong>singleTop：</strong>栈顶（top）复用（single）模式。</p>
+<p>对应Activity的 Flags ：<strong>FLAG_ACTIVITY_SINGLE_TOP</strong>  </p>
+<p>如果新Activity已经位于任务栈顶，那么此Activity将不会被重新创建，同时它的 onNewIntent() 将会被调用。</p>
+<p>示例：<br>1：若A为栈底，C为栈顶，当ABC时，在此模式下启动C时，则仍为ABC。<br>2：若A为栈底，B为栈顶，当ACB时，在此模式下启动C时，任务栈为：ACBC。</p>
+</li>
+<li><p><strong>singTask：</strong>栈内复用模式。</p>
+<p>默认具 Activity的 Flags ：<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>  。此 Flags 表示：它标记的Activity，当它启动时，在同一任务栈中的所有位与此Activity之上的Activity都要出栈。</p>
+<p>如：之前栈内为：ABCD，当调用B后，栈内的情况变为：AB。</p>
+<p>只要Activity在一个栈中存在，那么多次启动此Activity将不会重新创建该实例。默认具有 clearTop 功能</p>
+<p><strong>创建过程</strong>，若：</p>
+<p>1：启动 Activity A 时，若不存在A所需的任务栈，那么创建一个任务栈，然后创建 Activity A 的实例，将A实例压入任务栈中。</p>
+<p>2：启动 Activity A 时，若存在A所需的的任务栈，看栈中是否存在 Activity A  实例，若存在，将其调到栈顶，并调用 onNewIntent() ；若不存在，创建A的实例，将其压入A所需的栈中。</p>
+</li>
+<li><p><strong>singleInstance：</strong>单实例模式，加强版 singleTask。</p>
+<p>在 singleTask 原有的特点基础之上，还加强了一点：设置了此模式的 Activity 只能单独的位于一个任务栈中。</p>
+</li>
+</ul>
+<h2 id="2-2-IntentFilter-匹配规则"><a href="#2-2-IntentFilter-匹配规则" class="headerlink" title="2.2. IntentFilter 匹配规则"></a>2.2. IntentFilter 匹配规则</h2><p>启动Activity分为两种：显式 + 隐式。如果二者同时存在的话以 显式 为主。 </p>
+<h3 id="2-2-1-隐式调用"><a href="#2-2-1-隐式调用" class="headerlink" title="2.2.1 隐式调用"></a>2.2.1 隐式调用</h3><p>隐式调用需要 Intent 能够匹配目标组件中的 IntentFilter 中的过滤信息。</p>
+<ul>
+<li>只有一个 Intent 同时匹配这3个类别时，才能启动Activity，否则无法启动Activity。</li>
+<li><p>一个Intent可以有多个intent-filter，一个Intent只要能匹配任何一组intent-filter即可成功启动对应Activity。</p>
+</li>
+<li><p><strong>action匹配规则：</strong> 是一个字符串，系统预定义，可自定义一些。要求Intent中的action存在且必须和过滤中规则中的一个action相同。</p>
+</li>
+<li><p><strong>categoryn匹配规则：</strong> 是一个字符串，系统预定义一些，可自定义。Intent中如果出现了category，那么不管有几个category，对于每一个category来说，它必须是过滤规则中已经存在的category。</p>
+<p>  <strong>注意：</strong>Intent不设置category也可以匹配。原因是系统在调用 startActivity() 或 startActivityForResult() 时会默认为Intent添加 <code>android.intent.category.DEFAULT</code>这个category。</p>
+<p>  所以，为了我们的Activity能够接受 隐式 调用，必须在 intent-filter 中指定以上这个category。</p>
+</li>
+<li><p><strong>data</strong></p>
+</li>
+</ul>
+<h3 id="2-2-2-入口Activity，缺一不可"><a href="#2-2-2-入口Activity，缺一不可" class="headerlink" title="2.2.2 入口Activity，缺一不可"></a>2.2.2 入口Activity，缺一不可</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">	&lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</div><div class="line">	&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-2-3-判断是否有Activity能够匹配-隐式-Intent。"><a href="#2-2-3-判断是否有Activity能够匹配-隐式-Intent。" class="headerlink" title="2.2.3 判断是否有Activity能够匹配 隐式 Intent。"></a>2.2.3 判断是否有Activity能够匹配 隐式 Intent。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public abstract List&lt;ResolveInfo&gt; queryIntentActivities(Intent intent, @ResolveInfoFlags int flags);</div><div class="line">public abstract ResolveInfo resolveActivity(Intent intent, @ResolveInfoFlags int flags);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/View-自定义-1 Canvas + Paint + Path/" rel="next" title="View-自定义-1 Canvas + Paint + Path">
+                <i class="fa fa-chevron-left"></i> View-自定义-1 Canvas + Paint + Path
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Python3  01-基础-基本数据类型/" rel="prev" title="Python3  01-基础-基本数据类型">
+                Python3  01-基础-基本数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Activity生命周期图"><span class="nav-number">1.</span> <span class="nav-text">1. Activity生命周期图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-典型生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 典型生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-生命周期分析"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1. 生命周期分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-声明周期执行过程"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2. 声明周期执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-说明"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3. 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-异常生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 异常生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-系统配置发生改变导致Activity被杀死并被重建"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 系统配置发生改变导致Activity被杀死并被重建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-内存不足导致-低优先级Activity-被杀死"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 内存不足导致 低优先级Activity 被杀死</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Activity-启动模式"><span class="nav-number">2.</span> <span class="nav-text">2. Activity 启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-启动模式-4种："><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 启动模式 - 4种：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-IntentFilter-匹配规则"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. IntentFilter 匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-隐式调用"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 隐式调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-入口Activity，缺一不可"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 入口Activity，缺一不可</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-判断是否有Activity能够匹配-隐式-Intent。"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 判断是否有Activity能够匹配 隐式 Intent。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">201.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

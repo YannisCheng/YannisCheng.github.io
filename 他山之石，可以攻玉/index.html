@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-08T07:24:56.248Z">
+<meta property="og:updated_time" content="2018-07-08T13:50:55.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="他山之石，可以攻玉">
 <meta name="twitter:description" content="总结">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T15:24:56+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T21:50:55+08:00">
                 2018-07-08
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  517 字
+                  432 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -436,40 +436,36 @@
       
         <p>总结</p>
 <a id="more"></a>
-<p>[TOC]</p>
-<h1 id="关于“阅读源代码”"><a href="#关于“阅读源代码”" class="headerlink" title="关于“阅读源代码”"></a>关于“阅读源代码”</h1><blockquote>
-<p>参考：<a href="http://www.techweb.com.cn/network/system/2016-10-11/2410727.shtml" target="_blank" rel="external">http://www.techweb.com.cn/network/system/2016-10-11/2410727.shtml</a><br>参考：<a href="https://blog.csdn.net/Maxbyzhou/article/details/51424595" target="_blank" rel="external">https://blog.csdn.net/Maxbyzhou/article/details/51424595</a></p>
-</blockquote>
 <hr>
-<h2 id="学习编程是有加速度的：知识结构越丰富，就跑得越快。"><a href="#学习编程是有加速度的：知识结构越丰富，就跑得越快。" class="headerlink" title="学习编程是有加速度的：知识结构越丰富，就跑得越快。"></a>学习编程是有加速度的：知识结构越丰富，就跑得越快。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">“与编程一样，阅读别人的源代码永远不是一件轻松的事，或者说，是一件困难的事情，需要持续的投入，阅读、研究、把玩、实践。</div><div class="line">很多人觉得拿到了源代码就像买了本书一样，放到书柜上，立刻就产生了一种学会了的错觉(我就是这样，微笑)，但真正实践起来才会体验到强烈的挫败感。</div><div class="line">大部分情况下，读不下去，不是方法不好，而是投入力度不够。”</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>设计模式——使自己保持在设计、宏观的层面</strong></li>
-<li><strong>使用工具，例如：UML</strong></li>
-<li><strong>最忌讳的是：不抓结构抓细节，只见树木不见森林</strong></li>
+<p><strong>学习编程是有加速度的：知识结构越丰富，跑的就越快。</strong></p>
+<hr>
+<p><strong>阅读源代码永远不是一件轻松的事，大部分情况下读不下去，不是方法不好而是投入力度不够。</strong></p>
+<hr>
+<h1 id="为何阅读源代码那么难？"><a href="#为何阅读源代码那么难？" class="headerlink" title="为何阅读源代码那么难？"></a>为何阅读源代码那么难？</h1><ul>
+<li><strong>语言自身特点</strong></li>
+<li><strong>现在看到的源码：基本上都经过若干年迭代、很多人不断地完善后的，且枝枝蔓蔓非常多，魔鬼都在细节中，阅读的时候很容易陷进去。</strong></li>
 </ul>
-<p><strong>GitHub在阅读源码中的使用</strong></p>
-<blockquote>
-<p>参考：<a href="https://blog.csdn.net/yxy11256974/article/details/53449703" target="_blank" rel="external">https://blog.csdn.net/yxy11256974/article/details/53449703</a></p>
-</blockquote>
-<h2 id="阅读方法："><a href="#阅读方法：" class="headerlink" title="阅读方法："></a>阅读方法：</h2><ol>
-<li><p><strong>带着问题去阅读</strong> —— 清楚自己阅读源代码的原因和动机。</p>
-</li>
-<li><p>应该先了解代码的功能、业务逻辑（先用用列跑起来，看看功能），再进行代码阅读 —— 事半功倍。</p>
-</li>
-<li><p><strong>一边阅读代码一边绘制UML</strong>（先绘制顺序图，然后为顺序图中的类绘制关系图，适合类之间的关系较复杂和调用层次较深） —— 有助于梳理项目。</p>
-</li>
-<li><p><strong>通过Debug来跟踪程序的主要执行过程</strong> —— 分清主次，阅读的时候更有针对性。</p>
-</li>
-<li><p>类的快速阅读。</p>
-<ul>
-<li>清楚当前类在继承链中的位置；</li>
-<li>清楚成员变量（类的对外接口都是对成员变量的访问、加工、代理等，）；</li>
-<li>清楚对外接口，也就是公有成员函数（识别核心的一个或多个函数，这时候你应该可以大概了解这个类的职责或作用了）；</li>
+<h1 id="什么？还有不可忽视的工具？"><a href="#什么？还有不可忽视的工具？" class="headerlink" title="什么？还有不可忽视的工具？"></a>什么？还有不可忽视的工具？</h1><ul>
+<li><strong>Github</strong></li>
 </ul>
-</li>
-<li><p>写注释 —— 对代码理解得更深入。</p>
-</li>
-</ol>
+<h1 id="那么，该怎么做？"><a href="#那么，该怎么做？" class="headerlink" title="那么，该怎么做？"></a>那么，该怎么做？</h1><h2 id="昨夜西风凋碧树，独上高楼，望尽天涯路"><a href="#昨夜西风凋碧树，独上高楼，望尽天涯路" class="headerlink" title="昨夜西风凋碧树，独上高楼，望尽天涯路"></a>昨夜西风凋碧树，独上高楼，望尽天涯路</h2><p>登高望远，对其有一个宏观概念，了解源码概貌。</p>
+<p><strong>1. 阅读源码之前，需要有一定的技术储备</strong></p>
+<p><strong>2. 必须得会使用这个框架/类库， 最好是精通各种各样的用法</strong></p>
+<p><strong>3. 找书，找资料，了解这个软件的整体设计</strong></p>
+<p><strong>4. 搭建系统，把源代码跑起来</strong></p>
+<h2 id="衣带渐宽终不悔，为伊消得人憔悴"><a href="#衣带渐宽终不悔，为伊消得人憔悴" class="headerlink" title="衣带渐宽终不悔，为伊消得人憔悴"></a>衣带渐宽终不悔，为伊消得人憔悴</h2><ul>
+<li>静态：看代码</li>
+<li>动态：debug (从业务的角度)</li>
+</ul>
+<p><strong>5. 设计主要测试案例，进行debug</strong></p>
+<p> 第1遍尽可能 <strong>抛弃细节，抓主要流程</strong> 。</p>
+<p> 第2遍、第3遍 …… 再看细节。</p>
+<p><strong>6. 文档记录</strong></p>
+<p>代码太复杂，人脑容量有限，因此记不住所有的细节。 而文档可以帮助记住关键点， 写作的同时对知识作出梳理，防止遗忘。</p>
+<p><strong>7. 丰富测试案例，debug分支流程</strong></p>
+<p>继续 debug。</p>
+<h2 id="众里寻他千百度，蓦然回首，那人却在灯火阑珊处"><a href="#众里寻他千百度，蓦然回首，那人却在灯火阑珊处" class="headerlink" title="众里寻他千百度，蓦然回首，那人却在灯火阑珊处"></a>众里寻他千百度，蓦然回首，那人却在灯火阑珊处</h2><p>坚持。</p>
+<p>没有上下的求索，就不会有瞬间的顿悟和理解。</p>
 
       
     </div>
@@ -586,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +593,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -657,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于“阅读源代码”"><span class="nav-number">1.</span> <span class="nav-text">关于“阅读源代码”</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习编程是有加速度的：知识结构越丰富，就跑得越快。"><span class="nav-number">1.1.</span> <span class="nav-text">学习编程是有加速度的：知识结构越丰富，就跑得越快。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读方法："><span class="nav-number">1.2.</span> <span class="nav-text">阅读方法：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为何阅读源代码那么难？"><span class="nav-number">1.</span> <span class="nav-text">为何阅读源代码那么难？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么？还有不可忽视的工具？"><span class="nav-number">2.</span> <span class="nav-text">什么？还有不可忽视的工具？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#那么，该怎么做？"><span class="nav-number">3.</span> <span class="nav-text">那么，该怎么做？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#昨夜西风凋碧树，独上高楼，望尽天涯路"><span class="nav-number">3.1.</span> <span class="nav-text">昨夜西风凋碧树，独上高楼，望尽天涯路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#衣带渐宽终不悔，为伊消得人憔悴"><span class="nav-number">3.2.</span> <span class="nav-text">衣带渐宽终不悔，为伊消得人憔悴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#众里寻他千百度，蓦然回首，那人却在灯火阑珊处"><span class="nav-number">3.3.</span> <span class="nav-text">众里寻他千百度，蓦然回首，那人却在灯火阑珊处</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -691,7 +687,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.2k</span>
+    <span title="Site words total count">201.8k</span>
   
 </div>
 

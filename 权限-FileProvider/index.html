@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="问题总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T07:14:20.187Z">
+<meta property="og:updated_time" content="2018-07-08T08:14:55.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="权限-FileProvider">
 <meta name="twitter:description" content="问题总结">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T15:14:20+08:00">
-                2018-06-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T16:14:55+08:00">
+                2018-07-08
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  352 字
+                  351 字
                 </span>
               
 
@@ -438,7 +438,6 @@
       
         <p>问题总结</p>
 <a id="more"></a>
-<p>[TOC]</p>
 <h1 id="问题起因："><a href="#问题起因：" class="headerlink" title="问题起因："></a>问题起因：</h1><pre><code>E/FileSource: Failed to open file &apos;/storage/emulated/0/DCIM/Camera/VID_20171121_203344.mp4&apos;. (Permission denied)
 </code></pre><p>这是因为7.0的新的文件权限导致的。文件共享要采用FileProvicer的形式，不能使用之前的file路径来简单表示。</p>
 <h1 id="3步解决问题"><a href="#3步解决问题" class="headerlink" title="3步解决问题"></a>3步解决问题</h1><h2 id="1-file-paths-文件"><a href="#1-file-paths-文件" class="headerlink" title="1. file_paths 文件"></a>1. file_paths 文件</h2><p>在<code>res/</code>下创建<code>xml/</code>文件夹，然后创建：<code>file_paths</code>文件。</p>
@@ -506,8 +505,8 @@ Environment.getRootDirectory().getAbsolutePath();
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/自定义View-7 ViewGroup/" rel="prev" title="自定义View-7 ViewGroup">
-                自定义View-7 ViewGroup <i class="fa fa-chevron-right"></i>
+              <a href="/View-自定义-7 示例/" rel="prev" title="View-自定义-7 示例">
+                View-自定义-7 示例 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +590,7 @@ Environment.getRootDirectory().getAbsolutePath();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +601,7 @@ Environment.getRootDirectory().getAbsolutePath();
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -613,7 +612,7 @@ Environment.getRootDirectory().getAbsolutePath();
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -696,7 +695,7 @@ Environment.getRootDirectory().getAbsolutePath();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.2k</span>
+    <span title="Site words total count">201.8k</span>
   
 </div>
 

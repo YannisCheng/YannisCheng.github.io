@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="线程," />
+  <meta name="keywords" content="Java,线程," />
 
 
 
@@ -84,7 +84,7 @@
 
 
 <meta name="description" content="线程总结-2 Android">
-<meta name="keywords" content="线程">
+<meta name="keywords" content="Java,线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程-2 Android">
 <meta property="og:url" content="http://yannischeng.com/线程-2 Android/index.html">
@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/ArrayDeque.png">
-<meta property="og:updated_time" content="2018-07-01T08:12:24.482Z">
+<meta property="og:updated_time" content="2018-07-12T14:27:58.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程-2 Android">
 <meta name="twitter:description" content="线程总结-2 Android">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T16:12:24+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:27:58+08:00">
+                2018-07-12
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,457 字
+                  2,456 字
                 </span>
               
 
@@ -399,6 +399,8 @@
 
     
         <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
             <a href="/tags/线程/" rel="tag"># 线程</a>
           
@@ -439,7 +441,6 @@
       
         <p>线程总结-2 Android</p>
 <a id="more"></a>
-<p>[TOC]</p>
 <h1 id="Android-线程处理-AsyncTask"><a href="#Android-线程处理-AsyncTask" class="headerlink" title="Android 线程处理 -  AsyncTask"></a>Android 线程处理 -  AsyncTask</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
 <li><code>AsyncTask</code> 调用、实现了 <strong><code>ThreadPoolExecutor</code>类</strong>、<strong>Executor接口</strong>。并且 <strong>子线程</strong> 和 <strong>UI主线程</strong> 之间切换、数据传递还是通过 <strong>Handler</strong> 和 <strong>Message</strong> 进行处理的。</li>
 <li><code>AsyncTask</code>支持正确、简单地使用UI线程。这个类允许你在后台执行操作并在UI线程上发布结果，而无需操纵Thread和Handler。</li>
@@ -516,7 +517,7 @@
 <p> <code>offer()</code>  具体实现为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public boolean offer(E e) &#123;</div><div class="line">    return offerLast(e);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public boolean offerLast(E e) &#123;</div><div class="line">    addLast(e);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void addLast(E e) &#123;</div><div class="line">    if (e == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    elements[tail] = e;</div><div class="line">    if ( (tail = (tail + 1) &amp; (elements.length - 1)) == head)</div><div class="line">        doubleCapacity();</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void doubleCapacity() &#123;</div><div class="line">    assert head == tail;</div><div class="line">    int p = head;</div><div class="line">    int n = elements.length;</div><div class="line">    int r = n - p; // number of elements to the right of p</div><div class="line">    int newCapacity = n &lt;&lt; 1;</div><div class="line">    if (newCapacity &lt; 0)</div><div class="line">        throw new IllegalStateException(&quot;Sorry, deque too big&quot;);</div><div class="line">    Object[] a = new Object[newCapacity];</div><div class="line">    System.arraycopy(elements, p, a, 0, r);</div><div class="line">    System.arraycopy(elements, 0, a, r, p);</div><div class="line">    elements = a;</div><div class="line">    head = 0;</div><div class="line">    tail = n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>transient Object[] elements;</code>：存储该双端队列元素的数组。<br><code>transient int head;</code>：deque头部元素的索引（这是将被remove（）或pop（）移除的元素）; 或者如果该deque是空的，则任意数字等于tail。<br><code>transient int tail;</code>：下一个元素将添加到deque尾部的索引（通过addLast（E），add（E）或push（E））。</p>
-<h2 id="AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><a href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化" class="headerlink" title="==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化=="></a>==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化==</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public AsyncTask(@Nullable Looper callbackLooper) &#123;</div><div class="line">    mHandler = callbackLooper == null || callbackLooper == Looper.getMainLooper()</div><div class="line">        ? getMainHandler()</div><div class="line">        : new Handler(callbackLooper);</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><a href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化" class="headerlink" title="AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化"></a>AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public AsyncTask(@Nullable Looper callbackLooper) &#123;</div><div class="line">    mHandler = callbackLooper == null || callbackLooper == Looper.getMainLooper()</div><div class="line">        ? getMainHandler()</div><div class="line">        : new Handler(callbackLooper);</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>通过<strong>三目运算符</strong>，判断 <code>mHandler</code> 对象是否为空。</p>
 <ul>
 <li>若 callbackLooper 为空，则执行 getMainHandler()；</li>
@@ -662,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -673,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -684,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -733,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-线程处理-AsyncTask"><span class="nav-number">1.</span> <span class="nav-text">Android 线程处理 -  AsyncTask</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。"><span class="nav-number">1.2.1.</span> <span class="nav-text">AsyncTask 是一个抽象类，只有被继承之后才能使用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步任务由-3个泛型类型-定义："><span class="nav-number">1.2.2.</span> <span class="nav-text">异步任务由 3个泛型类型 定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行异步任务时，会经历-4个步骤"><span class="nav-number">1.2.3.</span> <span class="nav-text">执行异步任务时，会经历 4个步骤:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消任务"><span class="nav-number">1.2.4.</span> <span class="nav-text">取消任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程规则"><span class="nav-number">1.2.5.</span> <span class="nav-text">线程规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask-中2个在类加载时就进行初始化的static对象"><span class="nav-number">1.3.</span> <span class="nav-text">AsyncTask 中2个在类加载时就进行初始化的static对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象1-：public-static-final-Executor-THREAD-POOL-EXECUTOR"><span class="nav-number">1.3.1.</span> <span class="nav-text">静态对象1 ：public static final Executor THREAD_POOL_EXECUTOR;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象2：private-static-volatile-Executor-sDefaultExecutor-SERIAL-EXECUTOR"><span class="nav-number">1.3.2.</span> <span class="nav-text">静态对象2：private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><span class="nav-number">1.4.</span> <span class="nav-text">==AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化==</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-线程处理-AsyncTask"><span class="nav-number">1.</span> <span class="nav-text">Android 线程处理 -  AsyncTask</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。"><span class="nav-number">1.2.1.</span> <span class="nav-text">AsyncTask 是一个抽象类，只有被继承之后才能使用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步任务由-3个泛型类型-定义："><span class="nav-number">1.2.2.</span> <span class="nav-text">异步任务由 3个泛型类型 定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行异步任务时，会经历-4个步骤"><span class="nav-number">1.2.3.</span> <span class="nav-text">执行异步任务时，会经历 4个步骤:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消任务"><span class="nav-number">1.2.4.</span> <span class="nav-text">取消任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程规则"><span class="nav-number">1.2.5.</span> <span class="nav-text">线程规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask-中2个在类加载时就进行初始化的static对象"><span class="nav-number">1.3.</span> <span class="nav-text">AsyncTask 中2个在类加载时就进行初始化的static对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象1-：public-static-final-Executor-THREAD-POOL-EXECUTOR"><span class="nav-number">1.3.1.</span> <span class="nav-text">静态对象1 ：public static final Executor THREAD_POOL_EXECUTOR;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态对象2：private-static-volatile-Executor-sDefaultExecutor-SERIAL-EXECUTOR"><span class="nav-number">1.3.2.</span> <span class="nav-text">静态对象2：private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask任务中前后台切换的关键：Handler-mHandler-的初始化"><span class="nav-number">1.4.</span> <span class="nav-text">AsyncTask任务中前后台切换的关键：Handler mHandler 的初始化</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -767,7 +768,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.2k</span>
+    <span title="Site words total count">201.8k</span>
   
 </div>
 

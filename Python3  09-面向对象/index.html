@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="Python3," />
 
 
 
@@ -84,14 +84,14 @@
 
 
 <meta name="description" content="人生苦短，我用Python">
-<meta name="keywords" content="Python">
+<meta name="keywords" content="Python3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3  09-面向对象">
 <meta property="og:url" content="http://yannischeng.com/Python3  09-面向对象/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="人生苦短，我用Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T08:14:27.282Z">
+<meta property="og:updated_time" content="2018-07-12T13:59:18.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3  09-面向对象">
 <meta name="twitter:description" content="人生苦短，我用Python">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-08T16:14:27+08:00">
-                2018-06-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T21:59:18+08:00">
+                2018-07-12
               </time>
             
           </span>
@@ -331,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
+                  <a href="/categories/Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3</span>
                   </a>
                 </span>
 
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,141 字
+                  2,140 字
                 </span>
               
 
@@ -397,7 +397,7 @@
     
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
           
         </div>
       
@@ -436,9 +436,6 @@
       
         <p><strong>人生苦短，我用Python</strong></p>
 <a id="more"></a>
-<hr>
-<p>[TOC]</p>
-<hr>
 <h2 id="类的模板"><a href="#类的模板" class="headerlink" title="类的模板"></a>类的模板</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''类模板'''</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, city)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.age = age</div><div class="line">        self.__city = city</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_info</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'self is : '</span>, self) <span class="comment"># self is :  &lt;py_class.Student.Student object at 0x10c92c400&gt;</span></div><div class="line">        <span class="comment"># print(student) 得到的结果为：&lt;py_class.Student.Student object at 0x10c92c400&gt;</span></div><div class="line">        print(<span class="string">'class is : '</span>, self.__class__)  <span class="comment"># class is :  &lt;class 'py_class.Student.Student'&gt;</span></div><div class="line">        print(<span class="string">'%s, %d, %s'</span> % (self.name, self.age, self.__city))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.age == <span class="number">20</span>:</div><div class="line">            print(<span class="string">'age is '</span>, self.age)</div><div class="line">        <span class="keyword">elif</span> self.age &gt; <span class="number">20</span>:</div><div class="line">            print(<span class="string">'too old'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'too young'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_city</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.__city</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_city</span><span class="params">(self, city)</span>:</span></div><div class="line">        self.__city = city</div></pre></td></tr></table></figure>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p> 1.类属性：像是Student类中的name就是类属性<br> 2.实例属性：像是下文中的student.__city就是实例属性</p>
 <h2 id="类中变量及函数的命名规范"><a href="#类中变量及函数的命名规范" class="headerlink" title="类中变量及函数的命名规范"></a>类中变量及函数的命名规范</h2><ul>
@@ -519,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  09-面向对象+临时变量、方法+@property+多继承/" rel="next" title="Python3  09-面向对象+临时变量、方法+@property+多继承">
-                <i class="fa fa-chevron-left"></i> Python3  09-面向对象+临时变量、方法+@property+多继承
+              <a href="/Python3  08-模块/" rel="next" title="Python3  08-模块">
+                <i class="fa fa-chevron-left"></i> Python3  08-模块
               </a>
             
           </div>
@@ -529,8 +526,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  10-面向对象+定制对象/" rel="prev" title="Python3  10-面向对象+定制对象">
-                Python3  10-面向对象+定制对象 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  09-面向对象+临时变量、方法+@property+多继承/" rel="prev" title="Python3  09-面向对象+临时变量、方法+@property+多继承">
+                Python3  09-面向对象+临时变量、方法+@property+多继承 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -614,7 +611,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +622,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -636,7 +633,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -719,7 +716,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.2k</span>
+    <span title="Site words total count">201.8k</span>
   
 </div>
 
