@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,字符串," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="String、StringBuffer、StringBuilder">
+<meta name="keywords" content="Java,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-字符串">
+<meta property="og:url" content="http://yannischeng.com/Java-字符串/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="String、StringBuffer、StringBuilder">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/String.png">
+<meta property="og:updated_time" content="2018-07-14T13:27:09.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java-字符串">
+<meta name="twitter:description" content="String、StringBuffer、StringBuilder">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/String.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Java-字符串/"/>
+
+
+
+
+
+  <title>Java-字符串 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Java-字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java-字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T19:09:24+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T21:27:09+08:00">
+                2018-07-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,158 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Java-字符串/" title="Java-字符串">http://yannischeng.com/Java-字符串/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>String、StringBuffer、StringBuilder</strong></p>
+<a id="more"></a>
+<h1 id="String、StringBuffer、StringBuilder区别"><a href="#String、StringBuffer、StringBuilder区别" class="headerlink" title="String、StringBuffer、StringBuilder区别"></a>String、StringBuffer、StringBuilder区别</h1><p>一张图描述3者之间的关系</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/String.png" alt=""></p>
+<h2 id="String类象操作本质"><a href="#String类象操作本质" class="headerlink" title="String类象操作本质"></a>String类象操作本质</h2><p><strong>String类</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public final class String</div><div class="line">    implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence</div></pre></td></tr></table></figure>
+<p>String类中的每一个方法在对 <strong>原有的 String对象</strong> 作出修改时，实际上都是 <strong>创建了一个全新的对象</strong>，已包含修改后的字符串内容，而最初的对象没有发生改变。</p>
+<p>如：<code>substringI()</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public String substring(int beginIndex) &#123;</div><div class="line">    if (beginIndex &lt; 0) &#123;</div><div class="line">        throw new StringIndexOutOfBoundsException(beginIndex);</div><div class="line">    &#125;</div><div class="line">    int subLen = value.length - beginIndex;</div><div class="line">    if (subLen &lt; 0) &#123;</div><div class="line">        throw new StringIndexOutOfBoundsException(subLen);</div><div class="line">    &#125;</div><div class="line">    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终的在方法结束 <code>return</code> 时，返回的是：<code>new String(value, beginIndex, subLen);</code></p>
+<p>当一个String对象传递给另一个方法或者进行其他操作时，实际传递的是一个 <strong>引用的拷贝</strong>。被传入的 拷贝引用 其实只是在方法运行时存在，方法结束后拷贝引用消失，同时返回一个 新创建的对象。</p>
+<p>如测试例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">String str1 = &quot;Java is good !&quot;;</div><div class="line">System.out.println(&quot;str1 is : &quot;+str1+&quot;, heshCode is: &quot; + str1.hashCode());</div><div class="line"></div><div class="line">str1 = str1 + &quot;Oh! Yes!&quot;;</div><div class="line">System.out.println(&quot;str1 is : &quot;+str1+&quot;, heshCode is: &quot; + str1.hashCode());</div><div class="line"></div><div class="line">str1 = str1.concat(&quot; No! php is the best!&quot;);</div><div class="line">System.out.println(&quot;str1 is : &quot;+str1+&quot;, heshCode is: &quot; + str1.hashCode());</div></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str1 is : Java is good !, heshCode is: -158517034</div><div class="line">str1 is : Java is good !Oh! Yes!, heshCode is: -917780248</div><div class="line">str1 is : Java is good !Oh! Yes! No! php is the best!, heshCode is: -1986999688</div></pre></td></tr></table></figure>
+<h2 id="String类的“-”-与-StringBuilder类的-append"><a href="#String类的“-”-与-StringBuilder类的-append" class="headerlink" title="String类的“+” 与 StringBuilder类的 append()"></a>String类的“+” 与 StringBuilder类的 append()</h2><p><strong>StringBuilder</strong>类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public final class StringBuilder</div><div class="line">    extends AbstractStringBuilder</div><div class="line">    implements java.io.Serializable, CharSequence</div></pre></td></tr></table></figure>
+<hr>
+<p>当 String对象 执行 <strong><code>+</code></strong> 操作时，实际执行的操作是：编译器自动引入 <strong><code>StringBuilder类</code></strong>，然后 <strong>自动创建StringBuilder对象</strong>，调用其 <strong><code>append()</code></strong>。</p>
+<p>那么，我们直接使用 <strong><code>String类</code></strong> 的 <strong><code>+</code></strong> 操作和 <strong><code>StringBuilder类</code></strong>有什么区别呢？</p>
+<pre><code>区别就是中间产生的 StringBuilder类对象。
+</code></pre><p>假如要在 <strong>循环中</strong> 对 <strong><code>String类的对象</code></strong> 进行操作，则结果是每执行一次 循环操作就创建一个新的 <strong><code>StringBuilder类的对象</code></strong>，而内存是需要为这些对象分配空间的，同时还要在创建对象时消耗时间，即：费时费空间。</p>
+<p>如果在执行循环之前，使用已经创建的　<strong><code>StringBuilder类对象</code></strong>，则在执行循环操作时不会再创建额外的对象。</p>
+<h3 id="那么，StringBuilder类的-append-是如何实现的呢？"><a href="#那么，StringBuilder类的-append-是如何实现的呢？" class="headerlink" title="那么，StringBuilder类的 append() 是如何实现的呢？"></a>那么，<strong><code>StringBuilder类</code></strong>的 <strong><code>append()</code></strong> 是如何实现的呢？</h3><p><strong>1. StringBuilder类 中的 append()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public StringBuilder append(String str) &#123;</div><div class="line">    super.append(str);</div><div class="line">    return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. AbstractStringBuilder类 中的 append()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public AbstractStringBuilder append(String str) &#123;</div><div class="line">    if (str == null)</div><div class="line">        return appendNull();</div><div class="line">    int len = str.length();</div><div class="line">    ensureCapacityInternal(count + len);</div><div class="line">    str.getChars(0, len, value, count);</div><div class="line">    count += len;</div><div class="line">    return this;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void ensureCapacityInternal(int minimumCapacity) &#123;</div><div class="line">    // overflow-conscious code</div><div class="line">    if (minimumCapacity - value.length &gt; 0) &#123;</div><div class="line">        value = Arrays.copyOf(value,</div><div class="line">                newCapacity(minimumCapacity));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>3. Arrays类 中的 copyOf()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static char[] copyOf(char[] original, int newLength) &#123;</div><div class="line">    char[] copy = new char[newLength];</div><div class="line">    System.arraycopy(original, 0, copy, 0,</div><div class="line">                     Math.min(original.length, newLength));</div><div class="line">    return copy;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>4. 最终调用的是System类的 arraycopy()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static native void arraycopy(Object src,  int  srcPos,</div><div class="line">                                        Object dest, int destPos,</div><div class="line">                                        int length);</div></pre></td></tr></table></figure>
+<p>由此调用步骤可见，<strong><code>StringBuilder类 中的 append()</code></strong> 最终调用的是底层的方法。</p>
+<p>这就是使用 <strong><code>String类对象</code></strong> 做 <strong><code>+</code></strong> 操作与 <strong><code>StringBuilder类</code></strong> 对象的 <strong><code>append()</code></strong> 操作的区别。</p>
+<h2 id="StringBuffer类又是什么呢？"><a href="#StringBuffer类又是什么呢？" class="headerlink" title="StringBuffer类又是什么呢？"></a>StringBuffer类又是什么呢？</h2><p><strong>StringBuffer类</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public final class StringBuffer</div><div class="line">    extends AbstractStringBuilder</div><div class="line">    implements java.io.Serializable, CharSequence</div></pre></td></tr></table></figure>
+<p>在 源码的注释文档中，有这么一段话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">As of  release JDK 5, this class has been supplemented with an equivalent class designed for use by a single thread, &#123;@link StringBuilder&#125;.  </div><div class="line">The  &#123;@code StringBuilder&#125; class should generally be used in preference to this one, as it supports all of the same operations but it is faster, as it performs no synchronization.</div></pre></td></tr></table></figure>
+<p>翻译成中文就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">从JDK 5发行版开始，这个类已经补充了一个设计用于单个线程StringBuilder的等效类。</div><div class="line">StringBuilder类通常应优先于此类使用，因为它支持所有相同的操作，但速度更快，因为它不执行同步。</div></pre></td></tr></table></figure>
+<p>注释中提到的 <strong>同步</strong> 指的是，在具体的执行方法中，有 <strong>synchronized</strong> 关键字。</p>
+<p>如：同样是 <strong><code>append()</code></strong>， 在 <strong>StringBuffer类</strong> 中的源代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public synchronized StringBuffer append(String str) &#123;</div><div class="line">    toStringCache = null;</div><div class="line">    super.append(str);</div><div class="line">    return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="输出格式化"><a href="#输出格式化" class="headerlink" title="输出格式化"></a>输出格式化</h2><p>默认情况下：数据都是右对齐的，但是使用 <strong><code>-</code></strong>  <code>flag</code> 则可以实现左对齐。一般格式化语法的抽象语法描述为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%[argument_index$][flags][width][.precision]conversion</div></pre></td></tr></table></figure>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>像是 <strong>C语言</strong> 中的 <strong><code>printf()</code></strong> 的风格输出就是 <strong>格式化输出</strong>，在 Java SE5 引进了此种输出方式。</p>
+<p>具体使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int age = 10;</div><div class="line">float length = 12.3f;</div><div class="line">System.out.printf(&quot;age is : %3d, length is %4.3f\n&quot;, age,length);</div><div class="line">System.out.format(&quot;age is : %d, length is %-4.2f\n&quot;, age,length);</div></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">age is :  10, length is 12.345</div><div class="line">age is : 10, length is 12.35</div></pre></td></tr></table></figure>
+<p>即：<strong><code>printf()</code></strong> 与 <strong><code>format()</code></strong> 在格式化输出上具有相同的功能。</p>
+<h3 id="格式化说明符"><a href="#格式化说明符" class="headerlink" title="格式化说明符"></a>格式化说明符</h3><p><strong>Fromatter类</strong></p>
+<p>简单示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Formatter formatter = new Formatter(System.out);</div><div class="line">String forStr = &quot;%-15s  %5d  %3.3f&quot;;</div><div class="line">formatter.format(forStr,&quot;total size is &quot;, 123, 222.1234f);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">total size is      123  222.123</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/温故知新-数据结构-5/" rel="next" title="温故知新-数据结构-5">
+                <i class="fa fa-chevron-left"></i> 温故知新-数据结构-5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#String、StringBuffer、StringBuilder区别"><span class="nav-number">1.</span> <span class="nav-text">String、StringBuffer、StringBuilder区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String类象操作本质"><span class="nav-number">1.1.</span> <span class="nav-text">String类象操作本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String类的“-”-与-StringBuilder类的-append"><span class="nav-number">1.2.</span> <span class="nav-text">String类的“+” 与 StringBuilder类的 append()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#那么，StringBuilder类的-append-是如何实现的呢？"><span class="nav-number">1.2.1.</span> <span class="nav-text">那么，StringBuilder类的 append() 是如何实现的呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer类又是什么呢？"><span class="nav-number">1.3.</span> <span class="nav-text">StringBuffer类又是什么呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式化"><span class="nav-number">1.4.</span> <span class="nav-text">输出格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化输出"><span class="nav-number">1.4.1.</span> <span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化说明符"><span class="nav-number">1.4.2.</span> <span class="nav-text">格式化说明符</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">199.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
