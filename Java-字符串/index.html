@@ -92,7 +92,7 @@
 <meta property="og:description" content="String、StringBuffer、StringBuilder">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/String.png">
-<meta property="og:updated_time" content="2018-07-14T13:27:09.876Z">
+<meta property="og:updated_time" content="2018-07-14T13:33:56.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-字符串">
 <meta name="twitter:description" content="String、StringBuffer、StringBuilder">
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T21:27:09+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T21:33:56+08:00">
                 2018-07-14
               </time>
             
@@ -445,7 +445,7 @@
 <h2 id="String类象操作本质"><a href="#String类象操作本质" class="headerlink" title="String类象操作本质"></a>String类象操作本质</h2><p><strong>String类</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public final class String</div><div class="line">    implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence</div></pre></td></tr></table></figure>
 <p>String类中的每一个方法在对 <strong>原有的 String对象</strong> 作出修改时，实际上都是 <strong>创建了一个全新的对象</strong>，已包含修改后的字符串内容，而最初的对象没有发生改变。</p>
-<p>如：<code>substringI()</code>：</p>
+<p>如：<code>substring()</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public String substring(int beginIndex) &#123;</div><div class="line">    if (beginIndex &lt; 0) &#123;</div><div class="line">        throw new StringIndexOutOfBoundsException(beginIndex);</div><div class="line">    &#125;</div><div class="line">    int subLen = value.length - beginIndex;</div><div class="line">    if (subLen &lt; 0) &#123;</div><div class="line">        throw new StringIndexOutOfBoundsException(subLen);</div><div class="line">    &#125;</div><div class="line">    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>最终的在方法结束 <code>return</code> 时，返回的是：<code>new String(value, beginIndex, subLen);</code></p>
 <p>当一个String对象传递给另一个方法或者进行其他操作时，实际传递的是一个 <strong>引用的拷贝</strong>。被传入的 拷贝引用 其实只是在方法运行时存在，方法结束后拷贝引用消失，同时返回一个 新创建的对象。</p>
