@@ -91,15 +91,16 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="JVM理解 —— Java代码执行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.59.41.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/713721-20160602152821617-738821208.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2014.58.40.png">
-<meta property="og:updated_time" content="2018-07-12T14:28:05.059Z">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20170603184309287.png">
+<meta property="og:updated_time" content="2018-07-26T05:16:15.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-Java源码编译">
 <meta name="twitter:description" content="JVM理解 —— Java代码执行">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 
 
 
@@ -317,8 +318,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:28:05+08:00">
-                2018-07-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-26T13:16:15+08:00">
+                2018-07-26
               </time>
             
           </span>
@@ -367,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,308 字
+                  3,712 字
                 </span>
               
 
@@ -383,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14 分钟
+                  15 分钟
                 </span>
               
             </div>
@@ -443,7 +444,7 @@
       
         <p>JVM理解 —— Java代码执行</p>
 <a id="more"></a>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
 <p>Java代码执行机制的3个过程</p>
 <ul>
 <li><strong>编译</strong></li>
@@ -585,6 +586,27 @@
 <h2 id="3-反射执行"><a href="#3-反射执行" class="headerlink" title="3. 反射执行"></a>3. 反射执行</h2><p>基于反射可动态调用某对象实例中对应的方法、访问查看对象的属性等，无需在编写代码时就确定要创建的对象。</p>
 <p>反射和直接创建对象实例，调用方法最大的不同在于创建的过程、方法的调用是动态的。<br>如何实现动态调用：<strong>动态生成字节码、并加载到JVM中执行</strong>。</p>
 <p><strong>注意：</strong> 使用<code>getMethod()</code> 相对比较耗性能，一方面是权限的校验，另一方面是所有方法的扫描机Method对象的复制。因此，在使用<code>反射</code>调用多的系统中，应缓存<code>getMethod()</code>返回的Method对象。</p>
+<h1 id="Java对象"><a href="#Java对象" class="headerlink" title="Java对象"></a>Java对象</h1><h2 id="4种引用"><a href="#4种引用" class="headerlink" title="4种引用"></a>4种引用</h2><p><strong>强引用</strong>：</p>
+<p> 普遍存在的，类似”Object obj=new Object()”；<br> 只要强引用还在，GC就永远不会回收被引用的对象，即时抛出OOM；<br> 如果想中断强引用和某个对象之间的关联，可以显示地将引用赋值为null，这样一来的话，JVM在合适的时间就会回收该对象。</p>
+<p><strong>软引用（Soft Reference）</strong></p>
+<p> 用来描述有用但是非必须的对象；<br> 如果一个对象具有软引用，内存空间足够，垃圾回收器就不会回收它；直到内存空间不够时（抛出OutOfMemoryError之前），才会被垃圾回收；<br> 由 <code>SoftReference类</code> 实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MyObject aRef = new  MyObject();  </div><div class="line">SoftReference aSoftRef=new SoftReference(aRef);</div></pre></td></tr></table></figure>
+<p>重新获得对该实例的强引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MyObject anotherRef=(MyObject)aSoftRef.get();</div></pre></td></tr></table></figure>
+<p>而回收之后，调用get()方法就只能得到null了。</p>
+<p> 软引用可用来实现内存敏感的高速缓存，使用软引用可以可以增强程序的健壮性、能防止内存泄漏。</p>
+<p><strong>弱引用（Weak Reference）</strong></p>
+<p>用来描述非必须的对象；<br>只能生存到下一次垃圾回收之前，无论内存是否足够；<br>由 <code>WeakReference类</code> 实现；</p>
+<p><strong>虚引用（Phantom Reference）</strong></p>
+<p> 也称为幽灵引用或幻影引用；<br> 完全不会对其生存时间构成影响；</p>
+<h2 id="“-”运算符-和-“equals-”-方法"><a href="#“-”运算符-和-“equals-”-方法" class="headerlink" title="“==”运算符 和 “equals()” 方法"></a>“==”运算符 和 “equals()” 方法</h2><p>实质上这两种方法本质上还是有区别的：</p>
+<ul>
+<li><p><strong>equals()</strong> 方法是从String类中的方法，它用于比较两个 <strong>对象引用所指的内容</strong> 是否相等；</p>
+</li>
+<li><p><strong>==</strong> 运算符比较的是两个 <strong>对象引用的地址</strong> 是否相等。</p>
+</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/20170603184309287.png" alt=""></p>
 
       
     </div>
@@ -723,7 +745,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -772,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码编译机制"><span class="nav-number">1.</span> <span class="nav-text">Java源码编译机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-分析和输入到符号表（Parse、-Enter）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 分析和输入到符号表（Parse、 Enter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-分析（Parse）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 分析（Parse）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-输入（Enter）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 输入（Enter）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注解处理（Annotation-Processing）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 注解处理（Annotation Processing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-语义分析和生成class文件（Analyse-and-Generate）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 语义分析和生成class文件（Analyse and Generate）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Analyse："><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Analyse：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Generate："><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Generate：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">2.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM加载class文件到内存有2种方式"><span class="nav-number">2.1.</span> <span class="nav-text">JVM加载class文件到内存有2种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制分为3个阶段："><span class="nav-number">2.2.</span> <span class="nav-text">类加载机制分为3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装载（Load）"><span class="nav-number">2.3.</span> <span class="nav-text">1. 装载（Load）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链接（Link）"><span class="nav-number">2.4.</span> <span class="nav-text">2. 链接（Link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化（Initialize）"><span class="nav-number">2.5.</span> <span class="nav-text">3. 初始化（Initialize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader继承关系"><span class="nav-number">2.6.</span> <span class="nav-text">ClassLoader继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Bootstrap-ClassLoader"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）. Bootstrap ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-Extension-ClassLoader"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）. Extension ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-App-ClassLoader"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）. App ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）-Custom-ClassLoader"><span class="nav-number">2.6.4.</span> <span class="nav-text">（4）. Custom ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader抽象类的几个关键方法"><span class="nav-number">2.7.</span> <span class="nav-text">ClassLoader抽象类的几个关键方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类执行机制"><span class="nav-number">3.</span> <span class="nav-text">类执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-字节码解释执行方式"><span class="nav-number">3.1.</span> <span class="nav-text">1. 字节码解释执行方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例分析："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-编译执行"><span class="nav-number">3.2.</span> <span class="nav-text">2. 编译执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射执行"><span class="nav-number">3.3.</span> <span class="nav-text">3. 反射执行</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码编译机制"><span class="nav-number">1.</span> <span class="nav-text">Java源码编译机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-分析和输入到符号表（Parse、-Enter）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 分析和输入到符号表（Parse、 Enter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-分析（Parse）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 分析（Parse）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-输入（Enter）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 输入（Enter）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注解处理（Annotation-Processing）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 注解处理（Annotation Processing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-语义分析和生成class文件（Analyse-and-Generate）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 语义分析和生成class文件（Analyse and Generate）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Analyse："><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Analyse：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Generate："><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Generate：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">2.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM加载class文件到内存有2种方式"><span class="nav-number">2.1.</span> <span class="nav-text">JVM加载class文件到内存有2种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制分为3个阶段："><span class="nav-number">2.2.</span> <span class="nav-text">类加载机制分为3个阶段：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装载（Load）"><span class="nav-number">2.3.</span> <span class="nav-text">1. 装载（Load）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链接（Link）"><span class="nav-number">2.4.</span> <span class="nav-text">2. 链接（Link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化（Initialize）"><span class="nav-number">2.5.</span> <span class="nav-text">3. 初始化（Initialize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader继承关系"><span class="nav-number">2.6.</span> <span class="nav-text">ClassLoader继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Bootstrap-ClassLoader"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）. Bootstrap ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-Extension-ClassLoader"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）. Extension ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-App-ClassLoader"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）. App ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）-Custom-ClassLoader"><span class="nav-number">2.6.4.</span> <span class="nav-text">（4）. Custom ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader抽象类的几个关键方法"><span class="nav-number">2.7.</span> <span class="nav-text">ClassLoader抽象类的几个关键方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类执行机制"><span class="nav-number">3.</span> <span class="nav-text">类执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-字节码解释执行方式"><span class="nav-number">3.1.</span> <span class="nav-text">1. 字节码解释执行方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例分析："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-编译执行"><span class="nav-number">3.2.</span> <span class="nav-text">2. 编译执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射执行"><span class="nav-number">3.3.</span> <span class="nav-text">3. 反射执行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java对象"><span class="nav-number">4.</span> <span class="nav-text">Java对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4种引用"><span class="nav-number">4.1.</span> <span class="nav-text">4种引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“-”运算符-和-“equals-”-方法"><span class="nav-number">4.2.</span> <span class="nav-text">“==”运算符 和 “equals()” 方法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -806,7 +828,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.4k</span>
+    <span title="Site words total count">204.7k</span>
   
 </div>
 

@@ -83,30 +83,30 @@
 
 
 
-<meta name="description" content="总结">
+<meta name="description" content="总结：基本动画 与 属性动画">
 <meta name="keywords" content="Android,动画">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动画">
 <meta property="og:url" content="http://yannischeng.com/动画/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="总结">
+<meta property="og:description" content="总结：基本动画 与 属性动画">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2018.12.54.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/Android%E5%8A%A8%E7%94%BB-%E4%BF%AE%E8%AE%A2%E7%89%88.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2011.10.28.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2015.01.39.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fjfiuualxyg30gi09iwqa.gif">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fjfirzt0kog30bc0a0wja.gif">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tNc79ly1fjfig8edhmg30ck07046i.gif">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2010.49.47.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-26%2012.40.12.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2011.47.00.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tKfTcly1fjmybsw31fj30nb0iywfq.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tKfTcly1fjmygtwiutj30nb0o2ta8.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-21%2014.07.30.png">
-<meta property="og:updated_time" content="2018-07-08T08:14:47.211Z">
+<meta property="og:updated_time" content="2018-07-26T05:13:07.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动画">
-<meta name="twitter:description" content="总结">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2018.12.54.jpg">
+<meta name="twitter:description" content="总结：基本动画 与 属性动画">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/Android%E5%8A%A8%E7%94%BB-%E4%BF%AE%E8%AE%A2%E7%89%88.png">
 
 
 
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T16:14:47+08:00">
-                2018-07-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-26T13:13:07+08:00">
+                2018-07-26
               </time>
             
           </span>
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,256 字
+                  3,266 字
                 </span>
               
 
@@ -448,13 +448,14 @@
       
 
       
-        <p>总结</p>
+        <p>总结：基本动画 与 属性动画</p>
 <a id="more"></a>
-<h1 id="一、概览："><a href="#一、概览：" class="headerlink" title="一、概览："></a>一、概览：</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2018.12.54.jpg" alt=""></p>
+<h1 id="一、概览："><a href="#一、概览：" class="headerlink" title="一、概览："></a>一、概览：</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/Android%E5%8A%A8%E7%94%BB-%E4%BF%AE%E8%AE%A2%E7%89%88.png" alt=""></p>
 <p>Animator :</p>
 <p>这是为动画提供基本支持的类的超类，这些动画可以被<code>启动</code>、<code>结束</code>、并添加<code>AnimatorListeners</code>。</p>
 <p>Animator的子类</p>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2011.10.28.png" alt=""></p>
+<p>Evaluator.</p>
 <h1 id="二、动画分类"><a href="#二、动画分类" class="headerlink" title="二、动画分类"></a>二、动画分类</h1><h2 id="0-复杂属性动画"><a href="#0-复杂属性动画" class="headerlink" title="0. 复杂属性动画"></a>0. 复杂属性动画</h2><ul>
 <li>使用 <code>PropertyValuesHolder</code> 来对多个属性同时做动画；</li>
 <li>使用 <code>AnimatorSet</code> 来同时管理调配多个动画；</li>
@@ -561,7 +562,7 @@
 </table>
 <p><code>Animator</code>类当中提供了一个<code>addListener()</code>方法，这个方法接收一个<code>AnimatorListener</code>，我们只需要去实现这个AnimatorListener就可以监听动画的各种事件了。</p>
 <h1 id="四、-其他组件"><a href="#四、-其他组件" class="headerlink" title="四、 其他组件"></a>四、 其他组件</h1><h2 id="1-插值器-Interpolator"><a href="#1-插值器-Interpolator" class="headerlink" title="1. 插值器 - Interpolator"></a>1. 插值器 - Interpolator</h2><h3 id="1-1-Interpolator的作用"><a href="#1-1-Interpolator的作用" class="headerlink" title="1.1 Interpolator的作用"></a>1.1 Interpolator的作用</h3><p>内插器定义动画的变化率。 这可以使基本的动画效果（alpha，缩放，平移，旋转）加速，减速，重复等。</p>
-<h3 id="1-2-Interpolator的继承关系"><a href="#1-2-Interpolator的继承关系" class="headerlink" title="1.2 Interpolator的继承关系"></a>1.2 Interpolator的继承关系</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2010.49.47.png" alt=""></p>
+<h3 id="1-2-Interpolator的继承关系"><a href="#1-2-Interpolator的继承关系" class="headerlink" title="1.2 Interpolator的继承关系"></a>1.2 Interpolator的继承关系</h3><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-26%2012.40.12.png" alt=""></p>
 <h3 id="1-3-系统自带效果"><a href="#1-3-系统自带效果" class="headerlink" title="1.3 系统自带效果"></a>1.3 系统自带效果</h3><table>
 <thead>
 <tr>
@@ -715,8 +716,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/View-自定义-5 绘制顺序/" rel="next" title="View-自定义-5 绘制顺序">
-                <i class="fa fa-chevron-left"></i> View-自定义-5 绘制顺序
+              <a href="/动画 - Canvas处理与Camera三维变换/" rel="next" title="动画 - Canvas处理与Camera三维变换">
+                <i class="fa fa-chevron-left"></i> 动画 - Canvas处理与Camera三维变换
               </a>
             
           </div>
@@ -832,7 +833,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -915,7 +916,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.4k</span>
+    <span title="Site words total count">204.7k</span>
   
 </div>
 

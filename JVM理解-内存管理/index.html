@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="JVM理解 —— 内存管理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.55.05.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png">
@@ -99,11 +99,11 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png">
-<meta property="og:updated_time" content="2018-07-12T14:28:09.110Z">
+<meta property="og:updated_time" content="2018-07-26T05:16:26.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-内存管理">
 <meta name="twitter:description" content="JVM理解 —— 内存管理">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 
 
 
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:28:09+08:00">
-                2018-07-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-26T13:16:26+08:00">
+                2018-07-26
               </time>
             
           </span>
@@ -447,7 +447,7 @@
       
         <p>JVM理解 —— 内存管理</p>
 <a id="more"></a>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%90%86%E8%A7%A3.png" alt=""></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
 <p>Java不是由开发人员来显示分配内存和回收内存，而是由JVM来 <strong>自动管理内存的分配和回收</strong>（又称为：<strong>垃圾回收</strong>、<strong>Garbage Collection：GC</strong>）。</p>
 <p>对于Java开发人员来说，这降低了开发的难度，但是实际使用中遇到的问题就是由于不清楚JVM的内存分配和回收机制，造成内存泄漏，最终导致JVM内存不够用。</p>
 <p>因此对Java开发人员而言，除了内存的 <strong>分配</strong> 和 <strong>回收</strong> 之外，还必须掌握JVM的内存使用状况，以便更加准确判断程序的 <strong>运行状况</strong> 以及进行 <strong>性能调优</strong>。</p>
@@ -720,7 +720,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -803,7 +803,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">199.4k</span>
+    <span title="Site words total count">204.7k</span>
   
 </div>
 
