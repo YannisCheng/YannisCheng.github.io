@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tKfTcly1fjmybsw31fj30nb0iywfq.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/006tKfTcly1fjmygtwiutj30nb0o2ta8.jpg">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-21%2014.07.30.png">
-<meta property="og:updated_time" content="2018-07-26T05:13:07.177Z">
+<meta property="og:updated_time" content="2018-07-27T14:29:10.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动画">
 <meta name="twitter:description" content="总结：基本动画 与 属性动画">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-26T13:13:07+08:00">
-                2018-07-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T22:29:10+08:00">
+                2018-07-27
               </time>
             
           </span>
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,266 字
+                  3,447 字
                 </span>
               
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -456,7 +456,14 @@
 <p>Animator的子类</p>
 <p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-20%2011.10.28.png" alt=""></p>
 <p>Evaluator.</p>
-<h1 id="二、动画分类"><a href="#二、动画分类" class="headerlink" title="二、动画分类"></a>二、动画分类</h1><h2 id="0-复杂属性动画"><a href="#0-复杂属性动画" class="headerlink" title="0. 复杂属性动画"></a>0. 复杂属性动画</h2><ul>
+<h1 id="二、-注意事项"><a href="#二、-注意事项" class="headerlink" title="二、 注意事项"></a>二、 注意事项</h1><h2 id="两个方法，避免内存泄漏"><a href="#两个方法，避免内存泄漏" class="headerlink" title="两个方法，避免内存泄漏"></a>两个方法，避免内存泄漏</h2><ul>
+<li><strong><code>onAttachedToWindow()</code></strong>：当含有此View的Activity启动时，View的此方法会被调用。</li>
+<li><strong><code>onDetachedFromWindow()</code></strong>：包含此View的Activity在退出或者View被remove时，View的此方法会被调用。</li>
+</ul>
+<h2 id="OOM问题"><a href="#OOM问题" class="headerlink" title="OOM问题"></a>OOM问题</h2><p>避使用帧动画中，因为当图片数量较多且图片较大时，在此种动画中易出现此问题。</p>
+<h2 id="View动画问题"><a href="#View动画问题" class="headerlink" title="View动画问题"></a>View动画问题</h2><p>View动画是对View的影响做动画，并不是真正的改变View的状态，因此有时候会出现动画完成后无法隐藏的情况，调用setVisibility(View.GONE)也没有作用，此时调用：view.clearAnimation()即可清除View动画。</p>
+<h2 id="开启硬件加速——动画更流畅"><a href="#开启硬件加速——动画更流畅" class="headerlink" title="开启硬件加速——动画更流畅"></a>开启硬件加速——动画更流畅</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div></pre></td></tr></table></figure>
+<h1 id="三、动画分类"><a href="#三、动画分类" class="headerlink" title="三、动画分类"></a>三、动画分类</h1><h2 id="0-复杂属性动画"><a href="#0-复杂属性动画" class="headerlink" title="0. 复杂属性动画"></a>0. 复杂属性动画</h2><ul>
 <li>使用 <code>PropertyValuesHolder</code> 来对多个属性同时做动画；</li>
 <li>使用 <code>AnimatorSet</code> 来同时管理调配多个动画；</li>
 <li><code>PropertyValuesHolder</code> 的进阶使用：使用 PropertyValuesHolder.ofKeyframe() 来把一个属性拆分成多段，执行更加精细的属性动画。</li>
@@ -811,7 +818,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -833,7 +840,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -882,7 +889,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、概览："><span class="nav-number">1.</span> <span class="nav-text">一、概览：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、动画分类"><span class="nav-number">2.</span> <span class="nav-text">二、动画分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-复杂属性动画"><span class="nav-number">2.1.</span> <span class="nav-text">0. 复杂属性动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最早的两种"><span class="nav-number">2.2.</span> <span class="nav-text">1. 最早的两种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-属性动画-：ValueAnimator（Android3-0）-某一属性（值）动画"><span class="nav-number">2.3.</span> <span class="nav-text">2. 属性动画 ：ValueAnimator（Android3.0） - 某一属性（值）动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）ObjectAnimator-ValueAnimator-子类"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）ObjectAnimator - ValueAnimator 子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-基本使用"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">1.1 基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在自定义View中使用objectAnimator的“属性”：添加setter-getter"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">在自定义View中使用objectAnimator的“属性”：添加setter()/getter()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-组合动画（一个接一个的动画）：AnimatorSet"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">1.2 组合动画（一个接一个的动画）：AnimatorSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-同一个动画中改变多个属性：-PropertyValuesHolder"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">1.3 同一个动画中改变多个属性： PropertyValuesHolder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-把同一个属性拆分：PropertyValuesHolders-ofKeyframe"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">1.4 把同一个属性拆分：PropertyValuesHolders.ofKeyframe()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）ViewPropertyAnimator（Android3-1）"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）ViewPropertyAnimator（Android3.1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-基本功能："><span class="nav-number">2.3.2.1.</span> <span class="nav-text">2.1 基本功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-使用到的其他相关接口："><span class="nav-number">2.3.2.2.</span> <span class="nav-text">2.2 使用到的其他相关接口：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-除了动画之外的价格set方法"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">2.3 除了动画之外的价格set方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-ViewPropertyAnimator基本使用，（同一个动画中改变多个属性）"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">2.4 ViewPropertyAnimator基本使用，（同一个动画中改变多个属性）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-Animator监听器"><span class="nav-number">3.</span> <span class="nav-text">三、 Animator监听器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、-其他组件"><span class="nav-number">4.</span> <span class="nav-text">四、 其他组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-插值器-Interpolator"><span class="nav-number">4.1.</span> <span class="nav-text">1. 插值器 - Interpolator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Interpolator的作用"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.1 Interpolator的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Interpolator的继承关系"><span class="nav-number">4.1.2.</span> <span class="nav-text">1.2 Interpolator的继承关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-系统自带效果"><span class="nav-number">4.1.3.</span> <span class="nav-text">1.3 系统自带效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-计算器-TypeEvaluator"><span class="nav-number">4.2.</span> <span class="nav-text">2. 计算器 - TypeEvaluator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-一个IntEvaluator类代码："><span class="nav-number">4.2.1.</span> <span class="nav-text">2.1 一个IntEvaluator类代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-使用"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.2 使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件加速"><span class="nav-number">5.</span> <span class="nav-text">硬件加速</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件加速能够让绘制变快，主要有三个原因"><span class="nav-number">5.1.</span> <span class="nav-text">硬件加速能够让绘制变快，主要有三个原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">5.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">5.3.</span> <span class="nav-text">限制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、概览："><span class="nav-number">1.</span> <span class="nav-text">一、概览：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、-注意事项"><span class="nav-number">2.</span> <span class="nav-text">二、 注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个方法，避免内存泄漏"><span class="nav-number">2.1.</span> <span class="nav-text">两个方法，避免内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OOM问题"><span class="nav-number">2.2.</span> <span class="nav-text">OOM问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View动画问题"><span class="nav-number">2.3.</span> <span class="nav-text">View动画问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启硬件加速——动画更流畅"><span class="nav-number">2.4.</span> <span class="nav-text">开启硬件加速——动画更流畅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、动画分类"><span class="nav-number">3.</span> <span class="nav-text">三、动画分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-复杂属性动画"><span class="nav-number">3.1.</span> <span class="nav-text">0. 复杂属性动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最早的两种"><span class="nav-number">3.2.</span> <span class="nav-text">1. 最早的两种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-属性动画-：ValueAnimator（Android3-0）-某一属性（值）动画"><span class="nav-number">3.3.</span> <span class="nav-text">2. 属性动画 ：ValueAnimator（Android3.0） - 某一属性（值）动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）ObjectAnimator-ValueAnimator-子类"><span class="nav-number">3.3.1.</span> <span class="nav-text">（1）ObjectAnimator - ValueAnimator 子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-基本使用"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">1.1 基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在自定义View中使用objectAnimator的“属性”：添加setter-getter"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">在自定义View中使用objectAnimator的“属性”：添加setter()/getter()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-组合动画（一个接一个的动画）：AnimatorSet"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">1.2 组合动画（一个接一个的动画）：AnimatorSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-同一个动画中改变多个属性：-PropertyValuesHolder"><span class="nav-number">3.3.1.4.</span> <span class="nav-text">1.3 同一个动画中改变多个属性： PropertyValuesHolder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-把同一个属性拆分：PropertyValuesHolders-ofKeyframe"><span class="nav-number">3.3.1.5.</span> <span class="nav-text">1.4 把同一个属性拆分：PropertyValuesHolders.ofKeyframe()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）ViewPropertyAnimator（Android3-1）"><span class="nav-number">3.3.2.</span> <span class="nav-text">（2）ViewPropertyAnimator（Android3.1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-基本功能："><span class="nav-number">3.3.2.1.</span> <span class="nav-text">2.1 基本功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-使用到的其他相关接口："><span class="nav-number">3.3.2.2.</span> <span class="nav-text">2.2 使用到的其他相关接口：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-除了动画之外的价格set方法"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">2.3 除了动画之外的价格set方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-ViewPropertyAnimator基本使用，（同一个动画中改变多个属性）"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">2.4 ViewPropertyAnimator基本使用，（同一个动画中改变多个属性）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-Animator监听器"><span class="nav-number">4.</span> <span class="nav-text">三、 Animator监听器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、-其他组件"><span class="nav-number">5.</span> <span class="nav-text">四、 其他组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-插值器-Interpolator"><span class="nav-number">5.1.</span> <span class="nav-text">1. 插值器 - Interpolator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Interpolator的作用"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 Interpolator的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Interpolator的继承关系"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2 Interpolator的继承关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-系统自带效果"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.3 系统自带效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-计算器-TypeEvaluator"><span class="nav-number">5.2.</span> <span class="nav-text">2. 计算器 - TypeEvaluator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-一个IntEvaluator类代码："><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1 一个IntEvaluator类代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-使用"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2 使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件加速"><span class="nav-number">6.</span> <span class="nav-text">硬件加速</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件加速能够让绘制变快，主要有三个原因"><span class="nav-number">6.1.</span> <span class="nav-text">硬件加速能够让绘制变快，主要有三个原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">6.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">6.3.</span> <span class="nav-text">限制</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -916,7 +923,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">204.7k</span>
+    <span title="Site words total count">213.2k</span>
   
 </div>
 
