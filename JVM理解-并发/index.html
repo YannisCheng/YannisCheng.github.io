@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
+<meta name="keywords" content="Java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM理解-并发">
+<meta property="og:url" content="http://yannischeng.com/JVM理解-并发/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg">
+<meta property="og:updated_time" content="2018-08-08T05:15:16.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM理解-并发">
+<meta name="twitter:description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-并发/"/>
+
+
+
+
+
+  <title>JVM理解-并发 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/JVM理解-并发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM理解-并发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T23:20:48+08:00">
+                2018-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-08T13:15:16+08:00">
+                2018-08-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,415 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/JVM理解-并发/" title="JVM理解-并发">http://yannischeng.com/JVM理解-并发/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM理解 —— 线程资源同步和线程之间的交互机制</p>
+<a id="more"></a>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
+<p>Java程序多采用多线程的方式来支撑大量的并发请求处理，程序在多线程方式执行的情况下，复杂程度远高于单线程串行执行的程序。</p>
+<p>多线程程序带来的最明显的问题就是 <strong>线程之间公共资源的竞争</strong> 与 <strong>线程之间的交互</strong>。</p>
+<hr>
+<h1 id="物理计算机的并发"><a href="#物理计算机的并发" class="headerlink" title="物理计算机的并发"></a>物理计算机的并发</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png" alt=""></p>
+<h2 id="高速缓存-Cache"><a href="#高速缓存-Cache" class="headerlink" title="高速缓存(Cache)"></a>高速缓存(Cache)</h2><p><strong>释义：</strong></p>
+<p>由于计算机的存储设备与处理器的 <strong>运算速度</strong> 有着几个数量级的差距，所以需要加入一层 <strong>读写速度尽可能接近处理器运算速度的高速缓存</strong>，来作为 <strong>内存与操作系统之间的缓冲</strong>。</p>
+<p><strong>工作过程：</strong></p>
+<p>将运算需要的数据复制到缓存中，使得运算快速进行。当运算结束后再从缓存同步回内存中。</p>
+<h2 id="缓存一致性"><a href="#缓存一致性" class="headerlink" title="缓存一致性"></a>缓存一致性</h2><p>高速缓存虽然解决了处理器与内存之间的速度问题，但是也引入了 <strong>缓存一致性</strong> 的问题。</p>
+<p>多处理器系统中，每一个处理器都有自己的高速缓存，但是它们又共享一块主内存，结果就是因为各自缓存的数据不一致，主内存不知该以谁的数据为准。</p>
+<h2 id="乱序执行优化"><a href="#乱序执行优化" class="headerlink" title="乱序执行优化"></a>乱序执行优化</h2><p>除了 <strong>高速缓存</strong> 之外，为了使得处理器内部的运算单元能尽量被充分的使用，处理器可能会对 输入代码进行 <strong>乱序执行优化</strong>，。</p>
+<p>在执行完计算之后将乱序执行的结果重组，保证 <strong>结果</strong> 与 <strong>代码顺序执行的结果</strong> 是 <strong>一致</strong> 的。但是 <strong>不能保证程序中各个语句计算的先后顺序</strong> 与 <strong>输入代码中的顺序是一致</strong> 的。</p>
+<p>如果一个计算任务依赖另一个计算任务产生的中间结果，那么其顺序性将不能依靠代码的先后顺序来保证。</p>
+<h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><p>Java虚拟机规范中试图通过定义一种 <strong>Java内存模型</strong> 来<strong> 屏蔽</strong> 掉各种<strong> 硬件</strong> 和 <strong>操作系统</strong> 的 <strong>内存访问差异</strong>，以实现让 Java程序在各种平台下都能达到一致的运行内存访问结果。</p>
+<p><strong>Java内存模型的目标：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">定义程序中各个 变量 的 访问规则。即：在虚拟机中将变量 存储到内存 和 从内存中取出变量 这样的底层实现细节。</div></pre></td></tr></table></figure>
+<p>此处的 <strong>变量</strong> 与 Java程序中所指的变量有区别：它包括了 实力字段、静态字段、构成数组对象的元素，不包括局部变量与方法参数（属于线程私有，不会被共享）。</p>
+<h2 id="主内存-与-工作内存"><a href="#主内存-与-工作内存" class="headerlink" title="主内存 与 工作内存"></a>主内存 与 工作内存</h2><p><strong>注意：在此部分中讲到的 主内存、工作内存 与 JVM中内存的划分不在一个层次上，两者基本没有关系。</strong></p>
+<h3 id="各个内存中数据的处理"><a href="#各个内存中数据的处理" class="headerlink" title="各个内存中数据的处理"></a>各个内存中数据的处理</h3><h4 id="主内存"><a href="#主内存" class="headerlink" title="主内存"></a>主内存</h4><p>Java内存模型规定 <strong>所有变量</strong> 均存在于 <strong>主内存 Main Memory（可类比 物理计算机中的 主内存，但是此处仅是虚拟机内存的一部分）</strong> 中。</p>
+<h4 id="线程工作内存"><a href="#线程工作内存" class="headerlink" title="线程工作内存"></a>线程工作内存</h4><ul>
+<li><p>每条线程还有自己的 <strong>工作内存 Work Memory（可类比物理计算机中的 高速缓存）</strong> 。</p>
+</li>
+<li><p>线程的工作内存中保存了 <strong>被该线程使用到的变量在主内存中的拷贝副本</strong>。</p>
+</li>
+<li><p>线程对该变量的所有操作都必须在 <strong>工作内存</strong> 中进行，而不能直接读写主内存中的变量。</p>
+</li>
+<li><p>不同的线程也无法 <strong>直接访问</strong> 其他线程中工作内存的变量。</p>
+</li>
+<li><p>线程间变量 <strong>值的传递</strong> 均需要通过 <strong>主内存</strong> 来完成。</p>
+</li>
+</ul>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png" alt=""></p>
+<h2 id="内存间的交互操作"><a href="#内存间的交互操作" class="headerlink" title="内存间的交互操作"></a>内存间的交互操作</h2><h3 id="8中操作"><a href="#8中操作" class="headerlink" title="8中操作"></a>8中操作</h3><p>主内存与工作内存间的具体交互，即：一个变量如何从主内存被拷贝到工作内存，又如何从工作内存被同步至主内存，是通过一下 <strong>8种</strong> 操作来完成的，虚拟机实现时必须保证下面提及的每一种操作都是 <strong>原子性、不可再分的</strong>。</p>
+<ul>
+<li><p><strong>lock（锁定）</strong></p>
+<ul>
+<li>作用于 <strong>主内存</strong> 中的变量；</li>
+<li>把一个变量表示为 <strong>线程私有独占状态</strong>。</li>
+</ul>
+</li>
+<li><p><strong>unlock（解锁）</strong></p>
+<ul>
+<li>作用于 <strong>主内存</strong> 中的变量；</li>
+<li>把一个处于 <strong>锁定</strong> 状态的变量释放出来，然后此变量才能被其他线程锁定。</li>
+</ul>
+</li>
+<li><p><strong>read（读取）</strong></p>
+<ul>
+<li>作用于 <strong>主内存</strong> 中的变量；</li>
+<li>把一个 变量的值从主内存传递至线程的工作内存中，方便 <strong>load</strong> 动作的使用。</li>
+</ul>
+</li>
+<li><p><strong>load（载入）</strong></p>
+<ul>
+<li>作用于 <strong>工作内存</strong> 中的变量；</li>
+<li>把 <strong>read</strong> 操作中得到的变量值放入到 工作内存 的变量副本中。</li>
+</ul>
+</li>
+<li><p><strong>use（使用）</strong></p>
+<ul>
+<li>作用于 <strong>工作内存</strong> 中的变量；</li>
+<li>把工作内存中得到的变量值传递给执行引擎，每当虚拟机遇到一个需要使用到变量的值的字节码指令时，将会执行这个操作。</li>
+</ul>
+</li>
+<li><p><strong>assign（赋值）</strong></p>
+<ul>
+<li>作用于 <strong>工作内存</strong> 中的变量；</li>
+<li>把一个从执行引擎接收到的值赋给工作内存中的变量。每当虚拟机遇到一个给变量赋值的字节码指令时，就执行该操作。</li>
+</ul>
+</li>
+<li><p><strong>store（存储）</strong></p>
+<ul>
+<li>作用于 <strong>工作内存</strong> 中的变量；</li>
+<li>把工作内存中一个变量的值传送到主内存中，以便 <strong>write</strong> 操作。</li>
+</ul>
+</li>
+<li><p><strong>write（写入）</strong></p>
+<ul>
+<li>作用于 <strong>主内存</strong> 中的变量；</li>
+<li>将从 <strong>store</strong> 操作中得到的变量的值赋给 主内存中 的变量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="变量的在内存间的移动"><a href="#变量的在内存间的移动" class="headerlink" title="变量的在内存间的移动"></a>变量的在内存间的移动</h3><p><strong>一个变量从主内存复制到工作内存，需要顺序执行：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">read、load</div></pre></td></tr></table></figure>
+<p><strong>把变量从工作区同步至主内存，需要顺序执行：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store、write</div></pre></td></tr></table></figure>
+<h2 id="Volatile型变量的特殊规则"><a href="#Volatile型变量的特殊规则" class="headerlink" title="Volatile型变量的特殊规则"></a>Volatile型变量的特殊规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">是 Java虚拟机 提供的 轻量级 同步机制</div></pre></td></tr></table></figure>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>当一个变量被定义为 <strong>volatile</strong> 时，此变量将会具备2种特性：</p>
+<ul>
+<li><strong>可见性</strong></li>
+<li><strong>禁止 指令重排序优化</strong></li>
+</ul>
+<p><strong>Java内存模型中对volatile定义的规则</strong></p>
+<p>假定有1个线程：T，2个volatile变量：V、W，那么在进行<code>read</code>、<code>load</code>、<code>use</code>、<code>assign</code>、<code>store</code>、<code>write</code>操作时应满足如下规则：</p>
+<h4 id="规则1-刷新"><a href="#规则1-刷新" class="headerlink" title="规则1 - 刷新"></a>规则1 - 刷新</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">只有当线程T对变量V的前一个动作是 `load` 时，线程T才能对变量V执行`use`动作；并且，只有当线程T对变量V执行的后一个动作是 `use` 时，线程T才能对变量V执行 `load` 操作。</div><div class="line"></div><div class="line">线程T对变量V的`use` 操作可以认为是和线程T对变量V的`load`与`read`操作相关联，必须连续一起出现。</div></pre></td></tr></table></figure>
+<p><strong>此规则要求在工作内存中，每次使用变量V前都必须先从主内存刷新变量的最新值，用于保证当前线程能看到其他线程对变量V的值所做的修改</strong></p>
+<h4 id="规则2-同步"><a href="#规则2-同步" class="headerlink" title="规则2 - 同步"></a>规则2 - 同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">只有当线程T对变量V的前一个动作是 `assign` 时，线程T才能对变量V执行`store`动作；并且，只有当线程T对变量V执行的后一个动作是 `store` 时，线程T才能对变量V执行 `assign` 操作。</div><div class="line"></div><div class="line">线程T对变量V的`assign` 操作可以认为是和线程T对变量V的`store`与`write`操作相关联，必须连续一起出现。</div></pre></td></tr></table></figure>
+<p><strong>此规则要求在工作内存中，每次 修改 变量V的值后都必须立刻同步回主内存中，用于保证其他线程能看到自己对变量V的值所做的修改</strong></p>
+<h4 id="规则3-禁止指令重排序"><a href="#规则3-禁止指令重排序" class="headerlink" title="规则3 - 禁止指令重排序"></a>规则3 - 禁止指令重排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">假定动作A是线程T对变量V实施的`use`或`assign`操作，动作F是和动作A相关联的`load`或者`store`操作，动作P是和动作F相关联的`read`或者`write`操作；</div><div class="line"></div><div class="line">类似的：假定动作B是线程T对变量W实施的`use`或`assign`操作，动作G是和动作B相关联的`load`或者`store`操作，动作Q是和动作G相关联的`read`或者`write`操作；</div><div class="line"></div><div class="line">如果：A先于，那么 P先于Q。</div></pre></td></tr></table></figure>
+<p><strong>此规则要求volatile修饰的变量不会被指令重排序优化，保证代码的执行顺序与程序的顺序相同</strong></p>
+<h4 id="volatile-可见性"><a href="#volatile-可见性" class="headerlink" title="volatile - 可见性"></a>volatile - 可见性</h4><p><strong>可见性定义：</strong></p>
+<p>当一个线程对一个变量的值进行修改之后，此变量的 <strong>新值</strong> 对于 <strong>其他线程</strong> 而言是可以 <strong>立即得知</strong> 的。</p>
+<h4 id="工作内存非一致性"><a href="#工作内存非一致性" class="headerlink" title="工作内存非一致性"></a>工作内存非一致性</h4><p>volatile变量在各个线程的工作内存中 <strong>不存在</strong> 一致性的问题。</p>
+<p>在各个线程的工作内存中，volatile变量也可以存在不一致的情况，但是由于线程在每次使用变量值的时候 <strong>都需要先刷新</strong>，因此导致执行引擎看不到不一致的情况。</p>
+<h4 id="volatile变量并发安全问题"><a href="#volatile变量并发安全问题" class="headerlink" title="volatile变量并发安全问题"></a>volatile变量并发安全问题</h4><p>volatile变量时原子性的，但是Java的运算却并非是原子性操作，导致 volatile变量的运算在并发下一样是不安全的。</p>
+<p><strong>满足以下2种条件时，可以使用volatile关键字</strong></p>
+<ul>
+<li>运算结果不依赖其他其他变量的当前值，或者能够确保只有单一线程修改变量的值</li>
+<li><p>变量不需要与其他的状态变量共同参与不变约束</p>
+<p>若是不能满足以上2点，则必须使用 <code>synchronized</code> 关键字来保持 原子性。</p>
+</li>
+</ul>
+<h4 id="volatile-禁止指令重排序优化"><a href="#volatile-禁止指令重排序优化" class="headerlink" title="volatile - 禁止指令重排序优化"></a>volatile - 禁止指令重排序优化</h4><h2 id="Java内存模型3个特征"><a href="#Java内存模型3个特征" class="headerlink" title="Java内存模型3个特征"></a>Java内存模型3个特征</h2><ul>
+<li><strong>原子性</strong></li>
+<li><strong>可见性</strong></li>
+<li><strong>有序性</strong></li>
+</ul>
+<h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p> 由Java的内存模型来直接保证原子性变量的操作包括6种操作。可以大致认为基本数据类型的访问、读写是具备原子性的。</p>
+<p> 如果 需要有一个范围更大的原子性保证，则可以使用 <code>synchronized</code> 关键字。<code>synchronized</code> 块之间的操作也具备有原子性。 </p>
+<h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>可见性是指：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当一个线程修改了一个变量的值，那么其他线程能够立即得知这个改变。</div></pre></td></tr></table></figure>
+<p>Java内存模型是通过在变量的值修改后将新值同步回主内存，在变量读取前，从主内存刷新变量的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">本质是通过依赖主内存作为传递媒介来实现可见性的。</div></pre></td></tr></table></figure>
+<p><code>synchronized</code> 与 <code>final</code> 关键字也可以实现可见性。</p>
+<p><strong><code>synchronized</code></strong> 关键字是因为规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">对一个变量执行 unlock 操作前，必须把此变量先同步回主内存中（执行store、write操作）。</div></pre></td></tr></table></figure>
+<h3 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h3><p>Java语言中天然的有序性可以总结为：</p>
+<ul>
+<li>如果在本线程中观察，所有的操作均是有序的（线程内部表现为串行的语义）；</li>
+<li>如果在一个线程中观察另个一线程，所有的操作均是无序的（指令重排序+工作内存与主内存同步延迟）。</li>
+</ul>
+<p>通过使用 <code>volatile</code> 与 <code>synchronized</code> 关键字实现有序性。</p>
+<ul>
+<li><code>volatile</code> 关键字本身禁止指令重排序优化</li>
+<li><code>synchronized</code> 则是通过规则：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个变量在同一时刻只允许一个线程对其进行 `lock` 操作。</div></pre></td></tr></table></figure>
+<h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p>  此原则是判断：<strong>数据是否存在竞争</strong>、<strong>线程是否安全</strong> 的主要依据。</p>
+<p>先行发生指的是：两项操作之间的偏序关系。</p>
+<h3 id="Java内存模型中“天然”的-8种先行发生原则"><a href="#Java内存模型中“天然”的-8种先行发生原则" class="headerlink" title="Java内存模型中“天然”的 8种先行发生原则"></a>Java内存模型中“天然”的 8种先行发生原则</h3><ul>
+<li><strong>程序次序规则</strong>：一个线程内按照 <strong>控制流</strong>顺序执行</li>
+<li><strong>传递性</strong>：例如：A先于B，B先于C，则A先于C。</li>
+<li><strong>对象终结规则</strong>：一个对象的初始化先于它的终结。</li>
+<li><strong>volatile变量规则</strong></li>
+<li><strong>线程启动规则</strong>：Thread 对象的start先行于后面的每一个操作</li>
+<li><strong>线程中断规则</strong>：对线程 <code>interrupt()</code> 的调用先行发生于 检测方法的调用。</li>
+<li><strong>线程终止规则</strong>：线程中的所有操作都先行于线程的终结检测。</li>
+<li><strong>管程锁定规则</strong>：一个 <code>unlock</code> 操作先行发生于后面对同一个锁的 <code>lock</code> 操作，必须是同一个锁。</li>
+</ul>
+<h1 id="线程交互机制"><a href="#线程交互机制" class="headerlink" title="线程交互机制"></a>线程交互机制</h1><p>线程之间除了会有资源竞争之外，还会有交互的需求。典型例子：生产者 - 消费者</p>
+<p>常用方式：<code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>。</p>
+<p><code>notify()</code> 与 <code>notifyAll()</code> 的区别：</p>
+<ul>
+<li><p><code>notify()</code> 只是随机找 <code>wait()</code> 此Object的一个线程</p>
+<p><code>wait()</code> 方法有可能被 <strong>假唤醒</strong>，因此通过在 Object.wait <strong>被唤醒后</strong>，应该 <strong>再次确认</strong> 需要等待的 <strong>状态是否改变</strong> 了。例如：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">while (!task.isFinished()) &#123;</div><div class="line">    synchronized (task)&#123;</div><div class="line">        task.wait();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>notifyAll()</code> 是通知 <code>wait()</code> 此Object的所有线程</li>
+</ul>
+<h1 id="线程状态及解析"><a href="#线程状态及解析" class="headerlink" title="线程状态及解析"></a>线程状态及解析</h1><p>描述 <strong>线程的状态</strong> 是用一个 <strong>枚举类型</strong> 来描述的，严格来讲一个线程有 <strong>6种状态</strong> ，分别是 <strong>6个枚举值</strong>：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png" alt=""></p>
+<ul>
+<li><strong>NEW：</strong> <strong>尚未开始</strong>的线程处于此状态</li>
+<li><strong>RUNNABLE：</strong>在Java虚拟机中 <strong>执行的线程</strong> 处于此状态</li>
+<li><strong>BLOCKED：`</strong> 等待监视器锁定的 <strong>阻塞</strong> 线程状态</li>
+<li><strong>TIMED_WAITING：</strong> 正在等待另一个线程执行某个动作达到 <strong>指定等待时间</strong> 的线程处于此状态</li>
+<li><strong>WAITING：</strong> <strong>无限期</strong> 等待另一个线程执行特定操作的线程处于此状态</li>
+<li><strong>TERMINATED：</strong> 已 <strong>退出</strong> 的线程处于此状态</li>
+</ul>
+<p>只不过人们平时理解的时候经常会增加阻塞状态，可运行状态，还有挂起状态。</p>
+<blockquote>
+<p>参考：<a href="https://www.cnblogs.com/kevin-yuan/p/4112434.html" target="_blank" rel="external">https://www.cnblogs.com/kevin-yuan/p/4112434.html</a><br><a href="https://www.cnblogs.com/trust-freedom/p/6606594.html" target="_blank" rel="external">https://www.cnblogs.com/trust-freedom/p/6606594.html</a><br><a href="http://www.cnblogs.com/ELMND/p/4737580.html" target="_blank" rel="external">http://www.cnblogs.com/ELMND/p/4737580.html</a></p>
+</blockquote>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png" alt=""></p>
+<p>虚拟机在并发运行时数据区域的情况（图片来自网络）</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/JVM理解-内存管理/" rel="next" title="JVM理解-内存管理">
+                <i class="fa fa-chevron-left"></i> JVM理解-内存管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Java容器/" rel="prev" title="Java容器">
+                Java容器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理计算机的并发"><span class="nav-number">1.</span> <span class="nav-text">物理计算机的并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高速缓存-Cache"><span class="nav-number">1.1.</span> <span class="nav-text">高速缓存(Cache)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存一致性"><span class="nav-number">1.2.</span> <span class="nav-text">缓存一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乱序执行优化"><span class="nav-number">1.3.</span> <span class="nav-text">乱序执行优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主内存-与-工作内存"><span class="nav-number">2.1.</span> <span class="nav-text">主内存 与 工作内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#各个内存中数据的处理"><span class="nav-number">2.1.1.</span> <span class="nav-text">各个内存中数据的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主内存"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">主内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程工作内存"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">线程工作内存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存间的交互操作"><span class="nav-number">2.2.</span> <span class="nav-text">内存间的交互操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8中操作"><span class="nav-number">2.2.1.</span> <span class="nav-text">8中操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的在内存间的移动"><span class="nav-number">2.2.2.</span> <span class="nav-text">变量的在内存间的移动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile型变量的特殊规则"><span class="nav-number">2.3.</span> <span class="nav-text">Volatile型变量的特殊规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.3.1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则1-刷新"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">规则1 - 刷新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则2-同步"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">规则2 - 同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则3-禁止指令重排序"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">规则3 - 禁止指令重排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-可见性"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">volatile - 可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作内存非一致性"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">工作内存非一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile变量并发安全问题"><span class="nav-number">2.3.1.6.</span> <span class="nav-text">volatile变量并发安全问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-禁止指令重排序优化"><span class="nav-number">2.3.1.7.</span> <span class="nav-text">volatile - 禁止指令重排序优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内存模型3个特征"><span class="nav-number">2.4.</span> <span class="nav-text">Java内存模型3个特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">2.4.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性"><span class="nav-number">2.4.2.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序性"><span class="nav-number">2.4.3.</span> <span class="nav-text">有序性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先行发生原则"><span class="nav-number">2.5.</span> <span class="nav-text">先行发生原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型中“天然”的-8种先行发生原则"><span class="nav-number">2.5.1.</span> <span class="nav-text">Java内存模型中“天然”的 8种先行发生原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程交互机制"><span class="nav-number">3.</span> <span class="nav-text">线程交互机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态及解析"><span class="nav-number">4.</span> <span class="nav-text">线程状态及解析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">218.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

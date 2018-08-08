@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.39.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E9%9D%99%E6%80%81%E4%B8%8E%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E5%AF%B9%E6%AF%94.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2020.36.20.png">
-<meta property="og:updated_time" content="2018-07-29T15:16:42.432Z">
+<meta property="og:updated_time" content="2018-08-04T09:10:58.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="App性能优化-2">
 <meta name="twitter:description" content="App优化的本质 - 知识体系结构够丰富、知识点理解够透彻、代码够规范，则不存在优化。">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-29T23:16:42+08:00">
-                2018-07-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-04T17:10:58+08:00">
+                2018-08-04
               </time>
             
           </span>
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,298 字
+                  4,978 字
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20 分钟
+                  19 分钟
                 </span>
               
             </div>
@@ -465,8 +465,6 @@
 <li><p>RecyclerView自带优化、Bitmap</p>
 </li>
 <li><p>响应速度-线程</p>
-</li>
-<li><p>微优化</p>
 </li>
 </ul>
 <h1 id="布局优化"><a href="#布局优化" class="headerlink" title="布局优化"></a>布局优化</h1><p>屏幕上的某个像素在同一帧的时间内被绘制了多次。在多层次的UI结构里面，如果不可见的UI也在做绘制的操作，这就会导致某些像素区域被绘制了多次。这就浪费大量的CPU以及GPU资源。</p>
@@ -678,23 +676,6 @@
 <h1 id="RecyclerView自带优化、Bitmap"><a href="#RecyclerView自带优化、Bitmap" class="headerlink" title="RecyclerView自带优化、Bitmap"></a>RecyclerView自带优化、Bitmap</h1><h2 id="Bitmap的优化套路很简单、粗暴，就是：压缩。"><a href="#Bitmap的优化套路很简单、粗暴，就是：压缩。" class="headerlink" title="Bitmap的优化套路很简单、粗暴，就是：压缩。"></a>Bitmap的优化套路很简单、粗暴，就是：压缩。</h2><p>三种压缩方式：<br>1.对图片质量进行压缩<br>2.对图片尺寸进行压缩<br>3.使用libjpeg.so库进行压缩</p>
 <h1 id="响应速度-线程优化"><a href="#响应速度-线程优化" class="headerlink" title="响应速度-线程优化"></a>响应速度-线程优化</h1><p>影响响应速度的主要因素是主线程有耗时操作，影响了响应速度。所以响应速度优化的核心思想是避免在主线程中做耗时操作，把耗时操作异步处理。</p>
 <p>线程优化的思想是采用线程池，避免在程序中存在大量的Thread。线程池可以重用内部的线程，从而避免了现场的创建和销毁所带来的性能开销，同时线程池还能有效地控制线程池的最大并发数，避免大量的线程因互相抢占系统资源从而导致阻塞现象发生。</p>
-<h1 id="微优化"><a href="#微优化" class="headerlink" title="微优化"></a>微优化</h1><ul>
-<li><p><strong>1、避免创建不必要的对象</strong></p>
-<p>对象创建永远不是免费的，虽然每一个的代价不是很大，但是总归是代价的不是吗？能不创建何必要浪费资源呢？</p>
-</li>
-<li><p><strong>2、首选静态（这里说的是特定情景）</strong></p>
-<p>如果您不需要访问对象的字段，请使您的方法保持静态。调用速度将提高约15％-20％。这也是很好的做法，因为你可以从方法签名中看出，调用方法不能改变对象的状态</p>
-</li>
-<li><p><strong>3、对常量使用static fina</strong>l</p>
-<p>此优化仅适用于基本类型和String常量，而不适用于 任意引用类型。尽管如此，static final尽可能声明常量是一种好习惯。</p>
-</li>
-<li><p><strong>4、 使用增强的for循环语法</strong></p>
-<p>增强for循环（for-each）可用于实现Iterable接口和数组的集合。对于集合，分配一个迭代器来对hasNext()和进行接口调用next()。使用一个 ArrayList，手写计数循环快约3倍，但对于其他集合，增强的for循环语法将完全等效于显式迭代器用法。</p>
-</li>
-<li><p><strong>5、避免使用浮点数</strong></p>
-<p>根据经验，浮点数比Android设备上的整数慢约2倍</p>
-</li>
-</ul>
 
       
     </div>
@@ -818,7 +799,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -829,7 +810,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -878,7 +859,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#布局优化"><span class="nav-number">1.</span> <span class="nav-text">布局优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-0-：颜色设置、include-merge、ViewStub"><span class="nav-number">1.1.</span> <span class="nav-text">优化 Version 1.0 ：颜色设置、include + merge、ViewStub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色设置"><span class="nav-number">1.1.1.</span> <span class="nav-text">颜色设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套"><span class="nav-number">1.1.2.</span> <span class="nav-text">嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include-merge"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">include + merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewStub"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">ViewStub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-1-：ConstraintLayout（约束布局）"><span class="nav-number">1.2.</span> <span class="nav-text">优化 Version 1.1 ：ConstraintLayout（约束布局）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制优化-渲染性能：onDraw"><span class="nav-number">2.</span> <span class="nav-text">绘制优化 - 渲染性能：onDraw()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android渲染机制："><span class="nav-number">2.1.</span> <span class="nav-text">Android渲染机制：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onDraw-处理方法："><span class="nav-number">2.2.</span> <span class="nav-text">onDraw() 处理方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-2-0-：onDrow"><span class="nav-number">2.3.</span> <span class="nav-text">优化 Version 2.0 ：onDrow()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存优化"><span class="nav-number">3.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">3.1.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发生泄漏的4大类情况"><span class="nav-number">3.2.</span> <span class="nav-text">发生泄漏的4大类情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">集合类泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例-静态变量"><span class="nav-number">3.2.2.</span> <span class="nav-text">单例/静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类-非静态内部类"><span class="nav-number">3.2.3.</span> <span class="nav-text">匿名内部类/非静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非静态内部类一个示例："><span class="nav-number">3.2.3.1.</span> <span class="nav-text">非静态内部类一个示例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名态内部类一个示例："><span class="nav-number">3.2.3.2.</span> <span class="nav-text">匿名态内部类一个示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源未关闭"><span class="nav-number">3.2.4.</span> <span class="nav-text">资源未关闭</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动速度优化"><span class="nav-number">4.</span> <span class="nav-text">启动速度优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#冷启动"><span class="nav-number">4.1.</span> <span class="nav-text">冷启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Application创建"><span class="nav-number">4.1.1.</span> <span class="nav-text">Application创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity创建"><span class="nav-number">4.1.2.</span> <span class="nav-text">Activity创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热启动（Hot-start）"><span class="nav-number">4.2.</span> <span class="nav-text">热启动（Hot start）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#温启动（Warm-start）"><span class="nav-number">4.3.</span> <span class="nav-text">温启动（Warm start）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包体优化"><span class="nav-number">5.</span> <span class="nav-text">包体优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APK的文件构成。"><span class="nav-number">5.1.</span> <span class="nav-text">APK的文件构成。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解决方案：减小-代码和资源"><span class="nav-number">5.2.</span> <span class="nav-text">问题解决方案：减小 代码和资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#耗电"><span class="nav-number">6.</span> <span class="nav-text">耗电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用JobScheduler"><span class="nav-number">6.1.</span> <span class="nav-text">使用JobScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#懒惰第一的法则"><span class="nav-number">6.2.</span> <span class="nav-text">懒惰第一的法则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RecyclerView自带优化、Bitmap"><span class="nav-number">7.</span> <span class="nav-text">RecyclerView自带优化、Bitmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmap的优化套路很简单、粗暴，就是：压缩。"><span class="nav-number">7.1.</span> <span class="nav-text">Bitmap的优化套路很简单、粗暴，就是：压缩。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应速度-线程优化"><span class="nav-number">8.</span> <span class="nav-text">响应速度-线程优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微优化"><span class="nav-number">9.</span> <span class="nav-text">微优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#布局优化"><span class="nav-number">1.</span> <span class="nav-text">布局优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-0-：颜色设置、include-merge、ViewStub"><span class="nav-number">1.1.</span> <span class="nav-text">优化 Version 1.0 ：颜色设置、include + merge、ViewStub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色设置"><span class="nav-number">1.1.1.</span> <span class="nav-text">颜色设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套"><span class="nav-number">1.1.2.</span> <span class="nav-text">嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include-merge"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">include + merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewStub"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">ViewStub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-1-：ConstraintLayout（约束布局）"><span class="nav-number">1.2.</span> <span class="nav-text">优化 Version 1.1 ：ConstraintLayout（约束布局）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制优化-渲染性能：onDraw"><span class="nav-number">2.</span> <span class="nav-text">绘制优化 - 渲染性能：onDraw()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android渲染机制："><span class="nav-number">2.1.</span> <span class="nav-text">Android渲染机制：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onDraw-处理方法："><span class="nav-number">2.2.</span> <span class="nav-text">onDraw() 处理方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-2-0-：onDrow"><span class="nav-number">2.3.</span> <span class="nav-text">优化 Version 2.0 ：onDrow()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存优化"><span class="nav-number">3.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">3.1.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发生泄漏的4大类情况"><span class="nav-number">3.2.</span> <span class="nav-text">发生泄漏的4大类情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">集合类泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例-静态变量"><span class="nav-number">3.2.2.</span> <span class="nav-text">单例/静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类-非静态内部类"><span class="nav-number">3.2.3.</span> <span class="nav-text">匿名内部类/非静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非静态内部类一个示例："><span class="nav-number">3.2.3.1.</span> <span class="nav-text">非静态内部类一个示例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名态内部类一个示例："><span class="nav-number">3.2.3.2.</span> <span class="nav-text">匿名态内部类一个示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源未关闭"><span class="nav-number">3.2.4.</span> <span class="nav-text">资源未关闭</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动速度优化"><span class="nav-number">4.</span> <span class="nav-text">启动速度优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#冷启动"><span class="nav-number">4.1.</span> <span class="nav-text">冷启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Application创建"><span class="nav-number">4.1.1.</span> <span class="nav-text">Application创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity创建"><span class="nav-number">4.1.2.</span> <span class="nav-text">Activity创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热启动（Hot-start）"><span class="nav-number">4.2.</span> <span class="nav-text">热启动（Hot start）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#温启动（Warm-start）"><span class="nav-number">4.3.</span> <span class="nav-text">温启动（Warm start）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包体优化"><span class="nav-number">5.</span> <span class="nav-text">包体优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APK的文件构成。"><span class="nav-number">5.1.</span> <span class="nav-text">APK的文件构成。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解决方案：减小-代码和资源"><span class="nav-number">5.2.</span> <span class="nav-text">问题解决方案：减小 代码和资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#耗电"><span class="nav-number">6.</span> <span class="nav-text">耗电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用JobScheduler"><span class="nav-number">6.1.</span> <span class="nav-text">使用JobScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#懒惰第一的法则"><span class="nav-number">6.2.</span> <span class="nav-text">懒惰第一的法则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RecyclerView自带优化、Bitmap"><span class="nav-number">7.</span> <span class="nav-text">RecyclerView自带优化、Bitmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmap的优化套路很简单、粗暴，就是：压缩。"><span class="nav-number">7.1.</span> <span class="nav-text">Bitmap的优化套路很简单、粗暴，就是：压缩。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应速度-线程优化"><span class="nav-number">8.</span> <span class="nav-text">响应速度-线程优化</span></a></li></ol></div>
             
 
           </div>
@@ -912,7 +893,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">213.2k</span>
+    <span title="Site words total count">218.8k</span>
   
 </div>
 
