@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,源码编译," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。">
+<meta name="keywords" content="Android,源码编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="macOS下Android源码编译">
+<meta property="og:url" content="http://yannischeng.com/macOS下Android源码编译/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/log.png">
+<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png">
+<meta property="og:updated_time" content="2018-08-11T06:50:40.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="macOS下Android源码编译">
+<meta name="twitter:description" content="源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。">
+<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/log.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/macOS下Android源码编译/"/>
+
+
+
+
+
+  <title>macOS下Android源码编译 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/macOS下Android源码编译/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">macOS下Android源码编译</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T21:53:35+08:00">
+                2018-07-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-11T14:50:40+08:00">
+                2018-08-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,050 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/源码编译/" rel="tag"># 源码编译</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/macOS下Android源码编译/" title="macOS下Android源码编译">http://yannischeng.com/macOS下Android源码编译/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。</p>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前曾经编译过2次Android源码，最早是通过Ubuntu 16.04 LTS环境，但由于电脑实在太卡、太慢，除了感受了一次过程没有任何收获。第二次是在换了电脑后编译过一次，编译过程却是轻松了许多，但是由于没有找到适合自己的阅读源码的方法，所以也没有实质性作用。</p>
+<p>今天早上一觉醒来，风和日丽，夏日里难得好天气。突然想起来，自己在前一段时间总结出了一套阅读源码的方法，正好拿来实践。</p>
+<p>由于之前编写的记录文档不存在了，于是再写一篇补上。</p>
+<p><strong>注意：由于在同样一台电脑上已经编译过一次源码。有些工具、环境已经配置过了，本次博客中记录都是自己的实际操作的过程，并不代表具有通用性，仅供参考。</strong></p>
+<p>如果之前从未编译过源码，强烈建议先参阅以下文章：</p>
+<p><a href="https://blog.csdn.net/loften_93663469/article/details/51503293" target="_blank" rel="external">Mac OS X 下 Android6.0源码的下载与编译</a></p>
+<p>以及：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://www.cnblogs.com/xyz123753/p/3322453.html</div></pre></td></tr></table></figure>
+<p><strong>官方文档</strong> 参考以下链接及其相关链接：</p>
+<p><a href="https://source.android.com/source/initializing" target="_blank" rel="external">https://source.android.com/source/initializing</a></p>
+<h1 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h1><ul>
+<li>编译环境：macOS 10.13.6</li>
+<li>提高效率的关键：<strong>网速要快！网速要快！网速要快！</strong></li>
+<li>下载过程时没有任何技术含量的，牢记我们的最终目的是 <strong>阅读源码</strong>，这个过程尽量高效即可。</li>
+</ul>
+<p><strong>下载方式1</strong>：</p>
+<p><a href="https://source.android.com/source/downloading" target="_blank" rel="external">Google官方源码下载地址</a>  不推荐。</p>
+<p>因为即时能进行科学上网，到了下载的时候仍然会连不上。</p>
+<p><strong>下载方式2</strong>：</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="external">清华大学开源软件镜像站</a>  推荐。</p>
+<p>原因有两点：</p>
+<ul>
+<li>这是国内镜像，无需科学上网。</li>
+<li>此网站中提供了一种更为简洁方便的 <strong>一键式</strong> 下载操作。</li>
+</ul>
+<h2 id="Step-1：创建一个大小写敏感的磁盘镜像"><a href="#Step-1：创建一个大小写敏感的磁盘镜像" class="headerlink" title="Step 1：创建一个大小写敏感的磁盘镜像"></a>Step 1：创建一个大小写敏感的磁盘镜像</h2><p><strong>macOS</strong> 会在一个 <strong>保留大小写但不区分大小写的文件系统</strong> 中运行。<strong>Git</strong> 并不支持此类文件系统，而且此类文件系统会导致某些 <strong>Git</strong> 命令（例如 git status）的行为出现异常。因此，建议在区分大小写的文件系统中对 <strong>AOSP</strong> 源文件进行操作。</p>
+<p><strong>注意：此步骤万不可省略，否则运行后期步骤时会出错。镜像大小分配：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdiutil create -type SPARSE -fs &apos;Case-sensitive Journaled HFS+&apos; -size 80g ~/android.dmg</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li>镜像名称自定义；</li>
+<li>镜像大小自定，不过最好是100G。因为：<ul>
+<li>下载的压缩文件大小：31G左右；</li>
+<li>同步后的文件大小：68.57G；</li>
+<li>还要为后期的编译流出足够空间，虽然说后期可以动态调节镜像大小。</li>
+</ul>
+</li>
+</ul>
+<p><strong>重置分区带大小：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdiutil resize -size &lt;new-size-you-want&gt;g ~/android.dmg.sparseimage</div></pre></td></tr></table></figure>
+<h2 id="Step-2：设置一个文件描述符限制"><a href="#Step-2：设置一个文件描述符限制" class="headerlink" title="Step 2：设置一个文件描述符限制"></a>Step 2：设置一个文件描述符限制</h2><p>在 <strong><code>~/.bash_profile</code></strong> 中添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#set the number of open files to be 1024</div><div class="line">ulimit -S -n 1024</div></pre></td></tr></table></figure>
+<p>修改完配置文件后，一定要更新刚配置的环境变量，在终端中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source .bash_profile</div></pre></td></tr></table></figure>
+<h2 id="Step-3：加载镜像"><a href="#Step-3：加载镜像" class="headerlink" title="Step 3：加载镜像"></a>Step 3：加载镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android</div></pre></td></tr></table></figure>
+<h2 id="Step-4：安装Repo"><a href="#Step-4：安装Repo" class="headerlink" title="Step 4：安装Repo"></a>Step 4：安装Repo</h2><p>这个没有什么好说的，按部就班就好：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir ~/bin</div><div class="line">PATH=~/bin:$PATH</div><div class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">chmod a+x ~/bin/repo</div></pre></td></tr></table></figure>
+<h2 id="Step-5：下载源码"><a href="#Step-5：下载源码" class="headerlink" title="Step 5：下载源码"></a>Step 5：下载源码</h2><p>最为快速、便捷、傻瓜式的下载方式就是这种，同样也是成功率最高的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</div></pre></td></tr></table></figure>
+<p>压缩包大小约 <strong>30G</strong>。这种下载方式时间的快慢最终是要看网速的，网速比较快的话 1个小时 即可。</p>
+<p>如果想要尝试其他的下载方法，参考 <strong><code>前言</code></strong> 中提到的 <strong>2种</strong> 下载方式。</p>
+<h2 id="Step-6：移动源码压缩文件到镜像中"><a href="#Step-6：移动源码压缩文件到镜像中" class="headerlink" title="Step 6：移动源码压缩文件到镜像中"></a>Step 6：移动源码压缩文件到镜像中</h2><p>将同解压的 <strong>源码文件</strong> 复制到刚刚加载的 <strong>镜像</strong> 中。</p>
+<h2 id="Step-7：解压"><a href="#Step-7：解压" class="headerlink" title="Step 7：解压"></a>Step 7：解压</h2><p>将下载得到的 <strong><code>aosp-latest.tar</code></strong> 文件，解压即可。</p>
+<h2 id="Step-8：同步"><a href="#Step-8：同步" class="headerlink" title="Step 8：同步"></a>Step 8：同步</h2><p>进入刚刚解压得到的文件夹，然后在这个文件夹内进行同步操作。</p>
+<p>在网速快的前提下，花了 30分钟左右 的时间就同步结束了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd AOSP   # 解压得到的 AOSP 工程目录</div><div class="line"># 这时 ls 的话什么也看不到，因为只有一个隐藏的 .repo 目录</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">repo sync # 正常同步一遍即可得到完整目录</div><div class="line"># 或 repo sync -l 仅checkout代码</div></pre></td></tr></table></figure>
+<p>以上就是本人在本次的实际下载过程中采用的顺序。</p>
+<p>最终编译结果：</p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/log.png" alt=""></p>
+<h1 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h1><p><strong>提示：</strong></p>
+<p><strong>最好偶尔的看看你的终端中的编译，因为突发的一个意想不到的 <code>error</code> 就会 终止、结束 编译过程，而且是出现在编译过程的任何阶段，最好保持警惕。</strong></p>
+<p>那么，做好 <strong>时刻准备着心态</strong>，<strong><code>cd</code></strong> Android源码目录。</p>
+<h2 id="Step-1：清理"><a href="#Step-1：清理" class="headerlink" title="Step 1：清理"></a>Step 1：清理</h2><p>为了确保新安装的二进制文件在解压后会被适当考虑在内，请使用以下命令 <strong>删除所有以前编译操作的已有输出</strong> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make clobber</div></pre></td></tr></table></figure>
+<h2 id="Step-2：设置环境"><a href="#Step-2：设置环境" class="headerlink" title="Step 2：设置环境"></a>Step 2：设置环境</h2><p>使用 <strong><code>envsetup.sh</code></strong> 脚本 <strong>初始化环境</strong>。请注意，将 <strong><code>source</code></strong> 替换成 <strong><code>.</code></strong>（一个点）可以省去一些字符，这种简写形式在文档中更为常用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source build/envsetup.sh</div></pre></td></tr></table></figure>
+<p>或写为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. build/envsetup.sh</div></pre></td></tr></table></figure>
+<h2 id="Step-3：选择目标"><a href="#Step-3：选择目标" class="headerlink" title="Step 3：选择目标"></a>Step 3：选择目标</h2><p>使用 <strong><code>lunch</code></strong> 选择要编译的目标。确切的配置可作为参数进行传递。例如以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lunch aosp_arm-eng</div></pre></td></tr></table></figure>
+<p>该命令表示 <strong>针对模拟器进行完整编译</strong>，并且 <strong>所有调试功能均处于启用状态</strong>。</p>
+<p>如果您没有提供任何参数就运行命令，lunch 将提示您从菜单中选择一个目标。</p>
+<h2 id="Step-4：编译"><a href="#Step-4：编译" class="headerlink" title="Step 4：编译"></a>Step 4：编译</h2><p>使用 <strong><code>make</code></strong> 编译任何代码。GNU <strong><code>Make</code></strong> 可以借助 <strong><code>-jN</code></strong> 参数处理并行任务，通常使用的任务数 <strong><code>N</code></strong> 介于编译时所用计算机上硬件线程数的 <strong><code>1-2</code></strong> 倍之间。例如，在一台双核 E5520 计算机（2 个 CPU，每个 CPU 4 个内核，每个内核 2 个线程）上，要实现最快的编译速度，可以使用介于 <strong><code>make -j16</code></strong> 到 <strong><code>make -j32</code></strong> 之间的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make -j4</div></pre></td></tr></table></figure>
+<p>设置 <strong><code>make -jN</code></strong> 参数后，源码的编译就正式开始了~</p>
+<p><strong>注意：</strong><br><strong>如果在此编译过程中出现任何问题，先解决问题，然后依次重复执行本阶段的  <code>步骤1~4</code> 。</strong></p>
+<p><strong>最终编译结束，花费的时间为：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### build completed successfully (07:52:17 (hh:mm:ss)) ####</div></pre></td></tr></table></figure>
+<p>真实够长的……</p>
+<h2 id="Step-5：为了阅读源码"><a href="#Step-5：为了阅读源码" class="headerlink" title="Step 5：为了阅读源码"></a>Step 5：为了阅读源码</h2><p>接着上一步，确认下 <code>aosp/out/host/darwin-x86/framework</code> 文件夹中没有<code>idegen.jar</code>，</p>
+<h3 id="第1步：生成-idegen-jar-包"><a href="#第1步：生成-idegen-jar-包" class="headerlink" title="第1步：生成 idegen.jar 包"></a>第1步：生成 <code>idegen.jar</code> 包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm development/tools/idegen</div></pre></td></tr></table></figure>
+<p>如果是重新打开终端，需要输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source build/envsetup.sh</div></pre></td></tr></table></figure>
+<p>后，最终：<strong>文件夹中生成了这个<code>idegen.jar</code>包</strong>。<br>那么命令中用到的 <strong><code>envsetup.sh</code></strong> 是做什么的呢？</p>
+<p><a href="https://www.jianshu.com/p/8f9b4e4970c9" target="_blank" rel="external">idegen：一个角落里的法器</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">要将Android系统源代码工程导入到Eclipse或者IntelliJ IDEA，关键是要有相应的工程配置文件。idegen就是用来生成针对Eclipse和IntelliJ IDEA的Android系统源代码工程配置文件的一个工具</div></pre></td></tr></table></figure>
+<h3 id="第2步：生成3个文件"><a href="#第2步：生成3个文件" class="headerlink" title="第2步：生成3个文件"></a>第2步：生成3个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
+<p>结果：<strong>生成3个文件</strong></p>
+<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android.iml：描述了modules，比如modules的路径,依赖关系等。</div><div class="line">android.ipr：工程相关的设置，比如编译器配置、入口，相关的libraries等。</div><div class="line">android.iws：包含了一些个人工作区的设置。</div></pre></td></tr></table></figure>
+<p>至此，为了能够在IDE中阅读源码，需要的文件已经生成。</p>
+<h3 id="第3步：导入IDE及配置修改"><a href="#第3步：导入IDE及配置修改" class="headerlink" title="第3步：导入IDE及配置修改"></a>第3步：导入IDE及配置修改</h3><p>参考：</p>
+<p><a href="https://www.jianshu.com/p/30a628335114?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="external">自己动手调试Android源码(超简单)</a></p>
+<p><a href="https://www.jianshu.com/p/abd8d7a074fd" target="_blank" rel="external">把Android源码导入Android Studio进行调试</a></p>
+<p><a href="https://blog.csdn.net/cjpx00008/article/details/67185045" target="_blank" rel="external">Android FrameWork学习（二）Android系统源码调试</a></p>
+<p><a href="https://blog.csdn.net/aaa111/article/details/43227367" target="_blank" rel="external">Android Studio系列（二）使用AS开发/调试整个android系统源代码（不定时更新）</a></p>
+<h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><h2 id="Q1"><a href="#Q1" class="headerlink" title="Q1:"></a>Q1:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: &apos;linux/netfilter/xt_DSCP.h&apos; file not found</div></pre></td></tr></table></figure>
+<p>解决参考：<a href="https://blog.csdn.net/u013005791/article/details/52212584" target="_blank" rel="external">https://blog.csdn.net/u013005791/article/details/52212584</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/温故知新-数据结构-5/" rel="next" title="温故知新-数据结构-5">
+                <i class="fa fa-chevron-left"></i> 温故知新-数据结构-5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Java-字符串/" rel="prev" title="Java-字符串">
+                Java-字符串 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码下载"><span class="nav-number">2.</span> <span class="nav-text">源码下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1：创建一个大小写敏感的磁盘镜像"><span class="nav-number">2.1.</span> <span class="nav-text">Step 1：创建一个大小写敏感的磁盘镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2：设置一个文件描述符限制"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2：设置一个文件描述符限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3：加载镜像"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3：加载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4：安装Repo"><span class="nav-number">2.4.</span> <span class="nav-text">Step 4：安装Repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5：下载源码"><span class="nav-number">2.5.</span> <span class="nav-text">Step 5：下载源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6：移动源码压缩文件到镜像中"><span class="nav-number">2.6.</span> <span class="nav-text">Step 6：移动源码压缩文件到镜像中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7：解压"><span class="nav-number">2.7.</span> <span class="nav-text">Step 7：解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-8：同步"><span class="nav-number">2.8.</span> <span class="nav-text">Step 8：同步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码编译"><span class="nav-number">3.</span> <span class="nav-text">源码编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1：清理"><span class="nav-number">3.1.</span> <span class="nav-text">Step 1：清理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2：设置环境"><span class="nav-number">3.2.</span> <span class="nav-text">Step 2：设置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3：选择目标"><span class="nav-number">3.3.</span> <span class="nav-text">Step 3：选择目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4：编译"><span class="nav-number">3.4.</span> <span class="nav-text">Step 4：编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5：为了阅读源码"><span class="nav-number">3.5.</span> <span class="nav-text">Step 5：为了阅读源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步：生成-idegen-jar-包"><span class="nav-number">3.5.1.</span> <span class="nav-text">第1步：生成 idegen.jar 包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步：生成3个文件"><span class="nav-number">3.5.2.</span> <span class="nav-text">第2步：生成3个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步：导入IDE及配置修改"><span class="nav-number">3.5.3.</span> <span class="nav-text">第3步：导入IDE及配置修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到问题"><span class="nav-number">4.</span> <span class="nav-text">遇到问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q1"><span class="nav-number">4.1.</span> <span class="nav-text">Q1:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">220.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
