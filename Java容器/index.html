@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20161019194500774">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/20161019232902599">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/hashmap%E5%86%B2%E7%AA%81.png">
-<meta property="og:updated_time" content="2018-08-02T11:56:07.035Z">
+<meta property="og:updated_time" content="2018-08-13T00:07:55.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器">
 <meta name="twitter:description" content="Java-容器 总结  优化是一个棘手的问题，但最好的策略就是置之不顾，直到你发现需要担心它了。 —— 《Java编程思想》">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-02T19:56:07+08:00">
-                2018-08-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-13T08:07:55+08:00">
+                2018-08-13
               </time>
             
           </span>
@@ -480,7 +480,7 @@
 <li>Collection 是接口</li>
 </ul>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>像数组一样，其建立了 <strong>数字索引</strong> 与 <strong>对象</strong> 的关联。<br>支持添加<strong>重复</strong>的对象、<strong>有序（按照元素插入的顺序）</strong>，一种可修改的序列。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>数据底层结构</strong> 是 <strong>数组</strong><br><strong>特点：</strong>增删快、查询慢</p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>数据底层结构</strong> 是 <strong>数组</strong><br><strong>特点：</strong>增删慢、查询快</p>
 <h4 id="ArrayList-与-Arrays-与-Array"><a href="#ArrayList-与-Arrays-与-Array" class="headerlink" title="ArrayList 与 Arrays 与 Array"></a>ArrayList 与 Arrays 与 Array</h4><p><code>Array</code>类 ：提供静态方法来动态创建和访问Java数组。<br><code>Arrays</code>类 ：该类包含用于处理数组的各种方法（如排序和搜索）。 此类还包含一个静态工厂，允许将数组视为列表。</p>
 <h4 id="ArrayList本质"><a href="#ArrayList本质" class="headerlink" title="ArrayList本质"></a>ArrayList本质</h4><p>由源码的 <strong>成员变量声明</strong> ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static final int DEFAULT_CAPACITY = 10;</div><div class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line">transient Object[] elementData;</div></pre></td></tr></table></figure>
@@ -504,7 +504,7 @@
 <p><code>ArrayList</code> 类中，<code>clear()</code> 方法的实现：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public void clear() &#123;</div><div class="line">    modCount++;</div><div class="line">    for (int i = 0; i &lt; size; i++)</div><div class="line">        // 为每一个元素置空，让其被 GC 回收</div><div class="line">        elementData[i] = null;</div><div class="line">    size = 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p><strong>数据底层结构</strong> 是 <strong>链表</strong></p>
-<p><strong>特点：</strong>查询快、增删慢</p>
+<p><strong>特点：</strong>查询慢、增删快</p>
 <hr>
 <p>源代码中，<code>节点（Node）</code> 的表示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private static class Node&lt;E&gt; &#123;</div><div class="line">    E item;</div><div class="line">    Node&lt;E&gt; next;</div><div class="line">    Node&lt;E&gt; prev;</div><div class="line"></div><div class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</div><div class="line">        this.item = element;</div><div class="line">        this.next = next;</div><div class="line">        this.prev = prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
