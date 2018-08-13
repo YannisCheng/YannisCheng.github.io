@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/image005.gif">
 <meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/image009.jpg">
-<meta property="og:updated_time" content="2018-07-12T14:25:48.234Z">
+<meta property="og:updated_time" content="2018-08-13T00:37:03.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android IPC">
 <meta name="twitter:description" content="Android IPC 总结">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T22:25:48+08:00">
-                2018-07-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-13T08:37:03+08:00">
+                2018-08-13
               </time>
             
           </span>
@@ -584,10 +584,10 @@
 <p>第二次写入对象时文件只增加了 5 字节，并且两个对象是相等的，这是因为Java 序列化机制为了节省磁盘空间，具有特定的<strong>存储规则</strong>：</p>
 <p>当写入文件的为<strong>同一对象</strong>时，并不会再将对象的内容进行存储，而<strong>只是再次存储一份引用</strong>，上面增加的 5 字节的存储空间就是新增引用和一些控制信息的空间。<br>反序列化时，恢复引用关系，使得的 t1 和 t2 指向唯一的对象，二者相等，输出 true。<br>该存储规则极大的节省了存储空间。</p>
 <h2 id="3-2-Binder"><a href="#3-2-Binder" class="headerlink" title="3.2 Binder"></a>3.2 Binder</h2><ul>
-<li>BInder是Android中的一个类，实现了IBinder接口。</li>
-<li>从IPC角度而言：BInder是Android中一种跨进程间通信的方式。</li>
-<li>从Android应用层来说，BInder是客户端和服务端进行通信的媒介，当bindService()时，客户端可以接受服务端提供的服务或者数据。</li>
-<li>从Android的Framework层来说，BInder是ServiceManager连接各种Manager和响应ManagerService的桥梁。</li>
+<li>Binder是Android中的一个类，实现了IBinder接口。</li>
+<li>从IPC角度而言：Binder是Android中一种跨进程间通信的方式。</li>
+<li>从Android应用层来说，Binder是客户端和服务端进行通信的媒介，当bindService()时，客户端可以接受服务端提供的服务或者数据。</li>
+<li>从Android的Framework层来说，Binder是ServiceManager连接各种Manager和响应ManagerService的桥梁。</li>
 </ul>
 <p>Android开发中，Binder主要用在Service中，包括AIDL（Android Interface Definition Language）和Messenger。<br>普通Service中的Binder不涉及进程间通信。而Messenger底层是AIDL。</p>
 <p>AIDL使用参考：<a href="https://blog.csdn.net/JoneRen/article/details/72885807" target="_blank" rel="external">https://blog.csdn.net/JoneRen/article/details/72885807</a><br>要点：虽然在同一个包内，但是依然要手动导包，这是aidl的特殊之处。</p>
