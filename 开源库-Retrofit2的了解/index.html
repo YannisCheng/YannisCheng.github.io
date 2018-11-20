@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="参考：http://blog.csdn.net/ljd2038/article/details/51046512参考：https://www.jianshu.com/p/af8bd1abda82">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yannischeng.com/开源库-Retrofit2的了解/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png">
-<meta property="og:updated_time" content="2018-11-20T12:07:56.366Z">
+<meta property="og:image" content="http://yannischeng.com/开源库-Retrofit2的了解/((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png">
+<meta property="og:updated_time" content="2018-11-20T12:54:26.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源库-Retrofit2的了解">
 <meta name="twitter:description" content="参考：http://blog.csdn.net/ljd2038/article/details/51046512参考：https://www.jianshu.com/p/af8bd1abda82">
-<meta name="twitter:image" content="http://yannischeng.com/开源库-Retrofit2的了解/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png">
+<meta name="twitter:image" content="http://yannischeng.com/开源库-Retrofit2的了解/((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png">
 
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:54:26+08:00">
                 2018-11-20
               </time>
             
@@ -442,7 +442,7 @@
 <a id="more"></a>
 <p>retrofit2.0它依赖于OkHttp,不需要显示的导入okHttp,在retrofit中已经导入okhttp3。</p>
 <p>retrofit的官网 ：<a href="http://square.github.io/retrofit/" target="_blank" rel="external">http://square.github.io/retrofit/</a></p>
-<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png" alt=""></p>
+<p><img src="((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png" alt=""></p>
 <h1 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1. 基本使用"></a>1. 基本使用</h1><h2 id="1-1-将HTTP-API-转换为-java接口"><a href="#1-1-将HTTP-API-转换为-java接口" class="headerlink" title="1.1 将HTTP API 转换为 java接口"></a>1.1 将HTTP API 转换为 java接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>&#123;</div><div class="line">  <span class="meta">@GET</span>(<span class="string">"users/&#123;user&#125;/repos"</span>)</div><div class="line">  Call&lt;List&lt;Repo&gt;&gt; listRepos(<span class="meta">@Path</span>(<span class="string">"user"</span>) String user);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="1-2-接口的实现类"><a href="#1-2-接口的实现类" class="headerlink" title="1.2 接口的实现类"></a>1.2 接口的实现类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</div><div class="line">    .baseUrl(<span class="string">"https://api.github.com/"</span>)</div><div class="line">    .build();</div><div class="line"></div><div class="line">GitHubService service = retrofit.create(GitHubService.class);</div></pre></td></tr></table></figure>
 <h2 id="1-3-Call创建的每个GitHubService请求都可以向远程Web服务器发出同步或异步HTTP请求。"><a href="#1-3-Call创建的每个GitHubService请求都可以向远程Web服务器发出同步或异步HTTP请求。" class="headerlink" title="1.3 Call创建的每个GitHubService请求都可以向远程Web服务器发出同步或异步HTTP请求。"></a>1.3 Call创建的每个GitHubService请求都可以向远程Web服务器发出同步或异步HTTP请求。</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Call &lt;List &lt;Repo &gt;&gt; repos = service.listRepos（“octocat”）;</div><div class="line"></div><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response)</span> </span>&#123;</div><div class="line">        ···</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;ResponseBody&gt; call, Throwable t)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>

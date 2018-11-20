@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="记一次翻车-个人博客图床问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png">
-<meta property="og:updated_time" content="2018-11-20T12:15:59.133Z">
+<meta property="og:image" content="http://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%83%E7%89%9B-bucket.png">
+<meta property="og:updated_time" content="2018-11-20T12:54:26.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次翻车-个人博客图床问题">
 <meta name="twitter:description" content="记一次翻车-个人博客图床问题">
-<meta name="twitter:image" content="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png">
+<meta name="twitter:image" content="http://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%83%E7%89%9B-bucket.png">
 
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:15:59+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:54:26+08:00">
                 2018-11-20
               </time>
             
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,230 字
+                  1,226 字
                 </span>
               
 
@@ -467,7 +467,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qshell account ak参数 sk参数 bucket名称</div></pre></td></tr></table></figure>
 <h2 id="名词解释-bucket"><a href="#名词解释-bucket" class="headerlink" title="名词解释 - bucket"></a>名词解释 - bucket</h2><p><code>bucket</code> 就是你自己创建的<code>存储空间的名字</code></p>
-<p><img src="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png" alt=""></p>
+<p><img src="http://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%83%E7%89%9B-bucket.png" alt=""></p>
 <h2 id="copy-文件"><a href="#copy-文件" class="headerlink" title="copy 文件"></a>copy 文件</h2><ul>
 <li>需要 <code>-i</code> 指定携带需要同步的 <code>文件列表</code>，列表可以通过 <a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="external">listbucket</a> 得到，自定义一个存储输出的文件 <code>list.txt</code>：</li>
 </ul>
@@ -482,7 +482,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">qshell batchcopy 原bucket名 新bucket名 -i list_final.txt</div><div class="line">``` </div><div class="line"></div><div class="line"></div><div class="line">## 批量文件下载</div><div class="line"></div><div class="line">**注意：**</div><div class="line">此操作是在 **可用的bucket** 中进行的操作，如果你当前的 `bucket的测试域名` **已经过期**，那么你需要先执行 `copy 文件` 步骤</div><div class="line"></div><div class="line">- 创建 `自定义 batch_download.conf` 文件，因为：</div><div class="line"> </div><div class="line"> `qshell` 虽然提供了  [qdownload](https://github.com/qiniu/qshell/blob/master/docs/qdownload.md)  可以批量下载文件，不过官网给出的 `api 文档`特别标注了，这个接口默认是要收费的：配置【该功能默认需要计费，如果希望享受10G的免费流量，请自行设置 `cdn_domain` 参数，如不设置，需支付源站流量费用，无法减免！！！】</div></pre></td></tr></table></figure>
 <p>{<br>“dest_dir” : “本地数据备份路径，为全路径”,<br>“bucket” : “空间名称”,<br>“prefix” : “”,<br>“suffixes” : “”,<br>“cdn_domain” : “设置下载的CDN域名，默认为空表示从存储源站下载”,<br>“referer” : “”,<br>“log_file” : “download.log”,<br>“log_level” : “info”,<br>“log_rotate” : 1,<br>“log_stdout” : false<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 通过 [qdownload](https://github.com/qiniu/qshell/blob/master/docs/qdownload.md) 执行 `批量下载` ：</div></pre></td></tr></table></figure></p>
 <p>qshell qdownload batch_download.conf -c 10<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 转存 腾讯cos</div><div class="line"></div><div class="line">在 `腾讯云` 官网创建 `bucket` ，注意两个关键设置：</div><div class="line"> </div><div class="line">- 存储桶（bucket）**访问权限**</div><div class="line"></div><div class="line">	访问权限应设置为 **`公有读私有写`**。很好理解，我们是要用COS来做图床的，必然是需要获取文件的直接链接才行，所以不能在读取图片的时候设置权限。</div><div class="line"></div><div class="line">- **防盗链设置**</div><div class="line"></div><div class="line"> 如果被盗链会导致你的免费额度可能会快用尽，因此防盗链也是需要考虑的（注意白名单的设置）。</div><div class="line"> </div><div class="line">	**注意：**</div><div class="line">因为开启了防盗链这设置，因此当你在本地写博客的时候会出现图片无法预览的情况。因为防盗链机制只允许白名单中指定域名或IP访问。也就是说只能在博客中看</div><div class="line"></div><div class="line"></div><div class="line">## 批量替换 链接域名</div><div class="line"></div><div class="line">这一步是为了处理 `七牛` 原有图片域名转换为 `cos` 域名</div><div class="line"></div><div class="line">如果你用的是 `hexo` 搭建的博客，那么进入 `source/_post` 文件，然后执行：</div></pre></td></tr></table></figure></p>
-<p>sed -i ‘’ ‘s#<a href="http://oy991qm3u.bkt.clouddn.com#(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com#g" target="_blank" rel="external">http://oy991qm3u.bkt.clouddn.com#(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com#g</a>‘ *.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">为什么要在命令行 `-i` 与 `&apos;s` 之间添加 `&apos;&apos;`，因为如果你使用的是 `macOS` 那么在 `sed` 命令采用 `-i` 选项时需要设置 你在替换时设定一个备份文件以避免数据丢失——这个选项在 `Linux` 中是可选的，但在 `macOS` 中是必选的，如果没有 `&apos;&apos;` 一般会提示错误：</div></pre></td></tr></table></figure></p>
+<p>sed -i ‘’ ‘s#<a href="http://oy991qm3u.bkt.clouddn.com#((http://pihd0wazc.bkt.clouddn.com#g" target="_blank" rel="external">http://oy991qm3u.bkt.clouddn.com#((http://pihd0wazc.bkt.clouddn.com#g</a>‘ *.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">为什么要在命令行 `-i` 与 `&apos;s` 之间添加 `&apos;&apos;`，因为如果你使用的是 `macOS` 那么在 `sed` 命令采用 `-i` 选项时需要设置 你在替换时设定一个备份文件以避免数据丢失——这个选项在 `Linux` 中是可选的，但在 `macOS` 中是必选的，如果没有 `&apos;&apos;` 一般会提示错误：</div></pre></td></tr></table></figure></p>
 <p>sed: 1: “ “: ……<br>```</p>
 <blockquote>
 <p>参考：<a href="https://stackoverflow.com/questions/29081799/sed-1-invalid-command-code-f" target="_blank" rel="external">https://stackoverflow.com/questions/29081799/sed-1-invalid-command-code-f</a><br>参考：<a href="https://www.logcg.com/archives/3142.html" target="_blank" rel="external">https://www.logcg.com/archives/3142.html</a></p>
