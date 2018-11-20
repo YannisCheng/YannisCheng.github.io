@@ -91,14 +91,14 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Android IPC 总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/image005.gif">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/image009.jpg">
-<meta property="og:updated_time" content="2018-08-13T00:37:03.336Z">
+<meta property="og:image" content="http://yannischeng.com/Android-IPC/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
+<meta property="og:image" content="http://yannischeng.com/Android-IPC/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image005.gif">
+<meta property="og:image" content="http://yannischeng.com/Android-IPC/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image009.jpg">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android IPC">
 <meta name="twitter:description" content="Android IPC 总结">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
+<meta name="twitter:image" content="http://yannischeng.com/Android-IPC/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
 
 
 
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-13T08:37:03+08:00">
-                2018-08-13
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -472,7 +472,7 @@
 <p>可使用 ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell ps</div></pre></td></tr></table></figure>
 <p>进行查看。</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png" alt=""></p>
 <p>Android系统会为每<strong>一个应用</strong>分配<strong>一个唯一的UID</strong>。具有<strong>相同UID</strong>并且<strong>相同签名</strong>的应用才能共享数据。 </p>
 <hr>
 <p>在Android中使用多进程<strong>只有一种</strong>方法，就是给<strong>四大组件</strong>的 <code>AndroidManifest.xml</code> 文件中设置 <code>android:process=&quot;:remote&quot;</code> 属性。</p>
@@ -567,7 +567,7 @@
 <p>除了使用 Transient 关键字可以使得字段不被序列化，还可以根据父类对象序列化的规则，将不需要被序列化的字段抽取出来放到父类中，子类实现 Serializable 接口，父类不实现，根据父类序列化规则，父类的字段数据将不被序列化</p>
 </li>
 </ul>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/image005.gif" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image005.gif" alt=""></p>
 <p>上图中可以看出，attr1、attr2、attr3、attr5 都不会被序列化，放在父类中的好处在于当有另外一个 Child 类时，attr1、attr2、attr3 依然不会被序列化，不用重复抒写 transient。</p>
 <ul>
 <li><p><strong>对敏感字段加密</strong></p>
@@ -580,7 +580,7 @@
 <h3 id="3-1-7-序列化存储规则"><a href="#3-1-7-序列化存储规则" class="headerlink" title="3.1.7 序列化存储规则"></a>3.1.7 序列化存储规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">ObjectOutputStream out = new ObjectOutputStream(</div><div class="line">                   new FileOutputStream(&quot;result.obj&quot;));</div><div class="line">   Test test = new Test();</div><div class="line">   //试图将对象两次写入文件</div><div class="line">   out.writeObject(test);</div><div class="line">   out.flush();</div><div class="line">   System.out.println(new File(&quot;result.obj&quot;).length());</div><div class="line">   out.writeObject(test);</div><div class="line">   out.close();</div><div class="line">   System.out.println(new File(&quot;result.obj&quot;).length());</div><div class="line"> </div><div class="line">   ObjectInputStream oin = new ObjectInputStream(new FileInputStream(</div><div class="line">           &quot;result.obj&quot;));</div><div class="line">   //从文件依次读出两个文件</div><div class="line">   Test t1 = (Test) oin.readObject();</div><div class="line">   Test t2 = (Test) oin.readObject();</div><div class="line">   oin.close();</div><div class="line">            </div><div class="line">   //判断两个引用是否指向同一个对象</div><div class="line">   System.out.println(t1 == t2);</div></pre></td></tr></table></figure>
 <p>对同一对象两次写入文件，打印出写入一次对象后的存储大小和写入两次后的存储大小，然后从文件中反序列化出两个对象，比较这两个对象是否为同一对象。</p>
 <p>一般的思维是，两次写入对象，文件大小会变为两倍的大小，反序列化时，由于从文件读取，生成了两个对象，判断相等时应该是输入 false 才对，但是最后结果输出如图:</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/image009.jpg" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image009.jpg" alt=""></p>
 <p>第二次写入对象时文件只增加了 5 字节，并且两个对象是相等的，这是因为Java 序列化机制为了节省磁盘空间，具有特定的<strong>存储规则</strong>：</p>
 <p>当写入文件的为<strong>同一对象</strong>时，并不会再将对象的内容进行存储，而<strong>只是再次存储一份引用</strong>，上面增加的 5 字节的存储空间就是新增引用和一些控制信息的空间。<br>反序列化时，恢复引用关系，使得的 t1 和 t2 指向唯一的对象，二者相等，输出 true。<br>该存储规则极大的节省了存储空间。</p>
 <h2 id="3-2-Binder"><a href="#3-2-Binder" class="headerlink" title="3.2 Binder"></a>3.2 Binder</h2><ul>
@@ -773,7 +773,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -784,7 +784,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -795,7 +795,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -878,7 +878,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

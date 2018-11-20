@@ -91,14 +91,14 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="在ViewPager与Fragment的搭配使用中，生命周期函数的调用顺序">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/S80322-14580161.jpg">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/771042-20170304162533391-72210111.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/945877-20161123093212096-2032834078.png">
-<meta property="og:updated_time" content="2018-03-23T02:33:13.796Z">
+<meta property="og:image" content="http://yannischeng.com/ViewPager与Fragment/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/S80322-14580161.jpg">
+<meta property="og:image" content="http://yannischeng.com/ViewPager与Fragment/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/771042-20170304162533391-72210111.png">
+<meta property="og:image" content="http://yannischeng.com/ViewPager与Fragment/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/945877-20161123093212096-2032834078.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ViewPager与Fragment">
 <meta name="twitter:description" content="在ViewPager与Fragment的搭配使用中，生命周期函数的调用顺序">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/S80322-14580161.jpg">
+<meta name="twitter:image" content="http://yannischeng.com/ViewPager与Fragment/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/S80322-14580161.jpg">
 
 
 
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-23T10:33:13+08:00">
-                2018-03-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -443,7 +443,7 @@
 <p><strong><em>注意：此处的log输出是 RadioGroup + ViewPager + Fragment 实现的</em></strong></p>
 <p><strong><em>在此种情况的搭配下: 在宿主Activity中不会调用Fragment的 ‘onDestroy()’ 与 ‘onDetach()’ 方法</em></strong></p>
 <h1 id="ViewPager与Fragment搭配说明："><a href="#ViewPager与Fragment搭配说明：" class="headerlink" title="ViewPager与Fragment搭配说明："></a>ViewPager与Fragment搭配说明：</h1><p><strong>主MainActivity中有1个ViewPager与4个Fragment，其中第2个Fragment中嵌套1个ViewPager与2个Fragment.</strong></p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/S80322-14580161.jpg" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/S80322-14580161.jpg" alt=""></p>
 <h1 id="Activity调用顺序"><a href="#Activity调用顺序" class="headerlink" title="Activity调用顺序"></a>Activity调用顺序</h1><p><strong>Activity的生命周期有7个函数</strong></p>
 <h2 id="启动时，生命周期函数的调用顺序："><a href="#启动时，生命周期函数的调用顺序：" class="headerlink" title="启动时，生命周期函数的调用顺序："></a>启动时，生命周期函数的调用顺序：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">03-22 13:35:18.621 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 13:35:18.782 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 13:35:18.787 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
 <p>在<strong>长期黑屏</strong>后，调用：</p>
@@ -454,8 +454,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ActivityB调用onCreate、onStart、onResume后，再调用：</div><div class="line"></div><div class="line">03-22 13:44:20.090 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 13:44:20.888 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</div><div class="line">03-22 13:50:01.678 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onDestroy :</div></pre></td></tr></table></figure>
 <h1 id="Fragment调用顺序"><a href="#Fragment调用顺序" class="headerlink" title="Fragment调用顺序"></a>Fragment调用顺序</h1><p>参考：<a href="https://www.cnblogs.com/fajieyefu/p/6092465.html" target="_blank" rel="external">https://www.cnblogs.com/fajieyefu/p/6092465.html</a></p>
 <p><strong>Fragment的生命周期有11个函数</strong></p>
-<h2 id="Fragment声明周期函数："><a href="#Fragment声明周期函数：" class="headerlink" title="Fragment声明周期函数："></a>Fragment声明周期函数：</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/771042-20170304162533391-72210111.png" alt=""></p>
-<h2 id="Fragment声明周期函数调用："><a href="#Fragment声明周期函数调用：" class="headerlink" title="Fragment声明周期函数调用："></a>Fragment声明周期函数调用：</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/945877-20161123093212096-2032834078.png" alt=""></p>
+<h2 id="Fragment声明周期函数："><a href="#Fragment声明周期函数：" class="headerlink" title="Fragment声明周期函数："></a>Fragment声明周期函数：</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/771042-20170304162533391-72210111.png" alt=""></p>
+<h2 id="Fragment声明周期函数调用："><a href="#Fragment声明周期函数调用：" class="headerlink" title="Fragment声明周期函数调用："></a>Fragment声明周期函数调用：</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/945877-20161123093212096-2032834078.png" alt=""></p>
 <p><strong>进入宿主Activity中时</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">03-22 14:36:54.109 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.147 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.151 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line"></div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.230 		AA: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.233 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.233		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line"></div><div class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		BB: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		CC: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.276 		BB: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:36:54.294 		CC: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
 <p>在<strong>长期黑屏</strong>后，调用：</p>
@@ -586,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +597,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -691,7 +691,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

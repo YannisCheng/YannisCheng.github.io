@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Gradle," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Gradle概览描述">
+<meta name="keywords" content="Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle描述">
+<meta property="og:url" content="http://yannischeng.com/Gradle描述/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Gradle概览描述">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yannischeng.com/Gradle描述/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-14%2014.09.54.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle描述">
+<meta name="twitter:description" content="Gradle概览描述">
+<meta name="twitter:image" content="http://yannischeng.com/Gradle描述/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-14%2014.09.54.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Gradle描述/"/>
+
+
+
+
+
+  <title>Gradle描述 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Gradle描述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gradle描述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T22:01:45+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/脚本/" itemprop="url" rel="index">
+                    <span itemprop="name">脚本</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,373 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Gradle描述/" title="Gradle描述">http://yannischeng.com/Gradle描述/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Gradle概览描述</p>
+<a id="more"></a>
+<p>参考：《Android Gradle 权威指南》<br>参考：<a href="https://www.jianshu.com/p/9df3c3b6067a" target="_blank" rel="external">Gradle完整指南</a><br>官网参考：<a href="https://docs.gradle.org/current/dsl/" target="_blank" rel="external">https://docs.gradle.org/current/dsl/</a></p>
+<p>一句话总结：<strong><code>Gradle</code> 是基于 <code>Groovy</code> 的 <code>DSL</code></strong></p>
+<h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><h2 id="Gradle-脚本类型"><a href="#Gradle-脚本类型" class="headerlink" title="Gradle 脚本类型"></a>Gradle 脚本类型</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">脚本类型</th>
+<th style="text-align:left">委托对象</th>
+<th style="text-align:left">实例与对应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">设置脚本</td>
+<td style="text-align:left">Settings</td>
+<td style="text-align:left"><code>Settings</code>实例 对应 <code>settings.gradle</code>文件</td>
+</tr>
+<tr>
+<td style="text-align:left">构建脚本</td>
+<td style="text-align:left">Project</td>
+<td style="text-align:left"><code>Project</code>实例 对应 <code>build.gradle</code>文件</td>
+</tr>
+<tr>
+<td style="text-align:left">初始化脚本</td>
+<td style="text-align:left">Gradle</td>
+<td style="text-align:left">通过<code>Project.getGradle()</code>调用获取实例</td>
+</tr>
+</tbody>
+</table>
+<p>每种类型均实现了 <code>Script</code> 接口。此接口定义了许多可在脚本中使用的属性和方法。</p>
+<h2 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h2><p>作用：<strong>多项目构建</strong>。允许声明要包含在构建中的 <strong>项目（Android中的Module）</strong>。在构建中始终包含在 <code>Settings</code> 创建对象时自动添加的 <code>根项目</code>。</p>
+<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><p>此接口时从构建文件与Gradle交互的主要API。</p>
+<p>一个 <code>Project</code> 和 <code>build.gradle</code> 文件之间存在 <code>一对一</code> 的关系。在构建初始化期间，Gradle Project为 <code>每个</code> 参与构建的项目组装一个对象。</p>
+<h2 id="Gradle脚本块-之间的关系"><a href="#Gradle脚本块-之间的关系" class="headerlink" title="Gradle脚本块 之间的关系"></a>Gradle脚本块 之间的关系</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-14%2014.09.54.png" alt=""></p>
+<p><strong>Gradle中2个重要的概念</strong></p>
+<ul>
+<li>project</li>
+<li>task</li>
+</ul>
+<h2 id="project"><a href="#project" class="headerlink" title="project"></a>project</h2><h2 id="Gradle任务-task"><a href="#Gradle任务-task" class="headerlink" title="Gradle任务 - task"></a>Gradle任务 - task</h2><p><code>TaskContainer</code></p>
+<h3 id="task创建"><a href="#task创建" class="headerlink" title="task创建"></a>task创建</h3><p>自定义一个简单的 <code>task</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">task hello&#123;</div><div class="line">        println&apos;Hello Gradle&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在自定义的过程中，我们可能认为 <code>task</code> 是一个 <code>关键字</code>，但是实际上 <code>task</code> 是一个方法。在 <code>public interface Project</code> 中是如下声明的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//在Project 中的声明1：</div><div class="line">Task task(String name) throws InvalidUserDataException;</div><div class="line"></div><div class="line">//在Project 中的声明2：</div><div class="line">Task task(Map&lt;String, ?&gt; args, String name) throws InvalidUserDataException;</div><div class="line"></div><div class="line">//在Project 中的声明3：</div><div class="line">Task task(Map&lt;String, ?&gt; args, String name, Closure configureClosure);</div><div class="line"></div><div class="line">//在Project 中的声明4：</div><div class="line">Task task(String name, Closure configureClosure);</div></pre></td></tr></table></figure>
+<p>由此，我们看到有4种task创建方式。在Android Studio的配置文件中，实际使用最多的就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//在Project 中的声明4：</div><div class="line">Task task(String name, Closure configureClosure);</div></pre></td></tr></table></figure>
+<p>这个声明中有两个参数 <code>String name</code>, <code>Closure configureClosure</code>。其中，<code>name</code> 就是task的名字，而 <code>configureClosure</code> 就是一个<code>闭包（代码块）</code>。</p>
+<p>所以 我们对于 <code>.gradle</code> 文件的配置实际上的操作就是：<strong><code>task(task名称, 闭包)</code></strong></p>
+<p><strong>但是：</strong> 我们发现，我们具体自定义的 <code>task</code> 似乎和 声明的样式不同，按照声明方式，我们自定义的task的写法应该为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">task(hello,&#123;</div><div class="line">	println &apos;Hello Gradle&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这一点，在 <code>Groovy语法-5闭包-5.1迭代</code> 中已经有了说明：当闭包作为一个方法的最后一个参数时，是可以写到 <code>()</code> 外面的，而且 Groovy 语法允许一个方法去掉 <code>()</code>，于是就有了本小节一开头看到的一个 自定义task的写法。常见、实际书写样式都是根据 <code>Groovy的特殊语法</code> 而写的。</p>
+<p>了解这样的一个 <code>书写样式变化过程</code> ，既有助于加深我们对于 Groovy语法的了解，同时也能与Java语法作出对比。</p>
+<h3 id="task访问"><a href="#task访问" class="headerlink" title="task访问"></a>task访问</h3><h3 id="task描述"><a href="#task描述" class="headerlink" title="task描述"></a>task描述</h3><h3 id="task依赖"><a href="#task依赖" class="headerlink" title="task依赖"></a>task依赖</h3><p>任务和任务之间是由依赖的，通过依赖关系决定任务之间彼此的先后顺序。</p>
+<p>单依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">task helloSecond&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;this is helloSecond&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloMain(dependsOn:helloSecond)&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;main: &quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; Task :helloSecond</div><div class="line">this is helloSecond</div><div class="line"></div><div class="line">&gt; Task :helloMain</div><div class="line">main:</div></pre></td></tr></table></figure>
+<p>多依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">task helloSecond&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;this is helloSecond&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloMain(dependsOn:helloSecond)&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;main: &quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">task helloMain2&#123;</div><div class="line">	dependsOn helloSecond,helloThird</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;main: &quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; Task :helloSecond</div><div class="line">this is helloSecond</div><div class="line"></div><div class="line">&gt; Task :helloThird</div><div class="line">this is helloThird</div><div class="line"></div><div class="line">&gt; Task :helloMain2</div><div class="line">main:</div></pre></td></tr></table></figure>
+<p>其中，<code>dependsOn</code> 是 <code>Task</code> 类中的一个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Task dependsOn(Object... paths);</div></pre></td></tr></table></figure>
+<h3 id="任务间的API调用"><a href="#任务间的API调用" class="headerlink" title="任务间的API调用"></a>任务间的API调用</h3><p>提前亮出结论：<strong>我们创建的每一个 <code>任务</code> 都会作为 Project 的一个 <code>属性</code>。<code>任务名</code> 就是 <code>属性名</code>。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">task helloSecond&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;this is helloSecond&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">helloSecond.doLast&#123;</div><div class="line">	println &quot;helloSecond API doLast&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">helloSecond.doFirst&#123;</div><div class="line">	println &quot;helloSecond API doFirst&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloMain2&#123;</div><div class="line">	println project.hasProperty(&apos;helloSecond&apos;)</div><div class="line">	dependsOn helloSecond,helloThird</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;main do&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; Task :helloSecond</div><div class="line">helloSecond API doFirst</div><div class="line">this is helloSecond</div><div class="line">helloSecond API doLast</div></pre></td></tr></table></figure>
+<p>以上这段代码的表达的是：通过调用 <code>helloSecond</code> 任务的 API，在该任务 <code>执行前doLast</code> 和 <code>执行后doLast</code> 做一些操作。</p>
+<p>代码 <code>project.hasProperty(&#39;helloSecond&#39;)</code> 的意思是 ：检测属性 <code>helloSecond</code> 是否存在，若为 <code>true</code> 就是 <code>存在</code>。</p>
+<p>通过查看 <code>Task</code> 的源码，发现在此接口中，是存在多个 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Task doLast();</div></pre></td></tr></table></figure>
+<p>的。调用 一个 <code>任务名</code> 的API，就像是 Java 中调用一个 <code>类的实例对象</code> 的方法。所以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在 Gradle 中声明一个任务，“不严谨但是形象” 的可以说是：声明了某一类的一个具体实例对象；</div><div class="line">一个任务名调用API，“不严谨但是形象” 的可以说是：实例对象调用自身的属性或方法。</div></pre></td></tr></table></figure>
+<h3 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h3><p>在 <code>Project</code> 和 <code>Task</code> 中均可以添加 <code>自定义属性</code>。</p>
+<ul>
+<li>在 <code>Project</code> 中声明 <code>自定义属性</code>：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 声明一个属性</div><div class="line">ext.age = 18</div><div class="line"></div><div class="line">// 声明多个属性</div><div class="line">ext &#123;</div><div class="line">	phone = 6666666</div><div class="line">	address = &quot;bj&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task showExt&#123;</div><div class="line">	println &quot;age is $&#123;age&#125;&quot;</div><div class="line">	println &quot;phone is $&#123;phone&#125;&quot;</div><div class="line">	println &quot;address is $&#123;address&#125;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">age is 18</div><div class="line">phone is 6666666</div><div class="line">address is bj</div></pre></td></tr></table></figure>
+<ul>
+<li>为某一个 <code>Task</code> 声明 <code>自定义属性</code>：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">sourceSets.all&#123;</div><div class="line">	ext.sourceDir = &quot;&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">sourceSets&#123;</div><div class="line">	main&#123;</div><div class="line">		sourceDir = &apos;main/src&apos;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	test&#123;</div><div class="line">		sourceDir = &apos;test/src&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task showExt&#123;</div><div class="line">	sourceSets.each&#123;</div><div class="line">		println &quot;name is $&#123;it.name&#125;, sourceDir is : $&#123;it.sourceDir&#125;&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name is main, sourceDir is : main/src</div><div class="line">name is test, sourceDir is : test/src</div></pre></td></tr></table></figure>
+<p>如果在 一个task方法中调用 <code>sourceDir</code> 属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">task showDir&#123;</div><div class="line">	println &quot;sourceDir is $&#123;sourceDir&#125;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; Could not get unknown property &apos;sourceDir&apos; for task &apos;:showDir&apos; of type org.gradle.api.DefaultTask.</div></pre></td></tr></table></figure>
+<p>这就表示，这个 <code>自定义属性</code> 是声明在 <code>sourceSets</code> 这个 task 中的，不是 Project 的。</p>
+<h3 id="lt-lt-操作符"><a href="#lt-lt-操作符" class="headerlink" title="&lt;&lt; 操作符"></a>&lt;&lt; 操作符</h3><p>先展示结论 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">task helloThird&#123;</div><div class="line">        doLast&#123;</div><div class="line">                println &quot;this is helloThird&quot;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloThird2 &lt;&lt; &#123;</div><div class="line">        println &quot;this is helloThird&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloSecond&#123;</div><div class="line">	doLast&#123;</div><div class="line">		println &quot;this is helloSecond&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloSecond2 &lt;&lt; &#123;</div><div class="line">	println &quot;this is helloSecond&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloMain2&#123;</div><div class="line">	println project.hasProperty(&apos;helloSecond&apos;)</div><div class="line">	dependsOn helloSecond,helloThird</div><div class="line">&#125;</div><div class="line"></div><div class="line">task helloMain3 &#123;</div><div class="line">	println project.hasProperty(&apos;helloSecond&apos;)</div><div class="line">	dependsOn helloSecond2, helloThird2</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>运行</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew helloMain3</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; Task :helloSecond2</div><div class="line">this is helloSecond</div><div class="line"></div><div class="line">&gt; Task :helloThird2</div><div class="line">this is helloThird</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>运行</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew helloMain2</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; Task :helloSecond</div><div class="line">this is helloSecond</div><div class="line"></div><div class="line">&gt; Task :helloThird</div><div class="line">this is helloThird</div></pre></td></tr></table></figure>
+<p>由结论可以得出 <code>&gt;&gt;</code> 与 <code>doLast</code> 得到的结果是相同的，在作用上是可以替代的。<br><code>&gt;&gt;</code> 操作符在 <code>Gradle</code> 的 <code>Task</code>上是 doLast方法 的 <code>短标记形式</code>。</p>
+<h3 id="task的执行"><a href="#task的执行" class="headerlink" title="task的执行"></a>task的执行</h3><p><code>task</code> 代码块中的本质是 <strong>actions</strong></p>
+<p>为什么 <code>doFirst</code> 、 <code>doLast</code> 能够在当前task <code>之前</code>和 <code>之后</code> 处理添加的操作？</p>
+<p>源码：</p>
+<p><strong>doFist()源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Task doFirst(final String actionName, final Action&lt;? super Task&gt; action) &#123;</div><div class="line">    hasCustomActions = true;</div><div class="line">    if (action == null) &#123;</div><div class="line">        throw new InvalidUserDataException(&quot;Action must not be null!&quot;);</div><div class="line">    &#125;</div><div class="line">    taskMutator.mutate(&quot;Task.doFirst(Action)&quot;, new Runnable() &#123;</div><div class="line">        public void run() &#123;</div><div class="line">            getTaskActions().add(0, wrap(action, actionName));</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>doLast()源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Task doLast(final String actionName, final Action&lt;? super Task&gt; action) &#123;</div><div class="line">    hasCustomActions = true;</div><div class="line">    if (action == null) &#123;</div><div class="line">        throw new InvalidUserDataException(&quot;Action must not be null!&quot;);</div><div class="line">    &#125;</div><div class="line">    taskMutator.mutate(&quot;Task.doLast(Action)&quot;, new Runnable() &#123;</div><div class="line">        public void run() &#123;</div><div class="line">            getTaskActions().add(wrap(action, actionName));</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>共同点：</strong>在这两个方法的源码中，都存在一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getTaskActions().add( …);</div></pre></td></tr></table></figure>
+<p>而这个 <code>getTaskActions()</code> 实际对应的就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public List&lt;ContextAwareTaskAction&gt; getTaskActions() &#123;</div><div class="line">    if (actions == null) &#123;</div><div class="line">        actions = new ArrayList&lt;ContextAwareTaskAction&gt;();</div><div class="line">    &#125;</div><div class="line">    return actions;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>即：<code>getTaskActions()</code> 的返回值是 <code>List&lt;ContextAwareTaskAction&gt;</code>。这就解释了</p>
+<ul>
+<li><code>doFirst</code>，在执行本任务之前: 添加操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getTaskActions().add(0, wrap(action, actionName));</div></pre></td></tr></table></figure>
+<ul>
+<li><code>doLast</code>， 在执行本任务之后: 添加操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getTaskActions().add(wrap(action, actionName));</div></pre></td></tr></table></figure>
+<h3 id="task的排序"><a href="#task的排序" class="headerlink" title="task的排序"></a>task的排序</h3><p><code>task</code> 的任务排序是通过 </p>
+<ul>
+<li><code>taskB.shouldRunAfter(taskA)</code>  应该而非必须，不强制</li>
+<li><code>taskB.mustRunAfter(taskA)</code> 强制</li>
+</ul>
+<h3 id="任务的禁用"><a href="#任务的禁用" class="headerlink" title="任务的禁用"></a>任务的禁用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">任务名.enabled = false</div></pre></td></tr></table></figure>
+<h3 id="任务的-onlyIf-断言"><a href="#任务的-onlyIf-断言" class="headerlink" title="任务的 onlyIf 断言"></a>任务的 onlyIf 断言</h3><p>具体参考：《Android Gradle 权威指南》 P45</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">任务名.onlyIf&#123; &#125;</div></pre></td></tr></table></figure>
+<h3 id="task的任务规则"><a href="#task的任务规则" class="headerlink" title="task的任务规则"></a>task的任务规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addRuler()</div></pre></td></tr></table></figure>
+<h2 id="闭包-代码块"><a href="#闭包-代码块" class="headerlink" title="闭包 - 代码块"></a>闭包 - 代码块</h2><h3 id="1-简单的实现、调用"><a href="#1-简单的实现、调用" class="headerlink" title="1. 简单的实现、调用"></a>1. 简单的实现、调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">task getList &lt;&lt; &#123;</div><div class="line">	customEach&#123;</div><div class="line">	    // 接收一个闭包</div><div class="line">		println it</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// getList 任务的第二种写法：</div><div class="line"></div><div class="line">task getList2 &lt;&lt; &#123;</div><div class="line">        customEach(&#123;println it&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">def customEach(tempList)&#123;</div><div class="line">        for(i in 1..10)&#123;</div><div class="line">                tempList(i)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew getList</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; Task :getList</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td></tr></table></figure>
+<p><strong>重点理解：<code>tempList</code> 与 <code>tempList()</code></strong></p>
+<p>当执行多个参数时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">task getMap &lt;&lt; &#123;</div><div class="line">	customMap&#123;key, value -&gt;</div><div class="line">		println &quot;$&#123;key&#125;, $&#123;value&#125;&quot;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">def customMap(tempMap)&#123;</div><div class="line">	def maps = [name:&quot;ZhangSan&quot;, age:24]</div><div class="line">	maps.each&#123;</div><div class="line">		tempMap(it.key, it.value)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew getMap</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; Task :getMap</div><div class="line">name, ZhangSan</div><div class="line">age, 24</div></pre></td></tr></table></figure>
+<h3 id="2-闭包委托"><a href="#2-闭包委托" class="headerlink" title="2. 闭包委托"></a>2. 闭包委托</h3><ul>
+<li><p>闭包的强大之处在于：<strong>支持闭包方法的委托</strong>。</p>
+</li>
+<li><p>Groovy 的闭包有 <code>thisObject</code>, <code>owner</code>, <code>delegate</code> 三个属性。当在闭包内调用方法时，由他们来决定调用那个对象进行处理。</p>
+</li>
+<li><p>默认情况下： <code>owner</code> 与 <code>delegate</code> 是相等的，但是  <code>delegate</code> 是可以被修改的，Gradle中的闭包的很多功能都是通过修改 <code>delegate</code> 实现的。</p>
+</li>
+<li><p>方法处理顺序：<code>thisObject</code> &gt; <code>owner</code> &gt; <code>delegate</code> </p>
+</li>
+</ul>
+<h2 id="Gradle插件"><a href="#Gradle插件" class="headerlink" title="Gradle插件"></a>Gradle插件</h2><h3 id="应用方式"><a href="#应用方式" class="headerlink" title="应用方式"></a>应用方式</h3><p>应用方式在源代码中有 <strong>3种</strong> 声明方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// Map形式</div><div class="line">void apply(Map&lt;String, ?&gt; options);</div><div class="line"></div><div class="line">// 闭包形式</div><div class="line">void apply(Closure closure);</div><div class="line"></div><div class="line">// Action形式</div><div class="line">void apply(Action&lt;? super ObjectConfigurationAction&gt; action);</div></pre></td></tr></table></figure>
+<h4 id="二进制方式"><a href="#二进制方式" class="headerlink" title="二进制方式"></a>二进制方式</h4><p><code>二进制插件</code>一般是被打包在<code>jar</code>中独立发布的，发布的时候可以为其指定 <code>plugin id</code>。</p>
+<p>实现了 <code>org.gradle.api.Plugin</code> 接口的插件，他们会有 <code>plugin id</code>(Gradle自带的核心插件都有一个容易记的短名)。例如：<strong>方式1（用的最多）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin:&apos;java&apos;</div></pre></td></tr></table></figure>
+<p>其中，<code>java</code> 就是 插件的 <code>plugin id</code>。</p>
+<p>除了直接可以应用 <code>plugin id</code>外，也可以应用其对应的类型，例如：<strong>方式2（适用于自定义插件）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin:org.gradle.api.plugins.JavaPlugin</div></pre></td></tr></table></figure>
+<p>因为包名是默认导入的，可以直接去掉包名。所以简写为：<strong>方式3</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin:JavaPlugin</div></pre></td></tr></table></figure>
+<h4 id="脚本方式"><a href="#脚本方式" class="headerlink" title="脚本方式"></a>脚本方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apply from:&apos;version.gradle&apos;</div><div class="line"></div><div class="line">task showVersion&#123;</div><div class="line">	println &quot;versionName is $&#123;versionName&#125;, versionCode is $&#123;versionCode&#125;&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// version.gradle</div><div class="line">ext&#123;</div><div class="line">	versionName = &apos;first&apos;</div><div class="line">	versionCode = &apos;0.1&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew showVersion</div></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">versionName is first, versionCode is 0.1</div></pre></td></tr></table></figure>
+<h3 id="第三方插件应用方式"><a href="#第三方插件应用方式" class="headerlink" title="第三方插件应用方式"></a>第三方插件应用方式</h3><p>如果开一个插件已经被配置在  <code>https://plugins.gradle.org/</code> 的网站上，则可以通过 <code>plugins</code> 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plugins&#123;</div><div class="line">	id &apos;base&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果在  <code>https://plugins.gradle.org/</code> 上不存在，则是通过 <code>buildscript</code> 中的 <code>classpath</code>引用。步骤为：</p>
+<p>第1步：添加 <strong>插件路径</strong> ：<code>classpath &#39;com.android.tools.build:gradle:3.1.3&#39;</code> 在 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;com.android.tools.build:gradle:3.1.3&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第2步：<strong>应用</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;com.android.application&apos;</div></pre></td></tr></table></figure>
+<h3 id="自定义插件方式"><a href="#自定义插件方式" class="headerlink" title="自定义插件方式"></a>自定义插件方式</h3><p>方式：</p>
+<h4 id="本地脚本方式"><a href="#本地脚本方式" class="headerlink" title="本地脚本方式"></a>本地脚本方式</h4><h4 id="共享jar包方式"><a href="#共享jar包方式" class="headerlink" title="共享jar包方式"></a>共享jar包方式</h4><h2 id="依赖添加"><a href="#依赖添加" class="headerlink" title="依赖添加"></a>依赖添加</h2><h3 id="依赖语句结构"><a href="#依赖语句结构" class="headerlink" title="依赖语句结构"></a>依赖语句结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;io.reactivex.rxjava2:rxjava:2.1.9&apos;</div></pre></td></tr></table></figure>
+<p>以上语句以 <code>:</code> 最为分割，各个部分分别为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">group:name:version</div></pre></td></tr></table></figure>
+<p>依赖的添加；</p>
+<p>在 <code>buildscript</code> 中添加路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">	// 路径仓库设置</div><div class="line">    repositories &#123;</div><div class="line">        // 方式1：各个中心库</div><div class="line">        google()</div><div class="line">        mavenCentral()</div><div class="line">        </div><div class="line">        // 方式2：私服</div><div class="line">        maven &#123;</div><div class="line">            url &quot;http://XXX&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 依赖</div><div class="line">    dependencies &#123;</div><div class="line">    	   // 仓库中的具体依赖项目</div><div class="line">        classpath &apos;xxx:xxx:xxx&apos;</div><div class="line">        </div><div class="line">        // 依赖一个Gradle中配置过的项目</div><div class="line">        compile project(&apos;:app1&apos;)</div><div class="line">        </div><div class="line">        //依赖指定的文件包</div><div class="line">        compile files(&apos;libs/xxx.jar&apos;, …)</div><div class="line">        </div><div class="line">        // 添加一类（全部）文件包 (指定路径下的，指定类文件)</div><div class="line">        compile fileTree(dir: &apos;libs&apos;, include: &apos;*.jar&apos;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="SourceSet-源代码集合"><a href="#SourceSet-源代码集合" class="headerlink" title="SourceSet 源代码集合"></a>SourceSet 源代码集合</h3><p>这是用来描述和管理 <code>源代码</code> 以及 <code>资源文件</code> 的一个抽象概念，是源代码和资源文件的集合。通过 <code>sourceSets属性</code> 和 <code>sourceSets{}闭包</code> 来访问配置集。</p>
+<h2 id="多项目构建"><a href="#多项目构建" class="headerlink" title="多项目构建"></a>多项目构建</h2><h2 id="构建发布"><a href="#构建发布" class="headerlink" title="构建发布"></a>构建发布</h2><p>gradle生成的产物——构建</p>
+<h2 id="Android-Gradle-插件"><a href="#Android-Gradle-插件" class="headerlink" title="Android Gradle 插件"></a>Android Gradle 插件</h2><p>从Gradle的角度来看：<code>Android Gradle</code> 是由Android团队，基于Gradle开发的一个<code>第三方插件</code>。</p>
+<p>提一句：</p>
+<ul>
+<li>Android 开发IDE：以 <code>Intellij</code> 为基础</li>
+<li>Android 管理、构建：以 <code>Gradle</code> 为基础</li>
+<li>Android 开发语言： <code>Java</code> 。</li>
+</ul>
+<h3 id="Android插件分类"><a href="#Android插件分类" class="headerlink" title="Android插件分类"></a>Android插件分类</h3><p>具体参考书中 第7章</p>
+<ul>
+<li>apk 插件id : <code>com.android.application</code></li>
+<li>lib包 插件id : <code>com.android.library</code></li>
+<li>test测试 插件id : <code>com.android.test</code></li>
+</ul>
+<h3 id="Android-Gradle-渠道配置："><a href="#Android-Gradle-渠道配置：" class="headerlink" title="Android Gradle  渠道配置："></a>Android Gradle  渠道配置：</h3><h4 id="Zipalign优化"><a href="#Zipalign优化" class="headerlink" title="Zipalign优化"></a>Zipalign优化</h4><h4 id="混淆配置"><a href="#混淆配置" class="headerlink" title="混淆配置"></a>混淆配置</h4><h4 id="签名配置：SigningConfig"><a href="#签名配置：SigningConfig" class="headerlink" title="签名配置：SigningConfig"></a>签名配置：SigningConfig</h4><h4 id="默认配置：defaultConfig"><a href="#默认配置：defaultConfig" class="headerlink" title="默认配置：defaultConfig"></a>默认配置：defaultConfig</h4><h4 id="多渠道配置：productFlavors"><a href="#多渠道配置：productFlavors" class="headerlink" title="多渠道配置：productFlavors"></a>多渠道配置：productFlavors</h4><h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><h4 id="共享库"><a href="#共享库" class="headerlink" title="共享库"></a>共享库</h4><h4 id="批量修改Apk名称"><a href="#批量修改Apk名称" class="headerlink" title="批量修改Apk名称"></a>批量修改Apk名称</h4><h4 id="动态生成版本信息"><a href="#动态生成版本信息" class="headerlink" title="动态生成版本信息"></a>动态生成版本信息</h4><p><strong>版本号构成（一般：3部分）：<code>major:minor:patch</code>，对应为：<code>主版本号：副版本号:补丁号</code></strong>。</p>
+<h5 id="方式1：单独文件获取各个参数"><a href="#方式1：单独文件获取各个参数" class="headerlink" title="方式1：单独文件获取各个参数"></a>方式1：单独文件获取各个参数</h5><ul>
+<li><p><strong>要点1：</strong> 类比Java：把共有的信息抽出为一个单独的类，在需要使用这些单独抽出的数据时，引用这个类。在此处就是类比这种实现方式，在 Gradle 中，通过使用 <code>apply from</code> 引用 自定义的 <code>.build</code> 文件。</p>
+</li>
+<li><p><strong>要点2：</strong>  从git的tag中获取 版本名称 </p>
+</li>
+<li><p><strong>要点3：</strong> 从git的tag中获取 版本号 </p>
+</li>
+</ul>
+<h5 id="方式2：建立属性文件动态获取"><a href="#方式2：建立属性文件动态获取" class="headerlink" title="方式2：建立属性文件动态获取"></a>方式2：建立属性文件动态获取</h5><h4 id="隐藏签名文件信息—–"><a href="#隐藏签名文件信息—–" class="headerlink" title="隐藏签名文件信息—–"></a>隐藏签名文件信息—–</h4><h4 id="动态配置-AndroidManifest-文件"><a href="#动态配置-AndroidManifest-文件" class="headerlink" title="动态配置 AndroidManifest 文件"></a>动态配置 AndroidManifest 文件</h4><h4 id="自定义-BuildConfig"><a href="#自定义-BuildConfig" class="headerlink" title="自定义 BuildConfig"></a>自定义 BuildConfig</h4><h4 id="添加自定义资源"><a href="#添加自定义资源" class="headerlink" title="添加自定义资源"></a>添加自定义资源</h4><h4 id="Java编译选项"><a href="#Java编译选项" class="headerlink" title="Java编译选项"></a>Java编译选项</h4><h4 id="adb选项"><a href="#adb选项" class="headerlink" title="adb选项"></a>adb选项</h4><h4 id="清理未使用资源"><a href="#清理未使用资源" class="headerlink" title="清理未使用资源"></a>清理未使用资源</h4><p>所谓的资源清理，其实不是从项目里删除无用的资源，而是根据我们的配置，将无用的资源不打包到Apk中。</p>
+<h5 id="shrink-BuildTypes-构建类型"><a href="#shrink-BuildTypes-构建类型" class="headerlink" title="shrink - BuildTypes 构建类型"></a>shrink - BuildTypes 构建类型</h5><ul>
+<li><p><strong>使用步骤</strong>：</p>
+<ul>
+<li>先开启 code shrink（开启代码混淆-收缩）</li>
+<li>再开启 resource shrink （再开启资源收缩）</li>
+</ul>
+</li>
+<li><p><strong>存在问题：误删</strong></p>
+<p>当使用反射时，会存在资源文件误删的情况，解决方式就是：通过Android Gradle 提供的 keep 方法来配置不能被清理掉的资源。</p>
+</li>
+</ul>
+<h5 id="resConfig-ProductFlavor-渠道资源处理"><a href="#resConfig-ProductFlavor-渠道资源处理" class="headerlink" title="resConfig - ProductFlavor 渠道资源处理"></a>resConfig - ProductFlavor 渠道资源处理</h5><p>通过使用此项配置，可以根据当前的渠道设置相应的资源，可以有效的减少Apk体积。</p>
+<p>使用方式：</p>
+<ul>
+<li>resConfigs：可以设置多个参数</li>
+<li>resConfig：设置单个参数</li>
+</ul>
+<h2 id="Android-Gradle-多项目构建"><a href="#Android-Gradle-多项目构建" class="headerlink" title="Android Gradle 多项目构建"></a>Android Gradle 多项目构建</h2><p>Android 项目构建分为 <code>lib</code>、<code>application</code>、<code>test</code>。这3种。</p>
+<p>在Gradle中，一个工程包含多个项目，而且项目的结构是表随意的。可以在 <code>settings.gradle</code> 文件中对各个项目的路径进行具体配置。</p>
+<p>在 Gradle 中能够最终体现一个工程中有多少个项目是通过 <code>settings.gradle</code> 文件来声明的。</p>
+<h3 id="库项目的配置"><a href="#库项目的配置" class="headerlink" title="库项目的配置"></a>库项目的配置</h3><h4 id="更改-库项目-的发布版本："><a href="#更改-库项目-的发布版本：" class="headerlink" title="更改 库项目 的发布版本："></a>更改 库项目 的发布版本：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android&#123;</div><div class="line">	defaultPublishConfig &quot;debug&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过添加此项配置后，发布的版本就是 <code>debug</code> 版本了。</p>
+<p>需求：<strong><code>如何处理同时发布多个版本的 库 或者 aar包 以供不同的项目引用</code></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android&#123;</div><div class="line">	publishNonDefault true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="发布到-Maven-库"><a href="#发布到-Maven-库" class="headerlink" title="发布到 Maven 库"></a>发布到 Maven 库</h4><ul>
+<li>第一步：<strong>配置自己的Maven私有库</strong></li>
+</ul>
+<ol>
+<li>进行 <code>Nexus Repository OSS</code> 的下载，地址 <code>https://www.sonatype.com/download-oss-sonatype</code> 。</li>
+<li>解压</li>
+<li><p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 开启</div><div class="line">/Users/XXX/nexus-3.14.0-04/bin/nexus run</div><div class="line"># 关闭</div><div class="line">/Users/XXX/nexus-3.14.0-04/bin/nexus stop</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>开启成功后，在浏览器输入：<code>http://localhost:8081/</code> 在不显示 404 的情况下点击右上角 <code>Login</code> 登录，用户名 <code>admin</code>，密码 <code>admin123</code> 。</li>
+</ol>
+<ul>
+<li>第二步：配置 gradle 文件</li>
+</ul>
+<ol>
+<li>添加 <code>maven</code> 插件</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven&apos;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>配置 <code>maven</code> 构建</p>
+<p>Maven构建3要素：<code>group:artifact:version</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">version &apos;1.0.0&apos;</div><div class="line">group &apos;ori.XXX.XX&apos;</div></pre></td></tr></table></figure>
+<p>各个属性的解释（参考：<a href="https://blog.csdn.net/lovesomnus/article/details/40981063）：" target="_blank" rel="external">https://blog.csdn.net/lovesomnus/article/details/40981063）：</a></p>
+<ul>
+<li><strong>groupId</strong></li>
+</ul>
+<p>团体，公司，小组，组织，项目，或者其它团体。团体标识的约定是，它以创建这个项目的组织名称的逆向域名(reverse domain name)开头。</p>
+<ul>
+<li><strong>artifactId</strong></li>
+</ul>
+<p>在<code>groupId</code>下的表示一个单独项目的唯一标识符。比如我们的tomcat, commons等。不要在<code>artifactId</code>中包含点号(.)。</p>
+<ul>
+<li><strong>version</strong></li>
+</ul>
+<p>一个项目的特定版本。发布的项目有一个固定的版本标识来指向该项目的某一个特定的版本。<br>而正在开发中的项目可以用一个特殊的标识： <code>SNAPSHOT（快照版本）</code> 。</p>
+</li>
+</ol>
+<p>虽然项目的打包格式也是Maven坐标的重要组成部分，但是它不是项目唯一标识符的一个部分。一个项目的 <strong><code>groupId:artifactId:version</code></strong> 使之成为一个独一无二的项目；你不能同时有一个拥有同样的groupId, artifactId和version标识的项目。</p>
+<h2 id="Android-Gradle-Flavor-多渠道-构建要素"><a href="#Android-Gradle-Flavor-多渠道-构建要素" class="headerlink" title="Android Gradle Flavor 多渠道 构建要素"></a>Android Gradle Flavor 多渠道 构建要素</h2><h3 id="多渠道构建的原理"><a href="#多渠道构建的原理" class="headerlink" title="多渠道构建的原理"></a>多渠道构建的原理</h3><p>Android Gradle 构建的产物 <code>Build Variant</code> = <code>Build Type（构建类型）</code> + <code>Product Flavor（渠道）</code>。有了多个 <code>渠道</code> 之后，就会产生多个task，像是 <code>assemble</code>、<code>compile</code>、<code>install</code>等；配置多个渠道后，除了生成多个 task 外，还会根据渠道的配置拥有自己的 <code>SourceSet（代码、资源文件）</code>、自己的<code>Dependencies</code></p>
+<h3 id="多渠道构建定制"><a href="#多渠道构建定制" class="headerlink" title="多渠道构建定制"></a>多渠道构建定制</h3><p><strong><code>ProductFlavor</code></strong> 构建所需元素：</p>
+<h4 id="applicationId"><a href="#applicationId" class="headerlink" title="applicationId"></a>applicationId</h4><p> 指定生成的App的包名</p>
+<h4 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h4><p>最低支持的Android操作系统的版本</p>
+<h4 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h4><p>配置开发所基于的Android版本</p>
+<h4 id="maxSdkVersion"><a href="#maxSdkVersion" class="headerlink" title="maxSdkVersion"></a>maxSdkVersion</h4><h4 id="versionCode"><a href="#versionCode" class="headerlink" title="versionCode"></a>versionCode</h4><p>配置Android APP 的内置版本号，是一个整数值，通常用于版本升级。</p>
+<h4 id="versionName"><a href="#versionName" class="headerlink" title="versionName"></a>versionName</h4><p>配置Android APP 的版本名称。外部使用。</p>
+<h4 id="consumerProguardFiles"><a href="#consumerProguardFiles" class="headerlink" title="consumerProguardFiles"></a>consumerProguardFiles</h4><h4 id="manifestPlaceHolders"><a href="#manifestPlaceHolders" class="headerlink" title="manifestPlaceHolders"></a>manifestPlaceHolders</h4><h4 id="multiDexEnabled"><a href="#multiDexEnabled" class="headerlink" title="multiDexEnabled"></a>multiDexEnabled</h4><h4 id="proguardFiles"><a href="#proguardFiles" class="headerlink" title="proguardFiles"></a>proguardFiles</h4><p>配置 APP ProGuard 混淆所使用的 ProGuard 配置文件，接受一个配置文件作为参数。</p>
+<h4 id="proguardFiles-1"><a href="#proguardFiles-1" class="headerlink" title="proguardFiles"></a>proguardFiles</h4><p>配置 APP ProGuard 混淆所使用的 ProGuard 配置文件，可同时接受多个配置文件作为参数。</p>
+<h4 id="signingConfig"><a href="#signingConfig" class="headerlink" title="signingConfig"></a>signingConfig</h4><p>配置默认的签名信息，对生成的App签名。</p>
+<h4 id="testApplicationId"><a href="#testApplicationId" class="headerlink" title="testApplicationId"></a>testApplicationId</h4><p>配置测试APP的包名，默认情况下 是 <code>applicationId</code> + <code>.test</code>，一般情况下是默认的 。</p>
+<h4 id="testInstrumentationRunner"><a href="#testInstrumentationRunner" class="headerlink" title="testInstrumentationRunner"></a>testInstrumentationRunner</h4><p>配置单元测试时使用的Runner。</p>
+<h4 id="useJack"><a href="#useJack" class="headerlink" title="useJack"></a>useJack</h4><h4 id="dimension"><a href="#dimension" class="headerlink" title="dimension"></a>dimension</h4><h4 id="resConfig、resValue、"><a href="#resConfig、resValue、" class="headerlink" title="resConfig、resValue、"></a>resConfig、resValue、</h4><h4 id="ndk"><a href="#ndk" class="headerlink" title="ndk"></a>ndk</h4><h2 id="Android-Gradle-BuildType-的构建类型要素"><a href="#Android-Gradle-BuildType-的构建类型要素" class="headerlink" title="Android Gradle BuildType  的构建类型要素"></a>Android Gradle BuildType  的构建类型要素</h2><h3 id="applicationIdSuffix"><a href="#applicationIdSuffix" class="headerlink" title="applicationIdSuffix"></a>applicationIdSuffix</h3><p>配置基于默认applicationId的后缀</p>
+<h3 id="debuggable"><a href="#debuggable" class="headerlink" title="debuggable"></a>debuggable</h3><p>配置是否生成一个可供调试的 apk</p>
+<h3 id="jniDebuggable"><a href="#jniDebuggable" class="headerlink" title="jniDebuggable"></a>jniDebuggable</h3><p>配置是否生成一个可供调试的Jni代码 apk</p>
+<h3 id="minifyEnabled"><a href="#minifyEnabled" class="headerlink" title="minifyEnabled"></a>minifyEnabled</h3><p>配置该 BuildType 是否启用 Proguard 混淆</p>
+<h3 id="multiDexEnabled-1"><a href="#multiDexEnabled-1" class="headerlink" title="multiDexEnabled"></a>multiDexEnabled</h3><p>配置该 BuildType 是否启动自动拆分多个 Dex 的功能</p>
+<h3 id="proguardFile"><a href="#proguardFile" class="headerlink" title="proguardFile"></a>proguardFile</h3><p>同 defaultConfig中的 proguardFile</p>
+<h3 id="proguardFiles-2"><a href="#proguardFiles-2" class="headerlink" title="proguardFiles"></a>proguardFiles</h3><p>同 defaultConfig中的 proguardFiles</p>
+<h3 id="shrinkResources"><a href="#shrinkResources" class="headerlink" title="shrinkResources"></a>shrinkResources</h3><p>配置是否自动清理未使用的资源，默认false</p>
+<h3 id="signingConfig-1"><a href="#signingConfig-1" class="headerlink" title="signingConfig"></a>signingConfig</h3><p>配置签名</p>
+<h3 id="zipalign优化"><a href="#zipalign优化" class="headerlink" title="zipalign优化"></a>zipalign优化</h3><p>是Android提供一个整理优化apk文件的工具，提高系统和应用的运行效率，更快的读写apk中的资源，降低内存使用。</p>
+<h2 id="高速多渠道构建"><a href="#高速多渠道构建" class="headerlink" title="高速多渠道构建"></a>高速多渠道构建</h2><p>美团 <a href="http://tech/meituan.com/mt-apk-packaging.html" target="_blank" rel="external">http://tech/meituan.com/mt-apk-packaging.html</a><br><a href="https://github.com/GavinCT/AndroidMultiChannelBuildTool" target="_blank" rel="external">https://github.com/GavinCT/AndroidMultiChannelBuildTool</a>.</p>
+<h2 id="命令-直接、常用"><a href="#命令-直接、常用" class="headerlink" title="命令 - 直接、常用"></a>命令 - 直接、常用</h2><ul>
+<li><strong>查看各任务间的依赖关系</strong></li>
+</ul>
+<p>查看某个任务由哪些子任务组成，各个子任务之间存在着什么样的依赖关系，该命令只会按正确的顺序列出所有的子任务而不会去真正执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./ 任务名 –dry-run（或 -m）</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>在命令行中为task设置参数</strong></li>
+</ul>
+<p>具体使用参考：《Android Gradle 权威指南》 P45</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew -P键名=值 其他参数</div></pre></td></tr></table></figure>
+<p><code>-P</code> 含义是为 <code>Project</code> 指定 “K-V” 格式的属性键值对，使用格式为“-PK=V”</p>
+<ul>
+<li><strong>刷新gradle依赖缓存</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle build --refresh-dependencies</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>输出项目中定义的目录：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew sourceSets</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>运行任务时，添加参数：查看具体细节</strong></li>
+</ul>
+<p>当我们执行 <code>所有task</code> 的时候我们都可以通过添加 <code>--profile</code> 参数生成一份执行报告，在<code>reports/profile</code> 中。这份报告是一个html文件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Groovy基础语法/" rel="next" title="Groovy基础语法">
+                <i class="fa fa-chevron-left"></i> Groovy基础语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Dart-Flutter/" rel="prev" title="Dart/Flutter">
+                Dart/Flutter <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number">1.</span> <span class="nav-text">Gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-脚本类型"><span class="nav-number">1.1.</span> <span class="nav-text">Gradle 脚本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Settings"><span class="nav-number">1.2.</span> <span class="nav-text">Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">1.3.</span> <span class="nav-text">Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle脚本块-之间的关系"><span class="nav-number">1.4.</span> <span class="nav-text">Gradle脚本块 之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#project"><span class="nav-number">1.5.</span> <span class="nav-text">project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle任务-task"><span class="nav-number">1.6.</span> <span class="nav-text">Gradle任务 - task</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#task创建"><span class="nav-number">1.6.1.</span> <span class="nav-text">task创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task访问"><span class="nav-number">1.6.2.</span> <span class="nav-text">task访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task描述"><span class="nav-number">1.6.3.</span> <span class="nav-text">task描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task依赖"><span class="nav-number">1.6.4.</span> <span class="nav-text">task依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务间的API调用"><span class="nav-number">1.6.5.</span> <span class="nav-text">任务间的API调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义属性"><span class="nav-number">1.6.6.</span> <span class="nav-text">自定义属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-lt-操作符"><span class="nav-number">1.6.7.</span> <span class="nav-text"><< 操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task的执行"><span class="nav-number">1.6.8.</span> <span class="nav-text">task的执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task的排序"><span class="nav-number">1.6.9.</span> <span class="nav-text">task的排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务的禁用"><span class="nav-number">1.6.10.</span> <span class="nav-text">任务的禁用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务的-onlyIf-断言"><span class="nav-number">1.6.11.</span> <span class="nav-text">任务的 onlyIf 断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task的任务规则"><span class="nav-number">1.6.12.</span> <span class="nav-text">task的任务规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包-代码块"><span class="nav-number">1.7.</span> <span class="nav-text">闭包 - 代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简单的实现、调用"><span class="nav-number">1.7.1.</span> <span class="nav-text">1. 简单的实现、调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-闭包委托"><span class="nav-number">1.7.2.</span> <span class="nav-text">2. 闭包委托</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle插件"><span class="nav-number">1.8.</span> <span class="nav-text">Gradle插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用方式"><span class="nav-number">1.8.1.</span> <span class="nav-text">应用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制方式"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">二进制方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本方式"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">脚本方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方插件应用方式"><span class="nav-number">1.8.2.</span> <span class="nav-text">第三方插件应用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义插件方式"><span class="nav-number">1.8.3.</span> <span class="nav-text">自定义插件方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地脚本方式"><span class="nav-number">1.8.3.1.</span> <span class="nav-text">本地脚本方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享jar包方式"><span class="nav-number">1.8.3.2.</span> <span class="nav-text">共享jar包方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖添加"><span class="nav-number">1.9.</span> <span class="nav-text">依赖添加</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖语句结构"><span class="nav-number">1.9.1.</span> <span class="nav-text">依赖语句结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SourceSet-源代码集合"><span class="nav-number">1.9.2.</span> <span class="nav-text">SourceSet 源代码集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项目构建"><span class="nav-number">1.10.</span> <span class="nav-text">多项目构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建发布"><span class="nav-number">1.11.</span> <span class="nav-text">构建发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Gradle-插件"><span class="nav-number">1.12.</span> <span class="nav-text">Android Gradle 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android插件分类"><span class="nav-number">1.12.1.</span> <span class="nav-text">Android插件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Gradle-渠道配置："><span class="nav-number">1.12.2.</span> <span class="nav-text">Android Gradle  渠道配置：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zipalign优化"><span class="nav-number">1.12.2.1.</span> <span class="nav-text">Zipalign优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混淆配置"><span class="nav-number">1.12.2.2.</span> <span class="nav-text">混淆配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#签名配置：SigningConfig"><span class="nav-number">1.12.2.3.</span> <span class="nav-text">签名配置：SigningConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认配置：defaultConfig"><span class="nav-number">1.12.2.4.</span> <span class="nav-text">默认配置：defaultConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多渠道配置：productFlavors"><span class="nav-number">1.12.2.5.</span> <span class="nav-text">多渠道配置：productFlavors</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级设置"><span class="nav-number">1.12.3.</span> <span class="nav-text">高级设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共享库"><span class="nav-number">1.12.3.1.</span> <span class="nav-text">共享库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量修改Apk名称"><span class="nav-number">1.12.3.2.</span> <span class="nav-text">批量修改Apk名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态生成版本信息"><span class="nav-number">1.12.3.3.</span> <span class="nav-text">动态生成版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方式1：单独文件获取各个参数"><span class="nav-number">1.12.3.3.1.</span> <span class="nav-text">方式1：单独文件获取各个参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方式2：建立属性文件动态获取"><span class="nav-number">1.12.3.3.2.</span> <span class="nav-text">方式2：建立属性文件动态获取</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏签名文件信息—–"><span class="nav-number">1.12.3.4.</span> <span class="nav-text">隐藏签名文件信息—–</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态配置-AndroidManifest-文件"><span class="nav-number">1.12.3.5.</span> <span class="nav-text">动态配置 AndroidManifest 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-BuildConfig"><span class="nav-number">1.12.3.6.</span> <span class="nav-text">自定义 BuildConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加自定义资源"><span class="nav-number">1.12.3.7.</span> <span class="nav-text">添加自定义资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java编译选项"><span class="nav-number">1.12.3.8.</span> <span class="nav-text">Java编译选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adb选项"><span class="nav-number">1.12.3.9.</span> <span class="nav-text">adb选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清理未使用资源"><span class="nav-number">1.12.3.10.</span> <span class="nav-text">清理未使用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#shrink-BuildTypes-构建类型"><span class="nav-number">1.12.3.10.1.</span> <span class="nav-text">shrink - BuildTypes 构建类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#resConfig-ProductFlavor-渠道资源处理"><span class="nav-number">1.12.3.10.2.</span> <span class="nav-text">resConfig - ProductFlavor 渠道资源处理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Gradle-多项目构建"><span class="nav-number">1.13.</span> <span class="nav-text">Android Gradle 多项目构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#库项目的配置"><span class="nav-number">1.13.1.</span> <span class="nav-text">库项目的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更改-库项目-的发布版本："><span class="nav-number">1.13.1.1.</span> <span class="nav-text">更改 库项目 的发布版本：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布到-Maven-库"><span class="nav-number">1.13.1.2.</span> <span class="nav-text">发布到 Maven 库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Gradle-Flavor-多渠道-构建要素"><span class="nav-number">1.14.</span> <span class="nav-text">Android Gradle Flavor 多渠道 构建要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多渠道构建的原理"><span class="nav-number">1.14.1.</span> <span class="nav-text">多渠道构建的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多渠道构建定制"><span class="nav-number">1.14.2.</span> <span class="nav-text">多渠道构建定制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#applicationId"><span class="nav-number">1.14.2.1.</span> <span class="nav-text">applicationId</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#minSdkVersion"><span class="nav-number">1.14.2.2.</span> <span class="nav-text">minSdkVersion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#targetSdkVersion"><span class="nav-number">1.14.2.3.</span> <span class="nav-text">targetSdkVersion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maxSdkVersion"><span class="nav-number">1.14.2.4.</span> <span class="nav-text">maxSdkVersion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#versionCode"><span class="nav-number">1.14.2.5.</span> <span class="nav-text">versionCode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#versionName"><span class="nav-number">1.14.2.6.</span> <span class="nav-text">versionName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#consumerProguardFiles"><span class="nav-number">1.14.2.7.</span> <span class="nav-text">consumerProguardFiles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#manifestPlaceHolders"><span class="nav-number">1.14.2.8.</span> <span class="nav-text">manifestPlaceHolders</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multiDexEnabled"><span class="nav-number">1.14.2.9.</span> <span class="nav-text">multiDexEnabled</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proguardFiles"><span class="nav-number">1.14.2.10.</span> <span class="nav-text">proguardFiles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proguardFiles-1"><span class="nav-number">1.14.2.11.</span> <span class="nav-text">proguardFiles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signingConfig"><span class="nav-number">1.14.2.12.</span> <span class="nav-text">signingConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#testApplicationId"><span class="nav-number">1.14.2.13.</span> <span class="nav-text">testApplicationId</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#testInstrumentationRunner"><span class="nav-number">1.14.2.14.</span> <span class="nav-text">testInstrumentationRunner</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useJack"><span class="nav-number">1.14.2.15.</span> <span class="nav-text">useJack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dimension"><span class="nav-number">1.14.2.16.</span> <span class="nav-text">dimension</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resConfig、resValue、"><span class="nav-number">1.14.2.17.</span> <span class="nav-text">resConfig、resValue、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ndk"><span class="nav-number">1.14.2.18.</span> <span class="nav-text">ndk</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Gradle-BuildType-的构建类型要素"><span class="nav-number">1.15.</span> <span class="nav-text">Android Gradle BuildType  的构建类型要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#applicationIdSuffix"><span class="nav-number">1.15.1.</span> <span class="nav-text">applicationIdSuffix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#debuggable"><span class="nav-number">1.15.2.</span> <span class="nav-text">debuggable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jniDebuggable"><span class="nav-number">1.15.3.</span> <span class="nav-text">jniDebuggable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minifyEnabled"><span class="nav-number">1.15.4.</span> <span class="nav-text">minifyEnabled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiDexEnabled-1"><span class="nav-number">1.15.5.</span> <span class="nav-text">multiDexEnabled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proguardFile"><span class="nav-number">1.15.6.</span> <span class="nav-text">proguardFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proguardFiles-2"><span class="nav-number">1.15.7.</span> <span class="nav-text">proguardFiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shrinkResources"><span class="nav-number">1.15.8.</span> <span class="nav-text">shrinkResources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#signingConfig-1"><span class="nav-number">1.15.9.</span> <span class="nav-text">signingConfig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zipalign优化"><span class="nav-number">1.15.10.</span> <span class="nav-text">zipalign优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高速多渠道构建"><span class="nav-number">1.16.</span> <span class="nav-text">高速多渠道构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令-直接、常用"><span class="nav-number">1.17.</span> <span class="nav-text">命令 - 直接、常用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">240.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

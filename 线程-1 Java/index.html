@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="线程总结-1 Java">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/threadpool.png">
-<meta property="og:updated_time" content="2018-07-23T07:31:02.003Z">
+<meta property="og:image" content="http://yannischeng.com/线程-1%20Java/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http://yannischeng.com/线程-1%20Java/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/threadpool.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程-1 Java">
 <meta name="twitter:description" content="线程总结-1 Java">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
+<meta name="twitter:image" content="http://yannischeng.com/线程-1%20Java/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png">
 
 
 
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-23T15:31:02+08:00">
-                2018-07-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -465,7 +465,7 @@
 <li>Thread类中的yield()可以让一个Running状态的线程转入(Runnable)状态。</li>
 </ul>
 <p>在Runnable状态的线程是处于被调度的线程，此时的调度顺序是不一定的，有可能刚刚处于Runnable状态的线程，会马上被再次调用。</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png" alt=""></p>
 <h2 id="基本控制方法："><a href="#基本控制方法：" class="headerlink" title="基本控制方法："></a>基本控制方法：</h2><blockquote>
 <p>参考：<a href="https://blog.csdn.net/maoyeqiu/article/details/50215123" target="_blank" rel="external">https://blog.csdn.net/maoyeqiu/article/details/50215123</a></p>
 </blockquote>
@@ -574,7 +574,7 @@
 <p>使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
 <p><strong>线程池</strong>使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务。</p>
 <h2 id="ThreadPoolExecutor类"><a href="#ThreadPoolExecutor类" class="headerlink" title="ThreadPoolExecutor类"></a>ThreadPoolExecutor类</h2><p>ThreadPoolExecutor继承关系：</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/threadpool.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/threadpool.png" alt=""></p>
 <h2 id="构造函数中的各个参数含义："><a href="#构造函数中的各个参数含义：" class="headerlink" title="构造函数中的各个参数含义："></a>构造函数中的各个参数含义：</h2><ul>
 <li><p><strong>1. int corePoolSize：</strong></p>
 <p>核心池的大小（例如：正式工人。就是线程池大小），这个参数跟后面讲述的线程池的实现原理有非常大的关系。默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；</p>
@@ -782,7 +782,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -793,7 +793,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -804,7 +804,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -887,7 +887,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

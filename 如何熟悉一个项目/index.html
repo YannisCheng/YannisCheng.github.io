@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阅读," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="如何熟悉一个项目">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何熟悉一个项目">
+<meta property="og:url" content="http://yannischeng.com/如何熟悉一个项目/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="如何熟悉一个项目">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yannischeng.com/如何熟悉一个项目/media/com%20+b.png">
+<meta property="og:image" content="http://yannischeng.com/如何熟悉一个项目/media/opt%20+f7.png">
+<meta property="og:image" content="http://yannischeng.com/如何熟悉一个项目/media/com%20+shift+f.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何熟悉一个项目">
+<meta name="twitter:description" content="如何熟悉一个项目">
+<meta name="twitter:image" content="http://yannischeng.com/如何熟悉一个项目/media/com%20+b.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/如何熟悉一个项目/"/>
+
+
+
+
+
+  <title>如何熟悉一个项目 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/如何熟悉一个项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何熟悉一个项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T12:17:53+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  989 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/如何熟悉一个项目/" title="如何熟悉一个项目">http://yannischeng.com/如何熟悉一个项目/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如何熟悉一个项目</p>
+<a id="more"></a>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><blockquote>
+<p><a href="https://blog.csdn.net/mengdonghui123456/article/details/50703991" target="_blank" rel="external">https://blog.csdn.net/mengdonghui123456/article/details/50703991</a><br><a href="https://blog.csdn.net/bigestt/article/details/80278452" target="_blank" rel="external">https://blog.csdn.net/bigestt/article/details/80278452</a></p>
+</blockquote>
+<p>拿到别人的程序第一反应：<strong><code>修改代码</code></strong>，导致的后果为：<strong><code>1.任务工期问题，时间成本大</code></strong>，<strong><code>2.不便于能力的提升</code></strong></p>
+<h2 id="接手方法：不变应万变。"><a href="#接手方法：不变应万变。" class="headerlink" title="接手方法：不变应万变。"></a>接手方法：不变应万变。</h2><ul>
+<li><p>项目维护有三宝：沟通 、文档 、代码跑。 </p>
+<p>目标：了解业务逻辑流。</p>
+</li>
+<li><p>重点攻击</p>
+</li>
+<li><p>工具：</p>
+<p>目的：提高接手的效率，节省时间。</p>
+</li>
+</ul>
+<h2 id="核心原则："><a href="#核心原则：" class="headerlink" title="核心原则："></a>核心原则：</h2><ul>
+<li>不要试图先搞懂整个项目； </li>
+<li>注重 <strong><code>有效提交</code></strong>，即：及时完成交给你的任务，以任务为第一，而不是自己的研究学习能力。</li>
+</ul>
+<h2 id="项目出活四部曲：跟、改、理、测要一起。"><a href="#项目出活四部曲：跟、改、理、测要一起。" class="headerlink" title="项目出活四部曲：跟、改、理、测要一起。"></a>项目出活四部曲：跟、改、理、测要一起。</h2><ul>
+<li><p>跟：抓住一个功能点，深入的调试跟踪流程，分析代码直到弄明白为止。</p>
+</li>
+<li><p>改：修改源代码，编译运行，看修改前后有什么变化，这是感知代码用途的最佳途径。</p>
+</li>
+<li><p>理：尝试弄清整个项目的业务逻辑。</p>
+</li>
+<li><p>测：熟悉业务逻辑后，清库测试，测验是否符合自己所想。</p>
+</li>
+</ul>
+<h2 id="精进"><a href="#精进" class="headerlink" title="精进"></a>精进</h2><p>一个项目一般有 <code>前端</code> 与 <code>后端</code> 构成，其核心功能无非是由：<br> <strong><code>增、删、该、查</code></strong> 组成，然后通过 <strong><code>通信、运算、人机交互</code></strong> 将整个流程串联。</p>
+<p> 与此同时要注意项目的：<strong><code>规模、性能、稳定性、流程</code></strong>等方面上的问题。 </p>
+<h2 id="对于老系统"><a href="#对于老系统" class="headerlink" title="对于老系统"></a>对于老系统</h2><ul>
+<li>老系统有许多宝藏，里面有很多你可以借鉴和学习的东西。 </li>
+<li>注意老系统潜在的坑，一个看起来毫无关联的代码改了之后可能引发地震。</li>
+<li>有些看着不爽的代码其实都有道理。</li>
+<li>看不懂的代码不要动。</li>
+<li>在力所能及的范围内让老系统变得更美好。</li>
+</ul>
+<h1 id="一般"><a href="#一般" class="headerlink" title="一般"></a>一般</h1><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><ul>
+<li>知道当前程序是什么、有何存在意义、功能有哪些、功能正确性、功能的完整性。</li>
+<li>通过断点、日志调试。</li>
+</ul>
+<h2 id="掌握结构"><a href="#掌握结构" class="headerlink" title="掌握结构"></a>掌握结构</h2><ul>
+<li><strong><code>先文档（需求文档、原型图、UI图、接口文档）</code></strong> 再 <strong><code>read code</code></strong>。</li>
+<li><strong><code>先整体（宏观、流程）</code></strong> 再 <strong><code>细节</code></strong>。</li>
+<li>通过工具辅助</li>
+</ul>
+<p>熟悉项目如何分层、分模块，每一层、每个模块的实现</p>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p>集中且投入大量时间<br>遇到问题：多问，与周边同是交流<br>修改、bug</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>项目 <strong><code>难点</code></strong>、<strong><code>遗留问题</code></strong>、<strong><code>存在的坑</code></strong></p>
+<h1 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h1><blockquote>
+<p><a href="http://www.androidchina.net/7656.html" target="_blank" rel="external">http://www.androidchina.net/7656.html</a></p>
+</blockquote>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>完整的项目一般会有比较严谨的 <strong><code>分包</code></strong>，每个包一个 <strong><code>功能</code></strong>，包下又会分子包，将<code>视图</code>、<code>实体</code>、<code>控制</code>等等部分分开。<br>如此可以从：</p>
+<ul>
+<li><strong><code>实体类</code></strong> 和 <strong><code>工具类</code></strong> 看起：实体类没有逻辑比较好懂，工具类看不懂自己调用试试也差不多知道了。</li>
+<li>然后看 <strong><code>控制层</code></strong>，控制层方法功能一般比较单纯，方法逻辑先放着不管，<strong><code>搞懂功能</code></strong> 再说。</li>
+<li>然后看 <strong><code>界面</code></strong>，基本上就通了。</li>
+<li>比较重要的是边看要边加注释，越详细越好。细到每个变量是做什么的，每个 <code>if else</code> 分支是在什么情况下触发的，看懂的都要注释，以后看也方便。</li>
+</ul>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="1-AndroidManifest-xml-文件"><a href="#1-AndroidManifest-xml-文件" class="headerlink" title="1.AndroidManifest.xml 文件"></a>1.AndroidManifest.xml 文件</h3><p><strong><code>AndroidManifest.xml</code></strong> 文件，App入口，包含了<code>权限</code>、<code>Activity</code>、<code>Service</code>、<code>广播</code>、<code>第三方继承配置</code>、<code>Application配置</code>。</p>
+<h3 id="2-定位当前-Activity"><a href="#2-定位当前-Activity" class="headerlink" title="2.定位当前 Activity"></a>2.定位当前 Activity</h3><p>运行App时，定位当前 <strong><code>Activity</code></strong>，通过工具 <code>Top Activity</code>。</p>
+<h3 id="3-定位资源id所在文件"><a href="#3-定位资源id所在文件" class="headerlink" title="3.定位资源id所在文件"></a>3.定位资源id所在文件</h3><p>使用工具 <code>uiautomatorviewer</code>，通过此工具可以查看到所需的 <code>布局的id值</code>，然后通过 <code>全局搜索</code> 查找到在具体布局中的位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Users/当期用户名/Library/Android/sdk/tools/bin</div></pre></td></tr></table></figure>
+<p>运行以下语句进行工具调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Users/当期用户名/Library/Android/sdk/tools/bin/uiautomatorviewer; exit</div></pre></td></tr></table></figure>
+<h3 id="4-build-gradle-文件"><a href="#4-build-gradle-文件" class="headerlink" title="4.build.gradle 文件"></a>4.build.gradle 文件</h3><p>打包、发版、部署流程</p>
+<h3 id="5-变量修改"><a href="#5-变量修改" class="headerlink" title="5.变量修改"></a>5.变量修改</h3><ul>
+<li>查看一个 <code>变量</code> 在 <code>整个项目</code> 中的使用。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com + b == opt + F7 == com + shift + F</div></pre></td></tr></table></figure>
+<p><img src="media/com%20+b.png" alt="com +b"></p>
+<p><img src="media/opt%20+f7.png" alt="opt +f7"></p>
+<p><img src="media/com%20+shift+f.png" alt="com +shift+f"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Kotlin与Java-递进篇/" rel="next" title="Kotlin与Java-递进篇">
+                <i class="fa fa-chevron-left"></i> Kotlin与Java-递进篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/记一次翻车-个人博客图床问题/" rel="prev" title="记一次翻车-个人博客图床问题">
+                记一次翻车-个人博客图床问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总结："><span class="nav-number">1.</span> <span class="nav-text">总结：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接手方法：不变应万变。"><span class="nav-number">1.1.</span> <span class="nav-text">接手方法：不变应万变。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心原则："><span class="nav-number">1.2.</span> <span class="nav-text">核心原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目出活四部曲：跟、改、理、测要一起。"><span class="nav-number">1.3.</span> <span class="nav-text">项目出活四部曲：跟、改、理、测要一起。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#精进"><span class="nav-number">1.4.</span> <span class="nav-text">精进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于老系统"><span class="nav-number">1.5.</span> <span class="nav-text">对于老系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般"><span class="nav-number">2.</span> <span class="nav-text">一般</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行项目"><span class="nav-number">2.1.</span> <span class="nav-text">运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#掌握结构"><span class="nav-number">2.2.</span> <span class="nav-text">掌握结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#细节"><span class="nav-number">2.3.</span> <span class="nav-text">细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">2.4.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android"><span class="nav-number">3.</span> <span class="nav-text">Android</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理论"><span class="nav-number">3.1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">3.2.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-AndroidManifest-xml-文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.AndroidManifest.xml 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-定位当前-Activity"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.定位当前 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-定位资源id所在文件"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.定位资源id所在文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-build-gradle-文件"><span class="nav-number">3.2.4.</span> <span class="nav-text">4.build.gradle 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-变量修改"><span class="nav-number">3.2.5.</span> <span class="nav-text">5.变量修改</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">240.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

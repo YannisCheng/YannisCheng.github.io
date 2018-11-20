@@ -91,16 +91,16 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="参考文章：https://www.jianshu.com/p/3a372af38103参考文章：https://www.jianshu.com/p/29a730795294android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms部分图片来源：ht">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/4985212-4eb4addccb3fe853.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/1806858-265d374ad9bb425f.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png">
-<meta property="og:updated_time" content="2018-07-08T08:22:05.103Z">
+<meta property="og:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png">
+<meta property="og:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/4985212-4eb4addccb3fe853.png">
+<meta property="og:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/1806858-265d374ad9bb425f.png">
+<meta property="og:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png">
+<meta property="og:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android BLE 蓝牙开发">
 <meta name="twitter:description" content="参考文章：https://www.jianshu.com/p/3a372af38103参考文章：https://www.jianshu.com/p/29a730795294android developers：https://developer.android.google.cn/guide/topics/connectivity/bluetooth-le.html#terms部分图片来源：ht">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png">
+<meta name="twitter:image" content="http://yannischeng.com/Android%20BLE%20蓝牙开发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png">
 
 
 
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T16:22:05+08:00">
-                2018-07-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -449,7 +449,7 @@
 <h1 id="蓝牙唯一身份标识"><a href="#蓝牙唯一身份标识" class="headerlink" title="蓝牙唯一身份标识"></a>蓝牙唯一身份标识</h1><ul>
 <li><strong>MAC地址</strong>：这个地址是唯一的，就像网络上的<strong>IP地址</strong></li>
 </ul>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-06%2009.29.46.png" alt=""></p>
 <p><strong>UUID（Universally Unique Identifier）</strong>：可以把它理解为是IP地址中的<strong>端口号</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">更多UUID接口参考：https://www.jianshu.com/p/3de46c75f8ce，</div><div class="line">官网：https://www.bluetooth.com/zh-cn/specifications/assigned-numbers/service-discovery</div></pre></td></tr></table></figure>
 <p><strong>MAC + UUID = IP地址 + 端口号</strong>。这两者合起来就是蓝牙的唯一身份标识。BLE扫描的过程，设备会生成随机地址。根据随机地址也能进行连接。</p>
@@ -460,9 +460,9 @@
 <li>与Google Beacons等接近传感器进行互动，为用户提供基于当前位置的定制体验。</li>
 </ul>
 <p>传统蓝牙可以用于数据量比较大的传输，如语音，音乐，较高数据量传输等，但是比较耗电，低功耗蓝牙这样应用于实时性要求比较高，功耗比较低，但是数据速率比较低的产品，如遥控类的，如鼠标，键盘，遥控鼠标(Air Mouse)，传感设备的数据发送，如心跳带，血压计，温度传感器等。</p>
-<h1 id="关键术语（Key-Terms）和-概念（Concepts）"><a href="#关键术语（Key-Terms）和-概念（Concepts）" class="headerlink" title="关键术语（Key Terms）和 概念（Concepts）"></a>关键术语（Key Terms）和 概念（Concepts）</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/4985212-4eb4addccb3fe853.png" alt=""></p>
+<h1 id="关键术语（Key-Terms）和-概念（Concepts）"><a href="#关键术语（Key-Terms）和-概念（Concepts）" class="headerlink" title="关键术语（Key Terms）和 概念（Concepts）"></a>关键术语（Key Terms）和 概念（Concepts）</h1><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/4985212-4eb4addccb3fe853.png" alt=""></p>
 <p>GATT图示1</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/1806858-265d374ad9bb425f.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/1806858-265d374ad9bb425f.png" alt=""></p>
 <p>GATT图示2</p>
 <ul>
 <li><p><strong>通用属性配置文件 Generic Attribute Profile（GATT）</strong>：GATT配置文件是通过BLE链接发送和接收被称为“属性”的短小数据的通用规范。目前所有的低能耗应用程序都基于GATT。</p>
@@ -493,7 +493,7 @@
 <li><strong>中央（Central）</strong> 与 <strong>周边（Peripheral）</strong>。这适用于BLE连接本身。处于中心角色的设备扫描，寻找广告，并且在外围角色中的设备进行广告。</li>
 <li><strong>GATT服务器</strong> 与 <strong>GATT客户端</strong>。这决定了两台设备在建立连接后如何相互通话。</li>
 </ul>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.10.05.png" alt=""></p>
 <p>为了理解这个区别，假设你有一个Android手机和一个BLE设备的活动追踪器。 手机支持中心角色; 活动跟踪器支持外设角色（建立一个BLE连接，你需要每两个事物中只有一个支持外围设备的人不能彼此交谈，也不能只支持两个事物）。</p>
 <p>一旦手机和活动追踪器建立了连接，他们就开始将GATT元数据转移到另一个。根据他们传输的数据的种类，其中一个或另一个可能充当服务器。例如，如果活动跟踪器想要将传感器数据报告给电话，则活动跟踪器可以充当服务器。如果活动跟踪器想要从手机接收更新，那么手机作为服务器可能是有意义的。</p>
 <p>在本文档中使用的示例中，Android应用程序（在Android设备上运行）是GATT客户端。该应用程序从GATT服务器获取数据，GATT服务器是支持心率档案的BLE心率监测器。但你也可以设计你的Android应用程序来扮演GATT服务器的角色。有关更多信息，请参阅BluetoothGattServer。</p>
@@ -536,7 +536,7 @@
 <p>以下是<strong>BluetoothAdapter.LeScanCallback</strong>的一个实现，它是用于<strong>传递BLE扫描结果</strong>的接口🤔：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private LeDeviceListAdapter mLeDeviceListAdapter;</div><div class="line">...</div><div class="line">// Device scan callback.</div><div class="line">private BluetoothAdapter.LeScanCallback mLeScanCallback =</div><div class="line">        new BluetoothAdapter.LeScanCallback() &#123;</div><div class="line">    @Override</div><div class="line">    public void onLeScan(final BluetoothDevice device, int rssi,</div><div class="line">            byte[] scanRecord) &#123;</div><div class="line">        runOnUiThread(new Runnable() &#123;</div><div class="line">           @Override</div><div class="line">           public void run() &#123;</div><div class="line">               mLeDeviceListAdapter.addDevice(device);</div><div class="line">               mLeDeviceListAdapter.notifyDataSetChanged();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line">   &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><strong>注意</strong>：<br>您<strong>只能</strong>扫描蓝牙LE设备或扫描经典蓝牙设备，如蓝牙中所述。您<strong>无法同时</strong>扫描Bluetooth LE和传统设备。</p>
-<h1 id="连接到GATT服务器（发送数据的BLE设备）"><a href="#连接到GATT服务器（发送数据的BLE设备）" class="headerlink" title="连接到GATT服务器（发送数据的BLE设备）"></a>连接到GATT服务器（发送数据的BLE设备）</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png" alt=""></p>
+<h1 id="连接到GATT服务器（发送数据的BLE设备）"><a href="#连接到GATT服务器（发送数据的BLE设备）" class="headerlink" title="连接到GATT服务器（发送数据的BLE设备）"></a>连接到GATT服务器（发送数据的BLE设备）</h1><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-02%2010.11.50.png" alt=""></p>
 <p>与BLE设备交互的<strong>第一步是连接到它</strong>，更具体地说，连接到设备上的GATT服务器。 要连接到BLE设备上的GATT服务器，请使用<strong>connectGatt（）</strong>方法。 此方法有三个参数：一个<strong>Context</strong>对象，<strong>autoConnect</strong>（布尔值，指示<strong>是否</strong>在BLE设备<strong>变为可用时自动连接</strong>）以及对<strong>BluetoothGattCallback</strong>的引用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mBluetoothGatt = device.connectGatt(this, false, mGattCallback);</div></pre></td></tr></table></figure>
 <p>这将连接到由BLE设备托管的GATT服务器，并返回一个BluetoothGatt实例，然后您可以使用该实例来执行GATT客户端操作。 调用者（Android应用程序）是GATT客户端。 BluetoothGattCallback用于向客户端传递结果，例如连接状态，以及任何其他GATT客户端操作</p>
@@ -683,7 +683,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +694,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -705,7 +705,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -788,7 +788,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

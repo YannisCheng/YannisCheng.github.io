@@ -91,17 +91,17 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg">
-<meta property="og:updated_time" content="2018-08-08T05:15:16.786Z">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png">
+<meta property="og:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/80c7346c554563d5738537a353f2bc0b.jpg">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-并发">
 <meta name="twitter:description" content="JVM理解 —— 线程资源同步和线程之间的交互机制">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
+<meta name="twitter:image" content="http://yannischeng.com/JVM理解-并发/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 
 
 
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-08T13:15:16+08:00">
-                2018-08-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -445,11 +445,11 @@
       
         <p>JVM理解 —— 线程资源同步和线程之间的交互机制</p>
 <a id="more"></a>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
 <p>Java程序多采用多线程的方式来支撑大量的并发请求处理，程序在多线程方式执行的情况下，复杂程度远高于单线程串行执行的程序。</p>
 <p>多线程程序带来的最明显的问题就是 <strong>线程之间公共资源的竞争</strong> 与 <strong>线程之间的交互</strong>。</p>
 <hr>
-<h1 id="物理计算机的并发"><a href="#物理计算机的并发" class="headerlink" title="物理计算机的并发"></a>物理计算机的并发</h1><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png" alt=""></p>
+<h1 id="物理计算机的并发"><a href="#物理计算机的并发" class="headerlink" title="物理计算机的并发"></a>物理计算机的并发</h1><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2009.09.50.png" alt=""></p>
 <h2 id="高速缓存-Cache"><a href="#高速缓存-Cache" class="headerlink" title="高速缓存(Cache)"></a>高速缓存(Cache)</h2><p><strong>释义：</strong></p>
 <p>由于计算机的存储设备与处理器的 <strong>运算速度</strong> 有着几个数量级的差距，所以需要加入一层 <strong>读写速度尽可能接近处理器运算速度的高速缓存</strong>，来作为 <strong>内存与操作系统之间的缓冲</strong>。</p>
 <p><strong>工作过程：</strong></p>
@@ -477,8 +477,8 @@
 <li><p>线程间变量 <strong>值的传递</strong> 均需要通过 <strong>主内存</strong> 来完成。</p>
 </li>
 </ul>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png" alt=""></p>
-<h2 id="内存间的交互操作"><a href="#内存间的交互操作" class="headerlink" title="内存间的交互操作"></a>内存间的交互操作</h2><h3 id="8中操作"><a href="#8中操作" class="headerlink" title="8中操作"></a>8中操作</h3><p>主内存与工作内存间的具体交互，即：一个变量如何从主内存被拷贝到工作内存，又如何从工作内存被同步至主内存，是通过一下 <strong>8种</strong> 操作来完成的，虚拟机实现时必须保证下面提及的每一种操作都是 <strong>原子性、不可再分的</strong>。</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%2010.00.26.png" alt=""></p>
+<h2 id="内存间的交互操作"><a href="#内存间的交互操作" class="headerlink" title="内存间的交互操作"></a>内存间的交互操作</h2><h3 id="8种操作"><a href="#8种操作" class="headerlink" title="8种操作"></a>8种操作</h3><p>主内存与工作内存间的具体交互，即：一个变量如何从主内存被拷贝到工作内存，又如何从工作内存被同步至主内存，是通过一下 <strong>8种</strong> 操作来完成的，虚拟机实现时必须保证下面提及的每一种操作都是 <strong>原子性、不可再分的</strong>。</p>
 <ul>
 <li><p><strong>lock（锁定）</strong></p>
 <ul>
@@ -609,7 +609,7 @@
 <li><code>notifyAll()</code> 是通知 <code>wait()</code> 此Object的所有线程</li>
 </ul>
 <h1 id="线程状态及解析"><a href="#线程状态及解析" class="headerlink" title="线程状态及解析"></a>线程状态及解析</h1><p>描述 <strong>线程的状态</strong> 是用一个 <strong>枚举类型</strong> 来描述的，严格来讲一个线程有 <strong>6种状态</strong> ，分别是 <strong>6个枚举值</strong>：</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2010.37.55.png" alt=""></p>
 <ul>
 <li><strong>NEW：</strong> <strong>尚未开始</strong>的线程处于此状态</li>
 <li><strong>RUNNABLE：</strong>在Java虚拟机中 <strong>执行的线程</strong> 处于此状态</li>
@@ -622,9 +622,9 @@
 <blockquote>
 <p>参考：<a href="https://www.cnblogs.com/kevin-yuan/p/4112434.html" target="_blank" rel="external">https://www.cnblogs.com/kevin-yuan/p/4112434.html</a><br><a href="https://www.cnblogs.com/trust-freedom/p/6606594.html" target="_blank" rel="external">https://www.cnblogs.com/trust-freedom/p/6606594.html</a><br><a href="http://www.cnblogs.com/ELMND/p/4737580.html" target="_blank" rel="external">http://www.cnblogs.com/ELMND/p/4737580.html</a></p>
 </blockquote>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2013.43.28.png" alt=""></p>
 <p>虚拟机在并发运行时数据区域的情况（图片来自网络）</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/80c7346c554563d5738537a353f2bc0b.jpg" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/80c7346c554563d5738537a353f2bc0b.jpg" alt=""></p>
 
       
     </div>
@@ -741,7 +741,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -752,7 +752,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -763,7 +763,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -812,7 +812,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理计算机的并发"><span class="nav-number">1.</span> <span class="nav-text">物理计算机的并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高速缓存-Cache"><span class="nav-number">1.1.</span> <span class="nav-text">高速缓存(Cache)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存一致性"><span class="nav-number">1.2.</span> <span class="nav-text">缓存一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乱序执行优化"><span class="nav-number">1.3.</span> <span class="nav-text">乱序执行优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主内存-与-工作内存"><span class="nav-number">2.1.</span> <span class="nav-text">主内存 与 工作内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#各个内存中数据的处理"><span class="nav-number">2.1.1.</span> <span class="nav-text">各个内存中数据的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主内存"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">主内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程工作内存"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">线程工作内存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存间的交互操作"><span class="nav-number">2.2.</span> <span class="nav-text">内存间的交互操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8中操作"><span class="nav-number">2.2.1.</span> <span class="nav-text">8中操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的在内存间的移动"><span class="nav-number">2.2.2.</span> <span class="nav-text">变量的在内存间的移动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile型变量的特殊规则"><span class="nav-number">2.3.</span> <span class="nav-text">Volatile型变量的特殊规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.3.1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则1-刷新"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">规则1 - 刷新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则2-同步"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">规则2 - 同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则3-禁止指令重排序"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">规则3 - 禁止指令重排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-可见性"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">volatile - 可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作内存非一致性"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">工作内存非一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile变量并发安全问题"><span class="nav-number">2.3.1.6.</span> <span class="nav-text">volatile变量并发安全问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-禁止指令重排序优化"><span class="nav-number">2.3.1.7.</span> <span class="nav-text">volatile - 禁止指令重排序优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内存模型3个特征"><span class="nav-number">2.4.</span> <span class="nav-text">Java内存模型3个特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">2.4.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性"><span class="nav-number">2.4.2.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序性"><span class="nav-number">2.4.3.</span> <span class="nav-text">有序性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先行发生原则"><span class="nav-number">2.5.</span> <span class="nav-text">先行发生原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型中“天然”的-8种先行发生原则"><span class="nav-number">2.5.1.</span> <span class="nav-text">Java内存模型中“天然”的 8种先行发生原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程交互机制"><span class="nav-number">3.</span> <span class="nav-text">线程交互机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态及解析"><span class="nav-number">4.</span> <span class="nav-text">线程状态及解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理计算机的并发"><span class="nav-number">1.</span> <span class="nav-text">物理计算机的并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高速缓存-Cache"><span class="nav-number">1.1.</span> <span class="nav-text">高速缓存(Cache)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存一致性"><span class="nav-number">1.2.</span> <span class="nav-text">缓存一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乱序执行优化"><span class="nav-number">1.3.</span> <span class="nav-text">乱序执行优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主内存-与-工作内存"><span class="nav-number">2.1.</span> <span class="nav-text">主内存 与 工作内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#各个内存中数据的处理"><span class="nav-number">2.1.1.</span> <span class="nav-text">各个内存中数据的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主内存"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">主内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程工作内存"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">线程工作内存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存间的交互操作"><span class="nav-number">2.2.</span> <span class="nav-text">内存间的交互操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8种操作"><span class="nav-number">2.2.1.</span> <span class="nav-text">8种操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的在内存间的移动"><span class="nav-number">2.2.2.</span> <span class="nav-text">变量的在内存间的移动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile型变量的特殊规则"><span class="nav-number">2.3.</span> <span class="nav-text">Volatile型变量的特殊规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.3.1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则1-刷新"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">规则1 - 刷新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则2-同步"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">规则2 - 同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则3-禁止指令重排序"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">规则3 - 禁止指令重排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-可见性"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">volatile - 可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作内存非一致性"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">工作内存非一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile变量并发安全问题"><span class="nav-number">2.3.1.6.</span> <span class="nav-text">volatile变量并发安全问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile-禁止指令重排序优化"><span class="nav-number">2.3.1.7.</span> <span class="nav-text">volatile - 禁止指令重排序优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内存模型3个特征"><span class="nav-number">2.4.</span> <span class="nav-text">Java内存模型3个特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">2.4.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性"><span class="nav-number">2.4.2.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序性"><span class="nav-number">2.4.3.</span> <span class="nav-text">有序性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先行发生原则"><span class="nav-number">2.5.</span> <span class="nav-text">先行发生原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型中“天然”的-8种先行发生原则"><span class="nav-number">2.5.1.</span> <span class="nav-text">Java内存模型中“天然”的 8种先行发生原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程交互机制"><span class="nav-number">3.</span> <span class="nav-text">线程交互机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态及解析"><span class="nav-number">4.</span> <span class="nav-text">线程状态及解析</span></a></li></ol></div>
             
 
           </div>
@@ -846,7 +846,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

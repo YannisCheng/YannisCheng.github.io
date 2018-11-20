@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="博客," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记一次翻车-个人博客图床问题">
+<meta name="keywords" content="博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次翻车-个人博客图床问题">
+<meta property="og:url" content="http://yannischeng.com/记一次翻车-个人博客图床问题/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="记一次翻车-个人博客图床问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png">
+<meta property="og:updated_time" content="2018-11-20T12:15:59.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次翻车-个人博客图床问题">
+<meta name="twitter:description" content="记一次翻车-个人博客图床问题">
+<meta name="twitter:image" content="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/记一次翻车-个人博客图床问题/"/>
+
+
+
+
+
+  <title>记一次翻车-个人博客图床问题 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/记一次翻车-个人博客图床问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记一次翻车-个人博客图床问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T17:50:47+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:15:59+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客/" itemprop="url" rel="index">
+                    <span itemprop="name">博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,230 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/博客/" rel="tag"># 博客</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/记一次翻车-个人博客图床问题/" title="记一次翻车-个人博客图床问题">http://yannischeng.com/记一次翻车-个人博客图床问题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记一次翻车-个人博客图床问题</p>
+<a id="more"></a>
+<blockquote>
+<p>参考：<a href="http://robotkang.cc/2018/11/pic/" target="_blank" rel="external">http://robotkang.cc/2018/11/pic/</a></p>
+</blockquote>
+<p><strong>问题起因</strong></p>
+<p>因为 <code>七牛</code> 关闭 <code>临时域名</code> 导致 <code>个人博客中的图片</code> 不能显示。</p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>添加自己的 <code>个人真实域名</code>，遇到的问题：按照<code>七牛</code>官网提示需要进行<code>公安网络备份</code>。但是由于备份需要填写的信息太多，且我仅仅是通过这个域名作为我的个人博客地址，并没有其他用途，导致有些字段信息根本就无法填写，因此：放弃。</li>
+<li>在 <code>七牛</code> 官网在创建一个临时的 <code>bucket</code> ，将原有的 <code>bucket</code> 中的图片 <code>copy</code> 到新 <code>bucket</code> 中。因为：原 <code>bucket</code> 中的图片由于 <code>临时域名</code> 禁止访问问题，导致不能对其中的图片进行一些列操作，所以通过此方式在30天内（新创建的 <code>bucket</code> 30内有效），在对数据做进一步处理。</li>
+</ul>
+<p><strong>走上正道</strong></p>
+<p>本来想着直接将原 <code>bucket</code> 中的图片数据直接保存至本地，但是并不知道 <code>临时域名</code> 被撤销，导致无法执行任何操作，所以没有成功。</p>
+<p>于是打电话咨询了 <code>七牛</code> 的 <strong>技术支持</strong>，经过指导，问题得以解决。</p>
+<hr>
+<h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><h2 id="工具-qshell"><a href="#工具-qshell" class="headerlink" title="工具 - qshell"></a>工具 - qshell</h2><ul>
+<li><p>下载 <a href="https://developer.qiniu.com/kodo/tools/1302/qshell" target="_blank" rel="external">qshell</a> ，然后解压。</p>
+</li>
+<li><p>如果是Mac用户，将 <code>qshell_darwin_x64</code> 重命名为： <code>qshell</code> ，这是一个命令行工具。</p>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>关于 <code>qshell</code> 全局路径的配置，在 <code>当前用户名</code> 的<code>配置文件</code> 中（bash：.bash_profile 文件，zsh：.zshrc 文件）：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$&#123;PATH&#125;:/Users/当前用户名/qshell存放路径</div></pre></td></tr></table></figure>
+<ul>
+<li>添加账号：<strong><code>ak</code></strong> 与 <strong><code>sk</code></strong> 可以在 <strong><code>控制台</code></strong> 右上角的 <strong><code>个人面板</code></strong> -&gt; <strong><code>密钥管理</code></strong> 里找到</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qshell account ak参数 sk参数 bucket名称</div></pre></td></tr></table></figure>
+<h2 id="名词解释-bucket"><a href="#名词解释-bucket" class="headerlink" title="名词解释 - bucket"></a>名词解释 - bucket</h2><p><code>bucket</code> 就是你自己创建的<code>存储空间的名字</code></p>
+<p><img src="http://pihd0wazc.bkt.clouddn.com/%E4%B8%83%E7%89%9B-bucket.png" alt=""></p>
+<h2 id="copy-文件"><a href="#copy-文件" class="headerlink" title="copy 文件"></a>copy 文件</h2><ul>
+<li>需要 <code>-i</code> 指定携带需要同步的 <code>文件列表</code>，列表可以通过 <a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="external">listbucket</a> 得到，自定义一个存储输出的文件 <code>list.txt</code>：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qshell listbucket 原bucket名 -o list.txt</div></pre></td></tr></table></figure>
+<ul>
+<li>用 <code>awk</code> 获取 <code>文件列表 list.txt</code> 结果的第一列，结果存储到自定义文件 <code>list_final.txt</code> 中：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat list.txt | awk &apos;&#123;print $1&#125;&apos; &gt;list_final.txt</div></pre></td></tr></table></figure>
+<ul>
+<li>通过 <a href="https://github.com/qiniu/qshell/blob/master/docs/batchcopy.md" target="_blank" rel="external">batchcopy</a> 进行文件复制，复制到新<code>bucket</code>的文件和原<code>bucket</code>文件名一致</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">qshell batchcopy 原bucket名 新bucket名 -i list_final.txt</div><div class="line">``` </div><div class="line"></div><div class="line"></div><div class="line">## 批量文件下载</div><div class="line"></div><div class="line">**注意：**</div><div class="line">此操作是在 **可用的bucket** 中进行的操作，如果你当前的 `bucket的测试域名` **已经过期**，那么你需要先执行 `copy 文件` 步骤</div><div class="line"></div><div class="line">- 创建 `自定义 batch_download.conf` 文件，因为：</div><div class="line"> </div><div class="line"> `qshell` 虽然提供了  [qdownload](https://github.com/qiniu/qshell/blob/master/docs/qdownload.md)  可以批量下载文件，不过官网给出的 `api 文档`特别标注了，这个接口默认是要收费的：配置【该功能默认需要计费，如果希望享受10G的免费流量，请自行设置 `cdn_domain` 参数，如不设置，需支付源站流量费用，无法减免！！！】</div></pre></td></tr></table></figure>
+<p>{<br>“dest_dir” : “本地数据备份路径，为全路径”,<br>“bucket” : “空间名称”,<br>“prefix” : “”,<br>“suffixes” : “”,<br>“cdn_domain” : “设置下载的CDN域名，默认为空表示从存储源站下载”,<br>“referer” : “”,<br>“log_file” : “download.log”,<br>“log_level” : “info”,<br>“log_rotate” : 1,<br>“log_stdout” : false<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 通过 [qdownload](https://github.com/qiniu/qshell/blob/master/docs/qdownload.md) 执行 `批量下载` ：</div></pre></td></tr></table></figure></p>
+<p>qshell qdownload batch_download.conf -c 10<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 转存 腾讯cos</div><div class="line"></div><div class="line">在 `腾讯云` 官网创建 `bucket` ，注意两个关键设置：</div><div class="line"> </div><div class="line">- 存储桶（bucket）**访问权限**</div><div class="line"></div><div class="line">	访问权限应设置为 **`公有读私有写`**。很好理解，我们是要用COS来做图床的，必然是需要获取文件的直接链接才行，所以不能在读取图片的时候设置权限。</div><div class="line"></div><div class="line">- **防盗链设置**</div><div class="line"></div><div class="line"> 如果被盗链会导致你的免费额度可能会快用尽，因此防盗链也是需要考虑的（注意白名单的设置）。</div><div class="line"> </div><div class="line">	**注意：**</div><div class="line">因为开启了防盗链这设置，因此当你在本地写博客的时候会出现图片无法预览的情况。因为防盗链机制只允许白名单中指定域名或IP访问。也就是说只能在博客中看</div><div class="line"></div><div class="line"></div><div class="line">## 批量替换 链接域名</div><div class="line"></div><div class="line">这一步是为了处理 `七牛` 原有图片域名转换为 `cos` 域名</div><div class="line"></div><div class="line">如果你用的是 `hexo` 搭建的博客，那么进入 `source/_post` 文件，然后执行：</div></pre></td></tr></table></figure></p>
+<p>sed -i ‘’ ‘s#<a href="http://oy991qm3u.bkt.clouddn.com#(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com#g" target="_blank" rel="external">http://oy991qm3u.bkt.clouddn.com#(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com#g</a>‘ *.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">为什么要在命令行 `-i` 与 `&apos;s` 之间添加 `&apos;&apos;`，因为如果你使用的是 `macOS` 那么在 `sed` 命令采用 `-i` 选项时需要设置 你在替换时设定一个备份文件以避免数据丢失——这个选项在 `Linux` 中是可选的，但在 `macOS` 中是必选的，如果没有 `&apos;&apos;` 一般会提示错误：</div></pre></td></tr></table></figure></p>
+<p>sed: 1: “ “: ……<br>```</p>
+<blockquote>
+<p>参考：<a href="https://stackoverflow.com/questions/29081799/sed-1-invalid-command-code-f" target="_blank" rel="external">https://stackoverflow.com/questions/29081799/sed-1-invalid-command-code-f</a><br>参考：<a href="https://www.logcg.com/archives/3142.html" target="_blank" rel="external">https://www.logcg.com/archives/3142.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/如何熟悉一个项目/" rel="next" title="如何熟悉一个项目">
+                <i class="fa fa-chevron-left"></i> 如何熟悉一个项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#解决过程"><span class="nav-number">1.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具-qshell"><span class="nav-number">1.1.</span> <span class="nav-text">工具 - qshell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释-bucket"><span class="nav-number">1.3.</span> <span class="nav-text">名词解释 - bucket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy-文件"><span class="nav-number">1.4.</span> <span class="nav-text">copy 文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">240.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

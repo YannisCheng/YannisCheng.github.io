@@ -91,14 +91,14 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="《Head First 设计模式》">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png">
-<meta property="og:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png">
-<meta property="og:updated_time" content="2018-07-08T08:13:52.669Z">
+<meta property="og:image" content="http://yannischeng.com/设计模式%20-%20抽象工厂模式/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
+<meta property="og:image" content="http://yannischeng.com/设计模式%20-%20抽象工厂模式/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png">
+<meta property="og:image" content="http://yannischeng.com/设计模式%20-%20抽象工厂模式/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抽象工厂模式">
 <meta name="twitter:description" content="《Head First 设计模式》">
-<meta name="twitter:image" content="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
+<meta name="twitter:image" content="http://yannischeng.com/设计模式%20-%20抽象工厂模式/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png">
 
 
 
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T16:13:52+08:00">
-                2018-07-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
               </time>
             
           </span>
@@ -445,11 +445,11 @@
 <h1 id="设计原则：依赖倒置原则"><a href="#设计原则：依赖倒置原则" class="headerlink" title="设计原则：依赖倒置原则"></a>设计原则：依赖倒置原则</h1><pre><code>要依赖抽象，不要依赖具体类。
 </code></pre><p><strong>这个原则比起“针对接口编程，不针对实现编程”更加强调的是“抽象”。不让高层组件依赖底层组件，而且不论“高层”还是“底层”，两者都依赖“抽象”。</strong></p>
 <p>这个模式的学习，首先通过一个自己以前最常见的编码开始（自己在学校编写小项目时曾经真的这么写过 ，好囧啊 ﾍ(;´Д｀ﾍ) ）。</p>
-<h2 id="引出问题"><a href="#引出问题" class="headerlink" title="引出问题"></a>引出问题</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png" alt=""></p>
+<h2 id="引出问题"><a href="#引出问题" class="headerlink" title="引出问题"></a>引出问题</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.28.55.png" alt=""></p>
 <p>这样看可能并不会特别直观，但是只要转换为图形……</p>
-<p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png" alt=""></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2011.45.34.png" alt=""></p>
 <p>通过这个图形的，我们已经很直观的能看到问题的所在：有点“牵一发而动全身”的意思。这样的编写违背了面向接口编程的原则，而且耦合程度高：一个类与众多的类之间保持着依赖关系。</p>
-<h2 id="进行倒置"><a href="#进行倒置" class="headerlink" title="进行倒置"></a>进行倒置</h2><p><img src="http://oy991qm3u.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png" alt=""></p>
+<h2 id="进行倒置"><a href="#进行倒置" class="headerlink" title="进行倒置"></a>进行倒置</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-08%2013.53.23.png" alt=""></p>
 <h1 id="依赖倒置原则中的“倒置”究竟“倒”在哪里？"><a href="#依赖倒置原则中的“倒置”究竟“倒”在哪里？" class="headerlink" title="依赖倒置原则中的“倒置”究竟“倒”在哪里？"></a>依赖倒置原则中的“倒置”究竟“倒”在哪里？</h1><p>“倒置”指的是和一般的OO设计思想方式相反，倒置你针对问题进行设计时的思维方式。</p>
 <h1 id="如何避免违反依赖倒置原则："><a href="#如何避免违反依赖倒置原则：" class="headerlink" title="如何避免违反依赖倒置原则："></a>如何避免违反依赖倒置原则：</h1><ul>
 <li>变量不可以持有具体类的引用。 在此例中，使用工厂方法来避免new</li>
@@ -576,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -587,7 +587,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -598,7 +598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -681,7 +681,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">220.9k</span>
+    <span title="Site words total count">240.8k</span>
   
 </div>
 

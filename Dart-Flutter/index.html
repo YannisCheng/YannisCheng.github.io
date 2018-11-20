@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Dart/Flutter," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Dart/Flutter">
+<meta name="keywords" content="Dart&#x2F;Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dart&#x2F;Flutter">
+<meta property="og:url" content="http://yannischeng.com/Dart-Flutter/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Dart/Flutter">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/2.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%A4%A7%E6%A6%82%E6%95%B0%E9%87%8F.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2022.02.37.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-New%E5%B7%A5%E7%A8%8B.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-Project%E5%88%9B%E5%BB%BA%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2022.12.50.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-SDK%E6%8F%90%E7%A4%BA.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-SDK%E8%B7%AF%E5%BE%84.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-finish.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2023.45.45.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/4.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2000.16.28.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.35.37.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.43.33.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/dart-error.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.21.27.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2001.18.55.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2023.32.18.png">
+<meta property="og:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2001.09.08.png">
+<meta property="og:updated_time" content="2018-11-20T12:07:56.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dart&#x2F;Flutter">
+<meta name="twitter:description" content="Dart/Flutter">
+<meta name="twitter:image" content="http://yannischeng.com/Dart-Flutter/(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Dart-Flutter/"/>
+
+
+
+
+
+  <title>Dart/Flutter | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Dart-Flutter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dart/Flutter</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T12:29:16+08:00">
+                2018-10-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:07:56+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,892 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Dart-Flutter/" rel="tag"># Dart/Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Dart-Flutter/" title="Dart/Flutter">http://yannischeng.com/Dart-Flutter/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Dart/Flutter</p>
+<a id="more"></a>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/av27857568/?spm_id_from=333.788.videocard.2" target="_blank" rel="external">Google工程师 Xiao Yu 在 6 月成功举办的 2018 全球大前端技术大会（GMTC）中进行的演讲视频</a> ，视屏中的 <a href="https://zhuanlan.zhihu.com/p/39737086" target="_blank" rel="external">演讲内容链接</a></li>
+<li><a href="https://mp.weixin.qq.com/s/sjyd0eUPJyMinNoaVcNXaA" target="_blank" rel="external">2018 Google 开发者大会现场纪要 - Flutter</a></li>
+<li><a href="https://flutter-io.cn/#section-keynotes" target="_blank" rel="external">Flutter中文社区</a></li>
+<li><a href="https://flutter.io/" target="_blank" rel="external">Flutter</a></li>
+<li><a href="https://github.com/flutter/flutter" target="_blank" rel="external">github地址</a></li>
+</ul>
+<h1 id="移动端跨平台开发演变"><a href="#移动端跨平台开发演变" class="headerlink" title="移动端跨平台开发演变"></a>移动端跨平台开发演变</h1><h2 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h2><ul>
+<li>AppCan</li>
+</ul>
+<p>优势：跨平台、两端一致的视觉体验，几乎可以完全继承现代Web开发的所有成果。对于Web开发人员，不需要太多的学习和迁移成本就可以开发一个App<br>缺点：对于性能、体验。WebView的性能与JS的执行效率问题。 Android多版本、多厂商使得这一点更难以保证。</p>
+<h2 id="类似-React-Native"><a href="#类似-React-Native" class="headerlink" title="类似:React Native"></a>类似:React Native</h2><p>Facebook的React Native，阿里巴巴的Weex都采用了前端系的DSL方案<br>使用类HTML+JS的UI构建，将渲染工作通过<code>JavaScript Engine</code>交还给系统生成的原生控件。<br>将框架与开发者都锁定了在系统原生的控件上，需要随着版本和API的变化，开发者要关注两端之间的差异。</p>
+<p> RN简单原理图：</p>
+<p> <img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/2.png" alt=""></p>
+<p>   （图片来自网络）</p>
+<h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="SDK下载"><a href="#SDK下载" class="headerlink" title="SDK下载"></a>SDK下载</h2><ul>
+<li><strong>Flutter git源码下载</strong></li>
+</ul>
+<p>下载 Flutter <code>SDK</code>  之前先要拉取 Flutter 的 git 源码，执行命令（官方提示：）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone -b beta https://github.com/flutter/flutter.git</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>更改配置文件</strong></li>
+</ul>
+<p>下载结束后，在当前用户目录下的  <code>配置文件</code> 添加： </p>
+<p><code>export PATH=$PATH:/Users/yannischeng/FLutter/flutter/bin</code> </p>
+<p>添加完毕后：<strong>保存</strong>、<strong>刷新</strong>。</p>
+<ul>
+<li><strong>下载SDK</strong></li>
+</ul>
+<p>终端中执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter doctor</div></pre></td></tr></table></figure>
+<p>下载完所有的数据后，会提示：<code>Doctor summary (to see all details, run flutter doctor -v)</code> 即：运行此命令查看当前的配置 <strong>详细</strong> 信息，如果去掉 <code>-v</code> 仅显示 <strong>简略</strong> 信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter doctor -v</div></pre></td></tr></table></figure>
+<p>所需文件下载结束后的目录</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%A4%A7%E6%A6%82%E6%95%B0%E9%87%8F.png" alt=""></p>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><ul>
+<li><code>Flutter插件</code> 支持Flutter开发人员 <code>工作流程</code>（运行，调试，热重新加载等）。</li>
+<li><code>Dart插件</code> 提供 <code>代码分析</code>（键入时的代码验证，代码完成等）。</li>
+</ul>
+<p><strong>在 Android Studio 中</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85.png" alt=""></p>
+<p><strong>在 VS Code 中</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2022.02.37.png" alt=""></p>
+<h1 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h1><p>在日常开发的基础上，一般不需要做太多其他的工作。</p>
+<h2 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h2><p><strong>新建</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-New%E5%B7%A5%E7%A8%8B.png" alt=""></p>
+<p><strong>最新的创建类型：4种</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-Project%E5%88%9B%E5%BB%BA%E7%B1%BB%E5%9E%8B.png" alt=""></p>
+<p><strong>较早的创建类型：3种</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2022.12.50.png" alt=""></p>
+<h3 id="创建类型"><a href="#创建类型" class="headerlink" title="创建类型"></a>创建类型</h3><ul>
+<li><p>select an  <strong>Application</strong>  when building for end usrs.(为最终用户构建时选择“应用程序”。)</p>
+</li>
+<li><p>Select a  <strong>Plugin</strong>  when exposing an Android or iOS API for developers.(为开发人员公开Android或iOS API时选择“插件”)</p>
+</li>
+<li>Select a  <strong>Package</strong>  when creating a pure Dart component, like a  new Widget.(创建纯Dart组件时选择“包”，如新的Widget)</li>
+<li>Select a  <strong>Module</strong>  when creating a Flutter component to add to an Android app.(在创建要添加到Android应用程序的Flutter组件时选择“模块”)</li>
+</ul>
+<p><strong>如果未安装SDK，在创建时会提示：</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-SDK%E6%8F%90%E7%A4%BA.png" alt=""></p>
+<p><strong>安装SDK后</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-SDK%E8%B7%AF%E5%BE%84.png" alt=""></p>
+<p><strong>finish</strong></p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Flutter-finish.png" alt=""></p>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><ul>
+<li>通过指定开发语言来创建项目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter create  -i iOS开发语言 -a Android开发语言 文件名</div></pre></td></tr></table></figure>
+<ul>
+<li>查看当前已有的模拟器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter emulators</div></pre></td></tr></table></figure>
+<ul>
+<li>启动模拟器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter emulators --launch &lt;emulator id&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>运行项目至设备-所有设备</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter run -d all</div></pre></td></tr></table></figure>
+<ul>
+<li>运行项目至设备-单个设备</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter run -d &lt;deviceId&gt;</div></pre></td></tr></table></figure>
+<p>若是在终端中通过命令运行的程序，那么修改代码后，通过在终端中按下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r</div></pre></td></tr></table></figure>
+<p>作用是 <code>To hot reload changes while running</code> ，若是执行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">R</div></pre></td></tr></table></figure>
+<p>作用是：<code>To hot restart (and rebuild state)</code></p>
+<h1 id="Flutter-1"><a href="#Flutter-1" class="headerlink" title="Flutter"></a>Flutter</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p><code>flutter.io</code>上的说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Flutter 是谷歌的移动端 UI 框架，可在极短的时间内构建 Android 和 iOS 上高质量的原生级应用。</div></pre></td></tr></table></figure>
+<p><code>Flutter</code> Google 的一个 <code>跨平台</code> 的 <code>移动应用开发框架</code>，项目代码开源，<code>Dart</code>是其官方编程语言，是 Google 未来新操作系统<code>Fuchsia</code>的默认开发套件（<code>Fuchsia</code> 是Google 继 <code>Android</code> 与 <code>Chrome OS</code>后的第3个操作系统）。</p>
+<p><code>Flutter</code>的主要设计人之一<code>Ian Hickson</code>，之前是<code>HTML规范</code>编写者，因此<code>Flutter</code>的<code>设计理念</code>也与HTML的实现方法有很多相似之处。</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2023.45.45.png" alt=""></p>
+<p><code>Flutter</code>的跨平台方案更为彻底，它既没有采用<code>WebView</code>也没有采用<code>JavaScript</code>，而是自己实现了自己的一种UI框架，直接在系统更底层渲染，使用另一种开发语言<code>Dart</code>。</p>
+<p><code>Flutter</code>所使用的<code>Dart</code>语言同时支持<code>JIT</code>和<code>AOT</code>运行方式：</p>
+<ul>
+<li><code>JIT</code>模式下还有一个备受欢迎的开发利器 <strong><code>热加载（Hot Reload）</code></strong>，即在<code>Android Studio</code>中编辑<code>Dart</code>代码后，只需要 <code>com +s</code> 或者 点击<code>Hot Reload</code> 按钮，就可以<code>立即更新</code>到正在运行的设备上，<code>不需要重新编译</code>App，甚至<code>不需要重启</code>App，立即就可以看到更新后的样式。</li>
+<li><p>支持AOT的Dart语言，执行效率也比JavaScript高得多。</p>
+<p>Flutter学习了RN的UI编程方式，引入了状态机，更新UI时只更新最小改变区域</p>
+</li>
+</ul>
+<p>Flutter简单原理图：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/4.png" alt=""></p>
+<p>   （图片来自网络）</p>
+<p><code>Flutter</code>同时支持<code>Windows</code>、<code>Linux</code>和<code>macOS</code>作为开发环境，并且在<code>Android Studio</code>和<code>VS Code</code>两个IDE上都提供了全功能的支持</p>
+<h2 id="Flutter目标"><a href="#Flutter目标" class="headerlink" title="Flutter目标"></a>Flutter目标</h2><ul>
+<li>高效开发</li>
+<li>UI布局与效果</li>
+<li>不牺牲原生的运行速度</li>
+</ul>
+<h2 id="有什么特点"><a href="#有什么特点" class="headerlink" title="有什么特点"></a>有什么特点</h2><ul>
+<li><strong>一切皆为widget</strong>，所有功能都可以通过组合多个Widget来实现。</li>
+<li><p><strong>统一的应用开发体验</strong> ：同一份代码，开发 <code>iOS</code> 和 <code>Android</code></p>
+<p>内置的 <code>Material Design</code> 和 <code>Cupertino widget（iOS风格）</code></p>
+</li>
+<li><p><strong>热重载 - Hot Reload</strong></p>
+</li>
+<li><strong>响应式框架</strong></li>
+<li><p><strong>支持混合开发</strong>，可访问本地功能和SDK</p>
+<p><code>Flutter</code>允许复用现有的<code>Java</code>、<code>Swift</code>或<code>OC</code>代码，访问<code>iOS</code>和<code>Android</code>上的 <strong>原生系统功能</strong> 和 <strong>系统SDK</strong>。</p>
+</li>
+</ul>
+<h2 id="有什么问题"><a href="#有什么问题" class="headerlink" title="有什么问题"></a>有什么问题</h2><ul>
+<li>包变大</li>
+<li>动态性</li>
+<li>生态</li>
+<li>发展</li>
+<li>问题处理</li>
+<li>没有反射</li>
+</ul>
+<p>Dart并不是没有反射，dart:mirrors就具有Mirror概念的反射。在安全、分发、部署方面，Mirror-Base具有很大优势。但是反射生成的代码冗长，会使Flutter编译过后的包很大。Flutter通过将Dart编译成原生代码本身就会增加包大小，再加上反射的话包大小更会进一步扩大。所以Flutter团队在现阶段并没有开放dart:mirrors的使用。<br>没有反射也就意味着Json String to Model 也没有办法完成，对于这一点，官方也比较无奈。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>框架分为两个部分：<code>Framework</code>和<code>Engine</code>部分，其中<code>Framework</code>提供了各种<code>基础的组件库</code>，<code>Engine</code>部分<code>渲染各种widget</code>，两者共同作用，使得运行性能高效稳定。</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2000.16.28.png" alt=""></p>
+<p>   （图片来自网络）</p>
+<p>Flutter跨平台最核心的部分，是它的<code>高性能渲染引擎</code>（Flutter Engine）。Flutter不使用浏览器技术，也不使用Native的原生控件，它使用自己的渲染引擎来绘制widget。</p>
+<h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><ul>
+<li><strong>Foundation</strong>：其中定义的大多是非常基础的、提供给其他所有层使用的工具类和方法。</li>
+<li><strong>Painting</strong> ：封装了Flutter Engine提供的<code>绘制接口</code>，主要是为了在绘制控件等固定样式的图形时提供更直观、更方便的接口</li>
+<li><strong>Animation</strong>：是动画相关的类，提供了类似Android系统的ValueAnimator的功能，并且提供了丰富的内置插值器。</li>
+<li><strong>Gesture</strong>：提供了手势识别相关的功能，包括触摸事件类定义和多种内置的手势识别器。</li>
+<li>两套设计语言的控件实现<strong>Material</strong> 、 <strong>Cupertino</strong>，可以帮助App更好地在不同平台上提供原生的用户体验。</li>
+</ul>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>在 <code>Android Studio</code> 中创建的一个包含两个平台的宿主工程目录：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.35.37.png" alt=""></p>
+<p><code>Android项目目录</code>展开：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.43.33.png" alt=""></p>
+<p><code>Flutter</code>在本地运行时默认采用<code>Debug</code>模式，Debug模式下Flutter使用<code>JIT</code>方式来执行Dart代码</p>
+<h2 id="报错样式"><a href="#报错样式" class="headerlink" title="报错样式"></a>报错样式</h2><p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/dart-error.png" alt=""></p>
+<h1 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h1><p>在 <code>Flutter</code> 中，一切皆 <code>Widget</code> ，<strong>Widget分类：</strong></p>
+<ul>
+<li><strong>无状态</strong></li>
+<li><strong>有状态</strong></li>
+</ul>
+<h2 id="无状态-StatelessWidget"><a href="#无状态-StatelessWidget" class="headerlink" title="无状态 - StatelessWidget"></a>无状态 - StatelessWidget</h2><p>只能用来展示信息，不能有动作（用户交互），像是：用来展示静态的文本或者图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class MyApp extends StatelessWidget&#123;</div><div class="line">  @override</div><div class="line">  Widget build(BuildContext context) &#123;</div><div class="line">    // TODO: implement build</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="有状态-StatefulWidget"><a href="#有状态-StatefulWidget" class="headerlink" title="有状态 - StatefulWidget"></a>有状态 - StatefulWidget</h2><p>可以通过改变状态使得 UI 发生变化，它可以包含用户交互。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class FulWidget extends StatefulWidget&#123;</div><div class="line">  @override</div><div class="line">  State createState() &#123;</div><div class="line">    // TODO: implement createState</div><div class="line">    return FulWidgetState();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class FulWidgetState extends State&lt;FulWidget&gt;&#123;</div><div class="line">  @override</div><div class="line">  Widget build(BuildContext context) &#123;</div><div class="line">    // TODO: implement build</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Hot-Reload"><a href="#Hot-Reload" class="headerlink" title="Hot Reload"></a>Hot Reload</h1><p><code>State</code>的概念也是来源于Facebook的流行Web框架<code>React</code>，React风格的框架中使用<code>控件树</code>和<code>各自的状态</code>来构建界面，当某个控件的状态发生变化时，由框架负责对比前后状态差异并且采取最小代价来更新渲染结果。</p>
+<h1 id="混合开发"><a href="#混合开发" class="headerlink" title="混合开发"></a>混合开发</h1><h2 id="Flutter插件"><a href="#Flutter插件" class="headerlink" title="Flutter插件"></a>Flutter插件</h2><p>Dart语言无法直接调用Android系统提供的Java接口，通过<code>Flutter</code>官方提供了丰富的原生接口封装，作为<code>插件</code>来实现中转：</p>
+<p>android_alarm_manager，访问Android系统的AlertManager。<br>android_intent，构造Android的Intent对象。<br>battery，获取和监听系统电量变化。<br>connectivity，获取和监听系统网络连接状态。<br>device info，获取设备型号等信息。<br>image_picker，从设备中选取或者拍摄照片。<br>package_info，获取App安装包的版本等信息。<br>path_provider，获取常用文件路径。<br>quick_actions，App图标添加快捷方式，iOS的eponymous concept和Android的App Shortcuts。<br>sensors，访问设备的加速度和陀螺仪传感器。<br>shared_preferences，App KV存储功能。<br>url_launcher，启动URL，包括打电话、发短信和浏览网页等功能。<br>video_player，播放视频文件或者网络流的控件。</p>
+<h2 id="依赖配置"><a href="#依赖配置" class="headerlink" title="依赖配置"></a>依赖配置</h2><h1 id="Dart"><a href="#Dart" class="headerlink" title="Dart"></a>Dart</h1><p><code>Dart</code>是谷歌开发的计算机编程语言，由ChromeV8引擎团队的领导者Lars Bak主持开发的Dart。于2011年10月份启动，可以被用于web、服务器、移动端和物联网等领域的开发，2017年9月发布第一个2.0-dev版本。<br>Dart语言为了更好的适应 <code>Flutter UI</code> 框架，在内存分配和垃圾回收做了很多优化。</p>
+<p>Dart本身提供了 <strong>三种</strong> 运行方式：</p>
+<ul>
+<li>使用<code>Dart2js</code>编译成JavaScript代码，运行在常规浏览器中（Dart Web）。</li>
+<li>使用<code>DartVM</code>直接在命令行中运行Dart代码（DartVM）。</li>
+<li><code>AOT</code>方式编译成机器码，例如Flutter App框架（Flutter）。</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li>代码体积优化（Tree Shaking），编译时只保留运行时需要调用的代码</li>
+<li>跨平台，iOS和Android共用一套代码。</li>
+<li>JIT &amp; AOT运行模式，支持开发时的快速迭代和正式发布后最大程度发挥硬件性能。</li>
+<li><p>垃圾回收与线程</p>
+<p><strong>垃圾回收：</strong></p>
+<p> DartVM的内存分配策略非常简单，创建对象时只需要在现有堆上移动指针，内存增长始终是线形的，省去了查找可用内存段的过程。</p>
+<p> 垃圾回收也是采用了多生代算法垃圾回收器，新生代在回收内存时采用了“半空间”算法，触发垃圾回收时Dart会将当前半空间中的“活跃”对象拷贝到备用空间，然后整体释放当前空间的所有内存。整个过程中Dart只需要操作少量的“活跃”对象，大量的没有引用的“死亡”对象则被忽略，专门为UI框架中常见的大量Widgets对象创建和销毁优化。 </p>
+</li>
+</ul>
+<p>   <img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-01%2022.21.27.png" alt=""></p>
+<p>   （图片来自网络）</p>
+<p><strong>基本概念：</strong></p>
+<ul>
+<li>所有变量的值都是对象：类的实例、甚至数字、函数和null也都是对象，都继承自Object类。</li>
+<li>虽然Dart是<code>强类型</code>语言，但是显式变量<code>类型声明是可选的</code>，Dart支持类型推断。如果不想使用类型推断，可以用<code>dynamic</code>类型。</li>
+<li>Dart没有<code>public</code>、<code>protected</code>和<code>private</code>这些关键字，使用下划线 <code>_</code> 开头的变量或者函数，表示<code>只在库内可见</code>。</li>
+</ul>
+<h1 id="Flutter-使用感受"><a href="#Flutter-使用感受" class="headerlink" title="Flutter 使用感受"></a>Flutter 使用感受</h1><p>以下截图是开发者使用后的比较典型的感受：</p>
+<p>1：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2001.18.55.png" alt=""></p>
+<p>2：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-29%2023.32.18.png" alt=""></p>
+<h1 id="最终总结"><a href="#最终总结" class="headerlink" title="最终总结"></a>最终总结</h1><p>引用：</p>
+<p><img src="(https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-30%2001.09.08.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Gradle描述/" rel="next" title="Gradle描述">
+                <i class="fa fa-chevron-left"></i> Gradle描述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Kotlin与Java-基础篇/" rel="prev" title="Kotlin与Java-基础篇">
+                Kotlin与Java-基础篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端跨平台开发演变"><span class="nav-number">1.</span> <span class="nav-text">移动端跨平台开发演变</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebView"><span class="nav-number">1.1.</span> <span class="nav-text">WebView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类似-React-Native"><span class="nav-number">1.2.</span> <span class="nav-text">类似:React Native</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter"><span class="nav-number">1.3.</span> <span class="nav-text">Flutter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK下载"><span class="nav-number">2.1.</span> <span class="nav-text">SDK下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件安装"><span class="nav-number">2.2.</span> <span class="nav-text">插件安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目创建"><span class="nav-number">3.</span> <span class="nav-text">项目创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Studio"><span class="nav-number">3.1.</span> <span class="nav-text">Android Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建类型"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令"><span class="nav-number">4.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter-1"><span class="nav-number">5.</span> <span class="nav-text">Flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-number">5.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter目标"><span class="nav-number">5.2.</span> <span class="nav-text">Flutter目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么特点"><span class="nav-number">5.3.</span> <span class="nav-text">有什么特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么问题"><span class="nav-number">5.4.</span> <span class="nav-text">有什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">5.5.</span> <span class="nav-text">架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Framework"><span class="nav-number">5.5.1.</span> <span class="nav-text">Framework</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">5.6.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错样式"><span class="nav-number">5.7.</span> <span class="nav-text">报错样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget"><span class="nav-number">6.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无状态-StatelessWidget"><span class="nav-number">6.1.</span> <span class="nav-text">无状态 - StatelessWidget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有状态-StatefulWidget"><span class="nav-number">6.2.</span> <span class="nav-text">有状态 - StatefulWidget</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hot-Reload"><span class="nav-number">7.</span> <span class="nav-text">Hot Reload</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#混合开发"><span class="nav-number">8.</span> <span class="nav-text">混合开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter插件"><span class="nav-number">8.1.</span> <span class="nav-text">Flutter插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖配置"><span class="nav-number">8.2.</span> <span class="nav-text">依赖配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dart"><span class="nav-number">9.</span> <span class="nav-text">Dart</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter-使用感受"><span class="nav-number">10.</span> <span class="nav-text">Flutter 使用感受</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最终总结"><span class="nav-number">11.</span> <span class="nav-text">最终总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">240.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
