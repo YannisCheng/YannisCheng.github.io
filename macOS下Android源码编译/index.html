@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yannischeng.com/macOS下Android源码编译/((http://pihd0wazc.bkt.clouddn.com/log.png">
-<meta property="og:image" content="http://yannischeng.com/macOS下Android源码编译/((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png">
-<meta property="og:updated_time" content="2018-11-20T12:54:26.026Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/log.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS下Android源码编译">
 <meta name="twitter:description" content="源码编译记录：一般为了阅读源码而进行的编译，是没有任何技术含量，仅仅就是耗时而已。">
-<meta name="twitter:image" content="http://yannischeng.com/macOS下Android源码编译/((http://pihd0wazc.bkt.clouddn.com/log.png">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/log.png">
 
 
 
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:54:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
                 2018-11-20
               </time>
             
@@ -500,7 +500,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">repo sync # 正常同步一遍即可得到完整目录</div><div class="line"># 或 repo sync -l 仅checkout代码</div></pre></td></tr></table></figure>
 <p>以上就是本人在本次的实际下载过程中采用的顺序。</p>
 <p>最终编译结果：</p>
-<p><img src="((http://pihd0wazc.bkt.clouddn.com/log.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/log.png" alt=""></p>
 <h1 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h1><p><strong>提示：</strong></p>
 <p><strong>最好偶尔的看看你的终端中的编译，因为突发的一个意想不到的 <code>error</code> 就会 终止、结束 编译过程，而且是出现在编译过程的任何阶段，最好保持警惕。</strong></p>
 <p>那么，做好 <strong>时刻准备着心态</strong>，<strong><code>cd</code></strong> Android源码目录。</p>
@@ -530,7 +530,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">要将Android系统源代码工程导入到Eclipse或者IntelliJ IDEA，关键是要有相应的工程配置文件。idegen就是用来生成针对Eclipse和IntelliJ IDEA的Android系统源代码工程配置文件的一个工具</div></pre></td></tr></table></figure>
 <h3 id="第2步：生成3个文件"><a href="#第2步：生成3个文件" class="headerlink" title="第2步：生成3个文件"></a>第2步：生成3个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
 <p>结果：<strong>生成3个文件</strong></p>
-<p><img src="((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-11%2009.54.02.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android.iml：描述了modules，比如modules的路径,依赖关系等。</div><div class="line">android.ipr：工程相关的设置，比如编译器配置、入口，相关的libraries等。</div><div class="line">android.iws：包含了一些个人工作区的设置。</div></pre></td></tr></table></figure>
 <p>至此，为了能够在IDE中阅读源码，需要的文件已经生成。</p>
 <h3 id="第3步：导入IDE及配置修改"><a href="#第3步：导入IDE及配置修改" class="headerlink" title="第3步：导入IDE及配置修改"></a>第3步：导入IDE及配置修改</h3><p>参考：</p>

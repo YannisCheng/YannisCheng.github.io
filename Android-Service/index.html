@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="参考：http://www.sunnyang.com/215.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yannischeng.com/Android-Service/((http://pihd0wazc.bkt.clouddn.com/service_lifecycle.png">
-<meta property="og:updated_time" content="2018-11-20T12:54:25.945Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/service_lifecycle.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-Service">
 <meta name="twitter:description" content="参考：http://www.sunnyang.com/215.html">
-<meta name="twitter:image" content="http://yannischeng.com/Android-Service/((http://pihd0wazc.bkt.clouddn.com/service_lifecycle.png">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/service_lifecycle.png">
 
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:54:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
                 2018-11-20
               </time>
             
@@ -469,7 +469,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;manifest ... &gt;</div><div class="line">  ...</div><div class="line">  &lt;application ... &gt;</div><div class="line">      &lt;service android:name=&quot;.ExampleService&quot; /&gt;</div><div class="line">      ...</div><div class="line">  &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
 <p>为了确保应用的安全性，请始终使用<strong>显式 Intent 启动或绑定 Service</strong>，且<strong>不要为服务声明 Intent 过滤器</strong>。 启动哪个服务存在一定的不确定性，而如果对这种不确定性的考量非常有必要，则可为服务提供 Intent 过滤器并从 Intent 中排除相应的组件名称，但随后必须使用 setPackage() 方法设置 Intent 的软件包，这样可以充分消除目标服务的不确定性。</p>
 <p>此外，还可以通过<strong>添加 android:exported 属性并将其设置为 “false”，确保服务仅适用于您的应用</strong>。这可以有效阻止其他应用启动您的服务，即便在使用显式 Intent 时也如此。</p>
-<h1 id="服务生命周期"><a href="#服务生命周期" class="headerlink" title="服务生命周期:"></a>服务生命周期:</h1><p><img src="((http://pihd0wazc.bkt.clouddn.com/service_lifecycle.png" alt=""></p>
+<h1 id="服务生命周期"><a href="#服务生命周期" class="headerlink" title="服务生命周期:"></a>服务生命周期:</h1><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/service_lifecycle.png" alt=""></p>
 <p>左图显示了使用 <strong>startService()</strong> 所创建的服务的生命周期，右图显示了使用 <strong>bindService()</strong> 所创建的服务的生命周期。</p>
 <h2 id="服务生命周期的两个嵌套循环："><a href="#服务生命周期的两个嵌套循环：" class="headerlink" title="服务生命周期的两个嵌套循环："></a>服务生命周期的两个嵌套循环：</h2><ul>
 <li><p>服务的<strong>整个生命周期</strong>从调用 <strong>onCreate() 开始</strong>起，到 <strong>onDestroy() 返回时结束</strong>。与 Activity 类似，服务也在 onCreate() 中完成初始设置，并在 onDestroy() 中释放所有剩余资源。例如，音乐播放服务可以在 onCreate() 中创建用于播放音乐的线程，然后在 onDestroy() 中停止该线程。<br>无论服务是通过 startService() 还是 bindService() 创建，都会为所有服务调用 onCreate() 和 onDestroy() 方法。</p>

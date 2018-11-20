@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="线程总结-2 Android">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yannischeng.com/线程-2%20Android/((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
-<meta property="og:image" content="http://yannischeng.com/线程-2%20Android/((http://pihd0wazc.bkt.clouddn.com/ArrayDeque.png">
-<meta property="og:updated_time" content="2018-11-20T12:54:26.030Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/ArrayDeque.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程-2 Android">
 <meta name="twitter:description" content="线程总结-2 Android">
-<meta name="twitter:image" content="http://yannischeng.com/线程-2%20Android/((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
 
 
 
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T20:54:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
                 2018-11-20
               </time>
             
@@ -447,7 +447,7 @@
 <li><code>AsyncTask</code>被设计为 <strong><code>Thread</code></strong> 和 <strong><code>Handler</code></strong> 的辅助类，并不构成通用的线程框架。</li>
 <li>理想情况下，AsyncTasks应该用于 <strong>短操作（最多几秒）</strong>。如果需要长时间保持线程稳定，强烈建议使用由 <code>java.util.concurrent</code>提供的各种API，例如 <code>Executor</code>，<code>ThreadPoolExecutor</code> 和 <code>FutureTask</code>。</li>
 </ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="AsyncTask-是一个抽象类，只有被继承之后才能使用。"><a href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。" class="headerlink" title="AsyncTask 是一个抽象类，只有被继承之后才能使用。"></a><strong><code>AsyncTask</code></strong> 是一个抽象类，只有被继承之后才能使用。</h3><p><img src="((http://pihd0wazc.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png" alt=""></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="AsyncTask-是一个抽象类，只有被继承之后才能使用。"><a href="#AsyncTask-是一个抽象类，只有被继承之后才能使用。" class="headerlink" title="AsyncTask 是一个抽象类，只有被继承之后才能使用。"></a><strong><code>AsyncTask</code></strong> 是一个抽象类，只有被继承之后才能使用。</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png" alt=""></p>
 <p>在 <code>AsyncTask</code> 类的构造方法中，执行了 <code>doInBackground()</code> ，在这个方法中处理传入的参数。将处理后得到的结果传递给 <code>postResult()</code> , 其源代码描述为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private Result postResult(Result result) &#123;</div><div class="line">    @SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">    Message message = getHandler().obtainMessage(MESSAGE_POST_RESULT,</div><div class="line">            new AsyncTaskResult&lt;Result&gt;(this, result));</div><div class="line">    message.sendToTarget();</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在这个方法中，通过 <code>getHandler()</code> 获取 <code>Handler</code> 对象，通过 <code>Message</code> 将 当前 <code>AsyncTask</code> 和 <code>result</code> 结果进行封装后发送至 <code>InternalHandler</code> 类中处理。在这个类中，调用了 <code>onProgressUpdate(result.mData)</code> 、 <code>onCancelled(result)</code> 、<code>onPostExecute(result)</code></p>
@@ -513,7 +513,7 @@
 </ul>
 <p>这段代码的意思是：将一个新的线程对象添加到 可变数组对象 <code>mTasks</code> 中。如果当前这个 线程能够运行，那么执行 <code>r.run()</code>， 否则执行 <code>scheduleNext()</code>。</p>
 <p>其中 <strong><code>ArrayDeque</code>类</strong>的结构继承实现结构为：</p>
-<p><img src="((http://pihd0wazc.bkt.clouddn.com/ArrayDeque.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/ArrayDeque.png" alt=""></p>
 <p> <code>offer()</code>  具体实现为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public boolean offer(E e) &#123;</div><div class="line">    return offerLast(e);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public boolean offerLast(E e) &#123;</div><div class="line">    addLast(e);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void addLast(E e) &#123;</div><div class="line">    if (e == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    elements[tail] = e;</div><div class="line">    if ( (tail = (tail + 1) &amp; (elements.length - 1)) == head)</div><div class="line">        doubleCapacity();</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void doubleCapacity() &#123;</div><div class="line">    assert head == tail;</div><div class="line">    int p = head;</div><div class="line">    int n = elements.length;</div><div class="line">    int r = n - p; // number of elements to the right of p</div><div class="line">    int newCapacity = n &lt;&lt; 1;</div><div class="line">    if (newCapacity &lt; 0)</div><div class="line">        throw new IllegalStateException(&quot;Sorry, deque too big&quot;);</div><div class="line">    Object[] a = new Object[newCapacity];</div><div class="line">    System.arraycopy(elements, p, a, 0, r);</div><div class="line">    System.arraycopy(elements, 0, a, r, p);</div><div class="line">    elements = a;</div><div class="line">    head = 0;</div><div class="line">    tail = n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>transient Object[] elements;</code>：存储该双端队列元素的数组。<br><code>transient int head;</code>：deque头部元素的索引（这是将被remove（）或pop（）移除的元素）; 或者如果该deque是空的，则任意数字等于tail。<br><code>transient int tail;</code>：下一个元素将添加到deque尾部的索引（通过addLast（E），add（E）或push（E））。</p>
