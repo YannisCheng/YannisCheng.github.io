@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/20161019194500774">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/20161019232902599">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/hashmap%E5%86%B2%E7%AA%81.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.113Z">
+<meta property="og:updated_time" content="2018-12-14T04:07:46.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器">
 <meta name="twitter:description" content="Java-容器 总结  优化是一个棘手的问题，但最好的策略就是置之不顾，直到你发现需要担心它了。 —— 《Java编程思想》">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-14T12:07:46+08:00">
+                2018-12-14
               </time>
             
           </span>
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,332 字
+                  3,623 字
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14 分钟
+                  15 分钟
                 </span>
               
             </div>
@@ -472,17 +472,28 @@
 <li>一个 <code>display()</code></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static void display(Iterator&lt;String&gt; iterator)&#123;</div><div class="line">    while (iterator.hasNext()) &#123;</div><div class="line">        String item = iterator.next();</div><div class="line">        System.out.println(item);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Collection-集合"><a href="#Collection-集合" class="headerlink" title="Collection 集合"></a>Collection 集合</h1><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2018.03.40.png" alt=""></p>
+<h1 id="Collection-集合"><a href="#Collection-集合" class="headerlink" title="Collection 集合"></a>Collection 集合</h1><blockquote>
+<p>参考: <a href="https://www.cnblogs.com/jing99/p/6947549.html" target="_blank" rel="external">https://www.cnblogs.com/jing99/p/6947549.html</a></p>
+</blockquote>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-01%2018.03.40.png" alt=""></p>
 <p><code>Collection</code> 继承了 <code>Iterable</code> 接口。</p>
 <p><strong>注意</strong>：Collections和Collection的区别</p>
 <ul>
 <li>Collections包含有 <code>各种有关集合操作</code> 的 <code>静态多态方法</code></li>
 <li>Collection 是接口</li>
 </ul>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>像数组一样，其建立了 <strong>数字索引</strong> 与 <strong>对象</strong> 的关联。<br>支持添加<strong>重复</strong>的对象、<strong>有序（按照元素插入的顺序）</strong>，一种可修改的序列。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>数据底层结构</strong> 是 <strong>数组</strong><br><strong>特点：</strong>增删慢、查询快</p>
-<h4 id="ArrayList-与-Arrays-与-Array"><a href="#ArrayList-与-Arrays-与-Array" class="headerlink" title="ArrayList 与 Arrays 与 Array"></a>ArrayList 与 Arrays 与 Array</h4><p><code>Array</code>类 ：提供静态方法来动态创建和访问Java数组。<br><code>Arrays</code>类 ：该类包含用于处理数组的各种方法（如排序和搜索）。 此类还包含一个静态工厂，允许将数组视为列表。</p>
-<h4 id="ArrayList本质"><a href="#ArrayList本质" class="headerlink" title="ArrayList本质"></a>ArrayList本质</h4><p>由源码的 <strong>成员变量声明</strong> ：</p>
+<h2 id="子类特点对比"><a href="#子类特点对比" class="headerlink" title="子类特点对比"></a>子类特点对比</h2><ul>
+<li>Set子接口：无序，不允许重复。增删快（不会引起元素位置改变）、查询慢</li>
+<li>List子接口：有序，可以有重复元素。查询快、增删慢（会引起元素位置改变）</li>
+</ul>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>像数组一样，其建立了 <strong>数字索引</strong> 与 <strong>对象</strong> 的关联；<br>支持添加<strong>重复</strong>的对象；<br><strong>有序（按照元素插入的顺序）</strong>，一种可修改的序列。</p>
+<h3 id="LinkedList-与-ArrayList-特点对比"><a href="#LinkedList-与-ArrayList-特点对比" class="headerlink" title="LinkedList 与 ArrayList 特点对比"></a>LinkedList 与 ArrayList 特点对比</h3><ul>
+<li>ArrayList：查询快（访问）、增删慢</li>
+<li>LinkedList：增删快、查询慢</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>数据底层结构</strong> 是 <strong>数组</strong><br><strong>特点：</strong>查询快（随机访问元素）、增删慢</p>
+<h4 id="ArrayList-与-Arrays-与-Array"><a href="#ArrayList-与-Arrays-与-Array" class="headerlink" title="ArrayList 与 Arrays 与 Array"></a>ArrayList 与 Arrays 与 Array</h4><p><code>Array</code>类 ：提供静态方法来动态创建和访问Java数组，数组是大小固定的，并且同一个数组只能存放类型一样的数据。<br><code>Arrays</code>类 ：该类包含用于处理数组的各种方法（如排序和搜索）。 此类还包含一个静态工厂，允许将数组视为列表。<br>使用相应的<code>toArray()</code>和<code>Arrays.asList()</code>方法可以相互转换。</p>
+<h4 id="ArrayList本质-Object"><a href="#ArrayList本质-Object" class="headerlink" title="ArrayList本质 - Object[]"></a>ArrayList本质 - Object[]</h4><p>由源码的 <strong>成员变量声明</strong> ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static final int DEFAULT_CAPACITY = 10;</div><div class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line">transient Object[] elementData;</div></pre></td></tr></table></figure>
 <p>以及：<strong>构造函数</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public ArrayList(int initialCapacity) &#123;</div><div class="line">    if (initialCapacity &gt; 0) &#123;</div><div class="line">        this.elementData = new Object[initialCapacity];</div><div class="line">    &#125; else if (initialCapacity == 0) &#123;</div><div class="line">        this.elementData = EMPTY_ELEMENTDATA;</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</div><div class="line">                                           initialCapacity);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// - - - -</div><div class="line">public ArrayList() &#123;</div><div class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// - - - -</div><div class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</div><div class="line">    elementData = c.toArray();</div><div class="line">    if ((size = elementData.length) != 0) &#123;</div><div class="line">        // c.toArray might (incorrectly) not return Object[] (see 6260652)</div><div class="line">        if (elementData.getClass() != Object[].class)</div><div class="line">            elementData = Arrays.copyOf(elementData, size, Object[].class);</div><div class="line">    &#125; else &#123;</div><div class="line">        // replace with empty array.</div><div class="line">        this.elementData = EMPTY_ELEMENTDATA;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -504,13 +515,13 @@
 <p><code>ArrayList</code> 类中，<code>clear()</code> 方法的实现：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public void clear() &#123;</div><div class="line">    modCount++;</div><div class="line">    for (int i = 0; i &lt; size; i++)</div><div class="line">        // 为每一个元素置空，让其被 GC 回收</div><div class="line">        elementData[i] = null;</div><div class="line">    size = 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p><strong>数据底层结构</strong> 是 <strong>链表</strong></p>
-<p><strong>特点：</strong>查询慢、增删快</p>
+<p><strong>特点：</strong>增删快、查询慢</p>
 <hr>
 <p>源代码中，<code>节点（Node）</code> 的表示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private static class Node&lt;E&gt; &#123;</div><div class="line">    E item;</div><div class="line">    Node&lt;E&gt; next;</div><div class="line">    Node&lt;E&gt; prev;</div><div class="line"></div><div class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</div><div class="line">        this.item = element;</div><div class="line">        this.next = next;</div><div class="line">        this.prev = prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>各种Queue以及栈的行为，由 <code>LinkedList</code> 提供支持。</p>
+<p>各种 <strong>Queue</strong> 以及 <strong>栈</strong> 的行为，由 <code>LinkedList</code> 提供支持。</p>
 <ul>
-<li>实现： Queue 接口 ：<code>队列</code></li>
+<li>实现： <strong>Queue</strong> 接口 ：<code>队列</code></li>
 </ul>
 <p><code>队列</code> 是一种典型的 <strong>先进先出 FIFO</strong> 的容器，即：从容器的一端放入，从容器的另一端取出，事物放入的顺序和取出的顺序是相同的。</p>
 <p><code>队列</code> 常被当做一种可靠的将对象从程序某的个区域 <strong>传输</strong> 到另一个区域的 <strong>途径</strong>，这一点在 <strong>并发编程</strong> 中特别重要。</p>
@@ -547,7 +558,8 @@
 <h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>底层数据结构是 <strong>链表（维护插入的次序）</strong> 和 <strong>哈希表</strong>，覆盖 <code>equals()</code> 的同时 覆盖 <code>hashCode()</code>。</p>
 <p>按照 <strong>被添加</strong> 的顺序保存元素，使用 <strong>散列函数</strong> 存储。</p>
 <h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>将 <code>对象</code> <strong>映射</strong> 到 <code>其他对象</code> 的能力是一种解决编程问题的杀手锏。</p>
-<p>一组 <strong>成对</strong> 的 <strong>键值对</strong> 对象，允许使用键来查找值。</p>
+<p>一组 <strong>成对</strong> 的 <strong>键值对</strong> 对象，允许使用<strong>键</strong>来查找<strong>值</strong>。<br>因为映射中<strong>键的集合</strong>必须是<strong>唯一</strong>的，所以用<code>Set</code>。因为映射中<strong>值的集合</strong>可能<strong>不唯一</strong>，用<code>Collection</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在Map中插入、删除和定位元素，HashMap是最好的选择。</div><div class="line">但如果您要按顺序遍历键，那么TreeMap会更好。</div><div class="line">根据集合大小，先把元素添加到HashMap，再把这种映射转换成一个用于有序键遍历的TreeMap可能更快。</div><div class="line">使用HashMap要求添加的键类明确定义了hashCode()实现。</div><div class="line">有了TreeMap实现，添加到映射的元素一定是可排序的。</div></pre></td></tr></table></figure>
 <p><strong>各个实现类的特点：</strong></p>
 <ul>
 <li>HashMap：<strong>最快</strong> 的查找技术，无明显顺序。—— <strong>快</strong></li>
@@ -798,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-集合"><span class="nav-number">1.</span> <span class="nav-text">Collection 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.1.1.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-与-Arrays-与-Array"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">ArrayList 与 Arrays 与 Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList本质"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">ArrayList本质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList的扩容"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">ArrayList的扩容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.1.2.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.1.3.</span> <span class="nav-text">Vector</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">1.2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">1.2.2.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">1.2.3.</span> <span class="nav-text">LinkedHashSet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">2.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的工作原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">HashMap的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码中部分方法的实现"><span class="nav-number">2.1.2.</span> <span class="nav-text">源码中部分方法的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeMap"><span class="nav-number">2.2.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">2.3.</span> <span class="nav-text">LinkedHashMap</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-集合"><span class="nav-number">1.</span> <span class="nav-text">Collection 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子类特点对比"><span class="nav-number">1.1.</span> <span class="nav-text">子类特点对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList-与-ArrayList-特点对比"><span class="nav-number">1.2.1.</span> <span class="nav-text">LinkedList 与 ArrayList 特点对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.2.2.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-与-Arrays-与-Array"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">ArrayList 与 Arrays 与 Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList本质-Object"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">ArrayList本质 - Object[]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList的扩容"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">ArrayList的扩容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.2.3.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.2.4.</span> <span class="nav-text">Vector</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">1.3.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">1.3.2.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">1.3.3.</span> <span class="nav-text">LinkedHashSet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">2.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的工作原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">HashMap的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码中部分方法的实现"><span class="nav-number">2.1.2.</span> <span class="nav-text">源码中部分方法的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeMap"><span class="nav-number">2.2.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">2.3.</span> <span class="nav-text">LinkedHashMap</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -832,7 +844,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">247.7k</span>
+    <span title="Site words total count">248.2k</span>
   
 </div>
 
