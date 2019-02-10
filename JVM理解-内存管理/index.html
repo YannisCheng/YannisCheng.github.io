@@ -92,16 +92,17 @@
 <meta property="og:description" content="JVM理解 —— 内存管理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-06%2023.58.49.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118102750920-573198703.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/TLAB.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118103751232-177696421.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png">
-<meta property="og:updated_time" content="2018-11-20T15:37:44.809Z">
+<meta property="og:updated_time" content="2019-02-10T12:30:52.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM理解-内存管理">
 <meta name="twitter:description" content="JVM理解 —— 内存管理">
@@ -323,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T23:37:44+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-10T20:30:52+08:00">
+                2019-02-10
               </time>
             
           </span>
@@ -373,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,189 字
+                  3,207 字
                 </span>
               
 
@@ -456,10 +457,10 @@
 <li><strong>程序计数器</strong></li>
 <li><strong>Java虚拟机栈</strong></li>
 <li><strong>本地方法栈</strong></li>
-<li><strong>方法区</strong></li>
+<li><strong>方法区（非堆）</strong></li>
 <li><strong>堆</strong></li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-06%2023.58.49.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png" alt=""></p>
 <h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p><strong>数据活动范围：</strong></p>
 <ul>
 <li>当前线程私有</li>
@@ -467,7 +468,7 @@
 <p><strong>说明：</strong></p>
 <ul>
 <li>占用一块较小的内存空间。</li>
-<li>可以看做是当前线程所执行的字节码的行号指示器。</li>
+<li>可以看做是当前线程所执行的 字节码 的 行号指示器。</li>
 </ul>
 <p><strong>抛出异常：</strong></p>
 <ul>
@@ -511,7 +512,7 @@
 <li>StackOverflowError。</li>
 <li>OutOfMemoryError。</li>
 </ul>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p><strong>数据活动范围：</strong></p>
+<h2 id="方法区（非堆）"><a href="#方法区（非堆）" class="headerlink" title="方法区（非堆）"></a>方法区（非堆）</h2><p><strong>数据活动范围：</strong></p>
 <ul>
 <li>所有线程公有</li>
 </ul>
@@ -564,10 +565,30 @@
 <li><p>如果没有 <strong>Survivor Space</strong> ， <strong>Eden Space</strong> 中每进行一次 Minor GC后，存活的对象就会被送到 <strong>旧生代</strong> 中，这样就会导致 <strong>旧生代</strong> 很快被填满，发生 Major GC或 Full GC。</p>
 <p>但由于 <strong>旧生代</strong> 内存空间远大于 <strong>新生代</strong> 空间，所以进行一次 Full GC 会消耗大量的时间。而且若是在无 <strong>Survivor Space</strong>的情况下，<strong>旧生代</strong> 被填满的速度大大加快，结果就是导致 <strong>频繁</strong> 的发生 Full GC，这将会影响程序的执行和响应速度，更有甚至会因为 <code>超时</code> 产生其他问题。</p>
 <p>在无 <strong>Survivor Space</strong> 的情况下，如何解决？</p>
-<p>|方案|优点|缺点|<br>|:-:|:-:|:-:|<br>|增加老年代空间    |更多存活对象才能填满老年代。降低Full GC频率|随着老年代空间加大，一旦发生Full GC，执行所需要的时间更长|<br>|减少老年代空间    |Full GC所需时间减少    |老年代很快被存活对象填满，Full GC频率增加|</p>
-<p>上述两种解决方案都不能从根本上解决问题。</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方案</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">增加老年代空间</td>
+<td style="text-align:center">更多存活对象才能填满老年代。降低Full GC频率</td>
+<td style="text-align:center">随着老年代空间加大，一旦发生Full GC，执行所需要的时间更长</td>
+</tr>
+<tr>
+<td style="text-align:center">减少老年代空间</td>
+<td style="text-align:center">Full GC所需时间减少</td>
+<td style="text-align:center">老年代很快被存活对象填满，Full GC频率增加</td>
+</tr>
+</tbody>
+</table>
+<p> 上述两种解决方案都不能从根本上解决问题。</p>
 <p><strong>结论一：</strong></p>
 <p><strong>Survivor Space</strong> 存在的意义就是 <strong>减少被移动至 旧生代 中的对象，进而减少 Full GC 发生。</strong></p>
 <h4 id="为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？"><a href="#为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？" class="headerlink" title="为什么 Survivor Space 会有 From Space 与 To Space 2块空间？"></a>为什么 Survivor Space 会有 From Space 与 To Space 2块空间？</h4><p>由上文已经说明了为什么没有 <strong>Survivor Space</strong> 不行，这次假设只有 <strong>1块 Survivor Space</strong>。</p>
@@ -575,7 +596,7 @@
 <p>这样的操作一直循环下去，虽然存活对象得到了转移，但是这2个区域中对象所占用的内存地址并不是连续的，这就导致了在只有 <strong>1块Survivor Space</strong> 的条件下产生的问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">内存地址碎片化</div></pre></td></tr></table></figure>
 <p>内存地址碎片化导致的问题就是：</p>
-<p><strong>严重影响Java程序的性能</strong>，堆空间中被散布的对象占据着不连续的内存，最直接的结果就是：<strong>没有足够大的连续空间</strong>。</p>
+<p><strong>严重影响Java程序的性能</strong>，堆空间中被散布的对象占据着不连续的内存，最直接的结果就是：<strong>没有足够大的连续空间，内存碎片</strong>。</p>
 <h4 id="建立-2块Survivor-Space-的意义"><a href="#建立-2块Survivor-Space-的意义" class="headerlink" title="建立 2块Survivor Space 的意义"></a>建立 2块Survivor Space 的意义</h4><p>当建立 <strong>2块Survivor Space</strong> 时：</p>
 <ul>
 <li><p>对已满的 <strong>Eden Space</strong> 进行 Minor GC 时，存活对象就会被复制至 <strong>From Space</strong> 中，<strong>Eden Space</strong> 被清空。</p>
@@ -601,6 +622,7 @@
 </ul>
 <h1 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h1><h2 id="1-堆分配"><a href="#1-堆分配" class="headerlink" title="1. 堆分配"></a>1. 堆分配</h2><p>Java对象所占用的内存主要是从 <code>堆</code> 上进行分配，<code>堆</code> 是 <strong>所有线程共享</strong> 的，因此在堆上分配内存时是 <strong>需要加锁</strong> 的。这导致了<strong>创建对象开销比较大</strong>。当 <code>堆</code> 上的内存空间不足时，会触发 <code>GC</code> ，如过 <code>GC</code> 后内存空间仍然不足，则抛出 <code>OOM</code>。</p>
 <h2 id="2-TLAB（Thread-Local-Allocation-Buffer）分配"><a href="#2-TLAB（Thread-Local-Allocation-Buffer）分配" class="headerlink" title="2. TLAB（Thread Local Allocation Buffer）分配"></a>2. TLAB（Thread Local Allocation Buffer）分配</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/TLAB.png" alt=""></p>
 <p>JDK 为了提升内存分配效率，会为　<strong>每个新创建的线程</strong>　在 <code>新生代</code>的　<code>Eden Space</code> 上分配一块独立空间。这块空间称为 <code>TLAB（Thread Local Allocation Buffer）</code>，其大小是由JVM根据运行情况而得出的。</p>
 <p>在 <code>TLAB</code> 中分配内存是 <strong>不需要加锁</strong> 的，因此JVM在给线程中的对象分配内存时会尽量在 <code>TLAB</code> 上分配。如果对象过大或者 <code>TLAB</code> 空间已经用完了，则仍然在 <code>堆</code> 上分配内存</p>
 <p>因此在编写Java程序时，通常多个 <strong>小的对象比大的对象</strong>在内存分配上 <strong>更高效</strong>。　</p>
@@ -686,6 +708,9 @@
 </li>
 <li><strong>不产生碎片</strong></li>
 </ul>
+<blockquote>
+<p>参考：<a href="https://www.cnblogs.com/sunniest/p/4575144.html" target="_blank" rel="external">https://www.cnblogs.com/sunniest/p/4575144.html</a></p>
+</blockquote>
 
       
     </div>
@@ -707,8 +732,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/JVM理解-编译加载/" rel="next" title="JVM理解-编译加载">
-                <i class="fa fa-chevron-left"></i> JVM理解-编译加载
+              <a href="/JVM理解-编译、加载/" rel="next" title="JVM理解-编译、加载">
+                <i class="fa fa-chevron-left"></i> JVM理解-编译、加载
               </a>
             
           </div>
@@ -802,7 +827,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -824,7 +849,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -873,7 +898,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存空间"><span class="nav-number">1.</span> <span class="nav-text">内存空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">1.4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">1.5.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新生代（New-Generation）"><span class="nav-number">1.5.1.</span> <span class="nav-text">新生代（New Generation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新生代内存由："><span class="nav-number">1.5.1.1.</span> <span class="nav-text">新生代内存由：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-新生代中会有-Survivor-Space？"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">为什么 新生代中会有 Survivor Space？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">为什么 Survivor Space 会有 From Space 与 To Space 2块空间？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立-2块Survivor-Space-的意义"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">建立 2块Survivor Space 的意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旧生代（Old-Generation-Tenuring-Generation）"><span class="nav-number">1.5.2.</span> <span class="nav-text">旧生代（Old Generation/Tenuring Generation）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存分配"><span class="nav-number">2.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆分配"><span class="nav-number">2.1.</span> <span class="nav-text">1. 堆分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLAB（Thread-Local-Allocation-Buffer）分配"><span class="nav-number">2.2.</span> <span class="nav-text">2. TLAB（Thread Local Allocation Buffer）分配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存回收"><span class="nav-number">3.</span> <span class="nav-text">内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC-分类："><span class="nav-number">3.1.</span> <span class="nav-text">GC 分类：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minor-GC"><span class="nav-number">3.1.1.</span> <span class="nav-text">Minor GC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Major-GC"><span class="nav-number">3.1.2.</span> <span class="nav-text">Major GC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收算法"><span class="nav-number">3.2.</span> <span class="nav-text">回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数-收集器"><span class="nav-number">3.2.1.</span> <span class="nav-text">引用计数 收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跟踪-收集器"><span class="nav-number">3.2.2.</span> <span class="nav-text">跟踪 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制（Copying）"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">复制（Copying）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-清除（Mark-Sweep）"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">标记-清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-压缩（Mark-Compact）"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">标记-压缩（Mark-Compact）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存空间"><span class="nav-number">1.</span> <span class="nav-text">内存空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区（非堆）"><span class="nav-number">1.4.</span> <span class="nav-text">方法区（非堆）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">1.5.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新生代（New-Generation）"><span class="nav-number">1.5.1.</span> <span class="nav-text">新生代（New Generation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新生代内存由："><span class="nav-number">1.5.1.1.</span> <span class="nav-text">新生代内存由：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-新生代中会有-Survivor-Space？"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">为什么 新生代中会有 Survivor Space？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">为什么 Survivor Space 会有 From Space 与 To Space 2块空间？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立-2块Survivor-Space-的意义"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">建立 2块Survivor Space 的意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旧生代（Old-Generation-Tenuring-Generation）"><span class="nav-number">1.5.2.</span> <span class="nav-text">旧生代（Old Generation/Tenuring Generation）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存分配"><span class="nav-number">2.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆分配"><span class="nav-number">2.1.</span> <span class="nav-text">1. 堆分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLAB（Thread-Local-Allocation-Buffer）分配"><span class="nav-number">2.2.</span> <span class="nav-text">2. TLAB（Thread Local Allocation Buffer）分配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存回收"><span class="nav-number">3.</span> <span class="nav-text">内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC-分类："><span class="nav-number">3.1.</span> <span class="nav-text">GC 分类：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minor-GC"><span class="nav-number">3.1.1.</span> <span class="nav-text">Minor GC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Major-GC"><span class="nav-number">3.1.2.</span> <span class="nav-text">Major GC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收算法"><span class="nav-number">3.2.</span> <span class="nav-text">回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数-收集器"><span class="nav-number">3.2.1.</span> <span class="nav-text">引用计数 收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跟踪-收集器"><span class="nav-number">3.2.2.</span> <span class="nav-text">跟踪 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制（Copying）"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">复制（Copying）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-清除（Mark-Sweep）"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">标记-清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-压缩（Mark-Compact）"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">标记-压缩（Mark-Compact）</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -893,7 +918,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -907,7 +932,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">257.9k</span>
+    <span title="Site words total count">258.3k</span>
   
 </div>
 

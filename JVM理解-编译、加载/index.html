@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="JVM理解 —— Java代码执行">
+<meta name="description" content="JVM理解 —— 源码的编译、执行">
 <meta name="keywords" content="Java,JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM理解-编译加载">
-<meta property="og:url" content="http://yannischeng.com/JVM理解-编译加载/index.html">
+<meta property="og:title" content="JVM理解-编译、加载">
+<meta property="og:url" content="http://yannischeng.com/JVM理解-编译、加载/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="JVM理解 —— Java代码执行">
+<meta property="og:description" content="JVM理解 —— 源码的编译、执行">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2008.46.46.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2009.07.11.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B-2.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2008.51.40111.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/2018-08-07%2011.17.50.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2015.15.17.png">
@@ -105,10 +106,10 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/713721-20160602152821617-738821208.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/08-08%2000.55.32.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/20170603184309287.png">
-<meta property="og:updated_time" content="2018-11-22T14:29:30.251Z">
+<meta property="og:updated_time" content="2019-02-10T10:53:54.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM理解-编译加载">
-<meta name="twitter:description" content="JVM理解 —— Java代码执行">
+<meta name="twitter:title" content="JVM理解-编译、加载">
+<meta name="twitter:description" content="JVM理解 —— 源码的编译、执行">
 <meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg">
 
 
@@ -139,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/JVM理解-编译加载/"/>
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-编译、加载/"/>
 
 
 
 
 
-  <title>JVM理解-编译加载 | YannisCheng's Technology Blogs</title>
+  <title>JVM理解-编译、加载 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -282,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/JVM理解-编译加载/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/JVM理解-编译、加载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -299,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM理解-编译加载</h1>
+          <h1 class="post-title" itemprop="name headline">JVM理解-编译、加载</h1>
         
 
         <div class="post-meta">
@@ -327,8 +328,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-22T22:29:30+08:00">
-                2018-11-22
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-10T18:53:54+08:00">
+                2019-02-10
               </time>
             
           </span>
@@ -377,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6,137 字
+                  6,139 字
                 </span>
               
 
@@ -432,7 +433,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/JVM理解-编译加载/" title="JVM理解-编译加载">http://yannischeng.com/JVM理解-编译加载/</a>
+    <a href="http://yannischeng.com/JVM理解-编译、加载/" title="JVM理解-编译、加载">http://yannischeng.com/JVM理解-编译、加载/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -451,7 +452,7 @@
       
 
       
-        <p>JVM理解 —— Java代码执行</p>
+        <p>JVM理解 —— 源码的编译、执行</p>
 <a id="more"></a>
 <p>Android 的 <strong>Dalvik VM</strong> 是Android平台的核心组件平台之一，其并不是一个 <strong>Java虚拟机</strong>：</p>
 <ul>
@@ -477,6 +478,7 @@
 <li><strong>分析与字节码生成</strong></li>
 </ul>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2009.07.11.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B-2.png" alt=""></p>
 <p><strong>编译过程的方法(这张图太经典了，高频出现)</strong></p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2008.51.40111.png" alt=""></p>
 <h2 id="1-解析与填充符号表"><a href="#1-解析与填充符号表" class="headerlink" title="1. 解析与填充符号表"></a>1. 解析与填充符号表</h2><h3 id="1-1-解析（parseFiles-）"><a href="#1-1-解析（parseFiles-）" class="headerlink" title="1.1 解析（parseFiles()）"></a>1.1 解析（parseFiles()）</h3><ul>
@@ -951,7 +953,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -973,7 +975,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1042,7 +1044,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1056,7 +1058,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">257.9k</span>
+    <span title="Site words total count">258.3k</span>
   
 </div>
 
