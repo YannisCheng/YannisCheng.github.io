@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线程总结-1 Java">
+<meta name="keywords" content="线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程-1 Java">
+<meta property="og:url" content="http://yannischeng.com/Java 线程-1/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="线程总结-1 Java">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/threadpool.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线程-1 Java">
+<meta name="twitter:description" content="线程总结-1 Java">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Java 线程-1/"/>
+
+
+
+
+
+  <title>线程-1 Java | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Java 线程-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线程-1 Java</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-25T10:19:41+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,079 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/线程/" rel="tag"># 线程</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Java 线程-1/" title="线程-1 Java">http://yannischeng.com/Java 线程-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>线程总结-1 Java</p>
+<a id="more"></a>
+<blockquote>
+<p>参考：<a href="https://www.cnblogs.com/xdp-gacl/p/3633936.html" target="_blank" rel="external">https://www.cnblogs.com/xdp-gacl/p/3633936.html</a><br>参考：<a href="https://www.cnblogs.com/wxd0108/p/5479442.html" target="_blank" rel="external">https://www.cnblogs.com/wxd0108/p/5479442.html</a></p>
+</blockquote>
+<h1 id="名词释义："><a href="#名词释义：" class="headerlink" title="名词释义："></a>名词释义：</h1><ul>
+<li><strong>多线程</strong>：指的是这个程序（一个进程）运行时产生了<strong>不止一个线程</strong></li>
+<li><strong>并行</strong>：多个cpu实例或者多台机器<strong>同时执行一段处理逻辑</strong>，是真正的同时。</li>
+<li><strong>并发</strong>：通过cpu调度算法，让用户看上去同时执行，实际上从cpu操作层面不是真正的同时。并发往往在场景中有公用的资源。</li>
+<li><strong>线程安全</strong>：经常用来<strong>描绘一段代码</strong>。指在<strong>并发</strong>的情况之下，该代码经过多线程使用，线程的调度顺序不影响任何结果。这个时候使用多线程，我们只需要关注系统的内存，cpu是不是够用即可。反过来，<strong>线程不安全</strong>就意味着<strong>线程的调度顺序</strong>会<strong>影响最终结果</strong>。</li>
+<li><strong>同步</strong>：Java中的同步指的是通过人为的控制和调度，<strong>保证共享资源</strong>的<strong>多线程访问成为线程安全</strong>，来保<strong>证结果的准确</strong>。如synchronized关键字。</li>
+</ul>
+<p>在同一个时间点上，<strong>一个CPU</strong>只能支持<strong>一个线程</strong>在执行。因为CPU运行的速度很快，因此我们看起来的感觉就像是多线程一样。</p>
+<p><strong>基本线程类：</strong><code>Thread</code>类，<code>Runnable</code>接口。</p>
+<p><strong>线程优先级：</strong> </p>
+<ul>
+<li>优先级范围：1 - 10；1最低，5是正常级</li>
+<li>在不指定的情况下，所有线程的优先级是一样的。</li>
+<li>线程的优先级应该在start()方法调用之前被设置</li>
+</ul>
+<h1 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h1><h2 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h2><p>关于<strong>阻塞(Blocked)</strong>情况</p>
+<ul>
+<li>调用join()和sleep()方法，sleep()时间结束或被打断，join()中断，IO完成都会回到(Runnable)状态，等待JVM的调度。</li>
+<li>调用wait()，使该线程处于等待池(wait blocked pool),直到notify()/notifyAll()，线程被唤醒被放到锁定池(lock blocked pool )，释放同步锁使线程回到可运行状态（Runnable）。</li>
+<li>对Running状态的线程加同步锁(Synchronized)使其进入(lock blocked pool ),同步锁被释放进入可运行状态(Runnable)。</li>
+<li>Thread类中的yield()可以让一个Running状态的线程转入(Runnable)状态。</li>
+</ul>
+<p>在Runnable状态的线程是处于被调度的线程，此时的调度顺序是不一定的，有可能刚刚处于Runnable状态的线程，会马上被再次调用。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png" alt=""></p>
+<h2 id="基本控制方法："><a href="#基本控制方法：" class="headerlink" title="基本控制方法："></a>基本控制方法：</h2><blockquote>
+<p>参考：<a href="https://blog.csdn.net/maoyeqiu/article/details/50215123" target="_blank" rel="external">https://blog.csdn.net/maoyeqiu/article/details/50215123</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isAlive()</td>
+<td>判断线程是否终止</td>
+</tr>
+<tr>
+<td>getPriority()</td>
+<td>获得线程优先级</td>
+</tr>
+<tr>
+<td>setPriority()</td>
+<td>设置线程优先级</td>
+</tr>
+<tr>
+<td>Thread.sleep()</td>
+<td>指定当前线程的睡眠毫秒数</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>thread.join()把指定的线程加入到当前线程，可以将两个交替执行的线程合并为顺序执行的线程。比如在线程B中调用了线程A的join()方法，直到线程A执行完毕后，才会继续执行线程B。 </td>
+</tr>
+<tr>
+<td>yield()</td>
+<td>让出cpu，当前线程进入就绪队列等待调用</td>
+</tr>
+<tr>
+<td>wait()</td>
+<td>当前线程进入对象的wait pool，让当前线程释放锁，使得其他线程获取锁</td>
+</tr>
+<tr>
+<td>notify()/notifyAll()</td>
+<td>唤醒对象的wait pool中的一个或者所有等待的线程</td>
+</tr>
+<tr>
+<td>sleep()</td>
+<td>让当前线程睡眠，持有锁</td>
+</tr>
+</tbody>
+</table>
+<h2 id="每个对象都有的方法（机制）"><a href="#每个对象都有的方法（机制）" class="headerlink" title="每个对象都有的方法（机制）"></a>每个对象都有的方法（机制）</h2><p><code>synchronized</code>, <code>wait()</code>, <code>notify()</code> 是任何对象都具有的同步工具。</p>
+<p>讲其本质，首先就要明确monitor的概念，Java中的每个对象都有一个监视器，来监测并发代码的重入。在<strong>非多线程</strong>编码时<strong>该监视器不发挥作用</strong>，反之如果<strong>在synchronized 范围内，监视器发挥作用</strong>。</p>
+<p><code>wait()</code>/<code>notify()</code>必须存在于<code>synchronized</code>块中。并且，这三个关键字针对的是<strong>同一个</strong>监视器（某对象的监视器）。这意味着<code>wait()</code>之后，其他线程可以进入同步块执行。</p>
+<h1 id="关键字-synchronized"><a href="#关键字-synchronized" class="headerlink" title="关键字  synchronized"></a>关键字  synchronized</h1><p><strong>一个线程变为一个对象的锁的拥有者是通过下列三种方法：</strong></p>
+<ul>
+<li>执行这个对象的 <code>synchronized</code> 方法</li>
+<li>执行这个对象的 <code>synchronized</code> 语句块，这个语句块中锁的对象</li>
+<li>执行 <code>synchronized</code> 静态方法</li>
+</ul>
+<h2 id="synchronized单独使用"><a href="#synchronized单独使用" class="headerlink" title="synchronized单独使用:"></a>synchronized单独使用:</h2><h3 id="直接用于方法"><a href="#直接用于方法" class="headerlink" title="直接用于方法:"></a>直接用于方法:</h3><p>相当于上面代码中用lock来锁定的效果，实际获取的是Thread1类的monitor。更进一步，如果修饰的是static方法，则锁定该类所有实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Thread1 implements Runnable &#123;</div><div class="line">   public synchronized void run() &#123;  </div><div class="line">        ..do something</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="代码块："><a href="#代码块：" class="headerlink" title="代码块："></a>代码块：</h3><p>在多线程环境下，<code>synchronized</code>块中的方法获取了lock实例的monitor，如果<code>实例相同</code>，那么只有一个线程能执行该块内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Thread1 implements Runnable &#123;</div><div class="line">   Object lock;</div><div class="line">   public void run() &#123;  </div><div class="line">       synchronized(lock)&#123;</div><div class="line">         ..do something</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="synchronized-作用于方法"><a href="#synchronized-作用于方法" class="headerlink" title="synchronized 作用于方法"></a>synchronized 作用于方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">class Bank&#123;</div><div class="line">    private int money = 1000;</div><div class="line"></div><div class="line">    public synchronized int getMoney(int number)&#123;</div><div class="line">        money -= number;</div><div class="line">        System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">        return number;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThread extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    public MoneyThread(Bank bank) &#123;</div><div class="line">        this.bank = bank;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + bank.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Bank bank = new Bank();</div><div class="line"></div><div class="line">        Thread t01 = new MoneyThread(bank);// 从银行取钱</div><div class="line">        Thread t02 = new MoneyThread(bank);// 从取款机取钱</div><div class="line"></div><div class="line">        t01.start();</div><div class="line">        t02.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Left Money: 800</div><div class="line">操作金额：200</div><div class="line">Left Money: 600</div><div class="line">操作金额：200</div></pre></td></tr></table></figure>
+<h4 id="synchronized-作用于代码块-同一个类的同一个对象"><a href="#synchronized-作用于代码块-同一个类的同一个对象" class="headerlink" title="synchronized 作用于代码块 - 同一个类的同一个对象"></a>synchronized 作用于代码块 - 同一个类的同一个对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">class Bank&#123;</div><div class="line">    private int money = 1000;</div><div class="line"></div><div class="line">    public int getMoney(int number)&#123;</div><div class="line">        synchronized (this)&#123;</div><div class="line">            money -= number;</div><div class="line">            System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">            return number;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThread extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    public MoneyThread(Bank bank) &#123;</div><div class="line">        this.bank = bank;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + bank.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Bank bank = new Bank();</div><div class="line"></div><div class="line">        Thread t01 = new MoneyThread(bank);// 从银行取钱</div><div class="line">        Thread t02 = new MoneyThread(bank);// 从取款机取钱</div><div class="line"></div><div class="line">        t01.start();</div><div class="line">        t02.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Left Money: 800</div><div class="line">操作金额：200</div><div class="line">Left Money: 600</div><div class="line">操作金额：200</div></pre></td></tr></table></figure>
+<h4 id="synchronized-作用于代码块-同一个类的不同对象"><a href="#synchronized-作用于代码块-同一个类的不同对象" class="headerlink" title="synchronized 作用于代码块 - 同一个类的不同对象"></a>synchronized 作用于代码块 - 同一个类的不同对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">class Bank&#123;</div><div class="line">    private int money = 1000;</div><div class="line"></div><div class="line">    public int getMoney(int number)&#123;</div><div class="line">        synchronized (this)&#123;</div><div class="line">            money -= number;</div><div class="line">            System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">            return number;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThread extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    public MoneyThread(Bank bank) &#123;</div><div class="line">        this.bank = bank;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + bank.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Bank bank = new Bank();</div><div class="line">        Bank bank2 = new Bank();</div><div class="line"></div><div class="line">        Thread t1 = new MoneyThread(bank);// 从银行取钱</div><div class="line">        Thread t2 = new MoneyThread(bank2);// 从取款机取钱</div><div class="line">        t1.start();</div><div class="line">        t2.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Left Money: 800</div><div class="line">Left Money: 800</div><div class="line">操作金额：200</div><div class="line">操作金额：200</div></pre></td></tr></table></figure>
+<h4 id="synchronized-作用于代码块-作用域的范围"><a href="#synchronized-作用于代码块-作用域的范围" class="headerlink" title="synchronized 作用于代码块 - 作用域的范围"></a>synchronized 作用于代码块 - 作用域的范围</h4><p><strong>修改前</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Bank&#123;</div><div class="line">    private int money = 1000;</div><div class="line"></div><div class="line">    public int getMoney(int number)&#123;</div><div class="line">        number = number + 12;</div><div class="line">        System.out.println(&quot; Money + 12 is : &quot; + number);</div><div class="line">        synchronized (this)&#123;</div><div class="line">            money -= number;</div><div class="line">            System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">            return number;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThread extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    public MoneyThread(Bank bank) &#123;</div><div class="line">        this.bank = bank;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + bank.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Bank bank = new Bank();</div><div class="line"></div><div class="line">        Thread t01 = new MoneyThread(bank);// 从银行取钱</div><div class="line">        Thread t02 = new MoneyThread(bank);// 从取款机取钱</div><div class="line"></div><div class="line">        t01.start();</div><div class="line">        t02.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> Money + 12 is : 212</div><div class="line"> Money + 12 is : 212</div><div class="line">Left Money: 788</div><div class="line">操作金额：212</div><div class="line">Left Money: 576</div><div class="line">操作金额：212</div></pre></td></tr></table></figure>
+<p><strong>修改后</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Bank&#123;</div><div class="line">    private int money = 1000;</div><div class="line"></div><div class="line">    public int getMoney(int number) &#123;</div><div class="line">        synchronized (this)&#123;</div><div class="line">            number = number + 12;</div><div class="line">            System.out.println(&quot; Money + 12 is : &quot; + number);</div><div class="line">            money -= number;</div><div class="line">            System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">            return number;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThread extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    public MoneyThread(Bank bank) &#123;</div><div class="line">        this.bank = bank;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + bank.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Bank bank = new Bank();</div><div class="line"></div><div class="line">        Thread t01 = new MoneyThread(bank);// 从银行取钱</div><div class="line">        Thread t02 = new MoneyThread(bank);// 从取款机取钱</div><div class="line"></div><div class="line">        t01.start();</div><div class="line">        t02.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> Money + 12 is : 212</div><div class="line">Left Money: 788</div><div class="line">操作金额：212</div><div class="line"> Money + 12 is : 212</div><div class="line">Left Money: 576</div><div class="line">操作金额：212</div></pre></td></tr></table></figure>
+<p>由以上示例的运行结果的输出顺序可以看出：在 <code>synchronized</code> 代码块之外的的代码，在进行多线程运行时，是不受 <code>synchronized</code> 关键字控制的。</p>
+<h4 id="synchronized-作用于静态方法"><a href="#synchronized-作用于静态方法" class="headerlink" title="synchronized 作用于静态方法"></a>synchronized 作用于静态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">class BankStatic &#123;</div><div class="line">    private static int money = 1000;</div><div class="line"></div><div class="line">    public synchronized static int getMoney(int number) &#123;</div><div class="line">        money -= number;</div><div class="line">        System.out.println(&quot;Left Money: &quot; + money);</div><div class="line">        return number;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class MoneyThreadStatic extends Thread &#123;</div><div class="line">    private Bank bank;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;操作金额：&quot; + BankStatic.getMoney(200));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ThreadMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Thread t3 = new MoneyThreadStatic();// 从银行取钱</div><div class="line">        Thread t4 = new MoneyThreadStatic();// 从取款机取钱</div><div class="line"></div><div class="line">        t3.start();</div><div class="line">        t4.start();</div><div class="line"></div><div class="line">        Thread t5 = new MoneyThreadStatic();// 从银行取钱</div><div class="line">        Thread t6 = new MoneyThreadStatic();// 从取款机取钱</div><div class="line"></div><div class="line">        t5.start();</div><div class="line">        t6.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Left Money: 800</div><div class="line">Left Money: 600</div><div class="line">操作金额：200</div><div class="line">操作金额：200</div><div class="line">Left Money: 400</div><div class="line">操作金额：200</div><div class="line">Left Money: 200</div><div class="line">操作金额：200</div></pre></td></tr></table></figure>
+<h2 id="synchronized-关键字的组合使用-生产者消费者问题"><a href="#synchronized-关键字的组合使用-生产者消费者问题" class="headerlink" title="synchronized 关键字的组合使用 - 生产者消费者问题"></a>synchronized 关键字的组合使用 - 生产者消费者问题</h2><p><code>synchronized</code>, <code>wait()</code>, <code>notify()</code>结合典型场景。</p>
+<p>生产者消费者问题是研究多线程程序时绕不开的经典问题之一，它描述是有一块<strong>缓冲区作为仓库</strong>，生产者可以将产品<strong>放入</strong>仓库，消费者则可以从仓库中<strong>取走</strong>产品。要解决此问题可以通过：<strong>同步机制</strong>实现的生产者/消费者问题。</p>
+<p>同步问题核心在于：如何保证<strong>同一资源</strong>被多个线程<strong>并发访问</strong>时的<strong>完整性</strong>。常用的同步方法是采用<strong>加锁机制</strong>，保证资源在任意时刻<strong>至多被一个线程访问</strong>。</p>
+<p><strong>代码实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 仓库类Storage实现缓冲区</div><div class="line"> */</div><div class="line">public class Storage &#123;</div><div class="line"></div><div class="line">    private final int MAX_SIXE = 5;</div><div class="line"></div><div class="line">    private LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();</div><div class="line"></div><div class="line">    //生产num个产品</div><div class="line">    public void produce(int num) &#123;</div><div class="line">        synchronized (linkedList) &#123;</div><div class="line"></div><div class="line">            // 如果仓库剩余容量不足</div><div class="line">            while (linkedList.size() + num &gt; MAX_SIXE) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + &quot;, wait:【要生产的产品数量】:&quot; + num + &quot;/t【库存量】:&quot;</div><div class="line">                        + linkedList.size() + &quot;/t暂时不能执行生产任务!&quot;);</div><div class="line"></div><div class="line">                try &#123;</div><div class="line">                    linkedList.wait();</div><div class="line">                &#125; catch (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // 生产条件满足情况下，生产num个产品</div><div class="line">            for (int i = 0; i &lt; num; i++) &#123;</div><div class="line">                linkedList.add(new Object());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(&quot;【已经生产产品数】:&quot; + num + &quot;/t【现仓储量为】:&quot; + linkedList.size());</div><div class="line"></div><div class="line">            linkedList.notifyAll();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void constume(int num) &#123;</div><div class="line">        synchronized (linkedList) &#123;</div><div class="line">            // 如果仓库存储量不足</div><div class="line">            while (linkedList.size() &lt; num) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + &quot;, wait:R【要消费的产品数量】:&quot; + num + &quot;/t【库存量】:&quot;</div><div class="line">                        + linkedList.size());</div><div class="line"></div><div class="line">                // 由于条件不满足，消费阻塞</div><div class="line">                try &#123;</div><div class="line">                    linkedList.wait();</div><div class="line">                &#125; catch (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // 消费条件满足情况下，消费num个产品</div><div class="line">            for (int i = 1; i &lt;= num; ++i) &#123;</div><div class="line">                linkedList.remove();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(&quot;【已经消费产品数】:&quot; + num + &quot;/t【现仓储量为】:&quot; + linkedList.size());</div><div class="line"></div><div class="line">            linkedList.notifyAll();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public LinkedList&lt;Object&gt; getLinkedList() &#123;</div><div class="line">        return linkedList;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setLinkedList(LinkedList&lt;Object&gt; linkedList) &#123;</div><div class="line">        this.linkedList = linkedList;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getMAX_SIXE() &#123;</div><div class="line">        return MAX_SIXE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 生产者类Producer继承线程类Thread</div><div class="line"> */</div><div class="line">public class Producer extends Thread &#123;</div><div class="line"></div><div class="line">    // 每次生产的产品数量</div><div class="line">    private int num;</div><div class="line"></div><div class="line">    // 所在放置的仓库</div><div class="line">    private Storage storage;</div><div class="line"></div><div class="line">    // 构造函数，设置仓库</div><div class="line">    public Producer(int num, Storage storage) &#123;</div><div class="line">        this.num = num;</div><div class="line">        this.storage = storage;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 调用仓库Storage的生产函数</div><div class="line">    private void produce(int num) &#123;</div><div class="line">        storage.produce(num);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        produce(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 消费者类Consumer继承线程类Thread</div><div class="line"> */</div><div class="line">public class Consumer extends Thread &#123;</div><div class="line"></div><div class="line">    // 每次消费的产品数量</div><div class="line">    private int num;</div><div class="line"></div><div class="line">    // 所在放置的仓库</div><div class="line">    private Storage storage;</div><div class="line"></div><div class="line">    public Consumer(int num, Storage storage) &#123;</div><div class="line">        this.num = num;</div><div class="line">        this.storage = storage;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 调用仓库Storage的生产函数</div><div class="line">    private void consume(int num) &#123;</div><div class="line">        storage.constume(num);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        consume(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class TestMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        // 仓库对象</div><div class="line">        Storage storage = new Storage();</div><div class="line"></div><div class="line">        // 消费者对象</div><div class="line">        Consumer c1 = new Consumer(1,storage);</div><div class="line">        Consumer c2 = new Consumer(3,storage);</div><div class="line"></div><div class="line">        // 生产者对象</div><div class="line">        Producer p1 = new Producer(2,storage);</div><div class="line"></div><div class="line">        // 线程开始执行</div><div class="line">        c1.start();</div><div class="line">        p1.start();</div><div class="line">        c2.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Thread-0, constume wait:R【要消费的产品数量】:1/t【库存量】:0</div><div class="line">Thread-1, constume wait:R【要消费的产品数量】:3/t【库存量】:0</div><div class="line">Thread-2, produce【已经生产产品数】:2/t【现仓储量为】:2</div><div class="line">Thread-1, constume wait:R【要消费的产品数量】:3/t【库存量】:2</div><div class="line">Thread-0, constume【已经消费产品数】:1/t【现仓储量为】:1</div><div class="line">Thread-1, constume wait:R【要消费的产品数量】:3/t【库存量】:1</div></pre></td></tr></table></figure>
+<h2 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h2><h3 id="产生死锁的原因："><a href="#产生死锁的原因：" class="headerlink" title="产生死锁的原因："></a>产生死锁的原因：</h3><ul>
+<li>资源不足、分配不当</li>
+<li>请求、释放资源的顺序不对。</li>
+</ul>
+<h3 id="产生死锁的条件"><a href="#产生死锁的条件" class="headerlink" title="产生死锁的条件"></a>产生死锁的条件</h3><ul>
+<li>互斥条件：在一段时间内，资源仅为一个线程所占有。此时，其他线程想要占用只能等待。</li>
+<li>请求与保持条件：线程已经保持了一个资源，同时又提出了新的资源请求，此新资源却又被其他线程占用，即：请求被阻塞、自身持有资源又保持不放。</li>
+<li>不可剥夺条件：线程中持有的资源为被使用完毕之前，不能别其他线程强行夺走，只能是自己来释放。</li>
+<li>循环等待条件：若干线程间形成收尾相连的循环资源等待关系。</li>
+</ul>
+<h1 id="Java并发编程：线程池的使用"><a href="#Java并发编程：线程池的使用" class="headerlink" title="Java并发编程：线程池的使用"></a>Java并发编程：线程池的使用</h1><blockquote>
+<p>参考：<a href="https://www.cnblogs.com/dolphin0520/p/3932921.html" target="_blank" rel="external">https://www.cnblogs.com/dolphin0520/p/3932921.html</a></p>
+</blockquote>
+<p>使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
+<p><strong>线程池</strong>使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务。</p>
+<h2 id="ThreadPoolExecutor类"><a href="#ThreadPoolExecutor类" class="headerlink" title="ThreadPoolExecutor类"></a>ThreadPoolExecutor类</h2><p>ThreadPoolExecutor继承关系：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/threadpool.png" alt=""></p>
+<h2 id="构造函数中的各个参数含义："><a href="#构造函数中的各个参数含义：" class="headerlink" title="构造函数中的各个参数含义："></a>构造函数中的各个参数含义：</h2><ul>
+<li><p><strong>1. int corePoolSize：</strong></p>
+<p>核心池的大小（例如：正式工人。就是线程池大小），这个参数跟后面讲述的线程池的实现原理有非常大的关系。默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；</p>
+</li>
+<li><p><strong>2. int maximumPoolSize：</strong></p>
+<p>线程池最大线程数（例如：正式工人 + 临时工人。任务量突然过大时的一种补救措施），它表示在线程池中最多能创建多少个线程。</p>
+<ul>
+<li><strong>3. long keepAliveTime：</strong> </li>
+</ul>
+<p>表示线程没有任务执行时最多保持多久时间会终止。默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用。但是如果调用了<code>allowCoreThreadTimeOut(boolean)</code>方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0；</p>
+<ul>
+<li><strong>4. TimeUnit  unit：</strong></li>
+</ul>
+<p>参数keepAliveTime的时间单位，有7种取值：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TimeUnit.DAYS;               //天</div><div class="line">TimeUnit.HOURS;             //小时</div><div class="line">TimeUnit.MINUTES;           //分钟</div><div class="line">TimeUnit.SECONDS;           //秒</div><div class="line">TimeUnit.MILLISECONDS;      //毫秒</div><div class="line">TimeUnit.MICROSECONDS;      //微妙</div><div class="line">TimeUnit.NANOSECONDS;       //纳秒</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>5. BlockingQueue<runnable> workQueue：</runnable></strong></p>
+<p>一个阻塞队列，用来存储等待执行的任务。阻塞队列有以下几种选择，一般使用LinkedBlockingQueue和Synchronous：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ArrayBlockingQueue;</div><div class="line">LinkedBlockingQueue;</div><div class="line">SynchronousQueue;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>6. ThreadFactory threadFactory：</strong></li>
+</ul>
+<p>线程工厂，主要用来创建线程。</p>
+<ul>
+<li><strong>7. RejectedExecutionHandler handler：</strong></li>
+</ul>
+<p>表示当拒绝处理任务时的策略，有以下四种取值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。 </div><div class="line">ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。 </div><div class="line">ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</div><div class="line">ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</div></pre></td></tr></table></figure>
+<p>主要方法：</p>
+<ul>
+<li>execute()方法实际上是Executor中声明的方法，在ThreadPoolExecutor进行了具体的实现，这个方法是ThreadPoolExecutor的核心方法，通过这个方法可以向线程池提交一个任务，交由线程池去执行。</li>
+<li>submit()这个方法也是用来向线程池提交任务的，但是它和execute()方法不同，它能够返回任务执行的结果，去看submit()方法的实现，会发现它实际上还是调用的execute()方法，只不过它利用了Future来获取任务执行结果。</li>
+<li>shutdown()和shutdownNow()是用来关闭线程池的。</li>
+</ul>
+<h2 id="ThreadPoolExecutor类实现原理"><a href="#ThreadPoolExecutor类实现原理" class="headerlink" title="ThreadPoolExecutor类实现原理"></a>ThreadPoolExecutor类实现原理</h2><h3 id="线程池状态"><a href="#线程池状态" class="headerlink" title="线程池状态"></a>线程池状态</h3><p>在ThreadPoolExecutor中定义了一个volatile变量，另外定义了几个static final变量表示线程池的各个状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">volatile int runState; // 保证线程之间的可见性</div><div class="line">static final int RUNNING    = 0; // 当创建线程池后，初始时</div><div class="line">static final int SHUTDOWN   = 1; // 调用了shutdown()方法，此时线程池不能够接受新的任务，它会等待所有任务执行完毕；</div><div class="line">static final int STOP       = 2; // 调用了shutdownNow()方法，此时线程池不能接受新的任务，并且会去尝试终止正在执行的任务；</div><div class="line">static final int TERMINATED = 3; // 当线程池处于SHUTDOWN或STOP状态，并且所有工作线程已经销毁，任务缓存队列已经清空或执行结束后</div></pre></td></tr></table></figure>
+<h3 id="任务的执行过程"><a href="#任务的执行过程" class="headerlink" title="任务的执行过程"></a>任务的执行过程</h3><p>在ThreadPoolExecutor类中，最核心的任务提交方法是execute()方法。execute()方法的实现原理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line">public void execute(Runnable command) &#123;</div><div class="line">    if (command == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    if (poolSize &gt;= corePoolSize || !addIfUnderCorePoolSize(command)) &#123;</div><div class="line">        if (runState == RUNNING &amp;&amp; workQueue.offer(command)) &#123;</div><div class="line">        	// 为了防止在将此任务添加进任务缓存队列的同时其他线程突然调用shutdown或者shutdownNow方法关闭了线程池的一种应急措施</div><div class="line">            if (runState != RUNNING || poolSize == 0)</div><div class="line">                ensureQueuedTaskHandled(command);</div><div class="line">        &#125;</div><div class="line">        else if (!addIfUnderMaximumPoolSize(command))</div><div class="line">            reject(command); // is shutdown or saturated</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private boolean addIfUnderCorePoolSize(Runnable firstTask) &#123;</div><div class="line">    Thread t = null;</div><div class="line">    // 首先获取到锁，因为这地方涉及到线程池状态的变化</div><div class="line">    final ReentrantLock mainLock = this.mainLock;</div><div class="line">    mainLock.lock();</div><div class="line">    try &#123;</div><div class="line">    	    // 前面的判断过程中并没有加锁，因此可能在execute方法判断的时候poolSize小于corePoolSize，而判断完之后，在其他线程中又向线程池提交了任务，就可能导致poolSize不小于corePoolSize了，所以需要在这个地方继续判断。</div><div class="line">    	    // 判断线程池的状态是否为RUNNING，原因也很简单，因为有可能在其他线程中调用了shutdown或者shutdownNow方法。</div><div class="line">        if (poolSize &lt; corePoolSize &amp;&amp; runState == RUNNING)</div><div class="line">            // 创建线程去执行firstTask任务  </div><div class="line">            t = addThread(firstTask);         </div><div class="line">        &#125; finally &#123;</div><div class="line">        mainLock.unlock();</div><div class="line">    &#125;</div><div class="line">    // 判断t是否为空，为空则表明创建线程失败（即poolSize&gt;=corePoolSize或者runState不等于RUNNING）</div><div class="line">    if (t == null)</div><div class="line">        return false;</div><div class="line">    t.start();</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private Thread addThread(Runnable firstTask) &#123;</div><div class="line">    Worker w = new Worker(firstTask);</div><div class="line">    //创建一个线程，执行任务 </div><div class="line">    Thread t = threadFactory.newThread(w);    </div><div class="line">    if (t != null) &#123;</div><div class="line">        //将创建的线程的引用赋值为w的成员变量 </div><div class="line">        w.thread = t;                 </div><div class="line">        workers.add(w);</div><div class="line">         //当前线程数加1</div><div class="line">        int nt = ++poolSize;           </div><div class="line">        if (nt &gt; largestPoolSize)</div><div class="line">            largestPoolSize = nt;</div><div class="line">    &#125;</div><div class="line">    return t;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 它实际上实现了Runnable接口</div><div class="line">private final class Worker implements Runnable &#123;</div><div class="line">    private final ReentrantLock runLock = new ReentrantLock();</div><div class="line">    private Runnable firstTask;</div><div class="line">    volatile long completedTasks;</div><div class="line">    Thread thread;</div><div class="line">    Worker(Runnable firstTask) &#123;</div><div class="line">        this.firstTask = firstTask;</div><div class="line">    &#125;</div><div class="line">    boolean isActive() &#123;</div><div class="line">        return runLock.isLocked();</div><div class="line">    &#125;</div><div class="line">    void interruptIfIdle() &#123;</div><div class="line">        final ReentrantLock runLock = this.runLock;</div><div class="line">        /注意这里，是调用tryLock()来获取锁的，因为如果当前worker正在执行任务，锁已经被获取了，是无法获取到锁的</div><div class="line">        //如果成功获取了锁，说明当前worker处于空闲状态</div><div class="line">        if (runLock.tryLock()) &#123;</div><div class="line">            try &#123;</div><div class="line">        if (thread != Thread.currentThread())</div><div class="line">        thread.interrupt();</div><div class="line">            &#125; finally &#123;</div><div class="line">                runLock.unlock();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    void interruptNow() &#123;</div><div class="line">        thread.interrupt();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    private void runTask(Runnable task) &#123;</div><div class="line">        final ReentrantLock runLock = this.runLock;</div><div class="line">        runLock.lock();</div><div class="line">        try &#123;</div><div class="line">            if (runState &lt; STOP &amp;&amp;</div><div class="line">                Thread.interrupted() &amp;&amp;</div><div class="line">                runState &gt;= STOP)</div><div class="line">            boolean ran = false;</div><div class="line">            beforeExecute(thread, task);   //beforeExecute方法是ThreadPoolExecutor类的一个方法，没有具体实现，用户可以根据</div><div class="line">            //自己需要重载这个方法和后面的afterExecute方法来进行一些统计信息，比如某个任务的执行时间等           </div><div class="line">            try &#123;</div><div class="line">                task.run();</div><div class="line">                ran = true;</div><div class="line">                afterExecute(task, null);</div><div class="line">                ++completedTasks;</div><div class="line">            &#125; catch (RuntimeException ex) &#123;</div><div class="line">                if (!ran)</div><div class="line">                    afterExecute(task, ex);</div><div class="line">                throw ex;</div><div class="line">            &#125;</div><div class="line">        &#125; finally &#123;</div><div class="line">            runLock.unlock();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    public void run() &#123;</div><div class="line">        try &#123;</div><div class="line">            Runnable task = firstTask;</div><div class="line">            firstTask = null;</div><div class="line">            while (task != null || (task = getTask()) != null) &#123;</div><div class="line">                runTask(task);</div><div class="line">                task = null;</div><div class="line">            &#125;</div><div class="line">        &#125; finally &#123;</div><div class="line">            workerDone(this);   //当任务队列中没有任务时，进行清理工作       </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>getTask是ThreadPoolExecutor类中的方法，并不是Worker类中的方法，下面是getTask方法的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">Runnable getTask() &#123;</div><div class="line">    for (;;) &#123;</div><div class="line">        try &#123;</div><div class="line">            // 先判断当前线程池状态</div><div class="line">            int state = runState;</div><div class="line">            // 如果runState大于SHUTDOWN，即为STOP或者TERMINATED</div><div class="line">            if (state &gt; SHUTDOWN)</div><div class="line">                return null;</div><div class="line">            Runnable r;</div><div class="line">            if (state == SHUTDOWN)  // Help drain queue</div><div class="line">            	//如果线程数大于核心池大小或者允许为核心池线程设置空闲时间，</div><div class="line">                r = workQueue.poll();</div><div class="line">            else if (poolSize &gt; corePoolSize || allowCoreThreadTimeOut) </div><div class="line">                //则通过poll取任务，若等待一定的时间取不到任务，则返回null</div><div class="line">                r = workQueue.poll(keepAliveTime, TimeUnit.NANOSECONDS);</div><div class="line">            else</div><div class="line">                r = workQueue.take();</div><div class="line">            if (r != null)</div><div class="line">                return r;</div><div class="line">            //如果没取到任务，即r为null，则判断当前的worker是否可以退出</div><div class="line">            if (workerCanExit()) &#123;   </div><div class="line">                if (runState &gt;= SHUTDOWN) // Wake up others</div><div class="line">                	   //中断处于空闲状态的worker</div><div class="line">                    interruptIdleWorkers();   </div><div class="line">                return null;</div><div class="line">            &#125;</div><div class="line">            // Else retry</div><div class="line">        &#125; catch (InterruptedException ie) &#123;</div><div class="line">            // On interruption, re-check runState</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">private boolean workerCanExit() &#123;</div><div class="line">    final ReentrantLock mainLock = this.mainLock;</div><div class="line">    mainLock.lock();</div><div class="line">    boolean canExit;</div><div class="line">    //如果runState大于等于STOP，或者任务缓存队列为空了</div><div class="line">    //或者  允许为核心池线程设置空闲存活时间并且线程池中的线程数目大于1</div><div class="line">    try &#123;</div><div class="line">        canExit = runState &gt;= STOP ||</div><div class="line">            workQueue.isEmpty() ||</div><div class="line">            (allowCoreThreadTimeOut &amp;&amp;</div><div class="line">             poolSize &gt; Math.max(1, corePoolSize));</div><div class="line">    &#125; finally &#123;</div><div class="line">        mainLock.unlock();</div><div class="line">    &#125;</div><div class="line">    return canExit;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void interruptIdleWorkers() &#123;</div><div class="line">    final ReentrantLock mainLock = this.mainLock;</div><div class="line">    mainLock.lock();</div><div class="line">    try &#123;</div><div class="line">        for (Worker w : workers)  </div><div class="line">            //实际上调用的是worker的interruptIfIdle()方法</div><div class="line">            w.interruptIfIdle();</div><div class="line">    &#125; finally &#123;</div><div class="line">        mainLock.unlock();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>假如我们来设计线程池，可能会有一个任务分派线程，当发现有线程空闲时，就从任务缓存队列中取一个任务交给空闲线程执行。但是在这里，并没有采用这样的方式，因为这样会要额外地对任务分派线程进行管理，无形地会增加难度和复杂度，这里直接让执行完任务的线程去任务缓存队列里面取任务来执行。</p>
+<p>addIfUnderMaximumPoolSize方法的实现思想和addIfUnderCorePoolSize方法的实现思想非常相似，唯一的区别在于addIfUnderMaximumPoolSize方法是在线程池中的<strong>线程数达到了核心池大小</strong>并且<strong>往任务队列中添加任务失败</strong>的情况下执行的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private boolean addIfUnderMaximumPoolSize(Runnable firstTask) &#123;</div><div class="line">    Thread t = null;</div><div class="line">    final ReentrantLock mainLock = this.mainLock;</div><div class="line">    mainLock.lock();</div><div class="line">    try &#123;</div><div class="line">        if (poolSize &lt; maximumPoolSize &amp;&amp; runState == RUNNING)</div><div class="line">            t = addThread(firstTask);</div><div class="line">    &#125; finally &#123;</div><div class="line">        mainLock.unlock();</div><div class="line">    &#125;</div><div class="line">    if (t == null)</div><div class="line">        return false;</div><div class="line">    t.start();</div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要知道任务提交给线程池之后的处理策略，主要有4点：</p>
+<ul>
+<li>如果当前线程池中的线程数目小于corePoolSize，则每来一个任务，就会创建一个线程去执行这个任务；</li>
+<li>如果当前线程池中的线程数目&gt;=corePoolSize，则每来一个任务，会尝试将其添加到任务缓存队列当中，若添加成功，则该任务会等待空闲线程将其取出去执行；若添加失败（一般来说是任务缓存队列已满），则会尝试创建新的线程去执行这个任务；</li>
+<li>如果当前线程池中的线程数目达到maximumPoolSize，则会采取任务拒绝策略进行处理；</li>
+<li>如果线程池中的线程数量大于 corePoolSize时，如果某线程空闲时间超过keepAliveTime，线程将被终止，直至线程池中的线程数目不大于corePoolSize；如果允许为核心池中的线程设置存活时间，那么核心池中的线程空闲时间超过keepAliveTime，线程也会被终止。</li>
+</ul>
+<h3 id="线程池中的线程初始化"><a href="#线程池中的线程初始化" class="headerlink" title="线程池中的线程初始化"></a>线程池中的线程初始化</h3><p>默认情况下，创建线程池之后，线程池中是没有线程的，需要提交任务之后才会创建线程。<br>在实际中如果需要线程池创建之后立即创建线程，可以通过以下两个方法办到：</p>
+<ul>
+<li>prestartCoreThread()：初始化一个核心线程；</li>
+<li>prestartAllCoreThreads()：初始化所有核心线程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public boolean prestartCoreThread() &#123;</div><div class="line">    return addIfUnderCorePoolSize(null); //注意传进去的参数是null</div><div class="line">&#125;</div><div class="line"> </div><div class="line">public int prestartAllCoreThreads() &#123;</div><div class="line">    int n = 0;</div><div class="line">    while (addIfUnderCorePoolSize(null))//注意传进去的参数是null</div><div class="line">        ++n;</div><div class="line">    return n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意上面传进去的参数是null，根据第2小节的分析可知如果传进去的参数为null，则最后执行线程会阻塞在getTask方法中的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r = workQueue.take();</div></pre></td></tr></table></figure>
+<p>即等待任务队列中有任务。</p>
+<h3 id="任务缓存队列及排队策略"><a href="#任务缓存队列及排队策略" class="headerlink" title="任务缓存队列及排队策略"></a>任务缓存队列及排队策略</h3><p>任务缓存队列，即<code>BlockingQueue&lt;Runnable&gt; workQueue</code>，它用来存放等待执行的任务。</p>
+<ul>
+<li><p>ArrayBlockingQueue：基于数组的先进先出队列，此队列创建时<strong>必须指定大小</strong>；</p>
+</li>
+<li><p>LinkedBlockingQueue：基于链表的先进先出队列，如果创建时没有指定此队列大小，则默认为Integer.MAX_VALUE；</p>
+</li>
+<li><p>SynchronousQueue：这个队列比较特殊，它不会保存提交的任务，而是将直接新建一个线程来执行新来的任务。</p>
+</li>
+</ul>
+<h3 id="任务拒绝策略"><a href="#任务拒绝策略" class="headerlink" title="任务拒绝策略"></a>任务拒绝策略</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。 </div><div class="line">ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。 </div><div class="line">ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</div><div class="line">ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</div></pre></td></tr></table></figure>
+<h3 id="线程池的关闭"><a href="#线程池的关闭" class="headerlink" title="线程池的关闭"></a>线程池的关闭</h3><ul>
+<li><strong>shutdown()：</strong>不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务</li>
+<li><strong>shutdownNow()：</strong>立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务</li>
+</ul>
+<h2 id="ThreadPoolExecutor类使用示例"><a href="#ThreadPoolExecutor类使用示例" class="headerlink" title="ThreadPoolExecutor类使用示例"></a>ThreadPoolExecutor类使用示例</h2><h3 id="方式1：ThreadPoolExecutor使用"><a href="#方式1：ThreadPoolExecutor使用" class="headerlink" title="方式1：ThreadPoolExecutor使用"></a>方式1：<code>ThreadPoolExecutor</code>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">public class MainThreadPool &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(5, 10, 200, TimeUnit.MILLISECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(5));</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; 15; i++) &#123;</div><div class="line">            MyTask myTask = new MyTask(i);</div><div class="line">            poolExecutor.execute(myTask);</div><div class="line">            System.out.println(&quot;第 &quot; + i + &quot;个 —— 线程池中线程数目：&quot; + poolExecutor.getPoolSize() + &quot;，队列中等待执行的任务数目：&quot; + poolExecutor.getQueue().size() + &quot;，已执行玩别的任务数目：&quot; + poolExecutor.getCompletedTaskCount());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        poolExecutor.shutdown();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static class MyTask implements Runnable &#123;</div><div class="line">        private int taskNum;</div><div class="line"></div><div class="line">        public MyTask(int num) &#123;</div><div class="line">            this.taskNum = num;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void run() &#123;</div><div class="line">            System.out.println(&quot;正在执行task &quot; + taskNum);</div><div class="line">            try &#123;</div><div class="line">                Thread.currentThread().sleep(4000);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            System.out.println(&quot;task &quot; + taskNum + &quot;执行完毕&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     *</div><div class="line">     当 i &lt; 5 时：</div><div class="line"></div><div class="line">     正在执行task 0</div><div class="line">     第 0个 —— 线程池中线程数目：1，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     第 1个 —— 线程池中线程数目：2，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 1</div><div class="line">     第 2个 —— 线程池中线程数目：3，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 2</div><div class="line">     第 3个 —— 线程池中线程数目：4，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 3</div><div class="line">     第 4个 —— 线程池中线程数目：5，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 4</div><div class="line">     task 1执行完毕</div><div class="line">     task 2执行完毕</div><div class="line">     task 3执行完毕</div><div class="line">     task 0执行完毕</div><div class="line"></div><div class="line"></div><div class="line">     - - -  - - - - - -  - -</div><div class="line">     当 i &lt; 10 时：</div><div class="line"></div><div class="line">     正在执行task 0</div><div class="line">     第 0个 —— 线程池中线程数目：1，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     第 1个 —— 线程池中线程数目：2，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 1</div><div class="line">     第 2个 —— 线程池中线程数目：3，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 2</div><div class="line">     第 3个 —— 线程池中线程数目：4，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     正在执行task 3</div><div class="line">     第 4个 —— 线程池中线程数目：5，队列中等待执行的任务数目：0，已执行玩别的任务数目：0</div><div class="line">     第 5个 —— 线程池中线程数目：5，队列中等待执行的任务数目：1，已执行玩别的任务数目：0</div><div class="line">     第 6个 —— 线程池中线程数目：5，队列中等待执行的任务数目：2，已执行玩别的任务数目：0</div><div class="line">     正在执行task 4</div><div class="line">     第 7个 —— 线程池中线程数目：5，队列中等待执行的任务数目：3，已执行玩别的任务数目：0</div><div class="line">     第 8个 —— 线程池中线程数目：5，队列中等待执行的任务数目：4，已执行玩别的任务数目：0</div><div class="line">     第 9个 —— 线程池中线程数目：5，队列中等待执行的任务数目：5，已执行玩别的任务数目：0</div><div class="line">     task 0执行完毕</div><div class="line">     task 1执行完毕</div><div class="line">     task 3执行完毕</div><div class="line">     正在执行task 7</div><div class="line">     task 2执行完毕</div><div class="line">     正在执行task 8</div><div class="line">     正在执行task 5</div><div class="line">     正在执行task 6</div><div class="line">     task 4执行完毕</div><div class="line">     正在执行task 9</div><div class="line">     task 7执行完毕</div><div class="line">     task 6执行完毕</div><div class="line">     task 9执行完毕</div><div class="line">     task 5执行完毕</div><div class="line">     task 8执行完毕</div><div class="line">     */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="方式2：Executors使用"><a href="#方式2：Executors使用" class="headerlink" title="方式2：Executors使用"></a>方式2：<code>Executors</code>使用</h3><ul>
+<li>Executors.newCachedThreadPool();        //创建一个缓冲池，缓冲池容量大小为Integer.MAX_VALUE</li>
+<li>Executors.newSingleThreadExecutor();    //创建容量为1的缓冲池</li>
+<li>Executors.newFixedThreadPool(int);       //创建固定容量大小的缓冲池</li>
+</ul>
+<p><strong>三个方法的具体实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</div><div class="line">    return new ThreadPoolExecutor(nThreads, nThreads,</div><div class="line">                                  0L, TimeUnit.MILLISECONDS,</div><div class="line">                                  new LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line">public static ExecutorService newSingleThreadExecutor() &#123;</div><div class="line">    return new FinalizableDelegatedExecutorService</div><div class="line">        (new ThreadPoolExecutor(1, 1,</div><div class="line">                                0L, TimeUnit.MILLISECONDS,</div><div class="line">                                new LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">&#125;</div><div class="line">public static ExecutorService newCachedThreadPool() &#123;</div><div class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</div><div class="line">                                  60L, TimeUnit.SECONDS,</div><div class="line">                                  new SynchronousQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="多线程对于-成员变量-与-局部变量-的影响"><a href="#多线程对于-成员变量-与-局部变量-的影响" class="headerlink" title="多线程对于 成员变量 与 局部变量 的影响"></a>多线程对于 成员变量 与 局部变量 的影响</h1><ul>
+<li><p>如果一个变量是 <strong>成员变量</strong>，那么多个线程对同一个对象的成员变量进行操作时，它们对该成员变量是 <strong>彼此影响</strong>的，也就是说一个线程对成员变量的改变会影响到另一个线程。</p>
+</li>
+<li><p>如果一个变量是 <strong>局部变量</strong>，那么 <strong>每个线程</strong> 都会有一个 <strong>该局部变量的拷贝</strong>（即便是同一个对象中的方法的局部变量，也会对每一个线程有一个拷贝），一个线程对该局部变量的改变不会影响到其他线程。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/心得-他山之石，可以攻玉/" rel="next" title="他山之石，可以攻玉">
+                <i class="fa fa-chevron-left"></i> 他山之石，可以攻玉
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android 消息机制/" rel="prev" title="Android消息机制">
+                Android消息机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#名词释义："><span class="nav-number">1.</span> <span class="nav-text">名词释义：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的状态"><span class="nav-number">2.</span> <span class="nav-text">线程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程状态转换"><span class="nav-number">2.1.</span> <span class="nav-text">线程状态转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本控制方法："><span class="nav-number">2.2.</span> <span class="nav-text">基本控制方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#每个对象都有的方法（机制）"><span class="nav-number">2.3.</span> <span class="nav-text">每个对象都有的方法（机制）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键字-synchronized"><span class="nav-number">3.</span> <span class="nav-text">关键字  synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized单独使用"><span class="nav-number">3.1.</span> <span class="nav-text">synchronized单独使用:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接用于方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接用于方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块："><span class="nav-number">3.1.2.</span> <span class="nav-text">代码块：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-作用于方法"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">synchronized 作用于方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-作用于代码块-同一个类的同一个对象"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">synchronized 作用于代码块 - 同一个类的同一个对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-作用于代码块-同一个类的不同对象"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">synchronized 作用于代码块 - 同一个类的不同对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-作用于代码块-作用域的范围"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">synchronized 作用于代码块 - 作用域的范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized-作用于静态方法"><span class="nav-number">3.1.2.5.</span> <span class="nav-text">synchronized 作用于静态方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized-关键字的组合使用-生产者消费者问题"><span class="nav-number">3.2.</span> <span class="nav-text">synchronized 关键字的组合使用 - 生产者消费者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁问题"><span class="nav-number">3.3.</span> <span class="nav-text">死锁问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生死锁的原因："><span class="nav-number">3.3.1.</span> <span class="nav-text">产生死锁的原因：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产生死锁的条件"><span class="nav-number">3.3.2.</span> <span class="nav-text">产生死锁的条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程：线程池的使用"><span class="nav-number">4.</span> <span class="nav-text">Java并发编程：线程池的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类"><span class="nav-number">4.1.</span> <span class="nav-text">ThreadPoolExecutor类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数中的各个参数含义："><span class="nav-number">4.2.</span> <span class="nav-text">构造函数中的各个参数含义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类实现原理"><span class="nav-number">4.3.</span> <span class="nav-text">ThreadPoolExecutor类实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池状态"><span class="nav-number">4.3.1.</span> <span class="nav-text">线程池状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务的执行过程"><span class="nav-number">4.3.2.</span> <span class="nav-text">任务的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池中的线程初始化"><span class="nav-number">4.3.3.</span> <span class="nav-text">线程池中的线程初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务缓存队列及排队策略"><span class="nav-number">4.3.4.</span> <span class="nav-text">任务缓存队列及排队策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务拒绝策略"><span class="nav-number">4.3.5.</span> <span class="nav-text">任务拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的关闭"><span class="nav-number">4.3.6.</span> <span class="nav-text">线程池的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor类使用示例"><span class="nav-number">4.4.</span> <span class="nav-text">ThreadPoolExecutor类使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式1：ThreadPoolExecutor使用"><span class="nav-number">4.4.1.</span> <span class="nav-text">方式1：ThreadPoolExecutor使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式2：Executors使用"><span class="nav-number">4.4.2.</span> <span class="nav-text">方式2：Executors使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多线程对于-成员变量-与-局部变量-的影响"><span class="nav-number">5.</span> <span class="nav-text">多线程对于 成员变量 与 局部变量 的影响</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">262.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

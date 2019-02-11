@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,版本新特性," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
+<meta name="keywords" content="Android,版本新特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 8.0&#x2F;8.1 Notification的使用">
+<meta property="og:url" content="http://yannischeng.com/Android 8.0:8.1 Notification的使用/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.44.27.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.40.55.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.38.10.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 8.0&#x2F;8.1 Notification的使用">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/rentee/article/details/78303532非常全面的参考：https://www.jianshu.com/p/d2051a785309">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.44.27.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android 8.0:8.1 Notification的使用/"/>
+
+
+
+
+
+  <title>Android 8.0/8.1 Notification的使用 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android 8.0:8.1 Notification的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 8.0/8.1 Notification的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T17:17:21+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,277 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/版本新特性/" rel="tag"># 版本新特性</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android 8.0:8.1 Notification的使用/" title="Android 8.0/8.1 Notification的使用">http://yannischeng.com/Android 8.0:8.1 Notification的使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="http://blog.csdn.net/rentee/article/details/78303532" target="_blank" rel="external">http://blog.csdn.net/rentee/article/details/78303532</a><br>非常全面的参考：<a href="https://www.jianshu.com/p/d2051a785309" target="_blank" rel="external">https://www.jianshu.com/p/d2051a785309</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="起因-设置“Notification”后，状态栏并没有任何提示"><a href="#起因-设置“Notification”后，状态栏并没有任何提示" class="headerlink" title="起因 - 设置“Notification”后，状态栏并没有任何提示"></a>起因 - 设置“Notification”后，状态栏并没有任何提示</h1><p>最近项目中需要使用到“Notification”，这个原本在android中非常简单就能实现的功能，如今我却怎么设置都不成功，这让我颇为郁闷。</p>
+<!-- more -->
+<p>然后开始查看别人是怎么写的，但是同样并没有任何效果。然后我意识到我的系统版本时<strong>Android 8.1</strong>。设置方式已经变了。</p>
+<p>一个前版本的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Notification.Builder builder = new Notification.Builder(this);</div><div class="line">   Intent intent = new Intent(this, TraceActivity.class);</div><div class="line">   Bitmap icon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_person_pin_circle_cyan_700_24dp);</div><div class="line">   //设置pendingIntent</div><div class="line">   builder.setContentIntent(PendingIntent.getActivity(this, 0, intent, 0))</div><div class="line">           .setLargeIcon(icon)</div><div class="line">           .setContentTitle(&quot;领队定位&quot;)</div><div class="line">           .setSmallIcon(R.drawable.ic_person_pin_circle_white_18dp)</div><div class="line">           .setContentText(&quot;定位服务正在运行中……&quot;);</div><div class="line">   NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">   manager.notify(1, builder.build());</div></pre></td></tr></table></figure>
+<p>这样的写法运行在<strong>Android 8.0</strong>之上是没有任何效果的。</p>
+<h1 id="Android-8-0-Notification"><a href="#Android-8-0-Notification" class="headerlink" title="Android 8.0 Notification"></a>Android 8.0 Notification</h1><p><strong>注意：</strong></p>
+<p>代码中添加了：<code>NotificationChannel</code>这个类。<br>这是Android O新增的通知渠道，其允许您为要显示的每种通知类型创建用户可自定义的渠道。用户界面将通知渠道称之为通知类别。</p>
+<p>NotificationChannel是Android O新增的特性，为了兼容老代码，如果channelId为null的话，Android O会把通知归到“Other Channel”上。<br>PS：将targetSdkVersion提到26以上的话，就必须设置channel了，不能为null。</p>
+<h2 id="使用到的类"><a href="#使用到的类" class="headerlink" title="使用到的类"></a>使用到的类</h2><h3 id="1-NotificationChannel"><a href="#1-NotificationChannel" class="headerlink" title="1. NotificationChannel"></a>1. NotificationChannel</h3><p>官方解释为：适用于类似主题通知的集合的设置的表示形式。<br>使用方式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 创建自己的的NotificationChannel 参数1：id：channeId；参数2：name：自定义类别的名字，在&quot;设置界面&quot;的类别栏下回显示 name；参数3：重要等级</div><div class="line">NotificationChannel channel = new NotificationChannel(&quot;10&quot;,&quot;普通通知&quot;,NotificationManager.IMPORTANCE_DEFAULT);</div><div class="line">// NotificationManager管理器</div><div class="line">NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">// 使用channel对象</div><div class="line">mNotifyMgr.createNotificationChannel(channel);</div></pre></td></tr></table></figure>
+<h3 id="2-NotificationManager"><a href="#2-NotificationManager" class="headerlink" title="2. NotificationManager"></a>2. NotificationManager</h3><p>官方解释为：通知用户发生事件的类。 这是如何告诉用户在后台发生了什么事情。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">// 发出通知</div><div class="line">mNotifyMgr.notify(10, notification);</div></pre></td></tr></table></figure>
+<h3 id="3-Notification-Builder"><a href="#3-Notification-Builder" class="headerlink" title="3. Notification.Builder"></a>3. Notification.Builder</h3><p>官方解释：一个类，它表示如何使用一个持久化通知呈现给用户</p>
+<h2 id="初步使用实例的图解"><a href="#初步使用实例的图解" class="headerlink" title="初步使用实例的图解"></a>初步使用实例的图解</h2><p><strong>较为完整的通知示例图解</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.44.27.png" alt=""></p>
+<p>通知频道的名称：<strong>new NotificationChannel(“10”,”普通通知”,NotificationManager.IMPORTANCE_DEFAULT);</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.40.55.png" alt=""></p>
+<p>未设置颜色的样式：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-15%2015.38.10.png" alt=""></p>
+<h2 id="添加自定义提醒"><a href="#添加自定义提醒" class="headerlink" title="添加自定义提醒"></a>添加自定义提醒</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加自定义声音提醒</span></div><div class="line">builder.setSound(Uri.parse(<span class="string">"path/to/sound"</span>));</div><div class="line"></div><div class="line"><span class="comment">// 添加自定义震动提醒</span></div><div class="line"><span class="comment">// 延迟200ms后震动300ms，再延迟400ms后震动500ms</span></div><div class="line"><span class="keyword">long</span>[] pattern = <span class="keyword">new</span> <span class="keyword">long</span>[]&#123;<span class="number">200</span>,<span class="number">300</span>,<span class="number">400</span>,<span class="number">500</span>&#125;; </div><div class="line">builder.setVibrate(pattern);</div><div class="line"></div><div class="line"><span class="comment">// 添加自定义呼吸灯提醒，自动添加FLAG_SHOW_LIGHTS</span></div><div class="line"><span class="keyword">int</span> argb = <span class="number">0xffff0000</span>;  <span class="comment">// led灯光颜色</span></div><div class="line"><span class="keyword">int</span> onMs = <span class="number">300</span>;         <span class="comment">// led亮灯持续时间</span></div><div class="line"><span class="keyword">int</span> offMs = <span class="number">100</span>;        <span class="comment">// led熄灯持续时间</span></div><div class="line">builder.setLights(argb, onMs, offMs);</div></pre></td></tr></table></figure>
+<h2 id="一个完整的Notification-初步使用-实例"><a href="#一个完整的Notification-初步使用-实例" class="headerlink" title="一个完整的Notification 初步使用 实例"></a>一个完整的Notification 初步使用 实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * android  8.0 新的Notification</div><div class="line"> */</div><div class="line">@RequiresApi(api = Build.VERSION_CODES.O)</div><div class="line">private void initNotification() &#123;</div><div class="line"></div><div class="line">    Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_map_cyan_700_48dp);</div><div class="line"></div><div class="line">    // 创建自己的的NotificationChannel 参数1：id：channeId；参数2：name：自定义类别的名字，在&quot;设置界面&quot;的类别栏下回显示 name；参数3：重要等级</div><div class="line">    NotificationChannel channel = new NotificationChannel(&quot;10&quot;,&quot;普通通知&quot;,NotificationManager.IMPORTANCE_DEFAULT);</div><div class="line">    channel.enableLights(true);</div><div class="line">    channel.setLightColor(Color.RED);</div><div class="line">    channel.setShowBadge(true);</div><div class="line">    channel.setDescription(&quot;description&quot;);</div><div class="line"></div><div class="line">    // NotificationManager管理器</div><div class="line">    NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">    // 使用channel对象</div><div class="line">    mNotifyMgr.createNotificationChannel(channel);</div><div class="line"></div><div class="line">    // 点击通知之后的意图</div><div class="line">    PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, TraceActivity.class), 0);</div><div class="line">    PendingIntent pendingIntent2 = PendingIntent.getActivity(this, 0, new Intent(this, ChangePwdActivity.class), 0);</div><div class="line"></div><div class="line">    Notification notification = new Notification.Builder(this,&quot;10&quot;)</div><div class="line">            // 设置通知 右侧 大图标</div><div class="line">            .setLargeIcon(bitmap)</div><div class="line">            // 设置通知的图标、app文字名称，若不设置则整个通知均为黑灰色</div><div class="line">            .setColor(getResources().getColor(R.color.Deep_Orange_700))</div><div class="line">            // 无障碍服务所需文字</div><div class="line">            .setTicker(&quot;这是什么玩意？- 国旅&quot;)</div><div class="line">            // 小图标</div><div class="line">            .setSmallIcon(R.drawable.ic_person_pin_circle_cyan_700_24dp)</div><div class="line">            // 标题文本</div><div class="line">            .setContentTitle(&quot;Notification Title&quot;)</div><div class="line">            // 解释内容 - 子文本</div><div class="line">            .setContentText(&quot;Text &amp; Text&quot;)</div><div class="line">            // 在项目app名称右侧显示的内容文字</div><div class="line">            .setSubText(&quot;Sub_tex&quot;)</div><div class="line">            // 设置通知的动作数组</div><div class="line">            .setActions(new Notification.Action[]&#123;new Notification.Action(R.drawable.contact_me,&quot;进入Map&quot;,pendingIntent),new Notification.Action(R.drawable.contact_me,&quot;修改密码&quot;,pendingIntent2)&#125;)</div><div class="line">            // 设置单个动作</div><div class="line">            //.setActions(new Notification.Action(R.drawable.contact_me,&quot;修改密码&quot;,pendingIntent2))</div><div class="line">            // 仅当 配合&quot;setContentIntent(pendingIntent)&quot;使用时，点击通知会自动消失</div><div class="line">            .setAutoCancel(true)</div><div class="line">            // 为通知设置意图</div><div class="line">            //.setContentIntent(pendingIntent)</div><div class="line">            // 同时实现：铃声/振动/灯呼吸 三种提醒方式</div><div class="line">            .setDefaults(Notification.DEFAULT_ALL)</div><div class="line">            .setWhen(0)</div><div class="line">            .setNumber(3)</div><div class="line">            .build();   // getNotification()  deprecated in API level 16</div><div class="line"></div><div class="line">    // 发出通知</div><div class="line">    mNotifyMgr.notify(10, notification);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li><p>如果该通知只是起到 <strong>“通知”</strong>的作用，不希望用户点击后有相应的跳转，那么，<strong>intent、pendingIntent</strong>这几行代码可以不写，可以创建延时操作，当通知被成功 notify 后，一段时间后调用<strong>manager.cancel(notificationID)，将通知清除</strong>，此时builder.setAutoCancel()方法不写也可以。  </p>
+</li>
+<li><p>如果通知栏下拉后，希望用户<strong>点击并有相应的跳转事件</strong>。那么，要注意跳转后，通知是否有必要继续存在。如果点击后通知消失，两种方法：</p>
+<ul>
+<li>设置setAutoCancel 参数设置为 true，默认是false，</li>
+<li><p>在intent事件中的如本例中的MainActivity的onCreate()方法调用 manager.cancel(notificationID)取消该通知，此ID要和创建通知的ID一致，否则通知不消失。</p>
+<p>如果点击不消失，将setAutoCancel 参数设置为 false即可。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/开源库-SwipeToLoadLayout/" rel="next" title="开源库-SwipeToLoadLayout">
+                <i class="fa fa-chevron-left"></i> 开源库-SwipeToLoadLayout
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android WebView的使用/" rel="prev" title="WebView的使用">
+                WebView的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#起因-设置“Notification”后，状态栏并没有任何提示"><span class="nav-number">1.</span> <span class="nav-text">起因 - 设置“Notification”后，状态栏并没有任何提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-8-0-Notification"><span class="nav-number">2.</span> <span class="nav-text">Android 8.0 Notification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用到的类"><span class="nav-number">2.1.</span> <span class="nav-text">使用到的类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NotificationChannel"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. NotificationChannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-NotificationManager"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. NotificationManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Notification-Builder"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Notification.Builder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初步使用实例的图解"><span class="nav-number">2.2.</span> <span class="nav-text">初步使用实例的图解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加自定义提醒"><span class="nav-number">2.3.</span> <span class="nav-text">添加自定义提醒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个完整的Notification-初步使用-实例"><span class="nav-number">2.4.</span> <span class="nav-text">一个完整的Notification 初步使用 实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">2.5.</span> <span class="nav-text">说明</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">262.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

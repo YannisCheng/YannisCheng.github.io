@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,地图," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：http://www.jianshu.com/p/29ccac3e1e42">
+<meta name="keywords" content="Android,地图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度地图开发-鹰眼轨迹">
+<meta property="og:url" content="http://yannischeng.com/Android 百度地图开发-鹰眼轨迹/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="参考：http://www.jianshu.com/p/29ccac3e1e42">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-29%2020.52.11.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/20140717191406562.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-29%2023.51.28.png">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度地图开发-鹰眼轨迹">
+<meta name="twitter:description" content="参考：http://www.jianshu.com/p/29ccac3e1e42">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-29%2020.52.11.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android 百度地图开发-鹰眼轨迹/"/>
+
+
+
+
+
+  <title>百度地图开发-鹰眼轨迹 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android 百度地图开发-鹰眼轨迹/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">百度地图开发-鹰眼轨迹</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T14:01:44+08:00">
+                2017-11-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,136 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/地图/" rel="tag"># 地图</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android 百度地图开发-鹰眼轨迹/" title="百度地图开发-鹰眼轨迹">http://yannischeng.com/Android 百度地图开发-鹰眼轨迹/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="http://www.jianshu.com/p/29ccac3e1e42" target="_blank" rel="external">http://www.jianshu.com/p/29ccac3e1e42</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h1><p><em>1. 后台service是否存活</em><br><em>2. 电量与流量提示</em><br><em>3. 坐标系说明</em></p>
+<h1 id="需求概览"><a href="#需求概览" class="headerlink" title="需求概览"></a>需求概览</h1><ul>
+<li>围栏：到达指定位置之后通知</li>
+<li>鹰眼轨迹：根据行踪绘制轨迹</li>
+<li>位置提醒：到达指定位置后提醒。</li>
+</ul>
+<h1 id="一、定位方式"><a href="#一、定位方式" class="headerlink" title="一、定位方式"></a>一、定位方式</h1><p>gps定位、wifi定位、基站（SIM卡）定位</p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><h3 id="1-gps定位："><a href="#1-gps定位：" class="headerlink" title="1. gps定位："></a>1. gps定位：</h3><p>卫星定位，利用手机gps硬件定位，实现简单，手机本地就能实现定位，不需要和服务端进行交互。<br>在室内或者有遮蔽物的地点无法接收到gps信号。此时利用wifi定位。</p>
+<p>gps定位<strong>精度很高</strong>，几米到十几米，但是<strong>耗电严重</strong>。</p>
+<h3 id="2-wifi定位："><a href="#2-wifi定位：" class="headerlink" title="2. wifi定位："></a>2. wifi定位：</h3><p>在室外既能接收gps信号，也能接收wifi信号。<br>wifi定位的原理是，我们在室外的时候，手机能接收到gps位置信息，也能扫描到WiFi，当手机把gps位置和WiFi传到后端服务器，WiFi和gps位置就建立了映射关系，当手机在室内无法接收到gps时，却能扫描WiFi，手机把WiFi传到服务器查询出对应的gps位置，然后进行计算可以得到位置结果（经纬度），其中映射和计算是很复杂的过程。</p>
+<p>WiFi定位精度相对于gps<strong>差一点</strong>，但是也能到十几米、几十米，也有上百米的误差的，<strong>低耗电</strong>。</p>
+<h3 id="3-基站定位："><a href="#3-基站定位：" class="headerlink" title="3. 基站定位："></a>3. 基站定位：</h3><p>当手机无法扫描到WiFi时，只要装了sim卡，就能连接移动或联通等基站，即可用基站定位，定位原理和WiFi大致相同。基站定位需要装了sim卡，并且手机能上网。</p>
+<p><strong>wifi定位与基站定位统称为网络定位。</strong></p>
+<p>基站定位<strong>精度很差</strong>，一般都有几百米，<strong>上千米的误差</strong>。</p>
+<p><strong>误差其实和wifi、基站的<code>信号覆盖半径</code>有关，wifi覆盖半径大概100m左右，而基站的覆盖半径就到km级别了。</strong></p>
+<h1 id="二、百度地图鹰眼认证"><a href="#二、百度地图鹰眼认证" class="headerlink" title="二、百度地图鹰眼认证"></a>二、百度地图鹰眼认证</h1><p>认证与不认证：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-29%2020.52.11.png" alt=""></p>
+<p>权限及配额说明：</p>
+<p><a href="http://lbsyun.baidu.com/index.php?title=android-yingyan/guide/quota" target="_blank" rel="external">http://lbsyun.baidu.com/index.php?title=android-yingyan/guide/quota</a></p>
+<h1 id="三、百度地图-鹰眼轨迹服务-的使用"><a href="#三、百度地图-鹰眼轨迹服务-的使用" class="headerlink" title="三、百度地图 鹰眼轨迹服务 的使用"></a>三、百度地图 鹰眼轨迹服务 的使用</h1><blockquote>
+<p>参考：<a href="http://lbsyun.baidu.com/index.php?title=android-yingyan/guide/buildproject" target="_blank" rel="external">http://lbsyun.baidu.com/index.php?title=android-yingyan/guide/buildproject</a></p>
+</blockquote>
+<h2 id="0-准备条件"><a href="#0-准备条件" class="headerlink" title="0. 准备条件"></a>0. 准备条件</h2><h3 id="01-获取-账号秘钥"><a href="#01-获取-账号秘钥" class="headerlink" title="01. 获取 账号秘钥"></a>01. 获取 账号秘钥</h3><p>账号秘钥 ： <a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="external">http://lbsyun.baidu.com/apiconsole/key</a></p>
+<h3 id="02-创建-鹰眼服务服务"><a href="#02-创建-鹰眼服务服务" class="headerlink" title="02. 创建 鹰眼服务服务"></a>02. 创建 鹰眼服务服务</h3><p>鹰眼服务 ：<a href="http://lbsyun.baidu.com/trace/admin/service" target="_blank" rel="external">http://lbsyun.baidu.com/trace/admin/service</a></p>
+<h2 id="1-下载相关文件"><a href="#1-下载相关文件" class="headerlink" title="1. 下载相关文件"></a>1. 下载相关文件</h2><p><a href="http://lbsyun.baidu.com/index.php?title=android-yingyan/sdkandev-download" target="_blank" rel="external">http://lbsyun.baidu.com/index.php?title=android-yingyan/sdkandev-download</a></p>
+<h2 id="2-导入库文件"><a href="#2-导入库文件" class="headerlink" title="2. 导入库文件"></a>2. 导入<code>库文件</code></h2><blockquote>
+<p>倒库参考：<a href="https://www.cnblogs.com/jiy-for-you/p/6093199.html" target="_blank" rel="external">https://www.cnblogs.com/jiy-for-you/p/6093199.html</a></p>
+</blockquote>
+<p><strong>注意：使用AndroidStudio 路径</strong></p>
+<ul>
+<li><strong>将<code>jar文件</code>拷贝到<code>工程的libs目录</code>下，若使用鹰眼的图像存储功能，需导入bos-android-sdk-1.0.2.jar。</strong></li>
+</ul>
+<p><strong>注意：</strong><br>百度鹰眼包中有okhttp，而我的本地项目中也有okhttp，所以冲突，无法构建。此处注意保留一处即可。</p>
+<p><strong>导入<code>so文件</code>方式：</strong></p>
+<ul>
+<li><strong>1. 将<code>so文件</code>导入到<code>src/main/jniLibs目录</code>下。</strong></li>
+</ul>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/20140717191406562.png" alt=""></p>
+<ul>
+<li><strong>2. 将<code>so文件</code>导入到<code>libs目录</code>下。</strong>，然后在<code>build.gradle</code>文件中添加：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sourceSets &#123;</div><div class="line">    main &#123;</div><div class="line">        jniLibs.srcDir &apos;libs&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>jar包</code>添加完毕之后，需要在<code>gradle文件</code>中进行添加：</strong></li>
+</ul>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-29%2023.51.28.png" alt=""></p>
+<h2 id="3-配置AndroidManifest-xml文件"><a href="#3-配置AndroidManifest-xml文件" class="headerlink" title="3. 配置AndroidManifest.xml文件"></a>3. 配置<code>AndroidManifest.xml</code>文件</h2><h3 id="3-1-声明使用权限"><a href="#3-1-声明使用权限" class="headerlink" title="3.1 声明使用权限"></a>3.1 声明使用<code>权限</code></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 这个权限用于进行网络定位--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_COARSE_LOCATION"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 用于加快GPS首次定位--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 这个权限用于访问GPS定位--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CHANGE_WIFI_STATE"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 用于读取手机当前的状态--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 写入扩展存储，向扩展卡写入数据，用于写入对象存储BOS数据--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 访问网络，网络定位需要上网--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- SD卡读取权限，用于写入对象存储BOS数据--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.MOUNT_UNMOUNT_FILESYSTEMS"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_LOGS"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.VIBRATE"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WAKE_LOCK"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_SETTINGS"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 用于Android M及以上系统，申请加入忽略电池优化白名单--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="3-2-声明-lt-service-gt-组件"><a href="#3-2-声明-lt-service-gt-组件" class="headerlink" title="3.2 声明&lt;service&gt;组件"></a>3.2 声明<code>&lt;service&gt;</code>组件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">service</span></span></div><div class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.baidu.trace.LBSTraceService"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:process</span>=<span class="string">":remote"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="3-3-设置-AccessKey"><a href="#3-3-设置-AccessKey" class="headerlink" title="3.3 设置 AccessKey"></a>3.3 设置 <code>AccessKey</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;application</div><div class="line"></div><div class="line">	……</div><div class="line">	</div><div class="line">	&lt;meta-data             </div><div class="line">		android:name=&quot;com.baidu.lbsapi.API_KEY&quot;             </div><div class="line">		android:value=&quot;AK&quot; /&gt;       //key:开发者申请的Key</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android SpannableString 对已有文字处理/" rel="next" title="对已有文字处理">
+                <i class="fa fa-chevron-left"></i> 对已有文字处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Mac下在Androidstudio中获取数字签名证书的SHA1值/" rel="prev" title="Mac下在Androidstudio中获取数字签名证书的SHA1值">
+                Mac下在Androidstudio中获取数字签名证书的SHA1值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存在问题"><span class="nav-number">1.</span> <span class="nav-text">存在问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需求概览"><span class="nav-number">2.</span> <span class="nav-text">需求概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、定位方式"><span class="nav-number">3.</span> <span class="nav-text">一、定位方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">3.1.</span> <span class="nav-text">特点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-gps定位："><span class="nav-number">3.1.1.</span> <span class="nav-text">1. gps定位：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-wifi定位："><span class="nav-number">3.1.2.</span> <span class="nav-text">2. wifi定位：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-基站定位："><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 基站定位：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、百度地图鹰眼认证"><span class="nav-number">4.</span> <span class="nav-text">二、百度地图鹰眼认证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、百度地图-鹰眼轨迹服务-的使用"><span class="nav-number">5.</span> <span class="nav-text">三、百度地图 鹰眼轨迹服务 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-准备条件"><span class="nav-number">5.1.</span> <span class="nav-text">0. 准备条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-获取-账号秘钥"><span class="nav-number">5.1.1.</span> <span class="nav-text">01. 获取 账号秘钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-创建-鹰眼服务服务"><span class="nav-number">5.1.2.</span> <span class="nav-text">02. 创建 鹰眼服务服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载相关文件"><span class="nav-number">5.2.</span> <span class="nav-text">1. 下载相关文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-导入库文件"><span class="nav-number">5.3.</span> <span class="nav-text">2. 导入库文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置AndroidManifest-xml文件"><span class="nav-number">5.4.</span> <span class="nav-text">3. 配置AndroidManifest.xml文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-声明使用权限"><span class="nav-number">5.4.1.</span> <span class="nav-text">3.1 声明使用权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-声明-lt-service-gt-组件"><span class="nav-number">5.4.2.</span> <span class="nav-text">3.2 声明<service>组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-设置-AccessKey"><span class="nav-number">5.4.3.</span> <span class="nav-text">3.3 设置 AccessKey</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">262.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

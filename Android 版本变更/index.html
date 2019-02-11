@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="版本变更," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android各个版本的变更">
+<meta name="keywords" content="版本变更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="版本变更">
+<meta property="og:url" content="http://yannischeng.com/Android 版本变更/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Android各个版本的变更">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-20T13:04:37.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="版本变更">
+<meta name="twitter:description" content="Android各个版本的变更">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android 版本变更/"/>
+
+
+
+
+
+  <title>版本变更 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android 版本变更/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">版本变更</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T10:28:47+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
+                2018-11-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,281 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/版本变更/" rel="tag"># 版本变更</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android 版本变更/" title="版本变更">http://yannischeng.com/Android 版本变更/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Android各个版本的变更</p>
+<a id="more"></a>
+<p>ww</p>
+<h1 id="Android-6-0（API-23）"><a href="#Android-6-0（API-23）" class="headerlink" title="Android 6.0（API 23）"></a>Android 6.0（API 23）</h1><h2 id="1-运行时权限"><a href="#1-运行时权限" class="headerlink" title="1. 运行时权限"></a>1. 运行时权限</h2><blockquote>
+<p>参考：<a href="https://developer.android.com/guide/topics/permissions/overview" target="_blank" rel="external">https://developer.android.com/guide/topics/permissions/overview</a></p>
+</blockquote>
+<p>检查应用是否被授予权限：<code>checkSelfPermission()</code>；<br>请求权限：<code>requestPermissions()</code></p>
+<h2 id="2-低电耗模式和应用待机模式"><a href="#2-低电耗模式和应用待机模式" class="headerlink" title="2. 低电耗模式和应用待机模式"></a>2. 低电耗模式和应用待机模式</h2><blockquote>
+<p>参考：<a href="https://developer.android.com/training/monitoring-device-state/doze-standby" target="_blank" rel="external">https://developer.android.com/training/monitoring-device-state/doze-standby</a></p>
+</blockquote>
+<h3 id="2-1-低电耗模式"><a href="#2-1-低电耗模式" class="headerlink" title="2.1 低电耗模式"></a>2.1 低电耗模式</h3><p>如果用户拔下设备的电源插头，并在屏幕关闭后的一段时间内使其保持不活动状态，设备会进入低电耗模式，在该模式下设备会尝试让系统保持休眠状态。在该模式下，设备会定期短时间恢复正常工作，以便进行应用同步，还可让系统执行任何挂起的操作。</p>
+<h3 id="2-2-应用待机模式"><a href="#2-2-应用待机模式" class="headerlink" title="2.2 应用待机模式"></a>2.2 应用待机模式</h3><p>应用待机模式允许系统判定应用在用户未主动使用它时处于空闲状态。当用户有一段时间未触摸应用时，系统便会作出此判定。如果拔下了设备电源插头，系统会为其视为空闲的应用停用网络访问以及暂停同步和作业。</p>
+<h3 id="优化-加入白名单"><a href="#优化-加入白名单" class="headerlink" title="优化 - 加入白名单"></a>优化 - 加入白名单</h3><ul>
+<li>应用可以触发<code>ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS</code> Intent，让用户直接进入 Battery Optimization，他们可以在其中添加应用。</li>
+<li>具有 <code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code> 权限的应用可以触发系统对话框，让用户无需转到“设置”即可直接将应用添加到白名单。应用将通过触发<code>ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code> Intent 来触发该对话框。</li>
+</ul>
+<h2 id="3-取消支持-Apache-HTTP-客户端"><a href="#3-取消支持-Apache-HTTP-客户端" class="headerlink" title="3. 取消支持 Apache HTTP 客户端"></a>3. 取消支持 Apache HTTP 客户端</h2><p>Android 取消了 <code>HttpClient</code> 的使用，仅能使用 <code>HttpURLConnection</code></p>
+<h2 id="4-硬件标识访问权"><a href="#4-硬件标识访问权" class="headerlink" title="4. 硬件标识访问权"></a>4. 硬件标识访问权</h2><p>为给用户提供更严格的数据保护，从此版本开始，对于使用 WLAN API 和 Bluetooth API 的应用，Android 移除了对设备本地硬件标识符的编程访问权。<code>WifiInfo.getMacAddress()</code> 方法和 <code>BluetoothAdapter.getAddress()</code> 方法现在会返回常量值 <code>02:00:00:00:00:00</code>。</p>
+<p>要通过 Bluetooth 和 WLAN 扫描访问附近外部设备的硬件标识符，您的应用必须拥有 <code>ACCESS_FINE_LOCATION</code> 或 <code>ACCESS_COARSE_LOCATION</code> 权限。</p>
+<h2 id="5-通知"><a href="#5-通知" class="headerlink" title="5. 通知"></a>5. 通知</h2><p>改用 Notification.Builder 类来构建通知。要重复更新通知，请重复使用 Notification.Builder 实例。调用 build() 方法可获取更新后的 Notification 实例。</p>
+<h2 id="6-音频管理器变更"><a href="#6-音频管理器变更" class="headerlink" title="6. 音频管理器变更"></a>6. 音频管理器变更</h2><p>不再支持通过 AudioManager 类直接设置音量或将特定音频流静音。setStreamSolo() 方法已弃用，您应该改为调用 requestAudioFocus() 方法。类似地，setStreamMute() 方法也已弃用，请改为调用 adjustStreamVolume() 方法并传入方向值 ADJUST_MUTE 或 ADJUST_UNMUTE。</p>
+<h2 id="7-WLAN和网络连接变更"><a href="#7-WLAN和网络连接变更" class="headerlink" title="7. WLAN和网络连接变更"></a>7. WLAN和网络连接变更</h2><p>现在，您的应用只能更改由您创建的 WifiConfiguration 对象的状态。系统不允许您修改或删除由用户或其他应用创建的 WifiConfiguration 对象。<br>在之前的版本中，如果应用利用带有 disableAllOthers=true 设置的 enableNetwork() 强制设备连接特定 WLAN 网络，设备将会断开与移动数据网络等其他网络的连接。在此版本中，设备不再断开与上述其他网络的连接。如果您的应用的 targetSdkVersion 为 “20” 或更低，则会固定连接所选 WLAN 网络。如果您的应用的 targetSdkVersion 为 “21” 或更高，请使用多网络 API（如 openConnection()、bindSocket() 和新增的 bindProcessToNetwork() 方法）来确保通过所选网络传送网络流量。</p>
+<h2 id="8-相机服务变更"><a href="#8-相机服务变更" class="headerlink" title="8. 相机服务变更"></a>8. 相机服务变更</h2><p>访问模式由 <code>先到先得</code> -&gt; <code>高优先级进程优先</code>。</p>
+<ul>
+<li>带有对用户可见 Activity 或前台 Activity 的应用进程一般会被授予较高的优先级，从而使相机资源的获取和使用更加可靠；</li>
+<li>当<code>高优先级</code>的应用尝试使用相机时，系统可能会“驱逐”正在使用相机客户端的 <code>低优先级</code> 应用</li>
+<li>多进程用例中 <code>禁止同时访问</code>。即使并没有其他应用直接尝试访问同一相机设备，此变更也可能导致低优先级客户端被“驱逐”。</li>
+<li>更改当前用户会导致之前用户帐户拥有的应用内活动相机客户端被驱逐</li>
+</ul>
+<h2 id="9-APK验证"><a href="#9-APK验证" class="headerlink" title="9. APK验证"></a>9. APK验证</h2><p>该平台现在执行的 APK 验证更为严格。如果在清单中声明的文件在 APK 中并不存在，该 APK 将被视为已损坏。移除任何内容后必须重新签署 APK。</p>
+<h1 id="Android-7-0（API-24）"><a href="#Android-7-0（API-24）" class="headerlink" title="Android 7.0（API 24）"></a>Android 7.0（API 24）</h1><h2 id="1-低电耗模式"><a href="#1-低电耗模式" class="headerlink" title="1. 低电耗模式"></a>1. 低电耗模式</h2><ul>
+<li>Android 6.0（API 级别 23）引入了低电耗模式，当用户设备未插接电源、处于静止状态且屏幕关闭时，该模式会推迟 CPU 和网络活动，从而延长电池寿命。</li>
+<li><p>Android 7.0 则通过在设备未插接电源且屏幕关闭状态下、但 <code>不一定要处于静止状态</code>（例如用户外出时把手持式设备装在口袋里）时应用部分 CPU 和网络限制，进一步增强了低电耗模式。</p>
+<h3 id="分级应用"><a href="#分级应用" class="headerlink" title="分级应用"></a>分级应用</h3></li>
+<li><p>当设备处于 <code>充电状态</code> 且 <code>屏幕已关闭一定时间后</code>，设备会进入低电耗模式并应用 <code>第一部分</code> 限制：<strong>关闭应用网络访问、推迟作业和同步</strong></p>
+</li>
+<li><code>进入低电耗模式</code> 后设备 <code>处于静止状态达到一定时间</code>，系统则会对 <code>PowerManager.WakeLock</code>、<code>AlarmManager闹铃</code> 、<code>GPS</code> 和 <code>WLAN</code> 扫描应用余下的低电耗模式限制。</li>
+</ul>
+<p>无论是<strong>应用部分</strong>还是<strong>全部</strong>低电耗模式限制，系统都会唤醒设备以提供简短的<strong>维护时间窗口</strong>，在此窗口期间，应用程序可以访问网络并执行任何被推迟的作业/同步。</p>
+<h2 id="1-2-后台优化"><a href="#1-2-后台优化" class="headerlink" title="1.2 后台优化"></a>1.2 后台优化</h2><p>移除了三项隐式广播，因为隐式广播会在后台频繁启动已注册侦听这些广播的应用。</p>
+<ul>
+<li>不会收到  <code>CONNECTIVITY_ACTION</code> 广播，即使它们已有清单条目来请求接受这些事件的通知。在前台运行的应用如果使用 BroadcastReceiver 请求接收通知，则仍可以在主线程中侦听 <code>CONNECTIVITY_CHANGE</code>。</li>
+<li>无法发送或接收 <code>ACTION_NEW_PICTURE</code> 或 <code>ACTION_NEW_VIDEO</code> 广播。</li>
+</ul>
+<h2 id="2-权限更改"><a href="#2-权限更改" class="headerlink" title="2. 权限更改"></a>2. 权限更改</h2><p>应用私有目录被限制访问</p>
+<ul>
+<li>私有文件的文件权限不应再由所有者放宽，为使用 <code>MODE_WORLD_READABLE</code> 和/或 <code>MODE_WORLD_WRITEABLE</code> 而进行的此类尝试将触发 <code>SecurityException</code>。</li>
+<li>传递软件包网域外的 <code>file:// URI</code> 可能给接收器留下无法访问的路径。因此，尝试传递 f<code>ile:// URI</code> 会触发 <code>FileUriExposedException</code>。分享私有文件内容的推荐方法是使用 <code>FileProvider</code>。</li>
+<li>DownloadManager 不再按文件名分享私人存储的文件。对于由 DownloadManager 公开的文件，首选的访问方式是使用ContentResolver.openFileDescriptor()。</li>
+</ul>
+<h2 id="3-在应用间共享文件"><a href="#3-在应用间共享文件" class="headerlink" title="3. 在应用间共享文件"></a>3. 在应用间共享文件</h2><p>要在应用间共享文件，您应发送一项 content:// URI，并授予 URI 临时访问权限。进行此授权的最简单方式是使用 FileProvider 类。</p>
+<h1 id="Android-7-1（API-25）"><a href="#Android-7-1（API-25）" class="headerlink" title="Android 7.1（API 25）"></a>Android 7.1（API 25）</h1><h2 id="多窗口支持"><a href="#多窗口支持" class="headerlink" title="多窗口支持"></a>多窗口支持</h2><h2 id="App-Shortcuts"><a href="#App-Shortcuts" class="headerlink" title="App Shortcuts"></a>App Shortcuts</h2><p>通过使用新的快捷方式功能，可以将用户从启动器直接发送到应用中的关键操作界面中。用户只需长按应用程序的启动器图标，即可显示应用程序的快捷方式，然后点击快捷方式跳转到相关操作。</p>
+<p>每个快捷方式都引用一个intent，每个intent都会启动一个特定的操作或任务。</p>
+<p>您可以通过将应用程序添加到APK中的资源文件来静态创建应用程序的快捷方式，也可以在运行时动态添加它们。静态快捷方式是常见操作的理想选择，动态快捷方式允许您根据用户的首选项，行为，位置等突出显示操作。可以在每个应用中提供最多五个快捷方式。</p>
+<h2 id="图形、图标资源"><a href="#图形、图标资源" class="headerlink" title="图形、图标资源"></a>图形、图标资源</h2><p>应用程序现在可以定义圆形启动器图标，这些图标在支持它们的设备上使用。当启动器请求应用程序图标时，框架将返回 android:icon 或android:roundIcon，具体取决于设备构建配置。</p>
+<h2 id="改进的VR线程调度"><a href="#改进的VR线程调度" class="headerlink" title="改进的VR线程调度"></a>改进的VR线程调度</h2><p>Android 7.1提供了改进VR线程调度的新功能。虚拟现实应用对延迟非常敏感。</p>
+<p>应用程序现在可以将一个线程指定为VR线程。当应用程序处于 VR模式时，系统将更积极地调度该线程以最小化延迟。一个进程一次只能有一个VR线程，系统可能会对该线程的运行时间进行限制。当应用程序未处于VR模式时，该设置无效。</p>
+<h1 id="Android-8-0-（API-26）"><a href="#Android-8-0-（API-26）" class="headerlink" title="Android 8.0 （API 26）"></a>Android 8.0 （API 26）</h1><h2 id="针对所有API-应用"><a href="#针对所有API-应用" class="headerlink" title="针对所有API 应用"></a>针对所有API 应用</h2><h3 id="后台执行限制"><a href="#后台执行限制" class="headerlink" title="后台执行限制"></a>后台执行限制</h3><blockquote>
+<p>参考：<a href="https://developer.android.com/about/versions/oreo/background" target="_blank" rel="external">https://developer.android.com/about/versions/oreo/background</a></p>
+</blockquote>
+<p>为提高电池续航时间而引入的变更之一是：当您的应用进入已缓存状态时，如果没有活动的组件，系统将解除应用具有的所有唤醒锁。</p>
+<p>为提高设备性能，系统会限制未在前台运行的应用的某些行为。具体而言：</p>
+<ul>
+<li>现在，在后台运行的应用对后台服务的访问受到限制。</li>
+<li>应用无法使用其清单注册大部分隐式广播（即，并非专门针对此应用的广播）。</li>
+</ul>
+<p>Android 8.0 还对特定函数做出了以下变更：</p>
+<p>如果针对 Android 8.0 的应用尝试在不允许其创建后台服务的情况下使用 </p>
+<ul>
+<li>startService() 函数，则该函数将引发一个 IllegalStateException。</li>
+<li>新的 Context.startForegroundService() 函数将启动一个前台服务。现在，即使应用在后台运行，系统也允许其调用 Context.startForegroundService()。不过，应用必须在创建服务后的五秒内调用该服务的 startForeground() 函数。</li>
+</ul>
+<h3 id="Android-后台位置限制"><a href="#Android-后台位置限制" class="headerlink" title="Android 后台位置限制"></a>Android 后台位置限制</h3><blockquote>
+<p>参考：<a href="https://developer.android.com/about/versions/oreo/background-location-limits" target="_blank" rel="external">https://developer.android.com/about/versions/oreo/background-location-limits</a></p>
+</blockquote>
+<p>为节约电池电量、保持良好的用户体验和确保系统健康运行，在运行 Android 8.0 的设备上使用后台应用时，降低了后台应用接收位置更新的频率。</p>
+<p>此类变更会影响以下 API：</p>
+<ul>
+<li>Fused Location Provider (FLP)</li>
+<li>Geofencing</li>
+<li>Location Manager</li>
+<li>Wi-Fi Manager</li>
+</ul>
+<p>为确保您的应用按预期方式运行，请完成以下步骤：</p>
+<ul>
+<li>查看您的应用的逻辑，并确保您使用的是最新的位置 API。</li>
+<li>测试您的应用是否在每个用例中都表现出预期行为。</li>
+<li>考虑使用 Fused Location Provider (FLP) 或地理围栏来处理依赖于用户当前位置的用例。</li>
+</ul>
+<h3 id="应用快捷键"><a href="#应用快捷键" class="headerlink" title="应用快捷键"></a>应用快捷键</h3><blockquote>
+<p>参考：<a href="https://developer.android.com/about/versions/oreo/android-8.0-changes" target="_blank" rel="external">https://developer.android.com/about/versions/oreo/android-8.0-changes</a></p>
+</blockquote>
+<p>Android 8.0 对应用快捷方式做出了以下变更：</p>
+<ul>
+<li>com.android.launcher.action.INSTALL_SHORTCUT 广播不再会对您的应用有任何影响，因为它现在是私有的隐式广播。相反，您应使用 ShortcutManager 类中的 requestPinShortcut() 函数创建应用快捷方式。</li>
+<li>现在，ACTION_CREATE_SHORTCUT Intent 可以创建可使用 ShortcutManager 类进行管理的应用快捷方式。此 Intent 还可以创建不与 ShortcutManager 交互的旧版启动器快捷方式。在以前，此 Intent 只能创建旧版启动器快捷方式。</li>
+<li>现在，使用 requestPinShortcut() 创建的快捷方式和在处理 ACTION_CREATE_SHORTCUT Intent 的操作组件中创建的快捷方式均已转换为功能齐全的应用快捷方式。因此，应用现在可以使用 ShortcutManager 中的函数来更新这些快捷方式。</li>
+<li>旧版快捷方式仍然保留了它们在旧版 Android 中的功能，但您必须在应用中手动将它们转换成应用快捷方式。</li>
+</ul>
+<h3 id="提醒窗口"><a href="#提醒窗口" class="headerlink" title="提醒窗口"></a>提醒窗口</h3><p>如果应用使用 SYSTEM_ALERT_WINDOW 权限并且尝试使用以下窗口类型之一来在其他应用和系统窗口上方显示提醒窗口：</p>
+<ul>
+<li>TYPE_PHONE</li>
+<li>TYPE_PRIORITY_PHONE</li>
+<li>TYPE_SYSTEM_ALERT</li>
+<li>TYPE_SYSTEM_OVERLAY</li>
+<li>TYPE_SYSTEM_ERROR</li>
+</ul>
+<p>那么，这些窗口将始终显示在使用 TYPE_APPLICATION_OVERLAY 窗口类型的窗口下方。如果应用针对的是 Android 8.0，则应用会使用 TYPE_APPLICATION_OVERLAY 窗口类型来显示提醒窗口。</p>
+<h3 id="网页表单自动填充"><a href="#网页表单自动填充" class="headerlink" title="网页表单自动填充"></a>网页表单自动填充</h3><h2 id="针对8-0应用"><a href="#针对8-0应用" class="headerlink" title="针对8.0应用"></a>针对8.0应用</h2><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>在 Android 8.0 之前，如果应用在运行时请求权限并且被授予该权限，系统会错误地将属于同一权限组并且在清单中注册的其他权限也一起授予应用。</p>
+<p>对于针对 Android 8.0 的应用，此行为已被纠正。系统只会授予应用明确请求的权限。然而，一旦用户为应用授予某个权限，则所有后续对该权限组中权限的请求都将被自动批准。</p>
+<p>例如，假设某个应用在其清单中列出 READ_EXTERNAL_STORAGE 和 WRITE_EXTERNAL_STORAGE。应用请求 READ_EXTERNAL_STORAGE，并且用户授予了该权限。如果该应用针对的是 API 级别 24 或更低级别，系统还会同时授予 WRITE_EXTERNAL_STORAGE，因为该权限也属于同一 STORAGE 权限组并且也在清单中注册过。如果该应用针对的是 Android 8.0，则系统此时仅会授予 READ_EXTERNAL_STORAGE；不过，如果该应用后来又请求 WRITE_EXTERNAL_STORAGE，则系统会立即授予该权限，而不会提示用户。</p>
+<h1 id="Android-8-1-（API-27）"><a href="#Android-8-1-（API-27）" class="headerlink" title="Android 8.1 （API 27）"></a>Android 8.1 （API 27）</h1><h1 id="Android-P-（API-28）"><a href="#Android-P-（API-28）" class="headerlink" title="Android P （API 28）"></a>Android P （API 28）</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android NFC（Near Field Communication）/" rel="next" title="关于NFC（Near Field Communication）近场通讯">
+                <i class="fa fa-chevron-left"></i> 关于NFC（Near Field Communication）近场通讯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/关于TensorFlow/" rel="prev" title="关于TensorFlow">
+                关于TensorFlow <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-6-0（API-23）"><span class="nav-number">1.</span> <span class="nav-text">Android 6.0（API 23）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-运行时权限"><span class="nav-number">1.1.</span> <span class="nav-text">1. 运行时权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-低电耗模式和应用待机模式"><span class="nav-number">1.2.</span> <span class="nav-text">2. 低电耗模式和应用待机模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-低电耗模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 低电耗模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-应用待机模式"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 应用待机模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化-加入白名单"><span class="nav-number">1.2.3.</span> <span class="nav-text">优化 - 加入白名单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-取消支持-Apache-HTTP-客户端"><span class="nav-number">1.3.</span> <span class="nav-text">3. 取消支持 Apache HTTP 客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-硬件标识访问权"><span class="nav-number">1.4.</span> <span class="nav-text">4. 硬件标识访问权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-通知"><span class="nav-number">1.5.</span> <span class="nav-text">5. 通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-音频管理器变更"><span class="nav-number">1.6.</span> <span class="nav-text">6. 音频管理器变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-WLAN和网络连接变更"><span class="nav-number">1.7.</span> <span class="nav-text">7. WLAN和网络连接变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-相机服务变更"><span class="nav-number">1.8.</span> <span class="nav-text">8. 相机服务变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-APK验证"><span class="nav-number">1.9.</span> <span class="nav-text">9. APK验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-7-0（API-24）"><span class="nav-number">2.</span> <span class="nav-text">Android 7.0（API 24）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-低电耗模式"><span class="nav-number">2.1.</span> <span class="nav-text">1. 低电耗模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分级应用"><span class="nav-number">2.1.1.</span> <span class="nav-text">分级应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-后台优化"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 后台优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-权限更改"><span class="nav-number">2.3.</span> <span class="nav-text">2. 权限更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在应用间共享文件"><span class="nav-number">2.4.</span> <span class="nav-text">3. 在应用间共享文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-7-1（API-25）"><span class="nav-number">3.</span> <span class="nav-text">Android 7.1（API 25）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多窗口支持"><span class="nav-number">3.1.</span> <span class="nav-text">多窗口支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App-Shortcuts"><span class="nav-number">3.2.</span> <span class="nav-text">App Shortcuts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形、图标资源"><span class="nav-number">3.3.</span> <span class="nav-text">图形、图标资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进的VR线程调度"><span class="nav-number">3.4.</span> <span class="nav-text">改进的VR线程调度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-8-0-（API-26）"><span class="nav-number">4.</span> <span class="nav-text">Android 8.0 （API 26）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#针对所有API-应用"><span class="nav-number">4.1.</span> <span class="nav-text">针对所有API 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后台执行限制"><span class="nav-number">4.1.1.</span> <span class="nav-text">后台执行限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-后台位置限制"><span class="nav-number">4.1.2.</span> <span class="nav-text">Android 后台位置限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用快捷键"><span class="nav-number">4.1.3.</span> <span class="nav-text">应用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提醒窗口"><span class="nav-number">4.1.4.</span> <span class="nav-text">提醒窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页表单自动填充"><span class="nav-number">4.1.5.</span> <span class="nav-text">网页表单自动填充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对8-0应用"><span class="nav-number">4.2.</span> <span class="nav-text">针对8.0应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限"><span class="nav-number">4.2.1.</span> <span class="nav-text">权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-8-1-（API-27）"><span class="nav-number">5.</span> <span class="nav-text">Android 8.1 （API 27）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-P-（API-28）"><span class="nav-number">6.</span> <span class="nav-text">Android P （API 28）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">262.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
