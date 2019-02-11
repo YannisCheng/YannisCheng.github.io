@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="链表题解">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="温故知新-数据结构-链表题解">
+<meta property="og:url" content="http://yannischeng.com/温故知新-数据结构-链表题解/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="链表题解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-11T01:20:12.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="温故知新-数据结构-链表题解">
+<meta name="twitter:description" content="链表题解">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/温故知新-数据结构-链表题解/"/>
+
+
+
+
+
+  <title>温故知新-数据结构-链表题解 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/温故知新-数据结构-链表题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">温故知新-数据结构-链表题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-11T09:13:34+08:00">
+                2019-02-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-11T09:20:12+08:00">
+                2019-02-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,116 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/温故知新-数据结构-链表题解/" title="温故知新-数据结构-链表题解">http://yannischeng.com/温故知新-数据结构-链表题解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>链表题解</p>
+<a id="more"></a>
+<p>一个链表节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Node &#123;</div><div class="line"></div><div class="line">    int data;</div><div class="line">    Node next;</div><div class="line"></div><div class="line">    public Node(int data) &#123;</div><div class="line">        this.data = data;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;Node&#123;&quot; +</div><div class="line">                &quot;data=&quot; + data +</div><div class="line">                &quot;, next=&quot; + next +</div><div class="line">                &apos;&#125;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>链表节点操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div></pre></td><td class="code"><pre><div class="line">import java.util.Hashtable;</div><div class="line"></div><div class="line">public class LinkedOperator &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 链表的首结点</div><div class="line">     */</div><div class="line">    private Node head = null;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 添加 链表节点</div><div class="line">     *</div><div class="line">     * @param data 节点的数据</div><div class="line">     */</div><div class="line">    public void addNode(int data) &#123;</div><div class="line">        Node newNode = new Node(data);</div><div class="line">        // 判断头节点下是否有元素</div><div class="line">        if (head == null) &#123;</div><div class="line">            // 如果没有：为头节点添加 首元素</div><div class="line">            head = newNode;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 链表的遍历总是从链表头开始遍历</div><div class="line">        Node tempNode = head;</div><div class="line"></div><div class="line">        // 判断链表中是否有元素</div><div class="line">        while (tempNode.next != null) &#123;</div><div class="line">            // 如果有：遍历至最后一个元素</div><div class="line">            tempNode = tempNode.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 如果没有：将新添加的元素添加至 链表的尾部</div><div class="line">        tempNode.next = newNode;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 链表排序：选择排序</div><div class="line">     *</div><div class="line">     * @return 返回排序结束之后的链表头</div><div class="line">     */</div><div class="line">    public Node distLink() &#123;</div><div class="line">        Node curNode = head;</div><div class="line">        while (curNode != null) &#123;</div><div class="line">            Node nextNode = curNode.next;</div><div class="line">            while (nextNode != null) &#123;</div><div class="line">                if (curNode.data &gt; nextNode.data) &#123;</div><div class="line">                    int tempData = curNode.data;</div><div class="line">                    curNode.data = nextNode.data;</div><div class="line">                    nextNode.data = tempData;</div><div class="line">                &#125;</div><div class="line">                nextNode = nextNode.next;</div><div class="line">            &#125;</div><div class="line">            curNode = curNode.next;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 删除指定索引节点</div><div class="line">     *</div><div class="line">     * @param index 指定索引</div><div class="line">     */</div><div class="line">    public boolean delNode(int index) &#123;</div><div class="line"></div><div class="line">        // 判断删除索引是否合理</div><div class="line">        if (index &lt; 1 || index &gt; getLength()) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 判断删除所以是否为特殊索引</div><div class="line">        if (index == 1) &#123;</div><div class="line">            // 如果删除的首节点，则直接将指针指向第二个节点，使其成为首节点</div><div class="line">            head = head.next;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 非特殊位置的索引，正常删除链表节点</div><div class="line">        int i = 1;</div><div class="line">        Node preNode = head;</div><div class="line">        Node curNode = preNode.next;</div><div class="line">        while (curNode != null) &#123;</div><div class="line">            if (i == index) &#123;</div><div class="line">                // 如果 是要删除索引</div><div class="line">                // 执行节点删除操作：跳过当前节点，直接将当前节点的指向指向上一个结点的指向。</div><div class="line">                preNode.next = curNode.next;</div><div class="line">                return true;</div><div class="line">            &#125; else &#123;</div><div class="line">                // 如果不是 要删除索引</div><div class="line">                // 将当前节点后移</div><div class="line">                preNode = curNode;</div><div class="line">                curNode = curNode.next;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 获取链表长度</div><div class="line">     *</div><div class="line">     * @return 长度</div><div class="line">     */</div><div class="line">    public int getLength() &#123;</div><div class="line"></div><div class="line">        int length = 0;</div><div class="line">        Node node = head;</div><div class="line">        while (node.next != null) &#123;</div><div class="line"></div><div class="line">            length++;</div><div class="line">            node = node.next;</div><div class="line">            System.out.println(&quot;getLength() node is : &quot; + node.toString());</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return length;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印当前链表</div><div class="line">     */</div><div class="line">    public void printLink() &#123;</div><div class="line">        Node curNode = head;</div><div class="line">        while (curNode != null) &#123;</div><div class="line">            System.out.println(curNode.toString());</div><div class="line">            curNode = curNode.next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void clearLink() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 元素去重</div><div class="line">     */</div><div class="line">    public Node distinctLink() &#123;</div><div class="line">        Node temp = head;</div><div class="line">        Node pre = null;</div><div class="line">        Hashtable&lt;Integer, Integer&gt; hashtable = new Hashtable&lt;&gt;();</div><div class="line">        while (temp != null) &#123;</div><div class="line">            if (hashtable.containsKey(temp.data)) &#123;</div><div class="line">                // 如果hashtable中已存在该结点，则跳过该结点</div><div class="line">                pre.next = temp.next;</div><div class="line">            &#125; else &#123;</div><div class="line">                //如果hashtable中不存在该结点，将结点存到hashtable中</div><div class="line">                hashtable.put(temp.data, 1);</div><div class="line">                pre = temp.next;</div><div class="line">            &#125;</div><div class="line">            temp = temp.next;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 查找指定的元素</div><div class="line">     *</div><div class="line">     * @param index 指定索引</div><div class="line">     * @return 返回指定 Node</div><div class="line">     */</div><div class="line">    public Node getNNode(int index) &#123;</div><div class="line"></div><div class="line">        if (index &lt; 1 || index &gt; getLength()) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Node node = head;</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; index - 1; i++) &#123;</div><div class="line">            node = node.next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return node;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 反转链表</div><div class="line">     * 反转本质：当前节点指向前一个节点</div><div class="line">     *</div><div class="line">     * @return 翻转之后的列表</div><div class="line">     */</div><div class="line">    public Node reserverLink() &#123;</div><div class="line">        Node curNode = head;</div><div class="line">        Node preNode = null;</div><div class="line">        while (curNode != null) &#123;</div><div class="line">            // 将当前节点的指向暂存</div><div class="line">            Node nextNode = curNode.next;</div><div class="line"></div><div class="line">            // 1 - 先确定 反转后当前节点要指向的位置</div><div class="line">            curNode.next = preNode;</div><div class="line"></div><div class="line">            // 2 - 位置确定后，再对指向的位置进行数据填充</div><div class="line">            preNode = curNode;</div><div class="line"></div><div class="line">            // 3 - 从暂存变量中重新获取当前节点</div><div class="line">            curNode = nextNode;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return preNode;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 原始：</div><div class="line">         * Node&#123;data=12, next=Node&#123;data=56, next=Node&#123;data=23, next=Node&#123;data=6, next=null&#125;&#125;&#125;&#125;</div><div class="line">         *</div><div class="line">         * 结果：</div><div class="line">         * Node&#123;data=6, next=Node&#123;data=23, next=Node&#123;data=56, next=Node&#123;data=12, next=null&#125;&#125;&#125;&#125;</div><div class="line">         */</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 获取链表最后一个元素</div><div class="line">     * @return 最后一个元素</div><div class="line">     */</div><div class="line">    public Node getLastNode()&#123;</div><div class="line">        Node temp = head;</div><div class="line">        while (temp.next != null) &#123;</div><div class="line">            temp = temp.next;</div><div class="line">        &#125;</div><div class="line">        return temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 判断 当前链表是否为一个圆</div><div class="line">     * 设置 快指针 和 慢指针</div><div class="line">     * @return 返回判定值</div><div class="line">     */</div><div class="line">    public boolean isRing()&#123;</div><div class="line">        if (head == null) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (head.next == null) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Node s = head.next;</div><div class="line">        Node f = head.next.next;</div><div class="line">        while (f != null) &#123;</div><div class="line">            if (s == f) &#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            s = s.next;</div><div class="line">            f = f.next.next;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 判断 2个链表是否相交</div><div class="line">     * @param head1 链表1</div><div class="line">     * @param head2 链表2</div><div class="line">     * @return 返回判定值</div><div class="line">     */</div><div class="line">    /*public boolean isCross(Node head1, Node head2)&#123;</div><div class="line"></div><div class="line">    &#125;*/</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public class MainTest &#123;</div><div class="line"></div><div class="line">    public static void main(String[] srgs)&#123;</div><div class="line">        LinkedOperator linkedList = new LinkedOperator();</div><div class="line"></div><div class="line">        linkedList.addNode(12);</div><div class="line">        linkedList.addNode(56);</div><div class="line">        linkedList.addNode(23);</div><div class="line">        linkedList.addNode(12);</div><div class="line">        /*linkedList.addNode(23);</div><div class="line">        linkedList.addNode(44);</div><div class="line">        linkedList.addNode(6);*/</div><div class="line">        //linkedList.printLink();</div><div class="line">        // Node&#123;data=12, next=Node&#123;data=56, next=Node&#123;data=2, next=Node&#123;data=23, next=null&#125;&#125;&#125;&#125;</div><div class="line"></div><div class="line">        //System.out.println(linkedList.getLength());</div><div class="line">        /*</div><div class="line">         * node is : Node&#123;data=12, next=Node&#123;data=24, next=Node&#123;data=36, next=Node&#123;data=48, next=null&#125;&#125;&#125;&#125;</div><div class="line">         * node is : Node&#123;data=24, next=Node&#123;data=36, next=Node&#123;data=48, next=null&#125;&#125;&#125;</div><div class="line">         * node is : Node&#123;data=36, next=Node&#123;data=48, next=null&#125;&#125;</div><div class="line">         * node is : Node&#123;data=48, next=null&#125;</div><div class="line">         * 4</div><div class="line">         */</div><div class="line"></div><div class="line"></div><div class="line">        //linkedList.delNode(2);</div><div class="line">        //System.out.println(linkedList.getLength());</div><div class="line">        /*</div><div class="line">         * getLength() node is : Node&#123;data=12, next=Node&#123;data=36, next=Node&#123;data=48, next=null&#125;&#125;&#125;</div><div class="line">         * getLength() node is : Node&#123;data=36, next=Node&#123;data=48, next=null&#125;&#125;</div><div class="line">         * getLength() node is : Node&#123;data=48, next=null&#125;</div><div class="line">         * 3</div><div class="line">         */</div><div class="line"></div><div class="line">        // 执行排序操作</div><div class="line">        //linkedList.distLink();</div><div class="line">        //linkedList.printLink();</div><div class="line">        // Node&#123;data=2, next=Node&#123;data=12, next=Node&#123;data=23, next=Node&#123;data=56, next=null&#125;&#125;&#125;&#125;</div><div class="line"></div><div class="line">        //linkedList.clearLink();</div><div class="line">        //System.out.println(linkedList.distinctLink());</div><div class="line"></div><div class="line">        //System.out.println(linkedList.getNNode(3));</div><div class="line">        //System.out.println(linkedList.reserverLink());</div><div class="line">        //System.out.println(linkedList.getLastNode());</div><div class="line">        System.out.println(linkedList.isRing());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/温故知新-数据结构-数组题解/" rel="next" title="温故知新-数据结构-数组题解">
+                <i class="fa fa-chevron-left"></i> 温故知新-数据结构-数组题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">262.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
