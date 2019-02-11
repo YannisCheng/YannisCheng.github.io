@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="《Head First 设计模式》- 单例模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.161Z">
+<meta property="og:updated_time" content="2019-02-11T02:13:29.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
 <meta name="twitter:description" content="《Head First 设计模式》- 单例模式">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-11T10:13:29+08:00">
+                2019-02-11
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,686 字
+                  1,367 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -489,13 +489,20 @@
 <hr>
 <h2 id="3-静态内部类"><a href="#3-静态内部类" class="headerlink" title="3. 静态内部类"></a>3. 静态内部类</h2><p><strong>特点：</strong></p>
 <p>这种写法使用<code>JVM</code>本身机制：单例的实例被声明成 <code>static</code> 和 <code>final</code> 变量保证了<code>线程安全</code>；<br>由于 <code>SingleInstance</code> 是私有的，除了 <code>getInstance()</code> 之外没有办法访问它，因此它是懒汉式的；<br>同时读取实例的时候不会进行同步，没有性能缺陷；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line"></div><div class="line">    private Singleton() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static class SingleInstance&#123;</div><div class="line">        private static final Singleton SINGLETON = new Singleton();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static final Singleton getInstance()&#123;</div><div class="line">        return SingleInstance.SINGLETON;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line"></div><div class="line">## 4. 枚举类</div><div class="line"></div><div class="line">&gt; 参考：https://blog.csdn.net/gavin_dyson/article/details/70832185</div></pre></td></tr></table></figure>
-<p>public enum Singleton{<br>    INSTANCE;<br>    private Singleton(){<br>        System.out.println(“哈哈哈”);<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**特点：**</div><div class="line"></div><div class="line">因为其功能完整、使用简洁、无偿地提供了序列化机制、在面对复杂的序列化或者反射攻击时仍然可以绝对防止多次实例化等优点，**单元素的枚举类型**被作者认为**是实现Singleton的最佳方法**</div><div class="line"></div><div class="line">**说明：**</div><div class="line"></div><div class="line">其实`Enum`就是一个普通的类，它继承自`java.lang.Enum`类</div><div class="line">代码中的：</div></pre></td></tr></table></figure></p>
-<p>public enum Singleton{<br>    INSTANCE;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">就是：</div></pre></td></tr></table></figure></p>
-<p>public final class Singleton extends Enum<singleton> {<br>      public static final Singleton INSTANCE;<br>      public static Singleton[] values();<br>      public static Singleton valueOf(String s);<br>      static {};<br>}<br>```</singleton></p>
-<p><code>INSTANCE</code> 被声明为 <code>static</code> 的，虚拟机会保证一个类的<clinit>() 方法在多线程环境中被正确的加锁、同步。所以，枚举实现是在实例化时是线程安全。</clinit></p>
-<p><code>enum</code>是一个类，这也是我们可以用<code>enum</code>作为一个类来实现单例的基础。<br><code>enum</code>类也不能够被继承，在反编译中，我们会发现该类是<code>final</code>。<br>而且<code>enum</code>有且仅有<code>private</code>的构造器，防止外部的额外构造，这恰好和单例模式吻合，也为保证单例性做了一个铺垫。<br>用enum实现Singleton能做到线程安全，保证单例。</p>
+<pre><code>public class Singleton {
 
+    private Singleton() {
+    }
+
+    public static class SingleInstance{
+        private static final Singleton SINGLETON = new Singleton();
+    }
+
+    public static final Singleton getInstance(){
+        return SingleInstance.SINGLETON;
+    }
+}
+</code></pre>
       
     </div>
     
@@ -716,7 +723,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">262.3k</span>
+    <span title="Site words total count">262.0k</span>
   
 </div>
 
