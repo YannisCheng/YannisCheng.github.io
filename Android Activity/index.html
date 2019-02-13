@@ -83,20 +83,20 @@
 
 
 
-<meta name="description" content="Activity总结">
+<meta name="description" content="Activity">
 <meta name="keywords" content="Android,Activity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Activity">
 <meta property="og:url" content="http://yannischeng.com/Android Activity/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Activity总结">
+<meta property="og:description" content="Activity">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/activity_lifecycle.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.078Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:updated_time" content="2019-02-13T03:59:49.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity">
-<meta name="twitter:description" content="Activity总结">
-<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/activity_lifecycle.png">
+<meta name="twitter:description" content="Activity">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 
 
 
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-13T11:59:49+08:00">
+                2019-02-13
               </time>
             
           </span>
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,387 字
+                  1,507 字
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -438,11 +438,11 @@
       
 
       
-        <p>Activity总结</p>
+        <p>Activity</p>
 <a id="more"></a>
-<h1 id="1-Activity生命周期图"><a href="#1-Activity生命周期图" class="headerlink" title="1. Activity生命周期图"></a>1. Activity生命周期图</h1><h2 id="1-1-典型生命周期"><a href="#1-1-典型生命周期" class="headerlink" title="1.1. 典型生命周期"></a>1.1. 典型生命周期</h2><p>用户参与的情况下，Activity所经过的生命周期。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/activity_lifecycle.png" alt=""></p>
-<h3 id="1-1-1-生命周期分析"><a href="#1-1-1-生命周期分析" class="headerlink" title="1.1.1. 生命周期分析"></a>1.1.1. 生命周期分析</h3><ul>
+<h1 id="1-Activity生命周期"><a href="#1-Activity生命周期" class="headerlink" title="1. Activity生命周期"></a>1. Activity生命周期</h1><h2 id="1-1-生命周期图"><a href="#1-1-生命周期图" class="headerlink" title="1.1 生命周期图"></a>1.1 生命周期图</h2><p>用户参与的情况下，Activity所经过的生命周期。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt=""></p>
+<h2 id="1-2-各个生命周期方法分析"><a href="#1-2-各个生命周期方法分析" class="headerlink" title="1.2 各个生命周期方法分析"></a>1.2 各个生命周期方法分析</h2><ul>
 <li><p><strong>onCreate()</strong></p>
 <p>表示Activity正在被创建，可以进行一些初始化的操作。</p>
 </li>
@@ -465,23 +465,26 @@
 <p>表示Activity即将被销毁。可以做一些回收、资源释放操作。</p>
 </li>
 </ul>
-<h3 id="1-1-2-声明周期执行过程"><a href="#1-1-2-声明周期执行过程" class="headerlink" title="1.1.2. 声明周期执行过程"></a>1.1.2. 声明周期执行过程</h3><ul>
-<li><p><strong>第一次启动</strong></p>
+<h2 id="1-3-各种生命周期方法执行过程"><a href="#1-3-各种生命周期方法执行过程" class="headerlink" title="1.3 各种生命周期方法执行过程"></a>1.3 各种生命周期方法执行过程</h2><ul>
+<li><p><strong>Activity第一次启动</strong></p>
 <pre><code>onCreate() -&gt; onStart() -&gt; onResume()
+</code></pre></li>
+<li><p><strong>当前Activity前台不可见时</strong></p>
+<pre><code>onPause() -&gt; onResume()
 </code></pre></li>
 <li><p><strong>当用户打开新的Activity时或者回退到桌面时，调用</strong></p>
 <pre><code>onPause() -&gt; onStop()
 </code></pre></li>
-<li><p><strong>当再次打开原Activity时，调用</strong></p>
+<li><p><strong>从后台再次返回原Activity时，调用</strong></p>
 <pre><code>onRestart()-&gt; onStart() -&gt; onResume()
 </code></pre></li>
 <li><p><strong>回退桌面时，调用</strong></p>
 <pre><code>onPause() -&gt; onStop() -&gt; onDestroy()
 </code></pre></li>
 </ul>
-<h3 id="1-1-3-说明"><a href="#1-1-3-说明" class="headerlink" title="1.1.3. 说明"></a>1.1.3. 说明</h3><p>当从当前的Activity A 打开Activity B时，Activity A将先执行 onPause() 方法，然后 Activity B 才执行 第一次启动时调用的声明周期方法。即：旧Activity先 onPause() ， 新Activity再启动。新Activity再启动后，旧Activity执行 onStop() 方法</p>
-<h2 id="1-2-异常生命周期"><a href="#1-2-异常生命周期" class="headerlink" title="1.2. 异常生命周期"></a>1.2. 异常生命周期</h2><p>Activity被系统回收或者由于当前设备的Configuration发生改变而导致的Activity被销毁重建。</p>
-<h3 id="1-2-1-系统配置发生改变导致Activity被杀死并被重建"><a href="#1-2-1-系统配置发生改变导致Activity被杀死并被重建" class="headerlink" title="1.2.1 系统配置发生改变导致Activity被杀死并被重建"></a>1.2.1 系统配置发生改变导致Activity被杀死并被重建</h3><p>在这种状态下的生命周期：</p>
+<h2 id="1-4-当启动ActivityB，遮盖ActivityA时"><a href="#1-4-当启动ActivityB，遮盖ActivityA时" class="headerlink" title="1.4 当启动ActivityB，遮盖ActivityA时"></a>1.4 当启动ActivityB，遮盖ActivityA时</h2><p>当从当前的Activity A 打开Activity B时，Activity A将先执行 onPause() 方法，然后 Activity B 才执行 第一次启动时调用的声明周期方法。即：旧Activity先 onPause() ， 新Activity再启动。新Activity再启动后，旧Activity执行 onStop() 方法</p>
+<h1 id="2-生命周期异常"><a href="#2-生命周期异常" class="headerlink" title="2. 生命周期异常"></a>2. 生命周期异常</h1><p>Activity被系统回收或者由于当前设备的Configuration发生改变而导致的Activity被销毁重建。</p>
+<h2 id="2-1-系统配置发生改变-导致Activity被杀死并被重建"><a href="#2-1-系统配置发生改变-导致Activity被杀死并被重建" class="headerlink" title="2.1 系统配置发生改变 导致Activity被杀死并被重建"></a>2.1 系统配置发生改变 导致Activity被杀死并被重建</h2><p>在这种状态下的生命周期：</p>
 <ul>
 <li><p><strong>意外时：</strong></p>
 <pre><code>Activity -&gt; onSaveInstanceState() -&gt; onDestroy()
@@ -491,7 +494,7 @@
 <pre><code>Activity -&gt; onCreate() -&gt; onRestoreInstanceState()
 </code></pre></li>
 </ul>
-<h3 id="1-2-2-内存不足导致-低优先级Activity-被杀死"><a href="#1-2-2-内存不足导致-低优先级Activity-被杀死" class="headerlink" title="1.2.2 内存不足导致 低优先级Activity 被杀死"></a>1.2.2 内存不足导致 低优先级Activity 被杀死</h3><ul>
+<h2 id="2-2-内存不足导致-低优先级Activity-被杀死"><a href="#2-2-内存不足导致-低优先级Activity-被杀死" class="headerlink" title="2.2 内存不足导致 低优先级Activity 被杀死"></a>2.2 内存不足导致 低优先级Activity 被杀死</h2><ul>
 <li><p><strong>优先级问题</strong></p>
 <ul>
 <li><strong>前台Activity：</strong> 与用户进行交互的Activity，优先级最高</li>
@@ -501,33 +504,31 @@
 <p>如果一个进程中没有四大组件在执行，那么这个进程将会很快的被杀死。</p>
 </li>
 </ul>
-<h1 id="2-Activity-启动模式"><a href="#2-Activity-启动模式" class="headerlink" title="2. Activity 启动模式"></a>2. Activity 启动模式</h1><h2 id="2-1-启动模式-4种："><a href="#2-1-启动模式-4种：" class="headerlink" title="2.1. 启动模式 - 4种："></a>2.1. 启动模式 - 4种：</h2><p><strong>使用：</strong></p>
+<h1 id="3-Activity-启动模式：4种"><a href="#3-Activity-启动模式：4种" class="headerlink" title="3. Activity 启动模式：4种"></a>3. Activity 启动模式：4种</h1><p><strong>使用方式1：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:launchMode=&quot;standard&quot;</div></pre></td></tr></table></figure>
+<p><strong>使用方式2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">设置：FLAG_ACTIVITY_XXX</div></pre></td></tr></table></figure>
+<h2 id="3-1-standard：标准模式。"><a href="#3-1-standard：标准模式。" class="headerlink" title="3.1  standard：标准模式。"></a>3.1  <strong>standard：</strong>标准模式。</h2><p> 对应Activity的 Flags ：<strong>FLAG_ACTIVITY_NEW_TASK</strong>  </p>
+<p> 当搭配<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>时，连同此Activity在内的Activity都要一同出栈。</p>
+<p> 每次启动一个Activity都会创建一个新的实例，不论这个实例是否已经存在。此模式下的Activity会默认进入启动它的Activity的所属栈中。</p>
+<h2 id="3-2-singleTop：栈顶（top）复用（single）模式。"><a href="#3-2-singleTop：栈顶（top）复用（single）模式。" class="headerlink" title="3.2  singleTop：栈顶（top）复用（single）模式。"></a>3.2  <strong>singleTop：</strong>栈顶（top）复用（single）模式。</h2><p> 对应Activity的 Flags ：<strong>FLAG_ACTIVITY_SINGLE_TOP</strong>  </p>
+<p> 如果新Activity已经位于任务栈顶，那么此Activity将不会被重新创建，同时它的 <strong>onNewIntent()</strong> 将会被调用；如果任务栈中此Activity不在栈顶，那么将在栈顶创建新的Activity。</p>
+<p> 示例：<br> 1：若A为栈底，C为栈顶，当ABC时，在此模式下启动C时，则仍为ABC。<br> 2：若A为栈底，B为栈顶，当ACB时，在此模式下启动C时，任务栈为：ACBC。</p>
+<h2 id="3-3-singTask：栈内复用模式。"><a href="#3-3-singTask：栈内复用模式。" class="headerlink" title="3.3  singTask：栈内复用模式。"></a>3.3  <strong>singTask：</strong>栈内复用模式。</h2><p> 默认具 Activity的 Flags ：<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>  。此 Flags 表示：它标记的Activity，当它启动时，在同一任务栈中的所有位于此Activity之上的Activity都要出栈。</p>
+<p> 如：之前栈内为：ABCD，当调用B后，栈内的情况变为：AB。</p>
+<p> 只要Activity在一个栈中存在，那么多次启动此Activity将不会重新创建该实例。默认具有 <code>clearTop</code> 功能</p>
+<p> <strong>创建过程</strong></p>
+<p> 1：启动 Activity A 时，若不存在A所需的任务栈，那么创建一个任务栈，然后创建 Activity A 的实例，将A实例压入任务栈中。</p>
+<p> 2：启动 Activity A 时，若存在A所需的的任务栈，看栈中是否存在 Activity A  实例，若存在，将其调到栈顶，并调用 <strong>onNewIntent()</strong> ；若不存在，创建A的实例，将其压入A所需的栈中。</p>
+<p><strong>生命周期：</strong></p>
 <ul>
-<li><p><strong>standard：</strong>标准模式。</p>
-<p>对应Activity的 Flags ：<strong>FLAG_ACTIVITY_NEW_TASK</strong>  </p>
-<p>当搭配<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>时，连同此Activity在内的Activity都要一同出栈。</p>
-<p>每次启动一个Activity都会创建一个新的实例，不论这个实例是否已经存在。此模式下的Activity会默认进入启动它的Activity的所属栈中。</p>
-</li>
-<li><p><strong>singleTop：</strong>栈顶（top）复用（single）模式。</p>
-<p>对应Activity的 Flags ：<strong>FLAG_ACTIVITY_SINGLE_TOP</strong>  </p>
-<p>如果新Activity已经位于任务栈顶，那么此Activity将不会被重新创建，同时它的 onNewIntent() 将会被调用。</p>
-<p>示例：<br>1：若A为栈底，C为栈顶，当ABC时，在此模式下启动C时，则仍为ABC。<br>2：若A为栈底，B为栈顶，当ACB时，在此模式下启动C时，任务栈为：ACBC。</p>
-</li>
-<li><p><strong>singTask：</strong>栈内复用模式。</p>
-<p>默认具 Activity的 Flags ：<strong>FLAG_ACTIVITY_CLEAR_TOP</strong>  。此 Flags 表示：它标记的Activity，当它启动时，在同一任务栈中的所有位与此Activity之上的Activity都要出栈。</p>
-<p>如：之前栈内为：ABCD，当调用B后，栈内的情况变为：AB。</p>
-<p>只要Activity在一个栈中存在，那么多次启动此Activity将不会重新创建该实例。默认具有 clearTop 功能</p>
-<p><strong>创建过程</strong>，若：</p>
-<p>1：启动 Activity A 时，若不存在A所需的任务栈，那么创建一个任务栈，然后创建 Activity A 的实例，将A实例压入任务栈中。</p>
-<p>2：启动 Activity A 时，若存在A所需的的任务栈，看栈中是否存在 Activity A  实例，若存在，将其调到栈顶，并调用 onNewIntent() ；若不存在，创建A的实例，将其压入A所需的栈中。</p>
-</li>
-<li><p><strong>singleInstance：</strong>单实例模式，加强版 singleTask。</p>
-<p>在 singleTask 原有的特点基础之上，还加强了一点：设置了此模式的 Activity 只能单独的位于一个任务栈中。</p>
-</li>
+<li>第一次打开会执行 <strong>onCreate() -&gt; onStart() -&gt; onResume()</strong></li>
+<li>如果该Activity没有被destroy，重新打开执行 <strong>onNewIntent() -&gt; onRestart() -&gt; onStart() -&gt; onResume()</strong>e</li>
 </ul>
-<h2 id="2-2-IntentFilter-匹配规则"><a href="#2-2-IntentFilter-匹配规则" class="headerlink" title="2.2. IntentFilter 匹配规则"></a>2.2. IntentFilter 匹配规则</h2><p>启动Activity分为两种：显式 + 隐式。如果二者同时存在的话以 显式 为主。 </p>
-<h3 id="2-2-1-隐式调用"><a href="#2-2-1-隐式调用" class="headerlink" title="2.2.1 隐式调用"></a>2.2.1 隐式调用</h3><p>隐式调用需要 Intent 能够匹配目标组件中的 IntentFilter 中的过滤信息。</p>
+<h2 id="3-4-singleInstance：单实例模式，加强版-singleTask。"><a href="#3-4-singleInstance：单实例模式，加强版-singleTask。" class="headerlink" title="3.4  singleInstance：单实例模式，加强版 singleTask。"></a>3.4  <strong>singleInstance：</strong>单实例模式，加强版 singleTask。</h2><p> 在 singleTask 原有的特点基础之上，还加强了一点：设置了此模式的 Activity 只能单独的位于一个任务栈中。</p>
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h2><p>当调用到 <strong>onNewIntent(intent)</strong> 的时候，需要在 <strong>onNewIntent()</strong> 中使用 <strong>setIntent(intent)</strong> 赋值给Activity的Intent.否则，后续的 <strong>getIntent()</strong> 都是得到 <code>旧Intent</code>。</p>
+<h1 id="4-IntentFilter-匹配规则"><a href="#4-IntentFilter-匹配规则" class="headerlink" title="4. IntentFilter 匹配规则"></a>4. IntentFilter 匹配规则</h1><p>启动Activity分为两种：显式 + 隐式。如果二者同时存在的话以 显式 为主。 </p>
+<h2 id="4-1-隐式调用"><a href="#4-1-隐式调用" class="headerlink" title="4.1 隐式调用"></a>4.1 隐式调用</h2><p>隐式调用需要 Intent 能够匹配目标组件中的 IntentFilter 中的过滤信息。</p>
 <ul>
 <li>只有一个 Intent 同时匹配这3个类别时，才能启动Activity，否则无法启动Activity。</li>
 <li><p>一个Intent可以有多个intent-filter，一个Intent只要能匹配任何一组intent-filter即可成功启动对应Activity。</p>
@@ -541,8 +542,8 @@
 <li><p><strong>data</strong></p>
 </li>
 </ul>
-<h3 id="2-2-2-入口Activity，缺一不可"><a href="#2-2-2-入口Activity，缺一不可" class="headerlink" title="2.2.2 入口Activity，缺一不可"></a>2.2.2 入口Activity，缺一不可</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">	&lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</div><div class="line">	&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
-<h3 id="2-2-3-判断是否有Activity能够匹配-隐式-Intent。"><a href="#2-2-3-判断是否有Activity能够匹配-隐式-Intent。" class="headerlink" title="2.2.3 判断是否有Activity能够匹配 隐式 Intent。"></a>2.2.3 判断是否有Activity能够匹配 隐式 Intent。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public abstract List&lt;ResolveInfo&gt; queryIntentActivities(Intent intent, @ResolveInfoFlags int flags);</div><div class="line">public abstract ResolveInfo resolveActivity(Intent intent, @ResolveInfoFlags int flags);</div></pre></td></tr></table></figure>
+<h2 id="4-2-入口Activity，缺一不可"><a href="#4-2-入口Activity，缺一不可" class="headerlink" title="4.2 入口Activity，缺一不可"></a>4.2 入口Activity，缺一不可</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">	&lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</div><div class="line">	&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure>
+<h2 id="4-3-判断是否有Activity能够匹配-隐式-Intent。"><a href="#4-3-判断是否有Activity能够匹配-隐式-Intent。" class="headerlink" title="4.3 判断是否有Activity能够匹配 隐式 Intent。"></a>4.3 判断是否有Activity能够匹配 隐式 Intent。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public abstract List&lt;ResolveInfo&gt; queryIntentActivities(Intent intent, @ResolveInfoFlags int flags);</div><div class="line">public abstract ResolveInfo resolveActivity(Intent intent, @ResolveInfoFlags int flags);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -730,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Activity生命周期图"><span class="nav-number">1.</span> <span class="nav-text">1. Activity生命周期图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-典型生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 典型生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-生命周期分析"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1. 生命周期分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-声明周期执行过程"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2. 声明周期执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-说明"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3. 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-异常生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 异常生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-系统配置发生改变导致Activity被杀死并被重建"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 系统配置发生改变导致Activity被杀死并被重建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-内存不足导致-低优先级Activity-被杀死"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 内存不足导致 低优先级Activity 被杀死</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Activity-启动模式"><span class="nav-number">2.</span> <span class="nav-text">2. Activity 启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-启动模式-4种："><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 启动模式 - 4种：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-IntentFilter-匹配规则"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. IntentFilter 匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-隐式调用"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 隐式调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-入口Activity，缺一不可"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 入口Activity，缺一不可</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-判断是否有Activity能够匹配-隐式-Intent。"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 判断是否有Activity能够匹配 隐式 Intent。</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Activity生命周期"><span class="nav-number">1.</span> <span class="nav-text">1. Activity生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-生命周期图"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 生命周期图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-各个生命周期方法分析"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 各个生命周期方法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-各种生命周期方法执行过程"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 各种生命周期方法执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-当启动ActivityB，遮盖ActivityA时"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 当启动ActivityB，遮盖ActivityA时</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-生命周期异常"><span class="nav-number">2.</span> <span class="nav-text">2. 生命周期异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-系统配置发生改变-导致Activity被杀死并被重建"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 系统配置发生改变 导致Activity被杀死并被重建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-内存不足导致-低优先级Activity-被杀死"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内存不足导致 低优先级Activity 被杀死</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Activity-启动模式：4种"><span class="nav-number">3.</span> <span class="nav-text">3. Activity 启动模式：4种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-standard：标准模式。"><span class="nav-number">3.1.</span> <span class="nav-text">3.1  standard：标准模式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-singleTop：栈顶（top）复用（single）模式。"><span class="nav-number">3.2.</span> <span class="nav-text">3.2  singleTop：栈顶（top）复用（single）模式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-singTask：栈内复用模式。"><span class="nav-number">3.3.</span> <span class="nav-text">3.3  singTask：栈内复用模式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-singleInstance：单实例模式，加强版-singleTask。"><span class="nav-number">3.4.</span> <span class="nav-text">3.4  singleInstance：单实例模式，加强版 singleTask。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意："><span class="nav-number">3.5.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-IntentFilter-匹配规则"><span class="nav-number">4.</span> <span class="nav-text">4. IntentFilter 匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-隐式调用"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 隐式调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-入口Activity，缺一不可"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 入口Activity，缺一不可</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-判断是否有Activity能够匹配-隐式-Intent。"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 判断是否有Activity能够匹配 隐式 Intent。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -764,7 +765,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">262.5k</span>
+    <span title="Site words total count">262.0k</span>
   
 </div>
 
