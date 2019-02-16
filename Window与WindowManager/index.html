@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Window与WindowManager">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-16T02:49:35.172Z">
+<meta property="og:updated_time" content="2019-02-16T02:57:38.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Window与WindowManager">
 <meta name="twitter:description" content="Window与WindowManager">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T10:49:35+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T10:57:38+08:00">
                 2019-02-16
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,781 字
+                  2,782 字
                 </span>
               
 
@@ -557,10 +557,8 @@ private final ArrayList&lt;WindowManager.LayoutParams&gt; mParams =
 <p><strong>PhoneWindow类</strong> 中 <strong><code>generateLayout(DecorView decor)</code></strong> 的源码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// line : 2313</div><div class="line">protected ViewGroup generateLayout(DecorView decor) &#123;</div><div class="line"></div><div class="line">	mDecor.onResourcesLoaded(mLayoutInflater, layoutResource);</div><div class="line">	ViewGroup contentParent = (ViewGroup)findViewById(ID_ANDROID_CONTENT);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中 <code>ID_ANDROID_CONTENT</code> 就是：</p>
-<p>`/**</p>
-<ul>
-<li>The ID that the main layout in the XML layout file should have.<br><em>/<br>public static final int ID_ANDROID_CONTENT = com.android.internal.R.id.content;<code>，而此时**Activity** 中的 **</code>setContentView()<code>**  名字的由来也是明了了。因为：**Activity** 的布局文件仅仅是被添加到 **DecorView** 中的 **</code>mContentParent`*</em> 中。 </li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * The ID that the main layout in the XML layout file should have.</div><div class="line"> */</div><div class="line">public static final int ID_ANDROID_CONTENT = com.android.internal.R.id.content;</div></pre></td></tr></table></figure>
+<p>而此时<strong>Activity</strong> 中的 <strong><code>setContentView()</code></strong>  名字的由来也是明了了。因为：<strong>Activity</strong> 的布局文件仅仅是被添加到 <strong>DecorView</strong> 中的 <strong><code>mContentParent</code></strong> 中。 </p>
 <p><strong>PhoneWindow类</strong> 中 <strong><code>onResourcesLoaded(LayoutInflater inflater, int layoutResource)</code></strong> 的源码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// line : 1875</div><div class="line">void onResourcesLoaded(LayoutInflater inflater, int layoutResource) &#123;</div><div class="line">    mDecorCaptionView = createDecorCaptionView(inflater);</div><div class="line">    final View root = inflater.inflate(layoutResource, null);</div><div class="line">    if (mDecorCaptionView != null) &#123;</div><div class="line">        if (mDecorCaptionView.getParent() == null) &#123;</div><div class="line">            addView(mDecorCaptionView,</div><div class="line">                    new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT));</div><div class="line">        &#125;</div><div class="line">        mDecorCaptionView.addView(root,</div><div class="line">                new ViewGroup.MarginLayoutParams(MATCH_PARENT, MATCH_PARENT));</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        // Put it below the color views.</div><div class="line">        addView(root, 0, new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT));</div><div class="line">    &#125;</div><div class="line">    mContentRoot = (ViewGroup) root;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="4-1-2-3-回调-Activity-中的-onContentChanged-通知-Activity的视图-发生改变"><a href="#4-1-2-3-回调-Activity-中的-onContentChanged-通知-Activity的视图-发生改变" class="headerlink" title="4.1.2.3 回调 Activity 中的 onContentChanged() 通知 Activity的视图 发生改变"></a>4.1.2.3 回调 Activity 中的 onContentChanged() 通知 Activity的视图 发生改变</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// line : 404</div><div class="line">@Override</div><div class="line">public void setContentView(int layoutResID) &#123;</div><div class="line"></div><div class="line">    final Callback cb = getCallback();</div><div class="line">    if (cb != null &amp;&amp; !isDestroyed()) &#123;</div><div class="line">        cb.onContentChanged();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
