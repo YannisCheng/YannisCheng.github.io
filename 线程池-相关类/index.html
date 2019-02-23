@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线程池," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线程池-相关类">
+<meta name="keywords" content="线程池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程池-相关类">
+<meta property="og:url" content="http://yannischeng.com/线程池-相关类/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="线程池-相关类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-23T09:04:56.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线程池-相关类">
+<meta name="twitter:description" content="线程池-相关类">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/线程池-相关类/"/>
+
+
+
+
+
+  <title>线程池-相关类 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/线程池-相关类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线程池-相关类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-23T11:37:43+08:00">
+                2019-02-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-23T17:04:56+08:00">
+                2019-02-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/线程池/" itemprop="url" rel="index">
+                    <span itemprop="name">线程池</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,542 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/线程池/" rel="tag"># 线程池</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/线程池-相关类/" title="线程池-相关类">http://yannischeng.com/线程池-相关类/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>线程池-相关类</p>
+<a id="more"></a>
+<h1 id="对列"><a href="#对列" class="headerlink" title="对列"></a>对列</h1><h2 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h2><p><strong>源码</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line"></div><div class="line"> 	<span class="comment">// 插入一个元素，如果队列已满，则抛出一个IIIegaISlabEepeplian异常</span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</div><div class="line">    <span class="comment">// 添加一个元素并返回true，如果队列已满，则返回false</span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span></span>;</div><div class="line">    </div><div class="line">    <span class="comment">// 移除并返回队列头部的元素    如果队列为空，则抛出一个NoSuchElementException异常</span></div><div class="line">    <span class="function">E <span class="title">remove</span><span class="params">()</span></span>;</div><div class="line">	<span class="comment">// 移除并返问队列头部的元素    如果队列为空，则返回null</span></div><div class="line">    <span class="function">E <span class="title">poll</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">// 检查</span></div><div class="line">    <span class="function">E <span class="title">element</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">E <span class="title">peek</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现阻塞队列方法的接口：BlockingQueue接口"><a href="#实现阻塞队列方法的接口：BlockingQueue接口" class="headerlink" title="实现阻塞队列方法的接口：BlockingQueue接口"></a>实现阻塞队列方法的接口：BlockingQueue接口</h2><p><strong>源码声明</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public interface BlockingQueue&lt;E&gt; extends Queue&lt;E&gt; &#123;&#125;</div></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<p>其是一种 <code>FIFO</code> 数据结构。不是立即从队列中添加或者删除元素，线程执行操作阻塞，直到有空间或者元素可用。</p>
+<p><strong>阻塞队列的方法说明</strong>：</p>
+<ul>
+<li><code>add()</code>、<code>remove()</code>、<code>element()</code> ：在试图为一个已满的队列增加元素或从空队列取得元素时：抛出异常。</li>
+<li><code>offer()</code>、<code>poll()</code>、<code>peek()</code>：在多线程程序中，队列在任何时间都可能变成满的或空的，这些方法在无法完成任务时：只是给出一个出错示而不会抛出异常。</li>
+</ul>
+<p><strong>方法变化</strong>：</p>
+<ul>
+<li><code>put</code>：添加一个元素，如果队列满，则阻塞</li>
+<li><code>take</code>：移除并返回队列头部的元素，如果队列为空，则阻塞</li>
+</ul>
+<h3 id="实现类：LinkedBlockingQueue"><a href="#实现类：LinkedBlockingQueue" class="headerlink" title="实现类：LinkedBlockingQueue"></a>实现类：LinkedBlockingQueue</h3><p>其容量是没有上限的（实际上不指定时容量为Integer.MAX_VALUE，不要然的话在put时怎么会受阻呢），但是也可以选择指定其最大容量，它是基于链表的队列，此队列按 FIFO（先进先出）排序元素。</p>
+<h3 id="实现类：ArrayBlockingQueue"><a href="#实现类：ArrayBlockingQueue" class="headerlink" title="实现类：ArrayBlockingQueue"></a>实现类：ArrayBlockingQueue</h3><p>其在构造时需要指定容量， 并可以选择是否需要公平性，如果公平参数被设置true，等待时间最长的线程会优先得到处理（其实就是通过将ReentrantLock设置为true来 达到这种公平性的：即等待时间最长的线程会先操作）。<br>通常，公平性会使你在性能上付出代价，只有在的确非常需要的时候再使用它。它是基于数组的阻塞循环队 列，此队列按 FIFO（先进先出）原则对元素进行排序。</p>
+<h3 id="实现类：PriorityBlockingQueue"><a href="#实现类：PriorityBlockingQueue" class="headerlink" title="实现类：PriorityBlockingQueue"></a>实现类：PriorityBlockingQueue</h3><p>其是一个带优先级的 队列，而不是先进先出队列。<br>元素按优先级顺序被移除，该队列也没有上限（看了一下源码，PriorityBlockingQueue是对 PriorityQueue的再次包装，是基于堆数据结构的，而PriorityQueue是没有容量限制的，与ArrayList一样，所以在优先阻塞 队列上put时是不会受阻的。虽然此队列逻辑上是无界的，但是由于资源被耗尽，所以试图执行添加操作可能会导致 OutOfMemoryError），但是如果队列为空，那么取元素的操作take就会阻塞，所以它的检索操作take是受阻的。另外，往入该队列中的元 素要具有比较能力。</p>
+<h1 id="ThreadFactory接口"><a href="#ThreadFactory接口" class="headerlink" title="ThreadFactory接口"></a>ThreadFactory接口</h1><p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ThreadFactory</span> </span>&#123;</div><div class="line">    <span class="function">Thread <span class="title">newThread</span><span class="params">(Runnable r)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Future接口"><a href="#Future接口" class="headerlink" title="Future接口"></a>Future接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> mayInterruptIfRunning)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isCancelled</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException</span>;</div><div class="line"></div><div class="line">    <span class="function">V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></div><div class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Future</strong> 就是对于具体的<strong>Runnable</strong>或者<strong>Callable</strong>任务的执行结果进行<code>取消、查询是否完成、获取结果</code>。必要时可以通过 <code>get()</code> 获取执行结果，该方法会阻塞直到任务返回结果。</p>
+<p>方法说明：</p>
+<ul>
+<li><p><code>cancel(boolean mayInterruptIfRunning)</code>：</p>
+<p><code>cancel()</code> 方法用来取消任务，如果取消任务成功则返回true，如果取消任务失败则返回false。<br>参数<code>mayInterruptIfRunning</code>表示是否允许取消正在执行却没有执行完毕的任务，如果设置true，则表示可以取消正在执行过程中的任务。如果任务已经完成，则无论mayInterruptIfRunning为true还是false，此方法肯定返回false，即如果取消已经完成的任务会返回false；如果任务正在执行，若mayInterruptIfRunning设置为true，则返回true，若mayInterruptIfRunning设置为false，则返回false；如果任务还没有执行，则无论mayInterruptIfRunning为true还是false，肯定返回true。</p>
+</li>
+<li><p><code>isCancelled()</code>:</p>
+<p>表示任务是否被取消成功，如果在任务正常完成前被取消成功，则返回 true。</p>
+</li>
+<li><p><code>isDone()</code>:</p>
+<p>表示任务是否已经完成，若任务完成，则返回true；</p>
+</li>
+<li><p><code>get()</code></p>
+<p>用来获取执行结果，这个方法会产生阻塞，会一直等到任务执行完毕才返回；</p>
+</li>
+<li><p><code>get(long timeout, TimeUnit unit)</code>：</p>
+<p>用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null</p>
+</li>
+</ul>
+<h2 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h2><p>  因为<strong>Future</strong>只是一个接口，所以是无法直接用来创建对象使用的，具体实现类是<strong>FutureTask</strong>。</p>
+<blockquote>
+<p>参考：<a href="https://www.cnblogs.com/upcwanghaibo/p/6591379.html" target="_blank" rel="external">https://www.cnblogs.com/upcwanghaibo/p/6591379.html</a></p>
+</blockquote>
+<h1 id="Worker类"><a href="#Worker类" class="headerlink" title="Worker类"></a>Worker类</h1><ul>
+<li>Worker类主要负责运行线程状态的控制。</li>
+<li>Worker继承了AQS实现了简单的获取锁和释放所的操作。来避免中断等待执行任务的线程时，中断正在运行中的线程（线程刚启动，还没开始执行任务）。</li>
+<li>自己实现不可重入锁，是为了避免在实现线程池控状态控制的方法，例如 setCorePoolSize的时候中断正在开始运行的线程。etCorePoolSize可能会调用interruptIdleWorkers()，该方法中会调用worker的tryLock()方法中断线程，自己实现锁可以确保工作线程启动之前不会被中断</li>
+</ul>
+<p>此类是 <strong>ThreadPoolExecutor类</strong> 的私有内部静态类。</p>
+<p>源码 ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">line:<span class="number">612</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span></span></div><div class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span></span></div><div class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Runnable</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">6138294804551838833L</span>;</div><div class="line"></div><div class="line">    <span class="comment">/** Thread this worker is running in.  Null if factory fails. */</span></div><div class="line">    <span class="keyword">final</span> Thread thread;</div><div class="line">    <span class="comment">/** Initial task to run.  Possibly null. */</span></div><div class="line">    Runnable firstTask;</div><div class="line">    <span class="comment">/** Per-thread task counter */</span></div><div class="line">    <span class="keyword">volatile</span> <span class="keyword">long</span> completedTasks;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Creates with given first task and thread from ThreadFactory.</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> firstTask the first task (null if none)</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    Worker(Runnable firstTask) &#123;</div><div class="line">        setState(-<span class="number">1</span>); <span class="comment">// inhibit interrupts until runWorker</span></div><div class="line">        <span class="keyword">this</span>.firstTask = firstTask;</div><div class="line">        <span class="keyword">this</span>.thread = getThreadFactory().newThread(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** Delegates main run loop to outer runWorker. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        runWorker(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Lock methods</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    <span class="comment">// The value 0 represents the unlocked state.</span></div><div class="line">    <span class="comment">// The value 1 represents the locked state.</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHeldExclusively</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getState() != <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</div><div class="line">            setExclusiveOwnerThread(Thread.currentThread());</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> unused)</span> </span>&#123;</div><div class="line">        setExclusiveOwnerThread(<span class="keyword">null</span>);</div><div class="line">        setState(<span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span>        </span>&#123; acquire(<span class="number">1</span>); &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span>  </span>&#123; <span class="keyword">return</span> tryAcquire(<span class="number">1</span>); &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span>      </span>&#123; release(<span class="number">1</span>); &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> isHeldExclusively(); &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">interruptIfStarted</span><span class="params">()</span> </span>&#123;</div><div class="line">        Thread t;</div><div class="line">        <span class="keyword">if</span> (getState() &gt;= <span class="number">0</span> &amp;&amp; (t = thread) != <span class="keyword">null</span> &amp;&amp; !t.isInterrupted()) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                t.interrupt();</div><div class="line">            &#125; <span class="keyword">catch</span> (SecurityException ignore) &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/线程池-ThreadPoolExecutor/" rel="next" title="线程池-ThreadPoolExecutor">
+                <i class="fa fa-chevron-left"></i> 线程池-ThreadPoolExecutor
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对列"><span class="nav-number">1.</span> <span class="nav-text">对列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue接口"><span class="nav-number">1.1.</span> <span class="nav-text">Queue接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现阻塞队列方法的接口：BlockingQueue接口"><span class="nav-number">1.2.</span> <span class="nav-text">实现阻塞队列方法的接口：BlockingQueue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现类：LinkedBlockingQueue"><span class="nav-number">1.2.1.</span> <span class="nav-text">实现类：LinkedBlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现类：ArrayBlockingQueue"><span class="nav-number">1.2.2.</span> <span class="nav-text">实现类：ArrayBlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现类：PriorityBlockingQueue"><span class="nav-number">1.2.3.</span> <span class="nav-text">实现类：PriorityBlockingQueue</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadFactory接口"><span class="nav-number">2.</span> <span class="nav-text">ThreadFactory接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Future接口"><span class="nav-number">3.</span> <span class="nav-text">Future接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask"><span class="nav-number">3.1.</span> <span class="nav-text">FutureTask</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Worker类"><span class="nav-number">4.</span> <span class="nav-text">Worker类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">271.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

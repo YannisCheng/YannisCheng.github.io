@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-15%2009.21.39.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image005.gif">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/image009.jpg">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.083Z">
+<meta property="og:updated_time" content="2019-02-16T03:08:49.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android IPC">
 <meta name="twitter:description" content="Android IPC 总结">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T11:08:49+08:00">
+                2019-02-16
               </time>
             
           </span>
@@ -494,13 +494,13 @@
 <p><strong>实际使用场景：百度地图。</strong></p>
 <p>在AndroidManifest.xml文件中，需要配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;service</div><div class="line">	android:name=&quot;com.baidu.location.f&quot;</div><div class="line">	android:enabled=&quot;true&quot;</div><div class="line">	android:process=&quot;:remote&quot;</div><div class="line">	android:screenOrientation=&quot;portrait&quot;/&gt;</div></pre></td></tr></table></figure>
-<h2 id="2-2-多进程的运行机制"><a href="#2-2-多进程的运行机制" class="headerlink" title="2.2 多进程的运行机制"></a>2.2 多进程的运行机制</h2><p><strong>使用多进程带来的问题 - 内存导致</strong></p>
+<h2 id="2-2-多进程的运行机制"><a href="#2-2-多进程的运行机制" class="headerlink" title="2.2 多进程的运行机制"></a>2.2 多进程的运行机制</h2><p><strong>使用多进程带来的问题 - 内存问题</strong></p>
 <ul>
 <li><strong>多进程带来的主要影响：</strong></li>
 </ul>
 <p>开启多进程的方式很简单，但是实际运行会出很多问题，绝非仅仅只是 <code>android:process=&quot;:remote&quot;</code> 那么简单。</p>
 <p>Android为每一个应用（进程）分配一个独立的虚拟机，不同虚拟机在内存分配上有不同的地址空间这就导致不同的虚拟机在访问同一个类的对象时，会产生多个副本，副本之间互不影响，即：修改了一个进程A中的对象的属性值后，进程B中同一个对象的属性值仍为修改之前的值。</p>
-<p>所以，运行在 <strong>不同进程 中的四大组件</strong>，通过<strong>内存</strong>来 <strong>共享数据</strong> 都会<strong>失败</strong></p>
+<p>所以，运行在 <strong>不同进程中的四大组件</strong>，通过 <strong>内存</strong> 来 <strong>共享数据</strong> 都会<strong>失败</strong></p>
 <ul>
 <li><p><strong>使用对进城会造成一下几个问题：</strong></p>
 <ul>
@@ -773,7 +773,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -784,7 +784,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -795,7 +795,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -878,7 +878,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">269.0k</span>
+    <span title="Site words total count">271.5k</span>
   
 </div>
 

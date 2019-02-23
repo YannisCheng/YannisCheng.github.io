@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-26%2011.47.45.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-26%2013.55.02.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/service_lifecycle.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.093Z">
+<meta property="og:updated_time" content="2019-02-16T06:22:17.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android消息机制">
 <meta name="twitter:description" content="Handler、Looper、MessageQueue、Thread、ThreadLocal、HandlerThread、IntentService">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T14:22:17+08:00">
+                2019-02-16
               </time>
             
           </span>
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,162 字
+                  4,176 字
                 </span>
               
 
@@ -518,7 +518,9 @@
 <li><strong>插入：</strong>参考<code>Handler</code>的<code>MessageQueue</code></li>
 <li><strong>读取（伴随删除）：</strong> <code>next()</code></li>
 </ul>
-<h1 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h1><p><strong>使用<code>Looper</code>谨记一点：当前线程。</strong></p>
+<h1 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h1><p><strong>Looper类</strong> 在 <strong>ActivityThread类</strong> 中创建:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final Looper mLooper = Looper.myLooper();</div></pre></td></tr></table></figure>
+<p><strong>使用<code>Looper</code>谨记一点：当前线程。</strong></p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-26%2001.51.32.png" alt=""></p>
 <p><code>Looper</code>的类结构</p>
 <p>会以无限循环的方式去查找新消息，是一种阻塞式的执行方式。</p>
@@ -689,8 +691,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Java 线程-1/" rel="next" title="线程-1 Java">
-                <i class="fa fa-chevron-left"></i> 线程-1 Java
+              <a href="/线程-概述 /" rel="next" title="线程-概述">
+                <i class="fa fa-chevron-left"></i> 线程-概述
               </a>
             
           </div>
@@ -784,7 +786,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -795,7 +797,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -806,7 +808,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -889,7 +891,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">269.0k</span>
+    <span title="Site words total count">271.5k</span>
   
 </div>
 

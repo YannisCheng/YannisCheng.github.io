@@ -92,7 +92,7 @@
 <meta property="og:description" content="参考：http://www.sunnyang.com/215.html">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/service_lifecycle.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.084Z">
+<meta property="og:updated_time" content="2019-02-16T04:47:47.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-Service">
 <meta name="twitter:description" content="参考：http://www.sunnyang.com/215.html">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-16T12:47:47+08:00">
+                2019-02-16
               </time>
             
           </span>
@@ -488,8 +488,7 @@
 <li><p><strong>IntentService</strong><br>这是 <strong>Service 的子类</strong>，它<strong>使用工作线程逐一处理所有启动请求</strong>。如果您不要求服务同时处理多个请求，这是最好的选择。 您只需实现 <strong>onHandleIntent()</strong>方法即可，该方法会接收每个启动请求的 Intent，使您能够执行后台工作。</p>
 </li>
 </ul>
-<p>#启动方式2：创建绑定服务</p>
-<p>绑定服务允许应用组件通过调用 <strong>bindService() 与其绑定，以便创建长期连接</strong>。</p>
+<h1 id="启动方式2：创建绑定服务"><a href="#启动方式2：创建绑定服务" class="headerlink" title="启动方式2：创建绑定服务"></a>启动方式2：创建绑定服务</h1><p>绑定服务允许应用组件通过调用 <strong>bindService() 与其绑定，以便创建长期连接</strong>。</p>
 <p>如需与 Activity 和其他应用组件中的服务进行交互，或者需要通过进程间通信 (IPC) 向其他应用公开某些应用功能，则应创建绑定服务。</p>
 <p>要创建绑定服务，<strong>必须实现 onBind() 回调方法以返回 IBinder，用于定义与服务通信的接口</strong>。然后，其他应用组件可以调用 bindService() 来检索该接口，并开始对服务调用方法。服务只用于与其绑定的应用组件，因此如果没有组件绑定到服务，则系统会销毁服务（不必按通过 onStartCommand() 启动的服务那样来停止绑定服务）。</p>
 <p>要创建绑定服务，首先<strong>必须定义指定客户端如何与服务通信的接口</strong>。 服务与客户端之间的这个接口<strong>必须是 IBinder 的实现</strong>，并且服务<strong>必须从 onBind() 回调方法返回它</strong>。一旦客户端收到 IBinder，即可开始通过该接口与服务进行交互。</p>
@@ -651,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -662,7 +661,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -673,7 +672,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -722,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务基本上分为两种形式："><span class="nav-number">1.1.</span> <span class="nav-text">服务基本上分为两种形式：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">1.1.1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定"><span class="nav-number">1.1.2.</span> <span class="nav-text">绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#onStartCommand"><span class="nav-number">2.1.</span> <span class="nav-text">onStartCommand()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onBind"><span class="nav-number">2.2.</span> <span class="nav-text">onBind()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onCreate"><span class="nav-number">2.3.</span> <span class="nav-text">onCreate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onDestroy"><span class="nav-number">2.4.</span> <span class="nav-text">onDestroy()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清单文件声明服务"><span class="nav-number">3.</span> <span class="nav-text">清单文件声明服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务生命周期"><span class="nav-number">4.</span> <span class="nav-text">服务生命周期:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务生命周期的两个嵌套循环："><span class="nav-number">4.1.</span> <span class="nav-text">服务生命周期的两个嵌套循环：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动方式1：创建启动服务"><span class="nav-number">5.</span> <span class="nav-text">启动方式1：创建启动服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可以通过三种方法定义接口："><span class="nav-number">5.1.</span> <span class="nav-text">可以通过三种方法定义接口：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展-Binder-类"><span class="nav-number">5.2.</span> <span class="nav-text">扩展 Binder 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体的设置方法："><span class="nav-number">5.3.</span> <span class="nav-text">具体的设置方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#向用户发送通知"><span class="nav-number">6.</span> <span class="nav-text">向用户发送通知</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在前台运行服务"><span class="nav-number">7.</span> <span class="nav-text">在前台运行服务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务基本上分为两种形式："><span class="nav-number">1.1.</span> <span class="nav-text">服务基本上分为两种形式：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">1.1.1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定"><span class="nav-number">1.1.2.</span> <span class="nav-text">绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#onStartCommand"><span class="nav-number">2.1.</span> <span class="nav-text">onStartCommand()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onBind"><span class="nav-number">2.2.</span> <span class="nav-text">onBind()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onCreate"><span class="nav-number">2.3.</span> <span class="nav-text">onCreate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onDestroy"><span class="nav-number">2.4.</span> <span class="nav-text">onDestroy()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清单文件声明服务"><span class="nav-number">3.</span> <span class="nav-text">清单文件声明服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务生命周期"><span class="nav-number">4.</span> <span class="nav-text">服务生命周期:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务生命周期的两个嵌套循环："><span class="nav-number">4.1.</span> <span class="nav-text">服务生命周期的两个嵌套循环：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动方式1：创建启动服务"><span class="nav-number">5.</span> <span class="nav-text">启动方式1：创建启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动方式2：创建绑定服务"><span class="nav-number">6.</span> <span class="nav-text">启动方式2：创建绑定服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可以通过三种方法定义接口："><span class="nav-number">6.1.</span> <span class="nav-text">可以通过三种方法定义接口：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展-Binder-类"><span class="nav-number">6.2.</span> <span class="nav-text">扩展 Binder 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体的设置方法："><span class="nav-number">6.3.</span> <span class="nav-text">具体的设置方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#向用户发送通知"><span class="nav-number">7.</span> <span class="nav-text">向用户发送通知</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在前台运行服务"><span class="nav-number">8.</span> <span class="nav-text">在前台运行服务</span></a></li></ol></div>
             
 
           </div>
@@ -756,7 +755,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">269.0k</span>
+    <span title="Site words total count">271.5k</span>
   
 </div>
 

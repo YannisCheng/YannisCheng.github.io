@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java基本数据类型">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基本数据类型">
+<meta property="og:url" content="http://yannischeng.com/Java基本数据类型/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Java基本数据类型">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-22T16:25:01.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基本数据类型">
+<meta name="twitter:description" content="Java基本数据类型">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Java基本数据类型/"/>
+
+
+
+
+
+  <title>Java基本数据类型 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Java基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基本数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T23:30:16+08:00">
+                2019-02-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-23T00:25:01+08:00">
+                2019-02-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-基本数据类型/" itemprop="url" rel="index">
+                    <span itemprop="name">Java,基本数据类型</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  850 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Java基本数据类型/" title="Java基本数据类型">http://yannischeng.com/Java基本数据类型/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java基本数据类型</p>
+<a id="more"></a>
+<h1 id="Number抽象类"><a href="#Number抽象类" class="headerlink" title="Number抽象类"></a>Number抽象类</h1><p>类声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public abstract class Number implements java.io.Serializable &#123;</div><div class="line"></div><div class="line">    public abstract int intValue();</div><div class="line"></div><div class="line">    public abstract long longValue();</div><div class="line"></div><div class="line">    public abstract float floatValue();</div><div class="line"></div><div class="line"></div><div class="line">    public abstract double doubleValue();</div><div class="line"></div><div class="line">    public byte byteValue() &#123;</div><div class="line">        return (byte)intValue();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public short shortValue() &#123;</div><div class="line">        return (short)intValue();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static final long serialVersionUID = -8742448824652078965L;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>官方文档描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">抽象类 Number 是表示可转换为基本类型：byte、short、int、float、double、long。</div><div class="line">从特定 Number 实现的数值到给定基元类型的转换的特定语义由所讨论的 Number 实现定义。</div><div class="line">对于平台类，转换通常类似于缩小基元转换或扩展基元转换，如在 Java＆trade中定义; 用于在基元类型之间进行转换的语言规范。 因此，转换可能会丢失有关数值总体大小的信息，可能会丢失精度，甚至可能返回与输入不同的符号结果。</div></pre></td></tr></table></figure>
+<p>特点：实现 <code>java.io.Serializable</code>  接口，已经实现序列化 。</p>
+<h1 id="AtomicInteger类"><a href="#AtomicInteger类" class="headerlink" title="AtomicInteger类"></a>AtomicInteger类</h1><p>类声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class AtomicInteger extends Number implements java.io.Serializable &#123;</div><div class="line">    private static final long serialVersionUID = 6214790243416807050L;</div><div class="line"></div><div class="line">    private static final Unsafe unsafe = Unsafe.getUnsafe();</div><div class="line">    private static final long valueOffset;</div><div class="line"></div><div class="line">    static &#123;</div><div class="line">       try &#123;</div><div class="line">           valueOffset = unsafe.objectFieldOffset</div><div class="line">                (AtomicInteger.class.getDeclaredField(&quot;value&quot;));</div><div class="line">        &#125; catch (Exception ex) &#123; throw new Error(ex); &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private volatile int value;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h2><ul>
+<li>官方文档描述 ：</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">可以原子更新的 int 值。 有关原子变量属性的描述，请参阅：java.util.concurrent.atomic 的包规范。</div><div class="line">AtomicInteger 用于诸如原子递增计数器的应用程序中，不能用作 Integer 的替代。 </div><div class="line">但是，此类确实扩展了 Number，以允许通过处理基于数字的类的工具和实用程序进行统一访问。</div></pre></td></tr></table></figure>
+<p> <strong>AtomicInteger</strong> 是一个：<strong>提供原子操作</strong> 的 <code>Integer</code> 类，通过 <strong>线程安全</strong> 的方式操作 <strong>加减</strong>，因此十分适合 <strong>高并发</strong> 情况下的使用。。</p>
+<ul>
+<li><p><strong>关键词</strong>：<code>原子</code>，<code>volatile</code></p>
+<p>这里<code>value</code> 使用了<code>volatile</code> 关键字，<code>volatile</code> 在这里可以做到的作用是 : 使得多个线程可以共享变量，但是问题在于使用 <code>volatile</code> 将使得VM优化失去作用，导致效率较低。</p>
+<p><code>volatile</code> 的作用是当一个线程修改了共享变量时，另一个线程可以读取到这个修改后的值。</p>
+</li>
+</ul>
+<h2 id="value-变量的处理"><a href="#value-变量的处理" class="headerlink" title="value 变量的处理"></a>value 变量的处理</h2><ul>
+<li>获取变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public final int get() &#123;</div><div class="line">    return value;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>变量自增处理（其他处理类似）：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public final int incrementAndGet() &#123;</div><div class="line">    for (;;) &#123;</div><div class="line">        int current = get();</div><div class="line">        int next = current + 1;</div><div class="line">        if (compareAndSet(current, next))</div><div class="line">            return next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadFactory sThreadFactory = <span class="keyword">new</span> ThreadFactory() &#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger mCount = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Thread(r, <span class="string">"AsyncTask #"</span> + mCount.getAndIncrement());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在这段代码中，变量 <code>mCount</code> 的声明 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private final AtomicInteger mCount = new AtomicInteger(1);</div></pre></td></tr></table></figure>
+<p>这个变量的应用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public Thread newThread(Runnable r) &#123;</div><div class="line">    return new Thread(r, &quot;AsyncTask #&quot; + mCount.getAndIncrement());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此处应用的正是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndIncrement</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (;;) &#123;</div><div class="line">        <span class="keyword">int</span> current = get();</div><div class="line">        <span class="keyword">int</span> next = current + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (compareAndSet(current, next))</div><div class="line">            <span class="keyword">return</span> current;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实例比较："><a href="#实例比较：" class="headerlink" title="实例比较："></a>实例比较：</h2><ul>
+<li><p><strong>Integer</strong>类型变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample1</span> </span>&#123;</div><div class="line"></div><div class="line">       <span class="keyword">private</span> <span class="keyword">static</span> Integer count = <span class="number">0</span>;</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">increment</span><span class="params">()</span> </span>&#123;</div><div class="line">           count++;</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于这个 <code>count++;</code> 的分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 获取变量当前值</div><div class="line">2. 给获取的当前变量值+1</div><div class="line">3. 写回新的值到变量</div></pre></td></tr></table></figure>
+<p>假设<code>count</code>的初始值为<code>10</code>，当进行并发操作的时候，可能出现：<br>线程A和线程B都进行到了1操作，之后又同时进行2操作。A先进行到3操作+1，现在值为11；注意刚才AB获取到的当前值都是10，所以B执行3操作后，count的值依然是11。这个结果显然不符合我们的要求。</p>
+<ul>
+<li><p><strong>AtomicInteger</strong> 类型变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Sample2 &#123;</div><div class="line"></div><div class="line">    private static AtomicInteger count = new AtomicInteger(0);</div><div class="line"></div><div class="line">    public static void increment() &#123;</div><div class="line">        count.getAndIncrement();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Window与WindowManager/" rel="next" title="Window与WindowManager">
+                <i class="fa fa-chevron-left"></i> Window与WindowManager
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/线程池-ThreadPoolExecutor/" rel="prev" title="线程池-ThreadPoolExecutor">
+                线程池-ThreadPoolExecutor <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Number抽象类"><span class="nav-number">1.</span> <span class="nav-text">Number抽象类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AtomicInteger类"><span class="nav-number">2.</span> <span class="nav-text">AtomicInteger类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述："><span class="nav-number">2.1.</span> <span class="nav-text">描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-变量的处理"><span class="nav-number">2.2.</span> <span class="nav-text">value 变量的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用："><span class="nav-number">2.3.</span> <span class="nav-text">应用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例比较："><span class="nav-number">2.4.</span> <span class="nav-text">实例比较：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">271.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
