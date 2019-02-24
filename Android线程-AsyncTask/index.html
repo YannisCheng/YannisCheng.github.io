@@ -92,7 +92,7 @@
 <meta property="og:description" content="线程总结-AsyncTask">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png">
-<meta property="og:updated_time" content="2019-02-23T15:54:05.065Z">
+<meta property="og:updated_time" content="2019-02-24T00:00:42.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-AsyncTask">
 <meta name="twitter:description" content="线程总结-AsyncTask">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-23T23:54:05+08:00">
-                2019-02-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T08:00:42+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -441,11 +441,11 @@
         <p>线程总结-AsyncTask</p>
 <a id="more"></a>
 <h1 id="1-基本描述"><a href="#1-基本描述" class="headerlink" title="1. 基本描述"></a>1. 基本描述</h1><ul>
-<li><p><strong><code>AsyncTask</code></strong> 是一个抽象类，只有被继承之后才能使用。</p>
+<li><strong><code>AsyncTask</code></strong> 是一个抽象类，只有被继承之后才能使用。</li>
+</ul>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-29%2000.34.2822.png" alt=""></p>
-</li>
-<li><p><code>AsyncTask</code> 调用、实现了 <strong><code>ThreadPoolExecutor</code>类</strong>参数配置、<strong>Executor接口</strong>调用。并且 <strong>子线程</strong> 和 <strong>UI主线程</strong> 之间切换、数据传递还是通过 <strong>Handler</strong> 和 <strong>Message</strong> 进行处理的。</p>
-</li>
+<ul>
+<li><code>AsyncTask</code> 调用、实现了 <strong><code>ThreadPoolExecutor</code>类</strong>参数配置、<strong>Executor接口</strong>调用。并且 <strong>子线程</strong> 和 <strong>UI主线程</strong> 之间切换、数据传递还是通过 <strong>Handler</strong> 和 <strong>Message</strong> 进行处理的。</li>
 <li><code>AsyncTask</code>支持正确、简单地使用UI线程。这个类允许你在后台执行操作并在UI线程上发布结果，而无需操纵Thread和Handler。</li>
 <li><code>AsyncTask</code>被设计为 <strong><code>Thread</code></strong> 和 <strong><code>Handler</code></strong> 的辅助类，并不构成通用的线程框架。</li>
 <li>理想情况下，AsyncTasks应该用于 <strong>短操作（最多几秒）</strong>。如果需要长时间保持线程稳定，强烈建议使用由 <code>java.util.concurrent</code>提供的各种API，例如 <code>Executor</code>，<code>ThreadPoolExecutor</code> 和 <code>FutureTask</code>。</li>
@@ -464,37 +464,37 @@
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 4));</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CORE_POOL_SIZE = Math.max(<span class="number">2</span>, Math.min(CPU_COUNT - <span class="number">1</span>, <span class="number">4</span>));</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>2. int maximumPoolSize：</strong>线程池最大线程数（例如：正式工人 + 临时工人。任务量突然过大时的一种补救措施）</p>
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_POOL_SIZE = CPU_COUNT * <span class="number">2</span> + <span class="number">1</span>;</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>3. long keepAliveTime：</strong>表示线程没有任务执行时最多保持多久时间会终止。</p>
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int KEEP_ALIVE_SECONDS = 30;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> KEEP_ALIVE_SECONDS = <span class="number">30</span>;</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>4. TimeUnit  unit：</strong>参数keepAliveTime的时间单位</p>
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TimeUnit.SECONDS</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TimeUnit.SECONDS</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>5. BlockingQueue<runnable> workQueue：</runnable></strong>用来存储等待执行任务的一个阻塞队列。</p>
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final BlockingQueue&lt;Runnable&gt; sPoolWorkQueue = new LinkedBlockingQueue&lt;Runnable&gt;(128);</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> BlockingQueue&lt;Runnable&gt; sPoolWorkQueue = <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;(<span class="number">128</span>);</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>6. ThreadFactory threadFactory：</strong>线程工厂，主要用来创建线程。</p>
 <p>Android参数：</p>
 </li>
 </ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final ThreadFactory sThreadFactory = new ThreadFactory() &#123;</div><div class="line">        private final AtomicInteger mCount = new AtomicInteger(1);</div><div class="line"></div><div class="line">        public Thread newThread(Runnable r) &#123;</div><div class="line">            return new Thread(r, &quot;AsyncTask #&quot; + mCount.getAndIncrement());</div><div class="line">        &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadFactory sThreadFactory = <span class="keyword">new</span> ThreadFactory() &#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger mCount = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Thread(r, <span class="string">"AsyncTask #"</span> + mCount.getAndIncrement());</div><div class="line">        &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>7. RejectedExecutionHandler handler：</strong>当拒绝处理任务时的策略。</li>
 </ul>
@@ -515,7 +515,7 @@
 <ul>
 <li><p><strong><code>onProgressUpdate()</code></strong> ：在调用 <code>publishProgress()</code> 后在 <strong>UI线程</strong> 上调用。执行的时间是未定义的。此方法用于在后台计算仍在执行时在用户界面中显示任何形式的进度。例如，它可以用来为进度条设置动画效果或在文本字段中显示日志。</p>
 <p>之所用调用 <code>publishProgress()</code> 能够更新 <code>onProgressUpdate()</code> 是因为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected final void publishProgress(Progress... values) &#123;</div><div class="line">    if (!isCancelled()) &#123;</div><div class="line">        getHandler().obtainMessage(MESSAGE_POST_PROGRESS, new AsyncTaskResult&lt;Progress&gt;(this, values)).sendToTarget();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">publishProgress</span><span class="params">(Progress... values)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!isCancelled()) &#123;</div><div class="line">        getHandler().obtainMessage(MESSAGE_POST_PROGRESS, <span class="keyword">new</span> AsyncTaskResult&lt;Progress&gt;(<span class="keyword">this</span>, values)).sendToTarget();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong><code>onPostExecute()</code></strong>：任务在后台 <strong>计算完成后</strong> ，在UI线程中调用。后台计算的结果作为参数传递给此步骤。</p>
 </li>
@@ -531,7 +531,7 @@
 <h2 id="3-4-4个方法间的调用顺序"><a href="#3-4-4个方法间的调用顺序" class="headerlink" title="3.4 4个方法间的调用顺序"></a>3.4 4个方法间的调用顺序</h2><ol>
 <li>执行：<strong><code>execute(Params... params)</code></strong></li>
 </ol>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public final AsyncTask&lt;Params, Progress, Result&gt; execute(Params... params) &#123;</div><div class="line">    return executeOnExecutor(sDefaultExecutor, params);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> AsyncTask&lt;Params, Progress, Result&gt; <span class="title">execute</span><span class="params">(Params... params)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> executeOnExecutor(sDefaultExecutor, params);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
 <li>调用：<code>executeOnExecutor(Executor exec, Params... params)</code> 中的 <strong><code>onPreExecute();</code></strong></li>
 </ol>
@@ -555,9 +555,9 @@
 <p> 通过发送 <code>MESSAGE_POST_PROGRESS</code> 标志来调用 调用 <strong><code>onProgressUpdate(Progress... values)</code></strong></p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"UnusedDeclaration"</span>&#125;)</div><div class="line"><span class="meta">@MainThread</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Progress... values)</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 其中 <code>result.mTask.finish(result.mData[0]);</code> 表示调用 <strong><code>finish()</code></strong>：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private void finish(Result result) &#123;</div><div class="line">    if (isCancelled()) &#123;</div><div class="line">        onCancelled(result);</div><div class="line">    &#125; else &#123;</div><div class="line">        onPostExecute(result);</div><div class="line">    &#125;</div><div class="line">    mStatus = Status.FINISHED;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">finish</span><span class="params">(Result result)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (isCancelled()) &#123;</div><div class="line">        onCancelled(result);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        onPostExecute(result);</div><div class="line">    &#125;</div><div class="line">    mStatus = Status.FINISHED;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 如果在这个方法中走 <strong><code>onPostExecute()</code></strong> 表示执行完毕这个流程，重写 <strong><code>onPostExecute()</code></strong>：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> @SuppressWarnings(&#123;&quot;UnusedDeclaration&quot;&#125;)</div><div class="line">@MainThread</div><div class="line">protected void onPostExecute(Result result) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"UnusedDeclaration"</span>&#125;)</div><div class="line"><span class="meta">@MainThread</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Result result)</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-5-取消任务"><a href="#3-5-取消任务" class="headerlink" title="3.5 取消任务"></a>3.5 取消任务</h2><ul>
 <li><p>任何时候都可以通过调用 <code>cancel(boolean)</code> 来取消任务。</p>
 </li>
@@ -575,7 +575,7 @@
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>私有静态内部类 <code>InternalHandler</code> 中，用到了一个对象 <code>result</code> ，这个对象就是 <code>AsyncTaskResult</code>类的实例化，是 <code>AsyncTask</code> 中的另一个私有静态内部类。</p>
 <p><strong><code>AsyncTaskResult</code></strong>；类源代码描述为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private static class AsyncTaskResult&lt;Data&gt; &#123;</div><div class="line">    final AsyncTask mTask;</div><div class="line">    final Data[] mData;</div><div class="line"></div><div class="line">    AsyncTaskResult(AsyncTask task, Data... data) &#123;</div><div class="line">        mTask = task;</div><div class="line">        mData = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncTaskResult</span>&lt;<span class="title">Data</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">final</span> AsyncTask mTask;</div><div class="line">    <span class="keyword">final</span> Data[] mData;</div><div class="line"></div><div class="line">    AsyncTaskResult(AsyncTask task, Data... data) &#123;</div><div class="line">        mTask = task;</div><div class="line">        mData = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这个私有静态内部类 <code>AsyncTaskResult</code> 的作用就是封装了 <code>AsyncTask</code> 类 和 数据类 <code>Data</code>，对 <strong>当前AsyncTask任务和对应的数据进行整体封装。</strong><br>这个封装写的是极好的，好在对此类的对象使用时，仅通过此对象的某个成员变量就可以完成需要零散变量能完成的任务，将需要的需要用到数据做成一个整体性的类，数据从整体中获取，使得在使用中<strong>不会感到变量繁多，而是通过一种调用的方式</strong>，极好。</p>
 <p><strong><code>InternalHandler</code>类 总结：</strong></p>
 <p>至此，通过以上分析可以得出的结论是：这个私有静态内部类主要是回调了 <code>onCancelled(result)</code>、<code>onPostExecute(result)</code>、<code>onProgressUpdate(result.mData)</code> 方法，即：<strong><code>InternalHandler</code>类的作用是 <code>AsyncTask</code> 处理任务的后期结果显示阶段</strong>。</p>

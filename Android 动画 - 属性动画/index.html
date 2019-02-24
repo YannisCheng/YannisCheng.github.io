@@ -102,7 +102,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tKfTcly1fjmybsw31fj30nb0iywfq.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tKfTcly1fjmygtwiutj30nb0o2ta8.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-21%2014.07.30.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.155Z">
+<meta property="og:updated_time" content="2019-02-24T00:08:10.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动画">
 <meta name="twitter:description" content="总结：基本动画 与 属性动画">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T08:08:10+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -462,7 +462,7 @@
 </ul>
 <h2 id="OOM问题"><a href="#OOM问题" class="headerlink" title="OOM问题"></a>OOM问题</h2><p>避使用帧动画中，因为当图片数量较多且图片较大时，在此种动画中易出现此问题。</p>
 <h2 id="View动画问题"><a href="#View动画问题" class="headerlink" title="View动画问题"></a>View动画问题</h2><p>View动画是对View的影像做动画，并不是真正的改变View的状态，因此有时候会出现动画完成后无法隐藏的情况，调用setVisibility(View.GONE)也没有作用，此时调用：view.clearAnimation()即可清除View动画。</p>
-<h2 id="开启硬件加速——动画更流畅"><a href="#开启硬件加速——动画更流畅" class="headerlink" title="开启硬件加速——动画更流畅"></a>开启硬件加速——动画更流畅</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div></pre></td></tr></table></figure>
+<h2 id="开启硬件加速——动画更流畅"><a href="#开启硬件加速——动画更流畅" class="headerlink" title="开启硬件加速——动画更流畅"></a>开启硬件加速——动画更流畅</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">view.setLayerType(View.LAYER_TYPE_SOFTWARE, <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
 <h1 id="三、动画分类"><a href="#三、动画分类" class="headerlink" title="三、动画分类"></a>三、动画分类</h1><h2 id="0-复杂属性动画"><a href="#0-复杂属性动画" class="headerlink" title="0. 复杂属性动画"></a>0. 复杂属性动画</h2><ul>
 <li>使用 <code>PropertyValuesHolder</code> 来对多个属性同时做动画；</li>
 <li>使用 <code>AnimatorSet</code> 来同时管理调配多个动画；</li>

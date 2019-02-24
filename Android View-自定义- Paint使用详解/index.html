@@ -96,13 +96,10 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6ewf1o5j206d066q4a.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fmbemdj206u061my4.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fragq2j20lc089djv.jpg">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig74qv8rij30ct05rglp.jpg">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig75e27w6j30cp05ewem.jpg">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7ak3kqgj30cs0cq74j.jpg">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7d34s0jj30lf07t75x.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.21.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.39.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.33.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.45.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7ekjh7lj30dw05jq2z.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7epf94aj30dr05eq2x.jpg">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.50.png">
@@ -111,7 +108,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-21%2014.37.15.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.12.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.29.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.145Z">
+<meta property="og:updated_time" content="2019-02-24T00:33:00.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View-自定义- Paint使用详解">
 <meta name="twitter:description" content="参考：http://hencoder.com/ui-1-2/">
@@ -333,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T08:33:00+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -383,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,130 字
+                  5,162 字
                 </span>
               
 
@@ -487,120 +484,80 @@
 <li><strong>ComposeShader（组合着色）</strong></li>
 </ul>
 <p>其中前三者：LinearGradient（线性渐变）, RadialGradient（辐射渐变）, SweepGradient（扫描渐变）同xml绘制图形中有形同的样式。<br>Shader作为一个基类，包含有一个enum类：</p>
-<pre><code>public enum TileMode {
-        /**
-         * 如果着色器在其原始边界之外绘制，则复制边缘颜色
-         */
-        CLAMP   (0),
-        /**
-         * 重复着色器的图像水平和垂直
-         */
-        REPEAT  (1),
-        /**
-         * 复着色器的图像水平和垂直，交替镜像
-         */
-        MIRROR  (2);
-
-        TileMode(int nativeInt) {
-            this.nativeInt = nativeInt;
-        }
-        final int nativeInt;
-    }    
-</code></pre><h5 id="1-LinearGradient-线性渐变"><a href="#1-LinearGradient-线性渐变" class="headerlink" title="1  LinearGradient 线性渐变"></a>1  LinearGradient 线性渐变</h5><p><strong>使用</strong>：</p>
-<pre><code>Shader shader = new LinearGradient(100, 100, 500, 500, Color.parseColor(&quot;#E91E63&quot;),  
-    Color.parseColor(&quot;#2196F3&quot;), Shader.TileMode.CLAMP);
-paint.setShader(shader);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6dq7wudj206l06875e.jpg" alt=""><br><strong>此类的构造器</strong></p>
-<pre><code> /**
- * Create a shader that draws a linear gradient along a line.
- *
- * @param x0           The x-coordinate for the start of the gradient line
- * @param y0           The y-coordinate for the start of the gradient line
- * @param x1           The x-coordinate for the end of the gradient line
- * @param y1           The y-coordinate for the end of the gradient line
- * @param colors       The colors to be distributed along the gradient line
- * @param positions    May be null. The relative positions [0..1] of
- *                     each corresponding color in the colors array. If this is null,
- *                     the the colors are distributed evenly along the gradient line.
- * @param tile         The Shader tiling mode
-*/    
-LinearGradient(float x0, float y0, float x1, float y1, @NonNull @ColorInt int colors[],
-        @Nullable float positions[], @NonNull TileMode tile)
-</code></pre><p><strong>参数：</strong> </p>
-<pre><code>x0 y0 x1 y1：渐变的两个端点的位置 
-color0 color1“ 是端点的颜色 
-tile：端点范围之外的着色规则，类型是 TileMode
-</code></pre><h5 id="2-RadialGradient-辐射渐变"><a href="#2-RadialGradient-辐射渐变" class="headerlink" title="2 RadialGradient 辐射渐变"></a>2 RadialGradient 辐射渐变</h5><p><strong>使用</strong>：</p>
-<pre><code>Shader shader = new RadialGradient(300, 300, 200, Color.parseColor(&quot;#E91E63&quot;),  
-    Color.parseColor(&quot;#2196F3&quot;), Shader.TileMode.CLAMP);
-paint.setShader(shader);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6ewf1o5j206d066q4a.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TileMode &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 如果着色器在其原始边界之外绘制，则复制边缘颜色</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    CLAMP   (<span class="number">0</span>),</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 重复着色器的图像水平和垂直</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    REPEAT  (<span class="number">1</span>),</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 复着色器的图像水平和垂直，交替镜像</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    MIRROR  (<span class="number">2</span>);</div><div class="line">    </div><div class="line">    TileMode(<span class="keyword">int</span> nativeInt) &#123;</div><div class="line">        <span class="keyword">this</span>.nativeInt = nativeInt;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> nativeInt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="1-LinearGradient-线性渐变"><a href="#1-LinearGradient-线性渐变" class="headerlink" title="1  LinearGradient 线性渐变"></a>1  LinearGradient 线性渐变</h5><p><strong>使用</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Shader shader = <span class="keyword">new</span> LinearGradient(<span class="number">100</span>, <span class="number">100</span>, <span class="number">500</span>, <span class="number">500</span>, Color.parseColor(<span class="string">"#E91E63"</span>),  </div><div class="line">Color.parseColor(<span class="string">"#2196F3"</span>), Shader.TileMode.CLAMP);</div><div class="line">paint.setShader(shader);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6dq7wudj206l06875e.jpg" alt="">    </p>
+<p><strong>此类的构造器</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Create a shader that draws a linear gradient along a line.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> x0           The x-coordinate for the start of the gradient line</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> y0           The y-coordinate for the start of the gradient line</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> x1           The x-coordinate for the end of the gradient line</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> y1           The y-coordinate for the end of the gradient line</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> colors       The colors to be distributed along the gradient line</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> positions    May be null. The relative positions [0..1] of</span></div><div class="line"><span class="comment"> *                     each corresponding color in the colors array. If this is null,</span></div><div class="line"><span class="comment"> *                     the the colors are distributed evenly along the gradient line.</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> tile         The Shader tiling mode</span></div><div class="line"><span class="comment">*/</span>	</div><div class="line">LinearGradient(<span class="keyword">float</span> x0, <span class="keyword">float</span> y0, <span class="keyword">float</span> x1, <span class="keyword">float</span> y1, <span class="meta">@NonNull</span> <span class="meta">@ColorInt</span> <span class="keyword">int</span> colors[],</div><div class="line">        <span class="meta">@Nullable</span> <span class="keyword">float</span> positions[], <span class="meta">@NonNull</span> TileMode tile)</div></pre></td></tr></table></figure>
+<p><strong>参数：</strong> </p>
+<ul>
+<li>x0 y0 x1 y1：渐变的两个端点的位置 </li>
+<li>color0 color1“ 是端点的颜色 </li>
+<li>tile：端点范围之外的着色规则，类型是 TileMode</li>
+</ul>
+<h5 id="2-RadialGradient-辐射渐变"><a href="#2-RadialGradient-辐射渐变" class="headerlink" title="2 RadialGradient 辐射渐变"></a>2 RadialGradient 辐射渐变</h5><p><strong>使用</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Shader shader = <span class="keyword">new</span> RadialGradient(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, Color.parseColor(<span class="string">"#E91E63"</span>),  </div><div class="line">Color.parseColor(<span class="string">"#2196F3"</span>), Shader.TileMode.CLAMP);</div><div class="line">paint.setShader(shader);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6ewf1o5j206d066q4a.jpg" alt=""></p>
 <p><strong>构造方法</strong>： </p>
-<pre><code>RadialGradient(float centerX, float centerY, float radius, int centerColor, int edgeColor, TileMode tileMode)。
-</code></pre><p><strong>参数</strong>： </p>
-<pre><code>centerX centerY：辐射中心的坐标 
-radius：辐射半径 
-centerColor：辐射中心的颜色 
-edgeColor：辐射边缘的颜色 
-tileMode：辐射范围之外的着色模式。
-</code></pre><h5 id="3-SweepGradient-扫描渐变"><a href="#3-SweepGradient-扫描渐变" class="headerlink" title="3 SweepGradient 扫描渐变"></a>3 SweepGradient 扫描渐变</h5><p><strong>使用</strong>：</p>
-<pre><code>Shader shader = new SweepGradient(300, 300, Color.parseColor(&quot;#E91E63&quot;),  
-    Color.parseColor(&quot;#2196F3&quot;));
-paint.setShader(shader);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fmbemdj206u061my4.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RadialGradient(<span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> radius, <span class="keyword">int</span> centerColor, <span class="keyword">int</span> edgeColor, TileMode tileMode)。</div></pre></td></tr></table></figure>
+<p><strong>参数</strong>： </p>
+<ul>
+<li>centerX centerY：辐射中心的坐标 </li>
+<li>radius：辐射半径 </li>
+<li>centerColor：辐射中心的颜色 </li>
+<li>edgeColor：辐射边缘的颜色 </li>
+<li>tileMode：辐射范围之外的着色模式。</li>
+</ul>
+<h5 id="3-SweepGradient-扫描渐变"><a href="#3-SweepGradient-扫描渐变" class="headerlink" title="3 SweepGradient 扫描渐变"></a>3 SweepGradient 扫描渐变</h5><p><strong>使用</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Shader shader = <span class="keyword">new</span> SweepGradient(<span class="number">300</span>, <span class="number">300</span>, Color.parseColor(<span class="string">"#E91E63"</span>),  </div><div class="line">Color.parseColor(<span class="string">"#2196F3"</span>));</div><div class="line">paint.setShader(shader);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fmbemdj206u061my4.jpg" alt=""></p>
 <p><strong>构造方法</strong>：</p>
-<pre><code>SweepGradient(float cx, float cy, int color0, int color1)
-</code></pre><p><strong>参数</strong>： </p>
-<pre><code>cx cy ：扫描的中心 
-color0：扫描的起始颜色 
-color1：扫描的终止颜色
-</code></pre><h5 id="4-BitmapShader-Bitmap-来着色"><a href="#4-BitmapShader-Bitmap-来着色" class="headerlink" title="4 BitmapShader Bitmap 来着色"></a>4 BitmapShader Bitmap 来着色</h5><p><strong>使用</strong>：</p>
-<pre><code>Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  
-Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);  
-paint.setShader(shader);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fragq2j20lc089djv.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SweepGradient(<span class="keyword">float</span> cx, <span class="keyword">float</span> cy, <span class="keyword">int</span> color0, <span class="keyword">int</span> color1)</div></pre></td></tr></table></figure>
+<p><strong>参数</strong>： </p>
+<ul>
+<li>cx cy ：扫描的中心 </li>
+<li>color0：扫描的起始颜色 </li>
+<li>color1：扫描的终止颜色</li>
+</ul>
+<h5 id="4-BitmapShader-Bitmap-来着色"><a href="#4-BitmapShader-Bitmap-来着色" class="headerlink" title="4 BitmapShader Bitmap 来着色"></a>4 BitmapShader Bitmap 来着色</h5><p><strong>使用</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  </div><div class="line">Shader shader = <span class="keyword">new</span> BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);  </div><div class="line">paint.setShader(shader);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/52eb2279ly1fig6fragq2j20lc089djv.jpg" alt=""></p>
 <p>通过使用：<code>drawCircle() + BitmapShader</code>就可以绘制圆形的  Bitmap，不用 <code>drawBitmap()</code> 了（其他形状同理）。</p>
 <p><strong>构造方法</strong>： </p>
-<pre><code>BitmapShader(Bitmap bitmap, Shader.TileMode tileX, Shader.TileMode tileY)
-</code></pre><p><strong>参数</strong>： </p>
-<pre><code>bitmap：用来做模板的 Bitmap 对象 
-tileX：横向的 TileMode 
-tileY：纵向的 TileMode。
-</code></pre><h5 id="5-ComposeShader-混合着色器（两个-Shader-一起使用）"><a href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）" class="headerlink" title="5 ComposeShader 混合着色器（两个 Shader 一起使用）"></a>5 ComposeShader 混合着色器（两个 Shader 一起使用）</h5><p><strong>使用</strong></p>
-<pre><code>// 第一个 Shader：头像的 Bitmap
-Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  
-Shader shader1 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-// 第二个 Shader：从上到下的线性渐变（由透明到黑色）
-Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.batman_logo);  
-Shader shader2 = new BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-// ComposeShader：结合两个 Shader
-Shader shader = new ComposeShader(shader1, shader2, PorterDuff.Mode.SRC_OVER);  
-paint.setShader(shader);
-</code></pre><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BitmapShader(Bitmap bitmap, Shader.TileMode tileX, Shader.TileMode tileY)</div></pre></td></tr></table></figure>
+<p><strong>参数</strong>： </p>
+<ul>
+<li>bitmap：用来做模板的 Bitmap 对象 </li>
+<li>tileX：横向的 TileMode </li>
+<li>tileY：纵向的 TileMode。</li>
+</ul>
+<h5 id="5-ComposeShader-混合着色器（两个-Shader-一起使用）"><a href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）" class="headerlink" title="5 ComposeShader 混合着色器（两个 Shader 一起使用）"></a>5 ComposeShader 混合着色器（两个 Shader 一起使用）</h5><p><strong>使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个 Shader：头像的 Bitmap</span></div><div class="line">Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);  </div><div class="line">Shader shader1 = <span class="keyword">new</span> BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</div><div class="line">	</div><div class="line"><span class="comment">// 第二个 Shader：从上到下的线性渐变（由透明到黑色）</span></div><div class="line">Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.batman_logo);  </div><div class="line">Shader shader2 = <span class="keyword">new</span> BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</div><div class="line">	</div><div class="line"><span class="comment">// ComposeShader：结合两个 Shader</span></div><div class="line">Shader shader = <span class="keyword">new</span> ComposeShader(shader1, shader2, PorterDuff.Mode.SRC_OVER);  </div><div class="line">paint.setShader(shader);</div></pre></td></tr></table></figure>
+<blockquote>
 <p><code>ComposeShader()</code> 在硬件加速下是不支持两个相同类型的 Shader 的，所以这里也需要关闭硬件加速才能看到效果。<br><strong>如何 关闭硬件加速 ?</strong></p>
 </blockquote>
 <p><strong>构造方法</strong>：</p>
-<pre><code>ComposeShader(Shader shaderA, Shader shaderB, PorterDuff.Mode mode)
-</code></pre><p><strong>参数</strong>： </p>
-<pre><code>shaderA, shaderB：两个相继使用的 Shader 
-mode: 两个 Shader 的叠加模式，即 shaderA 和 shaderB 应该怎样共同绘制。它的类型是  PorterDuff.Mode 。
-</code></pre><p>PorterDuff.Mode 一共有 17 个，可以分为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ComposeShader(Shader shaderA, Shader shaderB, PorterDuff.Mode mode)</div></pre></td></tr></table></figure>
+<p><strong>参数</strong>： </p>
+<ul>
+<li>shaderA, shaderB：两个相继使用的 Shader </li>
+<li>mode: 两个 Shader 的叠加模式，即 shaderA 和 shaderB 应该怎样共同绘制。它的类型是  PorterDuff.Mode 。</li>
+</ul>
+<p><strong>PorterDuff.Mode</strong> 一共有 17 个，可以分为：</p>
 <ul>
 <li>Alpha 合成 (Alpha Compositing)</li>
 <li>混合 (Blending)</li>
 </ul>
 <p>具体使用参考：<a href="http://hencoder.com/ui-1-2/" target="_blank" rel="external">http://hencoder.com/ui-1-2/</a></p>
-<h2 id="1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><a href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤" class="headerlink" title="1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤"></a>1.2 <code>setColorFilter(ColorFilter colorFilter)</code> 颜色过滤</h2><pre><code>对每个像素的颜色进行过滤
-</code></pre><p>在设置了对象的基础颜色之后，再对颜色进行设置就是针对“基础颜色”进行设置，不再是停留在对“对象颜色的填充”方面。<br>Paint通过<code>setColorFilter(ColorFilter filter)</code> 方法设置 ColorFilter。 但是 ColorFilter 并不直接使用，而是使用它的子类：</p>
+<h2 id="1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><a href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤" class="headerlink" title="1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤"></a>1.2 <code>setColorFilter(ColorFilter colorFilter)</code> 颜色过滤</h2><p>对每个像素的颜色进行过滤</p>
+<p>在设置了对象的基础颜色之后，再对颜色进行设置就是针对“基础颜色”进行设置，不再是停留在对“对象颜色的填充”方面。<br>Paint通过<code>setColorFilter(ColorFilter filter)</code> 方法设置 ColorFilter。 但是 ColorFilter 并不直接使用，而是使用它的子类：</p>
 <ul>
 <li><strong>LightingColorFilter</strong>：模拟简单的光照效果</li>
 </ul>
 <p><strong>使用</strong></p>
-<pre><code>ColorFilter lightingColorFilter = new LightingColorFilter(0x00ffff, 0x000000);  
-paint.setColorFilter(lightingColorFilter);  
-</code></pre><ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ColorFilter lightingColorFilter = <span class="keyword">new</span> LightingColorFilter(<span class="number">0x00ffff</span>, <span class="number">0x000000</span>);  </div><div class="line">paint.setColorFilter(lightingColorFilter);</div></pre></td></tr></table></figure>
+<ul>
 <li><strong>PorterDuffColorFilter</strong></li>
 <li><strong>ColorMatrixColorFilter</strong></li>
 </ul>
@@ -610,303 +567,84 @@ paint.setColorFilter(lightingColorFilter);
 <li>使用离屏缓冲（Off-screen Buffer）</li>
 </ol>
 <p>在绘制之前保存，绘制之后恢复：</p>
-<pre><code>int saved = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG);
-canvas.drawBitmap(rectBitmap, 0, 0, paint); // 画方
-paint.setXfermode(xfermode); // 设置 Xfermode
-canvas.drawBitmap(circleBitmap, 0, 0, paint); // 画圆
-paint.setXfermode(null); // 用完及时清除 Xfermode
-canvas.restoreToCount(saved);
-</code></pre><ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> saved = canvas.saveLayer(<span class="keyword">null</span>, <span class="keyword">null</span>, Canvas.ALL_SAVE_FLAG);</div><div class="line">canvas.drawBitmap(rectBitmap, <span class="number">0</span>, <span class="number">0</span>, paint); <span class="comment">// 画方</span></div><div class="line">paint.setXfermode(xfermode); <span class="comment">// 设置 Xfermode</span></div><div class="line">canvas.drawBitmap(circleBitmap, <span class="number">0</span>, <span class="number">0</span>, paint); <span class="comment">// 画圆</span></div><div class="line">paint.setXfermode(<span class="keyword">null</span>); <span class="comment">// 用完及时清除 Xfermode</span></div><div class="line">canvas.restoreToCount(saved);</div></pre></td></tr></table></figure>
+<ol>
 <li>控制好透明区域</li>
 </ol>
 <h1 id="2-效果"><a href="#2-效果" class="headerlink" title="2. 效果"></a>2. 效果</h1><h2 id="2-1-setAntiAlias-boolean-aa-抗锯齿效果"><a href="#2-1-setAntiAlias-boolean-aa-抗锯齿效果" class="headerlink" title="2.1 setAntiAlias (boolean aa) 抗锯齿效果"></a>2.1 <code>setAntiAlias (boolean aa)</code> 抗锯齿效果</h2><p>抗锯齿默认是关闭的，如果需要抗锯齿，需要显式地打开。<br>打开抗锯齿还有一个更方便的方式，可以在初始化的时候就开启抗锯齿：</p>
-<pre><code>Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);  
-</code></pre><h2 id="2-2-setStyle-Paint-Style-style-线条填充效果"><a href="#2-2-setStyle-Paint-Style-style-线条填充效果" class="headerlink" title="2.2 setStyle(Paint.Style style) 线条填充效果"></a>2.2 <code>setStyle(Paint.Style style)</code> 线条填充效果</h2><p>设置图形是线条风格还是填充风格的，也可以二者并用。</p>
-<h2 id="2-3-线条样式效果"><a href="#2-3-线条样式效果" class="headerlink" title="2.3 线条样式效果"></a>2.3 线条样式效果</h2><p>线条形状的一共有 4 个方法：</p>
-<ul>
-<li><strong>setStrokeWidth(float width)</strong> ：设置线条宽度</li>
-<li><p><strong>setStrokeCap(Paint.Cap cap)</strong> ：设置线头的形状。</p>
-<ul>
-<li>BUTT 平头</li>
-<li>ROUND 圆头</li>
-<li>SQUARE 方头</li>
-</ul>
-</li>
-</ul>
-<p>默认为 BUTT。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig74qv8rij30ct05rglp.jpg" alt=""></p>
-<ul>
-<li><p><strong>setStrokeJoin(Paint.Join join)</strong> : 设置拐角的形状。</p>
-<ul>
-<li>MITER 尖角</li>
-<li>BEVEL 平角</li>
-<li>ROUND 圆角</li>
-</ul>
-</li>
-</ul>
-<p>默认为 MITER</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig75e27w6j30cp05ewem.jpg" alt=""></p>
-<ul>
-<li><strong>setStrokeMiter(float miter)</strong> : 是对于 setStrokeJoin() 的补充，设置 MITER 型拐角的延长线的最大值.</li>
-</ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7ak3kqgj30cs0cq74j.jpg" alt=""></p>
-<h2 id="2-4-色彩优化效果"><a href="#2-4-色彩优化效果" class="headerlink" title="2.4 色彩优化效果"></a>2.4 色彩优化效果</h2><ul>
-<li><strong>setDither(boolean dither)</strong> ：设置图像的抖动。</li>
-</ul>
-<p>抖动更多的作用是在图像降低色彩深度绘制时，避免出现大片的色带与色块</p>
-<pre><code>paint.setDither(true);  
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7d34s0jj30lf07t75x.jpg" alt=""></p>
-<ul>
-<li><p><strong>setFilterBitmap(boolean filter)</strong> ：双线性过滤来绘制 Bitmap。<br>图像在放大绘制的时候会出现马赛克现象，如果开启了双线性过滤，就可以让结果图像显得更加平滑</p>
-<pre><code>paint.setFilterBitmap(true); 
-</code></pre></li>
-</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">Paint paint = <span class="keyword">new</span> Paint(Paint.ANTI_ALIAS_FLAG);</div><div class="line">```  </div><div class="line">	</div><div class="line">## 2.2 `setStyle(Paint.Style style)` 线条填充效果</div><div class="line"></div><div class="line">设置图形是线条风格还是填充风格的，也可以二者并用。</div><div class="line"></div><div class="line">## 2.3 线条样式效果</div><div class="line"></div><div class="line">线条形状的一共有 <span class="number">4</span> 个方法：</div><div class="line"></div><div class="line">- **setStrokeWidth(<span class="keyword">float</span> width)** ：设置线条宽度</div><div class="line">- **setStrokeCap(Paint.Cap cap)** ：设置线头的形状。</div><div class="line">	</div><div class="line">	- BUTT 平头</div><div class="line">	- ROUND 圆头</div><div class="line">	- SQUARE 方头</div><div class="line"></div><div class="line">默认为 BUTT。</div><div class="line"></div><div class="line">![](https:<span class="comment">//yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig74qv8rij30ct05rglp.jpg)</span></div><div class="line"></div><div class="line">- **setStrokeJoin(Paint.Join join)** : 设置拐角的形状。</div><div class="line"></div><div class="line">	- MITER 尖角</div><div class="line">	- BEVEL 平角</div><div class="line">	- ROUND 圆角</div><div class="line">	</div><div class="line">默认为 MITER</div><div class="line"></div><div class="line">![](https:<span class="comment">//yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig75e27w6j30cp05ewem.jpg)</span></div><div class="line"></div><div class="line">- **setStrokeMiter(<span class="keyword">float</span> miter)** : 是对于 setStrokeJoin() 的补充，设置 MITER 型拐角的延长线的最大值.</div><div class="line"></div><div class="line">![](https:<span class="comment">//yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7ak3kqgj30cs0cq74j.jpg)</span></div><div class="line"></div><div class="line">## 2.4 色彩优化效果</div><div class="line"></div><div class="line">- **setDither(<span class="keyword">boolean</span> dither)** ：设置图像的抖动。</div><div class="line"></div><div class="line">抖动更多的作用是在图像降低色彩深度绘制时，避免出现大片的色带与色块</div><div class="line"></div><div class="line">		</div><div class="line">```Java</div><div class="line">paint.setDither(<span class="keyword">true</span>); </div><div class="line">``` </div><div class="line">		</div><div class="line">![](https:<span class="comment">//yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7d34s0jj30lf07t75x.jpg)</span></div><div class="line">		</div><div class="line">- **setFilterBitmap(<span class="keyword">boolean</span> filter)** ：双线性过滤来绘制 Bitmap。</div><div class="line">图像在放大绘制的时候会出现马赛克现象，如果开启了双线性过滤，就可以让结果图像显得更加平滑</div><div class="line"></div><div class="line">		</div><div class="line">```Java</div><div class="line">paint.setFilterBitmap(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
 <h2 id="2-5-setPathEffect-PathEffect-effect-设置轮廓效果"><a href="#2-5-setPathEffect-PathEffect-effect-设置轮廓效果" class="headerlink" title="2.5 setPathEffect(PathEffect effect) 设置轮廓效果"></a>2.5 <code>setPathEffect(PathEffect effect)</code> 设置轮廓效果</h2><p><strong>使用</strong></p>
-<pre><code>PathEffect pathEffect = new DashPathEffect(new float[]{10, 5}, 10);  
-paint.setPathEffect(pathEffect);
-</code></pre><p>共有6 种 PathEffect：</p>
-<pre><code>(1) CornerPathEffect -- 圆角
-(2) DashPathEffect -- 虚线效果
-(3) DiscretePathEffect -- 离散路径效果
-(4) PathDashPathEffect -- 印章路径效果
-(5) ComposePathEffect合并两个特效是有先后顺序的，它会先将第二个参数的PathEffect innerpe的特效作用于路径上，然后再在此加了特效的路径上作用第二个特效。
-(6) SumPathEffect是分别对原始路径分别作用第一个特效和第二个特效。然后再将这两条路径合并，做为最终结果。
-</code></pre><p>分为两类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PathEffect pathEffect = <span class="keyword">new</span> DashPathEffect(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">10</span>, <span class="number">5</span>&#125;, <span class="number">10</span>);  </div><div class="line">paint.setPathEffect(pathEffect);</div></pre></td></tr></table></figure>
+<p>共有6 种 PathEffect：</p>
 <ul>
-<li><p><strong>单一效果的</strong>  </p>
+<li>(1) CornerPathEffect – 圆角</li>
+<li>(2) DashPathEffect – 虚线效果</li>
+<li>(3) DiscretePathEffect – 离散路径效果</li>
+<li>(4) PathDashPathEffect – 印章路径效果</li>
+<li>(5) ComposePathEffect合并两个特效是有先后顺序的，它会先将第二个参数的PathEffect innerpe的特效作用于路径上，然后再在此加了特效的路径上作用第二个特效。</li>
+<li>(6) SumPathEffect是分别对原始路径分别作用第一个特效和第二个特效。然后再将这两条路径合并，做为最终结果。</li>
+</ul>
 <ul>
-<li><p><strong>1. CornerPathEffect</strong> ：把所有拐角变成圆角</p>
-<pre><code>PathEffect pathEffect = new CornerPathEffect(20);  
-paint.setPathEffect(pathEffect);
-</code></pre><p>构造方法 </p>
-<p>  CornerPathEffect(float radius) </p>
-<p>的参数 radius 是圆角的半径。<br>使用</p>
-<p>   //第1组  拐角弧度</p>
-<pre><code>Path path = new Path();
-path.moveTo(100,200);
-path.lineTo(400,50);
-path.lineTo(700,200);
-path.lineTo(1000,70);
-canvas.drawPath(path,paintStyle(Color.GREEN,0,null,0));
-//画布下移
-canvas.translate(0,50);
-canvas.drawPath(path,paintStyle(Color.WHITE,50,null,0));
-canvas.translate(0,50);
-canvas.drawPath(path,paintStyle(Color.YELLOW,100,null,0));
-canvas.translate(0,200);
-
-private Paint paintStyle(int color, int corner, float[] floats, int phase) {
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(5);
-    paint.setColor(color);
-    //设置拐角度数
-    paint.setPathEffect(new CornerPathEffect(corner));
-    //设置间断线
-    if (floats != null) {
-        paint.setPathEffect(new DashPathEffect(floats,phase));
-    }
-    paint.setStyle(Paint.Style.STROKE);
-    return paint;
-}
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.21.png" alt=""></p>
-</li>
+<li><strong>1. CornerPathEffect</strong> ：把所有拐角变成圆角</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PathEffect pathEffect = <span class="keyword">new</span> CornerPathEffect(<span class="number">20</span>);  </div><div class="line">paint.setPathEffect(pathEffect);</div></pre></td></tr></table></figure>
+<p>构造方法 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CornerPathEffect(<span class="keyword">float</span> radius)</div></pre></td></tr></table></figure>
+<p>的参数 radius 是圆角的半径。    使用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第1组  拐角弧度</span></div><div class="line">Path path = <span class="keyword">new</span> Path();</div><div class="line">path.moveTo(<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">path.lineTo(<span class="number">400</span>,<span class="number">50</span>);</div><div class="line">path.lineTo(<span class="number">700</span>,<span class="number">200</span>);</div><div class="line">path.lineTo(<span class="number">1000</span>,<span class="number">70</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.GREEN,<span class="number">0</span>,<span class="keyword">null</span>,<span class="number">0</span>));</div><div class="line"><span class="comment">//画布下移</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.WHITE,<span class="number">50</span>,<span class="keyword">null</span>,<span class="number">0</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.YELLOW,<span class="number">100</span>,<span class="keyword">null</span>,<span class="number">0</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">200</span>);</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyle</span><span class="params">(<span class="keyword">int</span> color, <span class="keyword">int</span> corner, <span class="keyword">float</span>[] floats, <span class="keyword">int</span> phase)</span> </span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">    paint.setColor(color);</div><div class="line">    <span class="comment">//设置拐角度数</span></div><div class="line">    paint.setPathEffect(<span class="keyword">new</span> CornerPathEffect(corner));</div><div class="line">    <span class="comment">//设置间断线</span></div><div class="line">    <span class="keyword">if</span> (floats != <span class="keyword">null</span>) &#123;</div><div class="line">        paint.setPathEffect(<span class="keyword">new</span> DashPathEffect(floats,phase));</div><div class="line">    &#125;</div><div class="line">    paint.setStyle(Paint.Style.STROKE);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.21.png" alt=""></p>
+<ul>
+<li><strong>2. DiscretePathEffect</strong> ：离散路径效果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PathEffect pathEffect = <span class="keyword">new</span> DiscretePathEffect(<span class="number">20</span>, <span class="number">5</span>);  </div><div class="line">paint.setPathEffect(pathEffect);</div></pre></td></tr></table></figure>
+<p>构造方法 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DiscretePathEffect(<span class="keyword">float</span> segmentLength, <span class="keyword">float</span> deviation)</div></pre></td></tr></table></figure>
+<p>的两个参数中， segmentLength 是用来拼接的每个线段的长度， deviation 是偏离量。使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第3组离散</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.GREEN,<span class="number">2</span>,<span class="number">14</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.WHITE,<span class="number">4</span>,<span class="number">8</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.YELLOW,<span class="number">8</span>,<span class="number">4</span>));</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyle</span><span class="params">(<span class="keyword">int</span> color,<span class="keyword">float</span> someLength, <span class="keyword">float</span> deviation)</span> </span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">    paint.setColor(color);</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * segmentLength：表示将原来的路径切成多长的线段。如果值为2，那么这个路径就会被切成一段段由长度为2的小线段。所以这个值越小，所切成的小线段越多；这个值越大，所切成的小线段越少。</span></div><div class="line"><span class="comment">     deviation：表示被切成的每个小线段的可偏移距离。值越大，就表示每个线段的可偏移距离就越大，就显得越凌乱，值越小，每个线段的可偏移原位置的距离就越小。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    paint.setPathEffect(<span class="keyword">new</span> DiscretePathEffect(someLength,deviation));</div><div class="line">    paint.setStyle(Paint.Style.STROKE);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.39.png" alt=""></p>
+<ul>
+<li><strong>3. DashPathEffect</strong> ：虚线效果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PathEffect pathEffect = <span class="keyword">new</span> DiscretePathEffect(<span class="number">20</span>, <span class="number">5</span>);  </div><div class="line">paint.setPathEffect(pathEffect);</div></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第2组  间隔线</span></div><div class="line"><span class="keyword">float</span>[] floats = <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">30</span>,<span class="number">10</span>&#125;;</div><div class="line"><span class="keyword">float</span>[] floats2 = <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">100</span>,<span class="number">30</span>&#125;;</div><div class="line"><span class="keyword">float</span>[] floats3 = <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">10</span>,<span class="number">30</span>,<span class="number">90</span>,<span class="number">20</span>&#125;;</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 对于intervals[]数组的有两个限定：</span></div><div class="line"><span class="comment"> 长度必须大于等于2；因为必须有一个实线段和一个空线段来组成虚线。</span></div><div class="line"><span class="comment"> 个数必须为偶数，如果是基数，最后一个数字将被忽略；这个很好理解，因为一组虚线的组成必然是一个实线和一个空线成对组成的。</span></div><div class="line"><span class="comment"> 对于phase：开始绘制的偏移值</span></div><div class="line"><span class="comment"> */</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.GREEN,<span class="number">0</span>,floats,<span class="number">0</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.WHITE,<span class="number">50</span>,floats2,<span class="number">50</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">50</span>);</div><div class="line">canvas.drawPath(path,paintStyle(Color.YELLOW,<span class="number">100</span>,floats3,<span class="number">100</span>));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">200</span>);</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyle</span><span class="params">(<span class="keyword">int</span> color, <span class="keyword">int</span> corner, <span class="keyword">float</span>[] floats, <span class="keyword">int</span> phase)</span> </span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">    paint.setColor(color);</div><div class="line">    <span class="comment">//设置拐角度数</span></div><div class="line">    paint.setPathEffect(<span class="keyword">new</span> CornerPathEffect(corner));</div><div class="line">    <span class="comment">//设置间断线</span></div><div class="line">    <span class="keyword">if</span> (floats != <span class="keyword">null</span>) &#123;</div><div class="line">        paint.setPathEffect(<span class="keyword">new</span> DashPathEffect(floats,phase));</div><div class="line">    &#125;</div><div class="line">    paint.setStyle(Paint.Style.STROKE);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.33.png" alt=""></p>
+<ul>
+<li><strong>4. PathDashPathEffect</strong> ：印章路径效果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Path dashPath = ...; <span class="comment">// 使用一个三角形来做 dash  </span></div><div class="line">			PathEffect pathEffect = <span class="keyword">new</span> PathDashPathEffect(dashPath, <span class="number">40</span>, <span class="number">0</span>,  </div><div class="line">			        PathDashPathEffectStyle.TRANSLATE);</div><div class="line">paint.setPathEffect(pathEffect);</div></pre></td></tr></table></figure>
+<p>构造方法  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PathDashPathEffect(Path shape, <span class="keyword">float</span> advance, <span class="keyword">float</span> phase, PathDashPathEffect.Style style)</div></pre></td></tr></table></figure>
+<ul>
+<li>shape ： 参数是用来绘制的 Path ； </li>
+<li>advance ：是两个相邻的 shape 段之间的间隔，不过注意，这个间隔是两个 shape 段的起点的间隔，而不是前一个的终点和后一个的起点的距离；<br>  phase “和  DashPathEffect 中一样，是虚线的偏移；</li>
+<li><p>style ：是用来指定拐弯改变的时候 shape 的转换方式。style 的类型为 PathDashPathEffect.Style ，是一个 enum ，具体有三个值：</p>
+<ul>
+<li>TRANSLATE：位移</li>
+<li>ROTATE：旋转</li>
+<li>MORPH：变体</li>
 </ul>
 </li>
 </ul>
-<pre><code>- **2. DiscretePathEffect** ：离散路径效果
-
-        PathEffect pathEffect = new DiscretePathEffect(20, 5);  
-        paint.setPathEffect(pathEffect);
-
-构造方法 
-
-    DiscretePathEffect(float segmentLength, float deviation) 
-
-的两个参数中， segmentLength 是用来拼接的每个线段的长度， deviation 是偏离量。
-
-使用
-
-    //第3组 离散
-        canvas.translate(0,50);
-        canvas.drawPath(path,paintStyle(Color.GREEN,2,14));
-        canvas.translate(0,50);
-        canvas.drawPath(path,paintStyle(Color.WHITE,4,8));
-        canvas.translate(0,50);
-        canvas.drawPath(path,paintStyle(Color.YELLOW,8,4));
-
-        private Paint paintStyle(int color,float someLength, float deviation) {
-            Paint paint = new Paint();
-            paint.setAntiAlias(true);
-            paint.setStrokeWidth(5);
-            paint.setColor(color);
-            /**
-             * segmentLength：表示将原来的路径切成多长的线段。如果值为2，那么这个路径就会被切成一段段由长度为2的小线段。所以这个值越小，所切成的小线段越多；这个值越大，所切成的小线段越少。
-             deviation：表示被切成的每个小线段的可偏移距离。值越大，就表示每个线段的可偏移距离就越大，就显得越凌乱，值越小，每个线段的可偏移原位置的距离就越小。
-             */
-            paint.setPathEffect(new DiscretePathEffect(someLength,deviation));
-            paint.setStyle(Paint.Style.STROKE);
-            return paint;
-        }
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.39.png" alt=""></p>
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">Path mPath = <span class="keyword">new</span> Path();</div><div class="line">mPath.moveTo(<span class="number">0</span>,<span class="number">20</span>);</div><div class="line">mPath.lineTo(<span class="number">10</span>,<span class="number">0</span>);</div><div class="line">mPath.lineTo(<span class="number">20</span>,<span class="number">20</span>);</div><div class="line">mPath.close();</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*向路径添加一个闭圆轮廓</span></div><div class="line"><span class="comment">* Direction:方向 cw:顺时针, ccw:逆时针旋转</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> x要添加到路径的圆的中心的x坐标</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> y要添加到路径的圆的中心的y坐标</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> radius要添加到路径的圆的半径</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> dir滚动圆圈轮廓的方向</span></div><div class="line"><span class="comment">*/</span></div><div class="line">mPath.addCircle(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>, Path.Direction.CCW);</div><div class="line">mPath.addCircle(<span class="number">20</span>,<span class="number">0</span>,<span class="number">3</span>, Path.Direction.CW);</div><div class="line"></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">80</span>);<span class="comment">//通过变形印章来过渡转角</span></div><div class="line">canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,<span class="number">30</span>,<span class="number">12</span>,PathDashPathEffect.Style.MORPH));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">80</span>);<span class="comment">//通过旋转印章来过渡转角</span></div><div class="line">canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,<span class="number">40</span>,<span class="number">12</span>,PathDashPathEffect.Style.ROTATE));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">80</span>);<span class="comment">//通过位移来过渡转角</span></div><div class="line">canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,<span class="number">80</span>,<span class="number">12</span>,PathDashPathEffect.Style.TRANSLATE));</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStylePashDush</span><span class="params">(<span class="keyword">int</span> color, Path shape, <span class="keyword">float</span> advance, <span class="keyword">float</span> phase, PathDashPathEffect.Style style)</span> </span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">    paint.setColor(color);</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     Path shape:表示印章路径，比如我们下面示例中的三角形加右上角一个点；</span></div><div class="line"><span class="comment">     float advance：表示两个印章路径间的距离,很容易理解，印章间距离越大，间距就越大。</span></div><div class="line"><span class="comment">     float phase：路径绘制偏移距离，与上面DashPathEffect中的float phase参数意义相同</span></div><div class="line"><span class="comment">     Style style：表示在遇到转角时，如何操作印章以使转角平滑过渡，取值有：Style.ROTATE，Style.MORPH，Style.TRANSLATE;</span></div><div class="line"><span class="comment">         Style.ROTATE表示通过旋转印章来过渡转角；</span></div><div class="line"><span class="comment">         Style.MORPH表示通过变形印章来过渡转角；</span></div><div class="line"><span class="comment">         Style.TRANSLATE表示通过位移来过渡转角。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    paint.setPathEffect(<span class="keyword">new</span> PathDashPathEffect(shape,advance,phase,style));</div><div class="line">    paint.setStyle(Paint.Style.STROKE);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.45.png" alt=""></p>
 <ul>
-<li><p><strong>3. DashPathEffect</strong> ：虚线效果</p>
-<pre><code>PathEffect pathEffect = new DiscretePathEffect(20, 5);  
-paint.setPathEffect(pathEffect);
-</code></pre><p>  使用</p>
-<pre><code>//第2组  间隔线
-    float[] floats = new float[]{30,10};
-    float[] floats2 = new float[]{100,30};
-    float[] floats3 = new float[]{10,30,90,20};
-    /**
-     * 对于intervals[]数组的有两个限定：
-     长度必须大于等于2；因为必须有一个实线段和一个空线段来组成虚线。
-     个数必须为偶数，如果是基数，最后一个数字将被忽略；这个很好理解，因为一组虚线的组成必然是一个实线和一个空线成对组成的。
-     对于phase：开始绘制的偏移值
-     */
-    canvas.translate(0,50);
-    canvas.drawPath(path,paintStyle(Color.GREEN,0,floats,0));
-    canvas.translate(0,50);
-    canvas.drawPath(path,paintStyle(Color.WHITE,50,floats2,50));
-    canvas.translate(0,50);
-    canvas.drawPath(path,paintStyle(Color.YELLOW,100,floats3,100));
-    canvas.translate(0,200);
-
-    private Paint paintStyle(int color, int corner, float[] floats, int phase) {
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(5);
-        paint.setColor(color);
-        //设置拐角度数
-        paint.setPathEffect(new CornerPathEffect(corner));
-        //设置间断线
-        if (floats != null) {
-            paint.setPathEffect(new DashPathEffect(floats,phase));
-        }
-        paint.setStyle(Paint.Style.STROKE);
-        return paint;
-    }
-</code></pre><p>  <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.33.png" alt=""></p>
-</li>
+<li><strong>5. SumPathEffect</strong> ：分别按照两种 PathEffect 分别对目标进行绘制。</li>
 </ul>
-<pre><code>- **4. PathDashPathEffect** ：印章路径效果
-
-        Path dashPath = ...; // 使用一个三角形来做 dash  
-        PathEffect pathEffect = new PathDashPathEffect(dashPath, 40, 0,  
-                PathDashPathEffectStyle.TRANSLATE);
-        paint.setPathEffect(pathEffect);
-
-构造方法  
-
-    PathDashPathEffect(Path shape, float advance, float phase, PathDashPathEffect.Style style) 
-
-shape ： 参数是用来绘制的 Path ； 
-advance ：是两个相邻的 shape 段之间的间隔，不过注意，这个间隔是两个 shape 段的起点的间隔，而不是前一个的终点和后一个的起点的距离； 
-phase “和  DashPathEffect 中一样，是虚线的偏移；
-style ：是用来指定拐弯改变的时候 shape 的转换方式。style 的类型为 PathDashPathEffect.Style ，是一个 enum ，具体有三个值：
-
-    TRANSLATE：位移
-    ROTATE：旋转
-    MORPH：变体
-
-使用
-
-    Path mPath = new Path();
-    mPath.moveTo(0,20);
-    mPath.lineTo(10,0);
-    mPath.lineTo(20,20);
-    mPath.close();
-    /**
-    *向路径添加一个闭圆轮廓
-    * Direction:方向 cw:顺时针, ccw:逆时针旋转
-    * @param x要添加到路径的圆的中心的x坐标
-    * @param y要添加到路径的圆的中心的y坐标
-    * @param radius要添加到路径的圆的半径
-    * @param dir滚动圆圈轮廓的方向
-    */
-    mPath.addCircle(0,0,3, Path.Direction.CCW);
-    mPath.addCircle(20,0,3, Path.Direction.CW);
-
-    canvas.translate(0,80);//通过变形印章来过渡转角
-    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,30,12,PathDashPathEffect.Style.MORPH));
-    canvas.translate(0,80);//通过旋转印章来过渡转角
-    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,40,12,PathDashPathEffect.Style.ROTATE));
-    canvas.translate(0,80);//通过位移来过渡转角
-    canvas.drawPath(path,paintStylePashDush(Color.GREEN,mPath,80,12,PathDashPathEffect.Style.TRANSLATE));
-
-    private Paint paintStylePashDush(int color, Path shape, float advance, float phase, PathDashPathEffect.Style style) {
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(5);
-        paint.setColor(color);
-        /**
-         Path shape:表示印章路径，比如我们下面示例中的三角形加右上角一个点；
-         float advance：表示两个印章路径间的距离,很容易理解，印章间距离越大，间距就越大。
-         float phase：路径绘制偏移距离，与上面DashPathEffect中的float phase参数意义相同
-         Style style：表示在遇到转角时，如何操作印章以使转角平滑过渡，取值有：Style.ROTATE，Style.MORPH，Style.TRANSLATE;
-             Style.ROTATE表示通过旋转印章来过渡转角；
-             Style.MORPH表示通过变形印章来过渡转角；
-             Style.TRANSLATE表示通过位移来过渡转角。
-         */
-        paint.setPathEffect(new PathDashPathEffect(shape,advance,phase,style));
-        paint.setStyle(Paint.Style.STROKE);
-        return paint;
-    }
-
-   ![](https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.45.png)
-</code></pre><ul>
-<li><p><strong>组合效果</strong>  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PathEffect dashEffect = <span class="keyword">new</span> DashPathEffect(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">20</span>, <span class="number">10</span>&#125;, <span class="number">0</span>);  </div><div class="line">			PathEffect discreteEffect = <span class="keyword">new</span> DiscretePathEffect(<span class="number">20</span>, <span class="number">5</span>);  </div><div class="line">			pathEffect = <span class="keyword">new</span> SumPathEffect(dashEffect, discreteEffect);</div></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>5. SumPathEffect</strong> ：分别按照两种 PathEffect 分别对目标进行绘制。</p>
-<pre><code>PathEffect dashEffect = new DashPathEffect(new float[]{20, 10}, 0);  
-PathEffect discreteEffect = new DiscretePathEffect(20, 5);  
-pathEffect = new SumPathEffect(dashEffect, discreteEffect);
-</code></pre></li>
-<li><p><strong>6. ComposePathEffect</strong> ：也是一个组合效果类的 PathEffect</p>
-</li>
-</ul>
-</li>
+<li><strong>6. ComposePathEffect</strong> ：也是一个组合效果类的 PathEffect</li>
 </ul>
 <p>先对目标 Path 使用一个 PathEffect，然后再对这个改变后的 Path 使用另一个 PathEffect。</p>
-<pre><code>PathEffect dashEffect = new DashPathEffect(new float[]{20, 10}, 0);  
-PathEffect discreteEffect = new DiscretePathEffect(20, 5);  
-pathEffect = new ComposePathEffect(dashEffect, discreteEffect);
-</code></pre><p><strong>两者曲别：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PathEffect dashEffect = <span class="keyword">new</span> DashPathEffect(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">20</span>, <span class="number">10</span>&#125;, <span class="number">0</span>);  </div><div class="line">PathEffect discreteEffect = <span class="keyword">new</span> DiscretePathEffect(<span class="number">20</span>, <span class="number">5</span>);  </div><div class="line">pathEffect = <span class="keyword">new</span> ComposePathEffect(dashEffect, discreteEffect);</div></pre></td></tr></table></figure>
+<p><strong>两者曲别：</strong></p>
 <p>第 5 种效果是分别将2种效果都绘制出来，2者都可见。<br>第 6 种效果是县绘制第一种效果，然后在第一种效果上再绘制第二种效果，最终呈现的是：在第一种效果上的第二种效果</p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7ekjh7lj30dw05jq2z.jpg" alt=""></p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/006tNc79ly1fig7epf94aj30dr05eq2x.jpg" alt=""></p>
 <p>使用</p>
-<pre><code>canvas.translate(0,250);
-    //通过变形印章来过渡转角
-    PathDashPathEffect dashPathEffect = new PathDashPathEffect(mPath,40,0,PathDashPathEffect.Style.TRANSLATE);
-    DiscretePathEffect discretePathEffect = new DiscretePathEffect(20,2);
-    canvas.drawPath(path,paintStyleEffectCompose(Color.GREEN,discretePathEffect,dashPathEffect));
-    canvas.translate(0,140);
-    //通过旋转印章来过渡转角
-    canvas.drawPath(path,paintStyleEffectSum(Color.GREEN,dashPathEffect,discretePathEffect));
-
-    //设置合并两个路径特效效果
-private Paint paintStyleEffectCompose(int color, PathEffect effect1, PathEffect effect2) {
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(5);
-    paint.setColor(color);
-    paint.setPathEffect(new ComposePathEffect(effect1,effect2));
-    paint.setStyle(Paint.Style.STROKE);
-    return paint;
-}
-
-//设置合并两个路径特效效果
-private Paint paintStyleEffectSum(int color, PathEffect effect1, PathEffect effect2) {
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(5);
-    paint.setColor(color);
-    paint.setPathEffect(new SumPathEffect(effect1,effect2));
-    paint.setStyle(Paint.Style.STROKE);
-    return paint;
-}
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.50.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">250</span>);</div><div class="line"><span class="comment">//通过变形印章来过渡转角</span></div><div class="line">PathDashPathEffect dashPathEffect = <span class="keyword">new</span> PathDashPathEffect(mPath,<span class="number">40</span>,<span class="number">0</span>,PathDashPathEffect.Style.TRANSLATE);</div><div class="line">DiscretePathEffect discretePathEffect = <span class="keyword">new</span> DiscretePathEffect(<span class="number">20</span>,<span class="number">2</span>);</div><div class="line">canvas.drawPath(path,paintStyleEffectCompose(Color.GREEN,discretePathEffect,dashPathEffect));</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">140</span>);</div><div class="line"><span class="comment">//通过旋转印章来过渡转角</span></div><div class="line">canvas.drawPath(path,paintStyleEffectSum(Color.GREEN,dashPathEffect,discretePathEffect));</div><div class="line">    </div><div class="line"><span class="comment">//设置合并两个路径特效效果</span></div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyleEffectCompose</span><span class="params">(<span class="keyword">int</span> color, PathEffect effect1, PathEffect effect2)</span> </span>&#123;</div><div class="line">Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">paint.setColor(color);</div><div class="line">paint.setPathEffect(<span class="keyword">new</span> ComposePathEffect(effect1,effect2));</div><div class="line">paint.setStyle(Paint.Style.STROKE);</div><div class="line"><span class="keyword">return</span> paint;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//设置合并两个路径特效效果</span></div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyleEffectSum</span><span class="params">(<span class="keyword">int</span> color, PathEffect effect1, PathEffect effect2)</span> </span>&#123;</div><div class="line">Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">paint.setStrokeWidth(<span class="number">5</span>);</div><div class="line">paint.setColor(color);</div><div class="line">paint.setPathEffect(<span class="keyword">new</span> SumPathEffect(effect1,effect2));</div><div class="line">paint.setStyle(Paint.Style.STROKE);</div><div class="line"><span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2010.44.50.png" alt=""></p>
 <p><strong>注意</strong>：<br>PathEffect 在有些情况下不支持硬件加速，需要关闭硬件加速才能正常使用：</p>
 <ul>
 <li><code>Canvas.drawLine()</code> 和 <code>Canvas.drawLines()</code> 方法画直线时，<code>setPathEffect()</code> 是不支持硬件加速的；</li>
@@ -915,195 +653,37 @@ private Paint paintStyleEffectSum(int color, PathEffect effect1, PathEffect effe
 <h2 id="2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影"><a href="#2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影" class="headerlink" title="2.6 setShadowLayer(float radius, float dx, float dy, int shadowColor)  在之后的绘制内容下面加一层阴影"></a>2.6 <code>setShadowLayer(float radius, float dx, float dy, int shadowColor)</code>  在之后的绘制内容下面加一层阴影</h2><p>如果要清除阴影层，使用 clearShadowLayer() 。</p>
 <p><strong>注意</strong>：<br>在硬件加速开启的情况下， <code>setShadowLayer()</code> 只支持文字的绘制，文字之外的绘制必须关闭硬件加速才能正常绘制阴影。<br>如果 shadowColor 是半透明的，阴影的透明度就使用 shadowColor 自己的透明度；而如果  shadowColor 是不透明的，阴影的透明度就使用 paint 的透明度。</p>
 <h2 id="2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤"><a href="#2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤" class="headerlink" title="2.7 setMaskFilter(MaskFilter maskfilter)基于整个画面来进行过滤"></a>2.7 <code>setMaskFilter(MaskFilter maskfilter)</code>基于整个画面来进行过滤</h2><ul>
-<li><p><strong>BlurMaskFilter</strong> ：模糊效果</p>
-<pre><code>paint.setMaskFilter(new BlurMaskFilter(50, BlurMaskFilter.Blur.NORMAL));
-</code></pre><p>  构造方法 </p>
-<pre><code>BlurMaskFilter(float radius, BlurMaskFilter.Blur style) 
-</code></pre><p>  radius： 参数是模糊的范围<br>  style： 是模糊的类型，共有四种：</p>
-<pre><code>NORMAL: 内外都模糊绘制
-SOLID: 内部正常绘制，外部模糊
-INNER: 内部模糊，外部不绘制
-OUTER: 内部不绘制，外部模糊
-</code></pre><ul>
-<li><strong>EmbossMaskFilter</strong> ：浮雕效果</li>
+<li><strong>BlurMaskFilter</strong> ：模糊效果</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">paint.setMaskFilter(<span class="keyword">new</span> BlurMaskFilter(<span class="number">50</span>, BlurMaskFilter.Blur.NORMAL));</div></pre></td></tr></table></figure>
+<p>构造方法 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BlurMaskFilter(<span class="keyword">float</span> radius, BlurMaskFilter.Blur style)</div></pre></td></tr></table></figure>
+<ul>
+<li>radius： 参数是模糊的范围</li>
+<li><p>style： 是模糊的类型，共有四种：</p>
+<ul>
+<li>NORMAL: 内外都模糊绘制</li>
+<li>SOLID: 内部正常绘制，外部模糊</li>
+<li>INNER: 内部模糊，外部不绘制</li>
+<li>OUTER: 内部不绘制，外部模糊</li>
+</ul>
+</li>
+<li><p><strong>EmbossMaskFilter</strong> ：浮雕效果</p>
 </li>
 </ul>
 <h2 id="2-8-获取绘制的-Path"><a href="#2-8-获取绘制的-Path" class="headerlink" title="2.8 获取绘制的 Path"></a>2.8 获取绘制的 Path</h2><p>根据 paint 的设置，计算出绘制 Path 或文字时的 <strong>实际 Path</strong>。<br>实际 Path ，指的就是 drawPath() 的绘制内容的轮廓，要算上线条宽度和设置的 PathEffect。</p>
-<pre><code>getFillPath(src, dst) 
-</code></pre><p>会计算出实际 Path，然后把结果保存在 dst 里。</p>
-<pre><code>getTextPath(String text, int start, int end, float x, float y, Path path)
-getTextPath(char[] text, int index, int count, float x, float y, Path path)
-</code></pre><p>文字的绘制虽然使用 <code>Canvas.drawText()</code> 方法，但其实在下层，文字信息全是被转化成图形，对图形进行绘制的。 <code>getTextPath()</code> 方法，获取的就是目标文字所对应的 Path 。<br>这两个方法， <code>getFillPath()</code> 和 <code>getTextPath()</code> ，就是获取绘制的 Path 的方法。之所以把它们归类到「效果」类方法，是因为它们主要是用于图形和文字的装饰效果的位置计算。</p>
-<h1 id="3-绘制文本"><a href="#3-绘制文本" class="headerlink" title="3 绘制文本"></a>3 绘制文本</h1><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="公共方法"><a href="#公共方法" class="headerlink" title="公共方法"></a>公共方法</h3><pre><code>private Paint paintStyle(int color, Paint.Style style){
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(2);
-    paint.setStyle(style);
-    paint.setColor(color);
-    paint.setTextSize(60);
-    //设置文字对齐方式，取值：align.CENTER、align.LEFT或align.RIGHT
-    paint.setTextAlign(Paint.Align.LEFT);
-    //设置是否为粗体文字
-    paint.setFakeBoldText(false);
-    //设置下划线
-    paint.setUnderlineText(false);
-    //设置字体水平倾斜度，普通斜体字是-0.25
-    paint.setTextSkewX(/*(float) -0.25*/0f);
-    //设置带有删除线效果
-    paint.setStrikeThruText(false);
-    //只会将水平方向拉伸，高度不会变
-    paint.setTextScaleX(0);
-    return paint;
-}
-
-private Paint paintStyleType(int color, Paint.Style style, Typeface typeface){
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(2);
-    paint.setStyle(style);
-    paint.setColor(color);
-    paint.setTextSize(60);
-    paint.setTypeface(typeface);
-    return paint;
-}
-
-
-private Paint paintStyleAlign(int color, Paint.Style style, Paint.Align align){
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStrokeWidth(2);
-    paint.setStyle(style);
-    paint.setColor(color);
-    paint.setTextSize(60);
-    paint.setTextAlign(align);
-    return paint;
-}
-</code></pre><h3 id="基础的文字绘制"><a href="#基础的文字绘制" class="headerlink" title="基础的文字绘制"></a>基础的文字绘制</h3><pre><code>//基线坐标(100,100)
-//第1个 基线坐标(100,100)
-canvas.drawText(strs,100,100,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.LEFT));
-//绘制基线Y轴
-canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
-//绘制基线X轴
-canvas.drawLine(100,0,100,100,paintStyle(Color.RED,Paint.Style.STROKE));
-
-//第2个
-canvas.translate(0,150);
-canvas.drawText(strs,600,100,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.CENTER));
-canvas.drawLine(600,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
-canvas.drawLine(600,0,600,100,paintStyle(Color.RED,Paint.Style.STROKE));
-
-//第3个
-canvas.translate(0,100);
-canvas.drawText(strs,100,100,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.LEFT));
-canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
-canvas.drawLine(100,0,100,100,paintStyle(Color.RED,Paint.Style.STROKE));
-
-//第4个
-canvas.translate(0,100);
-canvas.drawText(strs,600,100,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.RIGHT));
-canvas.drawLine(600,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
-canvas.drawLine(600,0,600,100,paintStyle(Color.RED,Paint.Style.STROKE));
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.17.10.png" alt=""></p>
-<h3 id="FontMetrics-字体的各种度量的类"><a href="#FontMetrics-字体的各种度量的类" class="headerlink" title="FontMetrics 字体的各种度量的类"></a>FontMetrics 字体的各种度量的类</h3><pre><code>/**
- * 描述给定文本大小字体的各种度量的类。
-   请记住，Y值增加下降，所以这些值将是正的，测量距离上升的值将是负的
- * 注意:在使用FontMetrics时必须为同一个Paint对象,否则,无法获取文字正确的位置关系
- */
-Paint paint12 = new Paint();
-paint12.setAntiAlias(true);
-paint12.setStrokeWidth(2);
-paint12.setStyle(Paint.Style.STROKE);
-paint12.setColor(Color.BLACK);
-paint12.setTextSize(180);
-Paint.FontMetrics fontMetrics = paint12.getFontMetrics();
-//可绘制的最高高度所在线
-float top;
-//可绘制的最低高度所在线
-float bottom;
-//系统建议的，绘制单个字符时，字符应当的最高高度所在线
-float ascent;
-//系统建议的，绘制单个字符时，字符应当的最低高度所在线
-float descent;
-/**
- * 建议在文本行之间添加的额外空格。
- */
-//fontMetrics.leading;
-top = 100 + fontMetrics.top;
-bottom = 100 + fontMetrics.bottom;
-ascent = 100 + fontMetrics.ascent;
-descent = 100 + fontMetrics.descent;
-
-canvas.translate(-90,300);
-canvas.drawText(strs,100,100,paint12);
-
-//绘制的文字基线
-paint12.setStrokeWidth(2);
-canvas.drawLine(100,100,1080,100,paintStyle(Color.RED,Paint.Style.STROKE));
-
-//可绘制的最高高度所在线
-paint12.setColor(Color.RED);
-paint12.setStrokeWidth(4);
-canvas.drawLine(100,top,1080,top,paint12);
-
-//可绘制的最低高度所在线
-paint12.setColor(Color.GREEN);
-paint12.setStrokeWidth(4);
-canvas.drawLine(100,bottom,1080,bottom,paint12);
-
-//系统建议的，绘制单个字符时，字符应当的最高高度所在线
-paint12.setColor(Color.YELLOW);
-paint12.setStrokeWidth(2);
-canvas.drawLine(100,ascent,1080,ascent,paint12);
-
-//系统建议的，绘制单个字符时，字符应当的最低高度所在线
-paint12.setColor(Color.BLACK);
-paint12.setStrokeWidth(2);
-canvas.drawLine(100,descent,1080,descent,paint12);
-
-//文字所占宽度
-float width = paint12.measureText(strs);
-//文字所占高度
-float height = bottom - top;
-Log.e(TAG, &quot;onDraw width: &quot; + width + &quot;, height : &quot; + height);
-
-//绘制文字所占区域的边框
-Path pathRect = new Path();
-RectF rectF2 = new RectF(100,top,width+100,bottom);
-paint12.setColor(Color.BLUE);
-paint12.setStrokeWidth(1);
-pathRect.addRect(rectF2, Path.Direction.CW);
-canvas.drawRect(rectF2,paint12);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.50.33.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getFillPath(src, dst)</div></pre></td></tr></table></figure>
+<p>会计算出实际 Path，然后把结果保存在 dst 里。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">getTextPath(String text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">float</span> y, Path path)</div><div class="line">getTextPath(<span class="keyword">char</span>[] text, <span class="keyword">int</span> index, <span class="keyword">int</span> count, <span class="keyword">float</span> x, <span class="keyword">float</span> y, Path path)</div></pre></td></tr></table></figure>
+<p>文字的绘制虽然使用 <code>Canvas.drawText()</code> 方法，但其实在下层，文字信息全是被转化成图形，对图形进行绘制的。 <code>getTextPath()</code> 方法，获取的就是目标文字所对应的 Path 。<br>这两个方法， <code>getFillPath()</code> 和 <code>getTextPath()</code> ，就是获取绘制的 Path 的方法。之所以把它们归类到「效果」类方法，是因为它们主要是用于图形和文字的装饰效果的位置计算。</p>
+<h1 id="3-绘制文本"><a href="#3-绘制文本" class="headerlink" title="3 绘制文本"></a>3 绘制文本</h1><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="公共方法"><a href="#公共方法" class="headerlink" title="公共方法"></a>公共方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyle</span><span class="params">(<span class="keyword">int</span> color, Paint.Style style)</span></span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">2</span>);</div><div class="line">    paint.setStyle(style);</div><div class="line">    paint.setColor(color);</div><div class="line">    paint.setTextSize(<span class="number">60</span>);</div><div class="line">    <span class="comment">//设置文字对齐方式，取值：align.CENTER、align.LEFT或align.RIGHT</span></div><div class="line">    paint.setTextAlign(Paint.Align.LEFT);</div><div class="line">    <span class="comment">//设置是否为粗体文字</span></div><div class="line">    paint.setFakeBoldText(<span class="keyword">false</span>);</div><div class="line">    <span class="comment">//设置下划线</span></div><div class="line">    paint.setUnderlineText(<span class="keyword">false</span>);</div><div class="line">    <span class="comment">//设置字体水平倾斜度，普通斜体字是-0.25</span></div><div class="line">    paint.setTextSkewX(<span class="comment">/*(float) -0.25*/</span><span class="number">0f</span>);</div><div class="line">    <span class="comment">//设置带有删除线效果</span></div><div class="line">    paint.setStrikeThruText(<span class="keyword">false</span>);</div><div class="line">    <span class="comment">//只会将水平方向拉伸，高度不会变</span></div><div class="line">    paint.setTextScaleX(<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyleType</span><span class="params">(<span class="keyword">int</span> color, Paint.Style style, Typeface typeface)</span></span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">2</span>);</div><div class="line">    paint.setStyle(style);</div><div class="line">    paint.setColor(color);</div><div class="line">    paint.setTextSize(<span class="number">60</span>);</div><div class="line">    paint.setTypeface(typeface);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> Paint <span class="title">paintStyleAlign</span><span class="params">(<span class="keyword">int</span> color, Paint.Style style, Paint.Align align)</span></span>&#123;</div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    paint.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">    paint.setStrokeWidth(<span class="number">2</span>);</div><div class="line">    paint.setStyle(style);</div><div class="line">    paint.setColor(color);</div><div class="line">    paint.setTextSize(<span class="number">60</span>);</div><div class="line">    paint.setTextAlign(align);</div><div class="line">    <span class="keyword">return</span> paint;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="基础的文字绘制"><a href="#基础的文字绘制" class="headerlink" title="基础的文字绘制"></a>基础的文字绘制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//基线坐标(100,100)</span></div><div class="line"><span class="comment">//第1个 基线坐标(100,100)</span></div><div class="line">canvas.drawText(strs,<span class="number">100</span>,<span class="number">100</span>,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.LEFT));</div><div class="line"><span class="comment">//绘制基线Y轴</span></div><div class="line">canvas.drawLine(<span class="number">100</span>,<span class="number">100</span>,<span class="number">1080</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"><span class="comment">//绘制基线X轴</span></div><div class="line">canvas.drawLine(<span class="number">100</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"></div><div class="line"><span class="comment">//第2个</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">150</span>);</div><div class="line">canvas.drawText(strs,<span class="number">600</span>,<span class="number">100</span>,paintStyleAlign(Color.BLACK,Paint.Style.FILL, Paint.Align.CENTER));</div><div class="line">canvas.drawLine(<span class="number">600</span>,<span class="number">100</span>,<span class="number">1080</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line">canvas.drawLine(<span class="number">600</span>,<span class="number">0</span>,<span class="number">600</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"></div><div class="line"><span class="comment">//第3个</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">canvas.drawText(strs,<span class="number">100</span>,<span class="number">100</span>,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.LEFT));</div><div class="line">canvas.drawLine(<span class="number">100</span>,<span class="number">100</span>,<span class="number">1080</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line">canvas.drawLine(<span class="number">100</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"></div><div class="line"><span class="comment">//第4个</span></div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">canvas.drawText(strs,<span class="number">600</span>,<span class="number">100</span>,paintStyleAlign(Color.BLACK,Paint.Style.STROKE, Paint.Align.RIGHT));</div><div class="line">canvas.drawLine(<span class="number">600</span>,<span class="number">100</span>,<span class="number">1080</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line">canvas.drawLine(<span class="number">600</span>,<span class="number">0</span>,<span class="number">600</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.17.10.png" alt=""></p>
+<h3 id="FontMetrics-字体的各种度量的类"><a href="#FontMetrics-字体的各种度量的类" class="headerlink" title="FontMetrics 字体的各种度量的类"></a>FontMetrics 字体的各种度量的类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 描述给定文本大小字体的各种度量的类。</span></div><div class="line"><span class="comment">   请记住，Y值增加下降，所以这些值将是正的，测量距离上升的值将是负的</span></div><div class="line"><span class="comment"> * 注意:在使用FontMetrics时必须为同一个Paint对象,否则,无法获取文字正确的位置关系</span></div><div class="line"><span class="comment"> */</span></div><div class="line">Paint paint12 = <span class="keyword">new</span> Paint();</div><div class="line">paint12.setAntiAlias(<span class="keyword">true</span>);</div><div class="line">paint12.setStrokeWidth(<span class="number">2</span>);</div><div class="line">paint12.setStyle(Paint.Style.STROKE);</div><div class="line">paint12.setColor(Color.BLACK);</div><div class="line">paint12.setTextSize(<span class="number">180</span>);</div><div class="line">Paint.FontMetrics fontMetrics = paint12.getFontMetrics();</div><div class="line"><span class="comment">//可绘制的最高高度所在线</span></div><div class="line"><span class="keyword">float</span> top;</div><div class="line"><span class="comment">//可绘制的最低高度所在线</span></div><div class="line"><span class="keyword">float</span> bottom;</div><div class="line"><span class="comment">//系统建议的，绘制单个字符时，字符应当的最高高度所在线</span></div><div class="line"><span class="keyword">float</span> ascent;</div><div class="line"><span class="comment">//系统建议的，绘制单个字符时，字符应当的最低高度所在线</span></div><div class="line"><span class="keyword">float</span> descent;</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 建议在文本行之间添加的额外空格。</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="comment">//fontMetrics.leading;</span></div><div class="line">top = <span class="number">100</span> + fontMetrics.top;</div><div class="line">bottom = <span class="number">100</span> + fontMetrics.bottom;</div><div class="line">ascent = <span class="number">100</span> + fontMetrics.ascent;</div><div class="line">descent = <span class="number">100</span> + fontMetrics.descent;</div><div class="line"></div><div class="line">canvas.translate(-<span class="number">90</span>,<span class="number">300</span>);</div><div class="line">canvas.drawText(strs,<span class="number">100</span>,<span class="number">100</span>,paint12);</div><div class="line"></div><div class="line"><span class="comment">//绘制的文字基线</span></div><div class="line">paint12.setStrokeWidth(<span class="number">2</span>);</div><div class="line">canvas.drawLine(<span class="number">100</span>,<span class="number">100</span>,<span class="number">1080</span>,<span class="number">100</span>,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"></div><div class="line"><span class="comment">//可绘制的最高高度所在线</span></div><div class="line">paint12.setColor(Color.RED);</div><div class="line">paint12.setStrokeWidth(<span class="number">4</span>);</div><div class="line">canvas.drawLine(<span class="number">100</span>,top,<span class="number">1080</span>,top,paint12);</div><div class="line"></div><div class="line"><span class="comment">//可绘制的最低高度所在线</span></div><div class="line">paint12.setColor(Color.GREEN);</div><div class="line">paint12.setStrokeWidth(<span class="number">4</span>);</div><div class="line">canvas.drawLine(<span class="number">100</span>,bottom,<span class="number">1080</span>,bottom,paint12);</div><div class="line"></div><div class="line"><span class="comment">//系统建议的，绘制单个字符时，字符应当的最高高度所在线</span></div><div class="line">paint12.setColor(Color.YELLOW);</div><div class="line">paint12.setStrokeWidth(<span class="number">2</span>);</div><div class="line">canvas.drawLine(<span class="number">100</span>,ascent,<span class="number">1080</span>,ascent,paint12);</div><div class="line"></div><div class="line"><span class="comment">//系统建议的，绘制单个字符时，字符应当的最低高度所在线</span></div><div class="line">paint12.setColor(Color.BLACK);</div><div class="line">paint12.setStrokeWidth(<span class="number">2</span>);</div><div class="line">canvas.drawLine(<span class="number">100</span>,descent,<span class="number">1080</span>,descent,paint12);</div><div class="line"></div><div class="line"><span class="comment">//文字所占宽度</span></div><div class="line"><span class="keyword">float</span> width = paint12.measureText(strs);</div><div class="line"><span class="comment">//文字所占高度</span></div><div class="line"><span class="keyword">float</span> height = bottom - top;</div><div class="line">Log.e(TAG, <span class="string">"onDraw width: "</span> + width + <span class="string">", height : "</span> + height);</div><div class="line"></div><div class="line"><span class="comment">//绘制文字所占区域的边框</span></div><div class="line">Path pathRect = <span class="keyword">new</span> Path();</div><div class="line">RectF rectF2 = <span class="keyword">new</span> RectF(<span class="number">100</span>,top,width+<span class="number">100</span>,bottom);</div><div class="line">paint12.setColor(Color.BLUE);</div><div class="line">paint12.setStrokeWidth(<span class="number">1</span>);</div><div class="line">pathRect.addRect(rectF2, Path.Direction.CW);</div><div class="line">canvas.drawRect(rectF2,paint12);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2011.50.33.png" alt=""></p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-21%2014.37.15.png" alt=""></p>
-<h3 id="根据路径绘制文字"><a href="#根据路径绘制文字" class="headerlink" title="根据路径绘制文字"></a>根据路径绘制文字</h3><pre><code>PathMeasure measure = new PathMeasure(pathRect,false);
-    int length = (int) measure.getLength();
-    paint12.setTextSize(40);
-    paint12.setColor(Color.RED);
-    canvas.drawText(String.valueOf(length),width,bottom,paint12);
-
-    //根据路径绘制文字
-    paint12.setColor(Color.BLACK);
-    paint12.setTextSize(90);
-    canvas.translate(0,200);
-    Path rectPath = new Path();
-    RectF rectF = new RectF(400,200,1000,800);
-
-    //顺时针
-    rectPath.addRect(rectF, Path.Direction.CW);
-    canvas.drawPath(rectPath,paintStyle(Color.RED,Paint.Style.STROKE));
-    /**
-     * @param hOffset 要添加到文本开始位置的路径上的距离
-     * @param vOffset（ - ）或以下的距离（+）定位文本的路径
-     */
-    paint12.setStyle(Paint.Style.FILL_AND_STROKE);
-    canvas.drawTextOnPath(strs,rectPath,0,0,paint12);
-    paint12.setStyle(Paint.Style.STROKE);
-    canvas.drawTextOnPath(strs,rectPath,20,20,paint12);
-    paint12.setStyle(Paint.Style.STROKE);
-    paint12.setColor(Color.BLUE);
-    canvas.drawTextOnPath(strs,rectPath,-20,-20,paint12);
-</code></pre><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.12.png" alt=""></p>
+<h3 id="根据路径绘制文字"><a href="#根据路径绘制文字" class="headerlink" title="根据路径绘制文字"></a>根据路径绘制文字</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(pathRect,<span class="keyword">false</span>);</div><div class="line"><span class="keyword">int</span> length = (<span class="keyword">int</span>) measure.getLength();</div><div class="line">paint12.setTextSize(<span class="number">40</span>);</div><div class="line">paint12.setColor(Color.RED);</div><div class="line">        canvas.drawText(String.valueOf(length),width,bottom,paint12);</div><div class="line"></div><div class="line"><span class="comment">//根据路径绘制文字</span></div><div class="line">paint12.setColor(Color.BLACK);</div><div class="line">paint12.setTextSize(<span class="number">90</span>);</div><div class="line">canvas.translate(<span class="number">0</span>,<span class="number">200</span>);</div><div class="line">Path rectPath = <span class="keyword">new</span> Path();</div><div class="line">RectF rectF = <span class="keyword">new</span> RectF(<span class="number">400</span>,<span class="number">200</span>,<span class="number">1000</span>,<span class="number">800</span>);</div><div class="line"></div><div class="line"><span class="comment">//顺时针</span></div><div class="line">rectPath.addRect(rectF, Path.Direction.CW);</div><div class="line">canvas.drawPath(rectPath,paintStyle(Color.RED,Paint.Style.STROKE));</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> hOffset 要添加到文本开始位置的路径上的距离</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> vOffset（ - ）或以下的距离（+）定位文本的路径</span></div><div class="line"><span class="comment"> */</span></div><div class="line">paint12.setStyle(Paint.Style.FILL_AND_STROKE);</div><div class="line">canvas.drawTextOnPath(strs,rectPath,<span class="number">0</span>,<span class="number">0</span>,paint12);</div><div class="line">paint12.setStyle(Paint.Style.STROKE);</div><div class="line">canvas.drawTextOnPath(strs,rectPath,<span class="number">20</span>,<span class="number">20</span>,paint12);</div><div class="line">paint12.setStyle(Paint.Style.STROKE);</div><div class="line">paint12.setColor(Color.BLUE);</div><div class="line">canvas.drawTextOnPath(strs,rectPath,-<span class="number">20</span>,-<span class="number">20</span>,paint12);</div></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.12.png" alt=""></p>
 <p>顺时针</p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-15%2013.58.29.png" alt=""></p>
 <p>逆时针</p>
@@ -1111,11 +691,10 @@ canvas.drawRect(rectF2,paint12);
 <h2 id="4-1-reset"><a href="#4-1-reset" class="headerlink" title="4.1 reset()"></a>4.1 reset()</h2><p>重置 Paint 的所有属性为默认值。相当于重新 new 一个，不过性能当然高一些啦。</p>
 <h2 id="4-2-set-Paint-src"><a href="#4-2-set-Paint-src" class="headerlink" title="4.2 set(Paint src)"></a>4.2 set(Paint src)</h2><p>把 src 的所有属性全部复制过来。相当于调用 src 所有的 get 方法，然后调用这个 Paint 的对应的  set 方法来设置它们。</p>
 <h2 id="4-3-setFlags-int-flags"><a href="#4-3-setFlags-int-flags" class="headerlink" title="4.3 setFlags(int flags)"></a>4.3 setFlags(int flags)</h2><p>批量设置 flags。相当于依次调用它们的 set 方法。例如： </p>
-<pre><code>paint.setFlags(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);  
-</code></pre><p>这行代码，和下面这两行是等价的：</p>
-<pre><code>paint.setAntiAlias(true);  
-paint.setDither(true);
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">paint.setFlags(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);</div></pre></td></tr></table></figure>
+<p>这行代码，和下面这两行是等价的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paint.setAntiAlias(<span class="keyword">true</span>);  </div><div class="line">paint.setDither(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -1302,7 +881,7 @@ paint.setDither(true);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint类的4个enum"><span class="nav-number">1.</span> <span class="nav-text">Paint类的4个enum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔填充样式-Style"><span class="nav-number">1.1.</span> <span class="nav-text">画笔填充样式 Style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔线头样式-Cap"><span class="nav-number">1.2.</span> <span class="nav-text">画笔线头样式 Cap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两条直线相交后的样式-Join"><span class="nav-number">1.3.</span> <span class="nav-text">两条直线相交后的样式 Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字对齐方式-Align"><span class="nav-number">1.4.</span> <span class="nav-text">文字对齐方式 Align</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint的功能"><span class="nav-number">2.</span> <span class="nav-text">Paint的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-颜色"><span class="nav-number">3.</span> <span class="nav-text">1. 颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-基本颜色绘制"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 基本颜色绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paint-设置颜色的方法："><span class="nav-number">3.1.1.</span> <span class="nav-text">Paint 设置颜色的方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Paint-setColor-ARGB-来设置颜色"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Paint.setColor/ARGB 来设置颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shader-来指定着色方案"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Shader 来指定着色方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LinearGradient-线性渐变"><span class="nav-number">3.1.1.2.1.</span> <span class="nav-text">1  LinearGradient 线性渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RadialGradient-辐射渐变"><span class="nav-number">3.1.1.2.2.</span> <span class="nav-text">2 RadialGradient 辐射渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-SweepGradient-扫描渐变"><span class="nav-number">3.1.1.2.3.</span> <span class="nav-text">3 SweepGradient 扫描渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-BitmapShader-Bitmap-来着色"><span class="nav-number">3.1.1.2.4.</span> <span class="nav-text">4 BitmapShader Bitmap 来着色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）"><span class="nav-number">3.1.1.2.5.</span> <span class="nav-text">5 ComposeShader 混合着色器（两个 Shader 一起使用）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-setXfermode-Xfermode-xfermode"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 setXfermode(Xfermode xfermode)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-效果"><span class="nav-number">4.</span> <span class="nav-text">2. 效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-setAntiAlias-boolean-aa-抗锯齿效果"><span class="nav-number">4.1.</span> <span class="nav-text">2.1 setAntiAlias (boolean aa) 抗锯齿效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-setStyle-Paint-Style-style-线条填充效果"><span class="nav-number">4.2.</span> <span class="nav-text">2.2 setStyle(Paint.Style style) 线条填充效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-线条样式效果"><span class="nav-number">4.3.</span> <span class="nav-text">2.3 线条样式效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-色彩优化效果"><span class="nav-number">4.4.</span> <span class="nav-text">2.4 色彩优化效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-setPathEffect-PathEffect-effect-设置轮廓效果"><span class="nav-number">4.5.</span> <span class="nav-text">2.5 setPathEffect(PathEffect effect) 设置轮廓效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影"><span class="nav-number">4.6.</span> <span class="nav-text">2.6 setShadowLayer(float radius, float dx, float dy, int shadowColor)  在之后的绘制内容下面加一层阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤"><span class="nav-number">4.7.</span> <span class="nav-text">2.7 setMaskFilter(MaskFilter maskfilter)基于整个画面来进行过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-获取绘制的-Path"><span class="nav-number">4.8.</span> <span class="nav-text">2.8 获取绘制的 Path</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-绘制文本"><span class="nav-number">5.</span> <span class="nav-text">3 绘制文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.1.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公共方法"><span class="nav-number">5.1.1.</span> <span class="nav-text">公共方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础的文字绘制"><span class="nav-number">5.1.2.</span> <span class="nav-text">基础的文字绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FontMetrics-字体的各种度量的类"><span class="nav-number">5.1.3.</span> <span class="nav-text">FontMetrics 字体的各种度量的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据路径绘制文字"><span class="nav-number">5.1.4.</span> <span class="nav-text">根据路径绘制文字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-初始化类"><span class="nav-number">6.</span> <span class="nav-text">4 初始化类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-reset"><span class="nav-number">6.1.</span> <span class="nav-text">4.1 reset()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-set-Paint-src"><span class="nav-number">6.2.</span> <span class="nav-text">4.2 set(Paint src)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-setFlags-int-flags"><span class="nav-number">6.3.</span> <span class="nav-text">4.3 setFlags(int flags)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint类的4个enum"><span class="nav-number">1.</span> <span class="nav-text">Paint类的4个enum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔填充样式-Style"><span class="nav-number">1.1.</span> <span class="nav-text">画笔填充样式 Style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画笔线头样式-Cap"><span class="nav-number">1.2.</span> <span class="nav-text">画笔线头样式 Cap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两条直线相交后的样式-Join"><span class="nav-number">1.3.</span> <span class="nav-text">两条直线相交后的样式 Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字对齐方式-Align"><span class="nav-number">1.4.</span> <span class="nav-text">文字对齐方式 Align</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Paint的功能"><span class="nav-number">2.</span> <span class="nav-text">Paint的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-颜色"><span class="nav-number">3.</span> <span class="nav-text">1. 颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-基本颜色绘制"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 基本颜色绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paint-设置颜色的方法："><span class="nav-number">3.1.1.</span> <span class="nav-text">Paint 设置颜色的方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Paint-setColor-ARGB-来设置颜色"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Paint.setColor/ARGB 来设置颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shader-来指定着色方案"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Shader 来指定着色方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LinearGradient-线性渐变"><span class="nav-number">3.1.1.2.1.</span> <span class="nav-text">1  LinearGradient 线性渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RadialGradient-辐射渐变"><span class="nav-number">3.1.1.2.2.</span> <span class="nav-text">2 RadialGradient 辐射渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-SweepGradient-扫描渐变"><span class="nav-number">3.1.1.2.3.</span> <span class="nav-text">3 SweepGradient 扫描渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-BitmapShader-Bitmap-来着色"><span class="nav-number">3.1.1.2.4.</span> <span class="nav-text">4 BitmapShader Bitmap 来着色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-ComposeShader-混合着色器（两个-Shader-一起使用）"><span class="nav-number">3.1.1.2.5.</span> <span class="nav-text">5 ComposeShader 混合着色器（两个 Shader 一起使用）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-setColorFilter-ColorFilter-colorFilter-颜色过滤"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 setColorFilter(ColorFilter colorFilter) 颜色过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-setXfermode-Xfermode-xfermode"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 setXfermode(Xfermode xfermode)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-效果"><span class="nav-number">4.</span> <span class="nav-text">2. 效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-setAntiAlias-boolean-aa-抗锯齿效果"><span class="nav-number">4.1.</span> <span class="nav-text">2.1 setAntiAlias (boolean aa) 抗锯齿效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-setPathEffect-PathEffect-effect-设置轮廓效果"><span class="nav-number">4.2.</span> <span class="nav-text">2.5 setPathEffect(PathEffect effect) 设置轮廓效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-setShadowLayer-float-radius-float-dx-float-dy-int-shadowColor-在之后的绘制内容下面加一层阴影"><span class="nav-number">4.3.</span> <span class="nav-text">2.6 setShadowLayer(float radius, float dx, float dy, int shadowColor)  在之后的绘制内容下面加一层阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-setMaskFilter-MaskFilter-maskfilter-基于整个画面来进行过滤"><span class="nav-number">4.4.</span> <span class="nav-text">2.7 setMaskFilter(MaskFilter maskfilter)基于整个画面来进行过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-获取绘制的-Path"><span class="nav-number">4.5.</span> <span class="nav-text">2.8 获取绘制的 Path</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-绘制文本"><span class="nav-number">5.</span> <span class="nav-text">3 绘制文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.1.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公共方法"><span class="nav-number">5.1.1.</span> <span class="nav-text">公共方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础的文字绘制"><span class="nav-number">5.1.2.</span> <span class="nav-text">基础的文字绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FontMetrics-字体的各种度量的类"><span class="nav-number">5.1.3.</span> <span class="nav-text">FontMetrics 字体的各种度量的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据路径绘制文字"><span class="nav-number">5.1.4.</span> <span class="nav-text">根据路径绘制文字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-初始化类"><span class="nav-number">6.</span> <span class="nav-text">4 初始化类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-reset"><span class="nav-number">6.1.</span> <span class="nav-text">4.1 reset()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-set-Paint-src"><span class="nav-number">6.2.</span> <span class="nav-text">4.2 set(Paint src)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-setFlags-int-flags"><span class="nav-number">6.3.</span> <span class="nav-text">4.3 setFlags(int flags)</span></a></li></ol></li></ol></div>
             
 
           </div>

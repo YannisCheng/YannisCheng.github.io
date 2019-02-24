@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="线程池-相关类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-23T09:04:56.409Z">
+<meta property="og:updated_time" content="2019-02-23T23:54:35.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程池-相关类">
 <meta name="twitter:description" content="线程池-相关类">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-23T17:04:56+08:00">
-                2019-02-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T07:54:35+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -439,7 +439,7 @@
 <h1 id="对列"><a href="#对列" class="headerlink" title="对列"></a>对列</h1><h2 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h2><p><strong>源码</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line"></div><div class="line"> 	<span class="comment">// 插入一个元素，如果队列已满，则抛出一个IIIegaISlabEepeplian异常</span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</div><div class="line">    <span class="comment">// 添加一个元素并返回true，如果队列已满，则返回false</span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span></span>;</div><div class="line">    </div><div class="line">    <span class="comment">// 移除并返回队列头部的元素    如果队列为空，则抛出一个NoSuchElementException异常</span></div><div class="line">    <span class="function">E <span class="title">remove</span><span class="params">()</span></span>;</div><div class="line">	<span class="comment">// 移除并返问队列头部的元素    如果队列为空，则返回null</span></div><div class="line">    <span class="function">E <span class="title">poll</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">// 检查</span></div><div class="line">    <span class="function">E <span class="title">element</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">E <span class="title">peek</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="实现阻塞队列方法的接口：BlockingQueue接口"><a href="#实现阻塞队列方法的接口：BlockingQueue接口" class="headerlink" title="实现阻塞队列方法的接口：BlockingQueue接口"></a>实现阻塞队列方法的接口：BlockingQueue接口</h2><p><strong>源码声明</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public interface BlockingQueue&lt;E&gt; extends Queue&lt;E&gt; &#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BlockingQueue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt; </span>&#123;&#125;</div></pre></td></tr></table></figure>
 <p><strong>说明：</strong></p>
 <p>其是一种 <code>FIFO</code> 数据结构。不是立即从队列中添加或者删除元素，线程执行操作阻塞，直到有空间或者元素可用。</p>
 <p><strong>阻塞队列的方法说明</strong>：</p>
@@ -519,6 +519,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/专题/" rel="prev" title="专题">
+                专题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
