@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="EventBus," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="EventBus理解">
+<meta name="keywords" content="EventBus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EventBus理解">
+<meta property="og:url" content="http://yannischeng.com/EventBus理解/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="EventBus理解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/EventBus.png">
+<meta property="og:updated_time" content="2019-03-03T14:48:24.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EventBus理解">
+<meta name="twitter:description" content="EventBus理解">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/EventBus.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/EventBus理解/"/>
+
+
+
+
+
+  <title>EventBus理解 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/EventBus理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EventBus理解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T14:51:44+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T22:48:24+08:00">
+                2019-03-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,640 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/EventBus/" rel="tag"># EventBus</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/EventBus理解/" title="EventBus理解">http://yannischeng.com/EventBus理解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>EventBus理解</p>
+<a id="more"></a>
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><h2 id="1-1-官方介绍："><a href="#1-1-官方介绍：" class="headerlink" title="1.1 官方介绍："></a>1.1 官方介绍：</h2><p><strong>EventBus</strong> 是一个使用“<code>观察者模式</code>”的、<code>松耦合</code>的<code>开源框架</code>。它使用少量的几句代码就可以实现核心类之间的通讯，帮助我们简化代码、松依赖、加速开发。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/EventBus.png" alt=""></p>
+<h2 id="1-2-Android中的其他消息处理方式"><a href="#1-2-Android中的其他消息处理方式" class="headerlink" title="1.2 Android中的其他消息处理方式"></a>1.2 Android中的其他消息处理方式</h2><ul>
+<li>BroadCast</li>
+<li>Handler</li>
+</ul>
+<h3 id="1-2-1-BroadCast"><a href="#1-2-1-BroadCast" class="headerlink" title="1.2.1 BroadCast"></a>1.2.1 BroadCast</h3><p> <code>广播</code> 是四大组件之一，许多 <code>系统级的事件</code> 都是通过广播来通知的，比如说：网络的变化、电量的变化，短信发送和接收的状态，所以，如果与 <code>Android系统</code> 进行相关的通知，还是要选择本地广播；在BroadcastReceiver的 onReceive方法中，可以获得<code>Context 、intent参数</code>，这两个参数可以调用许多的sdk中的方法，而eventbus获得这两个参数相对比较困难. </p>
+<p> 因此广播是 <code>重量级</code> 的、<code>消耗资源较多</code>的方式。它的优势体现在 <code>与sdk连接紧密</code>，如果需要同 Android 交互的时候，广播的 <code>便捷性</code> 会抵消掉它过多的资源消耗，但是如果不同Android交互，或者说，只做很少的交互，使用广播是一种浪费； </p>
+<p> 广播作为Android组件间的通信方式，可以使用的场景如下：<br>        <br>        1. 同一app内部的同一组件内的消息通信（单个或多个线程之间）；<br>        2. 同一app内部的不同组件之间的消息通信（单个进程）；<br>        3. 同一app具有多个进程的不同组件之间的消息通信；<br>        4. 不同app之间的组件之间消息通信；<br>        5. Android系统在特定情况下与App之间的消息通信。 </p>
+<p> 广播的 <strong>不可替代性</strong> 在于：它可以 <strong>跨进程进行通信</strong>，也就是不同App之间可以通过广播进行传递数据，并且在OnReceiver中更容易使用Context和Intent对象来执行必要的操作。单就同一app内部的消息通信而言，使用广播是较为消耗资源和笨重的。</p>
+<h3 id="1-2-2-Handler"><a href="#1-2-2-Handler" class="headerlink" title="1.2.2 Handler"></a>1.2.2 Handler</h3><p><strong>handler</strong> 一般用于 <strong>线程间通信</strong>，它可以分发：<code>Message对象</code>和 <code>Runnable对象</code> 到 <strong>主线程</strong> 中， 每个 <code>Handler实例</code>，都会绑定到：<code>创建他的线程中</code>(一般是位于主线程)，它有两个作用： </p>
+<p>        1. 安排消息或Runnable 在某个主线程中某个地方执行；<br>        2. 安排一个动作在不同的线程中执行。<br>        <br>一般 <strong>Handler</strong> 的使用方法即在 <code>调用线程内</code> 创建 <code>Handler内部类</code>，并重写<code>handlerMessage(Message msg)</code>方法，而在发布消息时使用 <code>sendMessage()</code> 方法进行发布，在处理时通过 <code>switch(msg.what)</code> 进行消息分发并进行相应的处理。</p>
+<p>这里，<strong>Hander内部类</strong> 和其定义类是绑定的，这就造成了事件发布者和接受者之间的高耦合。而Handler的最大好处是发生问题时，可以：<code>非常明确、快速的进行定位</code>，通过msg.what很容易就可以理清每一条消息流的逻辑。 
+    </p>
+<h1 id="2-基本使用方式"><a href="#2-基本使用方式" class="headerlink" title="2. 基本使用方式"></a>2. 基本使用方式</h1><h2 id="2-1-准备工作"><a href="#2-1-准备工作" class="headerlink" title="2.1 准备工作"></a>2.1 准备工作</h2><h3 id="2-1-1-首先，在模块的-build-gradle-构建脚本中添加-EventBus-依赖："><a href="#2-1-1-首先，在模块的-build-gradle-构建脚本中添加-EventBus-依赖：" class="headerlink" title="2.1.1 首先，在模块的 build.gradle 构建脚本中添加 EventBus 依赖："></a>2.1.1 首先，在模块的 <code>build.gradle</code> 构建脚本中添加 <strong>EventBus</strong> 依赖：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    ...</div><div class="line">    compile <span class="string">'org.greenrobot:eventbus:3.1.1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-1-2-混淆"><a href="#2-1-2-混淆" class="headerlink" title="2.1.2 混淆"></a>2.1.2 混淆</h3><p>订阅者的事件处理方法没有被直接调用，如果开启了<code>ProGuard工具</code> 的压缩功能，那么你必须告诉<code>ProGuard工具</code> 保留这些订阅者方法。在 <code>模块</code> 下的 <code>proguard-rules.pro 混淆规则文件</code> 中添加如下规则：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># EventBus</div><div class="line">-keepattributes *Annotation*</div><div class="line">-keepclassmembers <span class="class"><span class="keyword">class</span> ** </span>&#123;</div><div class="line">    <span class="meta">@org</span>.greenrobot.eventbus.Subscribe &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line">-keep <span class="keyword">enum</span> org.greenrobot.eventbus.ThreadMode &#123; *; &#125;</div></pre></td></tr></table></figure>
+<h2 id="2-2-使用"><a href="#2-2-使用" class="headerlink" title="2.2 使用"></a>2.2 使用</h2><p><strong>EventBus</strong> 的使用非常简单，主要分为3个步骤：</p>
+<ul>
+<li>定义事件。</li>
+<li>订阅事件。</li>
+<li>发布事件。</li>
+<li>粘性事件。</li>
+<li>事件优先级。</li>
+<li>订阅者索引。</li>
+</ul>
+<p><strong>官方使用步骤描述：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EventBus是Android的中央发布/订阅事件系统。 </div><div class="line">事件被发布（&#123;@link #post（Object）&#125;）到总线，总线将事件传递给具有事件类型的匹配处理程序方法的订阅者。 </div><div class="line">要接收事件，订户必须使用&#123;@link #register（Object）&#125;将自己注册到总线。</div><div class="line">一旦注册，订阅者就会收到事件，直到调用&#123;@link #unregister（Object）&#125;。 </div><div class="line">事件处理方法必须由&#123;@link Subscribe&#125;注释，必须是public，return nothing（void），并且只有一个参数（事件）。</div></pre></td></tr></table></figure>
+<h3 id="2-2-1-定义事件"><a href="#2-2-1-定义事件" class="headerlink" title="2.2.1 定义事件"></a>2.2.1 定义事件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppEvent</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> type;</div><div class="line">    <span class="keyword">private</span> T data;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppEvent</span><span class="params">(<span class="keyword">int</span> type)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppEvent</span><span class="params">(<span class="keyword">int</span> type, T data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="keyword">this</span>.data = data;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppEvent</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-2-订阅事件"><a href="#2-2-2-订阅事件" class="headerlink" title="2.2.2 订阅事件"></a>2.2.2 订阅事件</h3><p><strong>注册 和 注销</strong></p>
+<p><code>订阅者</code> 需要在 <code>总线上注册</code>，并在不需要时在总线上 <code>注销</code>。只有订阅者注册了，它们才会收到事件。</p>
+<p> 在Android中，可以根据 <strong>Activity</strong> 或者 <strong>Fragment</strong> 的 <code>生命周期</code> 来注册和注销。例如</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        initContentView();</div><div class="line">        <span class="comment">// 注册订阅者</span></div><div class="line">        EventBus.getDefault().register(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="comment">// 注销订阅者</span></div><div class="line">        EventBus.getDefault().unregister(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-3-订阅事件处理方法"><a href="#2-2-3-订阅事件处理方法" class="headerlink" title="2.2.3  订阅事件处理方法"></a>2.2.3  订阅事件处理方法</h3><p>默认情况下：EventBus在查找订阅者方法时采用的是 <strong>反射</strong>。</p>
+<p><code>订阅者</code> 需要定义 <code>事件处理方法</code>（也称为订阅者方法）。</p>
+<p> 当发布对应类型的事件时，该方法将被调用。<strong>EventBus 3</strong>使用 <code>@Subscribe</code> 注解来定义订阅者方法。</p>
+<p> <code>方法名</code>可以是任意合法的方法名；<code>参数类型</code>为订阅事件的类型。例如：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessageEvent</span><span class="params">(AppEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> <strong>重点</strong>：<code>@Subscribe</code> 所对应的 <strong>线程模式</strong></p>
+<p> 源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// EventBus独立于发布线程处理线程。</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ThreadMode &#123;</div><div class="line"></div><div class="line">    POSTING,</div><div class="line"></div><div class="line">    MAIN,</div><div class="line"></div><div class="line">    BACKGROUND,</div><div class="line"></div><div class="line">    ASYNC;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ThreadMode</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>POSTING:</strong></p>
+<p>订阅者将直接在发布该事件的 <code>同一个 thread</code> 中调用。<br>这是默认值。 事件传递意味着 <strong>开销最小</strong>，因为它 <strong>完全避免了线程切换</strong> 。<br>因此，这是已知在很短的时间内完成而不需要主线程的简单任务的推荐模式。<br>使用此模式的事件处理程序必须快速返回以避免阻止发布线程，这可能是主线程。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>MAIN:</strong></p>
+<p>订阅者方法将在 <strong>主线程（UI线程）</strong>中被调用。<br>因此，可以在该模式的订阅者方法中直接更新UI界面。<br>如果发布事件的线程是主线程，那么该模式的订阅者方法将被直接调用</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>BACKGROUND:</strong></p>
+<p>在Android上，将在后台线程中调用订阅者。 如果发布线程 <strong>不是主线程</strong>，则将 <strong>在发布线程中直接调用订阅者方法</strong>。<br>如果发布线程是主线程，则EventBus使用单个后台线程，该线程将按顺序传递其所有事件。<br>使用此模式的订阅者应尝试快速返回以避免阻止后台线程。</p>
+</li>
+<li><p><strong>ASYNC:</strong></p>
+<p>订阅者将在 <strong>单独的线程</strong> 中调用，<strong>始终独立于发布线程和主线程</strong>。<br>发布事件永远不会等待使用此模式的订阅者方法。 订阅者方法如果执行可能需要一些时间，则应使用此模式，例如 用于网络访问。<br>避免同时触发大量长时间运行的异步订阅者方法以限制并发线程数。<br><strong>EventBus</strong>使用 <strong>线程池</strong> 从已完成的异步订阅者通知中有效地重用线程。</p>
+</li>
+</ul>
+<h3 id="2-2-4-发布事件"><a href="#2-2-4-发布事件" class="headerlink" title="2.2.4 发布事件"></a>2.2.4 发布事件</h3><p>在需要的地方发布事件，所有订阅了该类型事件并已注册的订阅者将收到该事件。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EventBus.getDefault().post(<span class="keyword">new</span> MessageEvent(<span class="string">"Hello EventBus!"</span>));</div></pre></td></tr></table></figure>
+<h3 id="2-2-5-粘性事件"><a href="#2-2-5-粘性事件" class="headerlink" title="2.2.5 粘性事件"></a>2.2.5 粘性事件</h3><p>一般事件订阅、处理规则：<code>先发布了事件，然后有订阅者订阅了该事件，那么除非再次发布该事件，否则订阅者将永远接收不到该事件。</code> 此时，可以使用 <strong>粘性事件</strong>。</p>
+<p>发布一个 <strong>粘性事件</strong> 之后，<strong>EventBus</strong> 将在 <code>内存中缓存</code> 该粘性事件，当有订阅者订阅了该粘性事件，订阅者将接收到该事件。</p>
+<p><code>订阅</code> 与 <code>发布</code> <strong>粘性事件</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 订阅粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(sticky = <span class="keyword">true</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessageEvent</span><span class="params">(MessageEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 发布粘性事件</span></div><div class="line">EventBus.getDefault().postSticky(<span class="keyword">new</span> MessageEvent(<span class="string">"Hello EventBus!"</span>));</div></pre></td></tr></table></figure>
+<p>发布一个粘性事件之后，EventBus将一直缓存该粘性事件。如果想要移除粘性事件，那么可以使用如下方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 移除指定的粘性事件</span></div><div class="line">removeStickyEvent(Object event);</div><div class="line"></div><div class="line"><span class="comment">// 移除指定类型的粘性事件</span></div><div class="line">removeStickyEvent(Class&lt;T&gt; eventType);</div><div class="line"></div><div class="line"><span class="comment">// 移除所有的粘性事件</span></div><div class="line">removeAllStickyEvents();</div></pre></td></tr></table></figure>
+<h3 id="2-2-6-事件优先级"><a href="#2-2-6-事件优先级" class="headerlink" title="2.2.6 事件优先级"></a>2.2.6 事件优先级</h3><p><strong>EventBus</strong> 支持在 <code>定义订阅者方法</code> 时指定 <code>事件传递的优先级</code>。默认情况下，订阅者方法的事件传递优先级为0。数值越大，优先级越高。在相同的线程模式下，更高优先级的订阅者方法将优先接收到事件。</p>
+<p>注意：<strong>优先级只有在<code>相同的线程模式</code> 下才有效。</strong></p>
+<p>指定事件传递优先级的示例代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Subscribe</span>(priority = <span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessageEvent</span><span class="params">(MessageEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同时，可以在 <strong>高优先级</strong> 的订阅者方法接收到事件之后 <strong>取消</strong> 事件的传递。此时，<strong>低优先级</strong> 的订阅者方法将 <strong>不会接收到该事件</strong>。</p>
+<p>注意： 订阅者方法 <strong>只有</strong> 在线程模式为 <strong>ThreadMode.POSTING</strong> 时，才可以 <strong>取消</strong>1个事件的传递。</p>
+<p>取消事件传递的示例代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.POSTING, priority = <span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessageEvent</span><span class="params">(MessageEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="comment">// 取消事件传递</span></div><div class="line">    EventBus.getDefault().cancelEventDelivery(event);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-7-订阅者索引"><a href="#2-2-7-订阅者索引" class="headerlink" title="2.2.7 订阅者索引"></a>2.2.7 订阅者索引</h3><p><strong><code>订阅者索引</code></strong> 是 <strong>EventBus 3</strong> 的一个新特性。它可以 <strong>加速</strong> 订阅者的 <code>注册</code>，是一个 <strong>可选优化</strong>。</p>
+<p>订阅者索引的原理是：使用 <code>EventBus的注解处理器</code> 在<code>应用构建期间</code> 创建 <code>订阅者索引类</code>，该类包含了 <code>订阅者</code> 和 <code>订阅者方法</code> 的相关信息。</p>
+<p><strong>EventBus</strong>官方推荐在Android中使用订阅者索引以获得最佳的性能。</p>
+<p><strong>使用步骤：</strong></p>
+<ul>
+<li><p>修改 <strong>模块</strong> 下的 <code>build.gradle</code> 构建脚本：</p>
+<p>使用 <code>annotationProcessor</code> 属性将 <code>EventBus的注解处理器</code> 添加到 <code>构建中</code>，还要设置一个 <code>eventBusIndex</code> 参数来指定要生成的 <code>订阅者索引</code> 的 <code>完全限定类名</code>。简而言之就是：</p>
+<p><strong>添加 <code>EventBus的注解处理器</code>，并指定 <code>订阅者索引</code> 的 <code>完全限定类名</code></strong></p>
+</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">        javaCompileOptions &#123;</div><div class="line">            annotationProcessorOptions &#123;</div><div class="line">                arguments = [eventBusIndex: <span class="string">'com.yannis.myapplication.MyEventBusIndex'</span>]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line">dependencies &#123;</div><div class="line">    ...</div><div class="line">    api <span class="string">'org.greenrobot:eventbus:3.1.1'</span></div><div class="line">    annotationProcessor <span class="string">'org.greenrobot:eventbus-annotation-processor:3.1.1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在应用 <strong>自定义Application类</strong> 的 <code>onCreate()</code> 方法中将 <code>订阅者索引类</code> 添加到 <strong>EventBus</strong> 中，并将该EventBus设置成默认的EventBus。示例代码如下所示：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        <span class="comment">// 配置EventBus</span></div><div class="line">        EventBus.builder().addIndex(<span class="keyword">new</span> MyEventBusIndex()).installDefaultEventBus();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/线程池-相关类/" rel="next" title="线程池-相关类">
+                <i class="fa fa-chevron-left"></i> 线程池-相关类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/okHttp3框架/" rel="prev" title="okHttp3框架">
+                okHttp3框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">132</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-官方介绍："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 官方介绍：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Android中的其他消息处理方式"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Android中的其他消息处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-BroadCast"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 BroadCast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-Handler"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Handler</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基本使用方式"><span class="nav-number">2.</span> <span class="nav-text">2. 基本使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-准备工作"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-首先，在模块的-build-gradle-构建脚本中添加-EventBus-依赖："><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 首先，在模块的 build.gradle 构建脚本中添加 EventBus 依赖：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-混淆"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 混淆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-使用"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-定义事件"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 定义事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-订阅事件"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 订阅事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-订阅事件处理方法"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3  订阅事件处理方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-发布事件"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4 发布事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-粘性事件"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.2.5 粘性事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-6-事件优先级"><span class="nav-number">2.2.6.</span> <span class="nav-text">2.2.6 事件优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-7-订阅者索引"><span class="nav-number">2.2.7.</span> <span class="nav-text">2.2.7 订阅者索引</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">281.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

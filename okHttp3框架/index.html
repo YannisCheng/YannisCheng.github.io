@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="okHttp3," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="okHttp3">
+<meta name="keywords" content="okHttp3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="okHttp3框架">
+<meta property="og:url" content="http://yannischeng.com/okHttp3框架/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="okHttp3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/OKHttp3%E6%A1%86%E6%9E%B6-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2019-03-03T14:47:13.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="okHttp3框架">
+<meta name="twitter:description" content="okHttp3">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/OKHttp3%E6%A1%86%E6%9E%B6-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/okHttp3框架/"/>
+
+
+
+
+
+  <title>okHttp3框架 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/okHttp3框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">okHttp3框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T21:15:50+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T22:47:13+08:00">
+                2019-03-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,240 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/okHttp3/" rel="tag"># okHttp3</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/okHttp3框架/" title="okHttp3框架">http://yannischeng.com/okHttp3框架/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>okHttp3</p>
+<a id="more"></a>
+<p><strong>OKHttp3框架-执行流程</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/OKHttp3%E6%A1%86%E6%9E%B6-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt=""></p>
+<h1 id="1-okHttp3框架介绍"><a href="#1-okHttp3框架介绍" class="headerlink" title="1 okHttp3框架介绍"></a>1 okHttp3框架介绍</h1><h2 id="1-1-基本描述"><a href="#1-1-基本描述" class="headerlink" title="1.1 基本描述"></a>1.1 基本描述</h2><p><strong>OKhttp3框架</strong> 作为<code>Square</code>公司（优秀的开源库：<code>Retrofit</code>、<code>Okio</code>、<code>Picasso</code>等）开发，旨于替换<code>Java</code>的<code>HttpUrlConnection</code>和<code>Apache</code>的<code>HttpClient</code>的轻量级网络框架，已经被运用到很多开源库以及<code>Android</code>的源码中(在<code>6.0</code> 之后移除了<code>HttpClient</code>，并且用 <code>OKHttp</code>代替了<code>HttpUrlConnection</code>)。</p>
+<p><strong>OKhttp3框架</strong> 是高性能的 <code>http库</code>，支持 <code>同步</code>、<code>异步</code>，而且实现了<code>spdy</code>、<code>http2</code>、<code>websocket</code> 协议，api很简洁易用，和<code>volley</code>一样实现了<code>http协议的缓存</code>。<code>Picasso</code>就是利用<code>okHttp的缓存机制</code>实现其文件缓存，实现的很优雅，很正确。</p>
+<p><strong>OKhttp3框架</strong>  使用了 <code>okio</code> I/O组件，<code>okio</code> 是对 <code>Java io</code>、<code>nio</code> 的简洁封装，有着：简单易用，高效，显著的节省CPU和Memory资源。</p>
+<h2 id="1-2-特点："><a href="#1-2-特点：" class="headerlink" title="1.2 特点："></a>1.2 特点：</h2><ul>
+<li>支持 <code>HTTP2/SPDY</code>；</li>
+<li><code>socket</code> 自动选择最好的路线、支持自动重连；</li>
+<li>拥有自动维护的<code>socket连接池</code>减少握手次数；</li>
+<li>拥有线程池；</li>
+<li>拥有 <code>Interceptors</code> 处理请求与响应；</li>
+<li>支持同步、异步数据请求。</li>
+</ul>
+<h2 id="1-3-主要概念"><a href="#1-3-主要概念" class="headerlink" title="1.3 主要概念"></a>1.3 主要概念</h2><p>由以下 <strong>6个概念</strong> 一起运作:</p>
+<ol>
+<li><p><strong>OkHttpClient类</strong>：HTTP请求的客户端类；</p>
+</li>
+<li><p><strong>Request类</strong>：封装了请求报文信息：请求的Url地址、请求的方法（如GET、POST等）、各种请求头（如Content-Type、Cookie）以及可选的请求体。</p>
+</li>
+<li><p><strong>Response类</strong>：装了响应报文信息：状态吗（200、404等）、响应头（Content-Type、Server等）以及可选的响应体。</p>
+</li>
+<li><p><strong>CallBack类</strong>：代表了一个实际的HTTP请求，它是连接Request和Response的桥梁，通过Request对象的newCall()方法可以得到一个Call对象。Call对象既支持同步获取数据，也可以异步获取数据。</p>
+<p>执行Call对象的execute()方法，会阻塞当前线程去获取数据，该方法返回一个Response对象。<br>执行Call对象的enqueue()方法，不会阻塞当前线程，该方法接收一个Callback对象，当异步获取到数据之后，会回调执行Callback对象的相应方法。如果请求成功，则执行Callback对象的onResponse方法，并将Response对象传入该方法中；如果请求失败，则执行Callback对象的onFailure方法。</p>
+</li>
+<li><p><strong>Dispatcher类</strong>：线程池；</p>
+</li>
+<li><p><strong>Interceptor类</strong>：拦截器(OKhttp的精髓)；</p>
+<p><strong>说明：</strong></p>
+<p><strong>Request类</strong> 与 <strong>Response类</strong> 中，都包括 <strong>Headers类</strong> 与 <strong>XXXBody抽象类</strong>，而且2个 <strong>XXXBody抽象类</strong> 的结构非常相似，仅仅是方绘制和命名的不同，其余均相同（包括数量），都含有2个具体的实现类。</p>
+</li>
+</ol>
+<h2 id="1-4-设计模式"><a href="#1-4-设计模式" class="headerlink" title="1.4 设计模式"></a>1.4 设计模式</h2><ul>
+<li><strong>建造者模式</strong>：</li>
+<li><strong>外观模式</strong>：OkHttpClient类</li>
+<li><strong>责任链模式</strong>：</li>
+</ul>
+<p> 在以下情况下可以考虑使用外观模式：<br>(1)设计初期阶段，应该有意识的将不同层分离，层与层之间建立外观模式。<br>(2) 开发阶段，子系统越来越复杂，增加外观模式提供一个简单的调用接口。<br>(3) 维护一个大型遗留系统的时候，可能这个系统已经非常难以维护和扩展，但又包含非常重要的功能，为其开发一个外观类，以便新系统与其交互。</p>
+<h2 id="1-5-核心框架、技术"><a href="#1-5-核心框架、技术" class="headerlink" title="1.5 核心框架、技术"></a>1.5 核心框架、技术</h2><ul>
+<li>okio</li>
+<li>线程池（okhttp3：Dispatcher类）</li>
+<li>Dispatcher</li>
+<li>Interceptor（精髓）</li>
+</ul>
+<h1 id="2-简单的使用"><a href="#2-简单的使用" class="headerlink" title="2 简单的使用"></a>2 简单的使用</h1><ul>
+<li>get请求方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">String url = <span class="string">"http://wwww.baidu.com"</span>;</div><div class="line">OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</div><div class="line"><span class="keyword">final</span> Request request = <span class="keyword">new</span> Request.Builder()</div><div class="line">        .url(url)</div><div class="line">        .build();</div><div class="line">Call call = okHttpClient.newCall(request);</div><div class="line">call.enqueue(<span class="keyword">new</span> Callback() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onFailure: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onResponse: "</span> + response.body().string());</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>post请求方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType JSON</div><div class="line">    = MediaType.parse(<span class="string">"application/json; charset=utf-8"</span>);</div><div class="line"></div><div class="line">  OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</div><div class="line"></div><div class="line">  RequestBody body = RequestBody.create(JSON, json);</div><div class="line"></div><div class="line">  Request request = <span class="keyword">new</span> Request.Builder()</div><div class="line">      .url(url)</div><div class="line">      .post(body)</div><div class="line">      .build();</div><div class="line"></div><div class="line">  Response response = client.newCall(request).execute();</div><div class="line"></div><div class="line">  <span class="keyword">return</span> response.body().string();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>无论是 <code>get</code> 请求方式 还是 <code>post</code> 请求方式，整个处理流程可简单的分为3个部分：<strong>client、call、request</strong></p>
+<h1 id="3-OkHttpClient类-参数初始化"><a href="#3-OkHttpClient类-参数初始化" class="headerlink" title="3 OkHttpClient类 - 参数初始化"></a>3 OkHttpClient类 - 参数初始化</h1><ul>
+<li>外部采用<code>外观模式</code>，将很多的功能包裹在这个类中；</li>
+<li>内部使用 <code>构造器模式</code> 初始化了一些 <code>配置信息</code>：</li>
+<li>方法 <code>newCall()</code> + <code>newWebSocket()</code>，这是非常重要的一个方法。</li>
+</ul>
+<p><strong>注意：</strong> 此处的 <code>newCall()</code> 与 <code>newWebSocket()</code> 通过调用与参数的关系将上一节中讲到的3个流程连接在了一起。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Dispatcher dispatcher;  <span class="comment">//分发器</span></div><div class="line">    <span class="keyword">final</span> Proxy proxy;  <span class="comment">//代理</span></div><div class="line">    <span class="keyword">final</span> List&lt;Protocol&gt; protocols; <span class="comment">//协议</span></div><div class="line">    <span class="keyword">final</span> List&lt;ConnectionSpec&gt; connectionSpecs; <span class="comment">//传输层版本和连接协议</span></div><div class="line">    <span class="keyword">final</span> List&lt;Interceptor&gt; interceptors; <span class="comment">//拦截器</span></div><div class="line">    <span class="keyword">final</span> List&lt;Interceptor&gt; networkInterceptors; <span class="comment">//网络拦截器</span></div><div class="line">    <span class="keyword">final</span> ProxySelector proxySelector; <span class="comment">//代理选择</span></div><div class="line">    <span class="keyword">final</span> CookieJar cookieJar; <span class="comment">//cookie</span></div><div class="line">    <span class="keyword">final</span> Cache cache; <span class="comment">//缓存</span></div><div class="line">    <span class="keyword">final</span> InternalCache internalCache;  <span class="comment">//内部缓存</span></div><div class="line">    <span class="keyword">final</span> SocketFactory socketFactory;  <span class="comment">//socket 工厂</span></div><div class="line">    <span class="keyword">final</span> SSLSocketFactory sslSocketFactory; <span class="comment">//安全套接层socket 工厂，用于HTTPS</span></div><div class="line">    <span class="keyword">final</span> CertificateChainCleaner certificateChainCleaner; <span class="comment">// 验证确认响应证书 适用 HTTPS 请求连接的主机名。</span></div><div class="line">    <span class="keyword">final</span> HostnameVerifier hostnameVerifier;    <span class="comment">//  主机名字确认</span></div><div class="line">    <span class="keyword">final</span> CertificatePinner certificatePinner;  <span class="comment">//  证书链</span></div><div class="line">    <span class="keyword">final</span> Authenticator proxyAuthenticator;     <span class="comment">//代理身份验证</span></div><div class="line">    <span class="keyword">final</span> Authenticator authenticator;      <span class="comment">// 本地身份验证</span></div><div class="line">    <span class="keyword">final</span> ConnectionPool connectionPool;    <span class="comment">//连接池,复用连接</span></div><div class="line">    <span class="keyword">final</span> Dns dns;  <span class="comment">//域名</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> followSslRedirects;  <span class="comment">//安全套接层重定向</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> followRedirects;  <span class="comment">//本地重定向</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> retryOnConnectionFailure; <span class="comment">//重试连接失败</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> connectTimeout;    <span class="comment">//连接超时</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> readTimeout; <span class="comment">//read 超时</span></div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> writeTimeout; <span class="comment">//write 超时 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="4-Request类-请求参数封装"><a href="#4-Request类-请求参数封装" class="headerlink" title="4 Request类 请求参数封装"></a>4 Request类 请求参数封装</h1><p><strong>Request类</strong> 中的对象种类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</div><div class="line">    HttpUrl url;</div><div class="line">    String method;</div><div class="line">    Headers.Builder headers;</div><div class="line">    RequestBody body;</div><div class="line">    Object tag;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.method = <span class="string">"GET"</span>;</div><div class="line">      <span class="keyword">this</span>.headers = <span class="keyword">new</span> Headers.Builder();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-1-RequestBody抽象类本身（只有方法）"><a href="#4-1-RequestBody抽象类本身（只有方法）" class="headerlink" title="4.1 RequestBody抽象类本身（只有方法）"></a>4.1 RequestBody抽象类本身（只有方法）</h2><p>RequestBody是一个 抽象类， 在这个抽象类中只有4个方法。其中的2个抽象方法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestBody</span> </span>&#123;</div><div class="line">  <span class="comment">/** 返回此正文的Content-Type标头. */</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="meta">@Nullable</span> <span class="function">MediaType <span class="title">contentType</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="comment">/** 将此请求的内容写入&#123;<span class="doctag">@code</span> out&#125;。. */</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另个1方法为 <code>contentLength()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后1个方法是 <code>static RequestBody create()</code> 方法。这个方法是对 <code>contentType()</code> 、<code>writeTo(BufferedSink sink)</code> 与 <code>contentLength()</code> 3个方法的封装</p>
+<p>这2个抽象方法的实现是在  <strong>RequestBody类</strong> 本身中就有具体应用的地方：<code>static create()</code> 方法</p>
+<ul>
+<li>传输字节流</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestBody <span class="title">create</span><span class="params">(<span class="keyword">final</span> @Nullable MediaType contentType, <span class="keyword">final</span> <span class="keyword">byte</span>[] content,</span></span></div><div class="line"><span class="function"><span class="params">  <span class="keyword">final</span> <span class="keyword">int</span> offset, <span class="keyword">final</span> <span class="keyword">int</span> byteCount)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (content == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"content == null"</span>);</div><div class="line">	Util.checkOffsetAndCount(content.length, offset, byteCount);</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> RequestBody() &#123;</div><div class="line">  		<span class="meta">@Override</span> <span class="keyword">public</span> <span class="meta">@Nullable</span> <span class="function">MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">  			  <span class="keyword">return</span> contentType;</div><div class="line">		  &#125;</div><div class="line"></div><div class="line"> 		 <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">   			 <span class="keyword">return</span> byteCount;</div><div class="line">	 	 &#125;</div><div class="line"></div><div class="line">		  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line"> 		   	sink.write(content, offset, byteCount);</div><div class="line"> 		 &#125;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>传输文件：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestBody <span class="title">create</span><span class="params">(<span class="keyword">final</span> @Nullable MediaType contentType, <span class="keyword">final</span> File file)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (file == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"content == null"</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> RequestBody() &#123;</div><div class="line">    <span class="meta">@Override</span> <span class="keyword">public</span> <span class="meta">@Nullable</span> <span class="function">MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> contentType;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> file.length();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">      Source source = <span class="keyword">null</span>;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        source = Okio.source(file);</div><div class="line">        sink.writeAll(source);</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        Util.closeQuietly(source);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-2-RequestBody子类-FormBody（表单提交）"><a href="#4-2-RequestBody子类-FormBody（表单提交）" class="headerlink" title="4.2 RequestBody子类 - FormBody（表单提交）"></a>4.2 RequestBody子类 - FormBody（表单提交）</h2><p>在这个实现类中是通过 <strong>2个</strong> 集合来存储 <code>键-值对</code>，<code>键</code> 是1个集合，<code>值</code> 是另1个集合。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FormBody</span> <span class="keyword">extends</span> <span class="title">RequestBody</span> </span>&#123;</div><div class="line">	<span class="comment">// 指明媒体类型</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType CONTENT_TYPE =</div><div class="line">      MediaType.parse(<span class="string">"application/x-www-form-urlencoded"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 参数接收</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; encodedNames;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; encodedValues;</div><div class="line"></div><div class="line">	<span class="comment">// 初始化</span></div><div class="line">  FormBody(List&lt;String&gt; encodedNames, List&lt;String&gt; encodedValues) &#123;</div><div class="line">    <span class="keyword">this</span>.encodedNames = Util.immutableList(encodedNames);</div><div class="line">    <span class="keyword">this</span>.encodedValues = Util.immutableList(encodedValues);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">   <span class="comment">// 确定媒体类型</span></div><div class="line">   <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="keyword">return</span> CONTENT_TYPE;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="comment">// 上传内容的长度</span></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">    	<span class="keyword">return</span> writeOrCountBytes(<span class="keyword">null</span>, <span class="keyword">true</span>);</div><div class="line">  	&#125;</div><div class="line">   	<span class="comment">// 对表单数据 进行判断 后通过 for循环 拼接上传</span></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    writeOrCountBytes(sink, <span class="keyword">false</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   *  执行具体的表单数据的拼接处理过程</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">writeOrCountBytes</span><span class="params">(@Nullable BufferedSink sink, <span class="keyword">boolean</span> countBytes)</span> </span>&#123;</div><div class="line">    <span class="keyword">long</span> byteCount = <span class="number">0L</span>;</div><div class="line"></div><div class="line">    Buffer buffer;</div><div class="line">    <span class="keyword">if</span> (countBytes) &#123;</div><div class="line">      buffer = <span class="keyword">new</span> Buffer();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      buffer = sink.buffer();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = encodedNames.size(); i &lt; size; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (i &gt; <span class="number">0</span>) buffer.writeByte(<span class="string">'&amp;'</span>);</div><div class="line">      buffer.writeUtf8(encodedNames.get(i));</div><div class="line">      buffer.writeByte(<span class="string">'='</span>);</div><div class="line">      buffer.writeUtf8(encodedValues.get(i));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (countBytes) &#123;</div><div class="line">      byteCount = buffer.size();</div><div class="line">      buffer.clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> byteCount;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-3-RequestBody子类-MultipartBody（多请求块、文件上传）"><a href="#4-3-RequestBody子类-MultipartBody（多请求块、文件上传）" class="headerlink" title="4.3 RequestBody子类 - MultipartBody（多请求块、文件上传）"></a>4.3 RequestBody子类 - MultipartBody（多请求块、文件上传）</h2><p>这个类的具体实现就是通过1个内部类 <strong>Part类</strong> 来封装 <strong>Headers类</strong> 与 <strong>RequestBody抽象类</strong>，通过 <strong>Part类</strong> 将这2个类进行统一管理，然后通过这个类自身的 <code>addPart(Part part)</code> 方法收集数据，最后通过 <code>for循环</code> 对每一个 <code>part</code> 对象中的 <code>header</code> 与 <code>body</code> 对象的数据做单独处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MultipartBody</span> <span class="keyword">extends</span> <span class="title">RequestBody</span> </span>&#123;</div><div class="line"> </div><div class="line">  <span class="comment">// 一个非常重要的变量，在对 “多part处理” 时会用到。 </span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Part&gt; parts;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> contentType;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="keyword">long</span> result = contentLength;</div><div class="line">    <span class="keyword">if</span> (result != -<span class="number">1L</span>) <span class="keyword">return</span> result;</div><div class="line">    <span class="keyword">return</span> contentLength = writeOrCountBytes(<span class="keyword">null</span>, <span class="keyword">true</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    writeOrCountBytes(sink, <span class="keyword">false</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">writeOrCountBytes</span><span class="params">()</span></span>&#123;</div><div class="line">  	<span class="comment">// 此方法的主要代码</span></div><div class="line"> 	<span class="comment">// parts变量的应用</span></div><div class="line">  	<span class="keyword">for</span> (<span class="keyword">int</span> p = <span class="number">0</span>, partCount = parts.size(); p &lt; partCount; p++) &#123;</div><div class="line">      Part part = parts.get(p);</div><div class="line">      Headers headers = part.headers;</div><div class="line">      RequestBody body = part.body;</div><div class="line">      </div><div class="line">      ……</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 封装 `Headers类` 和 `RequestBody抽象类`的 类</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Part</span> </span>&#123;  </div><div class="line">    <span class="keyword">final</span> <span class="meta">@Nullable</span> Headers headers;</div><div class="line">    <span class="keyword">final</span> RequestBody body;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Part</span><span class="params">(@Nullable Headers headers, RequestBody body)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.headers = headers;</div><div class="line">      <span class="keyword">this</span>.body = body;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="meta">@Nullable</span> <span class="function">Headers <span class="title">headers</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> headers;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> RequestBody <span class="title">body</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> body;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>MultipartBody类</strong> 在实际功能中的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MultipartBody body = <span class="keyword">new</span> MultipartBody.Builder(<span class="string">"AaB03x"</span>)</div><div class="line">            .setType(MultipartBody.FORM)</div><div class="line">            .addPart(</div><div class="line">                    Headers.of(<span class="string">"Content-Disposition"</span>, <span class="string">"form-data; name=\"title\""</span>),</div><div class="line">                    RequestBody.create(<span class="keyword">null</span>, <span class="string">"Square Logo"</span>))</div><div class="line">            .addPart(</div><div class="line">                    Headers.of(<span class="string">"Content-Disposition"</span>, <span class="string">"form-data; name=\"image\""</span>),</div><div class="line">                    RequestBody.create(MEDIA_TYPE_PNG, <span class="keyword">new</span> File(<span class="string">"website/static/logo-square.png"</span>)))</div><div class="line">            .build();</div></pre></td></tr></table></figure>
+<p>注意代码中的 <code>addPart()</code> 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Builder <span class="title">addPart</span><span class="params">(Part part)</span> </span>&#123;</div><div class="line">  	<span class="keyword">if</span> (part == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"part == null"</span>);</div><div class="line"> 		 parts.add(part);</div><div class="line">  	<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此处的 <code>parts</code> 就是用来接收实际功能中的数据。</p>
+<h1 id="5-Response类-响应结果封装"><a href="#5-Response类-响应结果封装" class="headerlink" title="5 Response类 响应结果封装"></a>5 Response类 响应结果封装</h1><p>这个类的作用通过源码就可以看出就是对 <code>响应结果</code> 的封装。</p>
+<p>本类源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Response</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</div><div class="line">  <span class="keyword">final</span> Request request;</div><div class="line">  <span class="keyword">final</span> Protocol protocol;</div><div class="line">  <span class="keyword">final</span> <span class="keyword">int</span> code;</div><div class="line">  <span class="keyword">final</span> String message;</div><div class="line">  <span class="keyword">final</span> <span class="meta">@Nullable</span> Handshake handshake;</div><div class="line">  <span class="keyword">final</span> Headers headers;</div><div class="line">  <span class="keyword">final</span> <span class="meta">@Nullable</span> ResponseBody body;</div><div class="line">  <span class="keyword">final</span> <span class="meta">@Nullable</span> Response networkResponse;</div><div class="line">  <span class="keyword">final</span> <span class="meta">@Nullable</span> Response cacheResponse;</div><div class="line">  <span class="keyword">final</span> <span class="meta">@Nullable</span> Response priorResponse;</div><div class="line">  <span class="keyword">final</span> <span class="keyword">long</span> sentRequestAtMillis;</div><div class="line">  <span class="keyword">final</span> <span class="keyword">long</span> receivedResponseAtMillis;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> CacheControl cacheControl; <span class="comment">// Lazily initialized.</span></div><div class="line"></div><div class="line">  Response(Builder builder) &#123;</div><div class="line">    <span class="keyword">this</span>.request = builder.request;</div><div class="line">    <span class="keyword">this</span>.protocol = builder.protocol;</div><div class="line">    <span class="keyword">this</span>.code = builder.code;</div><div class="line">    <span class="keyword">this</span>.message = builder.message;</div><div class="line">    <span class="keyword">this</span>.handshake = builder.handshake;</div><div class="line">    <span class="keyword">this</span>.headers = builder.headers.build();</div><div class="line">    <span class="keyword">this</span>.body = builder.body;</div><div class="line">    <span class="keyword">this</span>.networkResponse = builder.networkResponse;</div><div class="line">    <span class="keyword">this</span>.cacheResponse = builder.cacheResponse;</div><div class="line">    <span class="keyword">this</span>.priorResponse = builder.priorResponse;</div><div class="line">    <span class="keyword">this</span>.sentRequestAtMillis = builder.sentRequestAtMillis;</div><div class="line">    <span class="keyword">this</span>.receivedResponseAtMillis = builder.receivedResponseAtMillis;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中用到较多的就是 <strong>Headers类</strong> 和 <strong>ResponseBody抽象类</strong>。在类关系实现这一点上，与 <code>RequestBody抽象类</code>  相似。</p>
+<p>值得注意点是：所有的 <code>Response</code> 对象使用完毕后，必须要调用 <code>close()</code> 进行关闭:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Response.close()</div><div class="line">Response.body().close()</div><div class="line">Response.body().source().close()</div><div class="line">Response.body().charStream().close()</div><div class="line">Response.body().byteString().close()</div><div class="line">Response.body().bytes()</div><div class="line">Response.body().string()</div></pre></td></tr></table></figure>
+<h2 id="5-1-ResponseBody抽象类本身"><a href="#5-1-ResponseBody抽象类本身" class="headerlink" title="5.1 ResponseBody抽象类本身"></a>5.1 ResponseBody抽象类本身</h2><p>这个类的实现和 <strong>RequestBody抽象类</strong> 的结构大致是相似的：</p>
+<ul>
+<li><p><strong>相似点：</strong> </p>
+<ul>
+<li>同样有2个抽象方法：<code>contentType()</code> 与 <code>source()</code> 、1个 <code>contentLength()</code> 和1个封装方法： <code>create()</code></li>
+<li>2个抽象类：<strong>RealResponseBody</strong>（真实响应）与 <strong>CacheResponseBody</strong>（缓存响应）</li>
+</ul>
+</li>
+<li><p><strong>不同点：</strong> 在这个方法中对 <code>source()</code> 方法做了多种转化。</p>
+</li>
+</ul>
+<p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseBody</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</div><div class="line">    </div><div class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="meta">@Nullable</span> <span class="function">MediaType <span class="title">contentType</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> BufferedSource <span class="title">source</span><span class="params">()</span></span>;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResponseBody <span class="title">create</span><span class="params">(<span class="keyword">final</span> @Nullable MediaType contentType,</span></span></div><div class="line"><span class="function"><span class="params">      <span class="keyword">final</span> <span class="keyword">long</span> contentLength, <span class="keyword">final</span> BufferedSource content)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (content == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"source == null"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResponseBody() &#123;</div><div class="line">      <span class="meta">@Override</span> <span class="keyword">public</span> <span class="meta">@Nullable</span> <span class="function">MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> contentType;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> contentLength;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> BufferedSource <span class="title">source</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> content;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-2-ResponseBody子类-RealResponseBody（真实响应）"><a href="#5-2-ResponseBody子类-RealResponseBody（真实响应）" class="headerlink" title="5.2 ResponseBody子类 - RealResponseBody（真实响应）"></a>5.2 ResponseBody子类 - RealResponseBody（真实响应）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">RealResponseBody</span> <span class="keyword">extends</span> <span class="title">ResponseBody</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Headers headers;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> BufferedSource source;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RealResponseBody</span><span class="params">(Headers headers, BufferedSource source)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.headers = headers;</div><div class="line">    <span class="keyword">this</span>.source = source;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">    String contentType = headers.get(<span class="string">"Content-Type"</span>);</div><div class="line">    <span class="keyword">return</span> contentType != <span class="keyword">null</span> ? MediaType.parse(contentType) : <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> HttpHeaders.contentLength(headers);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> BufferedSource <span class="title">source</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> source;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-3-ResponseBody子类-CacheResponseBody（缓存响应）"><a href="#5-3-ResponseBody子类-CacheResponseBody（缓存响应）" class="headerlink" title="5.3 ResponseBody子类 - CacheResponseBody（缓存响应）"></a>5.3 ResponseBody子类 - CacheResponseBody（缓存响应）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheResponseBody</span> <span class="keyword">extends</span> <span class="title">ResponseBody</span> </span>&#123;</div><div class="line">  <span class="keyword">final</span> DiskLruCache.Snapshot snapshot;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> BufferedSource bodySource;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="meta">@Nullable</span> String contentType;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="meta">@Nullable</span> String contentLength;</div><div class="line"></div><div class="line">  CacheResponseBody(<span class="keyword">final</span> DiskLruCache.Snapshot snapshot,</div><div class="line">      String contentType, String contentLength) &#123;</div><div class="line">    <span class="keyword">this</span>.snapshot = snapshot;</div><div class="line">    <span class="keyword">this</span>.contentType = contentType;</div><div class="line">    <span class="keyword">this</span>.contentLength = contentLength;</div><div class="line"></div><div class="line">    Source source = snapshot.getSource(ENTRY_BODY);</div><div class="line">    bodySource = Okio.buffer(<span class="keyword">new</span> ForwardingSource(source) &#123;</div><div class="line">      <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        snapshot.close();</div><div class="line">        <span class="keyword">super</span>.close();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> contentType != <span class="keyword">null</span> ? MediaType.parse(contentType) : <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">contentLength</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">return</span> contentLength != <span class="keyword">null</span> ? Long.parseLong(contentLength) : -<span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</div><div class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> BufferedSource <span class="title">source</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> bodySource;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="6-Call接口"><a href="#6-Call接口" class="headerlink" title="6 Call接口"></a>6 Call接口</h1><p>前面在介绍 <strong>OkHttpClient类</strong>  的时候，已经说到过方法 <code>newCall()</code> 这个方法，那么在这一节就开始梳理与 <strong>Call接口</strong> 相关的知识。</p>
+<p><code>newCall()</code> 方法源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Call <span class="title">newCall</span><span class="params">(Request request)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> RealCall(<span class="keyword">this</span>, request, <span class="keyword">false</span> <span class="comment">/* for web socket */</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>源码中对于这个方式的注释是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* Prepares the &#123;@code request&#125; to be executed at some point in the future.</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>在未来的某个点准备执行<code>request</code>。</p>
+<p>在 <code>newCall()</code> 这个方法的返回值是 <strong>Call接口</strong>，那么在 <strong>okHttp3框架</strong> 中，<strong>Call</strong> 到底是怎么样的构建关系呢？下面就来梳理一下。</p>
+<h2 id="6-1-Call接口"><a href="#6-1-Call接口" class="headerlink" title="6.1 Call接口"></a>6.1 Call接口</h2><p>源码中对 <strong>Call</strong> 的注释说明是：</p>
+<pre><code>一个 Call 是已经准备执行的 request ，同时一个 Call 是可以取消的。
+由于此对象表示的是一对单独的 请求/响应，因此无法执行2次。
+</code></pre><p><strong>Call接口</strong> 源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Call</span> <span class="keyword">extends</span> <span class="title">Cloneable</span> </span>&#123; </div><div class="line">  </div><div class="line">  <span class="comment">// 返回发起此调用的原始请求。</span></div><div class="line">  <span class="function">Request <span class="title">request</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="comment">// 同步执行网络请求</span></div><div class="line">  <span class="function">Response <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</div><div class="line"></div><div class="line">  <span class="comment">// 异步执行网络请求</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(Callback responseCallback)</span></span>;</div><div class="line"></div><div class="line">  <span class="comment">// 取消网络请求</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="comment">// 是否执行网络请求</span></div><div class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isExecuted</span><span class="params">()</span></span>;</div><div class="line">  </div><div class="line">  <span class="comment">// 是否取消网络请求</span></div><div class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isCanceled</span><span class="params">()</span></span>;</div><div class="line">  </div><div class="line">  <span class="function">Call <span class="title">clone</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">  <span class="comment">// 工厂接口</span></div><div class="line">  <span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</div><div class="line">    <span class="function">Call <span class="title">newCall</span><span class="params">(Request request)</span></span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据 <strong>Call接口</strong> 的源码来看，其封装了 <code>HTTP</code> 的各种请求任务，能用到的操作在这个接口都已经定义了。<br>同时在接口的内部，提供了 <code>工厂模式（将对象的创建延迟到该工厂类的子类，从而实现动态配置）</code>。在 <strong>OkHttpClient类</strong> 中已经实现了 <strong>Call.Factory接口</strong>，并且实现了 <code>newCall()</code>。在这个方法中返回了一个 <code>RealCall对象</code>。下面就来梳理一下这个 <strong>RealCall类</strong>，看看在这个类中都进行了什么样的操作。</p>
+<h2 id="6-2-RealCall类"><a href="#6-2-RealCall类" class="headerlink" title="6.2 RealCall类"></a>6.2 RealCall类</h2><p>首先来看 <strong>RealCall类</strong> 的 <strong>构造方法</strong> 源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">RealCall(OkHttpClient client, Request originalRequest, <span class="keyword">boolean</span> forWebSocket) &#123;</div><div class="line">  <span class="keyword">final</span> EventListener.Factory eventListenerFactory = client.eventListenerFactory();</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.client = client;</div><div class="line">  <span class="keyword">this</span>.originalRequest = originalRequest;</div><div class="line">  <span class="keyword">this</span>.forWebSocket = forWebSocket;</div><div class="line">  <span class="keyword">this</span>.retryAndFollowUpInterceptor = <span class="keyword">new</span> RetryAndFollowUpInterceptor(client, forWebSocket);</div><div class="line"></div><div class="line">  <span class="comment">// TODO(jwilson): this is unsafe publication and not threadsafe.</span></div><div class="line">  <span class="keyword">this</span>.eventListener = eventListenerFactory.create(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从构造方法的源码中可以发现，参数有3个：</p>
+<ul>
+<li><code>OkHttpClient client</code>：HTTP请求的客户端对象</li>
+<li><code>Request originalRequest</code>：请求封装对象</li>
+<li><code>boolean forWebSocket)</code>：是否有socket对象</li>
+</ul>
+<p>因此可以发现，这个 <strong>RealCall类</strong> 中包装了 <strong>Request类</strong> 对象与 <strong>OkHttpClient类</strong> 对象，可以很方便的使用这个2个对象。</p>
+<p>在构造方法中还有一个 <strong>RetryAndFollowUpInterceptor类</strong> 的对象：<code>retryAndFollowUpInterceptor</code>，这也是一个非常重要的参数。这个类的作用是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">此拦截器从故障中恢复，并在必要时遵循重定向。 如果取消call，它可能会抛出&#123;@link IOException&#125;。</div></pre></td></tr></table></figure>
+<h2 id="6-3-两个重要的执行方法"><a href="#6-3-两个重要的执行方法" class="headerlink" title="6.3 两个重要的执行方法"></a>6.3 两个重要的执行方法</h2><ul>
+<li><strong>execute()</strong>：同步网络请求</li>
+<li><strong>enqueue()</strong>：异步网络请求</li>
+</ul>
+<p>在这2个方法中，都调用了 <code>captureCallStackTrace()</code> 方法，方法源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">captureCallStackTrace</span><span class="params">()</span> </span>&#123;</div><div class="line">  Object callStackTrace = Platform.get().getStackTraceForCloseable(<span class="string">"response.body().close()"</span>);</div><div class="line">  retryAndFollowUpInterceptor.setCallStackTrace(callStackTrace);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方法的作用就是捕获这个请求的 <code>StackTrace</code>。</p>
+<h3 id="6-3-1-execute"><a href="#6-3-1-execute" class="headerlink" title="6.3.1 execute()"></a>6.3.1 execute()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Response <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">  <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (executed) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Already Executed"</span>);</div><div class="line">    executed = <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line">  captureCallStackTrace();</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    client.dispatcher().executed(<span class="keyword">this</span>);</div><div class="line">    Response result = getResponseWithInterceptorChain();</div><div class="line">    <span class="keyword">if</span> (result == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Canceled"</span>);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125; <span class="keyword">finally</span> &#123;</div><div class="line">    client.dispatcher().finished(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个方法中，首先对 <code>executed</code> 做 <code>boolean</code> 判断。如果为 <code>true</code> 则抛出异常，即表示一个 <code>call</code> 只能执行1次。然后捕获 <code>cllStackTrace</code> 对象。</p>
+<p><code>client.dispatcher().executed(this);</code> 这行代码引出了另1个重要的类：<strong>Dispatcher类</strong>，这个类具体在第7节中进行梳理。同时这行代码也是整个网络请求过程中一个重要的节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    client.dispatcher().executed(<span class="keyword">this</span>);</div><div class="line">    Response result = getResponseWithInterceptorChain();</div><div class="line">    <span class="keyword">if</span> (result == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Canceled"</span>);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line">    client.dispatcher().finished(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码在功能上分3个步骤：</p>
+<ul>
+<li>执行请求数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">client.dispatcher().executed(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>获取响应数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Response result = getResponseWithInterceptorChain();</div></pre></td></tr></table></figure>
+<ul>
+<li>结束调度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">client.dispatcher().finished(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<p>与 <code>dispatcher()</code> 相关的操作梳理放到第7节中。接下来看看 <code>getResponseWithInterceptorChain()</code> 方法中都进行了什么操作，源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function">Response <span class="title">getResponseWithInterceptorChain</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="comment">// Build a full stack of interceptors.</span></div><div class="line">    List&lt;Interceptor&gt; interceptors = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    interceptors.addAll(client.interceptors());</div><div class="line">    interceptors.add(retryAndFollowUpInterceptor);</div><div class="line">    interceptors.add(<span class="keyword">new</span> BridgeInterceptor(client.cookieJar()));</div><div class="line">    interceptors.add(<span class="keyword">new</span> CacheInterceptor(client.internalCache()));</div><div class="line">    interceptors.add(<span class="keyword">new</span> ConnectInterceptor(client));</div><div class="line">    <span class="keyword">if</span> (!forWebSocket) &#123;</div><div class="line">      interceptors.addAll(client.networkInterceptors());</div><div class="line">    &#125;</div><div class="line">    interceptors.add(<span class="keyword">new</span> CallServerInterceptor(forWebSocket));</div><div class="line"></div><div class="line">    Interceptor.Chain chain = <span class="keyword">new</span> RealInterceptorChain(</div><div class="line">        interceptors, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">0</span>, originalRequest);</div><div class="line">    <span class="keyword">return</span> chain.proceed(originalRequest);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过方法中的代码，可以明显的看到这个方法的作用就是：<strong>构建一整套拦截器</strong>，同时这个方法的返回值是 <code>Response类</code>，所以实际上是这个方法 <strong>实际执行了具体的请求处理</strong>。因此这个方法十分的重要。<br>具体梳理将在第 8 节中。</p>
+<h3 id="6-3-2-enqueue"><a href="#6-3-2-enqueue" class="headerlink" title="6.3.2 enqueue()"></a>6.3.2 enqueue()</h3><p>在参考 <code>execute()</code> 方法的基础之上。通过比较的方式来看 <code>enqueue()</code> 方法就会更容易理解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(Callback responseCallback)</span> </span>&#123;</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">      <span class="keyword">if</span> (executed) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Already Executed"</span>);</div><div class="line">      executed = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    captureCallStackTrace();</div><div class="line">    client.dispatcher().enqueue(<span class="keyword">new</span> AsyncCall(responseCallback));</div><div class="line"> &#125;</div><div class="line">``` </div><div class="line"></div><div class="line"> `enqueue()` 方法与 `execute()` 方法相比：</div><div class="line"> </div><div class="line">- **相同点**：</div><div class="line"></div><div class="line"> - 都对 `executed` 变量做判定</div><div class="line"> - 都执行 `captureCallStackTrace()`</div><div class="line"> </div><div class="line">- **不同点**：</div><div class="line"></div><div class="line"> -  在 `enqueue()` 方法中执行的是 `client.dispatcher().enqueue(<span class="keyword">new</span> AsyncCall(responseCallback));`</div><div class="line"> - `enqueue()`  没有执行 `getResponseWithInterceptorChain();`</div><div class="line"> -  `enqueue()` 没有执行 `client.dispatcher().finished(<span class="keyword">this</span>);`</div><div class="line"> -  `enqueue()` 没有返回值，`execute()` 有 `Response` 返回值。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 7 Dispatcher类 - 调度器</div><div class="line"></div><div class="line"></div><div class="line">```Java</div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Dispatcher</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxRequests = <span class="number">64</span>; <span class="comment">//最大请求数量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxRequestsPerHost = <span class="number">5</span>; <span class="comment">//每台主机最大的请求数量</span></div><div class="line">    <span class="keyword">private</span> <span class="meta">@Nullable</span> Runnable idleCallback;</div><div class="line">    </div><div class="line">    <span class="comment">/** Executes calls. Created lazily. */</span></div><div class="line">    <span class="keyword">private</span> <span class="meta">@Nullable</span> ExecutorService executorService; <span class="comment">//线程池</span></div><div class="line">    </div><div class="line">    <span class="comment">/** Ready async calls in the order they'll be run. */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Deque&lt;AsyncCall&gt; readyAsyncCalls = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</div><div class="line">    </div><div class="line">    <span class="comment">/** Running asynchronous calls. Includes canceled calls that haven't finished yet. */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Deque&lt;AsyncCall&gt; runningAsyncCalls = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</div><div class="line">    </div><div class="line">    <span class="comment">/** Running synchronous calls. Includes canceled calls that haven't finished yet. */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Deque&lt;RealCall&gt; runningSyncCalls = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</div><div class="line">    </div><div class="line">    <span class="comment">/** 这个线程池没有核心线程，线程数量没有限制，空闲60s就会回收*/</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> ExecutorService <span class="title">executorService</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (executorService == <span class="keyword">null</span>) &#123;</div><div class="line">          executorService = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE, <span class="number">60</span>, TimeUnit.SECONDS,</div><div class="line">              <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;(), Util.threadFactory(<span class="string">"OkHttp Dispatcher"</span>, <span class="keyword">false</span>));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> executorService;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="8-Interceptor-拦截器"><a href="#8-Interceptor-拦截器" class="headerlink" title="8 Interceptor - 拦截器"></a>8 Interceptor - 拦截器</h1><blockquote>
+<p>框架解析参考：<a href="https://yq.aliyun.com/articles/607975" target="_blank" rel="external">https://yq.aliyun.com/articles/607975</a><br>详细使用参考：<a href="https://www.jianshu.com/p/da4a806e599b" target="_blank" rel="external">https://www.jianshu.com/p/da4a806e599b</a><br>详细使用参考：<a href="https://www.jianshu.com/p/2663ce3da0db" target="_blank" rel="external">https://www.jianshu.com/p/2663ce3da0db</a><br>基础API使用：<a href="https://blog.csdn.net/iispring/article/details/51661195" target="_blank" rel="external">https://blog.csdn.net/iispring/article/details/51661195</a><br>Interceptor参考：<a href="https://blog.csdn.net/wenyiqingnianiii/article/details/65635678" target="_blank" rel="external">https://blog.csdn.net/wenyiqingnianiii/article/details/65635678</a><br>Interceptor参考：<a href="https://www.jianshu.com/p/27c1554b7fee" target="_blank" rel="external">https://www.jianshu.com/p/27c1554b7fee</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/EventBus理解/" rel="next" title="EventBus理解">
+                <i class="fa fa-chevron-left"></i> EventBus理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/okHttp3框架-Interceptor/" rel="prev" title="okHttp3框架-Interceptor">
+                okHttp3框架-Interceptor <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">132</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-okHttp3框架介绍"><span class="nav-number">1.</span> <span class="nav-text">1 okHttp3框架介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-基本描述"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基本描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特点："><span class="nav-number">1.2.</span> <span class="nav-text">1.2 特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-主要概念"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 主要概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-设计模式"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-核心框架、技术"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 核心框架、技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-简单的使用"><span class="nav-number">2.</span> <span class="nav-text">2 简单的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-OkHttpClient类-参数初始化"><span class="nav-number">3.</span> <span class="nav-text">3 OkHttpClient类 - 参数初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Request类-请求参数封装"><span class="nav-number">4.</span> <span class="nav-text">4 Request类 请求参数封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-RequestBody抽象类本身（只有方法）"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 RequestBody抽象类本身（只有方法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-RequestBody子类-FormBody（表单提交）"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 RequestBody子类 - FormBody（表单提交）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-RequestBody子类-MultipartBody（多请求块、文件上传）"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 RequestBody子类 - MultipartBody（多请求块、文件上传）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Response类-响应结果封装"><span class="nav-number">5.</span> <span class="nav-text">5 Response类 响应结果封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-ResponseBody抽象类本身"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 ResponseBody抽象类本身</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-ResponseBody子类-RealResponseBody（真实响应）"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 ResponseBody子类 - RealResponseBody（真实响应）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-ResponseBody子类-CacheResponseBody（缓存响应）"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 ResponseBody子类 - CacheResponseBody（缓存响应）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Call接口"><span class="nav-number">6.</span> <span class="nav-text">6 Call接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-Call接口"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Call接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-RealCall类"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 RealCall类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-两个重要的执行方法"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 两个重要的执行方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-execute"><span class="nav-number">6.3.1.</span> <span class="nav-text">6.3.1 execute()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-enqueue"><span class="nav-number">6.3.2.</span> <span class="nav-text">6.3.2 enqueue()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Interceptor-拦截器"><span class="nav-number">7.</span> <span class="nav-text">8 Interceptor - 拦截器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">281.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

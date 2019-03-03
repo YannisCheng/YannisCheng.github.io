@@ -92,7 +92,7 @@
 <meta property="og:description" content="参考：http://blog.csdn.net/ljd2038/article/details/51046512参考：https://www.jianshu.com/p/af8bd1abda82">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-04%2014.37.31.png">
-<meta property="og:updated_time" content="2019-02-11T11:49:15.326Z">
+<meta property="og:updated_time" content="2019-03-02T01:46:50.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源库-Retrofit2">
 <meta name="twitter:description" content="参考：http://blog.csdn.net/ljd2038/article/details/51046512参考：https://www.jianshu.com/p/af8bd1abda82">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-11T19:49:15+08:00">
-                2019-02-11
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-02T09:46:50+08:00">
+                2019-03-02
               </time>
             
           </span>
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,115 字
+                  1,146 字
                 </span>
               
 
@@ -487,6 +487,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</div><div class="line">        .client(okHttpClient)</div><div class="line">        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">        .addConverterFactory(GsonConverterFactory.create())</div><div class="line">        .baseUrl(<span class="string">"https://api.github.com/"</span>)</div><div class="line">        .build();</div></pre></td></tr></table></figure>
 <p>使用Observable创建一个API接口。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GET</span>(<span class="string">"repos/&#123;owner&#125;/&#123;repo&#125;/contributors"</span>)</div><div class="line">Observable&lt;List&lt;Contributor&gt;&gt; contributorsByRxJava(<span class="meta">@Path</span>(<span class="string">"owner"</span>) String owner,<span class="meta">@Path</span>(<span class="string">"repo"</span>) String repo);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>API使用参考：<a href="https://blog.csdn.net/carson_ho/article/details/73732076" target="_blank" rel="external">https://blog.csdn.net/carson_ho/article/details/73732076</a><br>框架源码参考：<a href="https://yq.aliyun.com/articles/658544?spm=a2c4e.11153940.blogcont637930.23.15874c0aavn6rS" target="_blank" rel="external">https://yq.aliyun.com/articles/658544?spm=a2c4e.11153940.blogcont637930.23.15874c0aavn6rS</a></p>
+</blockquote>
 
       
     </div>
@@ -603,7 +606,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">132</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +628,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -708,7 +711,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">271.5k</span>
+    <span title="Site words total count">281.7k</span>
   
 </div>
 
