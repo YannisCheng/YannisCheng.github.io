@@ -91,12 +91,14 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="okHttp3源码-Interceptor">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okhttp3-%E6%8B%A6%E6%88%AA%E5%99%A8%E5%88%86%E7%B1%BB.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okHttp3-%E5%AE%8C%E6%95%B4%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%99%A8%E9%93%BE.png">
-<meta property="og:updated_time" content="2019-03-03T14:47:08.013Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okhttp3-%E6%8B%A6%E6%88%AA%E5%99%A8%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:updated_time" content="2019-03-03T15:09:18.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="okHttp3框架-Interceptor">
 <meta name="twitter:description" content="okHttp3源码-Interceptor">
-<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okHttp3-%E5%AE%8C%E6%95%B4%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%99%A8%E9%93%BE.png">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okhttp3-%E6%8B%A6%E6%88%AA%E5%99%A8%E5%88%86%E7%B1%BB.png">
 
 
 
@@ -314,7 +316,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T22:47:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T23:09:18+08:00">
                 2019-03-03
               </time>
             
@@ -364,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,268 字
+                  1,271 字
                 </span>
               
 
@@ -438,6 +440,8 @@
       
         <p>okHttp3源码-Interceptor</p>
 <a id="more"></a>
+<p><strong>okHttp3框架-拦截器分类</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okhttp3-%E6%8B%A6%E6%88%AA%E5%99%A8%E5%88%86%E7%B1%BB.png" alt=""></p>
 <p><strong>RealCall类#execute()#getResponseWithInterceptorChain()</strong> 方法源码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function">Response <span class="title">getResponseWithInterceptorChain</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="comment">// 拦截器的责任链。</span></div><div class="line">    List&lt;Interceptor&gt; interceptors = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="comment">// 开发者应用层自定义的Interceptor</span></div><div class="line">    interceptors.addAll(client.interceptors());</div><div class="line">    <span class="comment">// 失败重试以及重定向的 RetryAndFollowUpInterceptor</span></div><div class="line">    interceptors.add(retryAndFollowUpInterceptor);</div><div class="line">    <span class="comment">// 把用户构造的请求转换为发送到服务器的请求、把服务器返回的响应转换为用户友好的响应的 BridgeInterceptor</span></div><div class="line">    interceptors.add(<span class="keyword">new</span> BridgeInterceptor(client.cookieJar()));</div><div class="line">    <span class="comment">// 负责读取缓存直接返回、更新缓存的 CacheInterceptor</span></div><div class="line">    interceptors.add(<span class="keyword">new</span> CacheInterceptor(client.internalCache()));</div><div class="line">    <span class="comment">// 负责和服务器建立连接的 ConnectInterceptor</span></div><div class="line">    interceptors.add(<span class="keyword">new</span> ConnectInterceptor(client));</div><div class="line">    <span class="keyword">if</span> (!forWebSocket) &#123;</div><div class="line">      <span class="comment">// 加开发者自定义的网络层拦截器</span></div><div class="line">      interceptors.addAll(client.networkInterceptors());</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 负责向服务器发送请求数据、从服务器读取响应数据的 CallServerInterceptor</span></div><div class="line">    interceptors.add(<span class="keyword">new</span> CallServerInterceptor(forWebSocket));</div><div class="line">    </div><div class="line">    Interceptor.Chain chain = <span class="keyword">new</span> RealInterceptorChain(</div><div class="line">        interceptors, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">0</span>, originalRequest);</div><div class="line">    <span class="comment">// 开启责任链的调用</span></div><div class="line">    <span class="keyword">return</span> chain.proceed(originalRequest);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>完整连接器链：</p>
@@ -473,10 +477,12 @@
 <p>同时这个方法中最重要的操作，也是 <strong>责任链模式</strong> 中 <strong>接口具体实现类中要含有<code>下一个处理责任的对象的引用</code></strong> 的具体实现代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在链中回调下一个拦截器</span></div><div class="line">RealInterceptorChain next = <span class="keyword">new</span> RealInterceptorChain(</div><div class="line">        interceptors, streamAllocation, httpCodec, connection, index + <span class="number">1</span>, request);</div><div class="line"><span class="comment">// 获取当前索引所对应的当前拦截器</span></div><div class="line">Interceptor interceptor = interceptors.get(index);</div><div class="line"><span class="comment">// 当前拦截器调用下一个拦截器</span></div><div class="line">Response response = interceptor.intercept(next);</div></pre></td></tr></table></figure>
 <p>在代码中是通过 <strong><code>index索引</code></strong> 来获取集合中的 <code>Interceptor接口</code> 的 <strong>当前子类</strong>，通过 <strong><code>index+1 索引</code></strong> 来获取<strong>下一个责任承担者的子类</strong>，<strong>当前子类</strong> 通过 <strong>Intercept()</strong> 方法调用 <strong>下一个责任承担者的子类</strong>。这段代码描述的就是这样的一个 <strong>链式引用</strong>。</p>
+<p><strong>okHttp3框架-拦截器处理流程</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/okhttp3-%E6%8B%A6%E6%88%AA%E5%99%A8%E6%B5%81%E7%A8%8B.jpg" alt=""></p>
 <blockquote>
 <p><a href="https://www.jianshu.com/p/fd4255be60d7" target="_blank" rel="external">OkHttp拦截器-责任链模式</a></p>
 </blockquote>
-<h1 id="3-OkHttp3框架中用到的拦截器子类"><a href="#3-OkHttp3框架中用到的拦截器子类" class="headerlink" title="3 OkHttp3框架中用到的拦截器子类"></a>3 OkHttp3框架中用到的拦截器子类</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2>
+
       
     </div>
     
@@ -663,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-责任链模式"><span class="nav-number">1.</span> <span class="nav-text">1 责任链模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是-责任链模式"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是 责任链模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-责任链模式的分类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 责任链模式的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-OkHttp3框架中-“拦截器-非纯责任链模式”的实现"><span class="nav-number">2.</span> <span class="nav-text">2 OkHttp3框架中 “拦截器-非纯责任链模式”的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-接口：Interceptor接口"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 接口：Interceptor接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Interceptor-Chain接口-的实现类：RealInterceptorChain类"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Interceptor.Chain接口 的实现类：RealInterceptorChain类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-OkHttp3框架中用到的拦截器子类"><span class="nav-number">3.</span> <span class="nav-text">3 OkHttp3框架中用到的拦截器子类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-责任链模式"><span class="nav-number">1.</span> <span class="nav-text">1 责任链模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是-责任链模式"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是 责任链模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-责任链模式的分类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 责任链模式的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-OkHttp3框架中-“拦截器-非纯责任链模式”的实现"><span class="nav-number">2.</span> <span class="nav-text">2 OkHttp3框架中 “拦截器-非纯责任链模式”的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-接口：Interceptor接口"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 接口：Interceptor接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Interceptor-Chain接口-的实现类：RealInterceptorChain类"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Interceptor.Chain接口 的实现类：RealInterceptorChain类</span></a></li></ol></li></ol></div>
             
 
           </div>
