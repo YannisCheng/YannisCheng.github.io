@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Fragment," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Fragment相关">
+<meta name="keywords" content="Fragment">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fragment">
+<meta property="og:url" content="http://yannischeng.com/Fragment/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Fragment相关">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/fragment%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%E4%B8%8EFragment.png">
+<meta property="og:updated_time" content="2019-03-05T05:38:45.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fragment">
+<meta name="twitter:description" content="Fragment相关">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/fragment%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Fragment/"/>
+
+
+
+
+
+  <title>Fragment | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Fragment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fragment</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T10:26:16+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-05T13:38:45+08:00">
+                2019-03-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,691 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Fragment/" rel="tag"># Fragment</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Fragment/" title="Fragment">http://yannischeng.com/Fragment/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Fragment相关</p>
+<a id="more"></a>
+<h1 id="1-Fragment"><a href="#1-Fragment" class="headerlink" title="1 Fragment"></a>1 Fragment</h1><p><strong>Fragment</strong> 俗称碎片，自Android 3.0开始被引进并大量使用。其实是对 <strong>View</strong> 的封装，它持有 <code>view</code>, <code>containerView</code>, <code>fragmentManager</code>, <code>childFragmentManager</code> 等信息。</p>
+<p>在 <strong>Activity</strong> 中管理 <strong>Fragment</strong> 时，如果是<code>Support.v4</code> 包，那么使用 <strong>getSupportFragmentManager()</strong>，如果不是那么使用 <strong>getFragmentManager()</strong>；在通过 <strong>Fragment</strong> 管理 <strong>子Fragment</strong> 时，其使用 <strong>getChildFragmentManager()</strong>。</p>
+<h2 id="1-1-特点："><a href="#1-1-特点：" class="headerlink" title="1.1 特点："></a>1.1 特点：</h2><ul>
+<li><strong>Fragment</strong> 是界面的一部分，必须依赖 <strong>Activity</strong> 或者 <strong>Fragment</strong>。</li>
+<li><strong>Fragment</strong> 有自己的生命周期，而且与 <strong>Activity</strong> 的生命周期相关联，受其影响。</li>
+<li><strong>Fragment</strong> 可以重复使用，多个 <strong>Activity</strong>可以重复使用一个 <code>Fragment</code>。</li>
+</ul>
+<h2 id="1-2-生命周期"><a href="#1-2-生命周期" class="headerlink" title="1.2 生命周期"></a>1.2 生命周期</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/fragment%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt=""></p>
+<h2 id="1-3-Fragment生命周期方法调用场景"><a href="#1-3-Fragment生命周期方法调用场景" class="headerlink" title="1.3 Fragment生命周期方法调用场景"></a>1.3 Fragment生命周期方法调用场景</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onAttach()</td>
+<td>Fragment与Activity建立关联，获取Activity实例及其传递的值</td>
+</tr>
+<tr>
+<td>onCreateView()</td>
+<td>为Fragment创建View</td>
+</tr>
+<tr>
+<td>onActivityCreated()</td>
+<td>Activity的onCreate()执行完毕后调用</td>
+</tr>
+<tr>
+<td>onDestoryView()</td>
+<td>Fragment被移除</td>
+</tr>
+<tr>
+<td>onDetach()</td>
+<td>Fragment与Activity解除关联</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<ul>
+<li>在 <code>Fragment</code> 中获取 <code>Activity</code> 对象时：不应使用<code>getActivity()</code>，而是应该在 <code>onAttach()</code> 中将 <code>Context</code> 对象 <strong>强转</strong> 为<code>Activity对象</code>。</li>
+<li><p>在 <code>Fragment</code> 中 <code>onCreateView()</code> 中加载布局的<code>inflate()</code> 的第3个参数必须是 <code>false</code>，否则会导致 <strong>重复添加</strong>，抛出异常。因为在<code>Fragment</code>内部实现中，会把该布局<code>添加到container中</code>，如果设为<code>true</code>，那么就会<code>重复做两次添加</code>，则会抛如下异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused by: java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child&apos;s parent first.</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>Fragment</code>不是一个<code>View</code>，而是和Activity一个层级</p>
+</li>
+</ul>
+<h2 id="1-4-Fragment在不同场景下的生命周期方法调用顺序"><a href="#1-4-Fragment在不同场景下的生命周期方法调用顺序" class="headerlink" title="1.4 Fragment在不同场景下的生命周期方法调用顺序"></a>1.4 Fragment在不同场景下的生命周期方法调用顺序</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>生命周期方法调用顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建Fragment</td>
+<td>onAttach()-&gt;onCreate()-&gt;onCreateView-&gt;onActivityCreated()</td>
+</tr>
+<tr>
+<td>Fragment可见</td>
+<td>onStart()-&gt;onResume()</td>
+</tr>
+<tr>
+<td>Fragment进入后台</td>
+<td>onPause()-&gt;onStop()</td>
+</tr>
+<tr>
+<td>Fragment退出应用/被销毁</td>
+<td>onPause()-&gt;onStop()-&gt;onDestoryView()-&gt;onDestory()-&gt;onDetach()</td>
+</tr>
+<tr>
+<td>屏幕灭掉/直接回到桌面</td>
+<td>onPause()-&gt;onSaveInstanceState()-&gt;onStop()</td>
+</tr>
+<tr>
+<td>屏幕解锁/直接回到应用</td>
+<td>onStart()-&gt;onResume()</td>
+</tr>
+<tr>
+<td>切换到其他Fragment</td>
+<td>onPause()-&gt;onStop()-&gt;onDestoryView()</td>
+</tr>
+<tr>
+<td>切换回本身Fragment</td>
+<td>onCreateView()-&gt;onActivityCreated()-&gt;onStart()-&gt;onResume()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>onSaveInstanceState()</code> 的调用顺序：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onPause() -&gt; onSaveInstanceState() -&gt; onStop()</div></pre></td></tr></table></figure>
+<ul>
+<li><code>onRestoreInstanceState()</code> 的调用顺序：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onStart() -&gt; onRestoreInstanceState() -&gt; onResume()</div></pre></td></tr></table></figure>
+<ul>
+<li>不要把<code>Fragment</code>事务放在 <code>异步线程</code> 的回调中，比如不要把<code>Fragment事务</code>放在<code>AsyncTask</code>的<code>onPostExecute()</code>，因为：<code>onPostExecute()</code>可能会在<code>onSaveInstanceState()</code>之后执行。因为如果 <code>commit()</code> 是在 <code>onSaveInstanceState()</code> 后调用，那么就会抛出异常：</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState</div><div class="line">    at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1341)</div><div class="line">    at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1352)</div><div class="line">    at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)</div><div class="line">    at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:574)</div></pre></td></tr></table></figure>
+<h2 id="1-5-Fragment和Activity生命周期对应图"><a href="#1-5-Fragment和Activity生命周期对应图" class="headerlink" title="1.5 Fragment和Activity生命周期对应图"></a>1.5 Fragment和Activity生命周期对应图</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%E4%B8%8EFragment.png" alt=""></p>
+<p>可以看到，除了 <code>onCreate()</code> 与 <code>onDestory()</code> 方法的不同外，其他的周期方法还是相同的。同时应该清楚：</p>
+<ul>
+<li>在创建流程中：先执行Activity的生命周期，再执行Fragment生命周期。</li>
+<li>在销毁流程中：先销毁Fragment的生命周期，再销毁Activity的生命周期。</li>
+</ul>
+<p>以上这2点通过理解 <code>Fragment</code> 与 <code>Activity</code> 或 <code>Fragment</code> 的之间的依附关系，就很清楚了。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><strong>Fragment</strong>的 <code>onAttach()-&gt;onCreate()-&gt;onCreateView()-&gt;onActivityCreated()-&gt;onStart()</code>都是在<strong>Activity</strong>的<code>onStart()</code>中调用的：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">BasicActivity: [onCreate] BEGIN</div><div class="line">BasicActivity: [onCreate] END</div><div class="line">BasicActivity: [onStart] BEGIN</div><div class="line">Fragment1: [onAttach] BEGIN </div><div class="line">Fragment1: [onAttach] END</div><div class="line">BasicActivity: [onAttachFragment] BEGIN</div><div class="line">BasicActivity: [onAttachFragment] END</div><div class="line">Fragment1: [onCreate] BEGIN</div><div class="line">Fragment1: [onCreate] END</div><div class="line">Fragment1: [onCreateView]</div><div class="line">Fragment1: [onViewCreated] BEGIN</div><div class="line">Fragment1: [onViewCreated] END</div><div class="line">Fragment1: [onActivityCreated] BEGIN</div><div class="line">Fragment1: [onActivityCreated] END</div><div class="line">Fragment1: [onStart] BEGIN</div><div class="line">Fragment1: [onStart] END</div><div class="line">BasicActivity: [onStart] END</div><div class="line">BasicActivity: [onPostCreate] BEGIN</div><div class="line">BasicActivity: [onPostCreate] END</div><div class="line">BasicActivity: [onResume] BEGIN</div><div class="line">BasicActivity: [onResume] END</div><div class="line">BasicActivity: [onPostResume] BEGIN</div><div class="line">Fragment1: [onResume] BEGIN</div><div class="line">Fragment1: [onResume] END</div><div class="line">BasicActivity: [onPostResume] END</div><div class="line">BasicActivity: [onAttachedToWindow] BEGIN</div><div class="line">BasicActivity: [onAttachedToWindow] END</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>Fragment</strong>的<code>onResume()</code>在<strong>Activity</strong>的<code>onResume()</code>之后调用。</p>
+</li>
+<li><p>是否设置 <code>addToBackStack()</code> 方法对 <strong>Fragment</strong> 的影响</p>
+<ul>
+<li>执行<code>replace</code>将<code>F1</code>替换为<code>F2</code>(不加addToBackStack())：</li>
+</ul>
+</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F2.onAttach()-&gt;Activity.onAttachFragment()-&gt;F2.onCreate()-&gt;F1.onPause()~onDetach()-&gt;F2.onCreateView()~onResume()</div></pre></td></tr></table></figure>
+<ul>
+<li><p>执行<code>replace</code>将<code>F1</code>替换为<code>F2</code>(加addToBackStack())</p>
+<p><code>F1</code>被替换只会调用<code>onDestoryView()</code>而不会调用后续生命周期。</p>
+</li>
+</ul>
+<h2 id="1-6-Fragment的添加方式"><a href="#1-6-Fragment的添加方式" class="headerlink" title="1.6 Fragment的添加方式"></a>1.6 Fragment的添加方式</h2><h3 id="1-6-1-静态添加"><a href="#1-6-1-静态添加" class="headerlink" title="1.6.1 静态添加"></a>1.6.1 静态添加</h3><p>在进行静态加载<code>Fragment</code>时，要注意：</p>
+<ul>
+<li>如果<code>Fragment</code>属于<code>android.support.v4.app.Fragment</code>，所用的<code>Activity</code>必须继承自<code>FragmentActivity</code>；</li>
+<li>如果<code>Fragment</code>属于<code>android.app.Fragment</code>，直接使用<code>Activity</code>即可。</li>
+</ul>
+<p>所谓的静态添加 <code>Fragment</code> 指的就是通过 <code>Activity</code> 的布局文件 <strong>引用</strong> <code>Fragment</code> 的布局文件，在 <code>Activity</code> 的子类中不做代码处理。</p>
+<ul>
+<li><strong>创建一个Fragment布局</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"com.example.cwj.SubFragment"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/sub_fragment"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建一个Fragment子类并加载布局文件</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FragmentSub</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></div><div class="line"><span class="function"><span class="params">                             Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="comment">// 参数注意：第3个参数必须为`false`，否则会加载两次布局并且抛出异常</span></div><div class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_blank, container, <span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>在Activity的布局文件中引用Fragment子类</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"com.example.cwj.MainActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></div><div class="line"><span class="tag">      <span class="attr">android:id</span>=<span class="string">"@+id/example_fragment"</span></span></div><div class="line"><span class="tag">      <span class="attr">android:name</span>=<span class="string">"com.example.程文佳.SubFragment"</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="1-6-2-动态添加"><a href="#1-6-2-动态添加" class="headerlink" title="1.6.2 动态添加"></a>1.6.2 动态添加</h3><p>动态添加与静态添加的不同之处在于：</p>
+<ol>
+<li>在 <code>Activity</code> 的布局文件中，不再使用 <code>fragment</code> 标签，而是直接使用 <code>FragmentLayout</code> 标签。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.constraint.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"com.example.cwjMainActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/main_activity_container"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.constraint.ConstraintLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>在 <code>Activity</code> 中动态的处理 <code>Fragment</code> 的添加及其他操作</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        <span class="comment">//1. 获取FragmentManager</span></div><div class="line">        FragmentManager fragmentManager = getFragmentManager();</div><div class="line">        <span class="comment">//2. 获取FragmentTransaction</span></div><div class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</div><div class="line">        <span class="comment">//3. 创建Fragment</span></div><div class="line">        SubFragment subFragment = <span class="keyword">new</span> SubFragment();</div><div class="line">        <span class="comment">//4. 将Fragment替换到Activity的布局中(Framelayout)</span></div><div class="line">        fragmentTransaction.add(R.id.main_activity_container, subFragment);</div><div class="line">        fragmentTransaction.commit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所谓的 <code>动态添加</code> 指的就是：在 <code>Activity</code>的 布局文件中先设置一个 <strong>占位符布局文件（FragmentLayout）</strong>，然后在 <code>Activity</code> 的代码中再通过代码 <code>动态</code> 的将 <code>Fragment</code> 的子类替换掉<code>占位符布局文件</code>。</p>
+<h3 id="1-6-3-非正常添加-重复添加"><a href="#1-6-3-非正常添加-重复添加" class="headerlink" title="1.6.3 非正常添加 - 重复添加"></a>1.6.3 非正常添加 - 重复添加</h3><p><strong>问题描述：</strong></p>
+<p><code>Fragment</code> 是依附于 <code>Activity</code> 而存在的，是在 <code>Activity</code> 的 <code>onCreate()</code> 中进行初始化的，但是有一种情况就是：当手机的屏幕发生旋转时，<code>Activity</code> 的生命周期会进行重新调用，会多次调用 <code>onCreate()</code> 方法，结果就导致 <code>Fragment</code> 的处理执行多次。</p>
+<p><strong>问题解决：</strong></p>
+<p>通过 <code>onSaveInstanceState参数</code> 来确定 <code>onCreate()</code> 是否多次执行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main_java);</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(savedInstanceState == <span class="keyword">null</span>)&#123;</div><div class="line">		<span class="comment">// 执行 Fragment操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="FragmentTransaction"><a href="#FragmentTransaction" class="headerlink" title="FragmentTransaction"></a>FragmentTransaction</h1><p>定义了对 <strong>Fragment</strong> 的 <code>添加</code>、<code>替换</code>、<code>隐藏</code>等操作，还有<code>四种提交方法</code>，其具体实现是在 <strong>BackStackRecord</strong> 中。</p>
+<h2 id="addToBackStack"><a href="#addToBackStack" class="headerlink" title="addToBackStack()"></a>addToBackStack()</h2><p>将此次事物添加到后台堆栈，按下“回退键”<code>不会退出</code>该Activity而是<code>回到</code>上一个操作时的状态。相当于：按下“回退键”= 执行了add()对应的remove()，加入回退栈，则用户点击返回按钮，会回滚Fragment事务。</p>
+<h2 id="show-、hide"><a href="#show-、hide" class="headerlink" title="show()、hide()"></a>show()、hide()</h2><ul>
+<li><code>hide(fragment)</code>：隐藏一个存在的fragment</li>
+<li><code>show(fragment)</code>：显示一个被隐藏过的fragment</li>
+<li><p><code>hide()</code>和<code>show()</code> ：</p>
+<p>其实<code>add()</code>是一层层的将 <code>Fragment</code> 添加上去的，通过<code>show()</code> 去显示当前界面，<code>hide()</code>去隐藏其他的界面，这时候的<code>FrameLayout</code>是会有 <strong>很多层</strong> 的。</p>
+<p><code>hide()</code>、<code>show()</code>不会调用任何生命周期方法，只是控制显隐藏。但是重写<code>onHiddenChanged()</code>可以对Fragment的<code>hide()</code>、<code>show()</code>状态进行监听。</p>
+</li>
+</ul>
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h2><p><code>replace()</code> 与 <code>add() + hide() + show()</code> 的方式相比，是会替换掉 <code>原有的Fragment</code>，所以这种方式的<code>FrameLayout是只有一层</code>.</p>
+<h2 id="attach-、detach"><a href="#attach-、detach" class="headerlink" title="attach()、detach()"></a>attach()、detach()</h2><ul>
+<li><code>detach(fragment)</code>：分离fragment的UI视图</li>
+<li><code>attach(fragment)</code>：重新关联一个Fragment(必须在detach后才能执行)</li>
+<li><p>对生命周期的影响：</p>
+<ul>
+<li>当Fragment被<code>detach()</code>后，Fragment的生命周期执行完<code>onDestroyView()</code>就 <strong>终止</strong>,Fragment的 <strong>实例并没有被销毁</strong>，只是<strong>UI界面被移除（和remove有区别）</strong>。</li>
+<li>当Fragment被<code>detach()</code>后，执行<code>attach()</code>操作，会让Fragment从<code>onCreateView()</code>开始执行，一直执行到<code>onResume()</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="setCustomAnimations"><a href="#setCustomAnimations" class="headerlink" title="setCustomAnimations()"></a>setCustomAnimations()</h2><ul>
+<li>给Fragment的 <code>进入/退出</code> 设置指定的 <strong>动画资源</strong></li>
+<li><code>getSupportFragmentManager()</code> <strong>不支持属性动画</strong>，仅支持补间动画。</li>
+<li><code>getFragmentManager()</code> <strong>支持属性动画</strong>。</li>
+<li><code>setCustomAnimations()</code>一定要放在 <code>add()</code>、<code>remove()</code> 等操作之前。</li>
+</ul>
+<h2 id="addSharedElement-View-sharedElement-String-name"><a href="#addSharedElement-View-sharedElement-String-name" class="headerlink" title="addSharedElement(View sharedElement, String name)"></a>addSharedElement(View sharedElement, String name)</h2><p>作用是设置 <code>共享View</code> 供其他 Fragment 使用。</p>
+<h2 id="提交方式"><a href="#提交方式" class="headerlink" title="提交方式"></a>提交方式</h2><ul>
+<li><code>commit()</code>：安排一个事务的提交。</li>
+<li><code>commitNow()</code>：同步的提交这个事务。（API_24添加）</li>
+<li><code>commitAllowingStateLoss()</code>：和commit一样，但是允许Activity的状态保存之后提交。</li>
+<li><code>commitNowAllowingStateLoss()</code>：和commitNow()一样，但是允许Activity的状态保存之后提交。（API_24添加）</li>
+</ul>
+<h1 id="FragmentManger"><a href="#FragmentManger" class="headerlink" title="FragmentManger"></a>FragmentManger</h1><p>是一个<code>抽象类</code>，它定义了对一个 <strong>Activity/Fragment</strong>中 添加进来的 <code>Fragment列表</code>、<code>Fragment回退栈</code>的<strong>操作、管理方法</strong>，同时还定义了<code>获取事务对象</code>的方法，其具体实现类是在 <strong>FragmentImpl</strong> 中。</p>
+<h1 id="Fragment通信"><a href="#Fragment通信" class="headerlink" title="Fragment通信"></a>Fragment通信</h1><h2 id="Fragment向Activity传递数据"><a href="#Fragment向Activity传递数据" class="headerlink" title="Fragment向Activity传递数据"></a>Fragment向Activity传递数据</h2><p><strong>通过回调</strong>：在 <code>Fragment</code> 中设置回调接口，并在合适的方法中调用此接口实例，在 <code>Activity</code> 中具体实现这个接口。</p>
+<h2 id="Activity向Fragment传递数据"><a href="#Activity向Fragment传递数据" class="headerlink" title="Activity向Fragment传递数据"></a>Activity向Fragment传递数据</h2><p><strong>setArguments(Bundle bundle)，getArguments()</strong></p>
+<p> 在<code>创建</code><strong>Fragment</strong>时要传入参数，必须要通过<code>setArguments(Bundle bundle)</code>方式添加，而不建议通过为<code>Fragment添加带参数的构造函数</code>，因为通过<code>setArguments()</code>方式添加，在由于内存紧张导致Fragment被系统杀掉并恢复（re-instantiate）时能保留这些数据。</p>
+<h2 id="Fragment之间传递数据"><a href="#Fragment之间传递数据" class="headerlink" title="Fragment之间传递数据"></a>Fragment之间传递数据</h2><ul>
+<li>需要借助<code>Activity</code>进行数据通信</li>
+<li><code>Activity</code>中通过 <strong>FragmentManager</strong> 的<code>findFragmentById()</code>去获取<code>Fragment</code>。</li>
+</ul>
+<h2 id="简单、解耦的方式"><a href="#简单、解耦的方式" class="headerlink" title="简单、解耦的方式"></a>简单、解耦的方式</h2><p><strong>EventBus</strong></p>
+<h1 id="DialogFragment"><a href="#DialogFragment" class="headerlink" title="DialogFragment"></a>DialogFragment</h1><p><strong>DialogFragment</strong>是<code>Android 3.0</code>提出的，代替了<code>Dialog</code>，用于实现 <strong>对话框</strong>。他的优点是：<strong>即使旋转屏幕，也能保留对话框状态</strong>。</p>
+<h1 id="FragmentPagerAdapter与FragmentStatePagerAdapter的区别："><a href="#FragmentPagerAdapter与FragmentStatePagerAdapter的区别：" class="headerlink" title="FragmentPagerAdapter与FragmentStatePagerAdapter的区别："></a>FragmentPagerAdapter与FragmentStatePagerAdapter的区别：</h1><ul>
+<li>由于<strong>FragmentStatePagerAdapter</strong>在<code>destoryItem()</code>的时候调用<code>mCurTransaction.remove(fragment)</code>，会<code>回收内存</code>的，而页面比较多的时候，就比较消耗内存，所以适合于 <strong>页面比较多</strong> 的情况。</li>
+<li><strong>FragmentPagerAdapter</strong>在<code>destoryItem()</code>的时候调用<code>mCurTransaction.detach(fragment)</code>，没有回收内存，只是将fragment与activity的<code>UI进行分离</code>，所以适合于 <strong>页面比较少</strong> 的情况。</li>
+</ul>
+<h1 id="Fragment懒加载"><a href="#Fragment懒加载" class="headerlink" title="Fragment懒加载"></a>Fragment懒加载</h1><p>当使用<code>viewpager+adapter</code>作为应用大的布局时，<strong>viewpager</strong>会通过<code>setOffscreenPageLimit()</code>来设置 <strong>预加载的项目</strong>，不设置setOffscreenPageLimit()，则<code>默认为1</code>（设置0无效，可以查看该方法源码知道），也就是当我们打开应用看到的时候<code>fragmentOne</code>时，实际上其他fragment（例如fragmentSecond）也进行了加载，只不过没有显示出来罢了，但是这样就造成了不必要的资源浪费（例如，fragmentSecond没有显示，但是却进行了大量的网络加载操作）。</p>
+<h2 id="什么是懒加载"><a href="#什么是懒加载" class="headerlink" title="什么是懒加载"></a>什么是懒加载</h2><p><strong>ViewPager</strong>默认会 <code>预加载左右相邻的Fragment</code>，但是在一些有耗时操作的情况下，就需要进行懒加载处理了，即：在打开相应Fragment时才加载数据。</p>
+<h2 id="如何实现懒加载"><a href="#如何实现懒加载" class="headerlink" title="如何实现懒加载"></a>如何实现懒加载</h2><p><strong>懒加载的实现思路</strong>：用户不可见的界面，<strong>只初始化UI</strong>，但是<strong>不做任何数据加载</strong>。等滑到该页，才会<strong>异步做数据加载并更新UI</strong>。因此通过：<strong>Fragment</strong> 的 <code>setUserVisibleHint()</code> 方法，可以实现懒加载。</p>
+<h3 id="Fragment-的-setUserVisibleHint-方法"><a href="#Fragment-的-setUserVisibleHint-方法" class="headerlink" title="Fragment 的 setUserVisibleHint() 方法"></a>Fragment 的 setUserVisibleHint() 方法</h3><p><code>setUserVisibleHint()</code>的方法就是判断这个<code>fragment</code><strong>对用户是否可见</strong>的。唯一需要值得注意的是，<code>setUserVisibleHint()</code>是在<code>onCreateView()</code>周期 <strong>前</strong> 调用，此时布局中各View还未初始化，所以只能在<code>setUserVisibleHint()</code>中进行 <strong>纯数据加载</strong>。</p>
+<h3 id="调用-setUserVisibleHint-方法"><a href="#调用-setUserVisibleHint-方法" class="headerlink" title="调用 setUserVisibleHint() 方法"></a>调用 setUserVisibleHint() 方法</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/温故知新-数据结构-数组、链表C/" rel="next" title="温故知新-数据结构-数组、链表C">
+                <i class="fa fa-chevron-left"></i> 温故知新-数据结构-数组、链表C
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/开源库-Retrofit2/" rel="prev" title="开源库-Retrofit2">
+                开源库-Retrofit2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Fragment"><span class="nav-number">1.</span> <span class="nav-text">1 Fragment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-特点："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Fragment生命周期方法调用场景"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Fragment生命周期方法调用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Fragment在不同场景下的生命周期方法调用顺序"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Fragment在不同场景下的生命周期方法调用顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Fragment和Activity生命周期对应图"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Fragment和Activity生命周期对应图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Fragment的添加方式"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Fragment的添加方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-静态添加"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.6.1 静态添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-动态添加"><span class="nav-number">1.6.2.</span> <span class="nav-text">1.6.2 动态添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-3-非正常添加-重复添加"><span class="nav-number">1.6.3.</span> <span class="nav-text">1.6.3 非正常添加 - 重复添加</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FragmentTransaction"><span class="nav-number">2.</span> <span class="nav-text">FragmentTransaction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#addToBackStack"><span class="nav-number">2.1.</span> <span class="nav-text">addToBackStack()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#show-、hide"><span class="nav-number">2.2.</span> <span class="nav-text">show()、hide()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace"><span class="nav-number">2.3.</span> <span class="nav-text">replace()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attach-、detach"><span class="nav-number">2.4.</span> <span class="nav-text">attach()、detach()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setCustomAnimations"><span class="nav-number">2.5.</span> <span class="nav-text">setCustomAnimations()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addSharedElement-View-sharedElement-String-name"><span class="nav-number">2.6.</span> <span class="nav-text">addSharedElement(View sharedElement, String name)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交方式"><span class="nav-number">2.7.</span> <span class="nav-text">提交方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FragmentManger"><span class="nav-number">3.</span> <span class="nav-text">FragmentManger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment通信"><span class="nav-number">4.</span> <span class="nav-text">Fragment通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment向Activity传递数据"><span class="nav-number">4.1.</span> <span class="nav-text">Fragment向Activity传递数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity向Fragment传递数据"><span class="nav-number">4.2.</span> <span class="nav-text">Activity向Fragment传递数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment之间传递数据"><span class="nav-number">4.3.</span> <span class="nav-text">Fragment之间传递数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单、解耦的方式"><span class="nav-number">4.4.</span> <span class="nav-text">简单、解耦的方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DialogFragment"><span class="nav-number">5.</span> <span class="nav-text">DialogFragment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FragmentPagerAdapter与FragmentStatePagerAdapter的区别："><span class="nav-number">6.</span> <span class="nav-text">FragmentPagerAdapter与FragmentStatePagerAdapter的区别：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment懒加载"><span class="nav-number">7.</span> <span class="nav-text">Fragment懒加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是懒加载"><span class="nav-number">7.1.</span> <span class="nav-text">什么是懒加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现懒加载"><span class="nav-number">7.2.</span> <span class="nav-text">如何实现懒加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment-的-setUserVisibleHint-方法"><span class="nav-number">7.2.1.</span> <span class="nav-text">Fragment 的 setUserVisibleHint() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用-setUserVisibleHint-方法"><span class="nav-number">7.2.2.</span> <span class="nav-text">调用 setUserVisibleHint() 方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">284.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
