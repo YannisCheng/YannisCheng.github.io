@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,优化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="App优化的本质 - 知识体系结构够丰富、知识点理解够透彻、代码够规范，则不存在优化。">
+<meta name="keywords" content="Android,优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App性能优化概览">
+<meta property="og:url" content="http://yannischeng.com/App性能优概览/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="App优化的本质 - 知识体系结构够丰富、知识点理解够透彻、代码够规范，则不存在优化。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2014.06.59.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.06.02.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.28.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.39.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E9%9D%99%E6%80%81%E4%B8%8E%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2020.36.20.png">
+<meta property="og:updated_time" content="2019-03-10T12:01:42.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App性能优化概览">
+<meta name="twitter:description" content="App优化的本质 - 知识体系结构够丰富、知识点理解够透彻、代码够规范，则不存在优化。">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/App性能优概览/"/>
+
+
+
+
+
+  <title>App性能优化概览 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/App性能优概览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">App性能优化概览</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T13:46:46+08:00">
+                2018-07-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T20:01:42+08:00">
+                2019-03-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,078 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/优化/" rel="tag"># 优化</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/App性能优概览/" title="App性能优化概览">http://yannischeng.com/App性能优概览/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>App优化的本质 - 知识体系结构够丰富、知识点理解够透彻、代码够规范，则不存在优化。</strong></p>
+<a id="more"></a>
+<p>引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">假如饭点将至，需要打开订餐APP进行点餐：</div><div class="line">首先一定不希望，在浏览商家和菜品列表内容很丰富的时候遇到卡顿现象；</div><div class="line">然后千挑万选后在期待美食将至的心情下准备下单，突然遇到闪退崩溃，那简直想卸载APP的心都有了；</div><div class="line">其次就是配送员在配送过程中不希望耗电和耗流量太严重；</div><div class="line">最后就是用户和配送员都希望版本更新的时候安装包希望能小一点。</div></pre></td></tr></table></figure>
+<p>一张图表述 App 性能优化切入点：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png" alt=""></p>
+<p>本文内容将会根据此图进行说明，分为以下模块点：</p>
+<ul>
+<li><p>布局</p>
+</li>
+<li><p>绘制</p>
+</li>
+<li><p>内存</p>
+</li>
+<li><p>启动速度</p>
+</li>
+<li><p>包体</p>
+</li>
+<li><p>耗电</p>
+</li>
+<li><p>RecyclerView自带优化、Bitmap</p>
+</li>
+<li><p>响应速度-线程</p>
+</li>
+</ul>
+<h1 id="布局优化"><a href="#布局优化" class="headerlink" title="布局优化"></a>布局优化</h1><p>屏幕上的某个像素在同一帧的时间内被绘制了多次。在多层次的UI结构里面，如果不可见的UI也在做绘制的操作，这就会导致某些像素区域被绘制了多次。这就浪费大量的CPU以及GPU资源。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2014.06.59.png" alt=""></p>
+<p>通过颜色我们可以知道应用是否有多余层次的绘制，如果一路飘红，那么我们就要相应的处理了。</p>
+<h2 id="优化-Version-1-0-：颜色设置、include-merge、ViewStub"><a href="#优化-Version-1-0-：颜色设置、include-merge、ViewStub" class="headerlink" title="优化 Version 1.0 ：颜色设置、include + merge、ViewStub"></a>优化 Version 1.0 ：颜色设置、include + merge、ViewStub</h2><h3 id="颜色设置"><a href="#颜色设置" class="headerlink" title="颜色设置"></a>颜色设置</h3><ul>
+<li>如果父控件有颜色，也是自己需要的颜色，那么就不必在子控件加背景颜色</li>
+<li>如果每个子控件的颜色不太一样，而且可以完全覆盖父控件，那么就不需要再父控件上加背景颜色</li>
+</ul>
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><h4 id="include-merge"><a href="#include-merge" class="headerlink" title="include + merge"></a>include + merge</h4><blockquote>
+<p>参考：<a href="https://blog.csdn.net/a740169405/article/details/50473909" target="_blank" rel="external">https://blog.csdn.net/a740169405/article/details/50473909</a></p>
+</blockquote>
+<p>  <strong>特点：</strong></p>
+<ol>
+<li>使用include标签可以增加布局的 <strong>复用性，提高效率</strong>。<ol>
+<li>使用merge标签可以 <strong>减少</strong> 视图树中的 <strong>节点个数，加快视图的绘制，提高UI性能</strong>。</li>
+<li><code>&lt;merge/&gt;</code> 标签的使用，看上去一次只减少一个节点，但是当一个布局嵌套很复杂的时候，节点的个数可能达到几百个，这个时候，如果每个地方都多一个节点，视图的绘制时间相应的也就变长了很多。</li>
+</ol>
+</li>
+</ol>
+<p><strong>使用 <code>&lt;merge/&gt;</code> 注意</strong>：</p>
+<ul>
+<li>1.<code>&lt;merge/&gt;</code> 必须放在布局文件的根节点上。</li>
+<li>2.<code>&lt;merge/&gt;</code> 不是一个ViewGroup，也不是一个View，它相当于声明了一些视图，等待被添加。</li>
+<li>3.<code>&lt;merge/&gt;</code> 标签被添加到A容器下，那么 <code>&lt;merge/&gt;</code> 下的所有视图将被添加到A容器下。</li>
+<li>4.因为 <code>&lt;merge/&gt;</code> 并不是View，所以在通过 <code>LayoutInflate.inflate</code> 方法渲染的时候， 第二个参数必须指定一个 <code>父容器</code>，且第三个参数必须为 <code>true</code>，也就是必须为 <code>&lt;merge/&gt;</code> 下的视图指定一个父亲节点。</li>
+<li>5.如果Activity的布局文件根节点是FrameLayout，可以替换为 <code>&lt;merge/&gt;</code>，这样，执行setContentView之后，会减少一层FrameLayout节点。</li>
+<li>6.自定义View如果继承LinearLayout，建议让自定义View的布局文件根节点设置成 <code>&lt;merge/&gt;</code>，这样能少一层结点。</li>
+<li>7.因为 <code>&lt;merge/&gt;</code> 不是View，所以对 <code>&lt;merge/&gt;</code>标签设置的所有属性都是无效的。</li>
+</ul>
+<h4 id="ViewStub"><a href="#ViewStub" class="headerlink" title="ViewStub"></a>ViewStub</h4><blockquote>
+<p>参考：<a href="https://blog.csdn.net/a740169405/article/details/50351013" target="_blank" rel="external">https://blog.csdn.net/a740169405/article/details/50351013</a></p>
+</blockquote>
+<p><code>&lt;ViewStub/&gt;</code>  产生效果的本质是：<strong>==懒加载==</strong>、<strong>==弱引用==</strong>。<br>通过一个在视图中已存在的 <code>&lt;ViewStub/&gt;</code> 来临时代替 <strong>正式布局</strong>，直到真正需要加载 <strong>正式布局</strong> 时，将 <code>&lt;ViewStub/&gt;</code> 替换掉。</p>
+<p><strong><code>inflate()</code></strong> 方法只能调用一次，不建议通过 <strong><code>setVisibility()</code></strong> 加载视图</p>
+<p><strong>使用</strong></p>
+<p>要实现的操作：在一个 Activity 上放置了一个按钮，点击后加载懒加载的视图。</p>
+<p>1、 Activity布局文件定义 <code>my_sub_activity.xml</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;Button</div><div class="line">        android:onClick=&quot;onClick&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:text=&quot;加载视图&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ViewStub</div><div class="line">        android:id=&quot;@+id/stub&quot;</div><div class="line">        android:inflatedId=&quot;@+id/subTree&quot;</div><div class="line">        android:layout=&quot;@layout/my_sub_tree&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<p><code>android:inflatedId</code> 指定了懒加载视图跟节点的 <code>ID</code>，<code>android:layout</code> 指定了懒加载的视图。<code>android:layout_width</code>、<code>android:layout_height</code> 分别指定了懒加载视图的宽和高。</p>
+<p>2、 懒加载布局文件 <code>my_sub_tree.xml</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:background=&quot;#ffffff&quot;</div><div class="line">    android:gravity=&quot;center&quot;</div><div class="line">    android:padding=&quot;10dip&quot;</div><div class="line">    android:text=&quot;懒加载视图&quot;</div><div class="line">    android:textColor=&quot;#000000&quot;</div><div class="line">    android:textSize=&quot;22sp&quot;&gt;</div><div class="line">&lt;/TextView&gt;</div></pre></td></tr></table></figure>
+<p>3、 在 Activity 中调用的代码，点击后查到ViewStub对象，并加载视图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onClick(View v) &#123;</div><div class="line">    // 这里调用的是inflate方法，当然，也可以调用setVisibility方法（但是不建议这么做）</div><div class="line">    // 只能点击一次加载视图按钮，因为inflate只能被调用一次</div><div class="line">    // 如果再次点击按钮，会抛出异常&quot;ViewStub must have a non-null ViewGroup viewParent&quot;</div><div class="line">    ((ViewStub) findViewById(R.id.stub)).inflate();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>效果图</strong>：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.06.02.png" alt=""></p>
+<p><strong><code>&lt;ViewStub/&gt;</code> 在VIew树中加载的前后对比</strong>：</p>
+<p>加载前：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.28.png" alt=""></p>
+<p>加载后：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.39.png" alt=""></p>
+<h2 id="优化-Version-1-1-：ConstraintLayout（约束布局）"><a href="#优化-Version-1-1-：ConstraintLayout（约束布局）" class="headerlink" title="优化 Version 1.1 ：ConstraintLayout（约束布局）"></a>优化 Version 1.1 ：ConstraintLayout（约束布局）</h2><p>复杂界面可选择ConstraintLayout，可有效减少层级。</p>
+<h1 id="绘制优化-渲染性能：onDraw"><a href="#绘制优化-渲染性能：onDraw" class="headerlink" title="绘制优化 - 渲染性能：onDraw()"></a>绘制优化 - 渲染性能：onDraw()</h1><h2 id="Android渲染机制："><a href="#Android渲染机制：" class="headerlink" title="Android渲染机制："></a>Android渲染机制：</h2><p>Android系统 <strong>每隔16s</strong> 发出 <code>VSYNC</code> 信号，触发UI渲染：</p>
+<ul>
+<li>渲染成功：界面流畅；</li>
+<li>渲染失败：时间延误或者直接跳过，反应到手机屏幕就是：<strong>卡、跳帧</strong>。</li>
+</ul>
+<p>Android渲染机制的最后一步是 <strong><code>onDraw()</code></strong>，在前面的介绍中已经处理了测量、布局过程，此时，解决办法，根本做法是 <strong>减轻<code>onDraw()</code>的负担</strong>。</p>
+<h2 id="onDraw-处理方法："><a href="#onDraw-处理方法：" class="headerlink" title="onDraw() 处理方法："></a>onDraw() 处理方法：</h2><ul>
+<li><strong>不要做耗时的任务</strong>，也 <strong>不做过多的循环操作</strong>，特别是 <strong>嵌套循环</strong>，虽然每次循环耗时很小，但是大量的循环势必 <strong>霸占CPU的时间片</strong>，从而造成View的绘制过程不流畅。</li>
+<li><strong>不要创建新的局部对象</strong>，因为 onDraw() 方法一般都会 <strong>频繁大量调用</strong>，就意味着会 <strong>产生大量的临时对象</strong>，不仅 <strong>占用过的内存</strong>，而且会导致系统更加 <strong>频繁的GC</strong>，大大降低程序的执行速度和效率。</li>
+</ul>
+<h2 id="优化-Version-2-0-：onDrow"><a href="#优化-Version-2-0-：onDrow" class="headerlink" title="优化 Version 2.0 ：onDrow()"></a>优化 Version 2.0 ：onDrow()</h2><ul>
+<li>onDraw中不要创建新的局部对象</li>
+<li>onDraw方法中不要做耗时的任务</li>
+</ul>
+<h1 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h1><h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p><strong>内存泄漏</strong> 指的是 <strong>那些程序不再使用的对象无法被GC识别</strong>，这样就 <strong>导致这个对象一直留在内存当中，占用了没来就不多的内存空间</strong>。</p>
+<p>内存泄漏是一个 <strong>缓慢积累</strong> 的过程，温水煮青蛙一般，往往很难直观的看到，只能最后内存不够用了，程序崩溃。</p>
+<p>因为有 <strong>内存泄漏</strong>，所以 <strong>内存被占用越来越多</strong>，那么 <strong>GC会更容易被触发</strong>，GC会 <strong>越来越频发</strong>，但是当GC的时候 <strong>所有的线程都是暂停状态的</strong>，需要处理的 <strong>对象数量越多耗时越长</strong>，所以这也会造成 <strong>卡顿</strong>。</p>
+<h2 id="发生泄漏的4大类情况"><a href="#发生泄漏的4大类情况" class="headerlink" title="发生泄漏的4大类情况"></a>发生泄漏的4大类情况</h2><ul>
+<li>集合类</li>
+<li>单例/静态变量</li>
+<li>匿名内部类/非静态内部类</li>
+<li>资源未关闭</li>
+</ul>
+<h3 id="集合类泄漏"><a href="#集合类泄漏" class="headerlink" title="集合类泄漏"></a>集合类泄漏</h3><p>集合类添加元素后，仍引用着集合元素对象，导致该集合中的元素对象无法被回收，从而导致内存泄露。合适的做法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">static List&lt;Object&gt; mList = new ArrayList&lt;&gt;();</div><div class="line">for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">   Object obj = new Object();</div><div class="line">  mList.add(obj);</div><div class="line">   obj = null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">mList.clear();</div><div class="line">mList = null;</div></pre></td></tr></table></figure>
+<h3 id="单例-静态变量"><a href="#单例-静态变量" class="headerlink" title="单例/静态变量"></a>单例/静态变量</h3><p>单例模式具有其 <strong>静态</strong> 特性， <strong>其生命周期 = 应用程序生命周期</strong>，正是因为这一点，往往很容易造成内存泄漏。</p>
+<p>一个示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class SingleInstance &#123;</div><div class="line"></div><div class="line">    private static SingleInstance mInstance;</div><div class="line">    private Context mContext;</div><div class="line"></div><div class="line">    private SingleInstance(Context context)&#123;</div><div class="line">        this.mContext = context;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static SingleInstance newInstance(Context context)&#123;</div><div class="line">        if(mInstance == null)&#123;</div><div class="line">            mInstance = new SingleInstance(context);</div><div class="line">        &#125;</div><div class="line">        return sInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在此单例模式中，当我们将 Activity 作为 context 参数进行传递时，这个单例就拥有了 Activity 的引用。当此 Activity 没有用、要被销毁时，此单例仍然持有 此Activity的引用。所以 GC 无法回收，结果就是造成了内存泄漏。</p>
+<p>修改之后，合理的使用方式为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class SingleInstance &#123;</div><div class="line"></div><div class="line">    private static SingleInstance mInstance;</div><div class="line">    private Context mContext;</div><div class="line"></div><div class="line">    private SingleInstance(Context context)&#123;</div><div class="line">        this.mContext = context.getApplicationContext();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static SingleInstance newInstance(Context context)&#123;</div><div class="line">        if(mInstance == null)&#123;</div><div class="line">            mInstance = new SingleInstance(context);</div><div class="line">        &#125;</div><div class="line">        return sInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="匿名内部类-非静态内部类"><a href="#匿名内部类-非静态内部类" class="headerlink" title="匿名内部类/非静态内部类"></a>匿名内部类/非静态内部类</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E9%9D%99%E6%80%81%E4%B8%8E%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E5%AF%B9%E6%AF%94.png" alt=""></p>
+<p>两个关键点：</p>
+<ul>
+<li>生命周期</li>
+<li>对象引用</li>
+</ul>
+<h4 id="非静态内部类一个示例："><a href="#非静态内部类一个示例：" class="headerlink" title="非静态内部类一个示例："></a>非静态内部类一个示例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class TestActivity extends Activity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">        new MyAscnyTask().execute();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    class MyAscnyTask extends AsyncTask&lt;Void, Integer, String&gt;&#123;</div><div class="line">        @Override</div><div class="line">        protected String doInBackground(Void... params) &#123;</div><div class="line">            try &#123;</div><div class="line">                Thread.sleep(100000);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>乍一看这一段程序在功能上是没有问题的。但是如果从对象持有、内存状态再来看待这段程序时，MyAscnyTask是一个非静态内部类，如果他处理数据的时间很长，极端点用sleep 100秒，在这期间Activity可能运行5s后就关闭了，原本理想的状态是Activity的内存应该被回收的。但是：我们知道非静态内部类会持有外部类的引用，所以Activity也需要陪着非静态内部类MyAscnyTask一起跑完 100s。好了，内存泄漏就形成了。</p>
+<p>如何解决呢？ 这就要回到这一节主题所代表的问题本质：<strong>生命周期</strong>。</p>
+<p>既然 MyAscnyTask  与 Activity 的 <strong>生命周期差距如此之大</strong>，那么就干脆把 MyAscnyTask 变成<strong> 静态内部类</strong>，和Application玩去吧，这样做得到的结果就是：</p>
+<pre><code>静态内部类与外部类两者之间的 引用、内存 关系也相互独立了。
+</code></pre><p><strong>于是，可以修改该为：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class TestActivity extends Activity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">        new MyAscnyTask().execute();</div><div class="line">    &#125;</div><div class="line">   //改了这里 注意一下 static</div><div class="line">   static  class MyAscnyTask extends AsyncTask&lt;Void, Integer, String&gt;&#123;</div><div class="line">        @Override</div><div class="line">        protected String doInBackground(Void... params) &#123;</div><div class="line">            try &#123;</div><div class="line">                Thread.sleep(100000);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="匿名态内部类一个示例："><a href="#匿名态内部类一个示例：" class="headerlink" title="匿名态内部类一个示例："></a>匿名态内部类一个示例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class TestActivity extends Activity &#123;</div><div class="line">private TextView mText;</div><div class="line">    private Handler mHandler = new Handler()&#123;</div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line">            super.handleMessage(msg);</div><div class="line">//do something</div><div class="line">mText.setText(&quot; do someThing&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">	   mText = findVIewById(R.id.mText);</div><div class="line">	   </div><div class="line">        //  匿名线程持有 Activity 的引用，进行耗时操作</div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                try &#123;</div><div class="line">                    Thread.sleep(100000);</div><div class="line">                &#125; catch (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">        mHandler. sendEmptyMessageDelayed(0, 100000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在本小结的一开始列出了2个关键点：<strong>生命周期</strong> 已经在第一种问题中得到了应用。 那么接下来通过 <strong>对象引用</strong> 这个出发点来解决这个问题。</p>
+<p><strong>引用分为：强、软、弱、虚引用</strong>，而且 <strong>引用强度依次递减</strong>。</p>
+<ul>
+<li><p><strong>强引用：</strong></p>
+<p>平时用的最多、不做处理的一般都是强引用，如果一个对象具有的是强引用，那么GC即使发生OOM也不会回收它。</p>
+</li>
+<li><p><strong>软引用（SoftReference）：</strong></p>
+<p>如果内存空间足够，GC则不会回收它，如果内存空间不足，那么GC则回收它。</p>
+</li>
+<li><p><strong>弱引用（WeakReference）：</strong></p>
+<p>GC的时候无论内存是否够用，都要回收它。</p>
+</li>
+<li><p><strong>虚引用：</strong> </p>
+<p>不常用。</p>
+</li>
+</ul>
+<p><strong>那么此 <code>匿名态内部类示例</code> 的内存问题解决方式就变成了： </strong></p>
+<ul>
+<li><strong>static化 - 对内外类之间的联系进行分离</strong></li>
+<li><strong>引用强度下降，使用弱引用 - 保证生命周期短的类及时销毁</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">public class TestActivity extends Activity &#123;</div><div class="line">    private TextView mText;</div><div class="line">    private MyHandler myHandler = new MyHandler(TestActivity.this);</div><div class="line">    private MyThread myThread = new MyThread();</div><div class="line"></div><div class="line">    private static class MyHandler extends Handler &#123;</div><div class="line"></div><div class="line">        WeakReference&lt;TestActivity&gt; weakReference;</div><div class="line">        MyHandler(TestActivity testActivity) &#123;</div><div class="line">            this.weakReference = new WeakReference&lt;TestActivity&gt;(testActivity);</div><div class="line">        &#125;</div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line">            super.handleMessage(msg);</div><div class="line">            weakReference.get().mText.setText(&quot;do someThing&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static class MyThread extends Thread &#123;</div><div class="line">        @Override</div><div class="line">        public void run() &#123;</div><div class="line">            super.run();</div><div class="line">            try &#123;</div><div class="line">                sleep(100000);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">        mText = findViewById(R.id.mText);</div><div class="line">        myHandler.sendEmptyMessageDelayed(0, 100000);</div><div class="line">        myThread.start();</div><div class="line">    &#125;</div><div class="line">    //最后清空这些回调 </div><div class="line">    @Override</div><div class="line">    protected void onDestroy() &#123;</div><div class="line">        super.onDestroy();</div><div class="line">        myHandler.removeCallbacksAndMessages(null);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="资源未关闭"><a href="#资源未关闭" class="headerlink" title="资源未关闭"></a>资源未关闭</h3><p><strong>可能出现问题的方面有：</strong></p>
+<ul>
+<li><strong>流 未关闭</strong></li>
+<li><strong>注册后未进行解绑</strong></li>
+<li><strong>start() 后没有 stop()</strong></li>
+</ul>
+<p><strong>分析工具：</strong></p>
+<ul>
+<li><strong>leakcanary</strong>，漏洞直接显示</li>
+<li><strong>Android Lint</strong>，帮助发现代码构成/质量问题。内存泄漏时会有发黄。</li>
+<li><strong>Android Profiler</strong>，自带，好好琢磨。</li>
+</ul>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><p>启动速度分为：</p>
+<ul>
+<li>冷启动（Cold Start）</li>
+<li>热启动（Hot Start）</li>
+<li>温启动（Warm Start）</li>
+</ul>
+<h2 id="1-冷启动（Cold-Start）"><a href="#1-冷启动（Cold-Start）" class="headerlink" title="1 冷启动（Cold Start）"></a>1 冷启动（Cold Start）</h2><p>冷启动是指应用程序从头开始：系统的进程在此开始之前没有创建应用程序的进程。</p>
+<p>在冷启动开始时，系统有<strong>3个任务</strong>。这些任务是：</p>
+<ol>
+<li><strong>加载并启动应用程序</strong>；</li>
+<li>启动后 <strong>立即显示</strong> 应用程序的 <strong>空白启动窗口</strong>；</li>
+<li><strong>创建应用程序进程</strong>。</li>
+</ol>
+<p>一旦系统创建了应用程序流程，应用程序流程就会负责下一个阶段：</p>
+<ol>
+<li><strong>创建Application对象</strong></li>
+<li><strong>启动主线程</strong></li>
+<li><strong>创建主Activity</strong></li>
+<li><strong>加载布局</strong></li>
+<li><strong>屏幕布局</strong></li>
+<li><strong>执行初始绘制</strong></li>
+</ol>
+<p>应用程序进程完成第一次绘制后，<strong>系统进程</strong> 会 <strong>交换</strong> 当前显示的 <strong>背景窗口</strong>，将其 <strong>替换</strong> 为<strong>主Activity</strong>。此时，用户可以开始使用该应用程序。至此启动完成。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2020.36.20.png" alt=""></p>
+<p>根据这个流程分析，在进行 <strong>Application</strong> 与 <strong>Activity</strong> 创建时可能会出现 <strong>性能问题</strong>。</p>
+<h3 id="1-1-Application创建"><a href="#1-1-Application创建" class="headerlink" title="1.1 Application创建"></a>1.1 Application创建</h3><p>当<strong>Application</strong>启动时，空白的启动窗口将保留在屏幕上，直到系统首次完成应用程序绘制。</p>
+<p>此时，系统进程会 <strong>交换</strong> 应用程序的启动窗口，允许用户开始与应用程序进行交互。这就是为什么我们的程序启动时会先出现一段时间的 <strong>黑屏(白屏)</strong>。</p>
+<p>如果我们有自己的<strong>Application</strong>，系统会在我们的<strong>Application对象</strong>上调用<code>onCreate()</code>方法。</p>
+<p>之后，应用程序会生成主线程（也称为UI线程），并通过创建<strong>主Activity</strong>来执行任务。<br>从这一点开始，App就按照他的 应用程序生命周期阶段进行。</p>
+<p>总结来说就是：<strong><code>Application创建 -&gt; UI线程 -&gt; Activity创建</code></strong></p>
+<h3 id="1-2-Activity创建"><a href="#1-2-Activity创建" class="headerlink" title="1.2 Activity创建"></a>1.2 Activity创建</h3><p><strong>Application</strong>进程创建活动后，活动将执行以下操作：</p>
+<ol>
+<li><p><strong>初始化值</strong>。</p>
+</li>
+<li><p><strong>调用构造函数</strong>。</p>
+</li>
+<li><p><strong>调用回调方法</strong>，例如 <code>Activity.onCreate()</code>，对应Activity的当前生命周期状态。</p>
+</li>
+</ol>
+<p>通常，该 <strong><code>onCreate()</code></strong> 方法对<code>加载时间</code> 的影响最大，因为它以最高的开销执行工作：加载和填充视图，以及初始化活动运行所需的对象。</p>
+<h2 id="2-热启动（Hot-start）"><a href="#2-热启动（Hot-start）" class="headerlink" title="2 热启动（Hot start）"></a>2 热启动（Hot start）</h2><p>应用程序的热启动比冷启动要简单得多，开销也更低。在一个热启动中，系统都会把你的Activity带到前台。如果应用程序的Activity仍然驻留在内存中，那么应用程序可以避免重复对象初始化、布局加载和渲染。</p>
+<p><strong>注意：**</strong><code>热启动显示</code>与<code>冷启动</code>方案<code>相同的屏幕行为</code>：系统进程显示<code>空白屏幕</code>，直到应用程序完成<code>呈现</code>活动**。</p>
+<p>热启动包括冷启动期间发生的一些操作子集; 同时，它比热启动代表更少的开销。有许多潜在的状态可以被视为热启动。例如：</p>
+<ul>
+<li><p>用户退出应用，但随后重新启动它。该过程可能已继续运行，但应用程序必须通过调用从头开始重新创建 <strong>Activity</strong> 的 <code>onCreate()</code>。</p>
+</li>
+<li><p>系统将应用程序从内存中逐出，然后用户重新启动它。需要重新启动<code>进程</code>和<code>活动</code>，但是任务可以从传入的已保存实例状态包中获益 <code>onCreate()</code>。</p>
+</li>
+</ul>
+<h2 id="温启动（Warm-start）"><a href="#温启动（Warm-start）" class="headerlink" title="温启动（Warm start）"></a>温启动（Warm start）</h2><p>温启动包含了冷启动时发生的一些操作，与此同时，它表示的开销比热启动少，有许多潜在的状态可以被认为是温暖的开始。</p>
+<p>场景：</p>
+<p>用户退出您的应用，但随后重新启动它。该过程可能已继续运行，但应用程序必须通过调用从头开始重新创建Activity 的onCreate()。</p>
+<p>系统将您的应用程序从内存中逐出，然后用户重新启动它。需要重新启动进程和活动，但是在调用onCreate()的时候可以从Bundle（savedInstanceState）获取数据。</p>
+<p><strong>谷歌官方给的建议是：</strong><br>1、利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；<br>2、避免在启动时做密集沉重的初始化（Heavy app initialization）；<br>3、避免I/O操作、反序列化、网络操作、布局嵌套等。</p>
+<p><strong>这里是慢的定义</strong>：</p>
+<ul>
+<li><p>冷启动需要5秒或更长时间。</p>
+</li>
+<li><p>温启动需要2秒或更长时间。</p>
+</li>
+<li><p>热启动需要1.5秒或更长时间。</p>
+</li>
+</ul>
+<p>无论何种启动，我们的优化点都是：<br><strong>Application、Activity创建以及回调等过程</strong></p>
+<h1 id="包体优化"><a href="#包体优化" class="headerlink" title="包体优化"></a>包体优化</h1><h2 id="APK的文件构成。"><a href="#APK的文件构成。" class="headerlink" title="APK的文件构成。"></a>APK的文件构成。</h2><ul>
+<li><p><strong>assets文件夹</strong></p>
+<p>存放一些配置文件、资源文件，assets不会自动生成对应的 ID，而是通过 AssetManager 类的接口获取。</p>
+</li>
+<li><p><strong>res目录</strong></p>
+<p>res 是 resource 的缩写，这个目录存放资源文件，会自动生成对应的 ID 并映射到 .R 文件中，访问直接使用资源 ID。</p>
+</li>
+<li><p><strong>META-INF</strong></p>
+<p>保存应用的签名信息，签名信息可以验证 APK 文件的完整性。</p>
+</li>
+<li><p><strong>AndroidManifest.xml</strong></p>
+<p>这个文件用来描述 Android 应用的配置信息，一些组件的注册信息、可使用权限等。</p>
+</li>
+<li><p><strong>classes.dex</strong></p>
+<p>Dalvik 字节码程序，让 Dalvik 虚拟机可执行，一般情况下，Android 应用在打包时通过 Android SDK 中的 dx 工具将 Java 字节码转换为 Dalvik 字节码。</p>
+</li>
+<li><p><strong>resources.arsc</strong></p>
+<p>记录着资源文件和资源 ID 之间的映射关系，用来根据资源 ID 寻找资源。</p>
+<h2 id="问题解决方案：减小-代码和资源"><a href="#问题解决方案：减小-代码和资源" class="headerlink" title="问题解决方案：减小 代码和资源"></a>问题解决方案：减小 代码和资源</h2></li>
+<li><p><strong>1、首先使用lint工具，同时开启资源压缩,自动删除无用的资源</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            shrinkResources true</div><div class="line">            minifyEnabled true</div><div class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;),</div><div class="line">                    &apos;proguard-rules.pro&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>2、我们可以使用可绘制对象，某些图像不需要静态图像资源; 框架可以在运行时动态绘制图像。Drawable对象（<shape>以XML格式）可以占用APK中的少量空间。此外，XML Drawable对象产生符合材料设计准则的单色图像。</shape></strong></p>
+</li>
+<li><p><strong>3、重用资源，比如一个三角按钮，点击前三角朝上代表收起的意思，点击后三角朝下，代表展开，我们会用两张图来切换，其实我们完全可以用旋转的形式去改变。一般比如同一图像的着色不同，我们可以用android:tint和tintMode属性</strong></p>
+</li>
+<li><p><strong>4、压缩PNG和JPEG文件您可以减少PNG文件的大小，而不会丢失使用工具如图像质量 pngcrush，pngquant，或zopflipng。所有这些工具都可以减少PNG文件的大小，同时保持感知的图像质量。</strong></p>
+</li>
+<li><p><strong>5、使用WebP文件格式可以使用图像的WebP文件格式，而不是使用PNG或JPEG文件。WebP格式提供有损压缩（如JPEG）以及透明度（如PNG），但可以提供比JPEG或PNG更好的压缩。</strong></p>
+</li>
+<li><p><strong>7、代码混淆使用proGuard 代码混淆器工具，它包括压缩、优化、混淆等功能。这个大家太熟悉了。不多说了。</strong></p>
+</li>
+<li><p><strong>8、插件化。比如功能模块放在服务器上，按需下载，可以减少安装包大小。</strong></p>
+</li>
+</ul>
+<h1 id="耗电"><a href="#耗电" class="headerlink" title="耗电"></a>耗电</h1><p>使用Battery Historian分析电源使用情况</p>
+<ul>
+<li>过度唤醒</li>
+</ul>
+<p>唤醒是AlarmManagerAPI 中的一种机制 ，允许开发人员设置警报以在指定时间唤醒设备。您的应用程序通过使用 或 标记调用其中一个set()方法来 设置唤醒警报。当触发唤醒警报时，设备退出低功耗模式并在执行警报 或 方法时 保持部分唤醒锁定。如果过度触发唤醒警报，则可以耗尽设备的电池电量。</p>
+<p>不要 AlarmManager用于安排后台任务，尤其是重复或网络后台任务。使用 JobScheduler或 Firebase JobDispatcher 可以安排后台任务，因为它们具有以下优点：</p>
+<p>批处理 - 将工作结合起来，以减少电池消耗<br>持久性 - 即使在重新启动设备后，标记为持久的作业也将继续运行<br>条件 - 作业可以根据条件运行，例如设备是否正在充电或WiFi是否可用</p>
+<ul>
+<li>在后台进行过多的Wi-Fi扫描</li>
+</ul>
+<p>当应用程序在后台执行Wi-Fi扫描时，它会唤醒CPU，从而导致电池耗尽率。当扫描次数过多时，设备的电池寿命可能会明显缩短。如果应用程序处于PROCESS_STATE_BACKGROUND或 PROCESS_STATE_CACHED处于状态，则认为该应用程序在后台运行。</p>
+<ul>
+<li>后台网络使用量过高</li>
+</ul>
+<p>耗电操作主要分为下面几种</p>
+<ul>
+<li>高频通信</li>
+<li>CPU密集型的计算</li>
+<li>传感器</li>
+<li>频繁唤醒系统</li>
+<li>定位</li>
+</ul>
+<p>解决方案 </p>
+<ul>
+<li>减少</li>
+<li>推迟</li>
+<li>合并</li>
+</ul>
+<p>①在需要网络连接的程序中，首先检查网络连接是否正常，如果没有网络连接，那么就不需要执行相应的程序;<br>②判断网络类型,针对特定的数据在特定的网络下请求.例如:大量数据传输的时候在wifi下请求;wifi下下载数据耗电量只有2、3、4G的1/3.<br>③使用效率高的数据格式和解析方法，推荐使用JSON和Protobuf;<br>④在进行大数据量下载时，尽量使用GZIP方式下载;<br>⑤使用推送，代替循环请求<br>⑥其它：<br>尽量不要使用浮点运算；<br>回收java对象，特别是较大的java对像，使用reset方法；<br>主动回收java对象，特别是较大的，例如bitmap。减少GC的工作频率；<br>避免内存抖动，内存抖动是因为大量的对象被创建又在短时间内马上被释放；<br>避免在for循环、onDraw方法中创建对象；无法避免的可以创建对象池，然后在不使用的时候释放；<br>对定位要求不是太高的话尽量不要使用GPS定位，可以使用wifi和移动网络cell定位即可；<br>获取屏幕尺寸等信息可以使用缓存技术，不需要进行多次请求；<br>使用AlarmManager来定时启动服务替代使用sleep方式的定时任务</p>
+<h2 id="使用JobScheduler"><a href="#使用JobScheduler" class="headerlink" title="使用JobScheduler"></a>使用JobScheduler</h2><p>使用JobScheduler，来调整任务优先级等策略来达到降低损耗的目的。</p>
+<p><strong>具体功能：</strong><br>1、可以推迟的非面向用户的任务(如定期数据库数据更新)；<br>2、当充电时才希望执行的工作(如备份数据)；<br>3、需要访问网络或 Wi-Fi 连接的任务(如向服务器拉取配置数据)；<br>4、零散任务合并到一个批次去定期运行；<br>5、当设备空闲时启动某些任务；<br>6、只有当条件得到满足, 系统才会启动计划中的任务（充电、WIFI…）。</p>
+<h2 id="懒惰第一的法则"><a href="#懒惰第一的法则" class="headerlink" title="懒惰第一的法则"></a>懒惰第一的法则</h2><p><strong>减少</strong><br>你的应用程序可以删除冗余操作吗？例如，它是否可以缓存下载的数据而不是重复唤醒无线电以重新下载数据？</p>
+<p><strong>推迟</strong><br>应用是否需要立即执行操作？例如，它可以等到设备充电才能将数据备份到云端吗？</p>
+<p><strong>合并</strong><br>可以批处理工作，而不是多次将设备置于活动状态吗？例如，几十个应用程序是否真的有必要在不同时间打开收音机发送邮件？在一次唤醒收音机期间，是否可以传输消息？</p>
+<h1 id="RecyclerView自带优化、Bitmap"><a href="#RecyclerView自带优化、Bitmap" class="headerlink" title="RecyclerView自带优化、Bitmap"></a>RecyclerView自带优化、Bitmap</h1><h2 id="Bitmap的优化套路很简单、粗暴，就是：压缩。"><a href="#Bitmap的优化套路很简单、粗暴，就是：压缩。" class="headerlink" title="Bitmap的优化套路很简单、粗暴，就是：压缩。"></a>Bitmap的优化套路很简单、粗暴，就是：压缩。</h2><p>三种压缩方式：<br>1.对图片质量进行压缩<br>2.对图片尺寸进行压缩<br>3.使用libjpeg.so库进行压缩</p>
+<h1 id="响应速度-线程优化"><a href="#响应速度-线程优化" class="headerlink" title="响应速度-线程优化"></a>响应速度-线程优化</h1><p>影响响应速度的主要因素是主线程有耗时操作，影响了响应速度。所以响应速度优化的核心思想是避免在主线程中做耗时操作，把耗时操作异步处理。</p>
+<p>线程优化的思想是采用线程池，避免在程序中存在大量的Thread。线程池可以重用内部的线程，从而避免了现场的创建和销毁所带来的性能开销，同时线程池还能有效地控制线程池的最大并发数，避免大量的线程因互相抢占系统资源从而导致阻塞现象发生。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android内存泄漏问题/" rel="next" title="Android内存泄漏问题">
+                <i class="fa fa-chevron-left"></i> Android内存泄漏问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Google Developer Days China 2018 总结/" rel="prev" title="Google Developer Days China 2018 总结">
+                Google Developer Days China 2018 总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#布局优化"><span class="nav-number">1.</span> <span class="nav-text">布局优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-0-：颜色设置、include-merge、ViewStub"><span class="nav-number">1.1.</span> <span class="nav-text">优化 Version 1.0 ：颜色设置、include + merge、ViewStub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色设置"><span class="nav-number">1.1.1.</span> <span class="nav-text">颜色设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套"><span class="nav-number">1.1.2.</span> <span class="nav-text">嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include-merge"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">include + merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewStub"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">ViewStub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-1-1-：ConstraintLayout（约束布局）"><span class="nav-number">1.2.</span> <span class="nav-text">优化 Version 1.1 ：ConstraintLayout（约束布局）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制优化-渲染性能：onDraw"><span class="nav-number">2.</span> <span class="nav-text">绘制优化 - 渲染性能：onDraw()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android渲染机制："><span class="nav-number">2.1.</span> <span class="nav-text">Android渲染机制：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onDraw-处理方法："><span class="nav-number">2.2.</span> <span class="nav-text">onDraw() 处理方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-Version-2-0-：onDrow"><span class="nav-number">2.3.</span> <span class="nav-text">优化 Version 2.0 ：onDrow()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存优化"><span class="nav-number">3.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">3.1.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发生泄漏的4大类情况"><span class="nav-number">3.2.</span> <span class="nav-text">发生泄漏的4大类情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">集合类泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例-静态变量"><span class="nav-number">3.2.2.</span> <span class="nav-text">单例/静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类-非静态内部类"><span class="nav-number">3.2.3.</span> <span class="nav-text">匿名内部类/非静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非静态内部类一个示例："><span class="nav-number">3.2.3.1.</span> <span class="nav-text">非静态内部类一个示例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名态内部类一个示例："><span class="nav-number">3.2.3.2.</span> <span class="nav-text">匿名态内部类一个示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源未关闭"><span class="nav-number">3.2.4.</span> <span class="nav-text">资源未关闭</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动"><span class="nav-number">4.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-冷启动（Cold-Start）"><span class="nav-number">4.1.</span> <span class="nav-text">1 冷启动（Cold Start）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Application创建"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.1 Application创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Activity创建"><span class="nav-number">4.1.2.</span> <span class="nav-text">1.2 Activity创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-热启动（Hot-start）"><span class="nav-number">4.2.</span> <span class="nav-text">2 热启动（Hot start）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#温启动（Warm-start）"><span class="nav-number">4.3.</span> <span class="nav-text">温启动（Warm start）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包体优化"><span class="nav-number">5.</span> <span class="nav-text">包体优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APK的文件构成。"><span class="nav-number">5.1.</span> <span class="nav-text">APK的文件构成。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解决方案：减小-代码和资源"><span class="nav-number">5.2.</span> <span class="nav-text">问题解决方案：减小 代码和资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#耗电"><span class="nav-number">6.</span> <span class="nav-text">耗电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用JobScheduler"><span class="nav-number">6.1.</span> <span class="nav-text">使用JobScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#懒惰第一的法则"><span class="nav-number">6.2.</span> <span class="nav-text">懒惰第一的法则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RecyclerView自带优化、Bitmap"><span class="nav-number">7.</span> <span class="nav-text">RecyclerView自带优化、Bitmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmap的优化套路很简单、粗暴，就是：压缩。"><span class="nav-number">7.1.</span> <span class="nav-text">Bitmap的优化套路很简单、粗暴，就是：压缩。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应速度-线程优化"><span class="nav-number">8.</span> <span class="nav-text">响应速度-线程优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">293.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="优化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="App优化-快">
+<meta name="keywords" content="优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App优化-快">
+<meta property="og:url" content="http://yannischeng.com/App优化-快/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="App优化-快">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E5%8D%A1%E9%A1%BF%E6%83%85%E6%99%AF.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E5%AE%8F%E8%A7%82%E7%90%86%E8%AE%BA.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2020.36.20.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E5%9B%BE%E5%B1%95%E7%A4%BA%E4%BA%86%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E7%9B%B8%E4%BA%92%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Application%20%E7%9A%84%E5%88%9B%E5%BB%BA.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%20%E7%9A%84%E5%88%9B%E5%BB%BA.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E9%97%AA%E5%B1%8F%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96%20.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2014.06.59.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.06.02.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.28.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.39.png">
+<meta property="og:updated_time" content="2019-03-19T04:47:56.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App优化-快">
+<meta name="twitter:description" content="App优化-快">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/App优化-快/"/>
+
+
+
+
+
+  <title>App优化-快 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/App优化-快/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">App优化-快</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-03T17:29:08+08:00">
+                2019-03-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-19T12:47:56+08:00">
+                2019-03-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,358 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/优化/" rel="tag"># 优化</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/App优化-快/" title="App优化-快">http://yannischeng.com/App优化-快/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>App优化-快</p>
+<a id="more"></a>
+<p>故事引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">假如饭点将至，需要打开订餐APP进行点餐：</div><div class="line">首先一定不希望，在浏览商家和菜品列表内容很丰富的时候遇到卡顿现象；</div><div class="line">然后千挑万选后在期待美食将至的心情下准备下单，突然遇到闪退崩溃，那简直想卸载APP的心都有了；</div><div class="line">其次就是配送员在配送过程中不希望耗电和耗流量太严重；</div><div class="line">最后就是用户和配送员都希望版本更新的时候安装包希望能小一点。</div></pre></td></tr></table></figure>
+<p>一张图表述 App 性能优化切入点：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png" alt=""></p>
+<h1 id="1-关于-快-的总结"><a href="#1-关于-快-的总结" class="headerlink" title="1 关于 快 的总结"></a>1 关于 快 的总结</h1><p>关于 <code>卡顿情景</code> 的总结：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E5%8D%A1%E9%A1%BF%E6%83%85%E6%99%AF.png" alt=""></p>
+<p>关于 <code>卡顿因素</code> 的总结</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E5%AE%8F%E8%A7%82%E7%90%86%E8%AE%BA.png" alt=""></p>
+<h1 id="2-启动方式"><a href="#2-启动方式" class="headerlink" title="2 启动方式"></a>2 启动方式</h1><p>分为3种：</p>
+<ul>
+<li><strong>冷启动（Cold Start）</strong></li>
+<li><strong>热启动（Hot Start）</strong></li>
+<li><strong>温启动（Warm Start）</strong></li>
+</ul>
+<h2 id="2-1-冷启动（Cold-Start）"><a href="#2-1-冷启动（Cold-Start）" class="headerlink" title="2.1 冷启动（Cold Start）"></a>2.1 冷启动（Cold Start）</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2020.36.20.png" alt=""></p>
+<p><strong>冷启动</strong> 的大致过程：<br>当用户点击<code>Launcher</code>中<code>App图标</code>时，会通知 <strong>AMS</strong> 启动App的入口 <code>Activity</code>，若发现此这个App还未启动，则通知 <code>Zygote</code> 去孵化（fork）一个进程（process），<code>AMS</code> 保存一个进程的 <code>代理对象</code>。在这个进程中执行 <code>ActivityThread类</code> 的入口 <code>main()</code>，在这里名做 <code>Loop</code> 的准备、 <code>消息队列</code>，通过 <code>ActivityThread类</code> 的 <code>attach()</code> 将进程绑定到 <code>AMS</code>中，获取 <code>Handler</code> 对象，最后开始 <code>loop</code> 循环。</p>
+<p>在冷启动开始时，系统有<strong>3个任务</strong>。这些任务是：</p>
+<ol>
+<li><strong>通过AMS调用ActivityStack，然后通过 WindowManagerService来创建Window</strong>；</li>
+<li>然后 <strong>立即显示</strong> 应用程序的 <strong>空白启动窗口</strong>（可以通过设置Application的<code>theme</code>修改)；</li>
+<li><strong>创建Process、创建Application、创建Activity</strong>。</li>
+</ol>
+<p>实际上 <code>第2步</code> 和 <code>第3步</code> 应该是 <strong>同时进行</strong> 的。如果 <code>第3步</code> 操作的时间足够快，那么 <code>第2步</code> 中的 <strong>白屏</strong> 可能就不会被用户感觉到。</p>
+<p>一旦系统创建了应用程序流程，应用程序流程就会负责下一个阶段：</p>
+<ol>
+<li><strong>创建Application对象</strong></li>
+<li><strong>启动主线程</strong></li>
+<li><strong>创建主Activity</strong></li>
+<li><strong>加载布局</strong></li>
+<li><strong>屏幕布局</strong></li>
+<li><strong>执行初始绘制</strong></li>
+</ol>
+<p>应用程序进程完成第一次绘制后，<strong>系统进程</strong> 会 <strong>交换</strong> 当前显示的 <strong>背景窗口</strong>，将其 <strong>替换</strong> 为<strong>主Activity</strong>。此时，用户可以开始使用该应用程序。至此启动完成。</p>
+<p>根据这个流程分析，在进行 <strong>Application</strong> 与 <strong>Activity</strong> 创建时可能会出现 <strong>性能问题</strong>。</p>
+<p>下图展示了系统和应用启动时相互之间的关系：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%B8%8B%E5%9B%BE%E5%B1%95%E7%A4%BA%E4%BA%86%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E7%9B%B8%E4%BA%92%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt=""></p>
+<p>以上流程中的大部分由系统来控制，出现性能问题的地方往往在 <code>Application</code> 和 <code>Activity</code> 的创建 (<code>onCreate</code>) 过程中。</p>
+<h3 id="2-1-1-Application创建"><a href="#2-1-1-Application创建" class="headerlink" title="2.1.1 Application创建"></a>2.1.1 Application创建</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Application%20%E7%9A%84%E5%88%9B%E5%BB%BA.png" alt=""></p>
+<p>当<strong>Application</strong>启动时，空白的启动窗口将保留在屏幕上，直到系统首次完成应用程序绘制。</p>
+<p>此时，系统进程会 <strong>交换</strong> 应用程序的启动窗口，允许用户开始与应用程序进行交互。这就是为什么我们的程序启动时会先出现一段时间的 <strong>黑屏(白屏)</strong>。</p>
+<p>如果我们有自己的<strong>Application</strong>，系统会在我们的<strong>Application对象</strong>上调用<code>onCreate()</code>方法。</p>
+<p>之后，应用程序会生成 <strong>主线程</strong>（也称为UI线程），并通过创建<strong>主Activity</strong>来执行任务。<br>从这一点开始，App就按照他的 应用程序生命周期阶段进行。</p>
+<p>总结来说就是：<strong><code>Application创建 -&gt; UI线程 -&gt; Activity创建</code></strong></p>
+<h3 id="2-1-2-Activity创建"><a href="#2-1-2-Activity创建" class="headerlink" title="2.1.2 Activity创建"></a>2.1.2 Activity创建</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Activity%20%E7%9A%84%E5%88%9B%E5%BB%BA.png" alt=""></p>
+<p><strong>Application</strong>进程创建活动后，活动将执行以下操作：</p>
+<ol>
+<li><p><strong>初始化值</strong>。</p>
+</li>
+<li><p><strong>调用构造函数</strong>。</p>
+</li>
+<li><p><strong>调用回调方法</strong>，例如 <code>Activity.onCreate()</code>，对应Activity的当前生命周期状态。</p>
+</li>
+</ol>
+<p>通常，该 <strong><code>onCreate()</code></strong> 方法对<code>加载时间</code> 的影响最大，因为它以最高的开销执行工作：加载和填充视图，以及初始化活动运行所需的对象。</p>
+<h3 id="2-1-3常见问题"><a href="#2-1-3常见问题" class="headerlink" title="2.1.3常见问题"></a>2.1.3常见问题</h3><p><a href="https://developer.android.google.cn/topic/performance/vitals/launch-time#java" target="_blank" rel="external">Android开发者博客</a></p>
+<h3 id="2-1-4-闪屏页的启动逻辑优化"><a href="#2-1-4-闪屏页的启动逻辑优化" class="headerlink" title="2.1.4 闪屏页的启动逻辑优化"></a>2.1.4 闪屏页的启动逻辑优化</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E9%97%AA%E5%B1%8F%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96%20.png" alt=""></p>
+<p>黑白屏问题</p>
+<h2 id="2-2-热启动（Hot-start）"><a href="#2-2-热启动（Hot-start）" class="headerlink" title="2.2 热启动（Hot start）"></a>2.2 热启动（Hot start）</h2><p><strong>热启动</strong> 就是：后台已有该进程，当再次启动App时，这种启动就会从已有的启动中启动应用。</p>
+<p><strong>热启动</strong> 因为会从 <strong>已有的进程中来启动</strong>，所以热启动就不会走 <strong>Application</strong> 这步了，而是直接走 <strong>MainActivity</strong>，所以热启动的过程不必 <code>创建和初始化</code> <strong>Application</strong>，因为一个应用从新进程的创建到进程的销毁， <strong>Application 只初始化一次</strong>。</p>
+<p>应用程序的热启动比冷启动要简单得多，开销也更低。在一个热启动中，系统都会把你的Activity带到前台。如果应用程序的Activity仍然驻留在内存中，那么应用程序可以避免重复对象初始化、布局加载和渲染。</p>
+<p><strong>注意：**</strong><code>热启动显示</code>与<code>冷启动</code>方案<code>相同的屏幕行为</code>：系统进程显示<code>空白屏幕</code>，直到应用程序完成<code>呈现</code>活动**。</p>
+<p>热启动包括冷启动期间发生的一些操作子集; 同时，它比热启动代表更少的开销。有许多潜在的状态可以被视为热启动。例如：</p>
+<ul>
+<li><p>用户退出应用，但随后重新启动它。该过程可能已继续运行，但应用程序必须通过调用从头开始重新创建 <strong>Activity</strong> 的 <code>onCreate()</code>。</p>
+</li>
+<li><p>系统将应用程序从内存中逐出，然后用户重新启动它。需要重新启动<code>进程</code>和<code>活动</code>，但是任务可以从传入的已保存实例状态包中获益 <code>onCreate()</code>。</p>
+</li>
+</ul>
+<h2 id="2-3-温启动（Warm-start）"><a href="#2-3-温启动（Warm-start）" class="headerlink" title="2.3 温启动（Warm start）"></a>2.3 温启动（Warm start）</h2><p><strong>温启动</strong> 严格来说也是 <strong>冷启动</strong>，之所以把首次启动单独列出来，一般来说，<strong>温启动</strong> 时间会比非首次启动要久，<strong>温启动</strong> 会做一些 <strong>系统初始化</strong> 工作，如：</p>
+<ul>
+<li>缓存目录的生产；</li>
+<li>数据库的建立；</li>
+<li>SharedPreference的初始化；</li>
+<li>如果存在 <strong>多dex</strong> 和 <strong>插件</strong> 的情况下，首次启动会有一些特殊需要处理的逻辑，而且对启动速度有很大的影响。</li>
+</ul>
+<p>所以首次启动的速度非常重要，毕竟影响用户对 App 的第一印象。</p>
+<p>场景：</p>
+<p>用户退出您的应用，但随后重新启动它。该过程可能已继续运行，但应用程序必须通过调用从头开始重新创建Activity 的onCreate()。</p>
+<p>系统将您的应用程序从内存中逐出，然后用户重新启动它。需要重新启动进程和活动，但是在调用onCreate()的时候可以从Bundle（savedInstanceState）获取数据。</p>
+<p><strong>谷歌官方给的建议是：</strong><br>1、利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；<br>2、避免在启动时做密集沉重的初始化（Heavy app initialization）；<br>3、避免I/O操作、反序列化、网络操作、布局嵌套等。</p>
+<p><strong>这里是慢的定义</strong>：</p>
+<ul>
+<li><p>冷启动需要5秒或更长时间。</p>
+</li>
+<li><p>温启动需要2秒或更长时间。</p>
+</li>
+<li><p>热启动需要1.5秒或更长时间。</p>
+</li>
+</ul>
+<p>无论何种启动，我们的优化点都是：<br><strong>Application、Activity创建以及回调等过程</strong></p>
+<p><a href="https://www.jianshu.com/p/cdc07a7be5a3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="external">参考</a></p>
+<h1 id="3-快-启动时间统计"><a href="#3-快-启动时间统计" class="headerlink" title="3 快-启动时间统计"></a>3 快-启动时间统计</h1><p><strong>设计一个统计时间的工具类</strong>（来自网络）</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">/**</span></div><div class="line"><span class="comment"> * 计时统计工具类</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeUtils</span> </span>&#123;</div><div class="line">	    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, Long&gt; sCalTimeMap = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">	    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String COLD_START = <span class="string">"cold_start"</span>;</div><div class="line">	    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOT_START = <span class="string">"hot_start"</span>;</div><div class="line">	    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> sColdStartTime = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	    <span class="comment">/**</span></div><div class="line"><span class="comment">	     * 记录某个事件的开始时间</span></div><div class="line"><span class="comment">	     * <span class="doctag">@param</span> key 事件名称</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beginTimeCalculate</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">	        <span class="keyword">long</span> currentTime = System.currentTimeMillis();</div><div class="line">	        sCalTimeMap.put(key, currentTime);</div><div class="line">	    &#125;</div><div class="line">	</div><div class="line">	    <span class="comment">/**</span></div><div class="line"><span class="comment">	     * 获取某个事件的运行时间</span></div><div class="line"><span class="comment">	     *</span></div><div class="line"><span class="comment">	     * <span class="doctag">@param</span> key 事件名称</span></div><div class="line"><span class="comment">	     * <span class="doctag">@return</span> 返回某个事件的运行时间，调用这个方法之前没有调用 &#123;<span class="doctag">@link</span> #beginTimeCalculate(String)&#125; 则返回-1</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">getTimeCalculate</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">	        <span class="keyword">long</span> currentTime = System.currentTimeMillis();</div><div class="line">	        Long beginTime = sCalTimeMap.get(key);</div><div class="line">	        <span class="keyword">if</span> (beginTime == <span class="keyword">null</span>) &#123;</div><div class="line">	            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">	        &#125; <span class="keyword">else</span> &#123;</div><div class="line">	            sCalTimeMap.remove(key);</div><div class="line">	            <span class="keyword">return</span> currentTime - beginTime;</div><div class="line">	        &#125;</div><div class="line">	    &#125;</div><div class="line">	</div><div class="line">	    <span class="comment">/**</span></div><div class="line"><span class="comment">	     * 清除某个时间运行时间计时</span></div><div class="line"><span class="comment">	     *</span></div><div class="line"><span class="comment">	     * <span class="doctag">@param</span> key 事件名称</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clearTimeCalculate</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">	        sCalTimeMap.remove(key);</div><div class="line">	    &#125;</div><div class="line">	</div><div class="line">	    <span class="comment">/**</span></div><div class="line"><span class="comment">	     * 清除启动时间计时</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clearStartTimeCalculate</span><span class="params">()</span> </span>&#123;</div><div class="line">	        clearTimeCalculate(HOT_START);</div><div class="line">	        clearTimeCalculate(COLD_START);</div><div class="line">	        sColdStartTime = <span class="number">0</span>;</div><div class="line">	    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-1-本地-局部方法-运行时间同步"><a href="#3-1-本地-局部方法-运行时间同步" class="headerlink" title="3.1 本地 局部方法 运行时间同步"></a>3.1 本地 局部方法 运行时间同步</h2><p>在 <code>具体方法</code> 中使用 <code>TimeUtils</code> 工具类。</p>
+<h2 id="3-2-本地-全局统计-—-使用adb"><a href="#3-2-本地-全局统计-—-使用adb" class="headerlink" title="3.2 本地 全局统计 — 使用adb"></a>3.2 本地 全局统计 — 使用adb</h2><ul>
+<li>启动指定 <code>Activity</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n 包名/.指定Activity</div></pre></td></tr></table></figure>
+<ul>
+<li>关闭App</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am force-stop 包名</div></pre></td></tr></table></figure>
+<ul>
+<li><p>以下这个命令表示：通过 <code>adb</code> 的方式，循环启动指定Activity的，统计启动时间</p>
+<ul>
+<li><code>-S</code> 表示每次启动前先强制停止；</li>
+<li><code>-R</code> 表示循环启动的次数为10次，</li>
+<li><code>-W</code>表示具体的启动路径</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -S -R 10 -W com.yannis.myapplication/.MainActivity</div></pre></td></tr></table></figure>
+<p>注意：<code>S/R/W</code> 必须为大写。</p>
+<p>得到的结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Stopping: com.yannis.myapplication</div><div class="line">Starting: Intent &#123; act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.yannis.myapplication/.MainActivity &#125;</div><div class="line">Status: ok</div><div class="line">Activity: com.yannis.myapplication/.MainActivity</div><div class="line">ThisTime: 1165</div><div class="line">TotalTime: 1165</div><div class="line">WaitTime: 1308</div><div class="line">Complete</div></pre></td></tr></table></figure>
+<p>返回值说明：</p>
+<ul>
+<li><strong>ThisTime：</strong>表示 <strong>一连串Activity</strong> 启动中的 <strong>最后一个Activity</strong> 的启动耗时；</li>
+<li><strong>TotalTime：</strong>表示 <strong>新应用启动</strong> 的耗时，包括 <strong>新进程</strong> 的启动和 <strong>Activity</strong> 的启动，但 <strong>不包括</strong> 前一个应用 Activity pause() 的耗时。</li>
+<li><strong>WaitTime：</strong> 从 <strong>startActivity()</strong> 到 <strong>应用第一帧</strong> 完全显示这段时间。就是 <strong>总耗时</strong> = <strong>前一个应用Activity的pause()</strong> 的时间 +  <strong>新应用启动</strong> 的时间；</li>
+</ul>
+<p>我们一般只要关心 <strong>TotalTime</strong> 即可，这个时间才是 <strong>自己应用真正启动</strong> 的耗时。</p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>实际场景中，可能当前Activity的启动过程需要经历多个Activity，此时的启动时间因此 <strong>不准确</strong>。</li>
+<li>此命令仅统计Activity启动以及初始化时间，并不能统计一些数据、动画初始化的时间。因此与用户感知时间不同。导致 <strong>有误差</strong>。</li>
+<li>在<code>AndroidManifest.xml</code>对应的Activity声明中没有指定<code>&lt;intent-filter&gt;</code>或者属性没有<code>android:exported=&quot;true&quot;</code>的Activity不能使用这种命令行的形式计算启动时间。因此 <strong>有限制</strong></li>
+</ul>
+<h2 id="3-3-线上统计-—-Log"><a href="#3-3-线上统计-—-Log" class="headerlink" title="3.3 线上统计 — Log"></a>3.3 线上统计 — Log</h2><p>将App发送到线上之后，就不能再通过 <strong>adb</strong> 的方式获取时间了，要做启动时间统计的工作可以通过 <strong>Log</strong> 的方式获取启动时间。</p>
+<p>有了解决问题的方式，那么就要进行实施，实施的关键就在于：在哪里打Log，打 <strong>Log位置</strong> 的准确与否，将决定统计的时间是否准确。</p>
+<p>既然知道是 <strong>位置</strong> 决定 <strong>统计时间</strong> 的 <strong>准确</strong> 性，那么就要具体分析位置了，实际上就是分析 <strong>App的启动流程</strong> 了，分析启动流程和各个生命周期函数的调用顺序。</p>
+<h3 id="3-3-1-生命周期函数执行流程"><a href="#3-3-1-生命周期函数执行流程" class="headerlink" title="3.3.1 生命周期函数执行流程"></a>3.3.1 生命周期函数执行流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-&gt; Application 构造函数</div><div class="line">-&gt; Application.attachBaseContext()</div><div class="line">-&gt; Application.onCreate()</div><div class="line">-&gt; Activity 构造函数</div><div class="line">-&gt; Activity.setTheme()</div><div class="line">-&gt; Activity.onCreate()</div><div class="line">-&gt; Activity.onStart</div><div class="line">-&gt; Activity.onResume</div><div class="line">-&gt; Activity.onAttachedToWindow</div><div class="line">-&gt; Activity.onWindowFocusChanged</div></pre></td></tr></table></figure>
+<p>要记录启动统计时间，就需要有2个时间点，对应着就需要2个方法：</p>
+<p><strong>1. 启动时间：</strong></p>
+<ul>
+<li><p><strong>冷启动</strong> 一般可以在 <code>Application.attachBaseContext()</code> 开始的位置记录起始时间点，因为在这之前 <code>Context</code> 还没有初始化，一般也干不了什么事情，当然这个是要视具体情况来定，其实 <strong>只要保证在 App 的具体业务逻辑</strong> 开始执行之前记录起始时间点即可。</p>
+</li>
+<li><p><strong>热启动</strong> 启动时间点可以在 <code>Activity.onRestart()</code> 中记录起始时间点。</p>
+</li>
+</ul>
+<p><strong>2. 结束时间：</strong></p>
+<p>一般情况下认为在 <code>Activity</code> 的 <code>onResume()</code> 方法执行完成之后，<code>Activity</code> 就对用户可见了，实际上并不是。</p>
+<p>一个 <code>Activity</code> 走完 <code>onCreate()</code> 、<code>onStart()</code> 、<code>onResume()</code> 这几个生命周期之后，只是完成了 <code>应用自身</code> 的一些配置，比如：<code>Activity</code> 主题设置、 <code>window</code> 属性的设置、 <code>View树</code> 的建立，但是其实后面还需要 <code>各个View</code> 执行 <code>measure()</code>、 <code>layout()</code>、 <code>draw()</code>等。</p>
+<p>所以在 <code>OnResume()</code> 中记录结束时间点的 Log 并不准确，那么根据上面流程中我们可以看到最后一个函数 ：<code>Activity.onWindowFocusChanged()</code>。</p>
+<ul>
+<li><p><strong>onResume()</strong>方法的注释中专门提到这个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * &lt;p&gt;Keep in mind that onResume is not the best indicator that your activity</span></div><div class="line"><span class="comment"> * is visible to the user; a system window such as the keyguard may be in</span></div><div class="line"><span class="comment"> * front.  Use &#123;<span class="doctag">@link</span> #onWindowFocusChanged&#125; to know for certain that your</span></div><div class="line"><span class="comment"> * activity is visible to the user (for example, to resume a game).</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">@CallSuper</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>大意为：</p>
+</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">请记住，onResume() 不是您的活动对用户可见的最佳指标; 诸如键盘锁之类的系统窗口可以在前面。</div><div class="line">使用&#123;@link #onWindowFocusChanged&#125;可以确定您的活动对用户可见（例如，恢复游戏）。</div></pre></td></tr></table></figure>
+<p> 以及：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Called when the current &#123;<span class="doctag">@link</span> Window&#125; of the activity gains or loses</span></div><div class="line"><span class="comment"> * focus.  This is the best indicator of whether this activity is visible</span></div><div class="line"><span class="comment"> * to the user.  The default implementation clears the key tracking</span></div><div class="line"><span class="comment"> * state, so should always be called.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p> 大意为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当活动的当前&#123;@link Window&#125;获得或失去焦点时调用。这是该活动对用户是否可见的最佳指标。</div></pre></td></tr></table></figure>
+<p>到此为止，我们已经找到了对应的启动时间统计方法，接下来就要进行统计了。</p>
+<h3 id="3-3-2-执行启动时间统计"><a href="#3-3-2-执行启动时间统计" class="headerlink" title="3.3.2 执行启动时间统计"></a>3.3.2 执行启动时间统计</h3><p>使用这个上文中提到的 <code>TimeUtils</code> 工具类</p>
+<ol>
+<li><p>在 <code>Application#attachBaseContext()</code>方法中添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">attachBaseContext</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">	    <span class="keyword">super</span>.attachBaseContext(base);</div><div class="line">	    <span class="keyword">if</span> (<span class="comment">/**如果是主进程**/</span>) &#123;</div><div class="line">	        TimeUtils.beginTimeCalculate(TimeUtils.COLD_START);</div><div class="line">	    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>第一个Activity</code> 的 <code>onCreate()</code> 方法中添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">	    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">	    calculateStartTime();</div><div class="line">	    ....</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">calculateStartTime</span><span class="params">()</span> </span>&#123;</div><div class="line">	    <span class="keyword">long</span> coldStartTime = TimeUtils.getTimeCalculate(TimeUtils.COLD_START);</div><div class="line">	    <span class="comment">// 这里记录的TimeUtils.coldStartTime是指Application启动的时间，最终的冷启动时间等于Application启动时间+热启动时间</span></div><div class="line">	    TimeUtils.sColdStartTime = coldStartTime &gt; <span class="number">0</span> ? coldStartTime : <span class="number">0</span>;</div><div class="line">	    TimeUtils.beginTimeCalculate(DictTimeUtil.HOT_START);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>在 <code>真正的首页Activity</code> 的 <code>onWindowFocusChanged()</code> 方法中添加如下代码：</li>
+</ol>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</div><div class="line">	    <span class="keyword">if</span> (hasFocus &amp;&amp; <span class="comment">/**没有经过广告或者引导页**/</span>) &#123;</div><div class="line">	        <span class="keyword">long</span> hotStartTime = TimeUtils.getTimeCalculate(TimeUtils.HOT_START);</div><div class="line">	        <span class="keyword">if</span> (TimeUtils.sColdStartTime &gt; <span class="number">0</span> &amp;&amp; hotStartTime &gt; <span class="number">0</span>) &#123;</div><div class="line">	            <span class="comment">// 真正的冷启动时间 = Application启动时间 + 热启动时间</span></div><div class="line">	            <span class="keyword">long</span> coldStartTime = TimeUtils.sColdStartTime + hotStartTime;</div><div class="line">	            <span class="comment">// 过滤掉异常启动时间</span></div><div class="line">	            <span class="keyword">if</span> (coldStartTime &lt; <span class="number">50000</span>) &#123;</div><div class="line">	                <span class="comment">// 上传冷启动时间coldStartTime </span></div><div class="line">	            &#125;</div><div class="line">	        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hotStartTime &gt; <span class="number">0</span>) &#123;</div><div class="line">	            <span class="comment">// 过滤掉异常启动时间</span></div><div class="line">	            <span class="keyword">if</span> (hotStartTime &lt; <span class="number">30000</span>) &#123;</div><div class="line">	                <span class="comment">// 上传热启动时间hotStartTime </span></div><div class="line">	            &#125;</div><div class="line">	        &#125;</div><div class="line">	    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-4-工具的使用"><a href="#3-4-工具的使用" class="headerlink" title="3.4 工具的使用"></a>3.4 工具的使用</h2><h3 id="3-4-1-Android-Studio-自动工具"><a href="#3-4-1-Android-Studio-自动工具" class="headerlink" title="3.4.1 Android Studio 自动工具"></a>3.4.1 Android Studio 自动工具</h3><h3 id="3-4-2-第三方启动时间统计分析利器：nimbledroid-及其-使用参考"><a href="#3-4-2-第三方启动时间统计分析利器：nimbledroid-及其-使用参考" class="headerlink" title="3.4.2 第三方启动时间统计分析利器：nimbledroid 及其 使用参考"></a>3.4.2 第三方启动时间统计分析利器：<a href="https://nimbledroid.com/contact_form" target="_blank" rel="external">nimbledroid</a> 及其 <a href="https://www.jianshu.com/p/0d2a582aa7d3" target="_blank" rel="external">使用参考</a></h3><p><strong>特点：</strong></p>
+<ul>
+<li>分享：在这个阶段输入相应的开发人员邮箱，等分析结束后，结果会发送到相应人员的邮箱中。这对组内协作特别方便。</li>
+<li><p>自动化：具体可以分为</p>
+<ul>
+<li>gradle</li>
+<li>jekins</li>
+</ul>
+<p>这2中集成方式。</p>
+</li>
+</ul>
+<h3 id="3-4-3-在线图片压缩工具-TinyPNG。"><a href="#3-4-3-在线图片压缩工具-TinyPNG。" class="headerlink" title="3.4.3 在线图片压缩工具 TinyPNG。"></a>3.4.3 在线图片压缩工具 <a href="https://tinypng.com/" target="_blank" rel="external">TinyPNG</a>。</h3><h2 id="3-5-启动时间相关-的问题解决方法"><a href="#3-5-启动时间相关-的问题解决方法" class="headerlink" title="3.5 启动时间相关 的问题解决方法"></a>3.5 启动时间相关 的问题解决方法</h2><h3 id="3-5-1-启动白屏问题"><a href="#3-5-1-启动白屏问题" class="headerlink" title="3.5.1 启动白屏问题"></a>3.5.1 启动白屏问题</h3><p><strong>思路</strong>：给应用设置一个与主界面类似的启动画面，这样做可以向用户隐藏这个启动过程，用户会感受到应用已经在运行了，显示的界面就是应用的一部分或者说是流程的一部分。</p>
+<p><strong>具体方法</strong>：</p>
+<p>使用 <code>Activity</code> 的 <code>windowBackground</code> 属性，在启动时显示简单的自定义的画面：</p>
+<ol>
+<li><p>创建一个要在启动时显示的画面</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">layer-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> <span class="attr">android:opacity</span>=<span class="string">"opaque"</span>&gt;</span></div><div class="line">	  <span class="comment">&lt;!-- The background color, preferably the same as your normal theme --&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@android:color/white"</span>/&gt;</span></div><div class="line">	  <span class="comment">&lt;!-- Your product logo - 144dp color version of your app icon --&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">bitmap</span></span></div><div class="line"><span class="tag">	      <span class="attr">android:src</span>=<span class="string">"@drawable/product_logo_144dp"</span></span></div><div class="line"><span class="tag">	      <span class="attr">android:gravity</span>=<span class="string">"center"</span>/&gt;</span></div><div class="line">	  <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">layer-list</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义一个 style:</p>
+</li>
+</ol>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.Launcher"</span> <span class="attr">parent</span>=<span class="string">"@style/PeopleTheme"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="xml">    	<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@drawable/start_activity_background<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>在 <code>super.onCreate()</code> 之前调用 <code>setTheme(R.style.AppTheme)</code>，如下所示：</li>
+</ol>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">	  <span class="meta">@Override</span></div><div class="line">	  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">	    <span class="comment">// Make sure this is before calling super.onCreate</span></div><div class="line">	    setTheme(R.style.Theme_MyApp);</div><div class="line">	    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">	    <span class="comment">// ...</span></div><div class="line">	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-5-2-视图显示问题：MessageQueue类的IdleHandler接口的使用"><a href="#3-5-2-视图显示问题：MessageQueue类的IdleHandler接口的使用" class="headerlink" title="3.5.2 视图显示问题：MessageQueue类的IdleHandler接口的使用"></a>3.5.2 视图显示问题：MessageQueue类的IdleHandler接口的使用</h3><p><a href="https://mp.weixin.qq.com/s/KpeBqIEYeOzt_frANoGuSg" target="_blank" rel="external">使用参考</a></p>
+<p><strong>源码相关</strong>：</p>
+<ul>
+<li><p><strong>MessageQueue#IdleHandler</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Callback interface for discovering when a thread is going to block</span></div><div class="line"><span class="comment"> * waiting for more messages.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IdleHandler</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Called when the message queue has run out of messages and will now</span></div><div class="line"><span class="comment">     * wait for more.  Return true to keep your idle handler active, false</span></div><div class="line"><span class="comment">     * to have it removed.  This may be called if there are still messages</span></div><div class="line"><span class="comment">     * pending in the queue, but they are all scheduled to be dispatched</span></div><div class="line"><span class="comment">     * after the current time.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>源码声明：<strong>MessageQueue#</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ArrayList&lt;IdleHandler&gt; mIdleHandlers = <span class="keyword">new</span> ArrayList&lt;IdleHandler&gt;();</div><div class="line"><span class="keyword">private</span> IdleHandler[] mPendingIdleHandlers;</div></pre></td></tr></table></figure>
+</li>
+<li><p>源码相关方法：</p>
+<p><strong>MessageQueue# addIdleHandler()</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addIdleHandler</span><span class="params">(@NonNull IdleHandler handler)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (handler == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Can't add a null IdleHandler"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">        mIdleHandlers.add(handler);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>MessageQueue# removeIdleHandler()</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeIdleHandler</span><span class="params">(@NonNull IdleHandler handler)</span> </span>&#123;</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">        mIdleHandlers.remove(handler);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>源码调用：<strong>MessageQueue# Message next()</strong>:</p>
+</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// line:310</span></div><div class="line"><span class="function">Message <span class="title">next</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">// ……</span></div><div class="line"> <span class="comment">// -1 only during first iteration</span></div><div class="line">	<span class="keyword">int</span> pendingIdleHandlerCount = -<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (;;) &#123;</div><div class="line">   		<span class="comment">// If first time idle, then get the number of idlers to run.</span></div><div class="line">    	<span class="comment">// Idle handles only run if the queue is empty or if the first message</span></div><div class="line">    	<span class="comment">// in the queue (possibly a barrier) is due to be handled in the future.</span></div><div class="line">    	<span class="keyword">if</span> (pendingIdleHandlerCount &lt; <span class="number">0</span> &amp;&amp; (mMessages == <span class="keyword">null</span> || now &lt; mMessages.when)) &#123;</div><div class="line">        	pendingIdleHandlerCount = mIdleHandlers.size();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">        <span class="keyword">if</span> (pendingIdleHandlerCount &lt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="comment">// No idle handlers to run.  Loop and wait some more.</span></div><div class="line">            mBlocked = <span class="keyword">true</span>;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">         &#125;</div><div class="line"></div><div class="line">         <span class="keyword">if</span> (mPendingIdleHandlers == <span class="keyword">null</span>) &#123;</div><div class="line">             mPendingIdleHandlers = <span class="keyword">new</span> IdleHandler[Math.max(pendingIdleHandlerCount, <span class="number">4</span>)];</div><div class="line">         &#125;</div><div class="line">         </div><div class="line">         mPendingIdleHandlers = mIdleHandlers.toArray(mPendingIdleHandlers);</div><div class="line">	&#125;</div><div class="line">    </div><div class="line">    <span class="comment">// Run the idle handlers.</span></div><div class="line">    <span class="comment">// We only ever reach this code block during the first iteration.</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; pendingIdleHandlerCount; i++) &#123;</div><div class="line">        <span class="keyword">final</span> IdleHandler idler = mPendingIdleHandlers[i];</div><div class="line">        mPendingIdleHandlers[i] = <span class="keyword">null</span>; <span class="comment">// release the reference to the handler</span></div><div class="line"></div><div class="line">        <span class="keyword">boolean</span> keep = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            keep = idler.queueIdle();</div><div class="line">        &#125; <span class="keyword">catch</span> (Throwable t) &#123;</div><div class="line">            Log.wtf(TAG, <span class="string">"IdleHandler threw exception"</span>, t);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!keep) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">                mIdleHandlers.remove(idler);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Reset the idle handler count to 0 so we do not run them again.</span></div><div class="line">    pendingIdleHandlerCount = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">// While calling an idle handler, a new message could have been delivered</span></div><div class="line">    <span class="comment">// so go back and look again for a pending message without waiting.</span></div><div class="line">    nextPollTimeoutMillis = <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>实际使用：</strong></p>
+<p><strong>注意：</strong><br><strong><code>pendingIdleHandlerCount = -1</code> 已经说明只能在 <code>第1次遍历</code> 时才能处理 <code>IdleHandler</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Looper.myQueue().addIdleHandler(<span class="keyword">new</span> IdleHandler() &#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span> </span>&#123;</div><div class="line">        ...</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="4-快-绘制过程分析"><a href="#4-快-绘制过程分析" class="headerlink" title="4 快-绘制过程分析"></a>4 快-绘制过程分析</h1><p>在 <strong>布局</strong> 这个解决方向中，最为重要的的一点就是 <strong>布局嵌套层级</strong> 的问题。如果一个 <code>View树</code> 的高度太高就会严重影响<code>测量</code>、<code>布局</code>和<code>绘制</code>的速度。</p>
+<p>对比理解 <code>RelativeLayout类</code> 与 <code>LinearLayout</code> 2种布局方式：</p>
+<ul>
+<li>在 <code>RelativeLayout类</code> 的 <code>onMeasure()</code> 中，执行 <strong>2次</strong> 遍历：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</div><div class="line">	</div><div class="line">		View[] views = mSortedHorizontalChildren;</div><div class="line">		<span class="keyword">int</span> count = views.length;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;&#125;</div><div class="line"> </div><div class="line">		views = mSortedVerticalChildren;</div><div class="line">		count = views.length;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> targetSdkVersion = getContext().getApplicationInfo().targetSdkVersion;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;&#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>LinearLayout类</code> 的 <code>onMeasure()</code> 中，执行 <strong>1次</strong> 遍历：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mOrientation == VERTICAL) &#123;</div><div class="line">        measureVertical(widthMeasureSpec, heightMeasureSpec);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        measureHorizontal(widthMeasureSpec, heightMeasureSpec);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>虽然2者在 <code>for循环</code> 的操作数上存在差异，<code>LinearLayout类</code> 好于 <code>RelativeLayout类</code>，但是有一点可以明显确定的就是：<code>RelativeLayout类</code> 的嵌套层级一般情况下明显少于 <code>LinearLayout类</code> 。</p>
+<h2 id="4-1-检测方式"><a href="#4-1-检测方式" class="headerlink" title="4.1 检测方式"></a>4.1 检测方式</h2><ul>
+<li><code>Android Studio</code> 自带布局查看器：<strong><a href="https://www.jianshu.com/p/1b64024f2d08" target="_blank" rel="external">Layout Inspector</a></strong></li>
+<li><p>手机的 <strong>开发者选项</strong>：<strong>调试GPU过度绘制</strong>，查看布局层数</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2014.06.59.png" alt=""></p>
+</li>
+</ul>
+<h2 id="4-2-优化方法"><a href="#4-2-优化方法" class="headerlink" title="4.2 优化方法"></a>4.2 优化方法</h2><ul>
+<li><p><strong><code>&lt;include&gt;</code>标签</strong></p>
+<p>作用：布局复用。</p>
+</li>
+<li><p><strong><code>&lt;merge&gt;</code>标签</strong></p>
+<p>作用：降低View树层级，减少视图结点。<br><strong>使用 <code>&lt;merge/&gt;</code> 注意</strong>：</p>
+<ul>
+<li><code>&lt;merge/&gt;</code> 必须放在布局文件的根节点上。</li>
+<li><code>&lt;merge/&gt;</code> 不是一个ViewGroup，也不是一个View，它相当于声明了一些视图，等待被添加。</li>
+<li><code>&lt;merge/&gt;</code> 标签被添加到A容器下，那么 <code>&lt;merge/&gt;</code> 下的所有视图将被添加到A容器下。</li>
+<li>因为 <code>&lt;merge/&gt;</code> 并不是View，所以在通过 <code>LayoutInflate.inflate</code> 方法渲染的时候， 第二个参数必须指定一个 <code>父容器</code>，且第三个参数必须为 <code>true</code>，也就是必须为 <code>&lt;merge/&gt;</code> 下的视图指定一个父亲节点。</li>
+<li>如果Activity的布局文件根节点是FrameLayout，可以替换为 <code>&lt;merge/&gt;</code>，这样，执行setContentView之后，会减少一层FrameLayout节点。</li>
+<li>自定义View如果继承LinearLayout，建议让自定义View的布局文件根节点设置成 <code>&lt;merge/&gt;</code>，这样能少一层结点。</li>
+<li>因为 <code>&lt;merge/&gt;</code> 不是View，所以对 <code>&lt;merge/&gt;</code>标签设置的所有属性都是无效的。</li>
+</ul>
+</li>
+<li><p><strong><code>&lt;ViewStub&gt;</code>懒加载</strong></p>
+<p>作用：提前填充布局，延时真正布局的加载。<br><strong><code>inflate()</code></strong> 方法只能调用一次，不建议通过 <strong><code>setVisibility()</code></strong> 加载视图</p>
+<p><strong>使用</strong></p>
+<p>要实现的操作：在一个 Activity 上放置了一个按钮，点击后加载懒加载的视图。</p>
+<p>1、 Activity布局文件定义 <code>my_sub_activity.xml</code>：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;Button</div><div class="line">        android:onClick=&quot;onClick&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:text=&quot;加载视图&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ViewStub</div><div class="line">        android:id=&quot;@+id/stub&quot;</div><div class="line">        android:inflatedId=&quot;@+id/subTree&quot;</div><div class="line">        android:layout=&quot;@layout/my_sub_tree&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<p> <code>android:inflatedId</code> 指定了懒加载视图跟节点的 <code>ID</code>，<code>android:layout</code> 指定了懒加载的视图。<code>android:layout_width</code>、<code>android:layout_height</code> 分别指定了懒加载视图的宽和高。</p>
+<p> 2、 懒加载布局文件 <code>my_sub_tree.xml</code>：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:background=&quot;#ffffff&quot;</div><div class="line">    android:gravity=&quot;center&quot;</div><div class="line">    android:padding=&quot;10dip&quot;</div><div class="line">    android:text=&quot;懒加载视图&quot;</div><div class="line">    android:textColor=&quot;#000000&quot;</div><div class="line">    android:textSize=&quot;22sp&quot;&gt;</div><div class="line">&lt;/TextView&gt;</div></pre></td></tr></table></figure>
+<p> 3、 在 Activity 中调用的代码，点击后查到ViewStub对象，并加载视图</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onClick(View v) &#123;</div><div class="line">    // 这里调用的是inflate方法，当然，也可以调用setVisibility方法（但是不建议这么做）</div><div class="line">    // 只能点击一次加载视图按钮，因为inflate只能被调用一次</div><div class="line">    // 如果再次点击按钮，会抛出异常&quot;ViewStub must have a non-null ViewGroup viewParent&quot;</div><div class="line">    ((ViewStub) findViewById(R.id.stub)).inflate();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> <strong>效果图</strong>：</p>
+<p> <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.06.02.png" alt=""></p>
+<p> <strong><code>&lt;ViewStub/&gt;</code> 在VIew树中加载的前后对比</strong>：</p>
+<p>  加载前：</p>
+<p> <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.28.png" alt=""></p>
+<p>  加载后：</p>
+<p> <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2016.09.39.png" alt=""></p>
+<ul>
+<li><p><strong>颜色</strong></p>
+<ul>
+<li>如果父控件有颜色，也是自己需要的颜色，那么就不必在子控件加背景颜色</li>
+<li>如果每个子控件的颜色不太一样，而且可以完全覆盖父控件，那么就不需要再父控件上加背景颜色</li>
+</ul>
+</li>
+<li><p><strong>onDraw()</strong> 处理方法：</p>
+<ul>
+<li><strong>不要做耗时的任务</strong>，也 <strong>不做过多的循环操作</strong>，特别是 <strong>嵌套循环</strong>，虽然每次循环耗时很小，但是大量的循环势必 <strong>霸占CPU的时间片</strong>，从而造成View的绘制过程不流畅。</li>
+<li><strong>不要创建新的局部对象</strong>，因为 onDraw() 方法一般都会 <strong>频繁大量调用</strong>，就意味着会 <strong>产生大量的临时对象</strong>，不仅 <strong>占用过的内存</strong>，而且会导致系统更加 <strong>频繁的GC</strong>，大大降低程序的执行速度和效率。</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www1.jianshu.com/p/bef74a4b6d5e" target="_blank" rel="external">参考1</a><br><a href="https://www.jianshu.com/p/fe81e4b4c5ba?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="external">参考2</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/设计模式-责任链模式/" rel="next" title="责任链模式">
+                <i class="fa fa-chevron-left"></i> 责任链模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/专题/" rel="prev" title="专题">
+                专题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
+                alt="YannisCheng" />
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-关于-快-的总结"><span class="nav-number">1.</span> <span class="nav-text">1 关于 快 的总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-启动方式"><span class="nav-number">2.</span> <span class="nav-text">2 启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-冷启动（Cold-Start）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 冷启动（Cold Start）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-Application创建"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 Application创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-Activity创建"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 Activity创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3常见问题"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-闪屏页的启动逻辑优化"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 闪屏页的启动逻辑优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-热启动（Hot-start）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 热启动（Hot start）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-温启动（Warm-start）"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 温启动（Warm start）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-快-启动时间统计"><span class="nav-number">3.</span> <span class="nav-text">3 快-启动时间统计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-本地-局部方法-运行时间同步"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 本地 局部方法 运行时间同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-本地-全局统计-—-使用adb"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 本地 全局统计 — 使用adb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-线上统计-—-Log"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 线上统计 — Log</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-生命周期函数执行流程"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 生命周期函数执行流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-执行启动时间统计"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 执行启动时间统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-工具的使用"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 工具的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-Android-Studio-自动工具"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 Android Studio 自动工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-第三方启动时间统计分析利器：nimbledroid-及其-使用参考"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 第三方启动时间统计分析利器：nimbledroid 及其 使用参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3-在线图片压缩工具-TinyPNG。"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3 在线图片压缩工具 TinyPNG。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-启动时间相关-的问题解决方法"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 启动时间相关 的问题解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-启动白屏问题"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 启动白屏问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-视图显示问题：MessageQueue类的IdleHandler接口的使用"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 视图显示问题：MessageQueue类的IdleHandler接口的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-快-绘制过程分析"><span class="nav-number">4.</span> <span class="nav-text">4 快-绘制过程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-检测方式"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 检测方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-优化方法"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 优化方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">293.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
