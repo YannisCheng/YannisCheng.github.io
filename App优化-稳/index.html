@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%2013.52.37.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E4%BC%98%E5%8C%96-%E5%AE%8F%E8%A7%82%E7%90%86%E8%AE%BA.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E9%9D%99%E6%80%81%E4%B8%8E%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E5%AF%B9%E6%AF%94.png">
-<meta property="og:updated_time" content="2019-03-10T12:05:34.640Z">
+<meta property="og:updated_time" content="2019-04-05T12:19:24.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="App优化-稳">
 <meta name="twitter:description" content="App优化-稳">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T20:05:34+08:00">
-                2019-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-05T20:19:24+08:00">
+                2019-04-05
               </time>
             
           </span>
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,009 字
+                  2,112 字
                 </span>
               
 
@@ -471,7 +471,7 @@
 </li>
 </ul>
 <h1 id="3-ANR"><a href="#3-ANR" class="headerlink" title="3 ANR"></a>3 ANR</h1><p>造成<strong>ANR</strong>程序无响应的原因主要是在<strong>四大组件</strong>的<strong>耗时操作</strong>；</p>
-<h1 id="4-内存泄漏"><a href="#4-内存泄漏" class="headerlink" title="4 内存泄漏"></a>4 内存泄漏</h1><h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p><strong>内存泄漏</strong> 指的是 <strong>那些程序不再使用的对象无法被GC识别</strong>，这样就 <strong>导致这个对象一直留在内存当中，占用了没来就不多的内存空间</strong>。</p>
+<h1 id="4-内存泄漏"><a href="#4-内存泄漏" class="headerlink" title="4 内存泄漏"></a>4 内存泄漏</h1><p><strong>内存泄漏</strong> 指的是 <strong>那些程序不再使用的对象无法被GC识别</strong>，这样就 <strong>导致这个对象一直留在内存当中，占用了没来就不多的内存空间</strong>。</p>
 <p>内存泄漏是一个 <strong>缓慢积累</strong> 的过程，温水煮青蛙一般，往往很难直观的看到，只能最后内存不够用了，程序崩溃。</p>
 <p>因为有 <strong>内存泄漏</strong>，所以 <strong>内存被占用越来越多</strong>，那么 <strong>GC会更容易被触发</strong>，GC会 <strong>越来越频发</strong>，但是当GC的时候 <strong>所有的线程都是暂停状态的</strong>，需要处理的 <strong>对象数量越多耗时越长</strong>，所以这也会造成 <strong>卡顿</strong>。</p>
 <h2 id="发生泄漏的4大类情况"><a href="#发生泄漏的4大类情况" class="headerlink" title="发生泄漏的4大类情况"></a>发生泄漏的4大类情况</h2><ul>
@@ -530,11 +530,13 @@
 <li><strong>注册后未进行解绑</strong></li>
 <li><strong>start() 后没有 stop()</strong></li>
 </ul>
-<p><strong>分析工具：</strong></p>
-<ul>
-<li><strong>leakcanary</strong>，漏洞直接显示</li>
-<li><strong>Android Lint</strong>，帮助发现代码构成/质量问题。内存泄漏时会有发黄。</li>
-<li><strong>Android Profiler</strong>，自带，好好琢磨。</li>
+<h2 id="内存分析工具："><a href="#内存分析工具：" class="headerlink" title="内存分析工具："></a>内存分析工具：</h2><ul>
+<li><strong><a href="https://github.com/square/leakcanary" target="_blank" rel="external">leakcanary</a></strong>：适用于Android的 <strong>内存泄漏检测库</strong>。漏洞直接显示</li>
+<li><strong>Android Lint</strong>：帮助发现代码构成/质量问题。内存泄漏时会有发黄。</li>
+<li><strong><a href="https://blog.csdn.net/gaugamela/article/details/79027538" target="_blank" rel="external">Android Profiler-Memory</a></strong>：展示应用内存使用情况的实时图像、抓取内存的dump信息、强制垃圾回收及追踪内存分配。</li>
+<li><p><strong><a href="http://www.eclipse.org/mat/" target="_blank" rel="external">MAT（Memory Analyzer Tools）</a></strong>：</p>
+<p>是一个快速且功能丰富的 <strong>Java堆分析器</strong>，可帮助您查找 <strong>内存泄漏并减少内存消耗</strong>。此工具是<code>Eclipse</code> IDE下的，如果想要在 <code>Android Studio</code> 下使用，可以从官网下载。</p>
+</li>
 </ul>
 
       
@@ -652,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -723,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-稳"><span class="nav-number">2.</span> <span class="nav-text">1 稳</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Crash"><span class="nav-number">3.</span> <span class="nav-text">2 Crash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-工具"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ANR"><span class="nav-number">4.</span> <span class="nav-text">3 ANR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-内存泄漏"><span class="nav-number">5.</span> <span class="nav-text">4 内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">5.1.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发生泄漏的4大类情况"><span class="nav-number">5.2.</span> <span class="nav-text">发生泄漏的4大类情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类泄漏"><span class="nav-number">5.2.1.</span> <span class="nav-text">集合类泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例-静态变量"><span class="nav-number">5.2.2.</span> <span class="nav-text">单例/静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类-非静态内部类"><span class="nav-number">5.2.3.</span> <span class="nav-text">匿名内部类/非静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非静态内部类一个示例："><span class="nav-number">5.2.3.1.</span> <span class="nav-text">非静态内部类一个示例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名态内部类一个示例："><span class="nav-number">5.2.3.2.</span> <span class="nav-text">匿名态内部类一个示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源未关闭"><span class="nav-number">5.2.4.</span> <span class="nav-text">资源未关闭</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-稳"><span class="nav-number">2.</span> <span class="nav-text">1 稳</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Crash"><span class="nav-number">3.</span> <span class="nav-text">2 Crash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-工具"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ANR"><span class="nav-number">4.</span> <span class="nav-text">3 ANR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-内存泄漏"><span class="nav-number">5.</span> <span class="nav-text">4 内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发生泄漏的4大类情况"><span class="nav-number">5.1.</span> <span class="nav-text">发生泄漏的4大类情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类泄漏"><span class="nav-number">5.1.1.</span> <span class="nav-text">集合类泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例-静态变量"><span class="nav-number">5.1.2.</span> <span class="nav-text">单例/静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类-非静态内部类"><span class="nav-number">5.1.3.</span> <span class="nav-text">匿名内部类/非静态内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非静态内部类一个示例："><span class="nav-number">5.1.3.1.</span> <span class="nav-text">非静态内部类一个示例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名态内部类一个示例："><span class="nav-number">5.1.3.2.</span> <span class="nav-text">匿名态内部类一个示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源未关闭"><span class="nav-number">5.1.4.</span> <span class="nav-text">资源未关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分析工具："><span class="nav-number">5.2.</span> <span class="nav-text">内存分析工具：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -757,7 +759,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">294.9k</span>
+    <span title="Site words total count">298.1k</span>
   
 </div>
 
