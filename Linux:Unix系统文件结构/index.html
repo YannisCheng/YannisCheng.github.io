@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Linux:Unix系统文件结构/"/>
+  <link rel="canonical" href="http://yannischeng.com/Linux:Unix系统文件结构/">
 
 
 
@@ -158,7 +158,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -188,7 +188,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -198,7 +198,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -208,7 +208,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -218,7 +218,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -228,7 +228,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -271,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -319,7 +319,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,662 字
+                  3,668 字
                 </span>
               
 
@@ -461,7 +461,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
 <h2 id="lost-found"><a href="#lost-found" class="headerlink" title="/lost+found"></a>/lost+found</h2><pre><code>这个目录是使用标准的ext2/ext3档案系统格式才会产生的一个目录，目的在于当档案系统发生错误时，将一些遗失的片段放置到这个目录下。 这个目录通常会在分割槽的最顶层存在，例如你加装一个硬盘于/disk中，那在这个系统下就会自动产生一个这样的目录/disk/lost+found
 </code></pre><h2 id="proc"><a href="#proc" class="headerlink" title="/proc"></a>/proc</h2><pre><code>这个目录本身是一个虚拟文件系统(virtual filesystem)喔。 他放置的资料都是在内存当中，例如系统核心、行程资讯(process)（是进程吗?）、周边装置的状态及网络状态等等。因为这个目录下的资料都是在记忆体（内存）当中，所以本身不占任何硬盘空间。比较重要的档案（目录）例如： /proc/cpuinfo, /proc/dma, /proc/interrupts, /proc/ioports, /proc/net/*等等。呵呵，是虚拟内存吗[guest]？
 </code></pre><h2 id="sys"><a href="#sys" class="headerlink" title="/sys"></a>/sys</h2><pre><code>这个目录其实跟/proc非常类似，也是一个虚拟的档案系统，主要也是记录与核心相关的资讯。 包括目前已载入的核心模组与核心侦测到的硬体装置资讯等等。 这个目录同样不占硬盘容量。
-</code></pre><h2 id="根目录下与开机过程有关的目录"><a href="#根目录下与开机过程有关的目录" class="headerlink" title="根目录下与开机过程有关的目录"></a>根目录下与开机过程有关的目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">除了这些目录的内容之外，另外要注意的是，因为根目录与开机有关，开机过程中仅有根目录会被挂载， 其他分区则是在开机完成之后才会持续的进行挂载的行为。就是因为如此，因此根目录下与开机过程有关的目录， 就不能够与根目录放到不同的分区去。那哪些目录不可与根目录分开呢？有底下这些：</div><div class="line">    /etc：配置文件</div><div class="line">    /bin：重要执行档</div><div class="line">    /dev：所需要的装置文件</div><div class="line">    /lib：执行档所需的函式库与核心所需的模块</div><div class="line">    /sbin：重要的系统执行文件</div><div class="line">这五个目录千万不可与根目录分开在不同的分区。请背下来啊。</div></pre></td></tr></table></figure>
+</code></pre><h2 id="根目录下与开机过程有关的目录"><a href="#根目录下与开机过程有关的目录" class="headerlink" title="根目录下与开机过程有关的目录"></a>根目录下与开机过程有关的目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">除了这些目录的内容之外，另外要注意的是，因为根目录与开机有关，开机过程中仅有根目录会被挂载， 其他分区则是在开机完成之后才会持续的进行挂载的行为。就是因为如此，因此根目录下与开机过程有关的目录， 就不能够与根目录放到不同的分区去。那哪些目录不可与根目录分开呢？有底下这些：</span><br><span class="line">    /etc：配置文件</span><br><span class="line">    /bin：重要执行档</span><br><span class="line">    /dev：所需要的装置文件</span><br><span class="line">    /lib：执行档所需的函式库与核心所需的模块</span><br><span class="line">    /sbin：重要的系统执行文件</span><br><span class="line">这五个目录千万不可与根目录分开在不同的分区。请背下来啊。</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="usr-的意义与内容："><a href="#usr-的意义与内容：" class="headerlink" title="/usr 的意义与内容："></a>/usr 的意义与内容：</h1><p>依据FHS的基本定义，/usr里面放置的数据属于可分享的与不可变动的(shareable, static)， 如果你知道如何透过网络进行分区的挂载(例如在服务器篇会谈到的NFS服务器)，那么/usr确实可以分享给局域网络内的其他主机来使用喔。</p>
 <p>/usr不是<code>user</code>的缩写，其实usr是<code>Unix Software Resource</code>的缩写， 也就是Unix操作系统软件资源所放置的目录，而不是用户的数据啦。这点要注意。 FHS建议所有软件开发者，应该将他们的数据合理的分别放置到这个目录下的次目录，而不要自行建立该软件自己独立的目录。<br>因为是所有系统默认的软件(distribution发布者提供的软件)都会放置到/usr底下，因此这个目录有点类似Windows 系统的C:\Windows\ + C:\Program files\这两个目录的综合体，系统刚安装完毕时，这个目录会占用最多的硬盘容量。 一般来说，/usr的次目录建议有底下这些：</p>
@@ -515,8 +515,8 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  02-函数-生成器+切片/" rel="prev" title="Python3  02-函数-生成器+切片">
-                Python3  02-函数-生成器+切片 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  02-数据-序列/" rel="prev" title="Python3  02-数据-序列">
+                Python3  02-数据-序列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,9 +585,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -671,7 +669,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bin"><span class="nav-number">1.</span> <span class="nav-text">/bin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boot"><span class="nav-number">2.</span> <span class="nav-text">/boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev"><span class="nav-number">3.</span> <span class="nav-text">/dev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc"><span class="nav-number">4.</span> <span class="nav-text">/etc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-xinetd-d-："><span class="nav-number">4.1.</span> <span class="nav-text">/etc/xinetd.d/ ：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-X11-："><span class="nav-number">5.</span> <span class="nav-text">/etc/X11/ ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#home"><span class="nav-number">6.</span> <span class="nav-text">/home</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lib"><span class="nav-number">7.</span> <span class="nav-text">/lib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#media"><span class="nav-number">8.</span> <span class="nav-text">/media</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mnt"><span class="nav-number">9.</span> <span class="nav-text">/mnt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opt"><span class="nav-number">10.</span> <span class="nav-text">/opt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#root"><span class="nav-number">11.</span> <span class="nav-text">/root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sbin"><span class="nav-number">12.</span> <span class="nav-text">/sbin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#srv"><span class="nav-number">13.</span> <span class="nav-text">/srv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmp"><span class="nav-number">14.</span> <span class="nav-text">/tmp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lost-found"><span class="nav-number">15.</span> <span class="nav-text">/lost+found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proc"><span class="nav-number">16.</span> <span class="nav-text">/proc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">17.</span> <span class="nav-text">/sys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根目录下与开机过程有关的目录"><span class="nav-number">18.</span> <span class="nav-text">根目录下与开机过程有关的目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#usr-的意义与内容："><span class="nav-number"></span> <span class="nav-text">/usr 的意义与内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-X11R6"><span class="nav-number">1.</span> <span class="nav-text">/usr/X11R6/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-include"><span class="nav-number">2.</span> <span class="nav-text">/usr/include/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-lib"><span class="nav-number">3.</span> <span class="nav-text">/usr/lib/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-local"><span class="nav-number">4.</span> <span class="nav-text">/usr/local/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-sbin"><span class="nav-number">5.</span> <span class="nav-text">/usr/sbin/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-share"><span class="nav-number">6.</span> <span class="nav-text">/usr/share/</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#var-的意义与内容："><span class="nav-number"></span> <span class="nav-text">/var 的意义与内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#var-cache"><span class="nav-number">1.</span> <span class="nav-text">/var/cache/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-lib"><span class="nav-number">2.</span> <span class="nav-text">/var/lib/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-lock"><span class="nav-number">3.</span> <span class="nav-text">/var/lock/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-log"><span class="nav-number">4.</span> <span class="nav-text">/var/log/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-mail"><span class="nav-number">5.</span> <span class="nav-text">/var/mail/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-run"><span class="nav-number">6.</span> <span class="nav-text">/var/run/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-spool"><span class="nav-number">7.</span> <span class="nav-text">/var/spool/</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bin"><span class="nav-number">1.</span> <span class="nav-text">/bin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boot"><span class="nav-number">2.</span> <span class="nav-text">/boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev"><span class="nav-number">3.</span> <span class="nav-text">/dev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc"><span class="nav-number">4.</span> <span class="nav-text">/etc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-xinetd-d-："><span class="nav-number">4.1.</span> <span class="nav-text">/etc/xinetd.d/ ：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-X11-："><span class="nav-number">5.</span> <span class="nav-text">/etc/X11/ ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#home"><span class="nav-number">6.</span> <span class="nav-text">/home</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lib"><span class="nav-number">7.</span> <span class="nav-text">/lib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#media"><span class="nav-number">8.</span> <span class="nav-text">/media</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mnt"><span class="nav-number">9.</span> <span class="nav-text">/mnt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opt"><span class="nav-number">10.</span> <span class="nav-text">/opt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#root"><span class="nav-number">11.</span> <span class="nav-text">/root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sbin"><span class="nav-number">12.</span> <span class="nav-text">/sbin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#srv"><span class="nav-number">13.</span> <span class="nav-text">/srv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmp"><span class="nav-number">14.</span> <span class="nav-text">/tmp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lost-found"><span class="nav-number">15.</span> <span class="nav-text">/lost+found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proc"><span class="nav-number">16.</span> <span class="nav-text">/proc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">17.</span> <span class="nav-text">/sys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根目录下与开机过程有关的目录"><span class="nav-number">18.</span> <span class="nav-text">根目录下与开机过程有关的目录</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#usr-的意义与内容："><span class="nav-number"></span> <span class="nav-text">/usr 的意义与内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-X11R6"><span class="nav-number">1.</span> <span class="nav-text">/usr/X11R6/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-include"><span class="nav-number">2.</span> <span class="nav-text">/usr/include/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-lib"><span class="nav-number">3.</span> <span class="nav-text">/usr/lib/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-local"><span class="nav-number">4.</span> <span class="nav-text">/usr/local/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-sbin"><span class="nav-number">5.</span> <span class="nav-text">/usr/sbin/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-share"><span class="nav-number">6.</span> <span class="nav-text">/usr/share/</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#var-的意义与内容："><span class="nav-number"></span> <span class="nav-text">/var 的意义与内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#var-cache"><span class="nav-number">1.</span> <span class="nav-text">/var/cache/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-lib"><span class="nav-number">2.</span> <span class="nav-text">/var/lib/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-lock"><span class="nav-number">3.</span> <span class="nav-text">/var/lock/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-log"><span class="nav-number">4.</span> <span class="nav-text">/var/log/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-mail"><span class="nav-number">5.</span> <span class="nav-text">/var/mail/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-run"><span class="nav-number">6.</span> <span class="nav-text">/var/run/</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var-spool"><span class="nav-number">7.</span> <span class="nav-text">/var/spool/</span></a></li></ol></li></div>
             
 
           </div>
@@ -705,7 +703,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -887,7 +885,7 @@ Linux kernel常用的档名为：vmlinuz ，如果使用的是grub这个开机�
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

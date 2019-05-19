@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Android,">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Android ViewPager与Fragment/"/>
+  <link rel="canonical" href="http://yannischeng.com/Android ViewPager与Fragment/">
 
 
 
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -202,7 +202,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -323,7 +323,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,088 字
+                  1,170 字
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -443,33 +443,33 @@
 <p><strong><em>注意：此处的log输出是 RadioGroup + ViewPager + Fragment 实现的</em></strong></p>
 <p><strong><em>在此种情况的搭配下: 在宿主Activity中不会调用Fragment的 ‘onDestroy()’ 与 ‘onDetach()’ 方法</em></strong></p>
 <h1 id="ViewPager与Fragment搭配说明："><a href="#ViewPager与Fragment搭配说明：" class="headerlink" title="ViewPager与Fragment搭配说明："></a>ViewPager与Fragment搭配说明：</h1><p><strong>主MainActivity中有1个ViewPager与4个Fragment，其中第2个Fragment中嵌套1个ViewPager与2个Fragment.</strong></p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/S80322-14580161.jpg" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/S80322-14580161.jpg" alt></p>
 <h1 id="Activity调用顺序"><a href="#Activity调用顺序" class="headerlink" title="Activity调用顺序"></a>Activity调用顺序</h1><p><strong>Activity的生命周期有7个函数</strong></p>
-<h2 id="启动时，生命周期函数的调用顺序："><a href="#启动时，生命周期函数的调用顺序：" class="headerlink" title="启动时，生命周期函数的调用顺序："></a>启动时，生命周期函数的调用顺序：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">03-22 13:35:18.621 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 13:35:18.782 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 13:35:18.787 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
+<h2 id="启动时，生命周期函数的调用顺序："><a href="#启动时，生命周期函数的调用顺序：" class="headerlink" title="启动时，生命周期函数的调用顺序："></a>启动时，生命周期函数的调用顺序：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">03-22 13:35:18.621 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 13:35:18.782 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 13:35:18.787 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onResume :</span><br></pre></td></tr></table></figure>
 <p>在<strong>长期黑屏</strong>后，调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">03-22 13:36:18.400 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 13:36:18.458 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">03-22 13:36:18.400 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 13:36:18.458 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</span><br></pre></td></tr></table></figure>
 <p><strong>再次被唤醒</strong> 后，调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">03-22 13:42:43.822 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onRestart : </div><div class="line">03-22 13:42:43.834 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 13:42:43.884 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">03-22 13:42:43.822 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onRestart : </span><br><span class="line">03-22 13:42:43.834 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 13:42:43.884 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onResume :</span><br></pre></td></tr></table></figure>
 <p>由<strong>当前ActivityA</strong>跳转至另一个<strong>ActivityB</strong>后，<strong>原ActivityA</strong>调用顺序为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ActivityB调用onCreate、onStart、onResume后，再调用：</div><div class="line"></div><div class="line">03-22 13:44:20.090 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 13:44:20.888 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</div><div class="line">03-22 13:50:01.678 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onDestroy :</div></pre></td></tr></table></figure>
-<h1 id="Fragment调用顺序"><a href="#Fragment调用顺序" class="headerlink" title="Fragment调用顺序"></a>Fragment调用顺序</h1><p>参考：<a href="https://www.cnblogs.com/fajieyefu/p/6092465.html" target="_blank" rel="external">https://www.cnblogs.com/fajieyefu/p/6092465.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ActivityB调用onCreate、onStart、onResume后，再调用：</span><br><span class="line"></span><br><span class="line">03-22 13:44:20.090 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 13:44:20.888 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</span><br><span class="line">03-22 13:50:01.678 		LoginActivity: ヽ(｀Д´)ﾉ -&gt; onDestroy :</span><br></pre></td></tr></table></figure>
+<h1 id="Fragment调用顺序"><a href="#Fragment调用顺序" class="headerlink" title="Fragment调用顺序"></a>Fragment调用顺序</h1><p>参考：<a href="https://www.cnblogs.com/fajieyefu/p/6092465.html" target="_blank" rel="noopener">https://www.cnblogs.com/fajieyefu/p/6092465.html</a></p>
 <p><strong>Fragment的生命周期有11个函数</strong></p>
-<h2 id="Fragment声明周期函数："><a href="#Fragment声明周期函数：" class="headerlink" title="Fragment声明周期函数："></a>Fragment声明周期函数：</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/771042-20170304162533391-72210111.png" alt=""></p>
-<h2 id="Fragment声明周期函数调用："><a href="#Fragment声明周期函数调用：" class="headerlink" title="Fragment声明周期函数调用："></a>Fragment声明周期函数调用：</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/945877-20161123093212096-2032834078.png" alt=""></p>
+<h2 id="Fragment声明周期函数："><a href="#Fragment声明周期函数：" class="headerlink" title="Fragment声明周期函数："></a>Fragment声明周期函数：</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/771042-20170304162533391-72210111.png" alt></p>
+<h2 id="Fragment声明周期函数调用："><a href="#Fragment声明周期函数调用：" class="headerlink" title="Fragment声明周期函数调用："></a>Fragment声明周期函数调用：</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/945877-20161123093212096-2032834078.png" alt></p>
 <p><strong>进入宿主Activity中时</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">03-22 14:36:54.109 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.147 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.151 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line"></div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.230 		AA: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.233 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.233		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line"></div><div class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		BB: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:36:54.178 		CC: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:36:54.276 		BB: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:36:54.294 		CC: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:36:54.109 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:36:54.147 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:36:54.151 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line"></span><br><span class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:36:54.178 		AA: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:36:54.230 		AA: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:36:54.233 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:36:54.233		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line"></span><br><span class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:36:54.256 		BB: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:36:54.178 		BB: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:36:54.256 		CC: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:36:54.178 		CC: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:36:54.276 		BB: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:36:54.279 		BB: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:36:54.294 		CC: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:36:54.297 		CC: ヽ(｀Д´)ﾉ -&gt; onResume :</span><br></pre></td></tr></table></figure>
 <p>在<strong>长期黑屏</strong>后，调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">03-22 14:37:20.726 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:37:20.726 		BB: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:37:20.726 		CC: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:37:20.726 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:37:20.786 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:37:20.786 		BB: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:37:20.787 		CC: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:37:20.787 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:37:20.726 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:37:20.726 		BB: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:37:20.726 		CC: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:37:20.726 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:37:20.786 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:37:20.786 		BB: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:37:20.787 		CC: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:37:20.787 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStop :</span><br></pre></td></tr></table></figure>
 <p><strong>再次被唤醒</strong> 后，调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">03-22 14:37:39.228 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onRestart : </div><div class="line">03-22 14:37:39.240 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:37:39.240 		BB: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:37:39.240 		CC: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:37:39.241 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:37:39.244 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:37:39.245 		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:37:39.245 		BB: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:37:39.245 		CC: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:37:39.228 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onRestart : </span><br><span class="line">03-22 14:37:39.240 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:37:39.240 		BB: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:37:39.240 		CC: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:37:39.241 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:37:39.244 		MainActivity: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:37:39.245 		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:37:39.245 		BB: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:37:39.245 		CC: ヽ(｀Д´)ﾉ -&gt; onResume :</span><br></pre></td></tr></table></figure>
 <p>当点击<strong>第2个Fragment</strong>时，<strong>第4个Fragment</strong>的调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:38:46.556 		DD: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:38:46.558 		DD: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:38:46.559 		DD: ヽ(｀Д´)ﾉ -&gt; onResume :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:38:46.521 		DD: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:38:46.556 		DD: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:38:46.558 		DD: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:38:46.559 		DD: ヽ(｀Д´)ﾉ -&gt; onResume :</span><br></pre></td></tr></table></figure>
 <p>直接点击<strong>第4个Fragment</strong>时，<strong>第1、5个Fragment</strong>的调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onAttach : </div><div class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onCreate : </div><div class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:41:31.930 		DD: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:41:31.933 		DD: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:41:31.933 		DD: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:41:31.976 		EE: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:41:31.979 		EE: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:41:31.979 		EE: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:41:32.323 		AA: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:41:31.900 		DD: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onAttach : </span><br><span class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onCreate : </span><br><span class="line">03-22 14:41:31.900 		EE: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:41:31.930 		DD: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:41:31.933 		DD: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:41:31.933 		DD: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:41:31.976 		EE: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:41:31.979 		EE: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:41:31.979 		EE: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:41:32.323 		AA: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</span><br></pre></td></tr></table></figure>
 <p>点击<strong>第5个Fragment</strong>时，<strong>第1、2、3个Fragment</strong>的调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:41:32.323 		AA: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </div><div class="line">03-22 14:42:59.494 		BB: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:42:59.494 		CC: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:42:59.494 		BB: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:42:59.494 		CC: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:42:59.495 		BB: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </div><div class="line">03-22 14:42:59.497 		CC: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:41:32.322 		AA: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:41:32.323 		AA: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </span><br><span class="line">03-22 14:42:59.494 		BB: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:42:59.494 		CC: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:42:59.494 		BB: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:42:59.494 		CC: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:42:59.495 		BB: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </span><br><span class="line">03-22 14:42:59.497 		CC: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</span><br></pre></td></tr></table></figure>
 <p>再次点击<strong>第1个Fragment</strong>时，<strong>第4、5个Fragment</strong>的调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">03-22 14:44:16.794 		AA: ヽ(｀Д´)ﾉ -&gt; onCreateView : </div><div class="line">03-22 14:44:16.794 		AA: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </div><div class="line">03-22 14:44:16.797 		EE: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:44:16.798 		EE: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:44:16.798 		EE: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </div><div class="line">03-22 14:44:16.799 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </div><div class="line">03-22 14:44:16.799 		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </div><div class="line">03-22 14:44:36.074 		DD: ヽ(｀Д´)ﾉ -&gt; onPause : </div><div class="line">03-22 14:44:36.074 		DD: ヽ(｀Д´)ﾉ -&gt; onStop : </div><div class="line">03-22 14:44:36.075 		DD: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">03-22 14:44:16.794 		AA: ヽ(｀Д´)ﾉ -&gt; onCreateView : </span><br><span class="line">03-22 14:44:16.794 		AA: ヽ(｀Д´)ﾉ -&gt; onActivityCreated : </span><br><span class="line">03-22 14:44:16.797 		EE: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:44:16.798 		EE: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:44:16.798 		EE: ヽ(｀Д´)ﾉ -&gt; onDestroyView : </span><br><span class="line">03-22 14:44:16.799 		AA: ヽ(｀Д´)ﾉ -&gt; onStart : </span><br><span class="line">03-22 14:44:16.799 		AA: ヽ(｀Д´)ﾉ -&gt; onResume : </span><br><span class="line">03-22 14:44:36.074 		DD: ヽ(｀Д´)ﾉ -&gt; onPause : </span><br><span class="line">03-22 14:44:36.074 		DD: ヽ(｀Д´)ﾉ -&gt; onStop : </span><br><span class="line">03-22 14:44:36.075 		DD: ヽ(｀Д´)ﾉ -&gt; onDestroyView :</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -571,9 +571,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -691,7 +689,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -873,7 +871,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

@@ -440,7 +440,7 @@
 
       
         <blockquote>
-<p>Scrapy框架使用指南：<a href="http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html</a><br>Scrapy零基础使用：<a href="http://www.jb51.net/article/57183.htm" target="_blank" rel="external">http://www.jb51.net/article/57183.htm</a></p>
+<p>Scrapy框架使用指南：<a href="http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html" target="_blank" rel="noopener">http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/overview.html</a><br>Scrapy零基础使用：<a href="http://www.jb51.net/article/57183.htm" target="_blank" rel="noopener">http://www.jb51.net/article/57183.htm</a></p>
 </blockquote>
 <a id="more"></a>
 <h1 id="开题"><a href="#开题" class="headerlink" title="开题"></a>开题</h1><p><strong>问：把网站装进爬虫需要几步？</strong><br><strong>答：四步。</strong></p>
@@ -517,7 +517,7 @@ class DmozSpider(Spider):
 <pre><code>scrapy crawl dmoz 
 </code></pre><p><strong>执行了这条命令发生了啥？</strong><br>首先，Scrapy为爬虫的 <code>start_urls</code> 属性中的每个<code>URL</code>创建了一个<code>scrapy.http.Request</code> 对象 ，并将爬虫的<code>parse()</code> 方法指定为回调函数。<br>然后，这些 <code>Request</code> 被调度并执行，之后通过<code>parse()</code>方法返回 <code>scrapy.http.Response</code> 对象，并反馈给爬虫。</p>
 <h2 id="3-2-取"><a href="#3-2-取" class="headerlink" title="3.2 取"></a>3.2 取</h2><p>爬取整个网页完毕，接下来的就是的取过程了。在基础的爬虫里，这一步可以用<code>正则表达式</code>来抓。在<code>Scrapy</code>里，<strong>使用一种叫做 <code>XPath selectors</code>的机制，它基于 <code>XPath</code>表达式</strong>。</p>
-<p><strong>例子：</strong><br><strong>/html/head/title</strong> : 选择HTML文档<head>元素下面的<code>&lt;title&gt;</code>标签。<br><strong>/html/head/title/text()</strong> : 选择前面提到的<code>&lt;title&gt;</code> 元素下面的文本内容<br><strong>//td</strong>: 选择所有 <code>&lt;td&gt;</code> 元素<br><strong>//div[@class=”mine”]</strong> : 选择所有包含 <code>class=&quot;mine&quot;</code> 属性的<code>div</code>标签元素</head></p>
+<p><strong>例子：</strong><br><strong>/html/head/title</strong> : 选择HTML文档<head><meta name="generator" content="Hexo 3.8.0">元素下面的<code>&lt;title&gt;</code>标签。<br><strong>/html/head/title/text()</strong> : 选择前面提到的<code>&lt;title&gt;</code> 元素下面的文本内容<br><strong>//td</strong>: 选择所有 <code>&lt;td&gt;</code> 元素<br><strong>//div[@class=”mine”]</strong> : 选择所有包含 <code>class=&quot;mine&quot;</code> 属性的<code>div</code>标签元素</head></p>
 <p>xpath路径表达式：</p>
 <table>
 <thead>
@@ -549,7 +549,7 @@ class DmozSpider(Spider):
 </tr>
 </tbody>
 </table>
-<p>更多使用参考 <code>W3C-XPath</code> ：<a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/xpath/index.asp</a></p>
+<p>更多使用参考 <code>W3C-XPath</code> ：<a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/xpath/index.asp</a></p>
 <p><strong>为了方便使用<code>XPaths</code>，<code>Scrapy</code>提供<code>XPathSelector</code> 类，有2种可以选择</strong>:</p>
 <ol>
 <li><strong>HtmlXPathSelector (HTML数据解析)</strong></li>
@@ -567,9 +567,9 @@ class DmozSpider(Spider):
 <h2 id="3-3-xpath-测试"><a href="#3-3-xpath-测试" class="headerlink" title="3.3 xpath()测试"></a>3.3 xpath()测试</h2><p>在终端输入：</p>
 <pre><code>scrapy shell http://dmoztools.net/Computers/Programming/Languages/Python/ 
 </code></pre><p>在没有报错的情况下，输入 <code>response.headers</code> 得到：</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.32.34.png" alt></p>
 <p>在没有报错的情况下，输入 <code>response.body</code> 得到：</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.35.02.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-03%2010.35.02.png" alt></p>
 <h1 id="4-存储内容"><a href="#4-存储内容" class="headerlink" title="4. 存储内容"></a>4. 存储内容</h1><p>保存信息的最简单的方法是通过Feed exports，主要有4种：<code>JSON</code>，<code>JSON lines</code>，<code>CSV</code>，<code>XML</code>。<br>我们将结果用最常用的JSON导出，命令如下：</p>
 <pre><code>scrapy crawl dmoz -o items.json -t json
 </code></pre><p>其中，<code>-o</code> 后面是<code>导出文件名</code>，<code>-t</code> 后面是<code>导出类型</code>。</p>
@@ -580,7 +580,7 @@ NameError: global name &apos;DmozItem&apos; is not defined
 <pre><code>from ..items import DmozItem
 </code></pre><p>第一个点(.) 表示当前目录，第二个点表示上一级父目录。这样做还有一个额外的好处就是你可以随意修改你的包的名称，松耦合。</p>
 <h2 id="2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"><a href="#2-Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？" class="headerlink" title="2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？"></a>2. Scrapy爬取中文，显示ascii码，如何转变成utf-8正常编码？</h2><blockquote>
-<p>参考：<a href="http://www.jianshu.com/p/c03d968ef68b" target="_blank" rel="external">http://www.jianshu.com/p/c03d968ef68b</a></p>
+<p>参考：<a href="http://www.jianshu.com/p/c03d968ef68b" target="_blank" rel="noopener">http://www.jianshu.com/p/c03d968ef68b</a></p>
 </blockquote>
 <p>将爬取到的中文信息存储为<code>json</code>格式的文件时，文字显示就会出现问题，存储为<code>xml</code>时就不会有问题。本要求应该显示的是：<code>摘要</code>，而实际显示的内容为：<code>\&quot;\u6458\u8981</code></p>
 <p><strong>解决方案：使用<code>json包</code>中的<code>json.dumps(dictname,ensure_ascii=False)</code></strong><br>具体案例使用：</p>
@@ -589,7 +589,7 @@ print(item[&apos;node&apos;])
 摘要: 把系统换到了fedora,记录几个相关的配置
 </code></pre><h2 id="3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错"><a href="#3-scrapy-的-parse-return-值必须是Request-BaseItem-dict-or-None，如果返回str报错" class="headerlink" title="3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错"></a>3. scrapy` 的 parse() return 值必须是Request, BaseItem, dict or None，如果返回str报错</h2><pre><code>[scrapy.core.scraper] ERROR: Spider must return Request, BaseItem, dict or None, got &apos;str&apos; in &lt;GET http://www.cnblogs.com/aLittleBitCool/&gt;
 </code></pre><h2 id="4-scrapy爬虫得到的json文件是ascii码问题"><a href="#4-scrapy爬虫得到的json文件是ascii码问题" class="headerlink" title="4. scrapy爬虫得到的json文件是ascii码问题"></a>4. scrapy爬虫得到的json文件是ascii码问题</h2><blockquote>
-<p>参考：<a href="http://bbs.fishc.com/thread-85672-1-1.html" target="_blank" rel="external">http://bbs.fishc.com/thread-85672-1-1.html</a></p>
+<p>参考：<a href="http://bbs.fishc.com/thread-85672-1-1.html" target="_blank" rel="noopener">http://bbs.fishc.com/thread-85672-1-1.html</a></p>
 </blockquote>
 <pre><code>import json        #记得添加这两个库
 import codecs
@@ -826,7 +826,7 @@ class XXXPipeline(object):                 #XXX就是你建立scrapy工程的名
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 

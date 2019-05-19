@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="阅读,设计模式," />
+  <meta name="keywords" content="阅读,设计模式,">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/设计模式-责任链模式/"/>
+  <link rel="canonical" href="http://yannischeng.com/设计模式-责任链模式/">
 
 
 
@@ -160,7 +160,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -190,7 +190,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -200,7 +200,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -210,7 +210,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -220,7 +220,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -230,7 +230,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -273,7 +273,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -321,7 +321,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  662 字
+                  689 字
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -455,7 +455,7 @@
 </ul>
 <p><strong>非纯责任链模式</strong> 适合 <strong>对一个结果做分步骤操作，动态的去完成一个结果</strong>，更加灵活。</p>
 <h2 id="一个实际生活中的例子-击鼓传花"><a href="#一个实际生活中的例子-击鼓传花" class="headerlink" title="一个实际生活中的例子-击鼓传花"></a>一个实际生活中的例子-击鼓传花</h2><p>在击鼓传花这个游戏中，<code>传花</code> 就是一个请求事件，参与这个游戏的人就是待处理这个 <code>事件</code> 的多个对象，<code>花</code> 的传递是从一个人的手中传递到下一个人的手中，因此这些对象构成一条链。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F-%E5%87%BB%E9%BC%93%E4%BC%A0%E8%8A%B1.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F-%E5%87%BB%E9%BC%93%E4%BC%A0%E8%8A%B1.png" alt></p>
 <h1 id="角色组成"><a href="#角色组成" class="headerlink" title="角色组成"></a>角色组成</h1><p>责任链模式包括 <code>抽象处理角色</code> 与 <code>具体处理者角色</code>。</p>
 <ul>
 <li><p><strong>抽象处理角色</strong>：定义处理请求接口。<strong>规范子类处理请求的操作</strong> 或者可以按照需要定义一个引用下一个对象的接口方法。</p>
@@ -466,13 +466,13 @@
 <h2 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h2><ul>
 <li><strong>抽象处理者角色</strong></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">// 处理下一个责任的对象</span></div><div class="line">	<span class="keyword">private</span> Handler successor;</div><div class="line"></div><div class="line">	<span class="comment">// 规范子类处理请求的方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">()</span></span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> Handler <span class="title">getSuccessor</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> successor;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSuccessor</span><span class="params">(Handler successor)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.successor = successor;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 处理下一个责任的对象</span></span><br><span class="line">	<span class="keyword">private</span> Handler successor;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 规范子类处理请求的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Handler <span class="title">getSuccessor</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> successor;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSuccessor</span><span class="params">(Handler successor)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.successor = successor;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>具体处理着角色</strong></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	* 判断是否有后继的责任对象</span></div><div class="line"><span class="comment">	* 如果有，就转发请求给后继的责任对象</span></div><div class="line"><span class="comment">	* 如果没有，则处理请求</span></div><div class="line"><span class="comment">	*/</span></div><div class="line">	<span class="keyword">if</span> (getSuccessor() != <span class="keyword">null</span>) &#123;            </div><div class="line">		System.out.println(<span class="string">"放过请求"</span>);</div><div class="line">		getSuccessor().handleRequest();            </div><div class="line">	&#125; <span class="keyword">else</span> &#123;            </div><div class="line">		System.out.println(<span class="string">"处理请求"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	* 判断是否有后继的责任对象</span></span><br><span class="line"><span class="comment">	* 如果有，就转发请求给后继的责任对象</span></span><br><span class="line"><span class="comment">	* 如果没有，则处理请求</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span> (getSuccessor() != <span class="keyword">null</span>) &#123;            </span><br><span class="line">		System.out.println(<span class="string">"放过请求"</span>);</span><br><span class="line">		getSuccessor().handleRequest();            </span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;            </span><br><span class="line">		System.out.println(<span class="string">"处理请求"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>参考：<a href="http://www.cnblogs.com/java-my-life/archive/2012/05/28/2516865.html" target="_blank" rel="external">http://www.cnblogs.com/java-my-life/archive/2012/05/28/2516865.html</a></p>
+<p>参考：<a href="http://www.cnblogs.com/java-my-life/archive/2012/05/28/2516865.html" target="_blank" rel="noopener">http://www.cnblogs.com/java-my-life/archive/2012/05/28/2516865.html</a></p>
 </blockquote>
 
       
@@ -575,9 +575,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -695,7 +693,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -877,7 +875,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

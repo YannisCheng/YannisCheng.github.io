@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Java,JVM," />
+  <meta name="keywords" content="Java,JVM,">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/JVM理解-内存管理/"/>
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-内存管理/">
 
 
 
@@ -171,7 +171,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -201,7 +201,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -211,7 +211,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -221,7 +221,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -231,7 +231,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -241,7 +241,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -284,7 +284,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -332,7 +332,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -451,7 +451,7 @@
       
         <p>JVM理解 —— 内存管理</p>
 <a id="more"></a>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A6%82%E8%A7%88.jpg" alt></p>
 <p>Java不是由开发人员来显示分配内存和回收内存，而是由JVM来 <strong>自动管理内存的分配和回收</strong>（又称为：<strong>垃圾回收</strong>、<strong>Garbage Collection：GC</strong>）。这降低了开发的难度，但是实际使用中遇到的问题就是由于不清楚JVM的 内存分配 和 回收机制，造成内存泄漏，最终导致JVM内存不够用。</p>
 <h1 id="1-内存空间"><a href="#1-内存空间" class="headerlink" title="1. 内存空间"></a>1. 内存空间</h1><p>JDK遵照 JVM规范进行内存区域的划分，如下：</p>
 <ul>
@@ -461,7 +461,7 @@
 <li><strong>方法区（非堆）</strong></li>
 <li><strong>堆</strong></li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png" alt></p>
 <h2 id="1-1-程序计数器"><a href="#1-1-程序计数器" class="headerlink" title="1.1 程序计数器"></a>1.1 程序计数器</h2><p><strong>数据活动范围：</strong></p>
 <ul>
 <li>当前线程私有</li>
@@ -552,7 +552,7 @@
 <ul>
 <li>OutOfMemoryError。</li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118102750920-573198703.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118102750920-573198703.png" alt></p>
 <h3 id="1-4-1-新生代（New-Generation）"><a href="#1-4-1-新生代（New-Generation）" class="headerlink" title="1.4.1 新生代（New Generation）"></a>1.4.1 新生代（New Generation）</h3><h4 id="1-4-1-1-新生代内存由："><a href="#1-4-1-1-新生代内存由：" class="headerlink" title="1.4.1.1 新生代内存由："></a>1.4.1.1 新生代内存由：</h4><ul>
 <li><strong>Eden Space</strong></li>
 <li>2块相同大小的 <strong>Survivor Space</strong> 构成，也被称为：<code>From Space</code> 和 <code>To Space</code>。</li>
@@ -595,7 +595,7 @@
 <h4 id="1-4-1-3-为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？"><a href="#1-4-1-3-为什么-Survivor-Space-会有-From-Space-与-To-Space-2块空间？" class="headerlink" title="1.4.1.3 为什么 Survivor Space 会有 From Space 与 To Space 2块空间？"></a>1.4.1.3 为什么 Survivor Space 会有 From Space 与 To Space 2块空间？</h4><p>由上文已经说明了为什么没有 <strong>Survivor Space</strong> 不行，这次假设只有 <strong>1块 Survivor Space</strong>。</p>
 <p>当只有 <strong>1块 Survivor Space</strong> 时，新建对象填满了 <strong>Eden Space</strong> ，此时就会触发 Minor GC ，然后 <strong>Eden Space</strong> 中的存活对象被复制至 <strong>Survivor Space</strong> 中。</p>
 <p>这样的操作一直循环下去，虽然存活对象得到了转移，但是这2个区域中对象所占用的内存地址并不是连续的，这就导致了在只有 <strong>1块Survivor Space</strong> 的条件下产生的问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">内存地址碎片化</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内存地址碎片化</span><br></pre></td></tr></table></figure>
 <p>内存地址碎片化导致的问题就是：</p>
 <p><strong>严重影响Java程序的性能</strong>，堆空间中被散布的对象占据着不连续的内存，最直接的结果就是：<strong>没有足够大的连续空间，内存碎片</strong>。</p>
 <h4 id="1-4-1-4-建立-2块Survivor-Space-的意义"><a href="#1-4-1-4-建立-2块Survivor-Space-的意义" class="headerlink" title="1.4.1.4  建立 2块Survivor Space 的意义"></a>1.4.1.4  建立 2块Survivor Space 的意义</h4><p>当建立 <strong>2块Survivor Space</strong> 时：</p>
@@ -608,9 +608,9 @@
 </li>
 </ul>
 <p>所以，建立 <strong>2块Survivor Space</strong> 的意义就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">永远有一个 Survivor Space 是空的，另一个非空的 Survivor Space 无碎片。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">永远有一个 Survivor Space 是空的，另一个非空的 Survivor Space 无碎片。</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>参考：<a href="https://blog.csdn.net/u012799221/article/details/73180509" target="_blank" rel="external">https://blog.csdn.net/u012799221/article/details/73180509</a></p>
+<p>参考：<a href="https://blog.csdn.net/u012799221/article/details/73180509" target="_blank" rel="noopener">https://blog.csdn.net/u012799221/article/details/73180509</a></p>
 </blockquote>
 <h3 id="1-5-旧生代（Old-Generation-Tenuring-Generation）"><a href="#1-5-旧生代（Old-Generation-Tenuring-Generation）" class="headerlink" title="1.5 旧生代（Old Generation/Tenuring Generation）"></a>1.5 旧生代（Old Generation/Tenuring Generation）</h3><ul>
 <li>是用于存放 <code>新生代</code> 内存中经过多次垃圾回收后<strong>仍然存活</strong>的对象，例如 <code>缓存对象</code>。</li>
@@ -622,8 +622,8 @@
 </li>
 </ul>
 <h1 id="2-内存分配"><a href="#2-内存分配" class="headerlink" title="2. 内存分配"></a>2. 内存分配</h1><h2 id="2-1-堆分配"><a href="#2-1-堆分配" class="headerlink" title="2.1 堆分配"></a>2.1 堆分配</h2><p>Java对象所占用的内存主要是从 <code>堆</code> 上进行分配，<code>堆</code> 是 <strong>所有线程共享</strong> 的，因此在堆上分配内存时是 <strong>需要加锁</strong> 的。这导致了<strong>创建对象开销比较大</strong>。当 <code>堆</code> 上的内存空间不足时，会触发 <code>GC</code> ，如过 <code>GC</code> 后内存空间仍然不足，则抛出 <code>OOM</code>。</p>
-<h2 id="2-2-TLAB（Thread-Local-Allocation-Buffer）分配"><a href="#2-2-TLAB（Thread-Local-Allocation-Buffer）分配" class="headerlink" title="2.2 TLAB（Thread Local Allocation Buffer）分配"></a>2.2 TLAB（Thread Local Allocation Buffer）分配</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png" alt=""></p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/TLAB.png" alt=""></p>
+<h2 id="2-2-TLAB（Thread-Local-Allocation-Buffer）分配"><a href="#2-2-TLAB（Thread-Local-Allocation-Buffer）分配" class="headerlink" title="2.2 TLAB（Thread Local Allocation Buffer）分配"></a>2.2 TLAB（Thread Local Allocation Buffer）分配</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.37.11.png" alt></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/TLAB.png" alt></p>
 <p>JDK 为了提升内存分配效率，会为　<strong>每个新创建的线程</strong>　在 <code>新生代</code>的　<code>Eden Space</code> 上分配一块独立空间。这块空间称为 <code>TLAB（Thread Local Allocation Buffer）</code>，其大小是由JVM根据运行情况而得出的。</p>
 <p>在 <code>TLAB</code> 中分配内存是 <strong>不需要加锁</strong> 的，因此JVM在给线程中的对象分配内存时会尽量在 <code>TLAB</code> 上分配。如果对象过大或者 <code>TLAB</code> 空间已经用完了，则仍然在 <code>堆</code> 上分配内存</p>
 <p>因此在编写Java程序时，通常多个 <strong>小的对象比大的对象</strong>在内存分配上 <strong>更高效</strong>。　</p>
@@ -654,7 +654,7 @@
 <li><p>Minor GC 会一直重复这样的过程，直到 <strong>To Space</strong> 被填满，将所有对象移动至 <strong>旧生代</strong> 中。</p>
 </li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118103751232-177696421.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/285763-20161118103751232-177696421.png" alt></p>
 <h3 id="3-1-2-Major-GC"><a href="#3-1-2-Major-GC" class="headerlink" title="3.1.2 Major GC"></a>3.1.2 Major GC</h3><p>  <strong>Major GC</strong> 是发生在 <strong>旧生代</strong> 的垃圾收集动作，所采用的是 <strong>标记-清除</strong> 算法。</p>
 <p>  <strong>旧生代</strong> 中的对象有部分是从 <strong>新生代</strong> 中移动过来的。所以不会轻易被回收掉，因此 Major GC 不会像 Minor GC 那样发生的频繁，并且做一次 Major GC  要比 Minor GC 消耗的时间长。</p>
 <p>  由于使用 <strong>标记-清除</strong> 算法时，会导致产生内存碎片（即：不连续的内存空间），当此后要为较大的对象分配内存空间且没有较大内存空间时，会提前触发一次GC操作。</p>
@@ -670,14 +670,14 @@
 <li>方法区常量引用的对象</li>
 <li>JNI引用的对象</li>
 </ul>
-<h2 id="3-3-引用计数-收集器"><a href="#3-3-引用计数-收集器" class="headerlink" title="3.3 引用计数 收集器"></a>3.3 引用计数 收集器</h2><p> <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png" alt=""></p>
+<h2 id="3-3-引用计数-收集器"><a href="#3-3-引用计数-收集器" class="headerlink" title="3.3 引用计数 收集器"></a>3.3 引用计数 收集器</h2><p> <img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2020.59.32.png" alt></p>
 <p> <code>引用计数</code> 收集器采用的是 <strong>分散式</strong> 的管理方式，通过 <strong>计数器</strong> 记录是否对 <strong>对象进行引用</strong>。当 <strong>一个对象的引用计数器为0</strong> 时，<strong>说明此对象已经不在被使用，于是进行回收</strong>。</p>
 <p><strong>不足</strong></p>
 <ul>
 <li><p><strong>引用计数器</strong> 需要在每次对对象赋值时进行 <strong>计数器的增减</strong>，它有一定的<strong>消耗</strong>。</p>
 </li>
 <li><p><strong>引用计数器</strong> 对于 <strong>循环引用</strong> 的场景是 <strong>无法实现回收</strong> 的。如：<code>对象B</code> 和 <code>对象C</code> 互相引用时，</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.04.17.png" alt></p>
 <p>对于Java这种面向对象的会形成复杂引用关系的语言而言，<strong>引用计数器</strong> 是非常不合适的，在 JDK 的 GC 实现中 <strong>未采用</strong> 此种方式。</p>
 </li>
 </ul>
@@ -694,7 +694,7 @@
 <li>从 <strong>根集合</strong> 扫描出 <strong>存活的对象</strong>，</li>
 <li>将 <strong>找到的存活对象</strong> 复制到 <strong>一块新的完全未使用的空间中</strong></li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.31.35.png" alt></p>
 <p><strong>复制特点：</strong></p>
 <p>当要回收的空间中 <strong>存活的对象较少时</strong>，复制算法会比较高效，但是其带来的成本是：要 <strong>增加</strong>一块 <strong>全新的内存空间</strong> 及进行 <strong>对象</strong> 的 <strong>移动</strong></p>
 <h3 id="3-4-2-标记-清除（Mark-Sweep）"><a href="#3-4-2-标记-清除（Mark-Sweep）" class="headerlink" title="3.4.2 标记-清除（Mark-Sweep）"></a>3.4.2 <strong>标记-清除</strong>（Mark-Sweep）</h3><p>此种方式采用的是方式：</p>
@@ -702,7 +702,7 @@
 <li>从 <strong>根集合</strong> 开始扫描， 对 <strong>存活对象进行标记</strong></li>
 <li>标记完成之后，<strong>再次扫描</strong> 整个空间中 <strong>未标记的对象</strong>，并对其进行回收。</li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.38.21.png" alt></p>
 <p><strong>标记-清除 特点：</strong></p>
 <ul>
 <li>此种方式 <strong>不需要进行对象的移动</strong>， 仅对 <strong>不存活的对象</strong> 进行清除。因此在空间中 <strong>存活对象较多</strong> 的情况下，较为高效。</li>
@@ -711,7 +711,7 @@
 <h3 id="3-4-3-标记-压缩（Mark-Compact）"><a href="#3-4-3-标记-压缩（Mark-Compact）" class="headerlink" title="3.4.3 标记-压缩（Mark-Compact）"></a>3.4.3 <strong>标记-压缩</strong>（Mark-Compact）</h3><ul>
 <li>此种方式采用和 <strong>标记-清除</strong> 一样的方式对 <strong>存活对象进行标记</strong></li>
 <li><p>在 <strong>回收不存活对象所占用的内存空间</strong> 后，会将 <strong>其他所有存活的对象</strong> 都往 <strong>左端空闲的空间进行移动</strong>，并 <strong>更新引用其对象的指针</strong>。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-30%2021.47.54.png" alt></p>
 <p><strong>标记-压缩 特点：</strong></p>
 </li>
 <li><p>需要 <strong>对存活对象进行移动</strong>，成本相对较高</p>
@@ -719,9 +719,9 @@
 <li><strong>不产生碎片</strong></li>
 </ul>
 <blockquote>
-<p>参考：<a href="https://www.cnblogs.com/sunniest/p/4575144.html" target="_blank" rel="external">https://www.cnblogs.com/sunniest/p/4575144.html</a></p>
+<p>参考：<a href="https://www.cnblogs.com/sunniest/p/4575144.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunniest/p/4575144.html</a></p>
 </blockquote>
-<h3 id="3-5-对象引用强弱问题"><a href="#3-5-对象引用强弱问题" class="headerlink" title="3.5 对象引用强弱问题"></a>3.5 对象引用强弱问题</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%9B%BE%E5%83%8F21.tiff" alt=""></p>
+<h3 id="3-5-对象引用强弱问题"><a href="#3-5-对象引用强弱问题" class="headerlink" title="3.5 对象引用强弱问题"></a>3.5 对象引用强弱问题</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%9B%BE%E5%83%8F21.tiff" alt></p>
 <table>
 <thead>
 <tr>
@@ -881,9 +881,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -1001,7 +999,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -1183,7 +1181,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

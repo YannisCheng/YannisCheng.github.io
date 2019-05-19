@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Python3," />
+  <meta name="keywords" content="Python3,">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Python3  12-面向对象+元类/"/>
+  <link rel="canonical" href="http://yannischeng.com/Python3  12-面向对象+元类/">
 
 
 
@@ -158,7 +158,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -188,7 +188,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -198,7 +198,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -208,7 +208,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -218,7 +218,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -228,7 +228,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -271,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -319,7 +319,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  622 字
+                  655 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -438,7 +438,7 @@
 <a id="more"></a>
 <p>静态语言和动态语言最大的不同，就是<code>函数</code>和<code>类</code>的定义。不是编译时定义的，而是运行时动态编译的。</p>
 <p>关键字：<strong><em>type()</em></strong>, <strong><em>metaclass</em></strong></p>
-<h2 id="一般的class创建"><a href="#一般的class创建" class="headerlink" title="一般的class创建"></a>一般的class创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Hello World !'</span>)</div><div class="line"></div><div class="line"><span class="keyword">from</span> py_obj_end_12.Hello <span class="keyword">import</span> Hello</div><div class="line"></div><div class="line"><span class="string">"""导入Hello类后的测试"""</span></div><div class="line">h = Hello()</div><div class="line">print(h.hello())  <span class="comment"># Hello World !</span></div><div class="line"></div><div class="line"><span class="comment"># 查看实例h所属的类型，是class Hello</span></div><div class="line">print(type(h))  <span class="comment"># &lt;class 'py_obj_end_12.Hello.Hello'&gt;</span></div><div class="line"></div><div class="line"><span class="comment"># 查看Hello所属的类型，是 type 类型</span></div><div class="line">print(type(Hello))  <span class="comment"># &lt;class 'type'&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="一般的class创建"><a href="#一般的class创建" class="headerlink" title="一般的class创建"></a>一般的class创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Hello World !'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> py_obj_end_12.Hello <span class="keyword">import</span> Hello</span><br><span class="line"></span><br><span class="line"><span class="string">"""导入Hello类后的测试"""</span></span><br><span class="line">h = Hello()</span><br><span class="line">print(h.hello())  <span class="comment"># Hello World !</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看实例h所属的类型，是class Hello</span></span><br><span class="line">print(type(h))  <span class="comment"># &lt;class 'py_obj_end_12.Hello.Hello'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看Hello所属的类型，是 type 类型</span></span><br><span class="line">print(type(Hello))  <span class="comment"># &lt;class 'type'&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="使用type-来动态创建类"><a href="#使用type-来动态创建类" class="headerlink" title="使用type()来动态创建类"></a>使用<code>type()</code>来动态创建类</h2><h3 id="type-是什么？为什么-Hello-会是-type-类型的？"><a href="#type-是什么？为什么-Hello-会是-type-类型的？" class="headerlink" title="type 是什么？为什么 Hello 会是 type 类型的？"></a><code>type</code> 是什么？为什么 <code>Hello</code> 会是 <code>type</code> 类型的？</h3><ul>
 <li>因为<code>Python</code>是<code>动态语言</code>，所以<code>class</code>的定义是运行时动态创建的，而创建<code>class</code>使用的就是<code>type()</code>函数</li>
 <li><code>type()</code>函数既可以返回一个<code>对象的类型</code>，又可以创建出<code>新的类型</code>。</li>
@@ -449,14 +449,14 @@
 <li><code>动态语言</code>本身支持处于运行期的程序动态创建一个类。这和<code>Java</code>的<code>静态语言</code>不同。</li>
 </ul>
 <blockquote>
-<p><code>type()</code>使用：<a href="http://www.cnblogs.com/ccorz/p/6120783.html" target="_blank" rel="external">http://www.cnblogs.com/ccorz/p/6120783.html</a></p>
+<p><code>type()</code>使用：<a href="http://www.cnblogs.com/ccorz/p/6120783.html" target="_blank" rel="noopener">http://www.cnblogs.com/ccorz/p/6120783.html</a></p>
 </blockquote>
 <pre><code>type(name, bases, dict)
        返回一个新的type对象. 基本上是 class 语句的动态形式. 参数:
       name  , 字符串, 制定要构造类的名字, 赋给新对象的 __name__ 属性;
       bases，一个tuple，指定新类型的所有基类，赋给新对象的__bases__ 属性; 
       dict， 字典类型，作为新类的名字空间，赋给新对象的__dict__ 属性
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用type()函数创建Hello类</span></div><div class="line"></div><div class="line"><span class="comment"># 1.定义一个函数。即：类的方法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">'Hello, World 2!'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2.创建一个class Hello2。type()函数中传入的参数：</span></div><div class="line"><span class="comment"># 1）class类名，2）继承的父类集合，3）class的方法名与函数的绑定，此处即：将函数say()绑定至方法名hello上</span></div><div class="line"><span class="comment"># 其实class定义一个类主要也是这3个主要组成部分：类名、继承类、方法</span></div><div class="line"><span class="comment"># Hello2是一个以名为"Hello22"的类的引用。这个名为"Hello22"的类以object为基类,类中有一个say()函数</span></div><div class="line">Hello2 = type(<span class="string">'Hello22'</span>, (object,), dict(say=say))</div><div class="line"></div><div class="line"><span class="comment"># 3.为类绑定一个变量</span></div><div class="line">Hello2.name = <span class="string">'cwj'</span></div><div class="line"></div><div class="line"><span class="comment"># 测试</span></div><div class="line">h2 = Hello2()</div><div class="line">print(h2.say())  <span class="comment"># Hello, World 2!</span></div><div class="line">print(h2.name)  <span class="comment"># cwj</span></div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用type()函数创建Hello类</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.定义一个函数。即：类的方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self)</span>:</span></span><br><span class="line">    print(<span class="string">'Hello, World 2!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.创建一个class Hello2。type()函数中传入的参数：</span></span><br><span class="line"><span class="comment"># 1）class类名，2）继承的父类集合，3）class的方法名与函数的绑定，此处即：将函数say()绑定至方法名hello上</span></span><br><span class="line"><span class="comment"># 其实class定义一个类主要也是这3个主要组成部分：类名、继承类、方法</span></span><br><span class="line"><span class="comment"># Hello2是一个以名为"Hello22"的类的引用。这个名为"Hello22"的类以object为基类,类中有一个say()函数</span></span><br><span class="line">Hello2 = type(<span class="string">'Hello22'</span>, (object,), dict(say=say))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.为类绑定一个变量</span></span><br><span class="line">Hello2.name = <span class="string">'cwj'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试</span></span><br><span class="line">h2 = Hello2()</span><br><span class="line">print(h2.say())  <span class="comment"># Hello, World 2!</span></span><br><span class="line">print(h2.name)  <span class="comment"># cwj</span></span><br></pre></td></tr></table></figure>
 <h3 id="metaclass"><a href="#metaclass" class="headerlink" title="metaclass"></a><code>metaclass</code></h3><p>使用metaclass来控制类的创建行为</p>
 
       
@@ -479,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  11-面向对象+枚举/" rel="next" title="Python3  11-面向对象+枚举">
-                <i class="fa fa-chevron-left"></i> Python3  11-面向对象+枚举
+              <a href="/Python3  13-错误+测试+调试/" rel="next" title="Python3  13-错误+测试+调试">
+                <i class="fa fa-chevron-left"></i> Python3  13-错误+测试+调试
               </a>
             
           </div>
@@ -489,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  14-单元测试/" rel="prev" title="Python3  14-单元测试">
-                Python3  14-单元测试 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  14-调试/" rel="prev" title="Python3  14-调试">
+                Python3  14-调试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,9 +559,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -679,7 +677,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -861,7 +859,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

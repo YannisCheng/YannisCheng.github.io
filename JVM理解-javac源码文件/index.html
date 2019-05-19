@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Java,JVM," />
+  <meta name="keywords" content="Java,JVM,">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/JVM理解-javac源码文件/"/>
+  <link rel="canonical" href="http://yannischeng.com/JVM理解-javac源码文件/">
 
 
 
@@ -170,7 +170,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -200,7 +200,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -210,7 +210,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -220,7 +220,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -230,7 +230,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -240,7 +240,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -283,7 +283,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -331,7 +331,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,284 字
+                  3,383 字
                 </span>
               
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -453,42 +453,42 @@
 <h1 id="1-准备"><a href="#1-准备" class="headerlink" title="1. 准备"></a>1. 准备</h1><p>既然是<code>“JVM理解-Java源文件编译”</code>，那怎么能少得了编译工具<code>javac</code>呢~可是我们用的<code>javac</code>仅仅是jdk提供的一个工具，直接供我们使用，而我这篇文章是希望通过源码来大致了解在<code>javac源码的具体实现</code>。所以我们的首要任务时获取<code>javac</code>源码。</p>
 <h2 id="1-1-获取javac源码"><a href="#1-1-获取javac源码" class="headerlink" title="1.1 获取javac源码"></a>1.1 获取javac源码</h2><p>地址：</p>
 <blockquote>
-<p><a href="http://hg.openjdk.java.net/jdk8/jdk8/langtools/" target="_blank" rel="external">http://hg.openjdk.java.net/jdk8/jdk8/langtools/</a></p>
+<p><a href="http://hg.openjdk.java.net/jdk8/jdk8/langtools/" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk8/jdk8/langtools/</a></p>
 </blockquote>
 <p>进入这个地址后，点击下图所示的链接，即可进行下载：</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD.png" alt></p>
 <p>或者通过此链接（JDK8）：</p>
 <blockquote>
-<p><a href="http://hg.openjdk.java.net/jdk8u/jdk8u-dev/langtools/archive/tip.tar.bz2" target="_blank" rel="external">http://hg.openjdk.java.net/jdk8u/jdk8u-dev/langtools/archive/tip.tar.bz2</a></p>
+<p><a href="http://hg.openjdk.java.net/jdk8u/jdk8u-dev/langtools/archive/tip.tar.bz2" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk8u/jdk8u-dev/langtools/archive/tip.tar.bz2</a></p>
 </blockquote>
 <p>下载之后解压压缩包。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E6%96%87%E4%BB%B6.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E6%96%87%E4%BB%B6.png" alt></p>
 <p>通过此图就已经非常明显的看到了<code>javac</code>的源码文件目录了。</p>
 <p>至此，我们成功的拿到了<code>javac</code>的源码，接下来就是将源码导入到一个项目进行愉快的阅读和调试了！</p>
 <h2 id="1-2-导入javac源码"><a href="#1-2-导入javac源码" class="headerlink" title="1.2 导入javac源码"></a>1.2 导入javac源码</h2><p>我用的是<code>IntelIiJ IDEA</code>，就以此为基础进行说明。</p>
 <p>在<code>IDEA</code>中新建一个<code>Project</code>，然后建一个<code>Module</code>，在<code>Module</code>的<code>src</code>导入<code>com</code>目录下除了<code>javadoc</code>文件夹外的文件。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt></p>
 <p><code>javac编译器</code>程序<strong>入口</strong>：<code>com.sun.tools.javac.Main类</code>中的<code>main()</code>方法。</p>
 <h2 id="1-3-配置修改"><a href="#1-3-配置修改" class="headerlink" title="1.3 配置修改"></a>1.3 配置修改</h2><p>如果不进行此步骤的配置修改，将会出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">无论你怎么在自己添加的 javac 源码中加断点，当进行断点调试时，总是不走自己的文件，而是走反编译的当前jdk版本的源码。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无论你怎么在自己添加的 javac 源码中加断点，当进行断点调试时，总是不走自己的文件，而是走反编译的当前jdk版本的源码。</span><br></pre></td></tr></table></figure>
 <p>点击如下图标：</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%20%E4%BF%AE%E6%94%B9.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%20%E4%BF%AE%E6%94%B9.png" alt></p>
 <p>做出如下修改，即可解决此问题：</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91-%E4%BF%AE%E6%94%B9.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91-%E4%BF%AE%E6%94%B9.png" alt></p>
 <p>如果不出意外的话，找到<code>javac</code>目录下的<code>Main.java</code>文件，右键<code>Run Main.main()</code>得到如下结果就表示成功了，而且走断点时走的也是自己的源码文件。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E8%BF%90%E8%A1%8C%E6%88%90%E5%8A%9F.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E6%BA%90%E7%A0%81%E8%BF%90%E8%A1%8C%E6%88%90%E5%8A%9F.png" alt></p>
 <p>出现这样的结果是因为没有为<code>javac</code>添加参数导致的。</p>
 <p><strong>javac选项用法</strong>请参考：</p>
 <blockquote>
-<p><a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/javac.html" target="_blank" rel="external">http://docs.oracle.com/javase/8/docs/technotes/tools/unix/javac.html</a></p>
+<p><a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/javac.html" target="_blank" rel="noopener">http://docs.oracle.com/javase/8/docs/technotes/tools/unix/javac.html</a></p>
 </blockquote>
 <h2 id="1-4-配置待编译的源码文件"><a href="#1-4-配置待编译的源码文件" class="headerlink" title="1.4 配置待编译的源码文件"></a>1.4 配置待编译的源码文件</h2><p>点击此按钮</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%85%8D%E7%BD%AE%E5%BE%85%E7%BC%96%E8%AF%91%E6%96%87%E4%BB%B6.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%85%8D%E7%BD%AE%E5%BE%85%E7%BC%96%E8%AF%91%E6%96%87%E4%BB%B6.png" alt></p>
 <p>然后在此界面的<code>Program directory</code>下配置具体要编译的<code>Java源码文件</code></p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%85%8D%E7%BD%AE%E5%BE%85%E7%BC%96%E8%AF%91%E6%96%87%E4%BB%B6.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E9%85%8D%E7%BD%AE%E5%BE%85%E7%BC%96%E8%AF%91%E6%96%87%E4%BB%B6.png" alt></p>
 <p>至此，前期准备工作已经完成！</p>
 <h1 id="2-编译原理"><a href="#2-编译原理" class="headerlink" title="2. 编译原理"></a>2. 编译原理</h1><blockquote>
-<p>参考：<a href="https://blog.csdn.net/tangl_99/article/details/5600" target="_blank" rel="external">https://blog.csdn.net/tangl_99/article/details/5600</a></p>
+<p>参考：<a href="https://blog.csdn.net/tangl_99/article/details/5600" target="_blank" rel="noopener">https://blog.csdn.net/tangl_99/article/details/5600</a></p>
 </blockquote>
 <h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><p>编译器是一种翻译程序，将源语言翻译为目标语言。编译的过程分为5个阶段（运行时环境）：</p>
 <ul>
@@ -500,7 +500,7 @@
 </ul>
 <p><strong>词法分析：</strong><br>由<code>词法分析器</code>实现此功能，目的是分析源程序中的<code>单词是否有错误</code>。<br><code>词法分析器</code>是<code>语法分析</code>程序的一个子程序。<br>这一阶段产生的错误被称为<code>词法错误</code>。</p>
 <p><code>延伸：</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">其实词法分析并非一开始就被列入编译器的必备部分，只是我们为了简化语法分析的过程，就把词法分析这种繁琐的工作单独提取出来，就成了现在的词法分析部分。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">其实词法分析并非一开始就被列入编译器的必备部分，只是我们为了简化语法分析的过程，就把词法分析这种繁琐的工作单独提取出来，就成了现在的词法分析部分。</span><br></pre></td></tr></table></figure>
 <p><strong>语法分析：</strong><br>由<code>语法分析器</code>实现此功能，目的是识别出<code>源程序</code>的<code>语法结构（语句或句子）</code>是否错误。<br>这一阶段产生的错误被称为<code>语法错误</code>。<br>语法分析阶段中处理的输入数据：是来自词法分析阶段的<code>单词、符号</code>。它们是词法分析阶段的<code>终结符</code>。<br><code>语法分析器</code>的类型有：</p>
 <ul>
 <li>自下而上：算符优先分析法，是一个不断归约的过程，适合分析各种程序设计语中的表达式。</li>
@@ -549,11 +549,11 @@
 <li><strong>注解处理</strong></li>
 <li><strong>分析与字节码生成</strong></li>
 </ul>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2009.07.11.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2009.07.11.png" alt></p>
 <h2 id="3-2-编译流程"><a href="#3-2-编译流程" class="headerlink" title="3.2 编译流程"></a>3.2 编译流程</h2><blockquote>
-<p>参考：<a href="http://www.cnblogs.com/wade-luffy/p/5925728.html" target="_blank" rel="external">http://www.cnblogs.com/wade-luffy/p/5925728.html</a><br>参考：<a href="https://blog.csdn.net/Oeljeklaus/article/details/81000939" target="_blank" rel="external">https://blog.csdn.net/Oeljeklaus/article/details/81000939</a></p>
+<p>参考：<a href="http://www.cnblogs.com/wade-luffy/p/5925728.html" target="_blank" rel="noopener">http://www.cnblogs.com/wade-luffy/p/5925728.html</a><br>参考：<a href="https://blog.csdn.net/Oeljeklaus/article/details/81000939" target="_blank" rel="noopener">https://blog.csdn.net/Oeljeklaus/article/details/81000939</a></p>
 </blockquote>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B.jpg" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/javac-%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B.jpg" alt></p>
 <ul>
 <li><strong>词法分析器</strong> </li>
 <li><strong>语法分析器</strong></li>
@@ -561,10 +561,10 @@
 <li><strong>代码生成器</strong></li>
 </ul>
 <p><strong>编译过程的方法(这张图太经典了，高频出现)</strong></p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2008.51.40111.png" alt=""></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-07%2008.51.40111.png" alt></p>
 <p>对应到实际源码中的 <strong>完整方法</strong> 就是：</p>
 <p><strong>位置：<code>com.sun.tools.javac.main.JavaCompiler</code></strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Main method: compile a list of files, return all compiled classes</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> sourceFileObjects file objects to be compiled</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> classnames        class names to process for annotations</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> processors        user provided annotation processors to bypass</span></div><div class="line"><span class="comment"> *                          discovery, &#123;<span class="doctag">@code</span> null&#125; means that no processors were provided</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">compile</span><span class="params">(List&lt;JavaFileObject&gt; sourceFileObjects,</span></span></div><div class="line"><span class="function"><span class="params">                    List&lt;String&gt; classnames,</span></span></div><div class="line"><span class="function"><span class="params">                    Iterable&lt;? extends Processor&gt; processors)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (processors != <span class="keyword">null</span> &amp;&amp; processors.iterator().hasNext())</div><div class="line">        explicitAnnotationProcessingRequested = <span class="keyword">true</span>;</div><div class="line">    <span class="comment">// as a JavaCompiler can only be used once, throw an exception if</span></div><div class="line">    <span class="comment">// it has been used before.</span></div><div class="line">    <span class="keyword">if</span> (hasBeenUsed)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(<span class="string">"attempt to reuse JavaCompiler"</span>);</div><div class="line">    hasBeenUsed = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="comment">// forcibly set the equivalent of -Xlint:-options, so that no further</span></div><div class="line">    <span class="comment">// warnings about command line options are generated from this point on</span></div><div class="line">    options.put(XLINT_CUSTOM.text + <span class="string">"-"</span> + LintCategory.OPTIONS.option, <span class="string">"true"</span>);</div><div class="line">    options.remove(XLINT_CUSTOM.text + LintCategory.OPTIONS.option);</div><div class="line"></div><div class="line">    start_msec = now();</div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        initProcessAnnotations(processors);</div><div class="line"></div><div class="line">        <span class="comment">// These method calls must be chained to avoid memory leaks</span></div><div class="line">        delegateCompiler =</div><div class="line">                processAnnotations(</div><div class="line">                        enterTrees(stopIfError(CompileState.PARSE,</div><div class="line">                                parseFiles(sourceFileObjects))),</div><div class="line">                        classnames);</div><div class="line"></div><div class="line">        delegateCompiler.compile2();</div><div class="line">        delegateCompiler.close();</div><div class="line">        elapsed_msec = delegateCompiler.elapsed_msec;</div><div class="line">    &#125; <span class="keyword">catch</span> (Abort ex) &#123;</div><div class="line">        <span class="keyword">if</span> (devVerbose)</div><div class="line">            ex.printStackTrace(System.err);</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="keyword">if</span> (procEnvImpl != <span class="keyword">null</span>)</div><div class="line">            procEnvImpl.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * The phases following annotation processing: attribution,</span></div><div class="line"><span class="comment"> * desugar, and finally code generation.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">compile2</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">switch</span> (compilePolicy) &#123;</div><div class="line">            <span class="keyword">case</span> ATTR_ONLY:</div><div class="line">                attribute(todo);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> CHECK_ONLY:</div><div class="line">                flow(attribute(todo));</div><div class="line">                <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> SIMPLE:</div><div class="line">                generate(desugar(flow(attribute(todo))));</div><div class="line">                <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> BY_FILE: &#123;</div><div class="line">                Queue&lt;Queue&lt;Env&lt;AttrContext&gt;&gt;&gt; q = todo.groupByFile();</div><div class="line">                <span class="keyword">while</span> (!q.isEmpty() &amp;&amp; !shouldStop(CompileState.ATTR)) &#123;</div><div class="line">                    generate(desugar(flow(attribute(q.remove()))));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> BY_TODO:</div><div class="line">                <span class="keyword">while</span> (!todo.isEmpty())</div><div class="line">                    generate(desugar(flow(attribute(todo.remove()))));</div><div class="line">                <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                Assert.error(<span class="string">"unknown compile policy"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Abort ex) &#123;</div><div class="line">        <span class="keyword">if</span> (devVerbose)</div><div class="line">            ex.printStackTrace(System.err);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (verbose) &#123;</div><div class="line">        elapsed_msec = elapsed(start_msec);</div><div class="line">        log.printVerbose(<span class="string">"total"</span>, Long.toString(elapsed_msec));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    reportDeferredDiagnostics();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!log.hasDiagnosticListener()) &#123;</div><div class="line">        printCount(<span class="string">"error"</span>, errorCount());</div><div class="line">        printCount(<span class="string">"warn"</span>, warningCount());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Main method: compile a list of files, return all compiled classes</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sourceFileObjects file objects to be compiled</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> classnames        class names to process for annotations</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> processors        user provided annotation processors to bypass</span></span><br><span class="line"><span class="comment"> *                          discovery, &#123;<span class="doctag">@code</span> null&#125; means that no processors were provided</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">compile</span><span class="params">(List&lt;JavaFileObject&gt; sourceFileObjects,</span></span></span><br><span class="line"><span class="function"><span class="params">                    List&lt;String&gt; classnames,</span></span></span><br><span class="line"><span class="function"><span class="params">                    Iterable&lt;? extends Processor&gt; processors)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (processors != <span class="keyword">null</span> &amp;&amp; processors.iterator().hasNext())</span><br><span class="line">        explicitAnnotationProcessingRequested = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">// as a JavaCompiler can only be used once, throw an exception if</span></span><br><span class="line">    <span class="comment">// it has been used before.</span></span><br><span class="line">    <span class="keyword">if</span> (hasBeenUsed)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(<span class="string">"attempt to reuse JavaCompiler"</span>);</span><br><span class="line">    hasBeenUsed = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// forcibly set the equivalent of -Xlint:-options, so that no further</span></span><br><span class="line">    <span class="comment">// warnings about command line options are generated from this point on</span></span><br><span class="line">    options.put(XLINT_CUSTOM.text + <span class="string">"-"</span> + LintCategory.OPTIONS.option, <span class="string">"true"</span>);</span><br><span class="line">    options.remove(XLINT_CUSTOM.text + LintCategory.OPTIONS.option);</span><br><span class="line"></span><br><span class="line">    start_msec = now();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        initProcessAnnotations(processors);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// These method calls must be chained to avoid memory leaks</span></span><br><span class="line">        delegateCompiler =</span><br><span class="line">                processAnnotations(</span><br><span class="line">                        enterTrees(stopIfError(CompileState.PARSE,</span><br><span class="line">                                parseFiles(sourceFileObjects))),</span><br><span class="line">                        classnames);</span><br><span class="line"></span><br><span class="line">        delegateCompiler.compile2();</span><br><span class="line">        delegateCompiler.close();</span><br><span class="line">        elapsed_msec = delegateCompiler.elapsed_msec;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Abort ex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (devVerbose)</span><br><span class="line">            ex.printStackTrace(System.err);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (procEnvImpl != <span class="keyword">null</span>)</span><br><span class="line">            procEnvImpl.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The phases following annotation processing: attribution,</span></span><br><span class="line"><span class="comment"> * desugar, and finally code generation.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">compile2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> (compilePolicy) &#123;</span><br><span class="line">            <span class="keyword">case</span> ATTR_ONLY:</span><br><span class="line">                attribute(todo);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> CHECK_ONLY:</span><br><span class="line">                flow(attribute(todo));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> SIMPLE:</span><br><span class="line">                generate(desugar(flow(attribute(todo))));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> BY_FILE: &#123;</span><br><span class="line">                Queue&lt;Queue&lt;Env&lt;AttrContext&gt;&gt;&gt; q = todo.groupByFile();</span><br><span class="line">                <span class="keyword">while</span> (!q.isEmpty() &amp;&amp; !shouldStop(CompileState.ATTR)) &#123;</span><br><span class="line">                    generate(desugar(flow(attribute(q.remove()))));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> BY_TODO:</span><br><span class="line">                <span class="keyword">while</span> (!todo.isEmpty())</span><br><span class="line">                    generate(desugar(flow(attribute(todo.remove()))));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                Assert.error(<span class="string">"unknown compile policy"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Abort ex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (devVerbose)</span><br><span class="line">            ex.printStackTrace(System.err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (verbose) &#123;</span><br><span class="line">        elapsed_msec = elapsed(start_msec);</span><br><span class="line">        log.printVerbose(<span class="string">"total"</span>, Long.toString(elapsed_msec));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    reportDeferredDiagnostics();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!log.hasDiagnosticListener()) &#123;</span><br><span class="line">        printCount(<span class="string">"error"</span>, errorCount());</span><br><span class="line">        printCount(<span class="string">"warn"</span>, warningCount());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-1-词法分析器"><a href="#3-2-1-词法分析器" class="headerlink" title="3.2.1 词法分析器"></a>3.2.1 词法分析器</h3><p><strong>源码：</strong></p>
 <ul>
 <li><strong>com.sun.tools.javac.parser.JavacParser</strong> ：具体解析类，规定哪些词符合Java语言规范。</li>
@@ -592,7 +592,7 @@
 </ul>
 <p><strong>作用：</strong><br>将进行词法分析后形成的<code>Token流</code>中的<code>一个个Token</code><strong>组成一句句话（语法树）</strong>，检查这一句句话是不是符合<code>Java语言规范</code>。</p>
 <p><strong>延伸：为什么要把分析的结果转换成<code>“树”</code>这种数据结构呢？</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">是Tree这种结构有很强的递归性，也就是说我们可以把Tree的任何结点Node提取出来后，它依旧是一颗完整的Tree。这一点符合我们现在编译原理分析的形式语言，比如我们在函数里面使用函数，循环中使用循环，条件中使用条件等等，那么就可以很直观地表示在Tree这种数据结构上。同样，我们在执行形式语言的程序的时候也是如此的递归性。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是Tree这种结构有很强的递归性，也就是说我们可以把Tree的任何结点Node提取出来后，它依旧是一颗完整的Tree。这一点符合我们现在编译原理分析的形式语言，比如我们在函数里面使用函数，循环中使用循环，条件中使用条件等等，那么就可以很直观地表示在Tree这种数据结构上。同样，我们在执行形式语言的程序的时候也是如此的递归性。</span><br></pre></td></tr></table></figure>
 <p><strong>流程：</strong><br>语法分析三部分：</p>
 <ul>
 <li>package</li>
@@ -788,9 +788,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -908,7 +906,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -1090,7 +1088,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>

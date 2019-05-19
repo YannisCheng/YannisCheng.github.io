@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -24,8 +24,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -52,9 +52,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Python3," />
+  <meta name="keywords" content="Python3,">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Python3  05-函数式编程-高阶函数/"/>
+  <link rel="canonical" href="http://yannischeng.com/Python3  05-函数式编程-高阶函数/">
 
 
 
@@ -158,7 +158,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">YannisCheng's Technology Blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -188,7 +188,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -198,7 +198,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -208,7 +208,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -218,7 +218,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -228,7 +228,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -271,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
     </span>
 
@@ -319,7 +319,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,128 字
+                  1,277 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -439,33 +439,33 @@
 <pre><code>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
 `Python`对函数式编程提供部分支持。由于`Python`允许使用变量，因此，`Python`不是纯函数式编程语言。
 </code></pre><h2 id="函数与变量互指"><a href="#函数与变量互指" class="headerlink" title="函数与变量互指"></a>函数与变量互指</h2><p>代码示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">x = abs  <span class="comment"># 函数名其实也是一个变量，变量之间是可以互指。</span></div><div class="line">print(x(<span class="number">-10</span>))  <span class="comment"># 10。此时，x就是一个求'绝对值'的函数</span></div><div class="line">abs = <span class="number">10</span></div><div class="line">print(abs)  <span class="comment"># 10</span></div><div class="line">print(abs(<span class="number">10</span>))  <span class="comment"># TypeError: 'int' object is not callable。此时的abs已经不是一个函数，而是一个值为10的变量。</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = abs  <span class="comment"># 函数名其实也是一个变量，变量之间是可以互指。</span></span><br><span class="line">print(x(<span class="number">-10</span>))  <span class="comment"># 10。此时，x就是一个求'绝对值'的函数</span></span><br><span class="line">abs = <span class="number">10</span></span><br><span class="line">print(abs)  <span class="comment"># 10</span></span><br><span class="line">print(abs(<span class="number">10</span>))  <span class="comment"># TypeError: 'int' object is not callable。此时的abs已经不是一个函数，而是一个值为10的变量。</span></span><br></pre></td></tr></table></figure>
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><pre><code>将函数作为参数传入另一个函数，这样的函数被称为高阶函数。
 </code></pre><p>代码示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">high_func</span><span class="params">(z, y, f)</span>:</span></div><div class="line">    <span class="keyword">return</span> f(z) + f(y)</div><div class="line"></div><div class="line"><span class="comment"># 将函数abs作为一个参数指向变量f</span></div><div class="line">print(high_func(<span class="number">-1</span>, <span class="number">-3</span>, abs))  <span class="comment"># 4</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">high_func</span><span class="params">(z, y, f)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> f(z) + f(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将函数abs作为一个参数指向变量f</span></span><br><span class="line">print(high_func(<span class="number">-1</span>, <span class="number">-3</span>, abs))  <span class="comment"># 4</span></span><br></pre></td></tr></table></figure>
 <h2 id="高阶函数-map"><a href="#高阶函数-map" class="headerlink" title="高阶函数 - map()"></a>高阶函数 - map()</h2><ul>
 <li>map接收两个参数：一个是函数，另一个是Iterable，</li>
 <li>map函数的意义是：将传入的函数依次作用于每一个序列的每一个元素，并将结果作为新的Iterator返回</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x * x</div><div class="line"></div><div class="line"><span class="string">'''通过一行代码实现：序列中的每一个元素进行取平方运算，将结果作为list序列输出'''</span></div><div class="line">print(list(map(func, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])))  <span class="comment"># [1, 4, 9, 16, 25]</span></div><div class="line"></div><div class="line">v = map(func, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</div><div class="line">print(isinstance(v, Iterator))  <span class="comment"># True</span></div><div class="line">print(isinstance(v, Iterable))  <span class="comment"># True</span></div><div class="line">print(isinstance(<span class="string">'abc'</span>, Iterator))  <span class="comment"># False</span></div><div class="line"></div><div class="line"><span class="string">'''使用 next() 输出Iterator类型的对象 修改前'''</span></div><div class="line"><span class="comment"># while True:</span></div><div class="line"><span class="comment"># print(next(v))</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">1</span></div><div class="line"><span class="string">StopIteration</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">9</span></div><div class="line"><span class="string">16</span></div><div class="line"><span class="string">25</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="string">'''修改后'''</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        print(next(v))</div><div class="line">    <span class="keyword">except</span> StopIteration:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">1</span></div><div class="line"><span class="string">4</span></div><div class="line"><span class="string">9</span></div><div class="line"><span class="string">16</span></div><div class="line"><span class="string">25</span></div><div class="line"><span class="string">'''</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * x</span><br><span class="line"></span><br><span class="line"><span class="string">'''通过一行代码实现：序列中的每一个元素进行取平方运算，将结果作为list序列输出'''</span></span><br><span class="line">print(list(map(func, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])))  <span class="comment"># [1, 4, 9, 16, 25]</span></span><br><span class="line"></span><br><span class="line">v = map(func, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">print(isinstance(v, Iterator))  <span class="comment"># True</span></span><br><span class="line">print(isinstance(v, Iterable))  <span class="comment"># True</span></span><br><span class="line">print(isinstance(<span class="string">'abc'</span>, Iterator))  <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''使用 next() 输出Iterator类型的对象 修改前'''</span></span><br><span class="line"><span class="comment"># while True:</span></span><br><span class="line"><span class="comment"># print(next(v))</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">StopIteration</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">9</span></span><br><span class="line"><span class="string">16</span></span><br><span class="line"><span class="string">25</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''修改后'''</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(next(v))</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">9</span></span><br><span class="line"><span class="string">16</span></span><br><span class="line"><span class="string">25</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
 <h2 id="高阶函数-reduce"><a href="#高阶函数-reduce" class="headerlink" title="高阶函数 - reduce()"></a>高阶函数 - reduce()</h2><ul>
 <li>参数：两个参数。函数名，序列</li>
 <li><p>作用：将<code>结果</code>继续和<code>序列的下一元素</code>做<code>函数名指定的运算</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">ls = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun_add</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">print(reduce(fun_add, ls))  <span class="comment"># 15.</span></div><div class="line"></div><div class="line"><span class="comment"># 将序列 ls 中的数变成组合成一个整数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_int</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x * <span class="number">10</span> + y</div><div class="line"></div><div class="line">print(reduce(func_int, ls))  <span class="comment"># 12345</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_str</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="comment"># 将字符串转换为int类型。根据`键`取对应的`值`</span></div><div class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</div><div class="line"></div><div class="line"><span class="comment"># 将str类型变为int类型</span></div><div class="line">print(reduce(func_int, list(map(func_str, <span class="string">'1234567'</span>))))  <span class="comment"># 1234567</span></div><div class="line"></div><div class="line"><span class="comment"># 将以上方法编写为一个str类型转int的方法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_str_to_int</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f_int</span><span class="params">(x, y)</span>:</span></div><div class="line">        <span class="keyword">return</span> x * <span class="number">10</span> + y</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f_str</span><span class="params">(ss)</span>:</span></div><div class="line">        <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[ss]</div><div class="line"></div><div class="line">    <span class="keyword">return</span> reduce(f_int, map(f_str, s))</div><div class="line"></div><div class="line"></div><div class="line">print(func_str_to_int(<span class="string">'11223344'</span>))  <span class="comment"># 11223344</span></div><div class="line"></div><div class="line"><span class="string">'''测试，将不规则的输入按照指定的要求输出。如：'AsdA' 'asdS' 输出后的结果为：'Asda', 'Asds' '''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_rule</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="comment"># if isinstance(s, str):</span></div><div class="line">    <span class="keyword">if</span> isinstance(s, list):</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">func_to_up</span><span class="params">(ss)</span>:</span></div><div class="line">            <span class="keyword">return</span> ss[<span class="number">0</span>].upper() + ss[<span class="number">1</span>::].lower()</div><div class="line">        <span class="keyword">return</span> list(map(func_to_up, s))</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'输入的参数类型有误！'</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">'-1'</span></div><div class="line"></div><div class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</div><div class="line">print(func_rule(L1))  <span class="comment"># ['Adam', 'Lisa', 'Bart']</span></div><div class="line"></div><div class="line"><span class="string">'''求乘积'''</span></div><div class="line">ll = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">(lll)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">xx</span><span class="params">(x, y)</span>:</span></div><div class="line">        <span class="keyword">return</span> x * y</div><div class="line">    <span class="keyword">return</span> reduce(xx, lll)</div><div class="line"></div><div class="line">print(prod(ll))  <span class="comment"># 945</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">ls = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun_add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">print(reduce(fun_add, ls))  <span class="comment"># 15.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将序列 ls 中的数变成组合成一个整数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_int</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">10</span> + y</span><br><span class="line"></span><br><span class="line">print(reduce(func_int, ls))  <span class="comment"># 12345</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="comment"># 将字符串转换为int类型。根据`键`取对应的`值`</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将str类型变为int类型</span></span><br><span class="line">print(reduce(func_int, list(map(func_str, <span class="string">'1234567'</span>))))  <span class="comment"># 1234567</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将以上方法编写为一个str类型转int的方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_str_to_int</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f_int</span><span class="params">(x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x * <span class="number">10</span> + y</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f_str</span><span class="params">(ss)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[ss]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reduce(f_int, map(f_str, s))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(func_str_to_int(<span class="string">'11223344'</span>))  <span class="comment"># 11223344</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''测试，将不规则的输入按照指定的要求输出。如：'AsdA' 'asdS' 输出后的结果为：'Asda', 'Asds' '''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_rule</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="comment"># if isinstance(s, str):</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(s, list):</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">func_to_up</span><span class="params">(ss)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> ss[<span class="number">0</span>].upper() + ss[<span class="number">1</span>::].lower()</span><br><span class="line">        <span class="keyword">return</span> list(map(func_to_up, s))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'输入的参数类型有误！'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'-1'</span></span><br><span class="line"></span><br><span class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</span><br><span class="line">print(func_rule(L1))  <span class="comment"># ['Adam', 'Lisa', 'Bart']</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''求乘积'''</span></span><br><span class="line">ll = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">(lll)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">xx</span><span class="params">(x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x * y</span><br><span class="line">    <span class="keyword">return</span> reduce(xx, lll)</span><br><span class="line"></span><br><span class="line">print(prod(ll))  <span class="comment"># 945</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="高阶函数-filter"><a href="#高阶函数-filter" class="headerlink" title="高阶函数 - filter()"></a>高阶函数 - filter()</h2><ul>
 <li><p>作用：过滤函数. <code>True</code>保留序列中的元素，<code>False</code>删除序列中的元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">lf = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="comment"># 过滤一个序列中的偶数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_odd</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></div><div class="line"></div><div class="line">print(list(filter(func_odd, lf)))  <span class="comment"># [1, 3, 5]</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lf = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤一个序列中的偶数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_odd</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(list(filter(func_odd, lf)))  <span class="comment"># [1, 3, 5]</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="高阶函数-sorted"><a href="#高阶函数-sorted" class="headerlink" title="高阶函数 - sorted()"></a>高阶函数 - sorted()</h2><ul>
 <li>排序算法</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 对list类型的数据排序</span></div><div class="line">ls01 = [<span class="number">1</span>, <span class="number">-9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">-3</span>]</div><div class="line"></div><div class="line">print(sorted(ls01))  <span class="comment"># [-9, -3, 1, 5, 10, 23]</span></div><div class="line"></div><div class="line"><span class="comment"># 高阶函数使用 按照绝对值进行排序</span></div><div class="line">print(sorted(ls01, key = abs))  <span class="comment"># [1, -3, 5, -9, 10, 23]</span></div><div class="line"></div><div class="line">ls02 = [<span class="string">'asd'</span>, <span class="string">'ffgd'</span>, <span class="string">'fhfgh'</span>, <span class="string">'werr'</span>, <span class="string">'bnbm'</span>]</div><div class="line"></div><div class="line"><span class="comment"># 高阶函数使用 对 字符串 进行排序 根据小写字母排序</span></div><div class="line">print(sorted(ls02, key=str.lower))  <span class="comment"># ['asd', 'bnbm', 'ffgd', 'fhfgh', 'werr']</span></div><div class="line"></div><div class="line"><span class="comment"># 高阶函数使用 对 字符串 进行排序 根据大写字母排序--实现方式1</span></div><div class="line">print(sorted(ls02, key=str.lower, reverse=<span class="keyword">True</span>))  <span class="comment"># ['werr', 'fhfgh', 'ffgd', 'bnbm', 'asd']</span></div><div class="line"></div><div class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</div><div class="line"></div><div class="line"><span class="string">'''根据学生的名字排序'''</span></div><div class="line">print(sorted(L))  <span class="comment"># [('Adam', 92), ('Bart', 66), ('Bob', 75), ('Lisa', 88)]</span></div><div class="line"></div><div class="line"><span class="string">'''根据学生的成绩排序'''</span></div><div class="line">print(sorted(L, key=itemgetter(<span class="number">1</span>)))  <span class="comment"># [('Bart', 66), ('Bob', 75), ('Lisa', 88), ('Adam', 92)]</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对list类型的数据排序</span></span><br><span class="line">ls01 = [<span class="number">1</span>, <span class="number">-9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">-3</span>]</span><br><span class="line"></span><br><span class="line">print(sorted(ls01))  <span class="comment"># [-9, -3, 1, 5, 10, 23]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 高阶函数使用 按照绝对值进行排序</span></span><br><span class="line">print(sorted(ls01, key = abs))  <span class="comment"># [1, -3, 5, -9, 10, 23]</span></span><br><span class="line"></span><br><span class="line">ls02 = [<span class="string">'asd'</span>, <span class="string">'ffgd'</span>, <span class="string">'fhfgh'</span>, <span class="string">'werr'</span>, <span class="string">'bnbm'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 高阶函数使用 对 字符串 进行排序 根据小写字母排序</span></span><br><span class="line">print(sorted(ls02, key=str.lower))  <span class="comment"># ['asd', 'bnbm', 'ffgd', 'fhfgh', 'werr']</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 高阶函数使用 对 字符串 进行排序 根据大写字母排序--实现方式1</span></span><br><span class="line">print(sorted(ls02, key=str.lower, reverse=<span class="keyword">True</span>))  <span class="comment"># ['werr', 'fhfgh', 'ffgd', 'bnbm', 'asd']</span></span><br><span class="line"></span><br><span class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line"></span><br><span class="line"><span class="string">'''根据学生的名字排序'''</span></span><br><span class="line">print(sorted(L))  <span class="comment"># [('Adam', 92), ('Bart', 66), ('Bob', 75), ('Lisa', 88)]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''根据学生的成绩排序'''</span></span><br><span class="line">print(sorted(L, key=itemgetter(<span class="number">1</span>)))  <span class="comment"># [('Bart', 66), ('Bob', 75), ('Lisa', 88), ('Adam', 92)]</span></span><br></pre></td></tr></table></figure>
 <p><strong><em>itemgetter()的使用</em></strong></p>
 <blockquote>
-<p>参考：<a href="http://www.cnblogs.com/zhoufankui/p/6274172.html" target="_blank" rel="external">http://www.cnblogs.com/zhoufankui/p/6274172.html</a></p>
+<p>参考：<a href="http://www.cnblogs.com/zhoufankui/p/6274172.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhoufankui/p/6274172.html</a></p>
 </blockquote>
 <ul>
 <li>operator.itemgetter函数用于获取对象指定的下标数据。如根据学生成绩排序的方法使用中：获取序列中tuple元素下标为1的数据</li>
@@ -493,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Python3  04-迭代器/" rel="next" title="Python3  04-迭代器">
-                <i class="fa fa-chevron-left"></i> Python3  04-迭代器
+              <a href="/Python3  05-函数式编程-函数作为返回值/" rel="next" title="Python3  05-函数式编程-函数作为返回值">
+                <i class="fa fa-chevron-left"></i> Python3  05-函数式编程-函数作为返回值
               </a>
             
           </div>
@@ -503,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python3  05-函数式编程-函数作为返回值/" rel="prev" title="Python3  05-函数式编程-函数作为返回值">
-                Python3  05-函数式编程-函数作为返回值 <i class="fa fa-chevron-right"></i>
+              <a href="/Python3  04-迭代器/" rel="prev" title="Python3  04-迭代器">
+                Python3  04-迭代器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,9 +573,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif"
-                alt="YannisCheng" />
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
             
               <p class="site-author-name" itemprop="name">YannisCheng</p>
               <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
@@ -693,7 +691,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">298.8k</span>
+    <span title="Site words total count">318.4k</span>
   
 </div>
 
@@ -875,7 +873,7 @@
   
 
 
-<script type="text/javascript" color="18,146,19" opacity='0.7' zIndex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>
