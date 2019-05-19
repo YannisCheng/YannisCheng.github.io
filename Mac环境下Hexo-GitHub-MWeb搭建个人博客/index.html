@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-26%2011.18.27.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-10-26%2011.21.17.png">
-<meta property="og:updated_time" content="2018-11-20T13:04:37.000Z">
+<meta property="og:updated_time" content="2019-05-19T00:10:34.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac环境下Hexo-GitHub-MWeb搭建个人博客">
 <meta name="twitter:description" content="需要的工具：Node.js、Git、Hexo、Coding（自选）、MWeb（自选）">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-20T21:04:37+08:00">
-                2018-11-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-19T08:10:34+08:00">
+                2019-05-19
               </time>
             
           </span>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,316 字
+                  1,409 字
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -550,7 +550,25 @@ categories: 博客
 <pre><code>hexo server --drafts
 </code></pre><p>将草稿转变为正式文章：</p>
 <pre><code>hexo publish [layout] &lt;filename&gt;
-</code></pre>
+</code></pre><h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><h2 id="Module-Error系列"><a href="#Module-Error系列" class="headerlink" title="Module Error系列"></a>Module Error系列</h2><p><strong>问题描述:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; Error: Cannot find module &apos;./build/default/DTraceProviderBindings&apos;&#125;</span><br><span class="line">&#123; Error: Cannot find module &apos;./build/Debug/DTraceProviderBindings&apos; &#125;</span><br><span class="line">&#123; Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>解决办法：</strong></p>
+<p>按照以下顺序：</p>
+<ul>
+<li>卸载 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-cli -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>执行到这一步，问题仅仅剩下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; Error: Cannot find module &apos;./build/default/DTraceProviderBindings&apos;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再安装一次</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --no-optional</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -735,7 +753,7 @@ categories: 博客
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git"><span class="nav-number">1.1.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo"><span class="nav-number">1.3.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照此命令进行安装Hexo"><span class="nav-number">1.3.1.</span> <span class="nav-text">按照此命令进行安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化Hexo"><span class="nav-number">1.3.2.</span> <span class="nav-text">初始化Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关联GitHub"><span class="nav-number">1.3.3.</span> <span class="nav-text">关联GitHub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布"><span class="nav-number">2.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装主题"><span class="nav-number">3.</span> <span class="nav-text">安装主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启用主题"><span class="nav-number">3.1.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题"><span class="nav-number">3.2.</span> <span class="nav-text">修改主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题增加标签："><span class="nav-number">3.2.1.</span> <span class="nav-text">为主题增加标签：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题修改背景："><span class="nav-number">3.2.2.</span> <span class="nav-text">为主题修改背景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题杂集"><span class="nav-number">4.</span> <span class="nav-text">问题杂集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题相关"><span class="nav-number">4.1.</span> <span class="nav-text">主题相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-next5-0主题不显示副标题"><span class="nav-number">4.1.1.</span> <span class="nav-text">hexo next5.0主题不显示副标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题-添加字数统计、阅读时长、友情链接"><span class="nav-number">4.1.2.</span> <span class="nav-text">为主题 添加字数统计、阅读时长、友情链接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开启设置"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">开启设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装统计插件"><span class="nav-number">4.1.3.</span> <span class="nav-text">安装统计插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo相关"><span class="nav-number">4.2.</span> <span class="nav-text">Hexo相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加分类、标签云、关于等页面"><span class="nav-number">4.2.1.</span> <span class="nav-text">添加分类、标签云、关于等页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签的使用-文章模板"><span class="nav-number">4.2.2.</span> <span class="nav-text">标签的使用 + 文章模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo草稿模式"><span class="nav-number">4.2.3.</span> <span class="nav-text">hexo草稿模式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git"><span class="nav-number">1.1.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo"><span class="nav-number">1.3.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照此命令进行安装Hexo"><span class="nav-number">1.3.1.</span> <span class="nav-text">按照此命令进行安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化Hexo"><span class="nav-number">1.3.2.</span> <span class="nav-text">初始化Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关联GitHub"><span class="nav-number">1.3.3.</span> <span class="nav-text">关联GitHub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布"><span class="nav-number">2.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装主题"><span class="nav-number">3.</span> <span class="nav-text">安装主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启用主题"><span class="nav-number">3.1.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题"><span class="nav-number">3.2.</span> <span class="nav-text">修改主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题增加标签："><span class="nav-number">3.2.1.</span> <span class="nav-text">为主题增加标签：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题修改背景："><span class="nav-number">3.2.2.</span> <span class="nav-text">为主题修改背景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题杂集"><span class="nav-number">4.</span> <span class="nav-text">问题杂集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题相关"><span class="nav-number">4.1.</span> <span class="nav-text">主题相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-next5-0主题不显示副标题"><span class="nav-number">4.1.1.</span> <span class="nav-text">hexo next5.0主题不显示副标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为主题-添加字数统计、阅读时长、友情链接"><span class="nav-number">4.1.2.</span> <span class="nav-text">为主题 添加字数统计、阅读时长、友情链接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开启设置"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">开启设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装统计插件"><span class="nav-number">4.1.3.</span> <span class="nav-text">安装统计插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo相关"><span class="nav-number">4.2.</span> <span class="nav-text">Hexo相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加分类、标签云、关于等页面"><span class="nav-number">4.2.1.</span> <span class="nav-text">添加分类、标签云、关于等页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签的使用-文章模板"><span class="nav-number">4.2.2.</span> <span class="nav-text">标签的使用 + 文章模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo草稿模式"><span class="nav-number">4.2.3.</span> <span class="nav-text">hexo草稿模式</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#问题总结"><span class="nav-number"></span> <span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Module-Error系列"><span class="nav-number">1.</span> <span class="nav-text">Module Error系列</span></a></li></ol></li></div>
             
 
           </div>
@@ -769,7 +787,7 @@ categories: 博客
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">318.4k</span>
+    <span title="Site words total count">318.5k</span>
   
 </div>
 
