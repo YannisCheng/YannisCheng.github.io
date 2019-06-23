@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RxJava2,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于RxJava2">
+<meta name="keywords" content="RxJava2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxJava2理解">
+<meta property="og:url" content="http://yannischeng.com/RxJava2理解/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="关于RxJava2">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-03T06:49:13.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RxJava2理解">
+<meta name="twitter:description" content="关于RxJava2">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/RxJava2理解/">
+
+
+
+
+
+  <title>RxJava2理解 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/RxJava2理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RxJava2理解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T11:53:36+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-03T14:49:13+08:00">
+                2019-06-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,335 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/RxJava2/" rel="tag"># RxJava2</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/RxJava2理解/" title="RxJava2理解">http://yannischeng.com/RxJava2理解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于RxJava2</p>
+<a id="more"></a>
+<h1 id="1-基础知识储备-Reactive-规范"><a href="#1-基础知识储备-Reactive-规范" class="headerlink" title="1 基础知识储备 - Reactive 规范"></a>1 基础知识储备 - Reactive 规范</h1><p><code>Reactive规范</code>是 <code>JVM Reactive 扩展规范</code> 中的 <code>Reactive Streams JVM</code>，而 <code>Reactive 框架</code> 最典型的实现是：</p>
+<ul>
+<li><strong>Java 9 ：Flow API</strong></li>
+<li><strong>ReactiveX：RxJava</strong></li>
+<li><strong>Spring 5：Reactor</strong></li>
+</ul>
+<h2 id="1-1-Reactive-Streams（规范）"><a href="#1-1-Reactive-Streams（规范）" class="headerlink" title="1.1 Reactive Streams（规范）"></a>1.1 Reactive Streams（规范）</h2><h3 id="1-1-1-是什么"><a href="#1-1-1-是什么" class="headerlink" title="1.1.1 是什么"></a>1.1.1 是什么</h3><p><code>Reactive Streams</code> 是 <code>JVM</code> 面向<code>Stream库</code>的<code>标准</code>和<code>规范</code>，包括：</p>
+<ul>
+<li>处理潜在无限数量的元素；</li>
+<li>按顺序；</li>
+<li>在组件之间异步传递元素；</li>
+<li>具有强制性非阻塞背压。</li>
+</ul>
+<h3 id="1-1-2-目的是："><a href="#1-1-2-目的是：" class="headerlink" title="1.1.2 目的是："></a>1.1.2 目的是：</h3><p>为 <code>非阻塞</code> <code>背压</code>  的 <code>异步</code> <code>流处理</code> 提供标准。包括针对运行时环境（JVM和JavaScript）以及网络协议的工作。</p>
+<h3 id="1-1-3-目标是："><a href="#1-1-3-目标是：" class="headerlink" title="1.1.3 目标是："></a>1.1.3 目标是：</h3><p>管理 <code>跨异步边界</code> 的 <code>数据流交换</code> ——  将元素传递至另一个线程或者线程池。</p>
+<h3 id="1-1-4-API的组成"><a href="#1-1-4-API的组成" class="headerlink" title="1.1.4 API的组成"></a>1.1.4 API的组成</h3><ul>
+<li><strong>Publisher：发布者（生产者）</strong></li>
+<li><strong>Subscriber：订阅者（消费者）</strong></li>
+<li><strong>Subscription：订阅</strong></li>
+<li><strong>Processor：处理器</strong></li>
+</ul>
+<p> 代码为：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Publisher</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> T&gt; s)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">   		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span></span>;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span></span>;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable t)</span></span>;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscription</span> </span>&#123;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span></span>;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Processor</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; <span class="keyword">extends</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt;, <span class="title">Publisher</span>&lt;<span class="title">R</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-5-术语"><a href="#1-1-5-术语" class="headerlink" title="1.1.5 术语"></a>1.1.5 术语</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">术语</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Signal</td>
+<td style="text-align:left">本意：信号。作为一个名词：指的是这些onSubscribe()，onNext()，onComplete()，onError()，request(n)或cancel()方法中的一个。作为一个动词，指的是调用这些方法中的一个方法</td>
+</tr>
+<tr>
+<td style="text-align:left">Demand</td>
+<td style="text-align:left">本意：需求。作为一个名词：指的是一个订阅者（向发布者）请求的一定数量的元素，它（元素）还没有被发布者分发。作为一个动词，指的是请求更多元素的行为动作。</td>
+</tr>
+<tr>
+<td style="text-align:left">Synchronous</td>
+<td style="text-align:left">本意：同步。指的是在当前调用线程上执行（没有新开线程）。</td>
+</tr>
+<tr>
+<td style="text-align:left">Return normally</td>
+<td style="text-align:left">本意：正常返回。指的是仅返回已声明过的类型的值给调用者。如果想发送一个失败给订阅者，唯一合法的方式是通过onError（回调）方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">Responsivity</td>
+<td style="text-align:left">本意：响应度。指的是已准备就绪，且有能力来做出响应。在这个文档里用来指示不同的组件不应该互相削弱响应的能力。</td>
+</tr>
+<tr>
+<td style="text-align:left">Non-obstructing</td>
+<td style="text-align:left">本意：不堵塞。描述在调用线程上尽可能快地执行的方法。 这意味着，例如，避免繁重的计算和其他会阻碍调用者执行线程的事情。</td>
+</tr>
+<tr>
+<td style="text-align:left">Terminal state</td>
+<td style="text-align:left">本意：终止状态。对于一个 Publisher（发送者），指的是：当onComplete或者onError已经被调用。对于一个Subscriber（订阅者），指的是：当一个onComplete或onError（回调方法）已经收到。</td>
+</tr>
+<tr>
+<td style="text-align:left">NOP</td>
+<td style="text-align:left">指的是：执行对于调用线程来说没有可检测到的影响，能够像这样安全地被调用任意次。</td>
+</tr>
+<tr>
+<td style="text-align:left">Thread-safe</td>
+<td style="text-align:left">能够安全地被同步或异步调用，不需要外部的同步来确保程序的正确性</td>
+</tr>
+<tr>
+<td style="text-align:left">Serial</td>
+<td style="text-align:left">在信号的上下文中，不重叠。 在JVM的上下文中，当且仅当这些调用之间存在先发生关系时（意味着调用不重叠），对对象上的方法的调用才是串行的。 当异步执行调用时，使用诸如但不限于 atomics, monitors, 或者 locks的技术来实现用于建立先发生关系的协调。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-1-6-规格"><a href="#1-1-6-规格" class="headerlink" title="1.1.6 规格"></a>1.1.6 规格</h3><ul>
+<li><p><strong>Publisher</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Publisher</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> T&gt; s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1、一个发布者对一个订阅者的onNext调用总次数必须总是小于或等于订阅者的Subscription请求的元素总数。</p>
+<p>2、一个发布者可能调用的onNext次数比要求的少，然后通过调用onComplete或onError来终止Subscription。</p>
+<p>3、对一个订阅者的onSubscribe，onNext，onError和onComplete调用必须以一个线程安全的方式进行，如果被多个线程执行，使用external synchronization。</p>
+<p>4、如果一个发布者失败，它必须调用一个onError。</p>
+<p>5、如果一个发布者成功地终止（对于有限流），它必须调用一个onComplete。</p>
+<p>6、如果一个发布者调用一个订阅者上的onError或onComplete方法，那个订阅者的Subscription必须认为已被取消。</p>
+<p>7、一旦一个terminal state已经被调用（onError，onComplete），它要求没有进一步的调用发生。</p>
+<p>8、如果一个订阅被取消，它的订阅者必须最终停止被调用。</p>
+<p>9、发布者的subscribe方法里必须在早于对订阅者上的任何方法调用之前先调用onSubscribe方法，且必须return normally。当订阅者是null的时候，此时必须向调用者抛出java.lang.NullPointerException异常。对于其它任何情况，通知失败（或拒绝订阅者）的唯一合法方式是调用onError。</p>
+<p>10、发布者的subscribe方法可能被调用任意多次，但是每次必须使用一个不同的订阅者。</p>
+<p>11、一个发布者可以支持多个订阅者，并决定每一个订阅是单播或多播。</p>
+</li>
+<li><p><strong>Subscribe</strong></p>
+</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span></span>;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable t)</span></span>;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  1、一个订阅者必须通过订阅（Subscription）的request(long n)方法声明需求，然后接收onNext调用。</p>
+<p>  2、如果一个订阅者怀疑它的调用处理将消极地影响它的发布者的响应度，建议异步地分发它的调用。</p>
+<p>  3、订阅者的onComplete()和onError(Throwable t)这两个方法里禁止调用订阅或发布者上的任何方法。</p>
+<p>  4、订阅者的onComplete()和onError(Throwable t)这两个方法在接收到调用后必须认为订阅已经被取消。</p>
+<p>  5、一个订阅者必须在收到onSubscriber之后调用指定订阅上的cancel()方法取消该订阅，如果它已经有一个活动的订阅。</p>
+<p>  6、一个订阅者必须调用订阅的cancel()方法，如果这个订阅不再需要的话。</p>
+<p>  7、一个订阅者必须确保所有对订阅发生的调用都来自于同一个线程或为它们各自提供external synchronization。</p>
+<p>  8、一个订阅者必须准备好接收一到多个onNext调用，在已经调用过订阅的cancel()方法之后如果还有请求的元素即将发送。订阅的cancel()方法并不保证立即执行底层的清理操作。</p>
+<p>  9、一个订阅者必须准备好接收一个onComplete调用，不管之前有或没有调用过订阅的request(long n)方法。</p>
+<p>  10、一个订阅者必须准备好接收一个onError调用，不管之前有或没有调用过订阅的request(long n)方法。</p>
+<p>  11、一个订阅者必须确保它的所有的方法调用发生在它们各自的处理之前。该订阅者必须小心合适地发布调用到它的处理逻辑。</p>
+<p>  12、订阅者的onSubscribe方法必须最多被调用一次，对于一个给定的订阅者。</p>
+<p>  13、对onSubscribe，onNext，onError或onComplete的调用必须return normally，除了当提供的任何参数是null时，这种情况必须向调用者抛出一个java.lang.NullPointerException异常。对于其它情况，对于一个订阅者来说，去通知一个失败的唯一合法的方式是取消它的订阅。在这个规则被违反的情况下，任何与该订阅者关联的订阅必须被认为是取消的，调用者必须激发这个错误条件，以一种对于运行环境来说是足够的方式。</p>
+<ul>
+<li><strong>Subscription</strong></li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscription</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"> ``` </span><br><span class="line"></span><br><span class="line"> **说明：**</span><br><span class="line"> </span><br><span class="line">   **一个 `Subscription` 被一个 `Publisher` 和一个`Subscriber` 共享，目的是：为了在它们之间 `调节数据交换`。</span><br><span class="line"> 这也是为什么 `Publisher.subscribe()` 并没有返回创建的 `那个Subscription` 而是返回 `<span class="keyword">void</span>` 的原因。</span><br><span class="line"> 这个 `Subscription` 只能通过 `Subscriber.onSubscriber()` 回调方法传给 `Subscriber`。**</span><br><span class="line"> </span><br><span class="line">  <span class="number">1</span>、Subscription.request() 和 Subscription.cancel() 必须在 Subscriber 的上下文中调用。</span><br><span class="line">  </span><br><span class="line">  <span class="number">2</span>、Subscription 必须允许 Subscriber 在 onNext() 或 onComplete() 里同步地调用Subscription.request()。</span><br><span class="line">  </span><br><span class="line">  <span class="number">3</span>、Subscription.request() 必须放置一个关于 Publisher 和 Subscriber 间的同步递归调用的上界。</span><br><span class="line"> </span><br><span class="line"> <span class="number">4</span>、Subscription.request() 应该尊重它的 Subscriber 的响应度，通过以一个适时的方式返回。</span><br><span class="line"> </span><br><span class="line"> <span class="number">5</span>、Subscription.cancel方法必须尊重它的 Subscriber 的响应度，通过以一个适时的方式返回，必须是幂等的和线程安全的。</span><br><span class="line"> </span><br><span class="line"> <span class="number">6</span>、在 Subscription 取消之后，额外的 Subscription.request(<span class="keyword">long</span> n) 调用必须是NOP。</span><br><span class="line"> </span><br><span class="line"> <span class="number">7</span>、在 Subscription 取消之后，额外的 Subscription.cancel()调用必须是NOP。</span><br><span class="line"> </span><br><span class="line"> <span class="number">8</span>、当 Subscription 没有被取消时，Subscription.request(<span class="keyword">long</span> n)方法必须注册给定数目的额外元素，这些元素将被生产并分发给各自的 Subscriber。</span><br><span class="line"> </span><br><span class="line"> <span class="number">9</span>、当 Subscription 没有被取消时，Subscription.request(<span class="keyword">long</span> n)必须使用一个 java.lang.IllegalArgumentException 异常来调用 Subscriber.onError()，如果参数小于等于<span class="number">0</span>。引起的原因应该解释为不是正数的调用是非法的。</span><br><span class="line"> </span><br><span class="line"> <span class="number">10</span>、当 Subscription 没有被取消，Subscription.request(<span class="keyword">long</span> n) 可以同步地调用这个（或其它）Subscriber.onNext()。</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="number">11</span>、当 Subscription 没有被取消，Subscription.request(<span class="keyword">long</span> n) 可以同步地调用这个（或其它）Subscriber.onComplete() 或 Subscriber.onError()。</span><br><span class="line"> </span><br><span class="line"> <span class="number">12</span>、当 Subscription 没有被取消，Subscription.cancel() 必须请求 Publisher 最终停止调用它的Subscriber 上的方法。这个操作不要求立即影响 Subscription。</span><br><span class="line"> </span><br><span class="line"> <span class="number">13</span>、当 Subscription 没有被取消，Subscription.cancel() 必须请求 Publisher 最终删除对相关 subscriber 的任何引用。</span><br><span class="line"> </span><br><span class="line"> <span class="number">14</span>、当 Subscription 没有被取消，调用 Subscriptioncancel() 可以引起 Publisher（如果是有状态的）进入关闭状态，如果在此刻没有其它的 Subscription 存在。</span><br><span class="line"> </span><br><span class="line"> <span class="number">15</span>、调用 Subscription.cancel() 必须是 <span class="keyword">return</span> normally。</span><br><span class="line"> </span><br><span class="line"> <span class="number">16</span>、调用 Subscription.request() 必须是 <span class="keyword">return</span> normally。</span><br><span class="line"> </span><br><span class="line"> <span class="number">17</span>、一个 Subscription 必须支持无数次地调用 Subscription.request()，必须支持到 <span class="number">2</span>^<span class="number">63</span> - <span class="number">1</span>（Long.MAX_VALUE）次。如果一个需求等于或大于 <span class="number">2</span>^<span class="number">63</span> - <span class="number">1</span>（Long.MAX_VALUE），或许被 Publisher 认为是真正的无界。</span><br><span class="line"> </span><br><span class="line">- **Processor**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> ```Java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Processor</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; <span class="keyword">extends</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt;, <span class="title">Publisher</span>&lt;<span class="title">R</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p> 1、一个 Processor 表示一个处理阶段，它既是一个 Subscriber 又是一个 Publisher，必须遵守它们两者的契约。</p>
+<p> 2、一个处理器可以选择恢复一个onError调用。如果它选择这样做，必须认为订阅被取消，否则必须立即传播onError调用到它的订阅者。</p>
+<p> 在不被强制时，当最后一个订阅者取消它的订阅时，取消一个处理器的上游订阅是一个好主意，可以让这个取消调用往上游传播。</p>
+<h2 id="1-2-Reactive-Programming"><a href="#1-2-Reactive-Programming" class="headerlink" title="1.2 Reactive Programming"></a>1.2 Reactive Programming</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Reactive Programming：一种技术，各自表达。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-1-概念解释"><a href="#1-2-1-概念解释" class="headerlink" title="1.2.1 概念解释"></a>1.2.1 概念解释</h3><ul>
+<li><p><strong>维基百科</strong>：</p>
+<p>是一种声明式的编程规范，其核心要素是数据流（data streams ）与其传播变化（ propagation of change），前者是关于数据结构的描述，包括静态的数组（arrays）和动态的事件发射器（event emitters）。像是Java中的：</p>
+<ul>
+<li>数据流：Java 8 Stream</li>
+<li>传播变化：Java Observable/Observer</li>
+<li>事件/监听：Java EventObject/EventListener</li>
+</ul>
+</li>
+<li><p><strong>ReactiveX、Reactor</strong></p>
+<p>对<code>观察者模式</code>进行了扩展：通过 <strong>操作符（Operators）</strong> 对 <strong>数据/事件序列（Sequence of data or events）</strong> 进行操作，并且 <strong>屏蔽了并发细节</strong>，如线程 API（Exectuor 、Future、Runnable）、同步、线程安全、并发数据结构以及非阻塞 I/O。</p>
+</li>
+<li><p><strong>Java API</strong></p>
+<p>Java8中的 <code>Stream API</code> 也包含操作符，也屏蔽了并发细节，在数据结构方面Stream基本上就是数据流。与 <code>ReactiveX</code> 不同的是在 <code>设计模式</code> 上。</p>
+<ul>
+<li><strong>Stream</strong> 使用的是 <code>迭代器模式（Iterator）</code>；</li>
+<li><strong>ReactiveX</strong> 使用的是 <code>观察者模式（Observer）</code></li>
+</ul>
+<p>两者的差异为：</p>
+<ul>
+<li>迭代器模式（Iterator）属于：<code>拉（pull）</code>模式</li>
+<li>观察者模式（Observer）属于：<code>推（push）</code>模式</li>
+</ul>
+</li>
+<li><p><strong>来自 André Staltz</strong></p>
+<p><code>In a way, this isn&#39;t anything new. Event buses or your typical click events are really an asynchronous event stream, on which you can observe and do some side effects. Reactive is that idea on steroids. You are able to create data streams of anything, not just from click and hover events. Streams are cheap and ubiquitous, anything can be a stream: variables, user inputs, properties, caches, data structures, etc.</code></p>
+</li>
+</ul>
+<h3 id="1-2-2-Reactive-Programming-使用场景"><a href="#1-2-2-Reactive-Programming-使用场景" class="headerlink" title="1.2.2 Reactive Programming 使用场景"></a>1.2.2 Reactive Programming 使用场景</h3><ul>
+<li><p><strong>Reactive Streams JVM</strong></p>
+<p><code>Reactive Streams</code> 用于在 <strong>异步边界</strong>（asynchronous boundary） 管理 <strong>流式数据交换</strong>（ govern the exchange of stream data）。异步说明其并发模型，流式数据则体现数据结构，管理则强调它们的它们之间的协调。</p>
+</li>
+<li><p><strong>Spring 5</strong></p>
+<p>Spring 认为 <code>Reactive</code> 和 <code>非阻塞</code> 通常并非让应用运行更快速（generally do not make applications run faster），甚至会增加少量的处理时间，因此，它的使用场景则是 <strong>性能：利用较少的资源，提升应用的伸缩性</strong>（scale with a small, fixed number of threads and less memory）。</p>
+</li>
+<li><p><strong>ReactiveX</strong></p>
+<p><code>ReactiveX</code> 所描述的使用场景与 <code>Spring</code> 的不同，它没有从性能入手，而是 <strong>代码可读性</strong> + <strong>减少Bugs</strong> 的角度出发，解释了 <code>Reactive Programming 的价值</code>。</p>
+<p>同时，强调其框架的核心特性：<strong>异步</strong>（asynchronous）、<strong>同顺序</strong>（same sort）和 <strong>组合操</strong>作（composable operations）。它也间接地说明了：<code>Java 8 Stream</code> 在 <code>组合操作</code> 的限制，以及<code>操作符</code> 的不足。</p>
+</li>
+<li><p><strong>Reactor</strong></p>
+<p>同样强调<strong> 结构性</strong> 、<strong>可读性</strong>（Composability and readability）和 <strong>高层次并发抽象</strong>（High level abstraction），并明确地表示它提供 <code>丰富的数据操作符</code>（ rich vocabulary of operators）弥补 <code>Stream API</code> 的短板，还支持<code>背压</code>（Backpressure）操作，提供数据生产者和消费者的消息机制，协调它们之间的产销失衡的情况。同时，Reactor 采用订阅式数据消费（Nothing happens until you subscribe）的机制，实现 Stream 所不具备的数据推送机制。</p>
+</li>
+</ul>
+<h3 id="1-2-3-总结"><a href="#1-2-3-总结" class="headerlink" title="1.2.3 总结"></a>1.2.3 总结</h3><ul>
+<li><p><strong>Reactive Programming</strong> 作为 <strong>观察者模式（Observer）的延伸</strong>，不同于传统的命令编程方式（ Imperative programming）同步拉取数据的方式，如迭代器模式（Iterator） 。而是采用数据发布者同步或异步地推送到数据流（Data Streams）的方案。当该数据流（Data Steams）订阅者监听到传播变化时，立即作出响应动作。</p>
+</li>
+<li><p>在实现层面上：<strong>Reactive Programming</strong> 可结合 <strong>函数式编程</strong> 简化面向对象语言语法的臃肿性，屏蔽并发实现的复杂细节，提供数据流的有序操作，从而达到提升代码的可读性，以及减少 Bugs 出现的目的。</p>
+</li>
+<li><p>同时，<strong>Reactive Programming</strong> 结合 <strong>背压</strong>（Backpressure）的技术解决发布端生成数据的速率高于订阅端消费的问题。</p>
+</li>
+</ul>
+<p><strong>简单归纳为：</strong></p>
+<ul>
+<li><strong>设计模式</strong> - <code>观察者模式</code></li>
+<li><strong>数据/事件序列</strong> -<code>数据结构</code> 或者 <code>数据流</code></li>
+<li><strong>操作符</strong> - <code>数据操作</code></li>
+<li><strong>并发模型</strong> - <code>线程</code></li>
+<li><strong>支持背压</strong> - <code>解决数据的生产与消费速度问题</code></li>
+</ul>
+<h1 id="2-RxJava2基础概念"><a href="#2-RxJava2基础概念" class="headerlink" title="2 RxJava2基础概念"></a>2 RxJava2基础概念</h1><h2 id="2-1-与-RxJava2-x-相关的参考网站："><a href="#2-1-与-RxJava2-x-相关的参考网站：" class="headerlink" title="2.1 与 RxJava2.x 相关的参考网站："></a>2.1 与 RxJava2.x 相关的参考网站：</h2><p>1.<a href="http://reactivex.io/" target="_blank" rel="noopener">ReactiveX</a><br>2.<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava Github</a><br>3.<a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">reactive-streams-jvm</a><br>4.<a href="http://www.reactive-streams.org/" target="_blank" rel="noopener">Reactive Stream</a><br>5.<a href="http://reactivex.io/RxJava/2.x/javadoc/" target="_blank" rel="noopener">RxJava 2.x javadoc</a></p>
+<h2 id="2-2-RxJava2是什么？或者说“ReactiveX”是什么？"><a href="#2-2-RxJava2是什么？或者说“ReactiveX”是什么？" class="headerlink" title="2.2 RxJava2是什么？或者说“ReactiveX”是什么？"></a>2.2 RxJava2是什么？或者说“ReactiveX”是什么？</h2><ul>
+<li><p><strong>Reactive框架的实现：通过使用 <code>设计模式</code>、<code>数据结构（数据/事件序列）</code>、<code>数据操作（操作符）</code>、<code>并发模型</code> 来实现这个框架。</strong></p>
+</li>
+<li><p><strong>Reactive Extensions for the JVM（Java VM implementation of Reactive Extensions）</strong></p>
+<p><strong>a library for composing asynchronous and event-based programs using observable sequences for the Java VM.</strong></p>
+<p><strong>It extends the observer pattern to support sequences of data/events and adds operators that allow you to compose sequences together declaratively while abstracting away concerns about things like low-level threading, synchronization, thread-safety and concurrent data structures.</strong></p>
+</li>
+</ul>
+<p><strong>关键点：</strong></p>
+<ul>
+<li>Reactive Extensions for the JVM</li>
+<li>observer pattern</li>
+<li>sequences of data/events</li>
+<li>operators to compose sequences</li>
+<li>asynchronous</li>
+</ul>
+<h2 id="2-3-RxJava-Version-2-X-特点"><a href="#2-3-RxJava-Version-2-X-特点" class="headerlink" title="2.3 RxJava Version 2.X 特点"></a>2.3 RxJava Version 2.X 特点</h2><ul>
+<li>single dependency: Reactive-Streams</li>
+<li>Java 8 lambda-friendly API</li>
+<li>async or synchronous execution</li>
+<li>non-opinionated about source of concurrency (threads, pools, event loops, fibers, actors, etc)</li>
+<li>virtual time and schedulers for parameterized concurrency</li>
+</ul>
+<h2 id="2-4-一个最基本的-观察者模式（Observer）"><a href="#2-4-一个最基本的-观察者模式（Observer）" class="headerlink" title="2.4 一个最基本的 观察者模式（Observer）"></a>2.4 一个最基本的 观察者模式（Observer）</h2><ul>
+<li><strong>Observable接口</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(Observer observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Observable接口实现类：ObservableImp</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObservableImp</span> <span class="keyword">implements</span> <span class="title">Observable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Observer&gt; mObserverArrayList = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ObservableImp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mObserverArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        mObserverArrayList.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unRegister</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mObserverArrayList.contains(observer)) &#123;</span><br><span class="line">            mObserverArrayList.remove(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String newData = getNewData();</span><br><span class="line">        <span class="keyword">for</span> (Observer observer : mObserverArrayList) &#123;</span><br><span class="line">            observer.update(newData);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getNewData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"this is new msg"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Observer接口</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Object object)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Observer接口实现类：ObserverImp</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverImp</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"current data is : "</span> + (String) object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>测试类：MainTest</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ObservableImp observableImp = <span class="keyword">new</span> ObservableImp();</span><br><span class="line">        ObserverImp observerImp1 = <span class="keyword">new</span> ObserverImp();</span><br><span class="line">        ObserverImp observerImp2 = <span class="keyword">new</span> ObserverImp();</span><br><span class="line"></span><br><span class="line">        observableImp.register(observerImp1);</span><br><span class="line">        observableImp.register(observerImp2);</span><br><span class="line">        observableImp.notifyObserver();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>结果为：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">current data is : this is new msg</span><br><span class="line">current data is : this is new msg</span><br></pre></td></tr></table></figure>
+<h1 id="3-RxJava2-x-分析"><a href="#3-RxJava2-x-分析" class="headerlink" title="3 RxJava2.x 分析"></a>3 RxJava2.x 分析</h1><h2 id="3-1-RxJava2-x-Package-分析"><a href="#3-1-RxJava2-x-Package-分析" class="headerlink" title="3.1 RxJava2.x Package 分析"></a>3.1 RxJava2.x Package 分析</h2><ul>
+<li><p><strong>io.reactivex</strong>：基础 reactive类，Flowable、Observable、Single、Maybe和Completable； 基础reactive消费者; 其他常见的基本接口。</p>
+</li>
+<li><p><strong>io.reactivex.annotations</strong>：用于指示实验和beta运算符，类，方法，类型或字段的注释。</p>
+</li>
+<li><p><strong>io.reactivex.disposables</strong>：基于Disposable的资源管理（一次性容器类型）和实用程序类的默认实现，用于从回调和其他类型构造Disposable。</p>
+</li>
+<li><strong>io.reactivex.exceptions</strong>：异常处理实用程序，安全订阅者异常类，生命周期异常类。</li>
+<li><strong>io.reactivex.flowables</strong>：支持Flowable基础反应类的类：ConnectableFlowable和GroupedFlowable。</li>
+<li><strong>io.reactivex.functions</strong>：arity 0到9的函数和动作的功能接口以及相关的实用程序类。</li>
+<li><strong>io.reactivex.observables</strong>：支持Observable基础反应类的类：ConnectableObservable和GroupedObservable。</li>
+<li><strong>io.reactivex.observers</strong>：基于Observer的使用者类和接口的默认包装器和实现，包括一次性和资源跟踪变体，以及允许单元测试基于Observable，Single，Maybe和Completable的流的TestObserver。</li>
+<li><strong>io.reactivex.parallel</strong>：包含基本类型ParallelFlowable，一个用于并行处理Flowable序列的子DSL。</li>
+<li><strong>io.reactivex.plugins</strong>：包含中央插件处理程序RxJavaPlugins类，以挂接到基本响应类型和调度程序的生命周期。</li>
+<li><p><strong>io.reactivex.processors</strong>：表示实现FlowableProcessor类的所谓热背压感知源（即处理器）的类，Reactive Streams Processor接口允许向一个或多个订户发送多播事件形式以及使用另一个Reactive Streams Publisher。</p>
+</li>
+<li><p><strong>io.reactivex.schedulers</strong>：特别包含调度程序的工厂类，提供用于检索标准调度程序实例的方法，用于以受控方式调度流的TestScheduler以及可以保存与之关联的值和时间戳的类Timed。</p>
+</li>
+<li><strong>io.reactivex.subjects</strong>：表示所谓的热源（即主题）的类，它们一次实现基本反应类和相应的消费者类型，以允许多个消费者的多播事件形式以及消费他们类型的另一个基本反应类型。</li>
+<li><strong>io.reactivex.subscribers</strong>：基于subscribers的使用者类和接口的默认包装器和实现，包括一次性和资源跟踪变体以及允许单元测试基于Flowable的流的TestSubscriber。</li>
+</ul>
+<h2 id="3-2-创建"><a href="#3-2-创建" class="headerlink" title="3.2 创建"></a>3.2 创建</h2><ul>
+<li><p><strong>概念解释</strong></p>
+<p>被观察者：Observable（不支持背压）/Flowable（支持 <a href="https://github.com/ReactiveX/RxJava/wiki/Backpressure" target="_blank" rel="noopener">背压(Backpressure)</a> ）<br>观察者：Observer/Subscriber</p>
+</li>
+<li><p><strong>创建步骤</strong></p>
+<p>1）创建：被观察者<br>2）创建：观察者<br>3）订阅</p>
+</li>
+</ul>
+<h1 id="4-操作符"><a href="#4-操作符" class="headerlink" title="4 操作符"></a>4 操作符</h1><h2 id="4-1-Creating（创建）-Observables"><a href="#4-1-Creating（创建）-Observables" class="headerlink" title="4.1 Creating（创建） Observables"></a>4.1 Creating（创建） Observables</h2><h3 id="4-1-1-Create"><a href="#4-1-1-Create" class="headerlink" title="4.1.1 Create"></a>4.1.1 Create</h3><p>最常用的操作符，用于创建一个具有发射事件能力的被观察者</p>
+<h3 id="4-1-2-just"><a href="#4-1-2-just" class="headerlink" title="4.1.2 just"></a>4.1.2 just</h3><p>只是简单的原样发射,可将数组或Iterable当做单个数据。它接受1至9个参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Disposable disposable2 = Observable.just(<span class="number">1</span>, <span class="number">23</span>).subscribe(integer -&gt; System.out.println(<span class="string">"integer is : "</span> + integer));</span><br><span class="line">System.out.println(<span class="string">"disposable2 is : "</span> + disposable2.isDisposed());</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * integer is : 1</span></span><br><span class="line"><span class="comment"> * integer is : 23</span></span><br><span class="line"><span class="comment"> * disposable2 is : true</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-1-3-from系列"><a href="#4-1-3-from系列" class="headerlink" title="4.1.3 from系列"></a>4.1.3 from系列</h3><p>将数组或Iterable的元素拿出来，做成多个事件进行发射。</p>
+<p><strong>注意：</strong><br>在使用<code>fromArray()</code>时，数组的声明类型如果是基本数据类型，则必须是基本数据类型的包装类型。<br>如果使用<code>int[]</code>，则在声明观察者时，返回参数类型也是<code>int[]</code>数组，而不是单个的元素；<br>如果使用<code>Integer[]</code>，则在声明观察者时，返回的参数类型是<code>Integer</code>元素，不是数组 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">Integer[] nums = <span class="keyword">new</span> Integer[]&#123;<span class="number">44</span>,<span class="number">55</span>,<span class="number">66</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// fromArray()</span></span><br><span class="line">Disposable disposable3 = Observable.fromArray(nums).subscribe(<span class="keyword">new</span> Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Integer integer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"integer is : "</span> + integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(<span class="string">"disposable3 is : "</span> + disposable3.isDisposed());</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * integer is : 44</span></span><br><span class="line"><span class="comment"> * integer is : 55</span></span><br><span class="line"><span class="comment"> * integer is : 66</span></span><br><span class="line"><span class="comment"> * disposable3 is : true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">         </span><br><span class="line">String[] strs =  <span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;;</span><br><span class="line">       </span><br><span class="line">Disposable disposable = Observable.fromArray(strs).subscribe(<span class="keyword">new</span> Consumer&lt;String&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"array s is : "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(<span class="string">"disposable is : "</span> + disposable.isDisposed());</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * array s is : a</span></span><br><span class="line"><span class="comment"> * array s is : b</span></span><br><span class="line"><span class="comment"> * array s is : c</span></span><br><span class="line"><span class="comment"> * disposable is : true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">ArrayList&lt;String&gt; integers = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">integers.add(<span class="string">"A"</span>);</span><br><span class="line">integers.add(<span class="string">"B"</span>);</span><br><span class="line">integers.add(<span class="string">"C"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// fromIterable()</span></span><br><span class="line">Disposable disposable1 = Observable.fromIterable(integers).subscribe(<span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"s is : "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(<span class="string">"disposable1 is : "</span> + disposable1.isDisposed());</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * s is : A</span></span><br><span class="line"><span class="comment"> * s is : B</span></span><br><span class="line"><span class="comment"> * s is : C</span></span><br><span class="line"><span class="comment"> * disposable1 is : true</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-1-4-Interval"><a href="#4-1-4-Interval" class="headerlink" title="4.1.4 Interval"></a>4.1.4 Interval</h3><p>定时任务（心跳包）</p>
+<h2 id="4-2-Transforming（变换）-Observables"><a href="#4-2-Transforming（变换）-Observables" class="headerlink" title="4.2 Transforming（变换） Observables"></a>4.2 Transforming（变换） Observables</h2><h2 id="4-3-Filtering（过滤）-Observables"><a href="#4-3-Filtering（过滤）-Observables" class="headerlink" title="4.3 Filtering（过滤） Observables"></a>4.3 Filtering（过滤） Observables</h2><h2 id="4-4-Combining（合并）-Observables"><a href="#4-4-Combining（合并）-Observables" class="headerlink" title="4.4 Combining（合并） Observables"></a>4.4 Combining（合并） Observables</h2><h2 id="4-5-Error-Handling（异常处理）-Operators"><a href="#4-5-Error-Handling（异常处理）-Operators" class="headerlink" title="4.5 Error Handling（异常处理） Operators"></a>4.5 Error Handling（异常处理） Operators</h2><h2 id="4-6-Observable-Utility-公用-Operators"><a href="#4-6-Observable-Utility-公用-Operators" class="headerlink" title="4.6 Observable Utility(公用) Operators"></a>4.6 Observable Utility(公用) Operators</h2><h2 id="4-7-Conditional-and-Boolean（条件与布尔）-Operators"><a href="#4-7-Conditional-and-Boolean（条件与布尔）-Operators" class="headerlink" title="4.7 Conditional and Boolean（条件与布尔） Operators"></a>4.7 Conditional and Boolean（条件与布尔） Operators</h2><h2 id="4-8-Mathematical-and-Aggregate（数学与聚合）-Operators"><a href="#4-8-Mathematical-and-Aggregate（数学与聚合）-Operators" class="headerlink" title="4.8 Mathematical and Aggregate（数学与聚合） Operators"></a>4.8 Mathematical and Aggregate（数学与聚合） Operators</h2><h2 id="4-9-Backpressure（背压）-Operators"><a href="#4-9-Backpressure（背压）-Operators" class="headerlink" title="4.9 Backpressure（背压） Operators"></a>4.9 Backpressure（背压） Operators</h2><h2 id="4-10-Connectable-Observable（可连接）-Operators"><a href="#4-10-Connectable-Observable（可连接）-Operators" class="headerlink" title="4.10 Connectable Observable（可连接） Operators"></a>4.10 Connectable Observable（可连接） Operators</h2><h2 id="4-11-Operators-to-Convert-Observables（转换被观察者）"><a href="#4-11-Operators-to-Convert-Observables（转换被观察者）" class="headerlink" title="4.11 Operators to Convert Observables（转换被观察者）"></a>4.11 Operators to Convert Observables（转换被观察者）</h2><h2 id="4-12-Implementing-Your-Own-Operators（自定义）"><a href="#4-12-Implementing-Your-Own-Operators（自定义）" class="headerlink" title="4.12 Implementing Your Own Operators（自定义）"></a>4.12 Implementing Your Own Operators（自定义）</h2><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">Reactive Streams</span><br><span class="line">Reactive Streams is an initiative to provide a standard for asynchronous stream processing with non-blocking back pressure. This encompasses efforts aimed at runtime environments (JVM and JavaScript) as well as network protocols.</span><br><span class="line"></span><br><span class="line">NEWS: JDK9 java.util.concurrent.Flow</span><br><span class="line">The interfaces available in JDK9’s java.util.concurrent.Flow, are 1:1 semantically equivalent to their respective Reactive Streams counterparts. This means that there will be a migratory period, while libraries move to adopt the new types in the JDK, however this period is expected to be short - due to the full semantic equivalence of the libraries, as well as the Reactive Streams &lt;-&gt; Flow adapter library as well as a TCK compatible directly with the JDK Flow types.</span><br><span class="line"></span><br><span class="line">Read this if you are interested in learning more about Reactive Streams for the JVM.</span><br><span class="line"></span><br><span class="line">The Problem</span><br><span class="line">Handling streams of data—especially “live” data whose volume is not predetermined—requires special care in an asynchronous system. The most prominent issue is that resource consumption needs to be controlled such that a fast data source does not overwhelm the stream destination. Asynchrony is needed in order to enable the parallel use of computing resources, on collaborating network hosts or multiple CPU cores within a single machine.</span><br><span class="line"></span><br><span class="line">The main goal of Reactive Streams is to govern the exchange of stream data across an asynchronous boundary—think passing elements on to another thread or thread-pool—while ensuring that the receiving side is not forced to buffer arbitrary amounts of data. In other words, back pressure is an integral part of this model in order to allow the queues which mediate between threads to be bounded. The benefits of asynchronous processing would be negated if the communication of back pressure were synchronous (see also the Reactive Manifesto), therefore care has to be taken to mandate fully non-blocking and asynchronous behavior of all aspects of a Reactive Streams implementation.</span><br><span class="line"></span><br><span class="line">It is the intention of this specification to allow the creation of many conforming implementations, which by virtue of abiding by the rules will be able to interoperate smoothly, preserving the aforementioned benefits and characteristics across the whole processing graph of a stream application.</span><br><span class="line"></span><br><span class="line">Scope</span><br><span class="line">The scope of Reactive Streams is to find a minimal set of interfaces, methods and protocols that will describe the necessary operations and entities to achieve the goal—asynchronous streams of data with non-blocking back pressure.</span><br><span class="line"></span><br><span class="line">End-user DSLs or protocol binding APIs have purposefully been left out of the scope to encourage and enable different implementations that potentially use different programming languages to stay as true as possible to the idioms of their platform.</span><br><span class="line"></span><br><span class="line">We anticipate that acceptance of this Reactive Streams specification and experience with its implementations will together lead to wide integration, for example including Java platform support in future JDK releases or network protocol support in future web browsers.</span><br><span class="line"></span><br><span class="line">Working Groups</span><br><span class="line">Basic Semantics</span><br><span class="line">The basic semantics define how the transmission of stream elements is regulated through back-pressure. How elements are transmitted, their representation during transfer, or how back-pressure is signaled is not part of this specification.</span><br><span class="line"></span><br><span class="line">JVM Interfaces (Completed)</span><br><span class="line">This working group applies the basic semantics to a set of programming interfaces whose main purpose is to allow the interoperation of different conforming implementations and language bindings for passing streams between objects and threads within the JVM, using the shared memory heap.</span><br><span class="line"></span><br><span class="line">As of December 19th, 2017 we have released version 1.0.2 of Reactive Streams for the JVM, including Java API, a textual Specification, a TCK and implementation examples.</span><br><span class="line"></span><br><span class="line">New in 1.0.2 is the JDK9 adapter library and the JDK9 TCK for Flow.</span><br><span class="line"></span><br><span class="line">Corresponding code artifacts are available on Maven Central:</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.reactivestreams&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;reactive-streams&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.reactivestreams&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;reactive-streams-tck&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.reactivestreams&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;reactive-streams-flow-adapters&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.reactivestreams&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;reactive-streams-tck-flow&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.reactivestreams&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;reactive-streams-examples&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">The source code for these is available on github. Please use github issues for providing feedback.</span><br><span class="line"></span><br><span class="line">All artifacts and specifications are released under Creative Commons Zero into the Public Domain.</span><br><span class="line"></span><br><span class="line">Read more about Reactive Streams 1.0.2 for the JVM here.</span><br><span class="line"></span><br><span class="line">A Note for Implementors</span><br><span class="line">To get started implementing the final specification, it is recommended to start by reading the README and the Java API documentation, then taking a look at the Specification then taking a look at the TCK and the example implementations. If you have an issue with any of the above, please take a look at closed issues and then open a new issue if it has not already been answered.</span><br><span class="line"></span><br><span class="line">This work was performed in the reactive-streams-jvm repository.</span><br><span class="line"></span><br><span class="line">JavaScript Interfaces</span><br><span class="line">This working group defines a minimal set of object properties for observing a stream of elements within a JavaScript runtime environment. The goal is to provide a testable specification that allows different implementations to interoperate within that same runtime environment.</span><br><span class="line"></span><br><span class="line">This work is performed in the reactive-streams-js repository.</span><br><span class="line"></span><br><span class="line">Network Protocols</span><br><span class="line">This working group defines network protocols for passing reactive streams over various transport media that involve serialization and deserialization of the data elements. Examples of such transports are TCP, UDP, HTTP and WebSockets.</span><br><span class="line"></span><br><span class="line">This work is performed in the reactive-streams-io repository.</span><br></pre></td></tr></table></figure>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><blockquote>
+<p><a href="https://yq.aliyun.com/articles/617466" target="_blank" rel="noopener">https://yq.aliyun.com/articles/617466</a><br><a href="https://www.reactivemanifesto.org/?spm=a2c4e.11153940.blogcont617466.22.7baa5ab8WGQ0Tg" target="_blank" rel="noopener">https://www.reactivemanifesto.org/?spm=a2c4e.11153940.blogcont617466.22.7baa5ab8WGQ0Tg</a><br><a href="https://www.cnblogs.com/lixinjie/p/a-reactive-streams-specification-on-jvm.html" target="_blank" rel="noopener">JVM平台上的响应式流（Reactive Streams）规范</a><br><a href="https://www.cnblogs.com/miduos/p/9452622.html
+https://www.jianshu.com/p/4676d0646317" target="_blank" rel="noopener">Reactive Programming</a><br><a href="http://reactivex.io/" target="_blank" rel="noopener">http://reactivex.io/</a><br><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">https://github.com/ReactiveX/RxJava</a><br><a href="http://reactivex.io/RxJava/2.x/javadoc/" target="_blank" rel="noopener">RxJava2.x javadoc</a><br><a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754?spm=a2c4e.11153940.blogcont617466.36.7baa5ab8WGQ0Tg#reactive-programming-is-programming-with-asynchronous-data-streams" target="_blank" rel="noopener">https://gist.github.com/staltz/868e7e9bc2a7b8c1f754?spm=a2c4e.11153940.blogcont617466.36.7baa5ab8WGQ0Tg#reactive-programming-is-programming-with-asynchronous-data-streams</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/专题/" rel="next" title="专题">
+                <i class="fa fa-chevron-left"></i> 专题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Dart-包概念/" rel="prev" title="Dart-包概念">
+                Dart-包概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">139</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基础知识储备-Reactive-规范"><span class="nav-number">1.</span> <span class="nav-text">1 基础知识储备 - Reactive 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Reactive-Streams（规范）"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Reactive Streams（规范）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-是什么"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-目的是："><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 目的是：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-目标是："><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 目标是：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-API的组成"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.1.4 API的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-术语"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.1.5 术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-6-规格"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.1.6 规格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Reactive-Programming"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Reactive Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-概念解释"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 概念解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-Reactive-Programming-使用场景"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Reactive Programming 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-总结"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-RxJava2基础概念"><span class="nav-number">2.</span> <span class="nav-text">2 RxJava2基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-与-RxJava2-x-相关的参考网站："><span class="nav-number">2.1.</span> <span class="nav-text">2.1 与 RxJava2.x 相关的参考网站：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-RxJava2是什么？或者说“ReactiveX”是什么？"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 RxJava2是什么？或者说“ReactiveX”是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-RxJava-Version-2-X-特点"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 RxJava Version 2.X 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-一个最基本的-观察者模式（Observer）"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 一个最基本的 观察者模式（Observer）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-RxJava2-x-分析"><span class="nav-number">3.</span> <span class="nav-text">3 RxJava2.x 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-RxJava2-x-Package-分析"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 RxJava2.x Package 分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-创建"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 创建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-操作符"><span class="nav-number">4.</span> <span class="nav-text">4 操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Creating（创建）-Observables"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Creating（创建） Observables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-Create"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 Create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-just"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 just</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-3-from系列"><span class="nav-number">4.1.3.</span> <span class="nav-text">4.1.3 from系列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-4-Interval"><span class="nav-number">4.1.4.</span> <span class="nav-text">4.1.4 Interval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Transforming（变换）-Observables"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Transforming（变换） Observables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Filtering（过滤）-Observables"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Filtering（过滤） Observables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Combining（合并）-Observables"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Combining（合并） Observables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-Error-Handling（异常处理）-Operators"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 Error Handling（异常处理） Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-Observable-Utility-公用-Operators"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Observable Utility(公用) Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-Conditional-and-Boolean（条件与布尔）-Operators"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 Conditional and Boolean（条件与布尔） Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-8-Mathematical-and-Aggregate（数学与聚合）-Operators"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 Mathematical and Aggregate（数学与聚合） Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-9-Backpressure（背压）-Operators"><span class="nav-number">4.9.</span> <span class="nav-text">4.9 Backpressure（背压） Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-10-Connectable-Observable（可连接）-Operators"><span class="nav-number">4.10.</span> <span class="nav-text">4.10 Connectable Observable（可连接） Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-11-Operators-to-Convert-Observables（转换被观察者）"><span class="nav-number">4.11.</span> <span class="nav-text">4.11 Operators to Convert Observables（转换被观察者）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-12-Implementing-Your-Own-Operators（自定义）"><span class="nav-number">4.12.</span> <span class="nav-text">4.12 Implementing Your Own Operators（自定义）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-number">6.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">333.1k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

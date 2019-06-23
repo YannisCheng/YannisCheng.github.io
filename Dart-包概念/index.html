@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Dart,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Dart之“包概念”说明">
+<meta name="keywords" content="Dart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dart-包概念">
+<meta property="og:url" content="http://yannischeng.com/Dart-包概念/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Dart之“包概念”说明">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%20pub%20%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/pub%E7%AE%A1%E7%90%86%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/pub%20%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E4%BE%9D%E8%B5%96%E9%A1%B9.png">
+<meta property="og:updated_time" content="2019-06-22T16:55:59.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dart-包概念">
+<meta name="twitter:description" content="Dart之“包概念”说明">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%20pub%20%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Dart-包概念/">
+
+
+
+
+
+  <title>Dart-包概念 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Dart-包概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dart-包概念</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T11:04:04+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-23T00:55:59+08:00">
+                2019-06-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dart/" itemprop="url" rel="index">
+                    <span itemprop="name">Dart</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,140 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Dart/" rel="tag"># Dart</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Dart-包概念/" title="Dart-包概念">http://yannischeng.com/Dart-包概念/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Dart之“包概念”说明</p>
+<a id="more"></a>
+<p>参考链接：</p>
+<p><a href="https://dart.dev/tools/pub/pubspec" target="_blank" rel="noopener">pubspec.yaml说明</a><br><a href="https://pub.dev/packages" target="_blank" rel="noopener">Dart 包</a><br><a href="https://yaml.org/" target="_blank" rel="noopener">YAML</a></p>
+<h1 id="1-pub包管理器"><a href="#1-pub包管理器" class="headerlink" title="1. pub包管理器"></a>1. pub包管理器</h1><h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p>Dart生态系统使用<code>包</code>来管理共享软件，如库和工具。其中<code>包</code>可以来自：<a href="https://pub.dev/" target="_blank" rel="noopener">Pub站点</a>的公开包；可以从本地文件系统或者其他位置。<br>使用包管理器的好处是：pub会对依赖性进行版本管理。</p>
+<p> <code>包</code>中包含：元数据、依赖项、Dart库、应用程序、资源、测试、图像、示例。</p>
+<h2 id="pub的使用："><a href="#pub的使用：" class="headerlink" title="pub的使用："></a>pub的使用：</h2><ol>
+<li><p><strong>创建</strong> 一个<code>pubspec</code>，实际就是一个<code>pubspec.yaml</code>文件。一个最为简单的<code>pubspec</code>中仅仅只有一个<code>name: my_app</code></p>
+</li>
+<li><p>使用pub来 <strong>获取包</strong> 的依赖关系</p>
+<p>下图展示了，在Flutter开发过程中，常用到的 pub 管理命令。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%20pub%20%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.png" alt></p>
+<p>在 <code>pubspec.yaml</code> 文件中添加 需要的依赖库之后，<code>pub</code>会创建一个 <code>.packages</code> 文件。该文件将 <code>应用程序所依赖的每个程序包名</code> 映射到 <code>系统缓存中的相应程序包</code>。每当修改一次<code>pubspec.yaml</code>文件执行flutter命令之后，该文件就会更新。</p>
+</li>
+<li><p>如果在编写Dart代码的过程中需要依赖包中的库，则在代码中 <strong>导入该库</strong>，就像我们之前编写Java代码那样。</p>
+</li>
+<li><p><strong>升级</strong> 依赖项</p>
+<p>当在<code>pubspec.yaml</code>文件中第一次添加依赖项后，pub会下载与其他依赖项兼容的最新版本。在生成 <code>.packages</code> 文件的同时，还会生成一个名为 <code>pubspec.lock</code> 的pub文件。它列出了程序包使用的每个依赖项（即时和传递）的特定版本。当想要将<code>依赖项</code>升级到最新的版本时，执行命令：</p>
+</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter upgrade</span><br></pre></td></tr></table></figure>
+<p> 如果只想升级<code>一个依赖项</code>，则执行命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter upgrade 依赖项</span><br></pre></td></tr></table></figure>
+<p><strong>说明：虽然Flutter SDK 使用的是pub包，但是不能直接使用<code>pub命令</code>来管理Flutter代码中的包，而是使用Flutter命令。</strong></p>
+<h2 id="pub管理的文件目录"><a href="#pub管理的文件目录" class="headerlink" title="pub管理的文件目录"></a>pub管理的文件目录</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/pub%E7%AE%A1%E7%90%86%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt></p>
+<ul>
+<li><code>.metadata</code>：自动生成的文件。应该被加入<code>版本控制</code> 中。</li>
+<li><code>.packages</code>：自动生成的文件。不应该被加入<code>版本控制</code> 中。</li>
+<li><p><code>pubspec.lock</code>：</p>
+<p>这个文件的作用是：记录 <strong>每个程序包所引用的具体的版本号，而不是<code>.yaml</code>文件中的记录的 <code>约束范围</code></strong>。</p>
+<p>它指定程序包所依赖的每个直接和传递依赖项的具体版本和其他标识信息。与仅列出直接依赖关系并允许版本范围的pubspec不同，锁文件将整个依赖关系图全面地固定到特定版本的包。锁定文件可确保您可以重新创建应用程序使用的包的确切配置。应该被加入到<code>版本控制</code>中。</p>
+</li>
+<li><p><code>pubspec.yaml</code>：项目管理文件。</p>
+</li>
+</ul>
+<h2 id="pub名词"><a href="#pub名词" class="headerlink" title="pub名词"></a>pub名词</h2><p><a href="https://dart.dev/tools/pub/glossary#library-package" target="_blank" rel="noopener">名词解释</a></p>
+<h1 id="2-pubspec-yaml文件格式"><a href="#2-pubspec-yaml文件格式" class="headerlink" title="2. pubspec.yaml文件格式"></a>2. pubspec.yaml文件格式</h1><p><strong>实例</strong></p>
+<p><code>pubspec.yaml</code>是由<code>YAML</code>语言编写的文件。</p>
+<p>一个flutter项目的<code>pubspec.yaml</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">name: xflutter</span><br><span class="line">description: A new Flutter application.</span><br><span class="line">version: 1.0.0+1</span><br><span class="line">environment:</span><br><span class="line">  sdk: &quot;&gt;=2.2.0 &lt;3.0.0&quot;</span><br><span class="line">dependencies:</span><br><span class="line">  flutter:</span><br><span class="line">    sdk: flutter</span><br><span class="line">  dio: 2.1.0</span><br><span class="line"></span><br><span class="line">dev_dependencies:</span><br><span class="line">  flutter_test:</span><br><span class="line">    sdk: flutter</span><br><span class="line">    </span><br><span class="line">flutter:</span><br><span class="line">  uses-material-design: true</span><br></pre></td></tr></table></figure>
+<p>一个简单但是完整的<code>pubspec</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">name: newtify</span><br><span class="line">version: 1.2.3</span><br><span class="line">description: &gt;-</span><br><span class="line">  Have you been turned into a newt?  Would you like to be?</span><br><span class="line">  This package can help. It has all of the</span><br><span class="line">  newt-transmogrification functionality you have been looking</span><br><span class="line">  for.</span><br><span class="line">author: Natalie Weizenbaum &lt;nweiz@google.com&gt;</span><br><span class="line">homepage: https://example-pet-store.com/newtify</span><br><span class="line">documentation: https://example-pet-store.com/newtify/docs</span><br><span class="line">environment:</span><br><span class="line">  sdk: &apos;&gt;=2.0.0 &lt;3.0.0&apos;</span><br><span class="line">dependencies:</span><br><span class="line">  efts: ^2.0.4</span><br><span class="line">  transmogrify: ^0.4.0</span><br><span class="line">dev_dependencies:</span><br><span class="line">  test: &apos;&gt;=0.6.0 &lt;0.12.0&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>属性字段说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性字段</th>
+<th>基本说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name（必有）</td>
+<td></td>
+</tr>
+<tr>
+<td>version（必有）</td>
+<td></td>
+</tr>
+<tr>
+<td>description（必有）</td>
+<td></td>
+</tr>
+<tr>
+<td>environment</td>
+<td>从Dart 2开始要求</td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>如果没有包依赖项，则可以省略</td>
+</tr>
+<tr>
+<td>dev_dependencies</td>
+<td>如果没有dev包依赖项，则可以省略</td>
+</tr>
+<tr>
+<td>dependency_overrides</td>
+<td>如果不需要覆盖任何依赖项，则可以省略</td>
+</tr>
+<tr>
+<td>author/authors（可选）</td>
+<td></td>
+</tr>
+<tr>
+<td>homepage（可选）</td>
+<td>指向包的主页（或源代码存储库）的URL</td>
+</tr>
+<tr>
+<td>repository（可选）</td>
+<td>指向包的源代码存储库的URL</td>
+</tr>
+<tr>
+<td>issue_tracker（可选）</td>
+<td>指向包的问题跟踪器的URL</td>
+</tr>
+<tr>
+<td>documentation（可选）</td>
+<td>指向包的文档的URL</td>
+</tr>
+<tr>
+<td>executables（可选）</td>
+<td>用于将包的可执行文件放在PATH上</td>
+</tr>
+<tr>
+<td>publish_to（可选）</td>
+<td>指定发布包的位置</td>
+</tr>
+</tbody>
+</table>
+<h2 id="name"><a href="#name" class="headerlink" title="name"></a>name</h2><p>每个包都需要一个名字。如果将这个包对外发布，这将是它的对外展示以及其他软件包引用它的名字。</p>
+<p><strong>命名规则：</strong></p>
+<ul>
+<li>名称应全部小写，</li>
+<li>下划线用于分隔单词</li>
+<li>仅使用基本拉丁字母和阿拉伯数字： [a-z0-9_]。</li>
+<li>确保该名称是有效的Dart标识符 </li>
+<li>它不以数字开头且不是保留字。</li>
+</ul>
+<h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><p>每个包都有一个<a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">version</a>。在<code>Pub站点</code>上托管您的包需要<code>版本号</code>，但对于<code>仅限本地的包</code>可以省略。如果省略它，则会对包进行隐式版本控制<code>0.0.0</code>，每次发布包时，都应设定特定版号。</p>
+<p><strong>版本格式：</strong></p>
+<p> <code>主版本号.次版本号.修订号</code>。由 <code>点</code> 分隔的三个数字，还可以选择具有<code>build（+hotfix.oopsie）</code>或<code>pre-release（-alpha.12）</code>后缀。</p>
+<p> <strong>版本号递增规则：</strong></p>
+<ul>
+<li><strong>主版本号</strong>：当你做了<code>不兼容</code>的 API 修改，</li>
+<li><strong>次版本号</strong>：当你做了<code>向下兼容</code>的<code>功能性新增</code>，</li>
+<li><p><strong>修订号</strong>：当你做了<code>向下兼容</code>的<code>问题修正</code>。</p>
+<p><code>先行版本号</code>及<code>版本编译元数据</code>可以加到“<code>主版本号.次版本号.修订号</code>”的<code>后面</code>，作为延伸。</p>
+</li>
+</ul>
+<h2 id="description"><a href="#description" class="headerlink" title="description"></a>description</h2><p>这对于自己的个人包而言是可选不写的，但如果打算发布包，则必须提供说明，描述是纯文本：没有markdown或HTML，且该说明应为英文。描述应该相对较短–60到180个字符。</p>
+<h2 id="SDK-constraints（SDK约束）"><a href="#SDK-constraints（SDK约束）" class="headerlink" title="SDK constraints（SDK约束）"></a>SDK constraints（SDK约束）</h2><p>一个包可以使用SDK约束所添加依赖的指定版本。此约束位于pubspec中的单独顶级字段<code>environment</code>内，并使用与依赖项相同的 <a href="https://dart.dev/tools/pub/dependencies#version-constraints" target="_blank" rel="noopener">版本约束语法</a>，基本使用如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  sdk: &apos;&gt;=2.0.0 &lt;3.0.0&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 在 <code>SDK约束</code> 中不要使用<code>^</code>，也不要<code>包含上限&lt;3.0.0</code>，<a href="https://dart.dev/dart-2" target="_blank" rel="noopener">更多详细信息参考</a>。</p>
+<p><strong>具体约束规则参考：dependencies</strong></p>
+<h3 id="Flutter-SDK约束"><a href="#Flutter-SDK约束" class="headerlink" title="Flutter SDK约束"></a>Flutter SDK约束</h3><p>在 <code>Dart 1.19.0</code> 之后，pub支持在顶级<code>environment</code>字段下添加 <code>Flutter SDK约束</code> 字段，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  sdk: &apos;&gt;=1.19.0 &lt;3.0.0&apos;</span><br><span class="line">  flutter: ^0.1.2</span><br></pre></td></tr></table></figure>
+<p>执行 <code>Flutter SDK约束</code> 的条件：</p>
+<ol>
+<li>当pub在flutter可执行文件的上下文中运行；</li>
+<li>Flutter SDK的version文件与给定的版本约束匹配</li>
+</ol>
+<p>满足这2点才能满足Flutter SDK 约束。否则，将不会选择包。</p>
+<h2 id="dependencies"><a href="#dependencies" class="headerlink" title="dependencies"></a>dependencies</h2><p><a href="https://dart.dev/tools/pub/dependencies" target="_blank" rel="noopener">依赖</a>是<a href="https://dart.dev/guides/packages" target="_blank" rel="noopener">pub包管理器</a> 的核心概念之一，<a href="https://dart.dev/tools/pub/dependencies" target="_blank" rel="noopener">dependencies关系</a>体现了pubspec的存在理由。一般分为2种依赖：</p>
+<h3 id="依赖来源"><a href="#依赖来源" class="headerlink" title="依赖来源"></a>依赖来源</h3><h4 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h4><p><strong>释义：</strong></p>
+<p><code>SDK源</code> 用于<code>随软件包</code>一起提供的<code>任何SDK</code>，这些SDK本身可能是依赖项。<br>目前，<strong>Flutter是唯一受支持的SDK</strong>。</p>
+<p><strong>用法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  flutter_driver:</span><br><span class="line">    sdk: flutter</span><br><span class="line">    version: ^0.0.1</span><br></pre></td></tr></table></figure>
+<p>sdk之后的标识符：表示包来自哪个SDK。如果是<code>flutter</code>，它的依赖性只要满足以下条件即可：</p>
+<ol>
+<li>pub正在flutter可执行文件的<code>上下文</code>中运行</li>
+<li>Flutter SDK<code>包含</code>具有给定名称的包</li>
+<li><p>该软件包的版本与版本约束<code>匹配</code></p>
+<p>如果它是未知标识符，则始终认为依赖关系不满足。<br>具有sdk依赖关系的包必须具有Dart SDK约束，最小版本至少为1.19.0。此约束确保旧版本的pub不会安装具有sdk依赖项的包。</p>
+</li>
+</ol>
+<h4 id="托管包（Hosted-packages）"><a href="#托管包（Hosted-packages）" class="headerlink" title="托管包（Hosted packages）"></a>托管包（Hosted packages）</h4><p>托管包是可以从Pub站点（或使用相同API的其他HTTP服务器）下载的包。一个示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  transmogrify: ^1.4.0</span><br></pre></td></tr></table></figure>
+<p>此示例指定您的程序包依赖于名为<code>transmogrify</code>的托管程序包，并且可以使用<code>1.4.0</code>到<code>2.0.0</code>之间的任何版本（但<code>不包含2.0.0本身</code>）。</p>
+<p>如果要使用<code>自己的包服务器</code>，可以使用<code>指定其URL的描述</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  transmogrify:</span><br><span class="line">    hosted:</span><br><span class="line">      name: transmogrify</span><br><span class="line">      url: http://your-package-server.com</span><br><span class="line">    version: ^1.4.0</span><br></pre></td></tr></table></figure>
+<h4 id="Git包（Git-packages）"><a href="#Git包（Git-packages）" class="headerlink" title="Git包（Git packages）"></a>Git包（Git packages）</h4><p>有时你的工作处在最前沿，需要使用尚未正式发布的包装。也许你的软件包本身仍在开发中，并且正在同时使用其他正在开发的软件包。为了使这更容易，你可以直接依赖存储在<code>Git存储库</code>中的包。</p>
+<ul>
+<li><strong>使用方式1 - 直连</strong> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  kittens:</span><br><span class="line">    git: git://github.com/munificent/kittens.git</span><br></pre></td></tr></table></figure>
+<p>这里的<code>git</code>说这个包是使用Git找到的，之后的URL是可以用来<code>克隆</code>包的Git URL。</p>
+<ul>
+<li><strong>使用方式2 - 私有库<code>SSH</code>连接</strong> </li>
+</ul>
+<p>即使包repo是 <code>私有</code> 的，如果你可以使用<code>SSH</code>连接到repo，那么你可以使用repo的<code>SSH URL</code>依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  kittens:</span><br><span class="line">    git: git@github.com:munificent/kittens.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用方式3  - ref参数</strong> </li>
+</ul>
+<p>如果要依赖<code>特定的提交</code>，<code>分支</code>或<code>标记</code>，请添加<code>ref</code>参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  kittens:</span><br><span class="line">    git:</span><br><span class="line">      url: git://github.com/munificent/kittens.git</span><br><span class="line">      ref: some-branch</span><br></pre></td></tr></table></figure>
+<p>其中，<code>ref</code>可以是Git<code>允许识别</code>提交的<code>任何内容</code>。</p>
+<p><strong>使用方式4 - path参数</strong></p>
+<p>Pub假定包位于Git存储库的根目录中。要在repo中指定其他位置，请使用path参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  kittens:</span><br><span class="line">    git:</span><br><span class="line">      url: git://github.com/munificent/cats.git</span><br><span class="line">      path: path/to/kittens</span><br></pre></td></tr></table></figure>
+<p>该<code>path</code>相对于<code>Git repo</code>的根目录。</p>
+<h4 id="路径包（Path-packages）"><a href="#路径包（Path-packages）" class="headerlink" title="路径包（Path packages）"></a>路径包（Path packages）</h4><p>有时你会发现自己同时处理多个相关的包，可能你是在同时使用它们来构建一个项目框架。<br>在这种开发情况下，你确实希望依赖本地文件系统上<code>各个包</code>的<code>实时版本</code>，这样，一个包中的更改会立即被依赖它的一个包中取出。为了解决这个问题，pub支持<code>路径依赖</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  transmogrify:</span><br><span class="line">    path: /Users/me/transmogrify</span><br></pre></td></tr></table></figure>
+<p>这表示transmogrify的根目录是<code>/Users/me/transmogrify</code>。对于此依赖项，pub直接生成<code>符号链接</code>到引用的包目录的lib目录。你<code>立即</code>可以看到对依赖包所做的<code>任何更改</code>。每次更改依赖包时都不需要运行pub。</p>
+<p>允许相对路径，并将其视为相对于包含pubspec的目录。</p>
+<p><strong>特点：</strong><br><code>路径依赖</code>关系对于<code>本地开发</code><strong>很有用</strong>，但在<code>与外部共享代码时不起作用</code> —— 并非所有人都可以访问你的<code>文件系统</code>。因此，如果 <em>包在<strong>pubspec中有任何<code>路径依赖性</code></strong>，则<strong>无法将包上传到<code>Pub站点</code></strong></em> 。</p>
+<p><strong>相反，典型工作流程：</strong></p>
+<ol>
+<li>在本地编辑pubspec以使用路径依赖项；</li>
+<li>处理主程序包及其所依赖的程序包；</li>
+<li>一旦它们都工作，发布依赖包；</li>
+<li>将pubspec更改为指向其依赖项的现在托管版本。</li>
+<li>如果需要，也可以发布主程序包。</li>
+</ol>
+<h3 id="版本限制（约束规则）-符号表示"><a href="#版本限制（约束规则）-符号表示" class="headerlink" title="版本限制（约束规则）- 符号表示"></a>版本限制（约束规则）- 符号表示</h3><ul>
+<li><p><strong>any</strong> </p>
+<p>该字符串any允许任何版本。这相当于空版本约束，但更明确。虽然any允许，但出于性能原因，不建议使用它。</p>
+</li>
+<li><p><strong>1.2.3</strong> </p>
+<p>具体的版本号将依赖项固定为仅允许该 确切版本。尽可能避免使用它，因为它可能导致用户的版本锁定，并使他们难以使用您的包以及依赖它的其他包。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>&gt;=1.2.3</strong></p>
+<p><code>使用概率最大的</code>，允许给定版本或任何更大版本。</p>
+</li>
+<li><p><strong>&gt;1.2.3</strong></p>
+<p>允许任何大于指定版本但不是该版本本身的版本。</p>
+</li>
+<li><p><strong>&lt;=1.2.3</strong></p>
+<p><code>通常不会使用</code>，允许任何低于或等于指定版本的版本。</p>
+</li>
+<li><p><strong>&lt;1.2.3</strong></p>
+<p>允许任何低于指定版本但不是该版本的版本。这就是你通常会使用，因为它可以让你指定你知道不上的版本不会与你的包工作（因为它是引进一些重大变化的第一个版本）。</p>
+</li>
+<li><p><strong>版本相交</strong></p>
+<p>您可以根据需要指定版本部件，并将它们的范围相交。例如，<code>&#39;&gt;=1.2.3 &lt;2.0.0&#39;</code>允许从任何版本1.2.3，以及排除2.0.0本身。表达此范围的更简单方法是使用<code>插入符号语法</code>，或 <code>^1.2.3</code>。</p>
+</li>
+</ul>
+<p><strong>说明</strong>：如果<code>&gt;</code>字符在版本约束中，请确保引用 <code>约束字符串</code>，否则该字符不会被解释为YAML语法。例如，永远不要使用<code>&gt;=1.2.3 &lt;2.0.0</code>，而是使用<code>&#39;&gt;=1.2.3 &lt;2.0.0&#39;</code>或<code>^1.2.3</code>。</p>
+<h3 id="版本限制（约束规则）-Caret语法"><a href="#版本限制（约束规则）-Caret语法" class="headerlink" title="版本限制（约束规则）- Caret语法"></a>版本限制（约束规则）- Caret语法</h3><p><code>Creat语法</code> 表示的是一种更为 <code>紧凑</code> 的常见版本约束的表现形式，是在 <code>Dart 1.8.3</code> 中添加的。较早版本的Dart不支持。因此在使用<code>插入语法</code>时要注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  sdk: &apos;&gt;=1.8.3 &lt;3.0.0&apos;</span><br></pre></td></tr></table></figure>
+<p><strong><code>^version</code></strong> 表示 <strong><code>所有版本的范围</code> 保证与 <code>指定版本</code> <code>向后兼容</code></strong>。</p>
+<p><strong>例如</strong></p>
+<p><code>^1.2.3</code> 等同于 <code>&#39;&gt;=1.2.3 &lt;2.0.0&#39;</code>；<br><code>^0.1.2</code> 等同于 <code>&#39;&gt;=0.1.2 &lt;0.2.0&#39;</code>。</p>
+<h3 id="依赖：dev-dependencies"><a href="#依赖：dev-dependencies" class="headerlink" title="依赖：dev_dependencies"></a>依赖：dev_dependencies</h3><p><code>Pub</code>支持 <strong>2种类型的依赖</strong> 方式：</p>
+<ul>
+<li><strong>常规依赖</strong></li>
+<li><p><strong>dev依赖</strong>：<code>Dev依赖项</code>与<code>常规依赖项</code>不同的是，<strong>当前项目 <code>依赖项</code> 中的 <code>dev依赖项</code>将<code>被忽略</code></strong>。说的在详细一点就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我在本项目Pro-A内引用了1个依赖项a，而且这个依赖项a只想在项目Pro-A内使用。</span><br><span class="line">当项目Pro-B想要依赖Pro-A项目中的依赖时，发现依赖项a是 “dev-依赖”，</span><br><span class="line">那么Pro-B将跳过这项依赖。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>2种依赖方式的决策的规则</strong></p>
+<ul>
+<li>如果从 <code>lib</code> 或 <code>bin</code> 目录中的某些内容导入依赖项，则它 <code>必须</code> 是 <code>常规依赖项</code> 。</li>
+<li>如果只是从 <code>test</code>， <code>example</code> 等等导入它可以而且应该是 <code>开发依赖项</code>。</li>
+</ul>
+<p>使用 <code>dev依赖关系</code> 会使 <code>依赖关系图更小</code>，这使得 <code>pub运行速度更快</code>，并且更容易找到满足所有约束的一组包版本。</p>
+<h3 id="依赖：dependency-overrides"><a href="#依赖：dependency-overrides" class="headerlink" title="依赖：dependency_overrides"></a>依赖：dependency_overrides</h3><p>你可能会需要使用 <code>dependency_overrides</code> 来 <code>临时</code> 覆盖一项依赖的所有引用。例如：可能你想要更新一个已经发布的library包的本地副本，但是这个library已经在你的依赖图中被其他的包使用了。但是你又不想再去克隆一份到本地并且去单独修改这本地的副本，那么在这个时候，你就可以使用 <code>dependency_overrides</code>来表名这个特殊的路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name: my_app</span><br><span class="line">dependencies:</span><br><span class="line">  transmogrify: ^1.2.0</span><br><span class="line">dependency_overrides:</span><br><span class="line">  transmogrify:</span><br><span class="line">    path: ../transmogrify_patch/</span><br></pre></td></tr></table></figure>
+<p>当你运行 <code>pub get</code> 时，<code>pubspec.lock</code> 文件将会更新你所有依赖项的引用路径，这样一来，无论这个库在什么地方使用，pub都会使用<code>本地版本的依赖</code>来 <strong>替代</strong> <code>之前的引用路径</code>。</p>
+<h2 id="author-authors"><a href="#author-authors" class="headerlink" title="author/authors"></a>author/authors</h2><p>说明作者并提供联系信息，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">authors:</span><br><span class="line">- Natalie Weizenbaum &lt;nweiz@google.com&gt;</span><br><span class="line">- Bob Nystrom &lt;rnystrom@google.com&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="homepage"><a href="#homepage" class="headerlink" title="homepage"></a>homepage</h2><p>这是属性应该是一个指向发布包所在网站的URL。它可以帮助用户了解您的软件包的来源。</p>
+<h2 id="repository"><a href="#repository" class="headerlink" title="repository"></a>repository</h2><p>该属性是一个指向 包源码的 仓库地址URL，它可以帮助用户了解您的软件包的来源。</p>
+<h2 id="issue-tracker"><a href="#issue-tracker" class="headerlink" title="issue tracker"></a>issue tracker</h2><p>该字段应包含程序包的问题跟踪器的URL，其中可以查看现有错误并可以归档新错误。Pub站点尝试使用此字段的值显示指向每个包的问题跟踪器的链接。</p>
+<h2 id="documentation"><a href="#documentation" class="headerlink" title="documentation"></a>documentation</h2><p>某些软件包具有托管文档的站点，与主页和Pub生成的API参考分开。如果你的包有其他文档，则应该添加包含该URL字段的documentation; pub在您的包的页面上显示了该文档的链接。</p>
+<h2 id="executables"><a href="#executables" class="headerlink" title="executables"></a>executables</h2><p>一个<code>包</code>可以将其一个或多个脚本公开为可以直接从命令行运行的可执行（<a href="https://dart.dev/tools/pub/cmd/pub-global#running-a-script-from-your-path" target="_blank" rel="noopener">executables</a>）文件。要使脚本公开，请在该executables字段下列出，格式为键/值对：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;name-of-executable&gt;: &lt;Dart-script-from-bin&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="publish-to"><a href="#publish-to" class="headerlink" title="publish_to"></a>publish_to</h2><p>默认使用<a href="https://pub.dev/" target="_blank" rel="noopener">Pub</a>站点。指定none以防止发布包。</p>
+<h1 id="3-包文件、目录公约（Package-layout-conventions）"><a href="#3-包文件、目录公约（Package-layout-conventions）" class="headerlink" title="3. 包文件、目录公约（Package layout conventions）"></a>3. 包文件、目录公约（Package layout conventions）</h1><p><code>pub包布局公约</code> 描述的是：如何组织包中的 <code>文件</code> 和 <code>目录</code> 以及 <code>如何命名</code>。</p>
+<p><strong>注意：Flutter应用程序可以使用 <a href="https://flutter.dev/docs/development/ui/assets-and-images" target="_blank" rel="noopener">自定义目录</a> 作为其资产。</strong></p>
+<p>一个完整的 <code>pub包</code> 的目录结构为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">enchilada/</span><br><span class="line">  .dart_tool/ *</span><br><span class="line">  .packages *</span><br><span class="line">  pubspec.yaml</span><br><span class="line">  pubspec.lock **</span><br><span class="line">  LICENSE</span><br><span class="line">  README.md</span><br><span class="line">  CHANGELOG.md</span><br><span class="line">  benchmark/</span><br><span class="line">    make_lunch.dart</span><br><span class="line">  bin/</span><br><span class="line">    enchilada</span><br><span class="line">  doc/</span><br><span class="line">    api/ ***</span><br><span class="line">    getting_started.md</span><br><span class="line">  example/</span><br><span class="line">    main.dart</span><br><span class="line">  lib/</span><br><span class="line">    enchilada.dart</span><br><span class="line">    tortilla.dart</span><br><span class="line">    guacamole.css</span><br><span class="line">    src/</span><br><span class="line">      beans.dart</span><br><span class="line">      queso.dart</span><br><span class="line">  test/</span><br><span class="line">    enchilada_test.dart</span><br><span class="line">    tortilla_test.dart</span><br><span class="line">  tool/</span><br><span class="line">    generate_docs.dart</span><br><span class="line">  web/</span><br><span class="line">    index.html</span><br><span class="line">    main.dart</span><br><span class="line">    style.css</span><br></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>.dart_tool目录</code> 和 <code>.packages文件</code> 是在 <code>pub get</code> 命令运行之后生成的。不要将他们纳入<code>版本控制</code>中。</li>
+<li><code>pubspec.lock文件</code> 也是在 <code>pub get</code> 命令之后生成的，如果你的包是一个<code>应用程序包</code>，那么应该将其置于 <code>版本控制</code> 中。</li>
+<li><code>doc/api</code> 是运行 <code>dart doc</code> 后生成的，该目录存在于本地 。 不要将<code>api目录</code>检查到<code>源代码管理</code>中。 </li>
+</ul>
+<h2 id="pubspec"><a href="#pubspec" class="headerlink" title="pubspec"></a>pubspec</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">包名/</span><br><span class="line">  pubspec.yaml</span><br><span class="line">  pubspec.lock</span><br></pre></td></tr></table></figure>
+<p>任何一个包都含有一个<code>pubspec</code>，一个文件是：<strong><code>pubspec.yaml</code></strong>，在包的顶级目录之下。<strong>这就是它成为一个包的原因</strong>。</p>
+<p>另一个文件是叫：<code>pubspec.lock</code> 的 <code>锁文件</code>，这个文件的产生是在运行命令：<code>pub get</code>、<code>pub upgrade</code>、<code>pub downgrade</code> 后。如果你的包是一个<code>应用程序包</code>，那么应该将其置于 <code>版本控制</code> 中。</p>
+<h2 id="公共目录"><a href="#公共目录" class="headerlink" title="公共目录"></a>公共目录</h2><p>包中的两个目录对其他包是公共的：<code>lib/</code> 和 <code>bin/</code>。<br>你可以将 <code>公共 libraries</code> 放置在 <code>lib/</code>，将 <code>公共 tools</code> 放置在 <code>bin/</code>。</p>
+<h3 id="公共-libraries"><a href="#公共-libraries" class="headerlink" title="公共 libraries"></a>公共 libraries</h3><p>以下目录结构显示了包的lib部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">包名/</span><br><span class="line">  lib/</span><br><span class="line">    XXX.dart</span><br></pre></td></tr></table></figure>
+<p>许多软件包都是库软件包：它们定义了其他软件包可以导入和使用的 <code>Dart库</code>。这些公共Dart库文件位于名为lib的目录中。</p>
+<h3 id="公共-tools"><a href="#公共-tools" class="headerlink" title="公共 tools"></a>公共 tools</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">包名/</span><br><span class="line">  bin/</span><br><span class="line">    XXX.dart</span><br></pre></td></tr></table></figure>
+<p>放置在<code>bin目录</code>中的<code>Dart脚本</code>是公共的。可以使用<code>pub run</code>从包依赖的任何其他包的<code>bin目录</code>运行<code>脚本</code>。<br>在任何目录中，您都可以使用<code>pub global run</code>命令来运行经过<code>pub global activate</code>命令激活过的包中的脚本。</p>
+<h3 id="内部工具和脚本"><a href="#内部工具和脚本" class="headerlink" title="内部工具和脚本"></a>内部工具和脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">包名/</span><br><span class="line">  tool/</span><br><span class="line">    generate_docs.dart</span><br></pre></td></tr></table></figure>
+<p>与<code>bin/</code>中的脚本不同，<code>tool/</code> 中放置的是一些不适用于供外部包使用的命令。</p>
+<h1 id="4-包版本（pub管理器原理）"><a href="#4-包版本（pub管理器原理）" class="headerlink" title="4. 包版本（pub管理器原理）"></a>4. 包版本（pub管理器原理）</h1><p><code>pub包管理器</code> 的主要工作之一 是帮助处理 <code>版本控制</code>。</p>
+<h2 id="name-version"><a href="#name-version" class="headerlink" title="name+version"></a>name+version</h2><p>当依赖某些外部代码时不只是说“我的应用程序使用<code>widgets</code>”。而是说：“我的应用程序使用 <code>widgets 2.0.5</code>”。其中这个 <code>名称</code> 和 <code>版本号</code> 的组合 <code>唯一地标识</code> 了一个 <code>不可变的代码块</code>。</p>
+<p><code>widgets包</code> 的开发人员更新时可以进行他们想要的所有更改，但绝对不会触及任何已发布的版本。只要你引用的版本号不改变，那么即时他们推出2.0.6或者3.0.0也不会影响到你。</p>
+<h2 id="解决“共享依赖项”"><a href="#解决“共享依赖项”" class="headerlink" title="解决“共享依赖项”"></a>解决“共享依赖项”</h2><p>场景：</p>
+<p>如果你的项目中有一堆的依赖项，而这些依赖项又有着自己的依赖关系，那么只要这些依赖关系不重叠（交点），程序就将正常工作。</p>
+<p>当时如果像是如下这种关系：<code>my_app</code> 引用了依赖项 <code>widgets</code> 和 <code>templates</code> ，而这2者又同时依赖<code>collection</code>。这种情况下我们将<code>collection</code>称为<code>共享依赖项</code>。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/pub%20%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E4%BE%9D%E8%B5%96%E9%A1%B9.png" alt></p>
+<p>那么问题来了：现在<code>widgets</code>想要使用<code>collection 2.3.5</code>，与此同时<code>templates</code>想要使用 <code>collection 2.3.7</code>，版本不同时怎么办？</p>
+<h3 id="方式1：非共享库（node-js的npm法）"><a href="#方式1：非共享库（node-js的npm法）" class="headerlink" title="方式1：非共享库（node.js的npm法）"></a>方式1：非共享库（node.js的npm法）</h3><p>一种选择是让应用程序使用<code>2种版本collection</code>。它将有<code>2个不同版本的库副本</code>，<code>widgets</code>和<code>templates</code>每个副本都会得到他们想要的副本。</p>
+<p>但是至于<code>Dart</code>而言，<code>collection 2.3.5</code> 与 <code>collection 2.3.7</code> 是完全无关的库。如果从一个包<code>2.3.5</code>中获取<code>Dictionary类</code>的实例并将其传递给另一个包<code>2.3.7</code>中的方法，则这是一种 <code>完全不同</code> 的 <code>Dictionary类型</code>。这意味着它将无法匹配接收库中的Dictionary类。正因为如此，npm的模型不适合。</p>
+<h3 id="方式2：版本锁死（死胡同）"><a href="#方式2：版本锁死（死胡同）" class="headerlink" title="方式2：版本锁死（死胡同）"></a>方式2：版本锁死（死胡同）</h3><p>有了第1种方式的错误尝试，那么第2种方式就是：尝试升级其中一个。<br><code>templates</code>想要 <code>collection 2.3.7</code>，是否有<code>widgets</code>可以升级到适用于该版本的更新版本？在许多情况下，答案是没有。</p>
+<p>每个人都希望将他们的依赖关系向前推进，但是没有人可以迈出第一步，因为它也会强迫其他人。而这就叫<code>版本锁死</code>。</p>
+<h3 id="方式3：版本约束（Dart-方法）"><a href="#方式3：版本约束（Dart-方法）" class="headerlink" title="方式3：版本约束（Dart 方法）"></a>方式3：版本约束（Dart 方法）</h3><p>为了解决<code>版本锁定</code>，我们<code>放松</code>了包对其依赖项的<code>约束</code>。如果<code>widgets</code>和<code>templates</code>都可以指出他们使用<code>collection</code>的<code>版本范围</code>，那么这给了我们足够的<code>摆动空间</code>来将我们的<code>依赖关系</code>转移到<code>更新的版本</code>——只要它们的<code>范围有重叠</code>，那么这个问题就解决了。</p>
+<p>而这种问题的解决方式就是 <code>Gem Bundler（捆绑器）</code> 和 <code>pub</code> 的模型。在<code>pubspec.yaml</code>中添加<code>依赖项</code>时，可以指定可以接受的版本范围。</p>
+<p>就这个问题而言，其解决方式就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  collection: &apos;&gt;=2.3.5 &lt;2.4.0&apos;</span><br></pre></td></tr></table></figure>
+<p>这样就都能满足 <code>widgets</code> 和 <code>templates</code> 的使用。</p>
+<h2 id="约束解决（约束选择）"><a href="#约束解决（约束选择）" class="headerlink" title="约束解决（约束选择）"></a>约束解决（约束选择）</h2><p><strong>步骤：</strong></p>
+<ol>
+<li><p>当你定在义包时，你会列出其 <code>直接依赖项</code> - 它自己使用的包。对于每个依赖项，你指定它 <strong><code>允许的版本范围</code></strong>。</p>
+</li>
+<li><p>每个依赖包都可以依次拥有自己的依赖关系（称为<code>传递依赖关系</code>），Pub遍历这些依赖关系并为您的应用程序 <code>构建整个</code> <strong><code>深度依赖关系图</code></strong>。</p>
+</li>
+<li><p>对于这个<code>深度依赖关系图</code>中的 <code>每个包</code>，pub会查看依赖于它的所有内容，它 <strong><code>收集所有版本约束</code></strong> 并尝试 <code>同时</code>解决（基本上是它们彼此的<code>相交范围</code>）它们。</p>
+</li>
+<li><p>然后，它查看已为该程序包发布的 <code>实际版本</code>，并选择满足所有这些约束的 <strong><code>最佳（最新）版本</code></strong>。</p>
+</li>
+</ol>
+<p><strong>实例：</strong></p>
+<p>例如，假设我们的依赖图包含collection，并且三个包依赖于它。他们的版本限制是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;=1.7.0</span><br><span class="line">^1.4.0</span><br><span class="line">&lt;1.9.0</span><br></pre></td></tr></table></figure>
+<p><code>collection</code>开发人员已经发布的版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.7.0</span><br><span class="line">1.7.1</span><br><span class="line">1.8.0</span><br><span class="line">1.8.1</span><br><span class="line">1.8.2</span><br><span class="line">1.9.0</span><br></pre></td></tr></table></figure>
+<p>所以<code>pub</code>选择适合所有这些范围的 <code>最高版本号</code> 是 <code>1.8.2</code>。这意味着你的应用和你的应用使用的每个包都将使用 <code>collection 1.8.2</code>。</p>
+<h2 id="约束上下文（包内）"><a href="#约束上下文（包内）" class="headerlink" title="约束上下文（包内）"></a>约束上下文（包内）</h2><p>选择包版本的事实考虑了依赖于它的每个包具有重要的后果：将为包选择的<code>特定版本</code>是使用该包的应用程序的<code>全局属性</code>。</p>
+<p>以下示例显示了这意味着什么。假设我们有两个应用程序。这是他们的<code>pubspecs</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: my_app</span><br><span class="line">dependencies:</span><br><span class="line">  widgets:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name: other_app</span><br><span class="line">dependencies:</span><br><span class="line">  widgets:</span><br><span class="line">  collection: &apos;&lt;1.5.0&apos;</span><br></pre></td></tr></table></figure>
+<p>它们都依赖于<code>widgets</code>，其<code>pubspec</code>是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: widgets</span><br><span class="line">dependencies:</span><br><span class="line">  collection: &apos;&gt;=1.0.0 &lt;2.0.0&apos;</span><br></pre></td></tr></table></figure>
+<p><code>other_app</code>包直接依赖于 <code>collection</code> 本身。但是，它碰巧与<code>widgets</code>有不同的<code>版本约束</code>。</p>
+<p>这意味着你不能单独查看<code>widgets</code>包以确定它将使用的<code>collection</code>版本。这取决于具体情况。在<code>my_app</code>中，小部件将使用<code>collection 1.9.9</code>。但是在<code>other_app</code>中，<code>widgets</code>将会受到<code>collection1.4.9</code>的影响，因为其他的约束条件会对其产生影响。</p>
+<p>这就是为什么每个应用程序都有自己的<code>*.packages*</code>文件：为每个包选择的<code>具体版本取</code>决于包含应用程序的<code>整个依赖关系图</code>。</p>
+<h2 id="导出依赖项时的约束解决方案"><a href="#导出依赖项时的约束解决方案" class="headerlink" title="导出依赖项时的约束解决方案"></a>导出依赖项时的约束解决方案</h2><p>包的作者必须谨慎定义包装约束。请考虑以下情形：</p>
+<p><code>bookshelf</code>包取决于<code>widgets</code>包。<code>widgets</code>包（目前为<code>1.2.0</code>）通过<code>export &#39;package:collection/collection.dart&#39;</code>导出<code>collection 2.4.0</code>。 <code>pubspec</code>文件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: bookshelf</span><br><span class="line">dependencies:</span><br><span class="line">  widgets:  ^1.2.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: widgets</span><br><span class="line">dependencies:</span><br><span class="line">  collection:  ^2.4.0</span><br></pre></td></tr></table></figure>
+<p>然后将<code>collection</code>包更新为<code>2.5.0</code>。<code>2.5.0</code>版本的<code>collection</code>包括一个名为<code>sortBackwards</code>的新方法。<code>bookshelf</code>包可以调用<code>sortBackwards</code>方法，因为它是<code>widgets</code>公开的API的一部分，尽管<code>bookshelf</code>只对<code>collection</code>具有传递依赖性。</p>
+<p>于<code>widgets</code>包的API未反映在其版本号中，因此使用<code>bookshelf</code>包并调用<code>sortBackwards</code>的应用程序可能会崩溃。</p>
+<p>导出API会将API视为在包本身中定义，但在API添加功能时不能增加版本号。这意味着<code>bookshelf</code>包无法声明它需要支持<code>sortBackwards</code>的<code>widgets</code>包版本。</p>
+<p>因此，在处理导出的包时，建议包的作者对<code>依赖关系</code>的<code>上限</code>和<code>下限</code>保持<code>更严格的限制</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: bookshelf</span><br><span class="line">dependencies:</span><br><span class="line">  widgets:  &apos;&gt;=1.2.0 &lt;1.3.0&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: widgets</span><br><span class="line">dependencies:</span><br><span class="line">  collection:  &apos;&gt;=2.4.0 &lt;2.5.0&apos;</span><br></pre></td></tr></table></figure>
+<p>这转换为<code>widgets</code>的下限<code>1.2.0</code>和 <code>collection</code> 的下限为 <code>2.4.0</code>。当发布 <code>collection 2.5.0</code> 版本的时，<code>widgets</code>也会更新到<code>1.3.0</code>，并且也会 <code>更新相应的约束</code>。</p>
+<p>使用此约定可确保用户拥有2个软件包的正确版本，即使这些软件包不是直接依赖项。</p>
+<h2 id="锁文件-Lockfiles"><a href="#锁文件-Lockfiles" class="headerlink" title="锁文件(Lockfiles)"></a>锁文件(Lockfiles)</h2><p>所以书接上文，一旦<code>pub管理器</code>解决了你的app的<code>版本约束</code>，那么然后呢？结果是您的应用程序直接或间接依赖的每个程序包的<code>完整列表</code>，以及适用于您的应用程序约束的该程序包的<code>最佳版本</code>。</p>
+<p>然后，<code>pub管理器</code>将接受得到的结果并将其写入应用程序目录中名为<code>pubspec.lock</code>的<code>lockfile（锁文件）</code>。当pub为你的应用程序构建<code>.packages</code>文件时，它使用<code>lockfile</code>来了解要引用的<code>每个程序包的版本</code>。 （如果您想知道它选择了哪个版本，您可以阅读锁定文件以查找。）</p>
+<p>所以 <code>pubspec.yaml</code>文件、 <code>pubspec.lock</code>文件 与 <code>.packages</code>文件之间的关系为：</p>
+<p><strong><code>pubspec.yaml 版本约束</code> –(pub get/ pub upgrade)–&gt; <code>pubspec.lock 具体版本号</code><br>  –&gt; <code>.packages 每个程序包的版本</code>.</strong></p>
+<p>pub的下一个重要事情是它 <em><strong>停止触摸</strong></em> <code>Lockfiles</code>。一旦你有一个你应用程序的<code>Lockfiles</code>，pub将不会触摸它，直到你告诉它。<br>这个很重要。这意味着你不会毫不犹豫地开始在你的应用程序中使用 <em><strong>新版本的<code>随机</code>软件包</strong></em>。一旦你的应用程序 <code>被锁定</code>，它将 <strong>保持锁定状态</strong>，直到你<code>手动</code>告诉它 <strong>更新</strong> 锁定文件。 ——  <em><em>简而言之：应用程序中的<code>程序包</code>将在一个<code>稳定、具体版本的依赖关系下</code>被开发者开发</em></em>。</p>
+<p>如果你的软件包适用于某个应用程序，请将你的<code>lockfile</code>检入到<code>源代码管理系统</code>！这样，团队中的每个人在构建应用时都会使用完全相同的每个依赖版本。此外，你还可以在<code>部署应用程序时</code>使用此功能，以便确保生产服务器使用与您正在开发的完全相同的软件包。</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>当然，所有这些都假设你的依赖图是完美无瑕的。即使使用版本范围和pub的约束求解和语义版本控制，你也永远无法完全避免版本可能存在的危险。</p>
+<p>你可能会遇到以下问题之一：</p>
+<h3 id="不相交的约束"><a href="#不相交的约束" class="headerlink" title="不相交的约束"></a>不相交的约束</h3><p>让我们以应用程序使用 <code>widgets</code> 和 <code>templates</code> 为例子，这2个程序包都使用<code>collection</code>。但是<code>widgets</code> 要求它在<code>1.0.0</code>和<code>2.0.0</code>之间的版本，<code>templates</code> 需要<code>3.0.0</code>和<code>4.0.0</code>之间的版本。这些范围甚至都不重叠，因此没有可行的版本。</p>
+<h3 id="不包含已发布版本的范围"><a href="#不包含已发布版本的范围" class="headerlink" title="不包含已发布版本的范围"></a>不包含已发布版本的范围</h3><p>让我们说在将所有约束放在一起<code>共享依赖关系</code>之后，你会留下<code>&gt; = 1.2.4 &lt;1.2.6</code>的窄范围。这<code>不是空的范围</code>。如果有<code>1.2.4</code>版本的依赖项，那你就幸运的。但也许他们从未发布过，而是直接从<code>1.2.3</code>发布到<code>1.3.0</code>。你有一个范围但内部没有任何东西。</p>
+<h3 id="有一个不稳定的引用图"><a href="#有一个不稳定的引用图" class="headerlink" title="有一个不稳定的引用图"></a>有一个不稳定的引用图</h3><p>到目前为止，这是pub版本求解过程中最具挑战性的部分。该过程被描述为：<strong>构建依赖图，然后解决所有约束和选择版本</strong>。但实际上并没有这样做。在选择任何版本之前，如何构<strong>建整个依赖图</strong>？ <code>pubspecs</code>本身是<strong>特定于版本的</strong>。<strong><code>同一包</code>的<code>不同版本</code>可能具有<code>不同的依赖关系集</code></strong>。</p>
+<p>选择包的版本时，它们正在<strong>改变</strong> <code>依赖图</code>本身的形状。随着图表的变化，这可能会改变约束条件，这可能会导致您<code>选择不同的版本</code>，</p>
+<h2 id="pub版本要点总结"><a href="#pub版本要点总结" class="headerlink" title="pub版本要点总结"></a>pub版本要点总结</h2><ul>
+<li>代码重用很棒，但为了让开发人员 <strong>快速行动</strong>，软件包需要能够 <strong>独立开发</strong>。</li>
+<li>版本控制是启用它的方式。但是，取决于单个具体精确版本，并且因为共享依赖性导致 <strong>版本锁定</strong>。</li>
+<li><p>为了解决这个问题，需要依赖于 <strong>版本范围</strong>。 Pub然后遍历您的依赖图并为您挑选最佳版本。如果它不能，它告诉你。</p>
+</li>
+<li><p>一旦您的应用程序为其 <strong>依赖项</strong> 提供了一组 <strong>可靠的版本</strong>，那么它将 <strong>被锁定</strong> 在一个 <strong>锁定文件</strong> 中。这可以确保您的应用程序所在的每台计算机都使用 <strong>相同版本的所有依赖项</strong>。</p>
+<h1 id="5-常用的包"><a href="#5-常用的包" class="headerlink" title="5. 常用的包"></a>5. 常用的包</h1></li>
+</ul>
+<p>常用的包分为3组：</p>
+<ul>
+<li>通用包</li>
+<li>Dart核心库的扩展包</li>
+<li>专业包</li>
+</ul>
+<h2 id="通用包"><a href="#通用包" class="headerlink" title="通用包"></a>通用包</h2><table>
+<thead>
+<tr>
+<th>包</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">常用API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://pub.dev/packages/archive" target="_blank" rel="noopener">archive</a></td>
+<td style="text-align:left">对各种存档和压缩格式进行编码和解码。</td>
+<td style="text-align:left">Archive，ArchiveFile，TarEncoder，TarDecoder，ZipEncoder，ZipDecoder</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/http" target="_blank" rel="noopener">http</a></td>
+<td style="text-align:left">一组高级函数和类，可以轻松使用HTTP资源。</td>
+<td style="text-align:left">delete（），get（），post（），read（）</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/intl" target="_blank" rel="noopener">intl</a></td>
+<td style="text-align:left">国际化和本地化设施，支持复数和性别，日期和数字格式和解析，以及双向文本。</td>
+<td style="text-align:left">Bidi，DateFormat，MicroMoney，TextDirection</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/json_serializable" target="_blank" rel="noopener">json_serializable</a></td>
+<td style="text-align:left">易于使用的代码生成包。有关更多信息</td>
+<td style="text-align:left">@JsonSerializable</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/logging" target="_blank" rel="noopener">logging</a></td>
+<td style="text-align:left">用于向应用程序添加消息日志记录的可配置机制。</td>
+<td style="text-align:left">LoggerHandler，Level，LogRecord</td>
+</tr>
+<tr>
+<td>mockito</td>
+<td style="text-align:left">在测试中模拟对象的流行框架。如果您正在编写依赖注入测试，则特别有用。与测试包一起使用。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/path" target="_blank" rel="noopener">path</a></td>
+<td style="text-align:left">操作不同类型路径的常用操作。有关更多信息</td>
+<td style="text-align:left">absolute（），basename（），extension（），join（），normalize（），relative（），split（）</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/quiver" target="_blank" rel="noopener">quiver</a></td>
+<td style="text-align:left">使用核心Dart库的实用程序更方便。Quiver提供额外支持的一些库包括异步，缓存，集合，核心，可迭代，模式和测试。</td>
+<td style="text-align:left">CountdownTimer（quiver.async）; MapCache（quiver.cache）; MultiMap，TreeSet（quiver.collection）; EnumerateIterable（quiver.iterables）; center（），compareIgnoreCase（），isWhiteSpace（）（quiver.strings）</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/shelf" target="_blank" rel="noopener">shelf</a></td>
+<td style="text-align:left">Dart的Web服务器中间件。Shelf可以轻松创建和组合Web服务器以及Web服务器的一部分。</td>
+<td style="text-align:left">级联，管道，请求，响应，服务器</td>
+</tr>
+<tr>
+<td>stack_trace</td>
+<td style="text-align:left">解析，检查和操作由底层Dart实现生成的堆栈跟踪的方法。还提供了以比原生StackTrace实现更可读的格式生成堆栈跟踪的字符串表示的函数。有关更多信息</td>
+<td style="text-align:left">Trace.current（）， Trace.format（），Trace.from（）</td>
+</tr>
+<tr>
+<td>stagehand</td>
+<td style="text-align:left">Dart项目生成器。WebStorm和IntelliJ在创建新应用程序时使用Stagehand模板，但您也可以使用命令行中的模板。</td>
+<td style="text-align:left">通常通过IDE或stagehand命令使用。</td>
+</tr>
+<tr>
+<td>yaml</td>
+<td style="text-align:left">YAML的解析器。</td>
+<td style="text-align:left">loadYaml（），loadYamlStream（）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Dart核心库的扩展包"><a href="#Dart核心库的扩展包" class="headerlink" title="Dart核心库的扩展包"></a>Dart核心库的扩展包</h2><p>以下每个软件包都构建在核心库之上，添加了功能并填充了缺少的功能：</p>
+<table>
+<thead>
+<tr>
+<th>包</th>
+<th>描述</th>
+<th>常用API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://pub.dev/packages/async" target="_blank" rel="noopener">async</a></td>
+<td>扩展dart：async，添加实用程序类以使用异步计算。</td>
+<td>AsyncMemoizer，CancelableOperation，FutureGroup，LazyStream，Result，StreamCompleter，StreamGroup，StreamSplitter</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/collection" target="_blank" rel="noopener">collection</a></td>
+<td>扩展dart：集合，添加实用程序函数和类，以便更轻松地处理集合。</td>
+<td>Equality，CanonicalizedMap，MapKeySet，MapValueSet，PriorityQueue，QueueList</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/convert" target="_blank" rel="noopener">convert</a></td>
+<td>扩展dart：转换，添加编码器和解码器，以便在不同的数据表示之间进行转换。其中一个数据表示是百分比编码，也称为URL编码。</td>
+<td>HexDecoder，PercentDecoder</td>
+</tr>
+<tr>
+<td><a href="https://pub.dev/packages/io" target="_blank" rel="noopener">io</a></td>
+<td>包含两个库ansi和io，以简化文件，标准流和进程的处理。使用ansi库自定义终端输出。io库具有用于处理进程，标准输入和文件复制的API。</td>
+<td>copyPath（），isExecutable（），ExitCode，ProcessManager，sharedStdIn</td>
+</tr>
+</tbody>
+</table>
+<h2 id="专业包"><a href="#专业包" class="headerlink" title="专业包"></a>专业包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/using-packages" target="_blank" rel="noopener">Flutter包</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/RxJava2理解/" rel="next" title="RxJava2理解">
+                <i class="fa fa-chevron-left"></i> RxJava2理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">139</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-pub包管理器"><span class="nav-number">1.</span> <span class="nav-text">1. pub包管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pub的使用："><span class="nav-number">1.2.</span> <span class="nav-text">pub的使用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pub管理的文件目录"><span class="nav-number">1.3.</span> <span class="nav-text">pub管理的文件目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pub名词"><span class="nav-number">1.4.</span> <span class="nav-text">pub名词</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-pubspec-yaml文件格式"><span class="nav-number">2.</span> <span class="nav-text">2. pubspec.yaml文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#name"><span class="nav-number">2.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#version"><span class="nav-number">2.2.</span> <span class="nav-text">version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#description"><span class="nav-number">2.3.</span> <span class="nav-text">description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK-constraints（SDK约束）"><span class="nav-number">2.4.</span> <span class="nav-text">SDK constraints（SDK约束）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flutter-SDK约束"><span class="nav-number">2.4.1.</span> <span class="nav-text">Flutter SDK约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dependencies"><span class="nav-number">2.5.</span> <span class="nav-text">dependencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖来源"><span class="nav-number">2.5.1.</span> <span class="nav-text">依赖来源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDK"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">SDK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#托管包（Hosted-packages）"><span class="nav-number">2.5.1.2.</span> <span class="nav-text">托管包（Hosted packages）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git包（Git-packages）"><span class="nav-number">2.5.1.3.</span> <span class="nav-text">Git包（Git packages）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路径包（Path-packages）"><span class="nav-number">2.5.1.4.</span> <span class="nav-text">路径包（Path packages）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本限制（约束规则）-符号表示"><span class="nav-number">2.5.2.</span> <span class="nav-text">版本限制（约束规则）- 符号表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本限制（约束规则）-Caret语法"><span class="nav-number">2.5.3.</span> <span class="nav-text">版本限制（约束规则）- Caret语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖：dev-dependencies"><span class="nav-number">2.5.4.</span> <span class="nav-text">依赖：dev_dependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖：dependency-overrides"><span class="nav-number">2.5.5.</span> <span class="nav-text">依赖：dependency_overrides</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#author-authors"><span class="nav-number">2.6.</span> <span class="nav-text">author/authors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#homepage"><span class="nav-number">2.7.</span> <span class="nav-text">homepage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repository"><span class="nav-number">2.8.</span> <span class="nav-text">repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#issue-tracker"><span class="nav-number">2.9.</span> <span class="nav-text">issue tracker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#documentation"><span class="nav-number">2.10.</span> <span class="nav-text">documentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#executables"><span class="nav-number">2.11.</span> <span class="nav-text">executables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#publish-to"><span class="nav-number">2.12.</span> <span class="nav-text">publish_to</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-包文件、目录公约（Package-layout-conventions）"><span class="nav-number">3.</span> <span class="nav-text">3. 包文件、目录公约（Package layout conventions）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pubspec"><span class="nav-number">3.1.</span> <span class="nav-text">pubspec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公共目录"><span class="nav-number">3.2.</span> <span class="nav-text">公共目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公共-libraries"><span class="nav-number">3.2.1.</span> <span class="nav-text">公共 libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公共-tools"><span class="nav-number">3.2.2.</span> <span class="nav-text">公共 tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部工具和脚本"><span class="nav-number">3.2.3.</span> <span class="nav-text">内部工具和脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-包版本（pub管理器原理）"><span class="nav-number">4.</span> <span class="nav-text">4. 包版本（pub管理器原理）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#name-version"><span class="nav-number">4.1.</span> <span class="nav-text">name+version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决“共享依赖项”"><span class="nav-number">4.2.</span> <span class="nav-text">解决“共享依赖项”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式1：非共享库（node-js的npm法）"><span class="nav-number">4.2.1.</span> <span class="nav-text">方式1：非共享库（node.js的npm法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式2：版本锁死（死胡同）"><span class="nav-number">4.2.2.</span> <span class="nav-text">方式2：版本锁死（死胡同）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式3：版本约束（Dart-方法）"><span class="nav-number">4.2.3.</span> <span class="nav-text">方式3：版本约束（Dart 方法）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约束解决（约束选择）"><span class="nav-number">4.3.</span> <span class="nav-text">约束解决（约束选择）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约束上下文（包内）"><span class="nav-number">4.4.</span> <span class="nav-text">约束上下文（包内）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出依赖项时的约束解决方案"><span class="nav-number">4.5.</span> <span class="nav-text">导出依赖项时的约束解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁文件-Lockfiles"><span class="nav-number">4.6.</span> <span class="nav-text">锁文件(Lockfiles)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">4.7.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不相交的约束"><span class="nav-number">4.7.1.</span> <span class="nav-text">不相交的约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不包含已发布版本的范围"><span class="nav-number">4.7.2.</span> <span class="nav-text">不包含已发布版本的范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有一个不稳定的引用图"><span class="nav-number">4.7.3.</span> <span class="nav-text">有一个不稳定的引用图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pub版本要点总结"><span class="nav-number">4.8.</span> <span class="nav-text">pub版本要点总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-常用的包"><span class="nav-number">5.</span> <span class="nav-text">5. 常用的包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用包"><span class="nav-number">5.1.</span> <span class="nav-text">通用包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dart核心库的扩展包"><span class="nav-number">5.2.</span> <span class="nav-text">Dart核心库的扩展包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专业包"><span class="nav-number">5.3.</span> <span class="nav-text">专业包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">333.1k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
