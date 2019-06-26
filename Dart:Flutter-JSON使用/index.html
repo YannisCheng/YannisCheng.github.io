@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Dart,Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JSON使用">
+<meta name="keywords" content="Dart,Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dart&#x2F;Flutter-JSON使用">
+<meta property="og:url" content="http://yannischeng.com/Dart:Flutter-JSON使用/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="JSON使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter_json%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%99%A8.png">
+<meta property="og:updated_time" content="2019-06-26T14:36:42.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dart&#x2F;Flutter-JSON使用">
+<meta name="twitter:description" content="JSON使用">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter_json%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%99%A8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Dart:Flutter-JSON使用/">
+
+
+
+
+
+  <title>Dart/Flutter-JSON使用 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.comDart:Flutter-JSON使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dart/Flutter-JSON使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-23T15:06:12+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T22:36:42+08:00">
+                2019-06-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dart-Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Dart,Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,640 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Dart/" rel="tag"># Dart</a>
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.comDart:Flutter-JSON使用/" title="Dart/Flutter-JSON使用">http://yannischeng.comDart:Flutter-JSON使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JSON使用</p>
+<a id="more"></a>
+<h1 id="JSON序列化方式选择"><a href="#JSON序列化方式选择" class="headerlink" title="JSON序列化方式选择"></a>JSON序列化方式选择</h1><p>使用JSON的<strong>两种常规策略</strong>：</p>
+<ul>
+<li><strong>手动序列化</strong></li>
+<li>使用代码生成进行<strong>自动序列化</strong></li>
+</ul>
+<h2 id="较小的项目：手动序列化"><a href="#较小的项目：手动序列化" class="headerlink" title="较小的项目：手动序列化"></a>较小的项目：手动序列化</h2><p><code>手动JSON解码</code>是指使用内置的JSON解码器 <a href="https://dart.dev/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more" target="_blank" rel="noopener">dart:convert</a>（<code>JSON</code>和<code>UTF-8</code>的转换器（JSON需要的字符编码））。</p>
+<p>它涉及将<code>原始JSON字符串</code>传递给<code>jsonDecode()</code>函数，然后在结果中查找<code>所需的值 Map&lt;String, dynamic&gt;</code>。它没有外部依赖性或特定的设置过程，它有利于快速验证概念。</p>
+<p>当项目变大时，手动解码效果不佳。手动编写解码逻辑可能变得难以管理且容易出错。</p>
+<h2 id="中大型项目：自动序列化"><a href="#中大型项目：自动序列化" class="headerlink" title="中大型项目：自动序列化"></a>中大型项目：自动序列化</h2><p>使用代码生成的JSON序列化意味着有一个<code>外部库</code>来生成<code>代码样板</code>。进行一些初始设置后，运行一个 <code>文件监视器</code>，从模型类生成代码。例如， <code>json_serializable</code> 和 <code>built_value</code> 就是这些类型的库。</p>
+<ul>
+<li><a href="https://pub.dev/packages/json_serializable" target="_blank" rel="noopener">json_serializable</a>：易于使用的<code>代码生成包</code>。添加一些<code>元数据据注释</code>并使用此包提供的<code>builder（构建器）</code>时，Dart构建系统会为您生成<code>序列化</code>和<code>反序列化</code>代码，此外代码生成的需要一些<code>初始设置</code>。</li>
+<li><a href="https://pub.dev/packages/built_value" target="_blank" rel="noopener">built_value</a>：强大、<code>json_serializable</code>的替代品</li>
+</ul>
+<h1 id="Flutter中有-GSON-Jackson-Moshi-等价产物吗？"><a href="#Flutter中有-GSON-Jackson-Moshi-等价产物吗？" class="headerlink" title="Flutter中有 GSON/Jackson/Moshi 等价产物吗？"></a>Flutter中有 GSON/Jackson/Moshi 等价产物吗？</h1><p><strong>没有</strong> –&gt; 在 <strong>Flutter中禁用<code>反射</code></strong> –&gt; <strong>影响 tree shaking（树抖动）</strong> –&gt; <strong>影响App大小优化</strong></p>
+<p><code>Such a library would require using runtime reflection, which is disabled in Flutter. Runtime reflection interferes with tree shaking, which Dart has supported for quite a long time. With tree shaking, you can “shake off” unused code from your release builds. This optimizes the app’s size significantly.</code></p>
+<p>由于反射使得默认情况下<code>隐式</code>使用所有代码，因此使<code>tree shaking（树摇动）</code>变得困难。这些工具无法知道运行时<code>哪些部分未使用</code>，因此冗余代码很难被删除。使用反射时，无法轻松优化应用程序大小。</p>
+<p><code>Flutter</code> 不支持 <code>reflection（反射）</code>，但是<code>Dart</code>支持。<br>在<code>Dart</code>中有 <a href="https://pub.dev/packages/dartson" target="_blank" rel="noopener">dartson</a> ，这个库使用的就是 <code>运行时反射</code>。这使得它与<code>Flutter</code>不兼容。</p>
+<h1 id="手动序列化JSON-dart-convert"><a href="#手动序列化JSON-dart-convert" class="headerlink" title="手动序列化JSON - dart:convert"></a>手动序列化JSON - dart:convert</h1><p><code>Flutter</code>有一个内置的<code>dart:convert</code>，包括一个简单的JSON<code>编码器</code>和<code>解码器</code>。</p>
+<p>一个用于测试的用户model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;John Smith&quot;,</span><br><span class="line">  &quot;email&quot;: &quot;john@example.com&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="通过“内联”序列化JSON"><a href="#通过“内联”序列化JSON" class="headerlink" title="通过“内联”序列化JSON"></a>通过“内联”序列化JSON</h2><p>实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void convertWithInLine(String userModel) &#123;</span><br><span class="line">  // JSON的数据格式本质：Map的&quot;键值对&quot;类型</span><br><span class="line">  Map&lt;String, dynamic&gt; user = jsonDecode(userModel);</span><br><span class="line">  print(&apos;user name is : $&#123;user[&apos;name&apos;]&#125;&apos;);</span><br><span class="line">  print(&apos;user name is : $&#123;user.toString()&#125;&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user name is : 张三</span><br><span class="line">user name is : &#123;name: 张三, age: 24&#125;</span><br></pre></td></tr></table></figure>
+<p>不幸的是，<code>jsonDecode()</code>返回一个<code>Map&lt;String，dynamic&gt;</code>，这意味着在<code>运行时之前</code>你不知道值的<code>类型</code>。而且使用这种方法，您将<code>丢失</code>大多数<code>静态类型语言功能</code>：</p>
+<ul>
+<li><code>类型安全性</code>；</li>
+<li><code>自动完成</code>；</li>
+<li>最重要的：<code>编译时异常</code>。</li>
+</ul>
+<p>最终代码将立即变得更容易出错。</p>
+<p>说的明白一点就是：这样虽然在转化的过程简单、快速，不用自己创建<code>User bean类</code>，但是潜在的问题也在这个地方，正是因为不知道<code>bean类</code>的内部数据结构，所以在使用这个<code>json</code>转化的<code>结果时</code>，是无法<code>准确的</code>描述要使用的<code>字段</code>。</p>
+<p>简言之：<strong>前期<code>转换</code>省事，后期<code>使用</code>费事</strong></p>
+<h2 id="通过“内置Model类”序列化JSON"><a href="#通过“内置Model类”序列化JSON" class="headerlink" title="通过“内置Model类”序列化JSON"></a>通过“内置Model类”序列化JSON</h2><p>这种转换方式就是：通过引入名为<code>User Model类</code>来解决前面提到的问题。使用<code>User Model类</code>，你可以：</p>
+<ul>
+<li>使用 <code>User.fromJson()</code>构造函数，用于从<code>map结构</code>构造新的<code>User实例</code>。</li>
+<li>一个<code>toJson()</code>方法，它将<code>User实例</code>转换为<code>map</code>。</li>
+</ul>
+<p>使用这种方法，调用代码可以具有：<code>类型安全性</code>，<code>name</code>和<code>age</code>字段的<code>自动完成</code>以及<code>编译时异常</code>。<br>此外：如果因为<code>输入拼写错误</code>或将字段类型错误，那么应用程序将<code>无法编译</code>，而<code>不是在运行时崩溃</code>。</p>
+<p><strong>User.dart</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class User &#123;</span><br><span class="line">  final String name;</span><br><span class="line">  final int age;</span><br><span class="line"></span><br><span class="line">  User(this.name, this.age);</span><br><span class="line"></span><br><span class="line">  User.formJson(Map&lt;String, dynamic&gt; json)</span><br><span class="line">      : name = json[&apos;name&apos;],</span><br><span class="line">        age = json[&apos;age&apos;];</span><br><span class="line"></span><br><span class="line">  Map&lt;String, dynamic&gt; toJson() =&gt; &#123;</span><br><span class="line">        &apos;name&apos;: name,</span><br><span class="line">        &apos;age&apos;: age,</span><br><span class="line">      &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解码逻辑的责任现在在<code>Model本身内部</code>，使用这种新方法，您可以轻松解码<code>userModel</code>。</p>
+<p><strong>解码转换：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void convertWithInLine(String userModel) &#123;</span><br><span class="line">  Map userTemp = jsonDecode(userModel);</span><br><span class="line">  var user2 = User.formJson(userTemp);</span><br><span class="line">  print(&apos;user2 name is : $&#123;user2.name&#125;&apos;);</span><br><span class="line">  print(user2.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user2 name is : 张三</span><br><span class="line">User&#123;name: 张三, age: 24&#125;</span><br></pre></td></tr></table></figure>
+<p>在这种方式中，获取<code>name</code>属性的方式也不同了，使用的是<code>user2.name</code>而不是<code>user[&#39;name&#39;]</code>的方式。</p>
+<p><strong>编码转换：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void convertWithInLine(String userModel) &#123;</span><br><span class="line">  var json = jsonEncode(user2);</span><br><span class="line">  print(&apos;json by jsonEncode is : $&#123;json&#125;&apos;);</span><br><span class="line">  var json2 = user2.toJson();</span><br><span class="line">  print(&apos;json by user.toJson() is : $&#123;json2&#125;&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">json by jsonEncode is : &#123;&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:24&#125;</span><br><span class="line">json by user.toJson() is : &#123;name: 张三, age: 24&#125;</span><br></pre></td></tr></table></figure>
+<p>要对<code>user2</code>进行<code>编码</code>，将<code>User对象</code>传递给<code>jsonEncode()</code>函数。你不需要调用<code>toJson()</code>方法，因为<code>jsonEncode()</code>已经为你做了。既然这2中方式都能实现<code>编码</code>，那么直接使用<code>jsonEncode()</code>有什么好处呢？</p>
+<p>使用这种方法，调用代码根本<code>不必担心</code>JSON序列化.但是，<code>model类</code>仍然必须设置。因为在生产应用程序中需要<code>确保</code>序列化正常工作。实际上，<code>User.fromJson()</code>和<code>User.toJson()</code>方法都需要进行单元测试以验证正确的行为。</p>
+<h2 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h2><p><strong>自己只能手动编写一些<code>简单的 JSON Model类</code>，一旦复杂就容易出错。</strong></p>
+<p>但是，<code>现实</code>场景通常不那么简单。您不太可能使用<code>如此小的JSON响应</code>。嵌套的JSON对象也是常用的。如果有一些东西可以为你处理JSON编码和解码，那就太好了。幸运的是，有！</p>
+<h1 id="使用代码生成库自动序列化JSON"><a href="#使用代码生成库自动序列化JSON" class="headerlink" title="使用代码生成库自动序列化JSON"></a>使用代码生成库自动序列化JSON</h1><p><code>json_serializable</code>包，这是一个<code>自动</code>生成的源代码<code>生成器</code>，可为生成<code>JSON序列化样板</code>。</p>
+<p>由于序列化代码不再是<code>手动</code>或<code>手动维护</code>的，因此可以最大限度地<code>降低</code>在运行时出现JSON序列化<code>异常的风险</code>。</p>
+<h2 id="在项目中设置“json-serializable”"><a href="#在项目中设置“json-serializable”" class="headerlink" title="在项目中设置“json_serializable”"></a>在项目中设置“json_serializable”</h2><p>要在项目中包含<code>json_serializable</code>，您需要<code>一个常规依赖项</code>和<code>两个dev依赖项</code>。<br>简而言之：<code>dev依赖项</code>是我们的应用程序源代码中未包含的依赖项 - 它们仅在开发环境中使用。</p>
+<p><strong>添加：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  json_annotation: ^2.0.0</span><br><span class="line"></span><br><span class="line">dev_dependencies:</span><br><span class="line">  build_runner: ^1.0.0</span><br><span class="line">  json_serializable: ^2.0.0</span><br></pre></td></tr></table></figure>
+<p>然后运行 <code>flutter pub get</code> 来使这些新的依赖项在您的项目中可用。</p>
+<h2 id="以“json-serializable”方式创建Model类"><a href="#以“json-serializable”方式创建Model类" class="headerlink" title="以“json_serializable”方式创建Model类"></a>以“json_serializable”方式创建Model类</h2><p><strong>注意：<code>Model类名</code>一定要和<code>其所在的文件名</code>相同，否则不能执行<code>生成代码</code>操作</strong></p>
+<p><strong>User.dart</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:json_annotation/json_annotation.dart&apos;;</span><br><span class="line"></span><br><span class="line">// 这允许`User`类访问私有成员生成的文件——*.g.dart，其中*表示源文件名。</span><br><span class="line">part &apos;User.g.dart&apos;;</span><br><span class="line"></span><br><span class="line">// 代码生成器的注释，知道此类需要生成的JSON序列化逻辑。</span><br><span class="line">@JsonSerializable()</span><br><span class="line"></span><br><span class="line">class User&#123;</span><br><span class="line">  final String userName;</span><br><span class="line">  final int userAge;</span><br><span class="line"></span><br><span class="line">  User(this.userName, this.userAge);</span><br><span class="line"></span><br><span class="line">  // 用于从map创建新User实例的必要工厂构造函数。</span><br><span class="line">  // 将映射传递给生成的`_$UserFromJson()`构造函数。</span><br><span class="line">  // 构造函数以源类命名，在本例中为User。</span><br><span class="line">  factory User.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$UserFromJson(json);</span><br><span class="line"></span><br><span class="line">  // toJson()是类的约定，用于声明对JSON的序列化支持。</span><br><span class="line">  // 该实现只是调用私有的,生成的辅助方法`_$UserToJson`。</span><br><span class="line">  Map&lt;String,dynamic&gt; toJson() =&gt;  _$UserToJson(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过此设置，源代码生成器就能对来自于JSON的<code>name</code>和<code>age</code>字段进行<code>编码</code>和<code>解码</code></p>
+<h2 id="运行代码生成实用程序"><a href="#运行代码生成实用程序" class="headerlink" title="运行代码生成实用程序"></a>运行代码生成实用程序</h2><p>在第一次创建<code>json_serializable类</code>时，将得到类似于下图所示的错误。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter_json%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%99%A8.png" alt></p>
+<p>无需慌张，这些错误完全正常，仅仅是因为<code>Model类</code>的生成代码<code>尚不存在</code>。要解决此问题，运行生成序列化样板的<code>代码生成器</code>即可。</p>
+<p><strong>有两种运行代码生成器的方法：</strong></p>
+<ol>
+<li><p><strong>一次性代码生成</strong></p>
+<p>通过在项目<code>根目录</code>中运行<code>flutter pub run build_runner build</code>（首次运行命令，需要自动下载相关Dart SDK），可以在需要时为<code>Model</code>生成<code>JSON序列化代码</code>。</p>
+<p>这会触发<code>一次性构建</code>，该构建：<code>遍历源文件</code>、<code>选择相关文件</code>，并为它们生成必要的<code>序列化代码</code>。</p>
+<p>然这很方便，但如果不必每次在Model类中进行更改时都必须手动运行构建，那将会更加方便！</p>
+</li>
+</ol>
+<ol>
+<li><p><strong>不断生成代码</strong></p>
+<p><code>观察者</code>使我们的源代码生成过程更加方便。它会监视项目<code>文件中的更改</code>，并在需要时<code>自动构建必要的文件</code>。</p>
+<p>通过在项目根目录中运行<code>flutter pub run build_runner watch</code>（首次运行命令，需要自动下载相关Dart SDK）来启动观察程序。启动一次观察器并使其在后台运行是安全的。</p>
+<p>当执行成功之后，在终端将会显示：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Starting Build</span><br><span class="line"></span><br><span class="line">[INFO] Updating asset graph...</span><br><span class="line">[INFO] Updating asset graph completed, took 17ms</span><br><span class="line"></span><br><span class="line">[INFO] Running build...</span><br><span class="line">[INFO] Running build completed, took 143ms</span><br><span class="line"></span><br><span class="line">[INFO] Caching finalized dependency graph...</span><br><span class="line">[SEVERE] The outputs field in xflutter|lib/json_test/User.g.dart references a non-existent asset xflutter|lib/json_test/JsonAutoConvert.json_serializable.g.part and will corrupt the asset graph. If you encounter this error please copy the details from this message and add them to https://github.com/dart-lang/build/issues/1804.</span><br><span class="line">[INFO] Caching finalized dependency graph completed, took 10ms</span><br><span class="line"></span><br><span class="line">[INFO] Succeeded after 173ms with 2 outputs (3 actions)</span><br></pre></td></tr></table></figure>
+<p>同时在 <code>Model类</code>的<code>同级目录</code>下将会生成在<code>Model类</code>文件中配置<code>part &#39;User.g.dart&#39;;</code>中的<code>User.g.dart</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// GENERATED CODE - DO NOT MODIFY BY HAND</span><br><span class="line"></span><br><span class="line">part of &apos;User.dart&apos;;</span><br><span class="line"></span><br><span class="line">// **************************************************************************</span><br><span class="line">// JsonSerializableGenerator</span><br><span class="line">// **************************************************************************</span><br><span class="line"></span><br><span class="line">User _$UserFromJson(Map&lt;String, dynamic&gt; json) &#123;</span><br><span class="line">  return User(json[&apos;userName&apos;] as String, json[&apos;userAge&apos;] as int);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Map&lt;String, dynamic&gt; _$UserToJson(User instance) =&gt; &lt;String, dynamic&gt;&#123;</span><br><span class="line">      &apos;userName&apos;: instance.userName,</span><br><span class="line">      &apos;userAge&apos;: instance.userAge</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>观察 <code>_$UserToJson(User instance)</code> 方法后就会发现这个代码实现和我们自己手动的<br>代码是一样的。这是我们手动编写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class User &#123;</span><br><span class="line">  final String name;</span><br><span class="line">  final int age;</span><br><span class="line"></span><br><span class="line">  User(this.name, this.age);</span><br><span class="line"></span><br><span class="line">  User.formJson(Map&lt;String, dynamic&gt; json)</span><br><span class="line">      : name = json[&apos;name&apos;],</span><br><span class="line">        age = json[&apos;age&apos;];</span><br><span class="line"></span><br><span class="line">  Map&lt;String, dynamic&gt; toJson() =&gt; &#123;</span><br><span class="line">        &apos;name&apos;: name,</span><br><span class="line">        &apos;age&apos;: age,</span><br><span class="line">      &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用json-serializable模型"><a href="#使用json-serializable模型" class="headerlink" title="使用json_serializable模型"></a>使用json_serializable模型</h2><p>不管是<code>手动处理</code>还是<code>自动处理</code>其使用方式都是一样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var map = jsonDecode(userModel);</span><br><span class="line">var result = User.formJson(map);</span><br><span class="line">print(&apos;Json Serializable result is : $&#123;result.name&#125;&apos;);</span><br><span class="line"></span><br><span class="line">var encode = jsonEncode(result);</span><br><span class="line">print(&apos;encode is $&#123;encode&#125;&apos;);</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Json Serializable result is : 张三</span><br><span class="line">encode is &#123;&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:24&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第三方处理方式"><a href="#第三方处理方式" class="headerlink" title="第三方处理方式"></a>第三方处理方式</h1><p><a href="https://javiercbk.github.io/json_to_dart/" target="_blank" rel="noopener">一个网址</a></p>
+<blockquote>
+<p>来源：<a href="https://flutter.dev/docs/development/data-and-backend/json" target="_blank" rel="noopener">https://flutter.dev/docs/development/data-and-backend/json</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Dart-异步支持/" rel="next" title="Dart-异步支持">
+                <i class="fa fa-chevron-left"></i> Dart-异步支持
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Dart-网络/" rel="prev" title="Dart-网络">
+                Dart-网络 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">142</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON序列化方式选择"><span class="nav-number">1.</span> <span class="nav-text">JSON序列化方式选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#较小的项目：手动序列化"><span class="nav-number">1.1.</span> <span class="nav-text">较小的项目：手动序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中大型项目：自动序列化"><span class="nav-number">1.2.</span> <span class="nav-text">中大型项目：自动序列化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter中有-GSON-Jackson-Moshi-等价产物吗？"><span class="nav-number">2.</span> <span class="nav-text">Flutter中有 GSON/Jackson/Moshi 等价产物吗？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动序列化JSON-dart-convert"><span class="nav-number">3.</span> <span class="nav-text">手动序列化JSON - dart:convert</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过“内联”序列化JSON"><span class="nav-number">3.1.</span> <span class="nav-text">通过“内联”序列化JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过“内置Model类”序列化JSON"><span class="nav-number">3.2.</span> <span class="nav-text">通过“内置Model类”序列化JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点："><span class="nav-number">3.3.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用代码生成库自动序列化JSON"><span class="nav-number">4.</span> <span class="nav-text">使用代码生成库自动序列化JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在项目中设置“json-serializable”"><span class="nav-number">4.1.</span> <span class="nav-text">在项目中设置“json_serializable”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以“json-serializable”方式创建Model类"><span class="nav-number">4.2.</span> <span class="nav-text">以“json_serializable”方式创建Model类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行代码生成实用程序"><span class="nav-number">4.3.</span> <span class="nav-text">运行代码生成实用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用json-serializable模型"><span class="nav-number">4.4.</span> <span class="nav-text">使用json_serializable模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三方处理方式"><span class="nav-number">5.</span> <span class="nav-text">第三方处理方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">339.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
