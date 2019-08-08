@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="状态管理">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-状态管理">
+<meta property="og:url" content="http://yannischeng.com/Flutter-状态管理/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="状态管理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-%E7%9F%AD%E6%97%B6%E7%8A%B6%E6%80%81%E4%B8%8E%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81.png">
+<meta property="og:updated_time" content="2019-07-09T00:14:52.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-状态管理">
+<meta name="twitter:description" content="状态管理">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-状态管理/">
+
+
+
+
+
+  <title>Flutter-状态管理 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-状态管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-状态管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T16:33:14+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T08:14:52+08:00">
+                2019-07-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,573 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-状态管理/" title="Flutter-状态管理">http://yannischeng.com/Flutter-状态管理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>状态管理</p>
+<a id="more"></a>
+<p>参考：<a href="https://flutter-io.cn/docs/get-started/flutter-for/declarative" target="_blank" rel="noopener">声明式 UI</a><br>参考：<a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app" target="_blank" rel="noopener">暂时 (ephemeral) 和应用 (app) 状态的区别</a></p>
+<ul>
+<li><strong>命令式UI</strong> 与 <strong>声明式UI</strong></li>
+<li>在<code>flutter</code>中UI的改变是以 <strong>帧</strong> 为单位的。</li>
+<li>Flutter 应用中需要<code>自己管理</code>的状态可以分为2种：<strong>暂时（短时）</strong> 和 <strong>应用（共享）</strong></li>
+</ul>
+<h1 id="开发观念的大转变！——-声明式"><a href="#开发观念的大转变！——-声明式" class="headerlink" title="开发观念的大转变！—— 声明式"></a>开发观念的大转变！—— 声明式</h1><p><a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/declarative" target="_blank" rel="noopener">状态管理中的声明式编程思维</a></p>
+<p><code>Flutter应用</code>是 <code>声明式</code> 的，这也就意味着 Flutter构建的用户界面就是应用的 <code>当前状态</code>。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png" alt></p>
+<h2 id="命令式UI"><a href="#命令式UI" class="headerlink" title="命令式UI"></a>命令式UI</h2><p>从 <code>Win32</code> 到 <code>Web</code> 再到 <code>Android</code> 和 <code>iOS</code>，框架通常使用一种<code>命令式</code>的编程风格来完成 <code>UI 编程</code>。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">你手动构建一个全功能的 UI 实例，比如一个通过 findViewById() 创建一个View实例 。</span><br><span class="line">在随后 UI 发生变化时，使用 其内置的方法 根据业务需要去修改它。</span><br></pre></td></tr></table></figure>
+<p>在这个过程中所执行的与<code>view</code>相关的<code>函数</code>就是<code>命令式</code>的编程风格。</p>
+<h2 id="声明式UI"><a href="#声明式UI" class="headerlink" title="声明式UI"></a>声明式UI</h2><p>如果你是从<code>命令式框架</code>转到 <code>Flutter 应用</code>，那么，你需要开始从一个<code>新的角度</code>来考虑 app 开发了。</p>
+<p><code>Flutter应用开发</code> 与 <code>命令式框架</code> <strong>相反</strong>，它让开发人员 <code>只描述</code> <strong>当前UI的 <code>视图配置</code></strong>，然后将具体的 <code>转换</code> 操作 <strong>交给框架</strong> 来执行。</p>
+<p>在<code>声明式</code>风格中，<code>视图配置</code>（如 Flutter 的 Widget ）是 <code>不可变</code> 的，它只是<code>轻量的“蓝图”</code>。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Row(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,</span><br><span class="line">    MainAxisSize mainAxisSize = MainAxisSize.max,</span><br><span class="line">    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,</span><br><span class="line">    TextDirection textDirection,</span><br><span class="line">    VerticalDirection verticalDirection = VerticalDirection.down,</span><br><span class="line">    TextBaseline textBaseline,</span><br><span class="line">    List&lt;Widget&gt; children = const &lt;Widget&gt;[],</span><br><span class="line">  &#125;) : super(</span><br><span class="line">    children: children,</span><br><span class="line">    key: key,</span><br><span class="line">    direction: Axis.horizontal,</span><br><span class="line">    mainAxisAlignment: mainAxisAlignment,</span><br><span class="line">    mainAxisSize: mainAxisSize,</span><br><span class="line">    crossAxisAlignment: crossAxisAlignment,</span><br><span class="line">    textDirection: textDirection,</span><br><span class="line">    verticalDirection: verticalDirection,</span><br><span class="line">    textBaseline: textBaseline,</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么……开发人员在更改 <code>视图配置蓝图</code> 的具体实现后，<code>视图</code>是如何 <strong>更新</strong> 的呢？</p>
+<h2 id="声明式UI更新"><a href="#声明式UI更新" class="headerlink" title="声明式UI更新"></a>声明式UI更新</h2><p><code>Widget</code> 会在<code>自身</code>上<code>触发重建</code>（在 <code>Flutter</code> 中最常见的方法是在 <code>StatefulWidgets</code> 组件上调用 <code>setState()</code>）并<code>构造</code>一个 <strong>新 Widget子树</strong>。即：<strong>当用户界面发生<code>变化</code>时， Flutter <code>不修改旧实例</code> ，而是 <code>构造新 Widget 实例</code>。</strong></p>
+<p>也可以理解为：<strong>widget是<code>不可变</code>的。因为它们会<code>直接被替换</code>。</strong></p>
+<p><code>框架</code>使用<code>RenderObjects</code>管理传统UI对象的许多<code>职责</code>（例如维护布局的状态）。 <code>RenderObjects</code>在<code>帧之间</code>保持不变，Flutter的<code>轻量级Widgets</code>告诉<code>框架</code>在<code>状态之间</code>改变<code>RenderObjects</code>。 Flutter框架处理其余部分。</p>
+<p>（Here, rather than mutating an old instance b when the UI changes, Flutter constructs new Widget instances. The framework manages many of the responsibilities of a traditional UI object (such as maintaining the state of the layout) behind the scenes with RenderObjects. RenderObjects persist between frames and Flutter’s lightweight Widgets tell the framework to mutate the RenderObjects between states. The Flutter framework handles the rest.）</p>
+<h1 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h1><h2 id="暂时（短时）状态"><a href="#暂时（短时）状态" class="headerlink" title="暂时（短时）状态"></a>暂时（短时）状态</h2><p><code>短时状态</code> (有时也称 <code>用户界面(UI)状态</code> 或者 <code>局部状态</code>) 是你可以完全包含在<code>一个独立widget 中</code> 的状态，widget 树中<code>其他部分</code>不需要访问这种状态。如：</p>
+<ul>
+<li><p>一个 PageView 组件中的<code>当前页面</code></p>
+</li>
+<li><p>一个复杂动画中<code>当前进度</code></p>
+</li>
+<li><p>一个 BottomNavigationBar 中<code>当前被选</code>中的 tab</p>
+</li>
+</ul>
+<p>换句话说：不需要使用 <strong>状态管理架构</strong>（例如 ScopedModel, Redux）去管理这种状态。你需要用的只是一个 <strong>StatefulWidget</strong>。</p>
+<h2 id="应用（共享）状态"><a href="#应用（共享）状态" class="headerlink" title="应用（共享）状态"></a>应用（共享）状态</h2><p>如果你想在你的应用中的 <strong>多个部分之间<code>共享</code></strong> 一个<code>非短时状态</code>，并且在用户会话期间保留这个状态， 我们称之为 <strong>应用状态（有时也称共享状态）</strong>。</p>
+<p>例如：</p>
+<ul>
+<li>用户选项</li>
+<li>登录信息</li>
+<li>一个社交应用中的通知</li>
+<li>一个电商应用中的购物车</li>
+<li>一个新闻应用中的文章已读/未读状态</li>
+</ul>
+<h2 id="如何区分、定义状态？"><a href="#如何区分、定义状态？" class="headerlink" title="如何区分、定义状态？"></a>如何区分、定义状态？</h2><p>没有一个<code>明确</code>、<code>普遍</code>的规则来<code>区分</code>一个变量属于短时状态还是应用状态，有时你不得不在此之间重构。比如，刚开始你认为一些状态是短时状态， 但随着应用不断增加功能，有些状态需要被改变为应用状态。</p>
+<p>因此，请有保留地遵循以下这张流程图：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-%E7%9F%AD%E6%97%B6%E7%8A%B6%E6%80%81%E4%B8%8E%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81.png" alt></p>
+<h2 id="存储状态的对象应该置于何处？"><a href="#存储状态的对象应该置于何处？" class="headerlink" title="存储状态的对象应该置于何处？"></a>存储状态的对象应该置于何处？</h2><p><strong>提高状态的层级 —— 在 Flutter 中，有必要将<code>存储状态</code>的<code>对象</code>置于 widget 树中<code>对应 widget</code> 的 <code>上层</code></strong></p>
+<p><em>为什么？</em></p>
+<p>因为：在 Flutter 中，<code>每次</code>当 <code>widget 内容</code>发生<code>改变</code>的时候，你就需要<code>构造一个新的</code>。你<code>会调用 MyCart(contents)（构造函数）</code>，<code>而不是 MyCart.updateWith(somethingNew)（调用方法）</code>。因为你 <strong>只能</strong> 通过<code>父类的 build() 来构建新 widget</code>，如果你想修改 存储状态的变量，就需要调用 <code>MyCart的父类</code>甚至<code>更高一级</code>的类。</p>
+<h2 id="如何读取状态？"><a href="#如何读取状态？" class="headerlink" title="如何读取状态？"></a>如何读取状态？</h2><p><code>Flutter</code> 在 <code>Widget</code> 中存在一种 <strong>机制</strong>：能够为其<code>子孙节点</code>提供<code>数据和服务</code>。换言之，不仅仅是它的<code>子节点</code>，<code>所有在它下层</code>的 widget 都可以）。这种机制包括 ：</p>
+<ul>
+<li><strong>widget底层类</strong>：InheritedWidget、InheritedNotifier、InheritedModel；</li>
+<li><strong>provider package</strong>：和些底层widget 打交道的package。</li>
+</ul>
+<h3 id="Widget底层类"><a href="#Widget底层类" class="headerlink" title="Widget底层类"></a>Widget底层类</h3><h3 id="provider-package"><a href="#provider-package" class="headerlink" title="provider package"></a>provider package</h3><ul>
+<li>ChangeNotifier</li>
+<li>ChangeNotifierProvider</li>
+<li>Consumer</li>
+</ul>
+<h4 id="ChangeNotifier"><a href="#ChangeNotifier" class="headerlink" title="ChangeNotifier"></a>ChangeNotifier</h4><p>观察者模式。可以扩展或混合的类，使用 <code>VoidCallback()</code> 为 <code>通知</code> 提供<code>更改通知API</code>。<br>它用于向监听器<code>发送通知</code>。换言之，如果被定义为 ChangeNotifier，你可以<code>订阅</code>它的<code>状态变化</code>。</p>
+<p><code>ChangeNotifier</code> 针对 <code>少数（一个或两个）侦听器</code> 进行了优化。<code>添加</code>和<code>删除</code>侦听器是<code>O(N)</code>，调度通知是<code>O(N²)</code>（其中N是侦听器的数量）。</p>
+<p>源码基本实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class ChangeNotifier implements Listenable &#123;</span><br><span class="line">  ObserverList&lt;VoidCallback&gt; _listeners = ObserverList&lt;VoidCallback&gt;();</span><br><span class="line"></span><br><span class="line">  @protected</span><br><span class="line">  bool get hasListeners &#123;</span><br><span class="line">    assert(_debugAssertNotDisposed());</span><br><span class="line">    return _listeners.isNotEmpty;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @override</span><br><span class="line">  void addListener(VoidCallback listener) &#123;</span><br><span class="line">    assert(_debugAssertNotDisposed());</span><br><span class="line">    _listeners.add(listener);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @override</span><br><span class="line">  void removeListener(VoidCallback listener) &#123;</span><br><span class="line">    assert(_debugAssertNotDisposed());</span><br><span class="line">    _listeners.remove(listener);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @mustCallSuper</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    assert(_debugAssertNotDisposed());</span><br><span class="line">    _listeners = null;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @protected</span><br><span class="line">  @visibleForTesting</span><br><span class="line">  void notifyListeners() &#123;</span><br><span class="line">    assert(_debugAssertNotDisposed());</span><br><span class="line">    if (_listeners != null) &#123;</span><br><span class="line">      final List&lt;VoidCallback&gt; localListeners = List&lt;VoidCallback&gt;.from(_listeners);</span><br><span class="line">      for (VoidCallback listener in localListeners) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">          if (_listeners.contains(listener))</span><br><span class="line">            listener();</span><br><span class="line">        &#125; catch (exception, stack) &#123;</span><br><span class="line">          //异常处理</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实现可以概括为：通过 <code>ObserverList&lt;VoidCallback&gt;</code> 对 <code>VoidCallback</code>进行一系列的管理，包括：通过 <code>hasListeners()</code>是否为空判断、通过<code>addListener(VoidCallback listener)</code>进行添加、通过<code>removeListener(VoidCallback listener)</code>、通过<code>dispose()</code>清空资源、通过 <code>notifyListeners()</code>进行遍历。</p>
+<h4 id="ChangeNotifierProvider-MultiProvider"><a href="#ChangeNotifierProvider-MultiProvider" class="headerlink" title="ChangeNotifierProvider/MultiProvider"></a>ChangeNotifierProvider/MultiProvider</h4><h4 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h4><p>参考：</p>
+<blockquote>
+<p><a href="https://www.wandouip.com/t5i285410/" target="_blank" rel="noopener">https://www.wandouip.com/t5i285410/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-动画/" rel="next" title="Flutter-动画">
+                <i class="fa fa-chevron-left"></i> Flutter-动画
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Maven/" rel="prev" title="Maven">
+                Maven <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发观念的大转变！——-声明式"><span class="nav-number">1.</span> <span class="nav-text">开发观念的大转变！—— 声明式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令式UI"><span class="nav-number">1.1.</span> <span class="nav-text">命令式UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式UI"><span class="nav-number">1.2.</span> <span class="nav-text">声明式UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式UI更新"><span class="nav-number">1.3.</span> <span class="nav-text">声明式UI更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态管理"><span class="nav-number">2.</span> <span class="nav-text">状态管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#暂时（短时）状态"><span class="nav-number">2.1.</span> <span class="nav-text">暂时（短时）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用（共享）状态"><span class="nav-number">2.2.</span> <span class="nav-text">应用（共享）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何区分、定义状态？"><span class="nav-number">2.3.</span> <span class="nav-text">如何区分、定义状态？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储状态的对象应该置于何处？"><span class="nav-number">2.4.</span> <span class="nav-text">存储状态的对象应该置于何处？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何读取状态？"><span class="nav-number">2.5.</span> <span class="nav-text">如何读取状态？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Widget底层类"><span class="nav-number">2.5.1.</span> <span class="nav-text">Widget底层类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#provider-package"><span class="nav-number">2.5.2.</span> <span class="nav-text">provider package</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifier"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">ChangeNotifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifierProvider-MultiProvider"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">ChangeNotifierProvider/MultiProvider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Consumer"><span class="nav-number">2.5.2.3.</span> <span class="nav-text">Consumer</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">353.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
