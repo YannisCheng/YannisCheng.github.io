@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%E5%9B%BD%E9%99%85%E5%8C%96%E6%8F%92%E4%BB%B6-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90-%E5%8F%AF%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-%E8%B7%A8%E5%B9%B3%E5%8F%B0-platformchannel%E6%94%AF%E6%8C%81%E7%9A%84%E6%B6%88%E6%81%AF.png">
-<meta property="og:updated_time" content="2019-08-15T08:31:44.646Z">
+<meta property="og:updated_time" content="2019-08-15T14:39:37.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-跨平台">
 <meta name="twitter:description" content="Flutter跨平台相关">
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-15T16:31:44+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-15T22:39:37+08:00">
                 2019-08-15
               </time>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  364 字
+                  471 字
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -451,6 +451,11 @@
 <p><code>消息</code>和<code>响应</code>以<code>异步</code>的形式进行传递，以确保用户界面能够<code>保持响应</code>。即便如此，当你调用一个<code>宿主</code>方法时，也需要在<code>主线程</code>上做调用。</p>
 <h3 id="支持的数据类型"><a href="#支持的数据类型" class="headerlink" title="支持的数据类型"></a>支持的数据类型</h3><p><code>标准平台通道</code>使用<code>标准消息编、解码器</code>，它支持<code>简单</code>的<code>类似 JSON 值</code>的高效<code>二进制序列化</code>，例如布尔值、数字、字符串、字节缓冲区及这些类型的列表和映射。当你<code>发送</code>和<code>接收</code>值时，它会 <code>自动</code> 对这些值进行<code>序列化</code>和<code>反序列化</code>。</p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-%E8%B7%A8%E5%B9%B3%E5%8F%B0-platformchannel%E6%94%AF%E6%8C%81%E7%9A%84%E6%B6%88%E6%81%AF.png" alt></p>
+<h3 id="平台通信种类-3种"><a href="#平台通信种类-3种" class="headerlink" title="平台通信种类 - 3种"></a>平台通信种类 - 3种</h3><ul>
+<li><strong>BasicMessageChannel</strong>：支持<code>字符串</code>和<code>半结构化的数据</code>传递，可以通过它来获取Native项目的图标等资源</li>
+<li><strong>MethodChannel</strong>：传递<code>方法调用</code>，既可以从Flutter与平台之间可以相互调用，并获取相应的返回值</li>
+<li><strong>EventChannel</strong>：支持<code>数据流</code>通信，传递事件。收到消息后无法回复此次消息，通常用于Native向Dart的通信</li>
+</ul>
 
       
     </div>
@@ -481,6 +486,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-Window/" rel="prev" title="Flutter-Window">
+                Flutter-Window <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -561,7 +570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -632,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平台通道（platform-channel）"><span class="nav-number">1.2.</span> <span class="nav-text">平台通道（platform channel）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构概述"><span class="nav-number">1.2.1.</span> <span class="nav-text">架构概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持的数据类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">支持的数据类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平台通道（platform-channel）"><span class="nav-number">1.2.</span> <span class="nav-text">平台通道（platform channel）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构概述"><span class="nav-number">1.2.1.</span> <span class="nav-text">架构概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持的数据类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">支持的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平台通信种类-3种"><span class="nav-number">1.2.3.</span> <span class="nav-text">平台通信种类 - 3种</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -666,7 +675,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">357.4k</span>
+    <span title="Site words total count">357.5k</span>
   
 </div>
 

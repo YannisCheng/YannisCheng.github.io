@@ -671,9 +671,9 @@
 <p>git tag -a tag名 -m “说明信息”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 创建标签（本地） - 综合版</span><br></pre></td></tr></table></figure></p>
 <p>git tag -a tag名 commit-id -m “说明信息”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看在这种方式下创建的tag：</span><br></pre></td></tr></table></figure></p>
 <p>git show v1.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结果为：</span><br></pre></td></tr></table></figure></p>
-<p>tag v1.2<br>Tagger: YannisCheng <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#99;&#x77;&#x6a;&#49;&#x37;&#x31;&#52;&#64;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#109;">&#99;&#x77;&#x6a;&#49;&#x37;&#x31;&#52;&#64;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#109;</a><br>Date:   Wed May 15 23:50:31 2019 +0800</p>
+<p>tag v1.2<br>Tagger: YannisCheng <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x63;&#x77;&#106;&#49;&#55;&#49;&#52;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#111;&#109;">&#x63;&#x77;&#106;&#49;&#55;&#49;&#52;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#111;&#109;</a><br>Date:   Wed May 15 23:50:31 2019 +0800</p>
 <p>TAG: 最新版本修复</p>
-<p>commit 8484afff9f692cad62874ae7588cf6347f2394b9 (HEAD -&gt; master, tag: v1.2, origin/master)<br>Author: YannisCheng <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x63;&#119;&#106;&#49;&#x37;&#x31;&#52;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#111;&#109;">&#x63;&#119;&#106;&#49;&#x37;&#x31;&#52;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#111;&#109;</a><br>Date:   Wed May 15 23:00:57 2019 +0800</p>
+<p>commit 8484afff9f692cad62874ae7588cf6347f2394b9 (HEAD -&gt; master, tag: v1.2, origin/master)<br>Author: YannisCheng <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x63;&#119;&#106;&#x31;&#x37;&#49;&#52;&#64;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#x63;&#119;&#106;&#x31;&#x37;&#49;&#52;&#64;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a><br>Date:   Wed May 15 23:00:57 2019 +0800</p>
 <pre><code>修复bugC
 </code></pre><p>diff –git a/bugC.md b/bugC.md<br>new file mode 100644<br>index 0000000..8760221<br>— /dev/null<br>+++ b/bugC.md<br>@@ -0,0 +1 @@<br>+修复了issue-1Cbug<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">从显示结果上来看，与未加 `-m 说明信息` 的 `tag` 相比，信息顶部多了 2类 信息。</span><br><span class="line"></span><br><span class="line">### 标签远程推送 - 单个tag</span><br></pre></td></tr></table></figure></p>
 <p>git push origin tag名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 标签远程推送 - 全部tag</span><br></pre></td></tr></table></figure></p>
@@ -686,7 +686,7 @@
 </ul>
 <p>git tag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 查看某一个标签的详细信息</span><br></pre></td></tr></table></figure></p>
 <p>git show v1.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结果为：</span><br></pre></td></tr></table></figure></p>
-<p>commit 0ab6ac72e3e4a009b5831298200332a2cb498074 (tag: v1.0)<br>Author: YannisCheng <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#99;&#119;&#x6a;&#49;&#x37;&#x31;&#52;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#119;&#x6a;&#49;&#x37;&#x31;&#52;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#x6d;</a><br>Date:   Wed May 15 22:57:44 2019 +0800</p>
+<p>commit 0ab6ac72e3e4a009b5831298200332a2cb498074 (tag: v1.0)<br>Author: YannisCheng <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x63;&#119;&#106;&#49;&#x37;&#49;&#52;&#64;&#x31;&#x36;&#51;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#119;&#106;&#49;&#x37;&#49;&#52;&#64;&#x31;&#x36;&#51;&#x2e;&#x63;&#x6f;&#109;</a><br>Date:   Wed May 15 22:57:44 2019 +0800</p>
 <pre><code>修复bug
 </code></pre><p>diff –git a/bug.md b/bug.md<br>new file mode 100644<br>index 0000000..3c5540d<br>— /dev/null<br>+++ b/bug.md<br>@@ -0,0 +1 @@<br>+修复了issue-12bug<br>diff –git a/cwjtemp.txt b/cwjtemp.txt<br>deleted file mode 100644<br>index 321dcaf..0000000<br>— a/cwjtemp.txt<br>+++ /dev/null<br>@@ -1 +0,0 @@<br>-cwj分支的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">## 删除标签</span><br><span class="line"></span><br><span class="line">### 本地删除</span><br></pre></td></tr></table></figure></p>
 <p>git tag -d  tag名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 远程origin删除</span><br><span class="line"></span><br><span class="line">**方式 1：仅删除远程origin中的tag**</span><br></pre></td></tr></table></figure></p>
@@ -878,7 +878,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -983,7 +983,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">357.4k</span>
+    <span title="Site words total count">357.5k</span>
   
 </div>
 
