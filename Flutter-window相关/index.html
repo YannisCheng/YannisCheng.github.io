@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-Window相关">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-Window">
+<meta property="og:url" content="http://yannischeng.com/Flutter-window相关/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-Window相关">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-22T06:34:38.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-Window">
+<meta name="twitter:description" content="Flutter-Window相关">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-window相关/">
+
+
+
+
+
+  <title>Flutter-Window | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-window相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-Window</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T09:28:35+08:00">
+                2019-08-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-22T14:34:38+08:00">
+                2019-08-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,644 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-window相关/" title="Flutter-Window">http://yannischeng.com/Flutter-window相关/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-Window相关</p>
+<a id="more"></a>
+<p>路径：bin⁩ ▸ ⁨cache⁩ ▸ ⁨pkg⁩ ▸ ⁨sky_engine⁩ ▸ ⁨lib⁩ ▸ ⁨ui⁩</p>
+<p># </p>
+<p>帧的生命周期中的各种重要时间点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">enum FramePhase &#123;</span><br><span class="line">  /// 当UI线程开始构建框架时。</span><br><span class="line">  /// See also [FrameTiming.buildDuration].</span><br><span class="line">  buildStart,</span><br><span class="line"></span><br><span class="line">  /// 当UI线程完成构建框架时。</span><br><span class="line">  /// See also [FrameTiming.buildDuration].</span><br><span class="line">  buildFinish,</span><br><span class="line"></span><br><span class="line">  /// 当GPU线程开始栅格化帧时。</span><br><span class="line">  /// See also [FrameTiming.rasterDuration].</span><br><span class="line">  rasterStart,</span><br><span class="line"></span><br><span class="line">  /// 当GPU线程完成栅格化帧时。</span><br><span class="line">  /// See also [FrameTiming.rasterDuration].</span><br><span class="line">  rasterFinish,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>帧的与时间相关的性能指标。有关如何获取此信息，请参见[Window.onReportTimings]。<br>由于调试开销，调试模式下的指标（没有任何标志的“颤动运行”）可能与配置文件和释放模式中的指标非常不同。因此，建议仅在配置文件和发布模式下监视和分析性能指标。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">class FrameTiming &#123;</span><br><span class="line">  /// 使用以微秒为单位的原始时间戳构造[FrameTiming]。</span><br><span class="line">  /// To get the [FrameTiming] of your app, see [Window.onReportTimings].</span><br><span class="line">  FrameTiming(List&lt;int&gt; timestamps)</span><br><span class="line">      : assert(timestamps.length == FramePhase.values.length), _timestamps = timestamps;</span><br><span class="line"></span><br><span class="line">  int timestampInMicroseconds(FramePhase phase) =&gt; _timestamps[phase.index];</span><br><span class="line"></span><br><span class="line">  Duration _rawDuration(FramePhase phase) =&gt; Duration(microseconds: _timestamps[phase.index]);</span><br><span class="line"></span><br><span class="line">  /// 他在UI线程上构建框架的持续时间。</span><br><span class="line">  ///</span><br><span class="line">  /// The build starts approximately when [Window.onBeginFrame] is called. The</span><br><span class="line">  /// [Duration] in the [Window.onBeginFrame] callback is exactly the</span><br><span class="line">  /// `Duration(microseconds: timestampInMicroseconds(FramePhase.buildStart))`.</span><br><span class="line">  ///</span><br><span class="line">  /// 调用[Window.render]时，构建完成。</span><br><span class="line">  ///</span><br><span class="line">  /// &#123;@template dart.ui.FrameTiming.fps_smoothness_milliseconds&#125;</span><br><span class="line">  /// To ensure smooth animations of X fps, this should not exceed 1000/X</span><br><span class="line">  /// milliseconds.</span><br><span class="line">  /// &#123;@endtemplate&#125;</span><br><span class="line">  /// &#123;@template dart.ui.FrameTiming.fps_milliseconds&#125;</span><br><span class="line">  /// That&apos;s about 16ms for 60fps, and 8ms for 120fps.</span><br><span class="line">  /// &#123;@endtemplate&#125;</span><br><span class="line">  Duration get buildDuration =&gt; _rawDuration(FramePhase.buildFinish) - _rawDuration(FramePhase.buildStart);</span><br><span class="line"></span><br><span class="line">  /// 在GPU线程上栅格化帧的持续时间。</span><br><span class="line">  ///</span><br><span class="line">  /// &#123;@macro dart.ui.FrameTiming.fps_smoothness_milliseconds&#125;</span><br><span class="line">  /// &#123;@macro dart.ui.FrameTiming.fps_milliseconds&#125;</span><br><span class="line">  Duration get rasterDuration =&gt; _rawDuration(FramePhase.rasterFinish) - _rawDuration(FramePhase.rasterStart);</span><br><span class="line"></span><br><span class="line">  /// 构建开始和光栅完成之间的时间跨度。</span><br><span class="line">  ///</span><br><span class="line">  /// To achieve the lowest latency on an X fps display, this should not exceed</span><br><span class="line">  /// 1000/X milliseconds.</span><br><span class="line">  /// &#123;@macro dart.ui.FrameTiming.fps_milliseconds&#125;</span><br><span class="line">  ///</span><br><span class="line">  /// See also [buildDuration] and [rasterDuration].</span><br><span class="line">  Duration get totalSpan =&gt; _rawDuration(FramePhase.rasterFinish) - _rawDuration(FramePhase.buildStart);</span><br><span class="line"></span><br><span class="line">  final List&lt;int&gt; _timestamps;  // in microseconds</span><br><span class="line"></span><br><span class="line">  String _formatMS(Duration duration) =&gt; &apos;$&#123;duration.inMicroseconds * 0.001&#125;ms&apos;;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  String toString() &#123;</span><br><span class="line">    return &apos;$runtimeType(buildDuration: $&#123;_formatMS(buildDuration)&#125;, rasterDuration: $&#123;_formatMS(rasterDuration)&#125;, totalSpan: $&#123;_formatMS(totalSpan)&#125;)&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应用程序可以存在的状态。<br>也可以看看：[WidgetsBindingObserver]，用于从小部件层观察生命周期状态的机制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">enum AppLifecycleState &#123;</span><br><span class="line">  /// 应用程序可见并响应用户输入。</span><br><span class="line">  resumed,</span><br><span class="line"></span><br><span class="line">  /// 应用程序处于非活动状态，并且未接收用户输入。</span><br><span class="line">  ///</span><br><span class="line">  /// On iOS, this state corresponds to an app or the Flutter host view running</span><br><span class="line">  /// in the foreground inactive state. Apps transition to this state when in</span><br><span class="line">  /// a phone call, responding to a TouchID request, when entering the app</span><br><span class="line">  /// switcher or the control center, or when the UIViewController hosting the</span><br><span class="line">  /// Flutter app is transitioning.</span><br><span class="line">  ///</span><br><span class="line">  /// 在Android上，这对应于在前台非活动状态下运行的应用程序或Flutter主机视图。 </span><br><span class="line">  /// 当其他活动聚焦时，应用程序会转换到此状态，例如分屏应用，电话，画中画应用，系统对话或其他窗口。</span><br><span class="line">  ///</span><br><span class="line">  /// 处于此状态的应用程序应假设它们可能随时[paused]。</span><br><span class="line">  inactive,</span><br><span class="line"></span><br><span class="line">  /// 该应用程序当前对用户不可见，不响应用户输入，并在后台运行。</span><br><span class="line">  /// 当应用程序处于此状态时，引擎将不会调用[Window.onBeginFrame]和[Window.onDrawFrame]回调。</span><br><span class="line">  /// 处于此状态的Android应用程序应假设他们可以随时进入[挂起(suspending)]状态。</span><br><span class="line">  paused,</span><br><span class="line"></span><br><span class="line">  /// 申请将暂停。</span><br><span class="line">  /// 当应用程序处于此状态时，引擎将不会调用[Window.onBeginFrame]和[Window.onDrawFrame]回调。</span><br><span class="line">  /// 在iOS上，此状态目前尚未使用。</span><br><span class="line">  suspending,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>矩形的四个边中的每一个的距离表示，用于编码应用程序应放置在其用户界面周围的视图插入和填充，如[Window.viewInsets]和[Window.padding]所示。 优选地通过[MediaQuery.of]读取视图插入和填充。</p>
+<p>对于表示矩形周围距离的泛型类，请参阅[EdgeInsets]类。</p>
+<p>也可以看看：</p>
+<ul>
+<li>[WidgetsBindingObserver]，用于在填充更改时接收通知的窗口小部件层机制。</li>
+<li>[MediaQuery.of]，用于访问这些值的首选机制。</li>
+<li>[Scaffold]，可在材料设计应用中自动应用填充。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class WindowPadding &#123;</span><br><span class="line">  const WindowPadding._(&#123; this.left, this.top, this.right, this.bottom &#125;);</span><br><span class="line"></span><br><span class="line">  /// 物理像素中从左边缘到第一个未填充像素的距离。</span><br><span class="line">  final double left;</span><br><span class="line"></span><br><span class="line">  /// The distance from the top edge to the first unpadded pixel, in physical pixels.</span><br><span class="line">  final double top;</span><br><span class="line"></span><br><span class="line">  /// The distance from the right edge to the first unpadded pixel, in physical pixels.</span><br><span class="line">  final double right;</span><br><span class="line"></span><br><span class="line">  /// The distance from the bottom edge to the first unpadded pixel, in physical pixels.</span><br><span class="line">  final double bottom;</span><br><span class="line"></span><br><span class="line">  /// A window padding that has zeros for each edge.</span><br><span class="line">  static const WindowPadding zero = WindowPadding._(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  String toString() &#123;</span><br><span class="line">    return &apos;WindowPadding(left: $left, top: $top, right: $right, bottom: $bottom)&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多语言本地化设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Locale &#123;</span><br><span class="line">  const Locale(</span><br><span class="line">    this._languageCode, [</span><br><span class="line">    this._countryCode,</span><br><span class="line">  ]) : assert(_languageCode != null),</span><br><span class="line">       assert(_languageCode != &apos;&apos;),</span><br><span class="line">       scriptCode = null;</span><br><span class="line">       </span><br><span class="line">       </span><br><span class="line">  const Locale.fromSubtags(&#123;</span><br><span class="line">    String languageCode = &apos;und&apos;,</span><br><span class="line">    this.scriptCode,</span><br><span class="line">    String countryCode,</span><br><span class="line">  &#125;) : assert(languageCode != null),</span><br><span class="line">       assert(languageCode != &apos;&apos;),</span><br><span class="line">       _languageCode = languageCode,</span><br><span class="line">       assert(scriptCode != &apos;&apos;),</span><br><span class="line">       assert(countryCode != &apos;&apos;),</span><br><span class="line">       _countryCode = countryCode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主机操作系统用户界面的最基本界面。</p>
+<p>它公开了display大小，核心调度程序API，输入事件回调，图形绘制API和其他此类核心服务。</p>
+<p>系统中有一个<code>Window实例</code>，您可以从<code>WidgetsBinding.instance.window</code>获取。</p>
+<p>如果<code>WidgetsBinding</code>不可用，<code>dart：ui</code>中也有一个[window]单例对象。但我们强烈建议避免静态引用它。有关应该避免的原因的更多详细信息，请参见[window]的文档。</p>
+<p>##Insets(插入、插页、镶嵌) 和 Padding（填充）</p>
+<p>动画演示地址：<a href="https://flutter.github.io/assets-for-api-docs/assets/widgets/window_padding.mp4" target="_blank" rel="noopener">https://flutter.github.io/assets-for-api-docs/assets/widgets/window_padding.mp4</a></p>
+<p>在此图中：<br>黑色区域表示应用无法绘制的系统UI。<br>红色区域表示应用程序可能无法检测到手势并且可能不想绘制的视图填充。<br>灰色区域表示系统键盘，可以在可见时覆盖底部视图填充。</p>
+<p>[Window.viewInsets]是操作系统为系统UI保留的物理像素，例如键盘，它会完全遮盖在该区域中绘制的任何内容。</p>
+<p>[Window.viewPadding]是显示器每一侧的物理像素，可能被系统UI或物理入侵显示器部分遮挡，例如电视上的过扫描区域或者电视上的“凹口”。电话。与插图不同，这些区域可以具有向用户应用绘制像素而不被遮挡的部分，诸如仅覆盖该区域的子集的电话顶部的凹口。另一方面，Insets部分或完全遮挡窗口，例如不透明键盘或部分半透明状态栏，其覆盖没有间隙的区域。</p>
+<p>[Window.padding]属性是从[Window.viewInsets]和[Window.viewPadding]计算的。它将允许视图插入在适当的情况下使用视图填充，例如当手机的键盘覆盖底部视图填充并因此“吸收”它时。</p>
+<p>无论viewInsets是什么，想要相对于viewPadding定位元素的客户端都应使用[Window.viewPadding]属性，例如：如果您希望在屏幕中央绘制相对于iPhone“安全区域”的小部件，无论键盘是否显示。</p>
+<p>[Window.padding]对于想要知道应该考虑多少填充而不考虑当前插入状态的客户端是有用的，例如，确定是否应该考虑手势以用于滚动目的。此值根据insets的当前状态而变化。例如，无论如何，可见键盘将消耗[Window.viewPadding]底部的所有手势，因此无需在[Window.padding]中考虑到这一点，这对于此类计算始终是安全的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br></pre></td><td class="code"><pre><span class="line">class Window &#123;</span><br><span class="line">  Window._() &#123;</span><br><span class="line">    _setNeedsReportTimings = _nativeSetNeedsReportTimings;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /// 每个逻辑像素的设备像素数。 这个数字可能不是两个人的权力。 实际上，它甚至可能不是整数。 例如，Nexus 6的设备像素比为3.5。</span><br><span class="line">  /// 设备像素也称为物理像素。 逻辑像素也称为与设备无关或与分辨率无关的像素。</span><br><span class="line">  /// 根据定义，物理显示器每厘米大约有38个逻辑像素，或每英寸大约96个逻辑像素。 [devicePixelRatio]返回的值最终是从硬件本身，设备驱动程序或存储在操作系统或固件中的硬编码值获得的，并且可能不准确，有时可能会有很大的余量。</span><br><span class="line">  /// Flutter框架以逻辑像素运行，因此很少需要直接处理此属性。</span><br><span class="line">  /// 当此更改时，将调用[onMetricsChanged]。</span><br><span class="line">  double get devicePixelRatio =&gt; _devicePixelRatio;</span><br><span class="line">  double _devicePixelRatio = 1.0;</span><br><span class="line"></span><br><span class="line">  ///应用于绘制应用程序的矩形的尺寸，以物理像素为单位。</span><br><span class="line">  ///当此更改时，将调用[onMetricsChanged]。</span><br><span class="line">  ///启动时，在运行Dart代码之前，可能无法知道应用程序窗口的大小。 如果在应用程序生命周期的早期观察到此值，则可能会报告[Size.zero]。</span><br><span class="line">  ///此值不考虑任何屏幕键盘或其他系统UI。 [padding]和[viewInsets]属性提供了一个视图，表明系统UI可以隐藏应用程序的每一侧。</span><br><span class="line">  ///也可以看看： [WidgetsBindingObserver]，用于窗口小部件层的机制，以观察此值何时更改。</span><br><span class="line">  Size get physicalSize =&gt; _physicalSize;</span><br><span class="line">  Size _physicalSize = Size.zero;</span><br><span class="line"></span><br><span class="line">  ///物理深度是Window允许的最大elevation。</span><br><span class="line">  ///在此elevation或高于该elevation绘制的物理层将其elevation限制为此值。 如果物理层本身的elevation大于可用深度，或者图层的某个祖先导致其累积elevation大于可用深度，则会发生这种情况。</span><br><span class="line">  ///默认值为[double.maxFinite]，用于未指定最大elevation的平台。 此属性当前预计将在Fuchsia上设置为非默认值。</span><br><span class="line">  double get physicalDepth =&gt; _physicalDepth;</span><br><span class="line">  double _physicalDepth = double.maxFinite;</span><br><span class="line"></span><br><span class="line">  ///应用程序可以呈现的显示矩形每侧的物理像素数，但操作系统可能会放置系统UI，例如键盘，完全遮盖任何内容。</span><br><span class="line">  ///当此更改时，将调用[onMetricsChanged]。</span><br><span class="line">  ///[Window.viewInsets]，[Window.viewPadding]和[Window.padding]之间的关系在[Window]的文档中有更详细的描述。</span><br><span class="line">  /// 也可以看看：</span><br><span class="line">  /// * [WidgetsBindingObserver]，用于窗口小部件层的机制，以观察此值何时更改。</span><br><span class="line">  /// * [MediaQuery.of]，一个更简单的机制。</span><br><span class="line">  /// * [Scaffold]，它自动在材质设计应用程序中应用视图插入。</span><br><span class="line">  WindowPadding get viewInsets =&gt; _viewInsets;</span><br><span class="line">  WindowPadding _viewInsets = WindowPadding.zero;</span><br><span class="line"></span><br><span class="line">  ///应用程序可以呈现的显示矩形每一侧的物理像素数，但可能被系统UI（例如系统通知区域）或显示中的物理入侵（例如过扫描）部分遮盖电视屏幕或手机传感器外壳上的区域）。</span><br><span class="line">  ///与[Window.padding]不同，此值相对于[Window.viewInsets]不会改变。例如，在iPhone X上，它不会响应软键盘可见或隐藏而改变，而[Window.padding]会。</span><br><span class="line">  ///当此更改时，将调用[onMetricsChanged]。</span><br><span class="line">  WindowPadding get viewPadding =&gt; _viewPadding;</span><br><span class="line">  WindowPadding _viewPadding = WindowPadding.zero;</span><br><span class="line"></span><br><span class="line">  ///应用程序可以呈现的显示矩形每一侧的物理像素数，但可能被系统UI（例如系统通知区域）或显示中的物理入侵（例如过扫描）部分遮盖电视屏幕或手机传感器外壳上的区域）。</span><br><span class="line">  ///这个值是通过&apos;max（0.0，Window.viewPadding  -  Window.viewInsets）`来计算的。这将处理一个系统IME，它会增加底部插入消耗大部分底部填充。例如，在iPhone X上，当没有绘制软键盘时[Window.padding.bottom]与[Window.viewPadding.bottom]相同（占底部软按钮区域），但是为“0.0”。当软键盘可见时。</span><br><span class="line">  ///当此更改时，将调用[onMetricsChanged]。</span><br><span class="line">  WindowPadding get padding =&gt; _padding;</span><br><span class="line">  WindowPadding _padding = WindowPadding.zero;</span><br><span class="line"></span><br><span class="line">   ///每当[devicePixelRatio]，[physicalSize]，[padding]或[viewInsets]值发生变化时调用的回调，例如当设备被旋转或应用程序调整大小时（例如，当显示应用程序时）  - 在Android上）。</span><br><span class="line">   ///引擎在设置回调的同一区域中调用此回调。</span><br><span class="line">   ///框架注册此回调并适当更新布局。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于小部件层的一种机制，用于在调用此方法时注册通知。</span><br><span class="line">   /// * [MediaQuery.of]，一个更简单的机制。</span><br><span class="line">  VoidCallback get onMetricsChanged =&gt; _onMetricsChanged;</span><br><span class="line">  VoidCallback _onMetricsChanged;</span><br><span class="line">  Zone _onMetricsChangedZone;</span><br><span class="line">  set onMetricsChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onMetricsChanged = callback;</span><br><span class="line">    _onMetricsChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///系统报告的设备默认语言环境。</span><br><span class="line">   ///这确定了应用程序应尽可能用于呈现其用户界面的语言和格式约定。</span><br><span class="line">   ///这是用户选择的第一个区域设置，是用户的主要区域设置（设备UI显示的区域设置）</span><br><span class="line">   ///这相当于`locales.first`，如果[locales]列表尚未设置或为空，它将提供一个空的非空语言环境。</span><br><span class="line">  Locale get locale &#123;</span><br><span class="line">    if (_locales != null &amp;&amp; _locales.isNotEmpty) &#123;</span><br><span class="line">      return _locales.first;</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///完整的系统报告支持的设备区域设置。</span><br><span class="line">   ///这确定了应用程序应尽可能用于呈现其用户界面的语言和格式约定。</span><br><span class="line">   ///列表按优先级顺序排序，较低索引的语言环境优先于较高索引的语言环境。 第一个元素是主要[locale]。</span><br><span class="line">   ///只要此值发生变化，就会调用[onLocaleChanged]回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于窗口小部件层的机制，以观察此值何时更改。</span><br><span class="line">  List&lt;Locale&gt; get locales =&gt; _locales;</span><br><span class="line">  List&lt;Locale&gt; _locales;</span><br><span class="line"></span><br><span class="line">   ///每当[locale]更改值时调用的回调。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于小部件层的机制，以观察何时调用此回调。</span><br><span class="line">  VoidCallback get onLocaleChanged =&gt; _onLocaleChanged;</span><br><span class="line">  VoidCallback _onLocaleChanged;</span><br><span class="line">  Zone _onLocaleChangedZone;</span><br><span class="line">  set onLocaleChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onLocaleChanged = callback;</span><br><span class="line">    _onLocaleChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   /// dart isolate 初始化后的生命周期状态。</span><br><span class="line">   ///随着生命周期的变化，不会更新此属性。</span><br><span class="line">   ///它用于在启动时使用任何缓冲的生命周期状态事件初始化[SchedulerBinding.lifecycleState]。</span><br><span class="line">  String get initialLifecycleState &#123;</span><br><span class="line">    _initialLifecycleStateAccessed = true;</span><br><span class="line">    return _initialLifecycleState;</span><br><span class="line">  &#125;</span><br><span class="line">  String _initialLifecycleState;</span><br><span class="line">  </span><br><span class="line">  ///跟踪是否已访问初始状态。 </span><br><span class="line">  ///一旦访问，我们将停止更新[initialLifecycleState]，因为它不是访问该状态的首选方式。</span><br><span class="line">  bool _initialLifecycleStateAccessed = false;</span><br><span class="line"></span><br><span class="line">   ///系统报告的 text scale。</span><br><span class="line">   ///这将根据用户的平台首选项确定在呈现文本时使用的文本缩放因子。</span><br><span class="line">   ///只要此值发生变化，就会调用[onTextScaleFactorChanged]回调。</span><br><span class="line">   ///  也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于窗口小部件层的机制，以观察此值何时更改。</span><br><span class="line">  double get textScaleFactor =&gt; _textScaleFactor;</span><br><span class="line">  double _textScaleFactor = 1.0;</span><br><span class="line"></span><br><span class="line">   /// 指示是否应始终以24小时格式显示时间的设置。</span><br><span class="line">   /// [showTimePicker]使用此选项。</span><br><span class="line">  bool get alwaysUse24HourFormat =&gt; _alwaysUse24HourFormat;</span><br><span class="line">  bool _alwaysUse24HourFormat = false;</span><br><span class="line"></span><br><span class="line">   ///每当[textScaleFactor]更改值时调用的回调。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于小部件层的机制，以观察何时调用此回调。</span><br><span class="line">  VoidCallback get onTextScaleFactorChanged =&gt; _onTextScaleFactorChanged;</span><br><span class="line">  VoidCallback _onTextScaleFactorChanged;</span><br><span class="line">  Zone _onTextScaleFactorChangedZone;</span><br><span class="line">  set onTextScaleFactorChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onTextScaleFactorChanged = callback;</span><br><span class="line">    _onTextScaleFactorChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///表示主机平台当前亮度模式的设置。</span><br><span class="line">   ///如果平台没有首选项，[platformBrightness]默认为[Brightness.light]。</span><br><span class="line">  Brightness get platformBrightness =&gt; _platformBrightness;</span><br><span class="line">  Brightness _platformBrightness = Brightness.light;</span><br><span class="line"></span><br><span class="line">   ///每当[platformBrightness]更改值时调用的回调。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [WidgetsBindingObserver]，用于小部件层的机制，以观察何时调用此回调。</span><br><span class="line">  VoidCallback get onPlatformBrightnessChanged =&gt; _onPlatformBrightnessChanged;</span><br><span class="line">  VoidCallback _onPlatformBrightnessChanged;</span><br><span class="line">  Zone _onPlatformBrightnessChangedZone;</span><br><span class="line">  set onPlatformBrightnessChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onPlatformBrightnessChanged = callback;</span><br><span class="line">    _onPlatformBrightnessChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///调用的回调函数通知应用程序使用[SceneBuilder] API和[render]方法提供场景是合适的时间。 如果可能，这是由硬件VSync信号驱动的。 只有在自上次调用此回调以来调用[scheduleFrame]时才会调用此方法。</span><br><span class="line">   /// [onBeginFrame]之后立即调用[onDrawFrame]回调，排除任何由[onBeginFrame]处理程序排队的微任务（例如任何[Future] s的完成）。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [SchedulerBinding]，Flutter框架类，用于管理帧的调度。</span><br><span class="line">   /// * [RendererBinding]，Flutter框架类，用于管理布局和绘制。</span><br><span class="line">  FrameCallback get onBeginFrame =&gt; _onBeginFrame;</span><br><span class="line">  FrameCallback _onBeginFrame;</span><br><span class="line">  Zone _onBeginFrameZone;</span><br><span class="line">  set onBeginFrame(FrameCallback callback) &#123;</span><br><span class="line">    _onBeginFrame = callback;</span><br><span class="line">    _onBeginFrameZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///在[onBeginFrame]完成之后和微任务队列排空之后为每个帧调用的回调。 这可以用于实现在[onBeginFrame]阶段排队的任何延迟工作之后发生的帧渲染的第二阶段。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [SchedulerBinding]，Flutter框架类，用于管理帧的调度。</span><br><span class="line">   /// * [RendererBinding]，Flutter框架类，用于管理布局和绘制。</span><br><span class="line">  VoidCallback get onDrawFrame =&gt; _onDrawFrame;</span><br><span class="line">  VoidCallback _onDrawFrame;</span><br><span class="line">  Zone _onDrawFrameZone;</span><br><span class="line">  set onDrawFrame(VoidCallback callback) &#123;</span><br><span class="line">    _onDrawFrame = callback;</span><br><span class="line">    _onDrawFrameZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   ///被调用以报告最近栅格化帧的[FrameTiming]的回调。</span><br><span class="line">   ///这可用于查看应用程序是否丢失帧（通过[FrameTiming.buildDuration]和[FrameTiming.rasterDuration]），或高延迟（通过[FrameTiming.totalSpan]）。</span><br><span class="line">   ///与[Timeline]不同，此处的时序信息在发布模式下可用（除了配置文件和调试模式）。 因此，这可用于监控应用程序在野外的性能。</span><br><span class="line">   /// &#123;@macro dart.ui.TimingsCallback.list&#125;如果为null，则不会执行任何其他工作。 如果这不是null，Flutter每1秒花费不到0.1ms来报告时间（在iPhone6S上测量）。 0.1ms约为16ms的0.6％（60fps的帧预算），或每秒0.01％的CPU使用率。</span><br><span class="line">  TimingsCallback get onReportTimings =&gt; _onReportTimings;</span><br><span class="line">  TimingsCallback _onReportTimings;</span><br><span class="line">  Zone _onReportTimingsZone;</span><br><span class="line">  set onReportTimings(TimingsCallback callback) &#123;</span><br><span class="line">    if ((callback == null) != (_onReportTimings == null)) &#123;</span><br><span class="line">      _setNeedsReportTimings(callback != null);</span><br><span class="line">    &#125;</span><br><span class="line">    _onReportTimings = callback;</span><br><span class="line">    _onReportTimingsZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _SetNeedsReportTimingsFunc _setNeedsReportTimings;</span><br><span class="line">  void _nativeSetNeedsReportTimings(bool value) native &apos;Window_setNeedsReportTimings&apos;;</span><br><span class="line"></span><br><span class="line">   ///指针数据可用时调用的回调。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">   /// 也可以看看：</span><br><span class="line">   /// * [GestureBinding]，Flutter框架类，用于管理指针事件。</span><br><span class="line">  PointerDataPacketCallback get onPointerDataPacket =&gt; _onPointerDataPacket;</span><br><span class="line">  PointerDataPacketCallback _onPointerDataPacket;</span><br><span class="line">  Zone _onPointerDataPacketZone;</span><br><span class="line">  set onPointerDataPacket(PointerDataPacketCallback callback) &#123;</span><br><span class="line">    _onPointerDataPacket = callback;</span><br><span class="line">    _onPointerDataPacketZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ///启动应用程序时嵌入器请求的路由或路径。</span><br><span class="line">  ///如果没有请求特定路由，这将是字符串“`/`”。</span><br><span class="line">  /// Android</span><br><span class="line">  ///在Android上，调用[`FlutterView.setInitialRoute`]（/ javadoc / io / flutter / view / FlutterView.html＃setInitialRoute-java.lang.String-）将设置此值。该值必须足够早地设置，即在Dart中执行[runApp]调用之前，这对框架有任何影响。 `FlutterActivity`子类中的`createFlutterView`方法是设置值的合适时间。应用程序的&apos;AndroidManifest.xml`文件也必须更新为具有合适的[`&lt;intent-filter&gt;`]（https://developer.android.com/guide/topics/manifest/intent-filter-element.html） 。</span><br><span class="line">  /// ## iOS</span><br><span class="line">  ///在iOS上，调用[`FlutterViewController.setInitialRoute`]（/ objcdoc / Classes / FlutterViewController.html＃/ c：objc％28cs％29FlutterViewController％28im％29setInitialRoute :)将设置此值。该值必须足够早地设置，即在Dart中执行[runApp]调用之前，这对框架有任何影响。 `application：didFinishLaunchingWithOptions：`方法是设置此值的合适时间。</span><br><span class="line">  /// 也可以看看：</span><br><span class="line">  /// * [Navigator]，一个处理路由的小部件。</span><br><span class="line">  /// * [SystemChannels.navigation]，它处理来自嵌入器的后续导航请求。</span><br><span class="line">  String get defaultRouteName =&gt; _defaultRouteName();</span><br><span class="line">  String _defaultRouteName() native &apos;Window_defaultRouteName&apos;;</span><br><span class="line"></span><br><span class="line">  /// 请求在下一个适当的时机调用[onBeginFrame]和[onDrawFrame]回调。</span><br><span class="line">  /// 也可以看看：</span><br><span class="line">  /// * [SchedulerBinding]，Flutter框架类，用于管理帧的调度。</span><br><span class="line">  void scheduleFrame() native &apos;Window_scheduleFrame&apos;;</span><br><span class="line"></span><br><span class="line">  ///使用新提供的[Scene]更新应用程序在GPU上的渲染。必须在被调用的[onBeginFrame]或[onDrawFrame]回调的范围内调用此函数。如果在单个[onBeginFrame] / [onDrawFrame]回调序列中第二次调用此函数，或者在这些回调范围之外调用此函数，则将忽略该调用。</span><br><span class="line">  ///要记录图形操作，首先创建一个[PictureRecorder]，然后构造一个[Canvas]，将[PictureRecorder]传递给它的构造函数。</span><br><span class="line">  ///发出所有图形操作后，调用[PictureRecorder]上的[PictureRecorder.endRecording]功能，获取代表已发布图形操作的最终[Picture]。</span><br><span class="line">  ///接下来，创建一个[SceneBuilder]，并使用[SceneBuilder.addPicture]将[Picture]添加到它。使用[SceneBuilder.build]方法，您可以获得[Scene]对象，您可以通过此[render]函数向用户显示该对象。</span><br><span class="line">  ///  也可以看看：</span><br><span class="line">  /// * [SchedulerBinding]，Flutter框架类，用于管理帧的调度。</span><br><span class="line">  /// * [RendererBinding]，Flutter框架类，用于管理布局和绘制。</span><br><span class="line">  void render(Scene scene) native &apos;Window_render&apos;;</span><br><span class="line"></span><br><span class="line">  ///当窗口的语义内容发生变化时，用户是否请求调用[update Semantics]。</span><br><span class="line">  ///只要此值发生变化，就会调用[onSemanticsEnabled Changed]回调。</span><br><span class="line">  bool get semanticsEnabled =&gt; _semanticsEnabled;</span><br><span class="line">  bool _semanticsEnabled = false;</span><br><span class="line"></span><br><span class="line">  ///当[semanticsEnabled]的值发生变化时调用的回调。</span><br><span class="line">  ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">  VoidCallback get onSemanticsEnabledChanged =&gt; _onSemanticsEnabledChanged;</span><br><span class="line">  VoidCallback _onSemanticsEnabledChanged;</span><br><span class="line">  Zone _onSemanticsEnabledChangedZone;</span><br><span class="line">  set onSemanticsEnabledChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onSemanticsEnabledChanged = callback;</span><br><span class="line">    _onSemanticsEnabledChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ///每当用户请求执行操作时调用的回调。</span><br><span class="line">  ///当用户根据[updateSemantics]提供的语义表达他们希望执行的操作时，将使用此回调。</span><br><span class="line">  ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">  SemanticsActionCallback get onSemanticsAction =&gt; _onSemanticsAction;</span><br><span class="line">  SemanticsActionCallback _onSemanticsAction;</span><br><span class="line">  Zone _onSemanticsActionZone;</span><br><span class="line">  set onSemanticsAction(SemanticsActionCallback callback) &#123;</span><br><span class="line">    _onSemanticsAction = callback;</span><br><span class="line">    _onSemanticsActionZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ///平台可以启用的其他辅助功能。</span><br><span class="line">  AccessibilityFeatures get accessibilityFeatures =&gt; _accessibilityFeatures;</span><br><span class="line">  AccessibilityFeatures _accessibilityFeatures;</span><br><span class="line"></span><br><span class="line">  /// [accessibilityFeatures]的值更改时调用的回调。</span><br><span class="line">  /// 框架在设置回调的同一区域中调用此回调。</span><br><span class="line">  VoidCallback get onAccessibilityFeaturesChanged =&gt; _onAccessibilityFeaturesChanged;</span><br><span class="line">  VoidCallback _onAccessibilityFeaturesChanged;</span><br><span class="line">  Zone _onAccessibilityFlagsChangedZone;</span><br><span class="line">  set onAccessibilityFeaturesChanged(VoidCallback callback) &#123;</span><br><span class="line">    _onAccessibilityFeaturesChanged = callback;</span><br><span class="line">    _onAccessibilityFlagsChangedZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ///更改有关此窗口的保留语义数据。</span><br><span class="line">  ///如果[semanticsEnabled]为true，则只要该窗口的语义内容发生变化，用户就会请求调用此函数。</span><br><span class="line">  ///在任何一种情况下，此函数都会处理给定的更新，这意味着无法进一步使用语义更新。</span><br><span class="line">  void updateSemantics(SemanticsUpdate update) native &apos;Window_updateSemantics&apos;;</span><br><span class="line"></span><br><span class="line">   ///设置与此窗口的根isolate关联的调试名称。</span><br><span class="line">   ///通常，调试名称是从Dart端口，入口点和源文件自动生成的。 例如：`main.dart $ main-1234`。</span><br><span class="line">   ///这可以与flutter工具`--isolate-filter`标志结合使用来调试特定的根isolate。 例如：`flutter attach --isolate-filter = [name]`。</span><br><span class="line">   ///请注意，这不会重命名根的任何子isolate。</span><br><span class="line">  void setIsolateDebugName(String name) native &apos;Window_setIsolateDebugName&apos;;</span><br><span class="line"></span><br><span class="line">   ///向特定于平台的插件发送消息。</span><br><span class="line">   ///`name`参数确定哪个插件接收消息。 `data`参数包含消息有效负载，通常是UTF-8编码的JSON，但可以是任意数据。 如果插件回复消息，将使用响应调用`callback`。</span><br><span class="line">   ///框架在调用此方法的同一区域中调用[callback]。</span><br><span class="line">  void sendPlatformMessage(String name,</span><br><span class="line">                           ByteData data,</span><br><span class="line">                           PlatformMessageResponseCallback callback) &#123;</span><br><span class="line">    final String error =</span><br><span class="line">        _sendPlatformMessage(name, _zonedPlatformMessageResponseCallback(callback), data);</span><br><span class="line">    if (error != null)</span><br><span class="line">      throw Exception(error);</span><br><span class="line">  &#125;</span><br><span class="line">  String _sendPlatformMessage(String name,</span><br><span class="line">                              PlatformMessageResponseCallback callback,</span><br><span class="line">                              ByteData data) native &apos;Window_sendPlatformMessage&apos;;</span><br><span class="line"></span><br><span class="line">   ///每当此窗口收到来自特定于平台的插件的消息时调用。</span><br><span class="line">   ///`name`参数确定哪个插件发送了消息。 `data`参数是有效载荷，通常是UTF-8编码的JSON，但可以是任意数据。</span><br><span class="line">   ///消息处理程序必须调用`callback`参数中给出的函数。</span><br><span class="line">   ///如果处理程序不需要响应，则处理程序应将null传递给回调。</span><br><span class="line">   ///框架在设置回调的同一区域中调用此回调。</span><br><span class="line">  PlatformMessageCallback get onPlatformMessage =&gt; _onPlatformMessage;</span><br><span class="line">  PlatformMessageCallback _onPlatformMessage;</span><br><span class="line">  Zone _onPlatformMessageZone;</span><br><span class="line">  set onPlatformMessage(PlatformMessageCallback callback) &#123;</span><br><span class="line">    _onPlatformMessage = callback;</span><br><span class="line">    _onPlatformMessageZone = Zone.current;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ///由[_dispatchPlatformMessage]调用。</span><br><span class="line">  void _respondToPlatformMessage(int responseId, ByteData data)</span><br><span class="line">      native &apos;Window_respondToPlatformMessage&apos;;</span><br><span class="line"></span><br><span class="line">  ///在另一个回调函数中包含给定的[callback]，以确保该回调</span><br><span class="line">  ///在其注册的区域中调用原始回调。</span><br><span class="line">  static PlatformMessageResponseCallback _zonedPlatformMessageResponseCallback(PlatformMessageResponseCallback callback) &#123;</span><br><span class="line">    if (callback == null)</span><br><span class="line">      return null;</span><br><span class="line"></span><br><span class="line">    //存储正在注册回调的区域。</span><br><span class="line">    final Zone registrationZone = Zone.current;</span><br><span class="line"></span><br><span class="line">    return (ByteData data) &#123;</span><br><span class="line">      registrationZone.runUnaryGuarded(callback, data);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单总结：</p>
+<p>相关类：<br>[WidgetsBindingObserver]，用于窗口小部件层的机制，以观察此值何时更改 – 全局<br>[MediaQuery.of]，一个更简单的机制。适用于屏幕显示相关属性<br>[SchedulerBinding.lifecycleState]，生命周期状态事件<br>[SceneBuilder] API和[render]方法，[scheduleFrame]<br>[SchedulerBinding]，Flutter框架类，用于管理帧的调度。<br>[RendererBinding]，Flutter框架类，用于管理布局和绘制。<br>[FrameTiming]，栅格化帧<br>[GestureBinding]，Flutter框架类，用于管理指针事件。<br>[Navigator]，一个处理路由的小部件。<br>[SystemChannels.navigation]，它处理来自嵌入器的后续导航请求。</p>
+<p>Window.dart 控制的属性</p>
+<p>// 设备无关像素<br>devicePixelRatio</p>
+<p>// 绘制应用程序矩形尺寸、的物理像素<br>physicalSize</p>
+<p>// 应用程序可以呈现的显示矩形每侧的物理像素数<br>viewInsets</p>
+<p>// 应用程序可以呈现的显示矩形每一侧的物理像素数<br>viewPadding</p>
+<p>// 应用程序可以呈现的显示矩形每一侧的物理像素数<br>padding</p>
+<p>// 每当[devicePixelRatio]，[physicalSize]，[padding]或[viewInsets]值发生变化时调用的回调<br>onMetricsChanged</p>
+<hr>
+<p>// Window所允许的最大elevation<br>physicalDepth</p>
+<hr>
+<p>///系统报告的设备默认语言环境。<br>locale</p>
+<p>///完整的系统报告支持的设备区域设置。<br>locales</p>
+<p>///每当[locale]更改值时调用的回调。<br>onLocaleChanged</p>
+<hr>
+<p>/// dart isolate 初始化后的生命周期状态。<br>initialLifecycleState</p>
+<p>///跟踪是否已访问初始状态。<br>_initialLifecycleStateAccessed</p>
+<hr>
+<p>///系统报告的 text scale。<br>textScaleFactor</p>
+<p>///每当[textScaleFactor]更改值时调用的回调<br>onTextScaleFactorChanged</p>
+<hr>
+<p>/// 指示是否应始终以24小时格式显示时间的设置。<br>alwaysUse24HourFormat</p>
+<hr>
+<p>///表示主机平台当前亮度模式的设置<br>platformBrightness</p>
+<p>///每当[platformBrightness]更改值时调用的回调。<br>onPlatformBrightnessChanged</p>
+<hr>
+<p>///调用的回调函数通知应用程序使用[SceneBuilder] API和[render]方法提供场景是合适的时间。<br>onBeginFrame</p>
+<p>///在[onBeginFrame]完成之后和微任务队列排空之后为每个帧调用的回调。<br>onDrawFrame</p>
+<p>///请求在下一个适当的时机调用[onBeginFrame]和[onDrawFrame]回调。<br>scheduleFrame()</p>
+<p>///使用新提供的[Scene]更新应用程序在GPU上的渲染。<br>render(Scene scene)</p>
+<hr>
+<p>///被调用以报告最近栅格化帧的[FrameTiming]的回调，可用于查看应用程序是否丢失帧<br>onReportTimings</p>
+<hr>
+<p>///指针数据可用时调用的回调。阅读[GestureBinding]<br>onPointerDataPacket</p>
+<hr>
+<p>///启动应用程序时嵌入器请求的路由或路径。<br>defaultRouteName</p>
+<hr>
+<p>///当窗口的语义内容发生变化时，用户是否请求调用[update Semantics]。<br>semanticsEnabled</p>
+<p>///当[semanticsEnabled]的值发生变化时调用的回调。<br>onSemanticsEnabledChanged</p>
+<p>///更改有关此窗口的保留语义数据。<br>updateSemantics(SemanticsUpdate update)</p>
+<p>///每当用户请求执行操作时调用的回调。<br>onSemanticsActio</p>
+<hr>
+<p>///平台可以启用的其他辅助功能。<br>accessibilityFeatures</p>
+<p>///[accessibilityFeatures]的值更改时调用的回调。<br>onAccessibilityFeaturesChanged</p>
+<hr>
+<p>///设置与此窗口的根isolate关联的调试名称。<br>setIsolateDebugName(String name)</p>
+<hr>
+<p>///向特定于平台的插件发送消息。<br>sendPlatformMessage(String name,<br>                           ByteData data,<br>                           PlatformMessageResponseCallback callback)</p>
+<p>///每当此窗口收到来自特定于平台的插件的消息时调用。<br>onPlatformMessage</p>
+<p>///由[_dispatchPlatformMessage]调用。<br>_respondToPlatformMessage(int responseId, ByteData data)</p>
+<p>///在另一个回调函数中包含给定的[callback]，以确保该回调<br>_zonedPlatformMessageResponseCallback</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-跨平台/" rel="next" title="Flutter-跨平台">
+                <i class="fa fa-chevron-left"></i> Flutter-跨平台
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-渲染相关1/" rel="prev" title="Flutter-渲染相关1">
+                Flutter-渲染相关1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">381.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

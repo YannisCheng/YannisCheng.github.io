@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Flutter开发问题总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T07:50:33.808Z">
+<meta property="og:updated_time" content="2019-08-27T00:34:56.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-issues总结">
 <meta name="twitter:description" content="Flutter开发问题总结">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-13T15:50:33+08:00">
-                2019-08-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-27T08:34:56+08:00">
+                2019-08-27
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  104 字
+                  564 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -444,6 +444,8 @@
 <li>删除lockfile文件</li>
 <li>重启AS</li>
 </ol>
+<h1 id="注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息："><a href="#注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息：" class="headerlink" title="注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息："></a>注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息：</h1><p>包：constants.dart</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">///如果应用程序是在发布模式下编译的，则为常量。</span><br><span class="line">///更具体地说，如果应用程序是使用&apos;-Ddart.vm.product = true&apos;标志在Dart中编译的，那么这是一个常量。</span><br><span class="line">///由于这是一个const值，它可以用来向编译器指示特定的代码块不会在发布模式下执行，因此可以删除。</span><br><span class="line">const bool kReleaseMode = bool.fromEnvironment(&apos;dart.vm.product&apos;, defaultValue: false);</span><br><span class="line"></span><br><span class="line">/// A constant that is true if the application was compiled in profile mode.</span><br><span class="line">///</span><br><span class="line">/// More specifically, this is a constant that is true if the application was</span><br><span class="line">/// compiled in Dart with the &apos;-Ddart.vm.profile=true&apos; flag.</span><br><span class="line">///</span><br><span class="line">/// Since this is a const value, it can be used to indicate to the compiler that</span><br><span class="line">/// a particular block of code will not be executed in profle mode, an hence</span><br><span class="line">/// can be removed.</span><br><span class="line">const bool kProfileMode = bool.fromEnvironment(&apos;dart.vm.profile&apos;, defaultValue: false);</span><br><span class="line"></span><br><span class="line">/// A constant that is true if the application was compiled in debug mode.</span><br><span class="line">///</span><br><span class="line">/// More specifically, this is a constant that is true if the application was</span><br><span class="line">/// not compiled with &apos;-Ddart.vm.product=true&apos; and &apos;-Ddart.vm.profile=true&apos;.</span><br><span class="line">///</span><br><span class="line">/// Since this is a const value, it can be used to indicate to the compiler that</span><br><span class="line">/// a particular block of code will not be executed in debug mode, and hence</span><br><span class="line">/// can be removed.</span><br><span class="line">const bool kDebugMode = !kReleaseMode &amp;&amp; !kProfileMode;</span><br><span class="line"></span><br><span class="line">/// The epsilon of tolerable double precision error.</span><br><span class="line">///</span><br><span class="line">/// This is used in various places in the framework to allow for floating point</span><br><span class="line">/// precision loss in calculations. Differences below this threshold are safe to</span><br><span class="line">/// disregard.</span><br><span class="line">const double precisionErrorTolerance = 1e-10;</span><br><span class="line"></span><br><span class="line">/// A constant that is true if the application was compiled to run on the web.</span><br><span class="line">///</span><br><span class="line">/// This implementation takes advantage of the fact that JavaScript does not</span><br><span class="line">/// support integers. In this environment, Dart&apos;s doubles and ints are</span><br><span class="line">/// backed by the same kind of object. Thus a double `0.0` is identical</span><br><span class="line">/// to an integer `0`. This is not true for Dart code running in AOT or on the</span><br><span class="line">/// VM.</span><br><span class="line">const bool kIsWeb = identical(0, 0.0);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -558,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -629,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#终端提示：Waiting-for-another-flutter-command-to-release-the-startup-lock"><span class="nav-number">1.</span> <span class="nav-text">终端提示：Waiting for another flutter command to release the startup lock</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#终端提示：Waiting-for-another-flutter-command-to-release-the-startup-lock"><span class="nav-number">1.</span> <span class="nav-text">终端提示：Waiting for another flutter command to release the startup lock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息："><span class="nav-number">2.</span> <span class="nav-text">注意flutter中获取当前App运行版本环境的方法，方便于在不同的运行环境下执行不同（是否要显示）的显示信息：</span></a></li></ol></div>
             
 
           </div>
@@ -663,7 +665,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">357.5k</span>
+    <span title="Site words total count">381.5k</span>
   
 </div>
 

@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Flutter,">
+  <meta name="keywords" content="Dart,">
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="滑动效果 (Slivers) 手势  滑动效果 SliverList SliverGrid SliverAppBar  手势 点击 拖动 其他手势">
-<meta name="keywords" content="Flutter">
+<meta name="description" content="const和final">
+<meta name="keywords" content="Dart">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flutter-UI进阶">
-<meta property="og:url" content="http://yannischeng.com/Flutter-UI进阶/index.html">
+<meta property="og:title" content="Dart-const和final">
+<meta property="og:url" content="http://yannischeng.com/Dart-const和final/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="滑动效果 (Slivers) 手势  滑动效果 SliverList SliverGrid SliverAppBar  手势 点击 拖动 其他手势">
+<meta property="og:description" content="const和final">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-08T08:12:40.541Z">
+<meta property="og:updated_time" content="2019-08-29T02:38:41.601Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flutter-UI进阶">
-<meta name="twitter:description" content="滑动效果 (Slivers) 手势  滑动效果 SliverList SliverGrid SliverAppBar  手势 点击 拖动 其他手势">
+<meta name="twitter:title" content="Dart-const和final">
+<meta name="twitter:description" content="const和final">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Flutter-UI进阶/">
+  <link rel="canonical" href="http://yannischeng.com/Dart-const和final/">
 
 
 
 
 
-  <title>Flutter-UI进阶 | YannisCheng's Technology Blogs</title>
+  <title>Dart-const和final | YannisCheng's Technology Blogs</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-UI进阶/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Dart-const和final/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Flutter-UI进阶</h1>
+          <h1 class="post-title" itemprop="name headline">Dart-const和final</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T16:05:15+08:00">
-                2019-07-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T10:20:16+08:00">
+                2019-07-02
               </time>
             
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-08T16:12:40+08:00">
-                2019-07-08
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T10:38:41+08:00">
+                2019-08-29
               </time>
             
           </span>
@@ -331,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
+                  <a href="/categories/Dart/" itemprop="url" rel="index">
+                    <span itemprop="name">Dart</span>
                   </a>
                 </span>
 
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  24 字
+                  744 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -397,7 +397,7 @@
     
         <div class="post-tags">
           
-            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+            <a href="/tags/Dart/" rel="tag"># Dart</a>
           
         </div>
       
@@ -415,7 +415,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/Flutter-UI进阶/" title="Flutter-UI进阶">http://yannischeng.com/Flutter-UI进阶/</a>
+    <a href="http://yannischeng.com/Dart-const和final/" title="Dart-const和final">http://yannischeng.com/Dart-const和final/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -434,21 +434,51 @@
       
 
       
-        <a id="more"></a>
+        <p>const和final</p>
+<a id="more"></a>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  final name = &apos;Bob&apos;; // 正确</span><br><span class="line">  // name = &apos;Alice&apos;; // 错误。在编辑时报错：final 变量只能赋值一次</span><br><span class="line"></span><br><span class="line">  // const name1;  // 错误。在编辑时报错：const变量是编译时常量，必须在声明时进行赋值初始化</span><br><span class="line">  // final name1; // 错误。在编辑时报错：final变量需要在声明时赋值进行初始化</span><br><span class="line">  const name2 = &apos;Alice&apos;; // 正确</span><br><span class="line"></span><br><span class="line">  // const name3 = name; // 错误。在编辑时报错：name是个变量，不能赋给const，只能使用常量进行赋值</span><br><span class="line">  final name4 = name2; // 正确，可以把const 常量赋给 final 变量</span><br><span class="line"></span><br><span class="line">  //  final names1 = const[name, 3, 4];  // 错误。在编辑时报错：name是个变量，不能赋给const</span><br><span class="line">  final names2 = const [name2, &apos;Allen&apos;, &apos;Brian&apos;];</span><br><span class="line"></span><br><span class="line">  const names3 = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;]; // 正确。</span><br><span class="line">  const names4 = const [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]; // 正确。</span><br><span class="line"></span><br><span class="line">  print(names3[1]);</span><br><span class="line">  print(names4[1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h1><ul>
+<li>声明的类型可以省略</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final (String 省略) str=&apos;123&apos;</span><br><span class="line">const (String 省略) str=&apos;123&apos;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong><a href="https://flutter-io.cn/docs/development/ui/advanced/slivers" target="_blank" rel="noopener">滑动效果 (Slivers)</a></strong></li>
-<li><strong><a href="https://flutter-io.cn/docs/development/ui/advanced/gestures" target="_blank" rel="noopener">手势</a></strong></li>
+<li>初始化后不能再赋值</li>
+<li>不能和<code>var</code>同时使用</li>
 </ul>
-<h1 id="滑动效果"><a href="#滑动效果" class="headerlink" title="滑动效果"></a>滑动效果</h1><ul>
-<li><strong><a href="https://api.flutter.dev/flutter/widgets/SliverList-class.html" target="_blank" rel="noopener">SliverList</a></strong></li>
-<li><strong><a href="https://api.flutter.dev/flutter/widgets/SliverGrid-class.html" target="_blank" rel="noopener">SliverGrid</a></strong></li>
-<li><strong><a href="https://api.flutter.dev/flutter/material/SliverAppBar-class.html" target="_blank" rel="noopener">SliverAppBar</a></strong></li>
+<h1 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h1><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p><strong><code>final</code>：是运行时常量 — 只能被初始化一次，这个值可以在运行时确定</strong><br><strong>当<code>final</code>修饰的是一个<code>引用</code>时，只是<code>引用的值不能被改变</code>，而引用指向的<code>对象的属性</code>如果<code>不是常量</code>的话<code>是可以被任意改变</code>的（<em>这一点非常重要</em>）</strong></p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p><strong><code>const</code>：是编译时常量 — 声明时就要赋一个具体的值</strong></p>
+<p><strong>类中只有静态成员才能用<code>const</code>修饰，即：类级别常量</strong>使用：<code>static const</code></p>
+<ul>
+<li><code>const</code>需要是<code>编译时常量</code></li>
 </ul>
-<h1 id="手势"><a href="#手势" class="headerlink" title="手势"></a>手势</h1><ul>
-<li><strong>点击</strong></li>
-<li><strong>拖动</strong></li>
-<li><strong>其他手势</strong></li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">final fl=DateTIme.now();</span><br><span class="line">const fl=DateTIme.now();//编译后报错</span><br><span class="line">//DateTime.now是运行时才能确定的常量，但const要求的是编译前就能确定</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>const</code>可以用<code>其它const常量</code>来<code>初始化值</code></li>
 </ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a=1;</span><br><span class="line">const b=2;</span><br><span class="line">const sum=a*b;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>const</code>赋值声明，<code>const</code>可以<code>省略</code></li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const list=const [];</span><br><span class="line">const list=[];//也可</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以改<code>非final</code>、<code>非const</code> <strong>变量值</strong>，即使曾经是<code>const值</code></li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var list1= const [1,2,3];</span><br><span class="line">const list2= const [1,2,3];</span><br><span class="line">fial list3= const [1,2,3];</span><br><span class="line">list1=[1];</span><br><span class="line">list2=[2];//编译器直接报错</span><br><span class="line">list3=[3];//编译器直接报错</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>const</code>导致的<code>不可变性</code>，是<code>可以传递</code>的</p>
+<p><code>const</code>变量的声明方式</p>
+</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const names4 = const [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br></pre></td></tr></table></figure>
+<p> 可以简写为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const names3 = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;];</span><br></pre></td></tr></table></figure>
+<p>  参考以上：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">final List ls=[1,2,3];</span><br><span class="line">ls[1]=0;//正确可以修改</span><br><span class="line">const List ls=[1,2,3];</span><br><span class="line">ls[1]=0;//编译后报错，不可以修改</span><br><span class="line">const的不可变性传递给了它的子元素</span><br></pre></td></tr></table></figure>
+<p> 就说明 <code>const List ls=[1,2,3]</code> 实际上就是对<code>变量：ls</code> 和 <code>值：[1,2,3]</code>，都是用了<code>const</code>，都进行了约束。</p>
+<ul>
+<li><strong>相同</strong>的<code>const常量</code><strong>不会在内存中重复创建</strong></li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">final List ls=[1,2,3];</span><br><span class="line">final List ls2=[1,2,3];</span><br><span class="line">//打印后不相等两内存不同</span><br><span class="line">const List ls=[1,2,3];</span><br><span class="line">const List ls2=[1,2,3];</span><br><span class="line">//打印后不相等两内存相同</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -470,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Flutter-控件相关/" rel="next" title="Flutter-控件相关">
-                <i class="fa fa-chevron-left"></i> Flutter-控件相关
+              <a href="/Flutter-导航与路由/" rel="next" title="Flutter-导航与路由">
+                <i class="fa fa-chevron-left"></i> Flutter-导航与路由
               </a>
             
           </div>
@@ -480,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Flutter-动画/" rel="prev" title="Flutter-动画">
-                Flutter-动画 <i class="fa fa-chevron-right"></i>
+              <a href="/Flutter-Future与FutureBuilder/" rel="prev" title="Flutter-Future与FutureBuilder">
+                Flutter-Future与FutureBuilder <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -563,7 +593,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -634,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#滑动效果"><span class="nav-number">1.</span> <span class="nav-text">滑动效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手势"><span class="nav-number">2.</span> <span class="nav-text">手势</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#声明"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相同点"><span class="nav-number">2.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同点"><span class="nav-number">3.</span> <span class="nav-text">不同点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">3.1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">3.2.</span> <span class="nav-text">const</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -668,7 +698,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">357.5k</span>
+    <span title="Site words total count">381.5k</span>
   
 </div>
 

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-渲染相关1">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-渲染相关1">
+<meta property="og:url" content="http://yannischeng.com/Flutter-渲染相关1/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-渲染相关1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-29T02:33:01.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-渲染相关1">
+<meta name="twitter:description" content="Flutter-渲染相关1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-渲染相关1/">
+
+
+
+
+
+  <title>Flutter-渲染相关1 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-渲染相关1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-渲染相关1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T15:41:18+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T10:33:01+08:00">
+                2019-08-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,568 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-渲染相关1/" title="Flutter-渲染相关1">http://yannischeng.com/Flutter-渲染相关1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-渲染相关1</p>
+<a id="more"></a>
+<h1 id="RenderObject"><a href="#RenderObject" class="headerlink" title="RenderObject"></a>RenderObject</h1><p><strong>渲染树中的对象。</strong></p>
+<p><code>RenderObject</code>类层次结构是渲染库的核心。<br><code>RenderObjects</code>有一个<code>父级</code>（树中此节点的父节点。），并有一个名为<code>parentData</code>（父渲染对象使用的数据。）的<code>槽</code>，其中<code>父RenderObject</code>可以存储子级特定的数据，例如子位置。<code>RenderObject</code>类还实现了<code>基本布局</code>和<code>绘制协议</code>。</p>
+<p>但是，<code>RenderObject</code>类不定义<code>子模型</code>（例如，节点是否具有零个，一个或多个子节点）。它也没有定义<code>坐标系</code>（例如，儿童是否位于笛卡尔坐标，极坐标等）或<code>特定的布局协议</code>（如：布局是否为高度宽，或大小限制，或者父级是否在子布局之前或之后设置子级的大小和位置，实际上是否允许孩子读取他们的父数据槽）。</p>
+<p><code>RenderBox子类</code>引入了布局系统使用笛卡尔坐标的观点。</p>
+<h1 id="ParentData"><a href="#ParentData" class="headerlink" title="ParentData"></a>ParentData</h1><p>父类与[RenderObject]关联的数据的基类。一些渲染对象希望将数据存储在其子节点上，例如它们对父节点布局算法的输入参数或它们相对于其他子节点的位置。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParentData</span> </span>&#123;</span><br><span class="line">  <span class="comment">/// Called when the RenderObject is removed from the tree.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> detach() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">String</span> toString() =&gt; <span class="string">'&lt;none&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="PaintingContext"><a href="#PaintingContext" class="headerlink" title="PaintingContext"></a>PaintingContext</h1><p>一个画画的地方</p>
+<p>[RenderObject]使用<code>绘画上下文(painting context)</code>绘画，而<code>不是直接使用画布</code>。 <code>绘制上下文(painting context)</code>有一个[Canvas]，它接收 <strong>单独</strong> 的绘制操作，还具有 <strong>绘制子渲染对象</strong> 的功能。</p>
+<p>在<code>绘制子渲染对象</code>时，<code>绘制上下文(painting context)</code>保持的<code>画布可以更改</code>，因为绘制子项 <strong>之前</strong> 和 <strong>之后</strong> 发出的 <strong>绘制操作</strong> 可能会记录在 <code>**单独**的合成图层</code> 中。 因此，不要在可能绘制子渲染对象的操作<code>之间保持对画布的引用</code>。</p>
+<p>使用<a href="重绘复合儿童">PaintingContext.repaintCompositedChild</a>和[pushLayer]时会自动创建新的[PaintingContext]对象。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaintingContext</span> <span class="keyword">extends</span> <span class="title">ClipContext</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///创建绘画上下文。</span></span><br><span class="line">  <span class="comment">///通常只由[PaintingContext.repaintCompositedChild]和[pushLayer]调用。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  PaintingContext(<span class="keyword">this</span>._containerLayer, <span class="keyword">this</span>.estimatedBounds)</span><br><span class="line">    : <span class="keyword">assert</span>(_containerLayer != <span class="keyword">null</span>),</span><br><span class="line">      <span class="keyword">assert</span>(estimatedBounds != <span class="keyword">null</span>);</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">final</span> ContainerLayer _containerLayer;</span><br><span class="line">    <span class="keyword">final</span> Rect estimatedBounds;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/// 重绘给定的渲染对象</span></span><br><span class="line">    <span class="comment">/// 渲染对象必须附加到[PipelineOwner]，必须具有合成图层(composited layer)，并且必须需要绘制。 渲染对象的图层（如果有）将被重复使用，以及子树中不需要重新绘制的任何图层。</span></span><br><span class="line">    <span class="comment">/// 另请参阅：* [RenderObject.isRepaintBoundary]，它确定[RenderObject]是否具有合成图层。</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> repaintCompositedChild(RenderObject child, &#123; <span class="built_in">bool</span> debugAlsoPaintedParent = <span class="keyword">false</span> &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(child._needsPaint);</span><br><span class="line">    _repaintCompositedChild(</span><br><span class="line">      child,</span><br><span class="line">      debugAlsoPaintedParent: debugAlsoPaintedParent,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> _repaintCompositedChild(</span><br><span class="line">    RenderObject child, &#123;</span><br><span class="line">    <span class="built_in">bool</span> debugAlsoPaintedParent = <span class="keyword">false</span>,</span><br><span class="line">    PaintingContext childContext,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">	……</span><br><span class="line">    childContext ??= PaintingContext(child._layer, child.paintBounds);</span><br><span class="line">    child._paintWithContext(childContext, Offset.zero);</span><br><span class="line">    childContext.stopRecordingIfNeeded();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">void</span> _paintWithContext(PaintingContext context, Offset offset) &#123;</span><br><span class="line">  </span><br><span class="line">  RenderObject debugLastActivePaint;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      _debugDoingThisPaint = <span class="keyword">true</span>;</span><br><span class="line">      debugLastActivePaint = _debugActivePaint;</span><br><span class="line">      _debugActivePaint = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">assert</span>(!isRepaintBoundary || _layer != <span class="keyword">null</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    _needsPaint = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      paint(context, offset);</span><br><span class="line">      <span class="keyword">assert</span>(!_needsLayout); <span class="comment">// 检查paint（）方法是否再次标记为脏</span></span><br><span class="line">      <span class="keyword">assert</span>(!_needsPaint); <span class="comment">// 检查paint（）方法是否再次标记为脏</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (e, stack) &#123;</span><br><span class="line">      _debugReportException(<span class="string">'paint'</span>, e, stack);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      debugPaint(context, offset);</span><br><span class="line">      _debugActivePaint = debugLastActivePaint;</span><br><span class="line">      _debugDoingThisPaint = <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">   <span class="comment">///绘制子项[RenderObject]。</span></span><br><span class="line">   <span class="comment">///如果子项具有自己的合成图层，则子项将合成到与此绘制上下文关联的图层子树中。 否则，将为此上下文将子绘制到当前</span></span><br><span class="line">   <span class="keyword">void</span> paintChild(RenderObject child, Offset offset) &#123;</span><br><span class="line"> 	……</span><br><span class="line">    <span class="keyword">if</span> (child.isRepaintBoundary) &#123;</span><br><span class="line">      <span class="comment">// 方法1：停止记录</span></span><br><span class="line">      stopRecordingIfNeeded();</span><br><span class="line">      <span class="comment">// 方法1：合成子对象</span></span><br><span class="line">      _compositeChild(child, offset);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      child._paintWithContext(<span class="keyword">this</span>, offset);</span><br><span class="line">    &#125;</span><br><span class="line">	……</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///如果录制已开始，则停止录制到画布。</span></span><br><span class="line">  <span class="comment">///不要直接调用此函数：此类中的函数将根据需要调用此方法。 内部调用此函数以确保在添加图层或完成绘制结果之前停止记录。</span></span><br><span class="line">  <span class="comment">///需要自定义如何执行对画布的录制的子类应覆盖此方法以保存自定义画布录制的结果。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> stopRecordingIfNeeded() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!_isRecording)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (debugRepaintRainbowEnabled) &#123;</span><br><span class="line">        <span class="keyword">final</span> Paint paint = Paint()</span><br><span class="line">          ..style = PaintingStyle.stroke</span><br><span class="line">          ..strokeWidth = <span class="number">6.0</span></span><br><span class="line">          ..color = debugCurrentRepaintColor.toColor();</span><br><span class="line">        canvas.drawRect(estimatedBounds.deflate(<span class="number">3.0</span>), paint);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (debugPaintLayerBordersEnabled) &#123;</span><br><span class="line">        <span class="keyword">final</span> Paint paint = Paint()</span><br><span class="line">          ..style = PaintingStyle.stroke</span><br><span class="line">          ..strokeWidth = <span class="number">1.0</span></span><br><span class="line">          ..color = <span class="keyword">const</span> Color(<span class="number">0xFFFF9800</span>);</span><br><span class="line">        canvas.drawRect(estimatedBounds, paint);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    _currentLayer.picture = _recorder.endRecording();</span><br><span class="line">    _currentLayer = <span class="keyword">null</span>;</span><br><span class="line">    _recorder = <span class="keyword">null</span>;</span><br><span class="line">    _canvas = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">void</span> _compositeChild(RenderObject child, Offset offset) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!_isRecording);</span><br><span class="line">    <span class="keyword">assert</span>(child.isRepaintBoundary);</span><br><span class="line">    <span class="comment">//返回保存堆栈上的项目数，包括初始状态。 这意味着它为一个干净的画布返回1，并且每次调用[save]和[saveLayer]都会增加它，并且对[restore]的每个匹配调用都会减少它。</span></span><br><span class="line">    <span class="comment">//这个数字不能低于1。</span></span><br><span class="line">    <span class="keyword">assert</span>(_canvas == <span class="keyword">null</span> || _canvas.getSaveCount() == <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//为我们的孩子创建一个图层，并将孩子绘制到其中。</span></span><br><span class="line">    <span class="keyword">if</span> (child._needsPaint) &#123;</span><br><span class="line">      repaintCompositedChild(child, debugAlsoPaintedParent: <span class="keyword">true</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(child._layer != <span class="keyword">null</span>);</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        <span class="comment">//注册RepaintBoundary指标的调用</span></span><br><span class="line">        child.debugRegisterRepaintBoundaryPaint(</span><br><span class="line">          includedParent: <span class="keyword">true</span>,</span><br><span class="line">          includedChild: <span class="keyword">false</span>,</span><br><span class="line">        );</span><br><span class="line">        child._layer.debugCreator = child.debugCreator ?? child;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(child._layer != <span class="keyword">null</span>);</span><br><span class="line">    child._layer.offset = offset;</span><br><span class="line">    appendLayer(child._layer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///在记录中添加一个图层，要求记录已经停止。</span></span><br><span class="line">  <span class="comment">///不要直接调用此函数：改为调用[addLayer]或[pushLayer]。 当添加未从[canvas]生成的所有图层时，将在内部调用此函数。</span></span><br><span class="line">  <span class="comment">///需要自定义图层添加方式的子类应覆盖此方法。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> appendLayer(Layer layer) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!_isRecording);</span><br><span class="line">    layer.remove();</span><br><span class="line">    <span class="comment">// 添加至Layer</span></span><br><span class="line">    _containerLayer.append(layer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">///要绘制的画布。</span></span><br><span class="line">  <span class="comment">///使用此上下文绘制子项时，当前画布可能会更改，这意味着保持对此getter返回的画布的引用很脆弱。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Canvas <span class="keyword">get</span> canvas &#123;</span><br><span class="line">    <span class="keyword">if</span> (_canvas == <span class="keyword">null</span>)</span><br><span class="line">      _startRecording();</span><br><span class="line">    <span class="keyword">return</span> _canvas;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">void</span> _startRecording() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!_isRecording);</span><br><span class="line">    _currentLayer = PictureLayer(estimatedBounds);</span><br><span class="line">    _recorder = ui.PictureRecorder();</span><br><span class="line">    _canvas = Canvas(_recorder);</span><br><span class="line">    _containerLayer.append(_currentLayer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">///将合成的叶子图层添加到录制内容中。</span></span><br><span class="line">  <span class="comment">///调用此函数后，[canvas]属性将更改为引用在给定图层之上绘制的新[Canvas]。</span></span><br><span class="line">  <span class="comment">///使用此函数的[RenderObject]很可能要求其[RenderObject.alwaysNeedsCompositing]属性返回true。 通知祖先渲染对象，此渲染对象将包含合成图层，例如，这会使它们使用合成剪辑。</span></span><br><span class="line">  <span class="comment">/// 也可以看看：</span></span><br><span class="line">  <span class="comment">/// * [pushLayer]，用于添加图层并使用其画布绘制该图层。</span></span><br><span class="line">  <span class="keyword">void</span> addLayer(Layer layer) &#123;</span><br><span class="line">    stopRecordingIfNeeded();</span><br><span class="line">    appendLayer(layer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///将给定图层附加到录制内容，并使用该图层调用`painter`回调，将`childPaintBounds`作为子画面的估计绘制范围。 `childPaintBounds`可以用于调试，但对绘画没有影响。</span></span><br><span class="line">  <span class="comment">///给定的图层必须是一个未连接的孤儿。 （提供新创建的对象，而不是重用现有层，满足该要求。）</span></span><br><span class="line">  <span class="comment">///“offset”是传递给`painter`的偏移量。</span></span><br><span class="line">  <span class="comment">///如果未指定`childPaintBounds`，则使用当前图层的绘制边界。 如果子图层不对其内容应用任何变换或剪裁，则这是合适的。 如果指定，`childPaintBounds`必须位于新图层的坐标系中，并且不应超出当前图层的绘图边界。</span></span><br><span class="line">  <span class="comment">/// 也可以看看：</span></span><br><span class="line">  <span class="comment">/// * [addLayer]，用于推送未使用画布的叶子图层。</span></span><br><span class="line">  <span class="keyword">void</span> pushLayer(ContainerLayer childLayer, PaintingContextCallback painter, Offset offset, &#123; Rect childPaintBounds &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!childLayer.attached);</span><br><span class="line">    <span class="keyword">assert</span>(childLayer.parent == <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(painter != <span class="keyword">null</span>);</span><br><span class="line">    stopRecordingIfNeeded();</span><br><span class="line">    appendLayer(childLayer);</span><br><span class="line">    <span class="keyword">final</span> PaintingContext childContext = createChildContext(childLayer, childPaintBounds ?? estimatedBounds);</span><br><span class="line">    painter(childContext, offset);</span><br><span class="line">    childContext.stopRecordingIfNeeded();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///使用矩形剪辑进一步绘画。</span></span><br><span class="line">  <span class="comment">/// *`needsCompositing`是孩子是否需要合成。 通常匹配调用者的[RenderObject.needsCompositing]值。</span></span><br><span class="line">  <span class="comment">/// *`offset`是从画布坐标系原点到调用者坐标系原点的偏移量。</span></span><br><span class="line">  <span class="comment">/// *`clipRect`是矩形（在调用者的坐标系中），用于剪切[painter]完成的绘画。</span></span><br><span class="line">  <span class="comment">/// *`painter`是一个回调，它将在应用[clipRect]时绘制。 此函数同步调用[painter]。</span></span><br><span class="line">  <span class="comment">/// *`clipBehavior`控制矩形的剪裁方式。</span></span><br><span class="line">  <span class="keyword">void</span> pushClipRect(<span class="built_in">bool</span> needsCompositing, Offset offset, Rect clipRect, PaintingContextCallback painter, &#123; Clip clipBehavior = Clip.hardEdge &#125;) &#123;</span><br><span class="line">    <span class="keyword">final</span> Rect offsetClipRect = clipRect.shift(offset);</span><br><span class="line">    <span class="keyword">if</span> (needsCompositing) &#123;</span><br><span class="line">      pushLayer(ClipRectLayer(clipRect: offsetClipRect, clipBehavior: clipBehavior), painter, offset, childPaintBounds: offsetClipRect);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clipRectAndPaint(offsetClipRect, clipBehavior, offsetClipRect, () =&gt; painter(<span class="keyword">this</span>, offset));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">void</span> pushClipRRect()&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">void</span> pushClipPath()&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">void</span> pushColorFilter()&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///使用矩阵转换进一步绘画。</span></span><br><span class="line">  <span class="comment">/// *`needsCompositing`是孩子是否需要合成。 通常匹配调用者的[RenderObject.needsCompositing]值。</span></span><br><span class="line">  <span class="comment">/// *`offset`是从画布坐标系原点到调用者坐标系原点的偏移量。</span></span><br><span class="line">  <span class="comment">/// *`transform`是应用于`painter`完成的绘画的矩阵。</span></span><br><span class="line">  <span class="comment">/// *`painter`是一个回调，它将使用`transform`进行绘制。 这个函数同步调用`painter`。</span></span><br><span class="line">  <span class="keyword">void</span> pushTransform(<span class="built_in">bool</span> needsCompositing, Offset offset, Matrix4 transform, PaintingContextCallback painter) &#123;</span><br><span class="line">    <span class="keyword">final</span> Matrix4 effectiveTransform = Matrix4.translationValues(offset.dx, offset.dy, <span class="number">0.0</span>)</span><br><span class="line">      ..multiply(transform)..translate(-offset.dx, -offset.dy);</span><br><span class="line">    <span class="keyword">if</span> (needsCompositing) &#123;</span><br><span class="line">      pushLayer(</span><br><span class="line">        TransformLayer(transform: effectiveTransform),</span><br><span class="line">        painter,</span><br><span class="line">        offset,</span><br><span class="line">        childPaintBounds: MatrixUtils.inverseTransformRect(effectiveTransform, estimatedBounds),</span><br><span class="line">      );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      canvas</span><br><span class="line">        ..save()</span><br><span class="line">        ..transform(effectiveTransform.storage);</span><br><span class="line">      painter(<span class="keyword">this</span>, offset);</span><br><span class="line">      canvas</span><br><span class="line">        ..restore();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///使用alpha值混合进一步绘画。</span></span><br><span class="line">  <span class="comment">/// *`offset`是从画布坐标系原点到调用者坐标系原点的偏移量。</span></span><br><span class="line">  <span class="comment">/// *`alpha`是混合由`painter`完成的绘画时使用的alpha值。 alpha值为0表示绘画完全透明，alpha值为255表示绘画完全不透明。</span></span><br><span class="line">  <span class="comment">/// *`painter`是一个回调，它将使用`alpha`绘制。 这个函数同步调用`painter`。</span></span><br><span class="line">  <span class="comment">///使用此函数的[RenderObject]很可能需要它</span></span><br><span class="line">  <span class="comment">/// [RenderObject.alwaysNeedsCompositing]属性返回true。 通知祖先渲染对象，此渲染对象将包含合成图层，例如，这会使它们使用合成剪辑。</span></span><br><span class="line">  <span class="keyword">void</span> pushOpacity(Offset offset, <span class="built_in">int</span> alpha, PaintingContextCallback painter) &#123;</span><br><span class="line">    pushLayer(OpacityLayer(alpha: alpha, offset: offset), painter, Offset.zero);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///重写此方法以绘制调试信息。</span></span><br><span class="line">   <span class="keyword">void</span> debugPaint(PaintingContext context, Offset offset) &#123;&#125;</span><br><span class="line">  </span><br><span class="line">   <span class="comment">///将此渲染对象绘制到给定偏移量的给定上下文中。</span></span><br><span class="line">   <span class="comment">///子类应重写此方法以为其自身提供可视外观。 渲染对象的局部坐标系与上下文画布的坐标系轴对齐，渲染对象的本地原点（即x = 0和y = 0）放置在上下文画布中的给定偏移处。</span></span><br><span class="line">   <span class="comment">///不要直接调用此函数。 如果您想自己画画，请调用[markNeedsPaint]来安排对此功能的调用。 如果你想绘制你的一个孩子，请在给定的`context`上调用[PaintingContext.paintChild]。</span></span><br><span class="line">   <span class="comment">///在绘制一个孩子时（通过给定上下文中的paint子函数），上下文保持的当前画布可能会更改，因为绘制子项之前和之后的绘制操作可能需要记录在单独的合成图层上。</span></span><br><span class="line">   <span class="keyword">void</span> paint（PaintingContext context，Offset offset）&#123;&#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">///应用将给定子绘制到给定矩阵时应用的变换。</span></span><br><span class="line">   <span class="comment">///由坐标转换函数用于将一个渲染对象的局部坐标转换为另一个渲染对象的局部坐标。</span></span><br><span class="line">   <span class="keyword">void</span> applyPaintTransform(covariant RenderObject child, Matrix4 transform) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(child.parent == <span class="keyword">this</span>);</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">///如果录制已开始，则停止录制到画布。</span></span><br><span class="line">  <span class="comment">///不要直接调用此函数：此类中的函数将根据需要调用此方法。 内部调用此函数以确保在添加图层或完成绘制结果之前停止记录</span></span><br><span class="line">  <span class="comment">///需要自定义如何执行对画布的录制的子类应覆盖此方法以保存自定义画布录制的结果。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> stopRecordingIfNeeded() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!_isRecording)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (debugRepaintRainbowEnabled) &#123;</span><br><span class="line">        <span class="keyword">final</span> Paint paint = Paint()</span><br><span class="line">          ..style = PaintingStyle.stroke</span><br><span class="line">          ..strokeWidth = <span class="number">6.0</span></span><br><span class="line">          ..color = debugCurrentRepaintColor.toColor();</span><br><span class="line">        canvas.drawRect(estimatedBounds.deflate(<span class="number">3.0</span>), paint);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (debugPaintLayerBordersEnabled) &#123;</span><br><span class="line">        <span class="keyword">final</span> Paint paint = Paint()</span><br><span class="line">          ..style = PaintingStyle.stroke</span><br><span class="line">          ..strokeWidth = <span class="number">1.0</span></span><br><span class="line">          ..color = <span class="keyword">const</span> Color(<span class="number">0xFFFF9800</span>);</span><br><span class="line">        canvas.drawRect(estimatedBounds, paint);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    _currentLayer.picture = _recorder.endRecording();</span><br><span class="line">    _currentLayer = <span class="keyword">null</span>;</span><br><span class="line">    _recorder = <span class="keyword">null</span>;</span><br><span class="line">    _canvas = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h1><p>一组抽象的布局约束。<br>具体布局模型（如框）将创建具体的子类，以传达父项和子项之间的布局约束。</p>
+<p> ##编写一个Constraints子类<br>当使用新的布局协议创建新的[RenderObject]子类时，通常需要创建一个新的[Constraints]子类来表示布局算法的输入。<br> [Constraints]子类应该是不可变的（所有字段都是final）。除了可以找到对特定布局协议有用的任何字段，构造函数和帮助器方法之外，还有几个要实现的成员：</p>
+<ul>
+<li>[isTight] getter，如果对象表示[RenderObject]类没有选择如何自己放置的情况，则应该返回true。例如，当最小和最大宽度以及最小和最大高度相等时，[BoxConstraints]为[isTight]返回true。</li>
+<li>[isNormalized] getter，如果对象以其规范形式表示其数据，则应返回true。有时，字段可能彼此冗余，因此几个不同的表示具有相同的含义。例如，最小宽度大于最大宽度的[BoxConstraints]实例等于最大宽度设置为最小宽度的实例（<code>2 &lt;w &lt;1</code>相当于<code>2 &lt;w &lt;2</code>，因为最小约束具有优先权）。这个getter由[debugAssertIsValid]的默认实现使用。</li>
+<li>[debugAssertIsValid]方法，如果约束对象有任何问题，应该断言。 （我们使用这种方法而不是在构造函数中断言，以便我们的构造函数可以是<code>const</code>，因此可以在构建有效约束时临时创建无效约束。）请参阅[BoxConstraints.debugAssertIsValid]的实现，以获取示例。可以进行的详细检查。</li>
+<li>[==]运算符和[hashCode] getter，以便可以比较约束的相等性。如果渲染对象具有相等的约束，则渲染库将避免在不脏的情况下再次放置对象。</li>
+<li>[toString]方法，它应该描述约束，以便它们在[debugDumpRenderTree]的输出中以有用的可读形式出现。</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@immutable</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Constraints</span> </span>&#123;</span><br><span class="line">  <span class="comment">///抽象const构造函数。 此构造函数使子类能够提供const构造函数，以便它们可以在const表达式中使用。</span></span><br><span class="line">  <span class="keyword">const</span> Constraints();</span><br><span class="line"></span><br><span class="line">  <span class="comment">///给定这些约束条件是否只有一种尺寸可能</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> isTight;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///约束是否以一致的方式表达。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> isNormalized;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">bool</span> debugAssertIsValid(&#123;</span><br><span class="line">    <span class="built_in">bool</span> isAppliedConstraint = <span class="keyword">false</span>,</span><br><span class="line">    InformationCollector informationCollector,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(isNormalized);</span><br><span class="line">    <span class="keyword">return</span> isNormalized;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///为每个[RenderObject]调用的函数的签名。</span></span><br><span class="line"><span class="comment">///由[RenderObject.visitChildren]和[RenderObject.visitChildrenForSemantics]使用。</span></span><br><span class="line"><span class="keyword">typedef</span> RenderObjectVisitor = <span class="keyword">void</span> <span class="built_in">Function</span>（RenderObject child）;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///在布局期间调用的函数的签名。</span></span><br><span class="line"><span class="comment">///由[RenderObject.invokeLayoutCallback]使用。</span></span><br><span class="line"><span class="keyword">typedef</span> LayoutCallback &lt;T <span class="keyword">extends</span> Constraints&gt; = <span class="keyword">void</span> <span class="built_in">Function</span>（T constraints）;</span><br></pre></td></tr></table></figure>
+<h1 id="SemanticsHandle"><a href="#SemanticsHandle" class="headerlink" title="SemanticsHandle"></a>SemanticsHandle</h1><p>对语义树的引用。<br>框架仅在至少有一个客户端持有<code>open [SemanticsHandle]</code>时才维护语义树（用于可访问性和索引）。<br><code>框架</code>通过调用<code>[listener]</code>回调来<code>通知客户端</code>它已<code>更新了语义树</code>。当客户端不再需要语义树时，客户端可以在[SemanticsHandle]上调用<code>[dispose]</code>，这会<code>停止这些回调并关闭[SemanticsHandle]</code>。当所有未完成的[SemanticsHandle]对象都关闭时，框架将停止更新语义树。<br>要获得[SemanticsHandle]，请在[PipelineOwner]上为要从中读取语义的渲染树调用<code>[PipelineOwner.ensureSemantics]</code>。<br>您可以使用<code>[RenderObject.owner]</code>属性<code>获取[PipelineOwner]</code>。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SemanticsHandle</span> </span>&#123;</span><br><span class="line">  SemanticsHandle._(<span class="keyword">this</span>._owner, <span class="keyword">this</span>.listener)</span><br><span class="line">      : <span class="keyword">assert</span>(_owner != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (listener != <span class="keyword">null</span>)</span><br><span class="line">      _owner.semanticsOwner.addListener(listener);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  PipelineOwner _owner;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// The callback that will be notified when the semantics tree updates.</span></span><br><span class="line">  <span class="keyword">final</span> VoidCallback listener;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Closes the semantics handle and stops calling [listener] when the</span></span><br><span class="line">  <span class="comment">/// semantics updates.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// When all the outstanding [SemanticsHandle] objects for a given</span></span><br><span class="line">  <span class="comment">/// [PipelineOwner] are closed, the [PipelineOwner] will stop updating the</span></span><br><span class="line">  <span class="comment">/// semantics tree.</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (_owner == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> FlutterError(</span><br><span class="line">          <span class="string">'SemanticsHandle has already been disposed.\n'</span></span><br><span class="line">          <span class="string">'Each SemanticsHandle should be disposed exactly once.'</span></span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">if</span> (_owner != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (listener != <span class="keyword">null</span>)</span><br><span class="line">        _owner.semanticsOwner.removeListener(listener);</span><br><span class="line">      _owner._didDisposeSemanticsHandle();</span><br><span class="line">      _owner = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="PipelineOwner"><a href="#PipelineOwner" class="headerlink" title="PipelineOwner"></a>PipelineOwner</h1><p><strong>管道所有者</strong> <code>管理</code> <strong>渲染管道(rendering pipeline)</strong>。<br><code>管道所有者</code> 提供了一个<code>界面</code>，用于驱动 <code>渲染管道</code>，并在<code>管道的每个阶段</code> <strong>存储</strong> <code>渲染对象</code>请求访问的状态。要刷新管道，请调用以下命令，按顺序运行：</p>
+<ol>
+<li><code>[flushLayout]</code>更新需要<code>计算其布局</code>的任何渲染对象。在此阶段期间，计算每个渲染对象的大小和位置。在此阶段，渲染对象可能会<code>弄脏(dirty)</code>其绘画或<code>合成状态(compositing state)</code>。</li>
+<li><code>[flushCompositingBits]</code>更新具有 <code>脏合成位(dirty compositing bits)</code> 的任何渲染对象。在此阶段，每个渲染对象都会了解其<code>子项是否需要合成</code>。在绘制阶段使用此信息时，选择如何实现剪裁等视觉效果。如果渲染对象具有合成子对象，则需要使用[图层]创建剪辑，以便将剪辑应用于合成子对象（将其绘制到自己的[图层]中）。</li>
+<li><code>[flushPaint]</code>访问<code>需要绘制</code>的任何渲染对象。在此阶段，渲染对象有机会将绘制命令记录到[PictureLayer]并构建其他合成的[Layer]。</li>
+<li>最后，如果启用了语义，<code>[flushSemantics]</code>将<code>编译渲染对象的语义</code>。辅助技术使用该语义信息来改进渲染树的可访问性。</li>
+</ol>
+<p><strong>[RendererBinding]</strong> 保存 <code>屏幕上可见</code> 的<code>渲染对象</code>的<code>管道所有者</code>。您可以创建其他管道所有者来管理屏幕外对象，这些对象可以独立于屏幕渲染对象刷新其管道。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PipelineOwner</span> </span>&#123;</span><br><span class="line">  <span class="comment">///创建管道所有者。</span></span><br><span class="line">  <span class="comment">///通常由绑定创建（例如，[RendererBinding]），但可以与绑定分开创建，以通过渲染管道驱动屏幕外渲染对象。</span></span><br><span class="line">  PipelineOwner(&#123;</span><br><span class="line">    <span class="keyword">this</span>.onNeedVisualUpdate,</span><br><span class="line">    <span class="keyword">this</span>.onSemanticsOwnerCreated,</span><br><span class="line">    <span class="keyword">this</span>.onSemanticsOwnerDisposed,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">///与此管道所有者关联的渲染对象希望更新其视觉外观时调用。</span></span><br><span class="line">  <span class="comment">///此函数的典型实现将调度任务以刷新管道的各个阶段。 可以快速连续多次调用此函数。 实现应该注意快速丢弃重复的调用。</span></span><br><span class="line">  <span class="keyword">final</span> VoidCallback onNeedVisualUpdate;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///每当此管道所有者创建语义对象时调用。</span></span><br><span class="line">  <span class="comment">///典型的实现将安排创建初始语义树。</span></span><br><span class="line">  <span class="keyword">final</span> VoidCallback onSemanticsOwnerCreated;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///每当此管道所有者处置其语义所有者时调用。</span></span><br><span class="line">  <span class="comment">///典型的实现将拆除语义树。</span></span><br><span class="line">  <span class="keyword">final</span> VoidCallback onSemanticsOwnerDisposed;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///如果[onNeedVisualUpdate]不为null，则调用[onNeedVisualUpdate]。</span></span><br><span class="line">  <span class="comment">///用于通知管道所有者关联的渲染对象希望更新其视觉外观。</span></span><br><span class="line">  <span class="keyword">void</span> requestVisualUpdate() &#123;</span><br><span class="line">    <span class="keyword">if</span> (onNeedVisualUpdate != <span class="keyword">null</span>)</span><br><span class="line">      onNeedVisualUpdate();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///由此管道管理的唯一对象没有父对象。</span></span><br><span class="line">  <span class="comment">///此对象不必是[RenderObject]。</span></span><br><span class="line">  AbstractNode <span class="keyword">get</span> rootNode =&gt; _rootNode;</span><br><span class="line">  AbstractNode _rootNode;</span><br><span class="line">  <span class="keyword">set</span> rootNode(AbstractNode value) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_rootNode == value)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    _rootNode?.detach();</span><br><span class="line">    _rootNode = value;</span><br><span class="line">    _rootNode?.attach(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">List</span>&lt;RenderObject&gt; _nodesNeedingLayout = &lt;RenderObject&gt;[];</span><br><span class="line"></span><br><span class="line">  <span class="comment">///此管道当前是否处于布局阶段。</span></span><br><span class="line">  <span class="comment">///具体来说，[flushLayout]当前是否正在运行。</span></span><br><span class="line">  <span class="comment">///仅在启用断言时有效。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> debugDoingLayout =&gt; _debugDoingLayout;</span><br><span class="line">  <span class="built_in">bool</span> _debugDoingLayout = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///更新所有脏(dirty)渲染对象的布局信息。</span></span><br><span class="line">  <span class="comment">///此函数是渲染管道的核心阶段之一。 在绘制之前清除布局信息，以便渲染对象将在其最新位置的屏幕上显示。</span></span><br><span class="line">  <span class="comment">///有关如何使用此函数的示例，请参见[RendererBinding]。</span></span><br><span class="line">  <span class="keyword">void</span> flushLayout() &#123;</span><br><span class="line">    <span class="comment">///如果应用程序是在发布模式下编译的，则为常量。</span></span><br><span class="line">    <span class="comment">///更具体地说，如果应用程序是使用'-Ddart.vm.product = true'标志在Dart中编译的，那么这是一个常量。</span></span><br><span class="line">    <span class="comment">///由于这是一个const值，它可以用来向编译器指示特定的代码块不会在发布模式下执行，因此可以删除。</span></span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      Timeline.startSync(<span class="string">'Layout'</span>, arguments: timelineWhitelistArguments);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      _debugDoingLayout = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// TODO（ianh）：断言我们不允许以前脏节点自己重做</span></span><br><span class="line">      <span class="keyword">while</span> (_nodesNeedingLayout.isNotEmpty) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">List</span>&lt;RenderObject&gt; dirtyNodes = _nodesNeedingLayout;</span><br><span class="line">        _nodesNeedingLayout = &lt;RenderObject&gt;[];</span><br><span class="line">        <span class="keyword">for</span> (RenderObject node <span class="keyword">in</span> dirtyNodes..sort((RenderObject a, RenderObject b) =&gt; a.depth - b.depth)) &#123;</span><br><span class="line">          <span class="keyword">if</span> (node._needsLayout &amp;&amp; node.owner == <span class="keyword">this</span>)</span><br><span class="line">            node._layoutWithoutResize();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        _debugDoingLayout = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">      <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">        Timeline.finishSync();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 此标志用于在重建LayoutBuilder时允许由GlobalKey重新执行的各种突变，并且这样做会尝试从另一个尚未更新的LayoutBuilder子树移动节点。 要设置它，请调用[_enableMutationsToDirtySubtrees]，它由[RenderObject.invokeLayoutCallback]调用。</span></span><br><span class="line">  <span class="comment">// 调试允许突变到脏的子树</span></span><br><span class="line">  <span class="built_in">bool</span> _debugAllowMutationsToDirtySubtrees = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// See [RenderObject.invokeLayoutCallback].</span></span><br><span class="line">  <span class="keyword">void</span> _enableMutationsToDirtySubtrees(VoidCallback callback) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_debugDoingLayout);</span><br><span class="line">    <span class="built_in">bool</span> oldState;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      oldState = _debugAllowMutationsToDirtySubtrees;</span><br><span class="line">      _debugAllowMutationsToDirtySubtrees = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      callback();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        _debugAllowMutationsToDirtySubtrees = oldState;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span>&lt;RenderObject&gt; _nodesNeedingCompositingBitsUpdate = &lt;RenderObject&gt;[];</span><br><span class="line">  <span class="comment">///更新[RenderObject.needsCompositing]位。</span></span><br><span class="line">  <span class="comment">///在[flushLayout]之后和[flushPaint]之前作为渲染管道的一部分调用。</span></span><br><span class="line">  <span class="keyword">void</span> flushCompositingBits() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      Timeline.startSync(<span class="string">'Compositing bits'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    _nodesNeedingCompositingBitsUpdate.sort((RenderObject a, RenderObject b) =&gt; a.depth - b.depth);</span><br><span class="line">    <span class="keyword">for</span> (RenderObject node <span class="keyword">in</span> _nodesNeedingCompositingBitsUpdate) &#123;</span><br><span class="line">      <span class="keyword">if</span> (node._needsCompositingBitsUpdate &amp;&amp; node.owner == <span class="keyword">this</span>)</span><br><span class="line">        node._updateCompositingBits();</span><br><span class="line">    &#125;</span><br><span class="line">    _nodesNeedingCompositingBitsUpdate.clear();</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      Timeline.finishSync();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">List</span>&lt;RenderObject&gt; _nodesNeedingPaint = &lt;RenderObject&gt;[];</span><br><span class="line"></span><br><span class="line">  <span class="comment">///此管道当前是否处于绘制阶段。</span></span><br><span class="line">  <span class="comment">///具体来说，[flushPaint]当前是否正在运行。</span></span><br><span class="line">  <span class="comment">///仅在启用断言时有效。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> debugDoingPaint =&gt; _debugDoingPaint;</span><br><span class="line">  <span class="built_in">bool</span> _debugDoingPaint = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///更新所有渲染对象的显示列表。</span></span><br><span class="line">  <span class="comment">///此函数是渲染管道的核心阶段之一。</span></span><br><span class="line">  <span class="comment">///绘画在布局(layout)之后和场景重新组合(the scene is recomposited)之前进行，以便场景与每个渲染对象的最新显示列表合成。</span></span><br><span class="line">  <span class="comment">///有关如何使用此函数的示例，请参见[RendererBinding]。</span></span><br><span class="line">  <span class="keyword">void</span> flushPaint() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      Timeline.startSync(<span class="string">'Paint'</span>, arguments: timelineWhitelistArguments);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      _debugDoingPaint = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">List</span>&lt;RenderObject&gt; dirtyNodes = _nodesNeedingPaint;</span><br><span class="line">      _nodesNeedingPaint = &lt;RenderObject&gt;[];</span><br><span class="line">      <span class="comment">// Sort the dirty nodes in reverse order (deepest first).</span></span><br><span class="line">      <span class="keyword">for</span> (RenderObject node <span class="keyword">in</span> dirtyNodes..sort((RenderObject a, RenderObject b) =&gt; b.depth - a.depth)) &#123;</span><br><span class="line">        <span class="keyword">assert</span>(node._layer != <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> (node._needsPaint &amp;&amp; node.owner == <span class="keyword">this</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (node._layer.attached) &#123;</span><br><span class="line">            PaintingContext.repaintCompositedChild(node);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node._skippedPaintingOnLayer();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">assert</span>(_nodesNeedingPaint.isEmpty);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        _debugDoingPaint = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">      <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">        Timeline.finishSync();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///管理此管道所有者 语义的对象（如果有）。</span></span><br><span class="line">  <span class="comment">///所有者由[ensureSemantics]创建。 只要[ensureSemantics]返回的[SemanticsHandle]尚未处理，所有者就有效。 一旦处理完最后一个句柄，[semanticsOwner]字段将恢复为null，并且将释放前一个所有者。</span></span><br><span class="line">  <span class="comment">///当[semanticsOwner]为null时，[PipelineOwner]会跳过与语义相关的所有步骤。</span></span><br><span class="line">  SemanticsOwner <span class="keyword">get</span> semanticsOwner =&gt; _semanticsOwner;</span><br><span class="line">  SemanticsOwner _semanticsOwner;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///注册侦听语义的客户端数量。</span></span><br><span class="line">  <span class="comment">///无论何时调用[ensureSemantics]都会增加数量，而在调用[SemanticsHandle.dispose]时减少数量。</span></span><br><span class="line">  <span class="comment">/// ---调试优秀的语义句柄---</span></span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> debugOutstandingSemanticsHandles =&gt; _outstandingSemanticsHandles;</span><br><span class="line">  <span class="built_in">int</span> _outstandingSemanticsHandles = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///打开[SemanticsHandle]并在语义树更新时调用[listener]。</span></span><br><span class="line">  <span class="comment">///只有当客户端希望使用语义树时，[PipelineOwner]才会更新语义树。 这些客户端通过持有[SemanticsHandle]对象来表达他们的兴趣，这些对象在语义树更新时通知它们。</span></span><br><span class="line">  <span class="comment">///客户端可以通过调用SemanticsHandle.dispose来关闭它们的[SemanticsHandle]。 一旦给定[PipelineOwner]的所有未完成的[SemanticsHandle]对象都关闭，[PipelineOwner]就会停止维护语义树。</span></span><br><span class="line">  SemanticsHandle ensureSemantics(&#123; VoidCallback listener &#125;) &#123;</span><br><span class="line">    _outstandingSemanticsHandles += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (_outstandingSemanticsHandles == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_semanticsOwner == <span class="keyword">null</span>);</span><br><span class="line">      _semanticsOwner = SemanticsOwner();</span><br><span class="line">      <span class="keyword">if</span> (onSemanticsOwnerCreated != <span class="keyword">null</span>)</span><br><span class="line">        onSemanticsOwnerCreated();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> SemanticsHandle._(<span class="keyword">this</span>, listener);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _didDisposeSemanticsHandle() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_semanticsOwner != <span class="keyword">null</span>);</span><br><span class="line">    _outstandingSemanticsHandles -= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (_outstandingSemanticsHandles == <span class="number">0</span>) &#123;</span><br><span class="line">      _semanticsOwner.dispose();</span><br><span class="line">      _semanticsOwner = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">if</span> (onSemanticsOwnerDisposed != <span class="keyword">null</span>)</span><br><span class="line">        onSemanticsOwnerDisposed();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> _debugDoingSemantics = <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">Set</span>&lt;RenderObject&gt; _nodesNeedingSemantics = &lt;RenderObject&gt;&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///更新标记为需要语义更新的渲染对象的语义。</span></span><br><span class="line">  <span class="comment">///最初，只有[RenderObject.scheduleInitialSemantics]调度的根节点需要语义更新。</span></span><br><span class="line">  <span class="comment">///此函数是渲染管道的核心阶段之一。 语义在绘制后编译，并且仅在调用[RenderObject.scheduleInitialSemantics]之后编译。</span></span><br><span class="line">  <span class="comment">///有关如何使用此函数的示例，请参见[RendererBinding]。</span></span><br><span class="line">  <span class="keyword">void</span> flushSemantics() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_semanticsOwner == <span class="keyword">null</span>)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      Timeline.startSync(<span class="string">'Semantics'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(_semanticsOwner != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _debugDoingSemantics = <span class="keyword">true</span>; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">List</span>&lt;RenderObject&gt; nodesToProcess = _nodesNeedingSemantics.toList()</span><br><span class="line">        ..sort((RenderObject a, RenderObject b) =&gt; a.depth - b.depth);</span><br><span class="line">      _nodesNeedingSemantics.clear();</span><br><span class="line">      <span class="keyword">for</span> (RenderObject node <span class="keyword">in</span> nodesToProcess) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node._needsSemanticsUpdate &amp;&amp; node.owner == <span class="keyword">this</span>)</span><br><span class="line">          node._updateSemantics();</span><br><span class="line">      &#125;</span><br><span class="line">      _semanticsOwner.sendSemanticsUpdate();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_nodesNeedingSemantics.isEmpty);</span><br><span class="line">      <span class="keyword">assert</span>(() &#123; _debugDoingSemantics = <span class="keyword">false</span>; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">      <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">        Timeline.finishSync();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ClipContext"><a href="#ClipContext" class="headerlink" title="ClipContext"></a>ClipContext</h1><p><code>PaintingContext</code>和<code>TestRecordingPaintingContext</code>使用的剪辑实用程序。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ClipContext</span> </span>&#123;</span><br><span class="line"> <span class="comment">///要绘制的画布。</span></span><br><span class="line">  Canvas <span class="keyword">get</span> canvas;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _clipAndPaint(<span class="keyword">void</span> canvasClipCall(<span class="built_in">bool</span> doAntiAlias), Clip clipBehavior, Rect bounds, <span class="keyword">void</span> painter()) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(canvasClipCall != <span class="keyword">null</span>);</span><br><span class="line">    canvas.save();</span><br><span class="line">    <span class="keyword">switch</span> (clipBehavior) &#123;</span><br><span class="line">      <span class="keyword">case</span> Clip.none:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> Clip.hardEdge:</span><br><span class="line">        canvasClipCall(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> Clip.antiAlias:</span><br><span class="line">        canvasClipCall(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> Clip.antiAliasWithSaveLayer:</span><br><span class="line">        canvasClipCall(<span class="keyword">true</span>);</span><br><span class="line">        canvas.saveLayer(bounds, Paint());</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    painter();</span><br><span class="line">    <span class="keyword">if</span> (clipBehavior == Clip.antiAliasWithSaveLayer) &#123;</span><br><span class="line">      canvas.restore();</span><br><span class="line">    &#125;</span><br><span class="line">    canvas.restore();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///根据[Clip]使用[Path]剪辑[canvas]然后绘画。 [canvas]之后恢复到剪辑前状态。</span></span><br><span class="line">  <span class="comment">///`bounds`是用于[Clip.antiAliasWithSaveLayer]的saveLayer边界。</span></span><br><span class="line">  <span class="keyword">void</span> clipPathAndPaint(Path path, Clip clipBehavior, Rect bounds, <span class="keyword">void</span> painter()) &#123;</span><br><span class="line">    _clipAndPaint((<span class="built_in">bool</span> doAntiAias) =&gt; canvas.clipPath(path, doAntiAlias: doAntiAias), clipBehavior, bounds, painter);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///根据[RRect]用[Path]剪辑[canvas]然后绘画。 [canvas]之后恢复到剪辑前状态。</span></span><br><span class="line">  <span class="comment">///`bounds`是用于[Clip.antiAliasWithSaveLayer]的saveLayer边界。</span></span><br><span class="line">  <span class="keyword">void</span> clipRRectAndPaint(RRect rrect, Clip clipBehavior, Rect bounds, <span class="keyword">void</span> painter()) &#123;</span><br><span class="line">    _clipAndPaint((<span class="built_in">bool</span> doAntiAias) =&gt; canvas.clipRRect(rrect, doAntiAlias: doAntiAias), clipBehavior, bounds, painter);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///根据[Rect]使用[Path]剪切[canvas]然后绘制。 [canvas]之后恢复到剪辑前状态。</span></span><br><span class="line">  <span class="comment">///`bounds`是用于[Clip.antiAliasWithSaveLayer]的saveLayer边界。</span></span><br><span class="line">  <span class="keyword">void</span> clipRectAndPaint(Rect rect, Clip clipBehavior, Rect bounds, <span class="keyword">void</span> painter()) &#123;</span><br><span class="line">    _clipAndPaint((<span class="built_in">bool</span> doAntiAias) =&gt; canvas.clipRect(rect, doAntiAlias: doAntiAias), clipBehavior, bounds, painter);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="RenderObjectWithChildMixin"><a href="#RenderObjectWithChildMixin" class="headerlink" title="RenderObjectWithChildMixin"></a>RenderObjectWithChildMixin</h1><p>具有一个子项的渲染对象的通用mixin。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 为具有唯一子项的呈现对象子类提供子模型。</span></span><br><span class="line">mixin RenderObjectWithChildMixin&lt;ChildType <span class="keyword">extends</span> RenderObject&gt; on RenderObject &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///检查给定的渲染对象是否具有正确的[runtimeType]作为此渲染对象的子对象。</span></span><br><span class="line">  <span class="comment">///如果断言被禁用则不执行任何操作。</span></span><br><span class="line">  <span class="comment">///始终返回true。</span></span><br><span class="line">  <span class="built_in">bool</span> debugValidateChild(RenderObject child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (child <span class="keyword">is</span>! ChildType) &#123;</span><br><span class="line">        <span class="keyword">throw</span> FlutterError.fromParts(&lt;DiagnosticsNode&gt;[</span><br><span class="line">          ErrorSummary(</span><br><span class="line">            <span class="string">'A $runtimeType expected a child of type $ChildType but received a '</span></span><br><span class="line">            <span class="string">'child of type <span class="subst">$&#123;child.runtimeType&#125;</span>.'</span></span><br><span class="line">          ),</span><br><span class="line">          ErrorDescription(</span><br><span class="line">            <span class="string">'RenderObjects expect specific types of children because they '</span></span><br><span class="line">            <span class="string">'coordinate with their children during layout and paint. For '</span></span><br><span class="line">            <span class="string">'example, a RenderSliver cannot be the child of a RenderBox because '</span></span><br><span class="line">            <span class="string">'a RenderSliver does not understand the RenderBox layout protocol.'</span>,</span><br><span class="line">          ),</span><br><span class="line">          ErrorSpacer(),</span><br><span class="line">          DiagnosticsProperty&lt;<span class="keyword">dynamic</span>&gt;(</span><br><span class="line">            <span class="string">'The $runtimeType that expected a $ChildType child was created by'</span>,</span><br><span class="line">            debugCreator,</span><br><span class="line">            style: DiagnosticsTreeStyle.errorProperty,</span><br><span class="line">          ),</span><br><span class="line">          ErrorSpacer(),</span><br><span class="line">          DiagnosticsProperty&lt;<span class="keyword">dynamic</span>&gt;(</span><br><span class="line">            <span class="string">'The <span class="subst">$&#123;child.runtimeType&#125;</span> that did not match the expected child type '</span></span><br><span class="line">            <span class="string">'was created by'</span>,</span><br><span class="line">            child.debugCreator,</span><br><span class="line">            style: DiagnosticsTreeStyle.errorProperty,</span><br><span class="line">          )</span><br><span class="line">        ]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ChildType _child;</span><br><span class="line">  <span class="comment">///渲染对象的唯一子对象</span></span><br><span class="line">  ChildType <span class="keyword">get</span> child =&gt; _child;</span><br><span class="line">  <span class="keyword">set</span> child(ChildType value) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      dropChild(_child);</span><br><span class="line">    _child = value;</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      adoptChild(_child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> attach(PipelineOwner owner) &#123;</span><br><span class="line">    <span class="keyword">super</span>.attach(owner);</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      _child.attach(owner);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> detach() &#123;</span><br><span class="line">    <span class="keyword">super</span>.detach();</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      _child.detach();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> redepthChildren() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      redepthChild(_child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> visitChildren(RenderObjectVisitor visitor) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      visitor(_child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">List</span>&lt;DiagnosticsNode&gt; debugDescribeChildren() &#123;</span><br><span class="line">    <span class="keyword">return</span> child != <span class="keyword">null</span> ? &lt;DiagnosticsNode&gt;[child.toDiagnosticsNode(name: <span class="string">'child'</span>)] : &lt;DiagnosticsNode&gt;[];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-window相关/" rel="next" title="Flutter-Window">
+                <i class="fa fa-chevron-left"></i> Flutter-Window
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-渲染相关2/" rel="prev" title="Flutter-渲染相关2">
+                Flutter-渲染相关2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RenderObject"><span class="nav-number">1.</span> <span class="nav-text">RenderObject</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ParentData"><span class="nav-number">2.</span> <span class="nav-text">ParentData</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PaintingContext"><span class="nav-number">3.</span> <span class="nav-text">PaintingContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constraints"><span class="nav-number">4.</span> <span class="nav-text">Constraints</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SemanticsHandle"><span class="nav-number">5.</span> <span class="nav-text">SemanticsHandle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PipelineOwner"><span class="nav-number">6.</span> <span class="nav-text">PipelineOwner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ClipContext"><span class="nav-number">7.</span> <span class="nav-text">ClipContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RenderObjectWithChildMixin"><span class="nav-number">8.</span> <span class="nav-text">RenderObjectWithChildMixin</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">381.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

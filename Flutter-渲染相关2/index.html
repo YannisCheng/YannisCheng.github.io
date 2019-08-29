@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-渲染相关2">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-渲染相关2">
+<meta property="og:url" content="http://yannischeng.com/Flutter-渲染相关2/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-渲染相关2">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-29T02:33:16.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-渲染相关2">
+<meta name="twitter:description" content="Flutter-渲染相关2">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-渲染相关2/">
+
+
+
+
+
+  <title>Flutter-渲染相关2 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-渲染相关2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-渲染相关2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T15:14:56+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T10:33:16+08:00">
+                2019-08-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,279 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-渲染相关2/" title="Flutter-渲染相关2">http://yannischeng.com/Flutter-渲染相关2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-渲染相关2</p>
+<a id="more"></a>
+<h1 id="HitTestTarget"><a href="#HitTestTarget" class="headerlink" title="HitTestTarget"></a>HitTestTarget</h1><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 一个可以处理事件的对象。</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HitTestTarget</span> </span>&#123;</span><br><span class="line">  <span class="comment">//此类旨在用作implements关键字的接口，不应直接扩展。</span></span><br><span class="line">  <span class="keyword">factory</span> HitTestTarget._() =&gt; <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///重写此方法以接收事件。</span></span><br><span class="line">  <span class="keyword">void</span> handleEvent(PointerEvent event, HitTestEntry entry);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="AbstractNode"><a href="#AbstractNode" class="headerlink" title="AbstractNode"></a>AbstractNode</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p><code>树</code> 中的 <code>抽象节点</code>。</p>
+<p><code>AbstractNode</code> 中有 <strong><code>深度(depth)</code></strong>，<strong><code>附件(attachment)</code></strong>和<strong><code>父级(parent)</code></strong>的概念，但没有<code>儿童模型(a model for children)</code>。</p>
+<h3 id="父级-parent"><a href="#父级-parent" class="headerlink" title="父级(parent)"></a>父级(parent)</h3><p>当<code>一个子类</code>改变一个<code>子类的父类(parent of a child)</code>时，它应该适当地调用<code>parent.adoptChild（child）</code>或<code>parent.dropChild（child）</code>。</p>
+<p>如果需要，<code>子类</code>可以公开用于<code>操作树的API</code>（例如，用于<code>child</code>属性的<code>setter</code>，或用于操作列表的<code>add()</code>方法）。</p>
+<p><strong><code>当前父节点</code></strong> 由 <strong><code>parent属性</code></strong> 对外暴露。</p>
+<h3 id="附件-attachment"><a href="#附件-attachment" class="headerlink" title="附件(attachment)"></a>附件(attachment)</h3><p><code>附件(attachment)</code> 显示当前 <code>附件状态</code>。应该通过调用 <code>attach()</code> <code>手动附加</code>要考虑附加的任何树的根。除此之外，<code>不应直接调用</code> <strong><code>attach()</code></strong>和 <strong><code>detach()</code></strong>，<code>附件(attachment)</code> 由上述 <strong><code>adoptChild()</code></strong> 和  <strong><code>dropChild()</code></strong> 自动管理。</p>
+<p>具有 <code>子节点(children)</code> 的 <code>子类</code> 必须覆盖 <strong><code>attach()</code></strong> 和 <strong><code>detach()</code></strong>。</p>
+<h3 id="深度-depth"><a href="#深度-depth" class="headerlink" title="深度(depth)"></a>深度(depth)</h3><p><code>节点(node)</code> 的 <code>深度(depth)</code> 总是比他们的祖先更大。但是<code>兄弟姐妹</code>之间的<code>深度</code>无法保证。节点的<code>深度</code> 用于确保：按 <strong>深度<code>顺序</code>处理节点</strong>。</p>
+<p>一个<code>child</code>的<code>深度</code>可以比父亲的<code>深度</code>大<code>1个以上</code>，因为：<strong><code>深度</code>值永远不会减少</strong>，重要的是它比父亲更大。</p>
+<p>考虑具有根节点A，子B和孙子C的树。最初，A将具有[深度] 0，B [深度] 1和C [深度] 2。如果C被移动为A的child，B的兄弟，那么数字不会改变。 C的[深度]仍为2. [depth]由[adoptChild]和[dropChild]方法自动维护。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> depth =&gt; _depth;</span><br><span class="line">  <span class="built_in">int</span> _depth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///将给定[child]的[depth]调整为大于此节点自己的[depth]。</span></span><br><span class="line">  <span class="comment">///只能从[redepthChildren]的覆盖中调用此方法。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> redepthChild(AbstractNode child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(child.owner == owner);</span><br><span class="line">    <span class="keyword">if</span> (child._depth &lt;= _depth) &#123;</span><br><span class="line">      child._depth = _depth + <span class="number">1</span>;</span><br><span class="line">      child.redepthChildren();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///调整此节点的子节点的[深度]（如果有）。</span></span><br><span class="line">  <span class="comment">///在具有子节点的子类中重写此方法，为每个子节点调用[redepthChild]。 不要直接调用此方法。</span></span><br><span class="line">  <span class="keyword">void</span> redepthChildren() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///此节点的所有者（如果未附加，则为null）。</span></span><br><span class="line">  <span class="comment">///此节点所属的整个子树将具有相同的所有者。</span></span><br><span class="line">  <span class="built_in">Object</span> <span class="keyword">get</span> owner =&gt; _owner;</span><br><span class="line">  <span class="built_in">Object</span> _owner;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 此节点是否位于其根连接到某个树的树中。</span></span><br><span class="line">  <span class="comment">/// 在调用[attach]期间，这变为true。</span></span><br><span class="line">  <span class="comment">/// 在调用[detach]期间，这会变为false。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> attached =&gt; _owner != <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 将此节点标记为附加到给定所有者。</span></span><br><span class="line">  <span class="comment">/// 通常仅从[parent]的[attach]方法调用，并由[owner]标记为附加的树的根。</span></span><br><span class="line">  <span class="comment">/// 带子项的子类应重写此方法，以首先调用其继承的[attach]方法，然后将所有子项[attach]连接到同一[owner]。</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> attach(covariant <span class="built_in">Object</span> owner) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(owner != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(_owner == <span class="keyword">null</span>);</span><br><span class="line">    _owner = owner;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///将此节点标记为已分离。</span></span><br><span class="line">  <span class="comment">///通常仅从[parent]的[detach]和[owner]中调用，以将树的根标记为已分离。</span></span><br><span class="line">  <span class="comment">///带子节点的子类应该重写此方法，首先调用它们的继承[detach]方法，然后[分离]所有子节点。</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> detach() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_owner != <span class="keyword">null</span>);</span><br><span class="line">    _owner = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">assert</span>(parent == <span class="keyword">null</span> || attached == parent.attached);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///树中此节点的父节点。</span></span><br><span class="line">  AbstractNode <span class="keyword">get</span> parent =&gt; _parent;</span><br><span class="line">  AbstractNode _parent;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///将给定节点标记为此节点的子节点。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">   <span class="comment">///子类在获取新child时应调用此函数。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> adoptChild(covariant AbstractNode child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(child != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(child._parent == <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      AbstractNode node = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">while</span> (node.parent != <span class="keyword">null</span>)</span><br><span class="line">        node = node.parent;</span><br><span class="line">      <span class="comment">//表示即将创建一个循环</span></span><br><span class="line">      <span class="keyword">assert</span>(node != child);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    child._parent = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (attached)</span><br><span class="line">      child.attach(_owner);</span><br><span class="line">    redepthChild(child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///从此节点断开给定节点。</span></span><br><span class="line">  <span class="comment">///子类在失去孩子时应调用此函数。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> dropChild(covariant AbstractNode child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(child != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(child._parent == <span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">assert</span>(child.attached == attached);</span><br><span class="line">    child._parent = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (attached)</span><br><span class="line">      child.detach();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="RenderObject"><a href="#RenderObject" class="headerlink" title="RenderObject"></a>RenderObject</h1><h2 id="概览-1"><a href="#概览-1" class="headerlink" title="概览"></a>概览</h2><h3 id="RenderObject释义"><a href="#RenderObject释义" class="headerlink" title="RenderObject释义"></a>RenderObject释义</h3><p><code>RenderObject</code>是<code>渲染树</code> 中的 <strong>对象</strong>。</p>
+<p><code>[RenderObject]类层次结构</code> 是呈现库(rendering library)存在的核心。<br><code>[RenderObject]</code>有一个<code>[parent]</code>，并有一个名为<code>[parentData]的槽(slot)</code>，其中父[RenderObject]可以存储子特定的数据，例如子位置。 [RenderObject]类还实现了 <code>基本布局(basic layout)</code> 和 <code>绘制协议(paint protocols)</code> 。</p>
+<p>然而，<code>[RenderObject]类</code>没有定义<code>子模型</code>（例如，节点是否有零个，一个或多个子节点）。它也<code>没有定义坐标系</code>（例如，孩子是否位于笛卡尔坐标，极坐标等）或<code>特定的布局协议</code>（例如布局是否是高度宽，或大小约束-out，或者父母是否在孩子放置之前或之后设置孩子的大小和位置等;或者实际上是否允许孩子读取他们父母的[parentData]插槽）。但是 <code>[RenderBox]子类</code> 引入了 <code>布局系统 —— 笛卡尔坐标</code> 的观点。</p>
+<h3 id="编写RenderObject子类"><a href="#编写RenderObject子类" class="headerlink" title="编写RenderObject子类"></a>编写RenderObject子类</h3><p>在大多数情况下，<code>[RenderObject]子类</code>本身是<code>过度</code>的，而 <strong>[RenderBox]<code>(2D笛卡尔坐标系中的渲染对象，其继承自：RenderObject)</code></strong> 将<code>是一个更好 的起点(定义了笛卡尔坐标系)</code>。但是，如果渲染对象<code>不想使用笛卡尔坐标系</code>，那么<code>直接从[RenderObject]继承</code>即可。这允许它通过使用<code>[Constraints]的新子类</code>而不是使用 <strong>[BoxConstraints]<code>([RenderBox]布局的不可变布局约束，其继承自：Constraints)</code></strong> 来定义自己的布局协议，并且可能使用一组全新的对象和值来表示输出的结果而不仅仅是[Size] ]。</p>
+<p>这种增加的灵活性是以 <code>不能依赖[RenderBox]</code> 的功能为代价的。例如，[RenderBox]实现了一个内在的大小调整协议，允许您在不完全布局的情况下测量子项，这样如果该 <code>子项改变大小，父项将再次布局（考虑新的维度）的孩子）</code>。这是一个微妙且容易出错的功能。</p>
+<p>编写 <code>[RenderBox]的大多数方面</code> 也适用于编写[RenderObject]，因此[RenderBox]的讨论是推荐的背景阅读。主要区别在于 <strong>布局</strong> 和 <strong>命中测试</strong>，因为这些是 <strong>[RenderBox]主要专注的方面</strong>。</p>
+<h4 id="布局-layout"><a href="#布局-layout" class="headerlink" title="布局(layout)"></a>布局(layout)</h4><p><code>布局协议</code>以<code>[Constraints]的子类</code>开始的。有关如何编写<code>[Constraints]子类</code>的更多信息，请参见[Constraints]文档描述。</p>
+<p><strong><code>performLayout()</code></strong> 应该采用<code>[constraints]</code>，然后应用它们。<br>布局算法的输出是在对象上设置的字段，用于描述父对象布局的对象几何。例如，使用[RenderBox]，输出是[RenderBox.size]字段。如果父项在子项上调用 <strong><code>layout()</code></strong> 时指定<code>parentUsesSize</code>为true，则只应由父项读取此输出。</p>
+<p>任何时候 <code>渲染对象</code> 上的 <code>任何变化</code> 会 <code>影响该对象</code> 的 <code>布局</code>，它应该调用 <strong><code>markNeedsLayout()</code></strong>。</p>
+<h4 id="命中测试-Hit-Testing"><a href="#命中测试-Hit-Testing" class="headerlink" title="命中测试(Hit Testing)"></a>命中测试(Hit Testing)</h4><p>命中测试比布局更开放。没有方法可以覆盖，您需要提供一个方法。<br>命中测试方法的一般行为应与[RenderBox]描述的行为类似。主要区别在于输入不必是[Offset]。在向[HitTestResult]添加条目时，还允许您使用[HitTestEntry]的不同子类。当调用[handleEvent]方法时，将传入添加到[HitTestResult]的相同对象，因此它可用于跟踪命中的精确坐标等信息，无论新的坐标系使用何种坐标系。布局协议。</p>
+<h4 id="适应从一种协议到另一种协议"><a href="#适应从一种协议到另一种协议" class="headerlink" title="适应从一种协议到另一种协议"></a>适应从一种协议到另一种协议</h4><p>通常，<code>Flutter渲染对象树</code> 的 <strong>根(root)</strong> 是 <code>RenderView</code>。该对象具有 <code>单个子对象</code>，该<code>子对象</code> <strong>必须是</strong> <code>RenderBox</code>。因此，如果您想在渲染树中拥有<code>自定义RenderObject子类</code>，有两个选择：</p>
+<ol>
+<li>需要替换 <code>RenderView</code> 本身;</li>
+<li>需要一个<code>自定义类</code>作为 <code>其子级的RenderBox</code>。（更常见的情况。）</li>
+</ol>
+<p>这个 <strong>RenderBox子类</strong> 从 <code>框协议</code> 转换为 <code>类协议</code>。</p>
+<p>特别是，这意味着对于 <strong>命中测试</strong>，它会覆盖 <code>RenderBox.hitTest()</code>，并调用类中的任何方法进行命中测试。</p>
+<p>同样，它会覆盖 <code>performLayout()</code> 以创建适合你的类的 <code>Constraints对象</code>，并将其传递给 <code>child</code>的<code>layout()</code>方法。</p>
+<h4 id="渲染对象之间的布局交互"><a href="#渲染对象之间的布局交互" class="headerlink" title="渲染对象之间的布局交互"></a>渲染对象之间的布局交互</h4><p>通常，<code>渲染对象</code> 的 <code>布局</code> 应仅取决于其 <code>子布局的输出</code>，并且只有在 <code>layout()</code> 调用中将 <code>parentUsesSize</code>设置为 <code>true</code> 时才应如此。此外，如果将其设置为true，则<code>父项</code> <strong>必须</strong> 在要渲染 <code>子项</code> 时调用 <code>子项的layout()</code>，否则在子项更改其布局输出时将不会通知父项。</p>
+<p>可以设置 <code>传输附加信息</code> 的 <code>渲染对象协议</code>。例如，在 <code>RenderBox</code> 协议中，您可以查询 <code>children</code> 的内在尺寸和基线几何。但是，如果这样做，那么如果 <code>parent</code> 在 <code>最后一个布局阶段</code> 使用它，则 <code>Child</code> 必须在 <code>parent</code> 的<code>任何时候</code>调用<code>markNeedsLayout</code>。有关如何实现此操作的示例，请参阅[RenderBox.markNeedsLayout]方法。它会覆盖[RenderObject.markNeedsLayout]，这样如果父级查询了内部或基线信息，则只要子级的几何体发生更改，它就会被标记为脏。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-渲染相关1/" rel="next" title="Flutter-渲染相关1">
+                <i class="fa fa-chevron-left"></i> Flutter-渲染相关1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-渲染相关3/" rel="prev" title="Flutter-渲染相关3">
+                Flutter-渲染相关3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HitTestTarget"><span class="nav-number">1.</span> <span class="nav-text">HitTestTarget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AbstractNode"><span class="nav-number">2.</span> <span class="nav-text">AbstractNode</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">2.1.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父级-parent"><span class="nav-number">2.1.1.</span> <span class="nav-text">父级(parent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附件-attachment"><span class="nav-number">2.1.2.</span> <span class="nav-text">附件(attachment)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度-depth"><span class="nav-number">2.1.3.</span> <span class="nav-text">深度(depth)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RenderObject"><span class="nav-number">3.</span> <span class="nav-text">RenderObject</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览-1"><span class="nav-number">3.1.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RenderObject释义"><span class="nav-number">3.1.1.</span> <span class="nav-text">RenderObject释义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写RenderObject子类"><span class="nav-number">3.1.2.</span> <span class="nav-text">编写RenderObject子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布局-layout"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">布局(layout)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命中测试-Hit-Testing"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">命中测试(Hit Testing)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适应从一种协议到另一种协议"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">适应从一种协议到另一种协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染对象之间的布局交互"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">渲染对象之间的布局交互</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">381.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
