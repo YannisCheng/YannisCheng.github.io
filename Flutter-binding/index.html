@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-binding">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-binding">
+<meta property="og:url" content="http://yannischeng.com/Flutter-binding/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-binding">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-31T06:04:19.963Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-binding">
+<meta name="twitter:description" content="Flutter-binding">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-binding/">
+
+
+
+
+
+  <title>Flutter-binding | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-binding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-binding</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-29T20:32:02+08:00">
+                2019-08-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-31T14:04:19+08:00">
+                2019-08-31
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,227 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-binding/" title="Flutter-binding">http://yannischeng.com/Flutter-binding/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-binding</p>
+<a id="more"></a>
+<h1 id="runApp-Widget-app"><a href="#runApp-Widget-app" class="headerlink" title="runApp(Widget app)"></a>runApp(Widget app)</h1><p>将给定的widget <code>充气(inflate)</code> 并将其 <code>附加(attach)</code> 到屏幕上。</p>
+<p>小部件在布局期间被赋予约束，迫使它填充整个屏幕。如果您希望将窗口小部件对齐到屏幕的一侧（例如，顶部），请考虑使用 <code>Align</code> widget。如果您希望将窗口小部件居中，也可以使用 <code>Center</code> widget。</p>
+<p>再次调用<code>runApp()</code>将从屏幕上<code>分离(detach)</code>上一个<code>根小部件( root widget)</code>并将给定小部件附加到其位置。将<code>新窗口小部件树</code>与<code>先前窗口小部件树</code>进行 <code>比较</code>，并将<code>任何差异</code>应用于 <code>基础渲染树(render tree)</code>，类似于在调用<code>State.setState()</code>后<code>StatefulWidget</code>重建时发生的情况。</p>
+<p>如有必要，使用<code>WidgetsFlutterBinding</code> 进行 <code>初始化绑定</code>。也可以看看：</p>
+<ul>
+<li><code>WidgetsBinding.attachRootWidget()</code>，它为 <strong>widget层次结构</strong> 创建 <strong><code>根widget</code></strong>。</li>
+<li><code>RenderObjectToWidgetAdapter.attachToRenderTree()</code>，它为 <strong>element层次结构创</strong> 建 <strong><code>根element</code></strong>。</li>
+<li><code>WidgetsBinding.handleBeginFrame()</code>，它抽取<code>widget管道(pipeline)</code>以确保构建<code>widget树</code>、<code>elemen树t</code> 和 <code>render树</code>。</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> runApp(Widget app) &#123;</span><br><span class="line">  WidgetsFlutterBinding.ensureInitialized()</span><br><span class="line">    ..attachRootWidget(app)</span><br><span class="line">    ..scheduleWarmUpFrame();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="WidgetsFlutterBinding"><a href="#WidgetsFlutterBinding" class="headerlink" title="WidgetsFlutterBinding"></a>WidgetsFlutterBinding</h1><ul>
+<li>基于 <code>Widgets框架</code> 的应用程序的 <code>具体绑定</code>。</li>
+</ul>
+<hr>
+<ul>
+<li><strong>这是将 <code>框架</code> 绑定到 <code>Flutter引擎</code> 的 <code>粘合剂</code></strong>。</li>
+</ul>
+<hr>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WidgetsFlutterBinding</span> <span class="keyword">extends</span> <span class="title">BindingBase</span> <span class="title">with</span> <span class="title">GestureBinding</span>, <span class="title">ServicesBinding</span>, <span class="title">SchedulerBinding</span>, <span class="title">PaintingBinding</span>, <span class="title">SemanticsBinding</span>, <span class="title">RendererBinding</span>, <span class="title">WidgetsBinding</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 返回[WidgetsBinding]的实例，必要时创建并初始化它。 如果创建了一个，它将是[WidgetsFlutterBinding]。 如果之前已初始化，那么它至少会实现[WidgetsBinding]。</span></span><br><span class="line">  <span class="comment">/// 如果在调用[runApp]之前需要初始化绑定，则只需要调用此方法。</span></span><br><span class="line">  <span class="keyword">static</span> WidgetsBinding ensureInitialized() &#123;</span><br><span class="line">    <span class="keyword">if</span> (WidgetsBinding.instance == <span class="keyword">null</span>)</span><br><span class="line">      WidgetsFlutterBinding();</span><br><span class="line">    <span class="keyword">return</span> WidgetsBinding.instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="WidgetsBinding-Widget层和Flutter引擎之间的粘合剂。"><a href="#WidgetsBinding-Widget层和Flutter引擎之间的粘合剂。" class="headerlink" title="WidgetsBinding - Widget层和Flutter引擎之间的粘合剂。"></a>WidgetsBinding - Widget层和Flutter引擎之间的粘合剂。</h1><p><code>WidgetsBinding类</code>签名说明：只有是 <code>BindingBase</code>、<code>SchedulerBinding</code>、<code>GestureBinding</code>、<code>RendererBinding</code>、<code>SemanticsBinding</code> 的子类才能使用 <code>WidgetsBinding公共类</code></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br></pre></td><td class="code"><pre><span class="line">mixin WidgetsBinding on BindingBase, SchedulerBinding, GestureBinding, RendererBinding, SemanticsBinding &#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initInstances() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initInstances();</span><br><span class="line">    _instance = <span class="keyword">this</span>;</span><br><span class="line">    buildOwner.onBuildScheduled = _handleBuildScheduled;</span><br><span class="line">    <span class="built_in">window</span>.onLocaleChanged = handleLocaleChanged;</span><br><span class="line">    <span class="built_in">window</span>.onAccessibilityFeaturesChanged = handleAccessibilityFeaturesChanged;</span><br><span class="line">    SystemChannels.navigation.setMethodCallHandler(_handleNavigationInvocation);</span><br><span class="line">    SystemChannels.system.setMessageHandler(_handleSystemMessage);</span><br><span class="line">    FlutterErrorDetails.propertiesTransformers.add(transformDebugCreator);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 当前[WidgetsBinding]，如果已经创建了一个。</span></span><br><span class="line">  <span class="comment">/// 如果在调用[runApp]之前需要构造绑定，可以通过调用`WidgetsFlutterBinding.ensureInitialized（）`函数来确保构造Widget绑定。</span></span><br><span class="line">  <span class="keyword">static</span> WidgetsBinding <span class="keyword">get</span> instance =&gt; _instance;</span><br><span class="line">  <span class="keyword">static</span> WidgetsBinding _instance;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 初始化服务扩展</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initServiceExtensions() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initServiceExtensions();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      registerSignalServiceExtension(</span><br><span class="line">        name: <span class="string">'debugDumpApp'</span>,</span><br><span class="line">        callback: () &#123;</span><br><span class="line">          debugDumpApp();</span><br><span class="line">          <span class="keyword">return</span> debugPrintDone;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      registerBoolServiceExtension(</span><br><span class="line">        name: <span class="string">'showPerformanceOverlay'</span>,</span><br><span class="line">        getter: () =&gt;</span><br><span class="line">        Future&lt;<span class="built_in">bool</span>&gt;.value(WidgetsApp.showPerformanceOverlayOverride),</span><br><span class="line">        setter: (<span class="built_in">bool</span> value) &#123;</span><br><span class="line">          <span class="keyword">if</span> (WidgetsApp.showPerformanceOverlayOverride == value)</span><br><span class="line">            <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.value();</span><br><span class="line">          WidgetsApp.showPerformanceOverlayOverride = value;</span><br><span class="line">          <span class="keyword">return</span> _forceRebuild();</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      registerServiceExtension(</span><br><span class="line">        name: <span class="string">'didSendFirstFrameEvent'</span>,</span><br><span class="line">        callback: (_) <span class="keyword">async</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">            <span class="comment">// This is defined to return a STRING, not a boolean.</span></span><br><span class="line">            <span class="comment">// Devtools, the Intellij plugin, and the flutter tool all depend</span></span><br><span class="line">            <span class="comment">// on it returning a string and not a boolean.</span></span><br><span class="line">            <span class="string">'enabled'</span>: _needToReportFirstFrame ? <span class="string">'false'</span> : <span class="string">'true'</span>,</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="comment">// This returns 'true' when the first frame is rasterized, and the trace</span></span><br><span class="line">      <span class="comment">// event 'Rasterized first useful frame' is sent out.</span></span><br><span class="line">      registerServiceExtension(</span><br><span class="line">        name: <span class="string">'didSendFirstFrameRasterizedEvent'</span>,</span><br><span class="line">        callback: (_) <span class="keyword">async</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">            <span class="comment">// This is defined to return a STRING, not a boolean.</span></span><br><span class="line">            <span class="comment">// Devtools, the Intellij plugin, and the flutter tool all depend</span></span><br><span class="line">            <span class="comment">// on it returning a string and not a boolean.</span></span><br><span class="line">            <span class="string">'enabled'</span>: firstFrameRasterized ? <span class="string">'true'</span> : <span class="string">'false'</span>,</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Expose the ability to send Widget rebuilds as [Timeline] events.</span></span><br><span class="line">      registerBoolServiceExtension(</span><br><span class="line">        name: <span class="string">'profileWidgetBuilds'</span>,</span><br><span class="line">        getter: () <span class="keyword">async</span> =&gt; debugProfileBuildsEnabled,</span><br><span class="line">        setter: (<span class="built_in">bool</span> value) <span class="keyword">async</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (debugProfileBuildsEnabled != value)</span><br><span class="line">            debugProfileBuildsEnabled = value;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      registerBoolServiceExtension(</span><br><span class="line">        name: <span class="string">'debugAllowBanner'</span>,</span><br><span class="line">        getter: () =&gt; Future&lt;<span class="built_in">bool</span>&gt;.value(WidgetsApp.debugAllowBannerOverride),</span><br><span class="line">        setter: (<span class="built_in">bool</span> value) &#123;</span><br><span class="line">          <span class="keyword">if</span> (WidgetsApp.debugAllowBannerOverride == value)</span><br><span class="line">            <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.value();</span><br><span class="line">          WidgetsApp.debugAllowBannerOverride = value;</span><br><span class="line">          <span class="keyword">return</span> _forceRebuild();</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="comment">// This service extension is deprecated and will be removed by 12/1/2018.</span></span><br><span class="line">      <span class="comment">// Use ext.flutter.inspector.show instead.</span></span><br><span class="line">      registerBoolServiceExtension(</span><br><span class="line">          name: <span class="string">'debugWidgetInspector'</span>,</span><br><span class="line">          getter: () <span class="keyword">async</span> =&gt; WidgetsApp.debugShowWidgetInspectorOverride,</span><br><span class="line">          setter: (<span class="built_in">bool</span> value) &#123;</span><br><span class="line">            <span class="keyword">if</span> (WidgetsApp.debugShowWidgetInspectorOverride == value)</span><br><span class="line">              <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.value();</span><br><span class="line">            WidgetsApp.debugShowWidgetInspectorOverride = value;</span><br><span class="line">            <span class="keyword">return</span> _forceRebuild();</span><br><span class="line">          &#125;,</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      WidgetInspectorService.instance.initServiceExtensions(registerServiceExtension);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; _forceRebuild() &#123;</span><br><span class="line">    <span class="keyword">if</span> (renderViewElement != <span class="keyword">null</span>) &#123;</span><br><span class="line">      buildOwner.reassemble(renderViewElement);</span><br><span class="line">      <span class="keyword">return</span> endOfFrame;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.value();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// [BuildOwner]负责执行以此绑定为根的窗口小部件树的构建管道。</span></span><br><span class="line">  BuildOwner <span class="keyword">get</span> buildOwner =&gt; _buildOwner;</span><br><span class="line">  <span class="keyword">final</span> BuildOwner _buildOwner = BuildOwner();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 负责焦点树的对象。</span></span><br><span class="line">  <span class="comment">///很少直接使用 相反，请考虑使用[FocusScope.of]获取给定[BuildContext]的[FocusScopeNode]。</span></span><br><span class="line">  <span class="comment">///有关详细信息，请参阅[FocusManager]。</span></span><br><span class="line">  FocusManager <span class="keyword">get</span> focusManager =&gt; _buildOwner.focusManager;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span>&lt;WidgetsBindingObserver&gt; _observers = &lt;WidgetsBindingObserver&gt;[];</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 将给定对象注册为绑定观察者。 当各种应用程序事件发生时，例如当系统区域设置发生更改时，会通知绑定观察者。 通常，窗口小部件树中的一个窗口小部件将自身注册为绑定观察器，并将系统状态转换为继承的窗口小部件。</span></span><br><span class="line">  <span class="comment">/// 例如，[WidgetsApp]小部件注册为绑定观察者，并在每次构建时将屏幕大小传递给[MediaQuery]小部件，这使得其他小部件可以使用[MediaQuery.of]静态方法和（隐式） ）每当屏幕大小改变时（例如，每当屏幕旋转时）通知的[InheritedWidget]机制。</span></span><br><span class="line">  <span class="comment">/// 也可以看看：</span></span><br><span class="line">  <span class="comment">/// * [removeObserver]，释放此方法保留的资源。</span></span><br><span class="line">  <span class="comment">/// * [WidgetsBindingObserver]，它有一个使用此方法的示例。</span></span><br><span class="line">  <span class="keyword">void</span> addObserver(WidgetsBindingObserver observer) =&gt; _observers.add(observer);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Unregisters the given observer. This should be used sparingly as it is relatively expensive (O(N) in the number of registered observers).</span></span><br><span class="line">  <span class="built_in">bool</span> removeObserver(WidgetsBindingObserver observer) =&gt; _observers.remove(observer);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> handleMetricsChanged() &#123;</span><br><span class="line">    <span class="keyword">super</span>.handleMetricsChanged();</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeMetrics();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> handleTextScaleFactorChanged() &#123;</span><br><span class="line">    <span class="keyword">super</span>.handleTextScaleFactorChanged();</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeTextScaleFactor();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> handlePlatformBrightnessChanged() &#123;</span><br><span class="line">    <span class="keyword">super</span>.handlePlatformBrightnessChanged();</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangePlatformBrightness();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> handleAccessibilityFeaturesChanged() &#123;</span><br><span class="line">    <span class="keyword">super</span>.handleAccessibilityFeaturesChanged();</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeAccessibilityFeatures();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Called when the system locale changes.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Calls [dispatchLocaleChanged] to notify the binding observers.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// See [Window.onLocaleChanged].</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> handleLocaleChanged() &#123;</span><br><span class="line">    dispatchLocalesChanged(<span class="built_in">window</span>.locales);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Notify all the observers that the locale has changed (using</span></span><br><span class="line">  <span class="comment">/// [WidgetsBindingObserver.didChangeLocales]), giving them the</span></span><br><span class="line">  <span class="comment">/// `locales` argument.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This is called by [handleLocaleChanged] when the [Window.onLocaleChanged]</span></span><br><span class="line">  <span class="comment">/// notification is received.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> dispatchLocalesChanged(<span class="built_in">List</span>&lt;Locale&gt; locales) &#123;</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeLocales(locales);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Notify all the observers that the active set of [AccessibilityFeatures]</span></span><br><span class="line">  <span class="comment">/// has changed (using [WidgetsBindingObserver.didChangeAccessibilityFeatures]),</span></span><br><span class="line">  <span class="comment">/// giving them the `features` argument.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This is called by [handleAccessibilityFeaturesChanged] when the</span></span><br><span class="line">  <span class="comment">/// [Window.onAccessibilityFeaturesChanged] notification is received.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> dispatchAccessibilityFeaturesChanged() &#123;</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeAccessibilityFeatures();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Called when the system pops the current route.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This first notifies the binding observers (using</span></span><br><span class="line">  <span class="comment">/// [WidgetsBindingObserver.didPopRoute]), in registration order, until one</span></span><br><span class="line">  <span class="comment">/// returns true, meaning that it was able to handle the request (e.g. by</span></span><br><span class="line">  <span class="comment">/// closing a dialog box). If none return true, then the application is shut</span></span><br><span class="line">  <span class="comment">/// down by calling [SystemNavigator.pop].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// [WidgetsApp] uses this in conjunction with a [Navigator] to</span></span><br><span class="line">  <span class="comment">/// cause the back button to close dialog boxes, return from modal</span></span><br><span class="line">  <span class="comment">/// pages, and so forth.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This method exposes the `popRoute` notification from</span></span><br><span class="line">  <span class="comment">/// [SystemChannels.navigation].</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; handlePopRoute() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> <span class="built_in">List</span>&lt;WidgetsBindingObserver&gt;.from(_observers)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">await</span> observer.didPopRoute())</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    SystemNavigator.pop();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Called when the host tells the app to push a new route onto the</span></span><br><span class="line">  <span class="comment">/// navigator.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This notifies the binding observers (using</span></span><br><span class="line">  <span class="comment">/// [WidgetsBindingObserver.didPushRoute]), in registration order, until one</span></span><br><span class="line">  <span class="comment">/// returns true, meaning that it was able to handle the request (e.g. by</span></span><br><span class="line">  <span class="comment">/// opening a dialog box). If none return true, then nothing happens.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This method exposes the `pushRoute` notification from</span></span><br><span class="line">  <span class="comment">/// [SystemChannels.navigation].</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; handlePushRoute(<span class="built_in">String</span> route) <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> <span class="built_in">List</span>&lt;WidgetsBindingObserver&gt;.from(_observers)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">await</span> observer.didPushRoute(route))</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="keyword">dynamic</span>&gt; _handleNavigationInvocation(MethodCall methodCall) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (methodCall.method) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'popRoute'</span>:</span><br><span class="line">        <span class="keyword">return</span> handlePopRoute();</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'pushRoute'</span>:</span><br><span class="line">        <span class="keyword">return</span> handlePushRoute(methodCall.arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Future&lt;<span class="keyword">dynamic</span>&gt;.value();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> handleAppLifecycleStateChanged(AppLifecycleState state) &#123;</span><br><span class="line">    <span class="keyword">super</span>.handleAppLifecycleStateChanged(state);</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didChangeAppLifecycleState(state);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Called when the operating system notifies the application of a memory</span></span><br><span class="line">  <span class="comment">/// pressure situation.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Notifies all the observers using</span></span><br><span class="line">  <span class="comment">/// [WidgetsBindingObserver.didHaveMemoryPressure].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This method exposes the `memoryPressure` notification from</span></span><br><span class="line">  <span class="comment">/// [SystemChannels.system].</span></span><br><span class="line">  <span class="keyword">void</span> handleMemoryPressure() &#123;</span><br><span class="line">    <span class="keyword">for</span> (WidgetsBindingObserver observer <span class="keyword">in</span> _observers)</span><br><span class="line">      observer.didHaveMemoryPressure();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; _handleSystemMessage(<span class="built_in">Object</span> systemMessage) <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt; message = systemMessage;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String</span> type = message[<span class="string">'type'</span>];</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'memoryPressure'</span>:</span><br><span class="line">        handleMemoryPressure();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> _needToReportFirstFrame = <span class="keyword">true</span>;</span><br><span class="line">  <span class="built_in">int</span> _deferFirstFrameReportCount = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> _reportFirstFrame =&gt; _deferFirstFrameReportCount == <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> Completer&lt;<span class="keyword">void</span>&gt; _firstFrameCompleter = Completer&lt;<span class="keyword">void</span>&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Whether the Flutter engine has rasterized the first frame.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.frame_rasterized_vs_presented&#125;</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// See also:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///  * [waitUntilFirstFrameRasterized], the future when [firstFrameRasterized]</span></span><br><span class="line">  <span class="comment">///    becomes true.</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> firstFrameRasterized =&gt; _firstFrameCompleter.isCompleted;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// A future that completes when the Flutter engine has rasterized the first</span></span><br><span class="line">  <span class="comment">/// frame.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.frame_rasterize_vs_presented&#125;</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// See also:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///  * [firstFrameRasterized], whether this future has completed or not.</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; <span class="keyword">get</span> waitUntilFirstFrameRasterized =&gt; _firstFrameCompleter.future;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Whether the first frame has finished building.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Only useful in profile and debug builds; in release builds, this always</span></span><br><span class="line">  <span class="comment">/// return false. This can be deferred using [deferFirstFrameReport] and</span></span><br><span class="line">  <span class="comment">/// [allowFirstFrameReport]. The value is set at the end of the call to</span></span><br><span class="line">  <span class="comment">/// [drawFrame].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This value can also be obtained over the VM service protocol as</span></span><br><span class="line">  <span class="comment">/// `ext.flutter.didSendFirstFrameEvent`.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// See also:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///  * [firstFrameRasterized], whether the first frame has finished rendering.</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> debugDidSendFirstFrameEvent =&gt; !_needToReportFirstFrame;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Tell the framework not to report the frame it is building as a "useful"</span></span><br><span class="line">  <span class="comment">/// first frame until there is a corresponding call to [allowFirstFrameReport].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This is used by [WidgetsApp] to avoid reporting frames that aren't useful</span></span><br><span class="line">  <span class="comment">/// during startup as the "first frame".</span></span><br><span class="line">  <span class="keyword">void</span> deferFirstFrameReport() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_deferFirstFrameReportCount &gt;= <span class="number">0</span>);</span><br><span class="line">      _deferFirstFrameReportCount += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">////在[deferFirstFrameReport]之后调用时：告诉框架将其构建的帧报告为“有用的”第一帧。</span></span><br><span class="line">  <span class="comment">///对于[deferFirstFrameReport]的每次相应调用，只能调用此方法一次。</span></span><br><span class="line">  <span class="comment">/// [WidgetsApp]使用它来报告绘制第一个有用帧的时间。</span></span><br><span class="line">  <span class="keyword">void</span> allowFirstFrameReport() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_deferFirstFrameReportCount &gt;= <span class="number">1</span>);</span><br><span class="line">      _deferFirstFrameReportCount -= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _handleBuildScheduled() &#123;</span><br><span class="line">    <span class="comment">// 如果我们正在构建脏元素，那么更改不应该触发新框架。</span></span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (debugBuildingDirtyElements) &#123;</span><br><span class="line">        <span class="keyword">throw</span> FlutterError(</span><br><span class="line">          <span class="string">'Build scheduled during frame.\n'</span></span><br><span class="line">          <span class="string">'While the widget tree was being built, laid out, and painted, '</span></span><br><span class="line">          <span class="string">'a new frame was scheduled to rebuild the widget tree. '</span></span><br><span class="line">          <span class="string">'This might be because setState() was called from a layout or '</span></span><br><span class="line">          <span class="string">'paint callback. '</span></span><br><span class="line">          <span class="string">'If a change is needed to the widget tree, it should be applied '</span></span><br><span class="line">          <span class="string">'as the tree is being built. Scheduling a change for the subsequent '</span></span><br><span class="line">          <span class="string">'frame instead results in an interface that lags behind by one frame. '</span></span><br><span class="line">          <span class="string">'If this was done to make your build dependent on a size measured at '</span></span><br><span class="line">          <span class="string">'layout time, consider using a LayoutBuilder, CustomSingleChildLayout, '</span></span><br><span class="line">          <span class="string">'or CustomMultiChildLayout. If, on the other hand, the one frame delay '</span></span><br><span class="line">          <span class="string">'is the desired effect, for example because this is an '</span></span><br><span class="line">          <span class="string">'animation, consider scheduling the frame in a post-frame callback '</span></span><br><span class="line">          <span class="string">'using SchedulerBinding.addPostFrameCallback or '</span></span><br><span class="line">          <span class="string">'using an AnimationController to trigger the animation.'</span></span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    ensureVisualUpdate();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///我们目前是否在一个框架中。 这用于验证帧是否未被冗余调度。</span></span><br><span class="line">  <span class="comment">///这是公开的，以便测试框架可以改变它。</span></span><br><span class="line">  <span class="comment">///此标志未在发布版本中使用。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="built_in">bool</span> debugBuildingDirtyElements = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 抽取 构建(build) 和 渲染管道(rendering pipeline) 以生成 框架(frame)。</span></span><br><span class="line">  <span class="comment">/// 这个方法由[handleDrawFrame]调用，当它需要布局和绘制框架时，引擎会自动调用它。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 每个框架(frame)包含以下阶段：</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 1.动画阶段(Animation phase)：[handleBeginFrame]方法，使用[Window.onBeginFrame]注册，以注册顺序调用[scheduleFrameCallback]注册的所有瞬态帧回调。 </span></span><br><span class="line">  <span class="comment">/// 这包括驱动[AnimationController]对象的所有[Ticker]实例，这意味着此时所有活动的[Animation]对象都会勾选。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 2.微任务(Microtasks phase)：在[handleBeginFrame]返回后，由 瞬态帧(transient frame)回调调度的任何微任务都可以运行。 </span></span><br><span class="line">  <span class="comment">/// 这通常包括完成此框架(frame)的[Ticker]和[AnimationController]的期货回调。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 在[handleBeginFrame]之后，调用[Window.onDrawFrame]注册的[handleDrawFrame]，调用所有持久帧回调，其中最值得注意的是此方法[drawFrame]，其执行如下：</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 3.构建阶段(build phase)：重建窗口小部件树(widget tree)中的所有脏[元素](dirty [Element])（参见[State.build]）。 </span></span><br><span class="line">  <span class="comment">/// 有关将构建脏标记为脏(marking a widget)的详细信息，请参阅[State.setState]。 </span></span><br><span class="line">  <span class="comment">/// 有关此步骤的更多信息，请参见[BuildOwner]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 4.布局阶段(layout phase)：布局系统中所有脏[RenderObject]（参见[RenderObject.performLayout]）。 </span></span><br><span class="line">  <span class="comment">/// 有关为布局标记脏对象的更多详细信息，请参见[RenderObject.markNeedsLayout]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 5.合成位阶段(compositing bits  phase)：更新任何脏[RenderObject]对象上的合成位(compositing bits)。</span></span><br><span class="line">  <span class="comment">/// 请参见[RenderObject.markNeedsCompositingBitsUpdate]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 6.绘制阶段(paint phase)：系统中所有脏的[RenderObject]都被重新绘制（参见[RenderObject.paint]）。 这会生成[Layer]树。 </span></span><br><span class="line">  <span class="comment">/// 有关将画图(paint)标记为脏的对象的更多详细信息，请参见[RenderObject.markNeedsPaint]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 7.合成阶段(compositing phase)：图层树(layer tree)变为[Scene(场景)]并发送到GPU。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 8.语义阶段(semantics phase)：系统中所有脏[RenderObject]的语义都已更新（参见[RenderObject.semanticsAnnotator]）。 这会生成[SemanticsNode]树。 有关为语义标记脏对象的更多详细信息，请参见[RenderObject.markNeedsSemanticsUpdate]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 有关步骤 4-8 的更多详细信息，请参阅[PipelineOwner]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 9.窗口小部件层中的完成阶段(finalization phase in the widgets layer)：widgets tree 已完成。 </span></span><br><span class="line">  <span class="comment">/// 框架从widgets tree中删除任何对象时，[State.dispose]将会被调用。 </span></span><br><span class="line">  <span class="comment">/// 有关详细信息，请参阅[BuildOwner.finalizeTree]。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 10.调度程序层中的最终确定阶段：在[drawFrame]返回之后，[handleDrawFrame]然后调用后帧回调(post-frame callbacks)（使用[addPostFrameCallback]注册）。</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 编辑上面的内容时，还要更新rendering / binding.dart的副本。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> drawFrame() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!debugBuildingDirtyElements);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      debugBuildingDirtyElements = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (_needToReportFirstFrame &amp;&amp; _reportFirstFrame) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(!_firstFrameCompleter.isCompleted);</span><br><span class="line">      <span class="comment">// TODO(liyuqian): use a broadcast stream approach</span></span><br><span class="line">      <span class="keyword">final</span> TimingsCallback oldCallback = WidgetsBinding.instance.<span class="built_in">window</span>.onReportTimings;</span><br><span class="line">      WidgetsBinding.instance.<span class="built_in">window</span>.onReportTimings = (<span class="built_in">List</span>&lt;FrameTiming&gt; timings) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">          developer.Timeline.instantSync(<span class="string">'Rasterized first useful frame'</span>);</span><br><span class="line">          developer.postEvent(<span class="string">'Flutter.FirstFrame'</span>, &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (oldCallback != <span class="keyword">null</span>) &#123;</span><br><span class="line">          oldCallback(timings);</span><br><span class="line">        &#125;</span><br><span class="line">        WidgetsBinding.instance.<span class="built_in">window</span>.onReportTimings = oldCallback;</span><br><span class="line">        _firstFrameCompleter.complete();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (renderViewElement != <span class="keyword">null</span>)</span><br><span class="line">        buildOwner.buildScope(renderViewElement);</span><br><span class="line">      <span class="keyword">super</span>.drawFrame();</span><br><span class="line">      buildOwner.finalizeTree();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        debugBuildingDirtyElements = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      <span class="keyword">if</span> (_needToReportFirstFrame &amp;&amp; _reportFirstFrame) &#123;</span><br><span class="line">        developer.Timeline.instantSync(<span class="string">'Widgets built first useful frame'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    _needToReportFirstFrame = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// [Element]是层次结构的根（并将[RenderView]对象包装在渲染层次结构(rendering hierarchy)的根下）。</span></span><br><span class="line">  <span class="comment">///这是在第一次调用[runApp]时初始化的。</span></span><br><span class="line">  <span class="built_in">Element</span> <span class="keyword">get</span> renderViewElement =&gt; _renderViewElement;</span><br><span class="line">  <span class="built_in">Element</span> _renderViewElement;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 获取一个widget并将其附加(attaches)到[renderViewElement]，必要时创建它。</span></span><br><span class="line">  <span class="comment">/// [runApp]调用它来配置小部件树。</span></span><br><span class="line">  <span class="comment">///另见[RenderObjectToWidgetAdapter.attachToRenderTree]。</span></span><br><span class="line">  <span class="keyword">void</span> attachRootWidget(Widget rootWidget) &#123;</span><br><span class="line">    _renderViewElement = RenderObjectToWidgetAdapter&lt;RenderBox&gt;(</span><br><span class="line">      container: renderView,</span><br><span class="line">      debugShortDescription: <span class="string">'[root]'</span>,</span><br><span class="line">      child: rootWidget,</span><br><span class="line">    ).attachToRenderTree(buildOwner, renderViewElement);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///是否已初始化[renderViewElement]。</span></span><br><span class="line">  <span class="comment">///在调用[runApp]（或在[TestWidgetsFlutterBinding]的上下文中调用[WidgetTester.pumpWidget]）之前，这将是false。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> isRootWidgetAttached =&gt; _renderViewElement != <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; performReassemble() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      WidgetInspectorService.instance.performReassemble();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line">    deferFirstFrameReport();</span><br><span class="line">    <span class="keyword">if</span> (renderViewElement != <span class="keyword">null</span>)</span><br><span class="line">      buildOwner.reassemble(renderViewElement);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.performReassemble().then((<span class="keyword">void</span> value) &#123;</span><br><span class="line">      allowFirstFrameReport();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="RenderObjectToWidgetAdapter"><a href="#RenderObjectToWidgetAdapter" class="headerlink" title="RenderObjectToWidgetAdapter"></a>RenderObjectToWidgetAdapter</h1><p>从 <code>RenderObject</code> 到 <code>Element树</code> 的 <code>桥</code>。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 给定的容器是应该插入[Element]树的[RenderObject]。 它必须是[RenderObject]，它实现[RenderObjectWithChildMixin]协议。 类型参数`T`是容器期望作为其子类的[RenderObject]类型。</span></span><br><span class="line"><span class="comment">/// 由[runApp]用于引导应用程序。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderObjectToWidgetAdapter</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">RenderObject</span>&gt; <span class="keyword">extends</span> <span class="title">RenderObjectWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">/// 从[RenderObject]到[Element]树创建一个桥。</span></span><br><span class="line">  <span class="comment">/// 由[WidgetsBinding]用于将根小部件附加到[RenderView]。</span></span><br><span class="line">  RenderObjectToWidgetAdapter(&#123;</span><br><span class="line">    <span class="keyword">this</span>.child,</span><br><span class="line">    <span class="keyword">this</span>.container,</span><br><span class="line">    <span class="keyword">this</span>.debugShortDescription,</span><br><span class="line">  &#125;) : <span class="keyword">super</span>(key: GlobalObjectKey(container));</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 树中此widget下面的widget。</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.widgets.child&#125;</span></span><br><span class="line">  <span class="keyword">final</span> Widget child;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// [RenderObject]，它是由此widget创建的[Element]的父级。</span></span><br><span class="line">  <span class="keyword">final</span> RenderObjectWithChildMixin&lt;T&gt; container;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 调试辅助工具使用的此widget的简短描述(short description)。</span></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">String</span> debugShortDescription;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectToWidgetElement&lt;T&gt; createElement() =&gt; RenderObjectToWidgetElement&lt;T&gt;(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectWithChildMixin&lt;T&gt; createRenderObject(BuildContext context) =&gt; container;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> updateRenderObject(BuildContext context, RenderObject renderObject) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 填充这个widget并将[RenderObject]的实际设置结果作为[container]的子节点。</span></span><br><span class="line">  <span class="comment">/// 如果`element`为null，则此函数将创建一个新element。 否则，给定element将安排更新以切换到此widget。</span></span><br><span class="line">  <span class="comment">/// 由[runApp]用于引导应用程序。</span></span><br><span class="line">  RenderObjectToWidgetElement&lt;T&gt; attachToRenderTree(BuildOwner owner, [ RenderObjectToWidgetElement&lt;T&gt; element ]) &#123;</span><br><span class="line">    <span class="keyword">if</span> (element == <span class="keyword">null</span>) &#123;</span><br><span class="line">      owner.lockState(() &#123;</span><br><span class="line">        element = createElement();</span><br><span class="line">        <span class="keyword">assert</span>(element != <span class="keyword">null</span>);</span><br><span class="line">        element.assignOwner(owner);</span><br><span class="line">      &#125;);</span><br><span class="line">      owner.buildScope(element, () &#123;</span><br><span class="line">        element.mount(<span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      element._newWidget = <span class="keyword">this</span>;</span><br><span class="line">      element.markNeedsBuild();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">String</span> toStringShort() =&gt; debugShortDescription ?? <span class="keyword">super</span>.toStringShort();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 由[RenderObject]托管的[RootRenderObjectElement]。</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// 此element类是[RenderObjectToWidgetAdapter] Widget的实例化。</span></span><br><span class="line"><span class="comment">/// 它只能用作[Element]树的根（它不能挂载到另一个[Element];它的父元素必须为null）。</span></span><br><span class="line"><span class="comment">/// 在典型用法中，它将被实例化为[RenderObjectToWidgetAdapter]，其容器是连接到Flutter引擎的[RenderView]。 </span></span><br><span class="line"><span class="comment">///  在这种用法中，它通常由[runApp]创建的[WidgetsFlutterBinding]单例中的引导逻辑实例化。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderObjectToWidgetElement</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">RenderObject</span>&gt; <span class="keyword">extends</span> <span class="title">RootRenderObjectElement</span> </span>&#123;</span><br><span class="line">  <span class="comment">///创建由[RenderObject]托管的元素。</span></span><br><span class="line">  <span class="comment">///由此元素创建的[RenderObject]不会自动设置为托管[RenderObject]的子级。 要将此元素实际附加到渲染树，请调用[RenderObjectToWidgetAdapter.attachToRenderTree]。</span></span><br><span class="line">  RenderObjectToWidgetElement(RenderObjectToWidgetAdapter&lt;T&gt; widget) : <span class="keyword">super</span>(widget);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectToWidgetAdapter&lt;T&gt; <span class="keyword">get</span> widget =&gt; <span class="keyword">super</span>.widget;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Element</span> _child;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">Object</span> _rootChildSlot = <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> visitChildren(ElementVisitor visitor) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_child != <span class="keyword">null</span>)</span><br><span class="line">      visitor(_child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> forgetChild(<span class="built_in">Element</span> child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(child == _child);</span><br><span class="line">    _child = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> mount(<span class="built_in">Element</span> parent, <span class="keyword">dynamic</span> newSlot) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(parent == <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">super</span>.mount(parent, newSlot);</span><br><span class="line">    _rebuild();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> update(RenderObjectToWidgetAdapter&lt;T&gt; newWidget) &#123;</span><br><span class="line">    <span class="keyword">super</span>.update(newWidget);</span><br><span class="line">    <span class="keyword">assert</span>(widget == newWidget);</span><br><span class="line">    _rebuild();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当我们分配一个新的Widget时，我们将它存储在此处，直到我们准备好更新它。</span></span><br><span class="line">  Widget _newWidget;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> performRebuild() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_newWidget != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 例如，如果由于reassemble而重建了我们，则_newWidget可以为null。</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">final</span> Widget newWidget = _newWidget;</span><br><span class="line">      _newWidget = <span class="keyword">null</span>;</span><br><span class="line">      update(newWidget);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">super</span>.performRebuild();</span><br><span class="line">    <span class="keyword">assert</span>(_newWidget == <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _rebuild() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      _child = updateChild(_child, widget.child, _rootChildSlot);</span><br><span class="line">      <span class="keyword">assert</span>(_child != <span class="keyword">null</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (exception, stack) &#123;</span><br><span class="line">      <span class="keyword">final</span> FlutterErrorDetails details = FlutterErrorDetails(</span><br><span class="line">        exception: exception,</span><br><span class="line">        stack: stack,</span><br><span class="line">        <span class="keyword">library</span>: <span class="string">'widgets library'</span>,</span><br><span class="line">        context: ErrorDescription(<span class="string">'attaching to the render tree'</span>),</span><br><span class="line">      );</span><br><span class="line">      FlutterError.reportError(details);</span><br><span class="line">      <span class="keyword">final</span> Widget error = ErrorWidget.builder(details);</span><br><span class="line">      _child = updateChild(<span class="keyword">null</span>, error, _rootChildSlot);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectWithChildMixin&lt;T&gt; <span class="keyword">get</span> renderObject =&gt; <span class="keyword">super</span>.renderObject;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> insertChildRenderObject(RenderObject child, <span class="keyword">dynamic</span> slot) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(slot == _rootChildSlot);</span><br><span class="line">    <span class="keyword">assert</span>(renderObject.debugValidateChild(child));</span><br><span class="line">    renderObject.child = child;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> moveChildRenderObject(RenderObject child, <span class="keyword">dynamic</span> slot) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(<span class="keyword">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> removeChildRenderObject(RenderObject child) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(renderObject.child == child);</span><br><span class="line">    renderObject.child = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-channel/" rel="next" title="Flutter-channel">
+                <i class="fa fa-chevron-left"></i> Flutter-channel
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-State相关/" rel="prev" title="Flutter-State相关">
+                Flutter-State相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#runApp-Widget-app"><span class="nav-number">1.</span> <span class="nav-text">runApp(Widget app)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WidgetsFlutterBinding"><span class="nav-number">2.</span> <span class="nav-text">WidgetsFlutterBinding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WidgetsBinding-Widget层和Flutter引擎之间的粘合剂。"><span class="nav-number">3.</span> <span class="nav-text">WidgetsBinding - Widget层和Flutter引擎之间的粘合剂。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RenderObjectToWidgetAdapter"><span class="nav-number">4.</span> <span class="nav-text">RenderObjectToWidgetAdapter</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">388.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

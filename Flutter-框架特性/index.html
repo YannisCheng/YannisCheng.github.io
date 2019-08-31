@@ -83,20 +83,22 @@
 
 
 
-<meta name="description" content="状态管理">
+<meta name="description" content="Flutter-框架特性">
 <meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter-框架特性">
 <meta property="og:url" content="http://yannischeng.com/Flutter-框架特性/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="状态管理">
+<meta property="og:description" content="Flutter-框架特性">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%E6%A1%86%E6%9E%B6-flutter%E5%8C%85.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%E6%A1%86%E6%9E%B6-sky%E5%BC%95%E6%93%8E%E5%8C%85.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-%E7%9F%AD%E6%97%B6%E7%8A%B6%E6%80%81%E4%B8%8E%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81.png">
-<meta property="og:updated_time" content="2019-08-29T02:41:46.746Z">
+<meta property="og:updated_time" content="2019-08-29T06:02:13.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-框架特性">
-<meta name="twitter:description" content="状态管理">
+<meta name="twitter:description" content="Flutter-框架特性">
 <meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png">
 
 
@@ -315,7 +317,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T10:41:46+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-29T14:02:13+08:00">
                 2019-08-29
               </time>
             
@@ -365,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,573 字
+                  3,186 字
                 </span>
               
 
@@ -381,7 +383,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -437,29 +439,95 @@
       
 
       
-        <p>状态管理</p>
+        <p>Flutter-框架特性</p>
 <a id="more"></a>
-<p>参考：<a href="https://flutter-io.cn/docs/get-started/flutter-for/declarative" target="_blank" rel="noopener">声明式 UI</a><br>参考：<a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app" target="_blank" rel="noopener">暂时 (ephemeral) 和应用 (app) 状态的区别</a></p>
-<ul>
-<li><strong>命令式UI</strong> 与 <strong>声明式UI</strong></li>
-<li>在<code>flutter</code>中UI的改变是以 <strong>帧</strong> 为单位的。</li>
-<li>Flutter 应用中需要<code>自己管理</code>的状态可以分为2种：<strong>暂时（短时）</strong> 和 <strong>应用（共享）</strong></li>
+<p>延伸阅读：<a href="https://flutter-io.cn/docs/get-started/flutter-for/declarative" target="_blank" rel="noopener">声明式 UI</a><br>延伸阅读：<a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app" target="_blank" rel="noopener">暂时 (ephemeral) 和应用 (app) 状态的区别</a></p>
+<h1 id="Flutter中使用的编程范式"><a href="#Flutter中使用的编程范式" class="headerlink" title="Flutter中使用的编程范式"></a>Flutter中使用的编程范式</h1><ul>
+<li><p><strong>组合 (composition)</strong>: </p>
+<p>这也是 <code>Flutter</code> 的 <code>主要开发范式</code>，使用 <code>简单</code>、<code>行为有限</code> 的 <code>小对象</code> 进行 <code>组合</code>，从而实现更 <code>复杂的效果</code>。</p>
+<p>绝大多数 <code>Flutter widget</code> 都是用这种方法构建的。比如 Material FlatButton 类是基于 MaterialButton 类构建的，而这个类则是由 IconTheme、InkWell、Padding、Center、Material、AnimatedDefaultTextStyle 以及 ConstrainedBox 组合而成的。而 InkWell 则是由 GestureDetector 组成，Material 则是由 AnimatedDefaultTextStyle、NotificationListener 和 AnimatedPhysicalModel 组成。如此等等。</p>
+</li>
 </ul>
-<h1 id="开发观念的大转变！——-声明式"><a href="#开发观念的大转变！——-声明式" class="headerlink" title="开发观念的大转变！—— 声明式"></a>开发观念的大转变！—— 声明式</h1><p><a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/declarative" target="_blank" rel="noopener">状态管理中的声明式编程思维</a></p>
-<p><code>Flutter应用</code>是 <code>声明式</code> 的，这也就意味着 Flutter构建的用户界面就是应用的 <code>当前状态</code>。</p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png" alt></p>
-<h2 id="命令式UI"><a href="#命令式UI" class="headerlink" title="命令式UI"></a>命令式UI</h2><p>从 <code>Win32</code> 到 <code>Web</code> 再到 <code>Android</code> 和 <code>iOS</code>，框架通常使用一种<code>命令式</code>的编程风格来完成 <code>UI 编程</code>。比如：</p>
+<ul>
+<li><p><strong>函数式编程 (functional programming)</strong>: </p>
+<p>整个应用都可以只用 StatelessWidget 来构建，它 <code>本质上就是一些方法</code>，用来描述如何将参数传送给其他方法，以及在布局区域内计算布局以及绘制图像。当然这样的应用一般也不会包含状态，所以通常也无法进行交互。</p>
+<p>比如，Icon widget 就只是一个将其元素 (颜色、图标、尺寸) 罗列在布局区域内的方法。另外，当这个范式被重度使用时，则会使用不可变的数据结构，如整个 Widget 类及其派生，以及一些辅助类，如 Rect 和 TextStyle。</p>
+<p>另外，从一个较小的尺度来看的话，Dart 的 Iterable API 也重度使用了这个范式 (如 map, reduce, where 等方法)，它在框架中经常被用来处理一序列的值。</p>
+</li>
+<li><p><strong>事件驱动编程 (event-driven programming)</strong>: </p>
+<p>用户的 <code>交互操作</code> 被包装成 <code>事件对象</code>，这些对象发送给被各个 <code>eventhandler</code> 注册的回调方法。</p>
+<p>屏幕内容的更新使用的也是类似的<code>回调机制</code>。比如，被做为动画系统构建基础的 Listenable 类，就采用了包含多个 <code>事件监听者的订阅模型</code>。</p>
+</li>
+<li><p><strong>面向类编程 (class-based programming，是面向对象编程的一种方式):</strong> </p>
+<p>框架内绝大多数的 API 是由包含各种继承关系的类来组成的。我们在 <code>基本类</code> 中定义<code>较高级别的 API</code>，然后在 <code>其子类</code> 中对 <code>这些 API 进行特化处理</code>。</p>
+<p>比如，我们的渲染对象就有一个基本类 RenderObject，它对坐标系的细节并不关心，但它的子类 RenderBox 就引入了笛卡尔坐标系的概念 (x/y 坐标值，以及宽度高度的概念)。</p>
+</li>
+<li><p><strong>原型编程 (prototype-based programming，面向对象编程的一种方式)</strong>: </p>
+<p>SrollPhysics 类在<code>运行时``动态链接</code>那些会组成滚动逻辑的<code>实例</code>。这就使得系统无需在编译时提前选择平台的情况下，也能组合出符合平台特性的翻页滚动效果。</p>
+</li>
+<li><p><strong>指令式编程 (imperative programming)</strong>: </p>
+<p>简单直白的指令式编程，通常和对象内封装的状态 (state) 搭配使用，这种范式能提供最符合直觉的解法。</p>
+<p>比如，测试就是使用指令式编程实现的，首先描述出测试的环境，然后给出测试需要满足的定量，最后开始步进，或者根据测试需要插入事件。</p>
+</li>
+<li><p><strong>响应式编程 (reactive programming)</strong>: </p>
+<p><code>Widget</code> 和 <code>元素树</code> 有时候被描述为 <code>响应式</code> 的，因为随 widget 构造方法引入的新输入会随着其 build 方法传播给<code>更低等级</code>的 widget；而底层 widget 中出现的修改 (如响应用户的输入) 也会沿着结构树通过 <code>eventhandler</code> <code>向上传播</code>。</p>
+<p>在整个框架中，<strong><code>函数-响应式以</code></strong> 及 <strong><code>指令-响应式</code></strong> 的实现都有出现，具体取决于 <code>widget</code> 的功能需求：</p>
+<ul>
+<li>如果 Widget 的 <code>build()</code> 只是包含其针对变化如何响应的表达式的话，就是 <code>函数-响应式 widget</code> (如 Material Divider 类)；</li>
+<li>如果 widget 的 <code>build()</code> 包含一系列的表达式，用于描述该 widget 如何响应变化的话，那它就是 <code>指令-响应式 widget</code> (如 Chip 类)。</li>
+</ul>
+</li>
+<li><p><strong>声明式编程 (declarative programming)</strong>: </p>
+<p><code>Widget</code> 的 <code>build()</code> 通常都是 <code>一个单一表达式</code>，它包含 <code>多级嵌套的构造函数</code>，且使用 <code>Dart</code> 严格的 <code>声明式子集</code> 编写。这些 <code>嵌套表达式</code>可以被机械地与合适的 <code>标记语言互相转换</code>。</p>
+<p>比如，UserAccountsDrawerHeader 这个 widget 就有一个很长的 build 方法 (20 多行)，由一个嵌套的表达式构成。这种范式也可以和指令式混合使用，以实现某些很难用纯声明式的方法实现的 UI。</p>
+</li>
+<li><p><strong>泛型程序设计 (generic programming):</strong> </p>
+<p>类型可以帮助开发者更早地抓到错误，基于这一点，Flutter 框架也采用了 <code>泛型开发</code>。比如：</p>
+<ul>
+<li><code>State类</code> 就是如此，其 <code>关联的widget</code> 就是 <code>类型参数</code>，如此一来 Dart 分析器就能捕获到 state 和 widget 不匹配的情况。</li>
+<li>类似的，<code>GlobalKey</code> 类就接受 <code>一个类型参数</code>，从而类型安全地访问一个 widget 的 state (会使用运行时检查)。</li>
+<li><code>Route接口</code> 也在被 <code>pop()</code> 时接受类型参数，另外 List, Map, Set 这些集合也都如此，这样就可以在分析或者运行时尽早发现  <code>类型不匹配的错误</code>。</li>
+</ul>
+</li>
+<li><p><strong>并发 (concurrent programming)</strong>: </p>
+<p><code>Flutter</code> 大量使用诸如 <code>Future</code> 等 <code>异步API</code>。比如：</p>
+<ul>
+<li>动画系统就会在动画执行完 <code>future</code> 时进行事件告知；</li>
+<li>图片加载系统也会使用 <code>future</code> 告知读取完毕。</li>
+</ul>
+</li>
+<li><p><strong>约束编程 (constraint programming)</strong>: </p>
+<p> <code>Flutter</code> 的 <code>布局系统</code> 使用了 <code>约束编程的简化形态</code> 来描述一个场景的几何性质。<br> <code>约束值</code> (比如一个笛卡尔矩形允许的最大 / 最小宽高值) 会从 <code>父元素</code> 传递给 <code>子元素</code>，子元素最终选择一个能满足上面所有约束条件的最终尺寸。这种做法也使得 Flutter 能不依赖太多输入的情况下快速完成一个全新的布局。</p>
+</li>
+</ul>
+<h1 id="命令式与声明式区分"><a href="#命令式与声明式区分" class="headerlink" title="命令式与声明式区分"></a>命令式与声明式区分</h1><h2 id="命令式"><a href="#命令式" class="headerlink" title="命令式"></a>命令式</h2><p>从 <code>Win32</code> 到 <code>Web</code> 再到 <code>Android</code> 和 <code>iOS</code>，框架通常使用一种<code>命令式</code>的编程风格来完成 <code>UI 编程</code>。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">你手动构建一个全功能的 UI 实例，比如一个通过 findViewById() 创建一个View实例 。</span><br><span class="line">在随后 UI 发生变化时，使用 其内置的方法 根据业务需要去修改它。</span><br></pre></td></tr></table></figure>
 <p>在这个过程中所执行的与<code>view</code>相关的<code>函数</code>就是<code>命令式</code>的编程风格。</p>
-<h2 id="声明式UI"><a href="#声明式UI" class="headerlink" title="声明式UI"></a>声明式UI</h2><p>如果你是从<code>命令式框架</code>转到 <code>Flutter 应用</code>，那么，你需要开始从一个<code>新的角度</code>来考虑 app 开发了。</p>
+<h2 id="声明式"><a href="#声明式" class="headerlink" title="声明式"></a>声明式</h2><p><a href="https://flutter-io.cn/docs/development/data-and-backend/state-mgmt/declarative" target="_blank" rel="noopener">状态管理中的声明式编程思维</a></p>
+<p><code>Flutter应用</code>是 <code>声明式</code> 的，这也就意味着 Flutter构建的用户界面就是应用的 <code>当前状态</code>。</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-ui%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%BC%80%E5%8F%91.png" alt></p>
+<p>如果你是从<code>命令式框架</code>转到 <code>Flutter 应用</code>，那么，你需要开始从一个<code>新的角度</code>来考虑 app 开发了。</p>
 <p><code>Flutter应用开发</code> 与 <code>命令式框架</code> <strong>相反</strong>，它让开发人员 <code>只描述</code> <strong>当前UI的 <code>视图配置</code></strong>，然后将具体的 <code>转换</code> 操作 <strong>交给框架</strong> 来执行。</p>
 <p>在<code>声明式</code>风格中，<code>视图配置</code>（如 Flutter 的 Widget ）是 <code>不可变</code> 的，它只是<code>轻量的“蓝图”</code>。如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Row(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,</span><br><span class="line">    MainAxisSize mainAxisSize = MainAxisSize.max,</span><br><span class="line">    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,</span><br><span class="line">    TextDirection textDirection,</span><br><span class="line">    VerticalDirection verticalDirection = VerticalDirection.down,</span><br><span class="line">    TextBaseline textBaseline,</span><br><span class="line">    List&lt;Widget&gt; children = const &lt;Widget&gt;[],</span><br><span class="line">  &#125;) : super(</span><br><span class="line">    children: children,</span><br><span class="line">    key: key,</span><br><span class="line">    direction: Axis.horizontal,</span><br><span class="line">    mainAxisAlignment: mainAxisAlignment,</span><br><span class="line">    mainAxisSize: mainAxisSize,</span><br><span class="line">    crossAxisAlignment: crossAxisAlignment,</span><br><span class="line">    textDirection: textDirection,</span><br><span class="line">    verticalDirection: verticalDirection,</span><br><span class="line">    textBaseline: textBaseline,</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="问题：Flutter-怎么没有标记语言-markup-language-和语法？"><a href="#问题：Flutter-怎么没有标记语言-markup-language-和语法？" class="headerlink" title="问题：Flutter 怎么没有标记语言 (markup language) 和语法？"></a>问题：Flutter 怎么没有标记语言 (markup language) 和语法？</h3><p><code>Flutter</code>的 <code>UI</code> 是由 <code>指令式</code> 的 <code>面向对象语言Dart</code> 构建的，本身不包含 <code>声明式的标记语言</code>。</p>
+<h3 id="问题：什么是编程语言、什么是标记语言？"><a href="#问题：什么是编程语言、什么是标记语言？" class="headerlink" title="问题：什么是编程语言、什么是标记语言？"></a>问题：什么是编程语言、什么是标记语言？</h3><ul>
+<li><strong>编程语言 (programming language)</strong>，有逻辑和行为能力，如 c, perl, javascript</li>
+<li><strong>标记语言( markup language )</strong>，无逻辑和行为能力，是被用来被读取的，如：xml, html, xhtml ( xml 和 html 的合体 )</li>
+</ul>
+<h3 id="问题：为什么要使用代码构建UI？"><a href="#问题：为什么要使用代码构建UI？" class="headerlink" title="问题：为什么要使用代码构建UI？"></a>问题：为什么要使用代码构建UI？</h3><ol>
+<li>使用代码构建UI会带来的 <code>更多的灵活性</code>，因为 <code>标记语言</code> 很难表达一个：从 <code>视觉</code> 到 <code>行为</code> 都 <code>完全定制</code> 的Widget。</li>
+<li><code>代码优先</code> 的开发方式能使得 <code>热重载</code>  和 <code>动态环境配置等特性</code> 更好的实现。</li>
+</ol>
 <p>那么……开发人员在更改 <code>视图配置蓝图</code> 的具体实现后，<code>视图</code>是如何 <strong>更新</strong> 的呢？</p>
-<h2 id="声明式UI更新"><a href="#声明式UI更新" class="headerlink" title="声明式UI更新"></a>声明式UI更新</h2><p><code>Widget</code> 会在<code>自身</code>上<code>触发重建</code>（在 <code>Flutter</code> 中最常见的方法是在 <code>StatefulWidgets</code> 组件上调用 <code>setState()</code>）并<code>构造</code>一个 <strong>新 Widget子树</strong>。即：<strong>当用户界面发生<code>变化</code>时， Flutter <code>不修改旧实例</code> ，而是 <code>构造新 Widget 实例</code>。</strong></p>
+<h2 id="Widget更新"><a href="#Widget更新" class="headerlink" title="Widget更新"></a>Widget更新</h2><p><code>Widget</code> 会在<code>自身</code>上<code>触发重建</code>（在 <code>Flutter</code> 中最常见的方法是在 <code>StatefulWidgets</code> 组件上调用 <code>setState()</code>）并<code>构造</code>一个 <strong>新 Widget子树</strong>。即：<strong>当用户界面发生<code>变化</code>时， Flutter <code>不修改旧实例</code> ，而是 <code>构造新 Widget 实例</code>。</strong></p>
 <p>也可以理解为：<strong>widget是<code>不可变</code>的。因为它们会<code>直接被替换</code>。</strong></p>
 <p><code>框架</code>使用<code>RenderObjects</code>管理传统UI对象的许多<code>职责</code>（例如维护布局的状态）。 <code>RenderObjects</code>在<code>帧之间</code>保持不变，Flutter的<code>轻量级Widgets</code>告诉<code>框架</code>在<code>状态之间</code>改变<code>RenderObjects</code>。 Flutter框架处理其余部分。</p>
 <p>（Here, rather than mutating an old instance b when the UI changes, Flutter constructs new Widget instances. The framework manages many of the responsibilities of a traditional UI object (such as maintaining the state of the layout) behind the scenes with RenderObjects. RenderObjects persist between frames and Flutter’s lightweight Widgets tell the framework to mutate the RenderObjects between states. The Flutter framework handles the rest.）</p>
+<h1 id="Flutter框架源码阅读范围"><a href="#Flutter框架源码阅读范围" class="headerlink" title="Flutter框架源码阅读范围"></a>Flutter框架源码阅读范围</h1><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%E6%A1%86%E6%9E%B6-flutter%E5%8C%85.png" alt></p>
+<p>flutter框架-flutter包.png</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter%E6%A1%86%E6%9E%B6-sky%E5%BC%95%E6%93%8E%E5%8C%85.png" alt></p>
+<p>flutter框架-sky引擎包.png</p>
 <h1 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h1><h2 id="暂时（短时）状态"><a href="#暂时（短时）状态" class="headerlink" title="暂时（短时）状态"></a>暂时（短时）状态</h2><p><code>短时状态</code> (有时也称 <code>用户界面(UI)状态</code> 或者 <code>局部状态</code>) 是你可以完全包含在<code>一个独立widget 中</code> 的状态，widget 树中<code>其他部分</code>不需要访问这种状态。如：</p>
 <ul>
 <li><p>一个 PageView 组件中的<code>当前页面</code></p>
@@ -618,7 +686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">164</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发观念的大转变！——-声明式"><span class="nav-number">1.</span> <span class="nav-text">开发观念的大转变！—— 声明式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令式UI"><span class="nav-number">1.1.</span> <span class="nav-text">命令式UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式UI"><span class="nav-number">1.2.</span> <span class="nav-text">声明式UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式UI更新"><span class="nav-number">1.3.</span> <span class="nav-text">声明式UI更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态管理"><span class="nav-number">2.</span> <span class="nav-text">状态管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#暂时（短时）状态"><span class="nav-number">2.1.</span> <span class="nav-text">暂时（短时）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用（共享）状态"><span class="nav-number">2.2.</span> <span class="nav-text">应用（共享）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何区分、定义状态？"><span class="nav-number">2.3.</span> <span class="nav-text">如何区分、定义状态？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储状态的对象应该置于何处？"><span class="nav-number">2.4.</span> <span class="nav-text">存储状态的对象应该置于何处？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何读取状态？"><span class="nav-number">2.5.</span> <span class="nav-text">如何读取状态？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Widget底层类"><span class="nav-number">2.5.1.</span> <span class="nav-text">Widget底层类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#provider-package"><span class="nav-number">2.5.2.</span> <span class="nav-text">provider package</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifier"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">ChangeNotifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifierProvider-MultiProvider"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">ChangeNotifierProvider/MultiProvider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Consumer"><span class="nav-number">2.5.2.3.</span> <span class="nav-text">Consumer</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter中使用的编程范式"><span class="nav-number">1.</span> <span class="nav-text">Flutter中使用的编程范式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令式与声明式区分"><span class="nav-number">2.</span> <span class="nav-text">命令式与声明式区分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令式"><span class="nav-number">2.1.</span> <span class="nav-text">命令式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式"><span class="nav-number">2.2.</span> <span class="nav-text">声明式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题：Flutter-怎么没有标记语言-markup-language-和语法？"><span class="nav-number">2.2.1.</span> <span class="nav-text">问题：Flutter 怎么没有标记语言 (markup language) 和语法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题：什么是编程语言、什么是标记语言？"><span class="nav-number">2.2.2.</span> <span class="nav-text">问题：什么是编程语言、什么是标记语言？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题：为什么要使用代码构建UI？"><span class="nav-number">2.2.3.</span> <span class="nav-text">问题：为什么要使用代码构建UI？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Widget更新"><span class="nav-number">2.3.</span> <span class="nav-text">Widget更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flutter框架源码阅读范围"><span class="nav-number">3.</span> <span class="nav-text">Flutter框架源码阅读范围</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态管理"><span class="nav-number">4.</span> <span class="nav-text">状态管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#暂时（短时）状态"><span class="nav-number">4.1.</span> <span class="nav-text">暂时（短时）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用（共享）状态"><span class="nav-number">4.2.</span> <span class="nav-text">应用（共享）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何区分、定义状态？"><span class="nav-number">4.3.</span> <span class="nav-text">如何区分、定义状态？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储状态的对象应该置于何处？"><span class="nav-number">4.4.</span> <span class="nav-text">存储状态的对象应该置于何处？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何读取状态？"><span class="nav-number">4.5.</span> <span class="nav-text">如何读取状态？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Widget底层类"><span class="nav-number">4.5.1.</span> <span class="nav-text">Widget底层类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#provider-package"><span class="nav-number">4.5.2.</span> <span class="nav-text">provider package</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifier"><span class="nav-number">4.5.2.1.</span> <span class="nav-text">ChangeNotifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChangeNotifierProvider-MultiProvider"><span class="nav-number">4.5.2.2.</span> <span class="nav-text">ChangeNotifierProvider/MultiProvider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Consumer"><span class="nav-number">4.5.2.3.</span> <span class="nav-text">Consumer</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -723,7 +791,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">381.5k</span>
+    <span title="Site words total count">388.4k</span>
   
 </div>
 

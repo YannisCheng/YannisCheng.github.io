@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="State 相关。">
+<meta name="description" content="Flutter-State相关">
 <meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flutter-State与Widget">
-<meta property="og:url" content="http://yannischeng.com/Flutter-State与Widget/index.html">
+<meta property="og:title" content="Flutter-State相关">
+<meta property="og:url" content="http://yannischeng.com/Flutter-State相关/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="State 相关。">
+<meta property="og:description" content="Flutter-State相关">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-widget%E4%B8%8Eelement%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20.png">
-<meta property="og:updated_time" content="2019-08-26T07:42:44.965Z">
+<meta property="og:updated_time" content="2019-08-31T07:10:03.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flutter-State与Widget">
-<meta name="twitter:description" content="State 相关。">
-<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-widget%E4%B8%8Eelement%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20.png">
+<meta name="twitter:title" content="Flutter-State相关">
+<meta name="twitter:description" content="Flutter-State相关">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Flutter-State与Widget/">
+  <link rel="canonical" href="http://yannischeng.com/Flutter-State相关/">
 
 
 
 
 
-  <title>Flutter-State与Widget | YannisCheng's Technology Blogs</title>
+  <title>Flutter-State相关 | YannisCheng's Technology Blogs</title>
   
 
 
@@ -269,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-State与Widget/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-State相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -286,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Flutter-State与Widget</h1>
+          <h1 class="post-title" itemprop="name headline">Flutter-State相关</h1>
         
 
         <div class="post-meta">
@@ -298,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T15:25:26+08:00">
-                2019-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-31T15:05:13+08:00">
+                2019-08-31
               </time>
             
 
@@ -314,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-26T15:42:44+08:00">
-                2019-08-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-31T15:10:03+08:00">
+                2019-08-31
               </time>
             
           </span>
@@ -364,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,915 字
+                  3,059 字
                 </span>
               
 
@@ -380,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  30 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -417,7 +415,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/Flutter-State与Widget/" title="Flutter-State与Widget">http://yannischeng.com/Flutter-State与Widget/</a>
+    <a href="http://yannischeng.com/Flutter-State相关/" title="Flutter-State相关">http://yannischeng.com/Flutter-State相关/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -436,45 +434,8 @@
       
 
       
-        <p><code>State</code> 相关。</p>
+        <p>Flutter-State相关</p>
 <a id="more"></a>
-<ul>
-<li><a href="https://api.flutter.dev/flutter/widgets/State-class.html" target="_blank" rel="noopener">StatefulWidget</a></li>
-<li><a href="https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html" target="_blank" rel="noopener">StatelessWidget</a></li>
-<li><a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html" target="_blank" rel="noopener">InheritedWidget</a></li>
-<li><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html" target="_blank" rel="noopener">Widget</a></li>
-<li><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html" target="_blank" rel="noopener">BuildContext</a></li>
-<li><a href>RenderObjectWidget</a></li>
-<li><a href>RenderObject</a></li>
-<li><strong>动画帧?</strong></li>
-</ul>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h1><p><code>Key</code>是<code>Widgets</code>，<code>Elements</code>和<code>SemanticsNodes</code>的标识符。<br>如果新窗口小部件的<code>Key</code>与该元素关联的当前窗口小部件的<code>Key</code>相同，则新窗口小部件将仅用于<code>更新</code>现有元素。<br><code>Key</code>必须在具有<code>相同父级</code>的元素中是<code>唯一的</code>。<br><code>Key</code>的子类应该是<code>LocalKey</code>或<code>GlobalKey</code>的子类。</p>
-<p>可以使用<code>key</code>来控制框架将在<code>widget重建</code>时与哪些其他<code>widget匹配</code>。默认情况下，框架根据它们的<code>runtimeType</code>和它们的<code>显示顺序</code>来匹配。 使用<code>key</code>时，框架要求<code>两个widget</code>具有相同的<code>key</code>和<code>runtimeType</code>。</p>
-<p><code>Key</code>在构建<code>相同类型widget</code>的<code>多个实例</code>时很有用。例如，<code>ShoppingList</code>构建足够的<code>ShoppingListItem</code>实例以填充其可见区域：</p>
-<ul>
-<li><p>如果<code>没有key</code>，当前构建中的第一个条目将始终与前一个构建中的第一个条目同步，即使在语义上，列表中的第一个条目如果滚动出屏幕，那么它将不会再在窗口中可见。</p>
-</li>
-<li><p>通过给列表中的每个条目分配为“语义” key，无限列表可以更高效，因为框架将同步条目与匹配的语义key并因此具有相似（或相同）的可视外观。 此外，语义上同步条目意味着在有状态子widget中，保留的状态将附加到相同的语义条目上，而不是附加到相同数字位置上的条目。</p>
-</li>
-</ul>
-<p><strong>子类：</strong></p>
-<ul>
-<li><strong>abstract LocalKey</strong>：在具有<code>相同父级</code>的<code>Element</code>中，键必须是<code>唯一</code>的。<ul>
-<li><strong>ValueKey<t></t></strong>：使用<code>特定类型</code>的 <strong>值</strong> 来标识自身的<code>Key</code></li>
-<li><strong>UniqueKey</strong>：一个只与自身相等的<code>Key</code>。</li>
-<li><strong>ObjectKey</strong>：从用作其值的对象获取其标识的<code>Key</code>。</li>
-</ul>
-</li>
-<li><p><strong>abstract GlobalKey</strong>：在<code>整个应用中</code>必须是<code>唯一</code>的。</p>
-<ul>
-<li><strong>LabeledGlobalKey</strong>：该标签纯粹用于调试，不用于比较密钥的标识</li>
-<li><p><strong>GlobalObjectKey</strong>：一个全局<code>Key</code>，它从用作其值的对象中获取其标识。</p>
-<p> 由于<code>Key</code>的<code>runtimeType</code>是其标识的一部分，因此这将防止与其他 <code>GlobalObjectKey</code> 的冲突，即使它们具<code>有相同的值</code>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="GlobalKey"><a href="#GlobalKey" class="headerlink" title="GlobalKey"></a>GlobalKey</h1><p>可以使用<code>GlobalKey</code>来<code>唯一标识子widget</code>。<code>GlobalKey</code>在<code>整个widget层次结构</code>中<code>必须</code>是<code>全局唯一</code>的，这与<code>局部key</code>不同，<code>后者</code>只需要在<code>同级中唯一</code>。由于它们是<code>全局唯一</code>的，因此可以使用<code>GlobalKey</code>来检索与<code>widget</code>关联的状态。</p>
 <h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><p><code>State</code>可以提供如下信息：</p>
 <ul>
 <li>可以在构建窗口<code>Widget</code>时同步读取</li>
@@ -583,93 +544,6 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@protected</span><br><span class="line">@mustCallSuper</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  assert(_debugLifecycleState == _StateLifecycle.ready);</span><br><span class="line">  assert(() &#123; _debugLifecycleState = _StateLifecycle.defunct; return true; &#125;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 永久地从树中删除此对象时调用。</p>
 <p> 子类应重写此方法以释放此对象保留的任何资源（例如，停止任何活动动画）。</p>
-<h1 id="InheritedWidget"><a href="#InheritedWidget" class="headerlink" title="InheritedWidget"></a>InheritedWidget</h1><p><strong>小部件的基类，可以有效地在树中传播信息。</strong></p>
-<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-widget%E4%B8%8Eelement%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20.png" alt></p>
-<p>要从构建上下文获取特定类型的继承窗口小部件的最近实例，请使用<a href="https://api.flutter.dev/flutter/widgets/BuildContext/inheritFromWidgetOfExactType.html" target="_blank" rel="noopener">BuildContext.inheritFromWidgetOfExactType</a>。</p>
-<h1 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h1><p> <strong>描述<a href="https://api.flutter.dev/flutter/widgets/Element-class.html" target="_blank" rel="noopener">( Element)元素</a>的配置。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Describes the configuration for an Element. （为Element提供配置信息）</span><br></pre></td></tr></table></figure>
-<p>实际上，<code>Flutter</code>中的大多数<code>Widget</code>都只是其他更简单的<code>Widget</code>的组合。<strong>组合而不是继承</strong> 是构建小部件的 <strong>主要机制</strong>。</p>
-<p><code>Widget</code>是<code>Flutter框架</code>中的中心类等级，是用户界面的一部分的不可变描述，可以填充为元素，这些元素管理底层渲染树。</p>
-<p><code>Widget</code>本身没有可变状态（所有字段必须是<code>final</code>的），如果你希望将<code>可变状态</code>与<code>窗口Widget</code>相关联，可以考虑使用<code>StatefulWidget</code>，它会在它填充成<code>元素</code>并<code>合并到树中</code>时创建一个<code>State</code>对象（通过<code>StatefulWidget.createState</code>）。</p>
-<ul>
-<li><strong>Widget是<code>不可变</code>的。因为它们会<code>直接被替换</code>。</strong></li>
-<li>为什么 <code>StatefulWidget</code>与<code>State</code>是<code>单独的对象</code>？在<code>Flutter</code>中，这2种类型的对象具有<code>不同的生命周期</code>：<ul>
-<li><strong><code>Widget</code> 是 <code>临时</code> 对象，用于构造应用程序 <code>当前状态的表示</code> —— 这也是为什么在<code>Widget</code>中的字段变量并定义为<code>final</code>的原因。</strong></li>
-<li><strong><code>State</code> 对象在调用 <code>build()</code>  之前是持久的 ，允许它们记住信息。</strong></li>
-</ul>
-</li>
-</ul>
-<p>给定的<code>Widget</code>可以0次或多次包含在树中，特别地，给定的窗口小部件可以多次放置在树中。每次将小部件放置在树中时，它都会填充为元素，这意味着多次合并到树中的小部件将被多次填充。</p>
-<p><code>key</code>属性控制一个小部件如何<code>替换</code>树中的另一个小部件。如果两个小部件的<code>runtimeType</code>和<code>key</code>属性分别是<code>operator ==</code>，则新小部件通过更新底层元素（即，通过使用新小部件调用Element.update）来替换旧小部件。否则，将从树中删除旧元素，将新窗口小部件扩展为元素，并将新元素插入树中。</p>
-<h2 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h2><p><strong>具有可变状态的小部件。</strong></p>
-<p>描述的用户界面部分可以<code>动态更改</code>，是一个<code>有状态</code>窗口小部件，它通过构建一个更具体地描述用户界面的其他窗口小部件来描述用户界面的一部分。构建过程以<code>递归方式</code>继续，直到用户界面的描述完全具体（例如，完全由RenderObjectWidget组成，其描述具体的RenderObject）。</p>
-<p><code>StatefulWidget 实例本身</code>是<code>不可变</code>的，它们的<code>可变状态</code>存储在由<code>createState()</code>方法创建的<code>单独State对象</code>中 ，或者存储在<code>State订阅的对象</code>中，例如<code>Stream</code>或<code>ChangeNotifier</code>对象，其<code>引用</code>存储在<code>StatefulWidget本身</code>的<code>final字段中</code>。</p>
-<p>框架在填充<code>StatefulWidget</code>时调用<code>createState()</code>，这意味着如果该窗口小部件已插入到<code>多个位置</code>的树中，则<code>多个State对象</code>可能与<code>同一StatefulWidget关联</code>。同样，如果<code>StatefulWidget</code>从树中移除，后来在树再次插入时，框架将调用<code>createState()</code>再创建一个新的<code>State</code>目标，简化<code>State</code>对象的生命周期。</p>
-<p>如果<code>StatefulWidget</code>的创建者使用<code>GlobalKey</code>作为其<code>key</code>，则<code>StatefulWidget</code>在从树中的一个位置<code>移动</code>到另一个位置时保持<code>相同的State对象</code>。由于具有<code>GlobalKey</code>的窗口小部件可以在树中的<code>至多一个</code>位置使用，因此使用<code>GlobalKey</code>的窗口小部件<code>最多只有</code>一个关联元素。当使用<code>GlobalKey</code>从树中的一个位置移动窗口小部件时，框架利用此属性，方法是将与该窗口小部件关联的（唯一）子树从旧位置<code>移植</code>（而不是在新位置重新创建子树）到新位置。与<code>StatefulWidget</code>关联的<code>State对象</code>与<code>子树的其余部分</code>一起被移植，这意味着<code>State</code>对象在新位置<code>被重用</code>（而不是被重新创建）。但是为了有资格进行嫁接，必须将窗口小部件插入到从旧位置移除它的同一动画帧中的新位置。</p>
-<h3 id="性能考虑因素"><a href="#性能考虑因素" class="headerlink" title="性能考虑因素"></a>性能考虑因素</h3><p><code>StatefulWidget</code>有两个主要类别。</p>
-<p>第一类是在<code>State.initState()</code>中分配资源并在<code>State.dispose()</code>中处理它们的，但它<code>不依赖</code>于<code>InheritedWidgets</code>或调用<code>State.setState()</code>。此类窗口小部件通常在<code>应用程序</code>或<code>页面的根目录</code>中使用，并通过<code>ChangeNotifiers</code>，<code>Streams</code>或<code>其他此类对象</code>与子窗口小部件进行通信。遵循这种模式的有状态小部件相对<code>便宜</code>（就CPU和GPU周期而言），因为它们<code>构建一次然后永不更新</code>。因此，它们可能有一些复杂和深刻的构建方法。</p>
-<p>第二类是使用<code>State.setState()</code>或依赖于<code>InheritedWidgets</code>的小部件。这些通常会在应用程序的生命周期内<code>重建多次</code>，因此<code>最小化(尽量减少)</code>重建此类窗口小部件的<code>影响</code>非常重要（他们也可以使用State.initState或State.didChangeDependencies并分配资源，但重要的是他们重建。）。</p>
-<p>可以使用一下几种技术来<code>最小化</code>重建有状态窗口小部件的<code>影响</code>：</p>
-<ol>
-<li>将状态推到<code>树叶</code>上。例如，如果您的页面有一个滴答时钟，应该创建一个仅更新自身的专用时钟小部件，而不是将状态置于页面顶部并在每次时钟滴答时重建整个页面。</li>
-<li><code>最小化</code>构建方法及其创建的任何窗口小部件传递创建的<code>节点数</code>。理想情况下，有状态窗口小部件<code>只会</code>创建<code>一个</code>窗口小部件，而该窗口小部件将是一个<code>RenderObjectWidget</code>（显然这并不总是实用的，但是小部件越接近这个理想，它就越有效率。）。</li>
-<li>如果子树没有改变，缓存表示该子树的小部件，并每次当它可用时可以使用重新使用它。对于要重新使用的窗口小部件而言，要比创建新的（但配置相同的）窗口小部件更有效。将有状态部分分解为带有子参数的小部件是执行此操作的常用方法。</li>
-<li>尽可能使用<code>const</code>小部件。 （这相当于<code>缓存</code>窗口小部件并<code>重新使用</code>它。）</li>
-<li><code>避免更改</code>任何创建的子树的<code>深度</code>或更改子树中任何窗口小部件的<code>类型</code>。这是因为更改子树的深度、布局和绘制整个子树<code>需要重建</code>，而<code>只更改属性</code>将需要对渲染树进行尽可能少的更改。</li>
-<li>如果由于某种原因必须改变深度，考虑在具有<code>GlobalKey</code>的小部件中包装<code>子树</code>的<code>公共部分</code>，这对状态小部件的生命保持一致（如果没有其他小部件可以方便地分配key，则<code>KeyedSubtree</code>小部件可能对此有用。）。</li>
-</ol>
-<h2 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h2><p><strong>一个不需要可变状态的小部件。</strong></p>
-<p>无状态窗口小部件是一个窗口小部件，它通过构建一个<code>更具体</code>地描述用户界面的其他窗口小部件来描述用户界面的一部分。构建过程以<code>递归方式</code>继续，直到用户界面的描述<code>完全具体</code>（例如，完全由<code>RenderObjectWidget</code>组成，其描述具体的<code>RenderObject</code>）。</p>
-<p>当描述的用户界面部分<code>不依赖</code>于<code>对象本身的配置信息</code>以及<code>窗口小部件填充的BuildContext时</code>，无状态窗口小部件非常有用。<br>对于可以动态更改的组合，例如由于具有内部时钟驱动状态或依赖于某些系统状态，请考虑使用<code>StatefulWidget</code>。</p>
-<h3 id="性能考虑因素-1"><a href="#性能考虑因素-1" class="headerlink" title="性能考虑因素"></a>性能考虑因素</h3><p>无状态窗口小部件的<code>构建方法</code>通常仅在以下3种情况下调用：</p>
-<ul>
-<li>第1次将窗口小部件<code>插入树中</code>时；</li>
-<li>窗口小部件的<code>父窗口更改其配置时</code>；</li>
-<li>何时依赖于更改的<code>InheritedWidget</code>。</li>
-</ul>
-<p>如果窗口小部件的父级将<code>定期更改</code>窗口小部件的<code>配置</code>，或者它<code>依赖</code>于经常更改的继承窗口小部件，则<code>优化构建方法</code>的性能以保持流畅的呈现性能非常重要：</p>
-<ul>
-<li><code>最小化构建方法</code>及其创建的任何窗口小部件传递创建的<code>节点数</code>。例如，考虑使用<code>Align</code>或<code>CustomSingleChildLayout</code>，而不是精心安排<code>Rows</code>、<code>Columns</code>、<code>Paddings</code>和<code>SizedBoxes</code>来以特别奇特的方式定位单个child。考虑单个<code>CustomPaint</code>小部件，而不是<code>多个容器</code>的复杂分层和装饰以绘制恰当的图形效果。</li>
-<li>尽可能使用<code>const</code>小部件，并为小部件提供<code>const构造函数</code>，以便小部件的用户也可以这样做。</li>
-<li>考虑将<code>无状态窗口小部件</code>重构为<code>有状态窗口小部件</code>，以便它可以使用<code>StatefulWidget</code>中描述的一些技术，例如<code>缓存子树的公共部分</code>以及在<code>更改树结构</code>时使用<code>GlobalKeys</code>。</li>
-<li>如果由于使用<code>InheritedWidgets</code>而可能<code>经常重建</code>窗口小部件，请考虑将<code>无状态窗口小部件</code>重构为<code>多个窗口小部件</code>，并将<code>更改</code>的树部分推送到<code>树叶</code>。例如，不是构建具有四个小部件的树，而是取决于主题的最内部小部件，考虑将构建函数的部分分解出来</li>
-</ul>
-<h1 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h1><p>Element类中的<code>部分构造</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">abstract class Element extends DiagnosticableTree implements BuildContext &#123;</span><br><span class="line"></span><br><span class="line">  ///由父设置的信息，用于定义此子项在其父项子列表中的位置。</span><br><span class="line">  ///只有一个子元素的Element的子类应该为该子节点的插槽使用null。</span><br><span class="line">  dynamic get slot =&gt; _slot;</span><br><span class="line">  dynamic _slot;</span><br><span class="line"></span><br><span class="line">  ///保证大于父级的整数（如果有的话）。</span><br><span class="line">  ///树根处的元素必须具有大于0的深度。</span><br><span class="line">  int get depth =&gt; _depth;</span><br><span class="line">  int _depth;</span><br><span class="line">  </span><br><span class="line">  ///此元素的配置。</span><br><span class="line">  @override</span><br><span class="line">  Widget get widget =&gt; _widget;</span><br><span class="line">  Widget _widget;</span><br><span class="line">  </span><br><span class="line">  ///管理此元素生命周期的对象。</span><br><span class="line">  @override</span><br><span class="line">  BuildOwner get owner =&gt; _owner;</span><br><span class="line">  BuildOwner _owner;</span><br><span class="line">  </span><br><span class="line">  bool _active = false;</span><br><span class="line">  </span><br><span class="line">  /// &#123;@template flutter.widgets.reassemble&#125;在调试期间重新组装应用程序时调用，例如在热重新加载期间。</span><br><span class="line">  ///此方法应重新运行依赖于全局状态的任何初始化逻辑，例如，从资产包中加载图像（因为资产包可能已更改）。</span><br><span class="line">  ///此功能仅在开发期间调用。在发布版本中，`ext.flutter.reassemble`钩子不可用，因此这段代码永远不会执行。</span><br><span class="line">  ///在启动热重新加载后，实施者不应依赖任何热重新加载源更新，重组和构建方法的顺序。附加到隔离的[Timer]（例如[Animation]）或调试会话可能会触发带有重新加载的代码的构建_before_ reassemble被调用。期望在热重新加载之后通过重新组装来设置前提条件的代码必须具有弹性以便无序调用，例如，通过嘶嘶声而不是投掷。也就是说，一旦调用reassemble，就会在它之后调用build至少一次。</span><br><span class="line">  /// &#123;@endtemplate&#125;</span><br><span class="line">  ///  也可以看看：</span><br><span class="line">  /// * [State.reassemble]</span><br><span class="line">  /// * [BindingBase.reassembleApplication]</span><br><span class="line">  /// * [Image]，使用它来重新加载图像。</span><br><span class="line">  @mustCallSuper</span><br><span class="line">  @protected</span><br><span class="line">  void reassemble() &#123;</span><br><span class="line">    markNeedsBuild();</span><br><span class="line">    visitChildren((Element child) &#123;</span><br><span class="line">      child.reassemble();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  ///树中此位置（或下方）的渲染对象。</span><br><span class="line">  ///如果此对象是[RenderObjectElement]，则渲染对象是树中此位置的对象。 否则，此getter将沿树向下走，直到找到[RenderObjectElement]。</span><br><span class="line">  RenderObject get renderObject &#123;</span><br><span class="line">    RenderObject result;</span><br><span class="line">    void visit(Element element) &#123;</span><br><span class="line">      assert(result == null); // this verifies that there&apos;s only one child</span><br><span class="line">      if (element is RenderObjectElement)</span><br><span class="line">        result = element.renderObject;</span><br><span class="line">      else</span><br><span class="line">        element.visitChildren(visit);</span><br><span class="line">    &#125;</span><br><span class="line">    visit(this);</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  //这用于验证Element对象是否以有序的方式在生命中移动。</span><br><span class="line">  _ElementLifecycle _debugLifecycleState = _ElementLifecycle.initial;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  ///为每一个孩子调用参数。 必须由支持子项的子类重写。</span><br><span class="line">  ///没有保证可以访问孩子的顺序，尽管它应该随着时间的推移而保持一致。</span><br><span class="line">  ///在构建期间调用此方法很危险：子列表可能仍在更新，因此可能尚未构建子项，或者可能是要替换的旧子项。 只有在可以证明孩子有空的情况下才应该调用此方法。</span><br><span class="line">  void visitChildren(ElementVisitor visitor) &#123; &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>主要<strong>操作</strong>方法 - <strong>updateChild()</strong>：</p>
-<p>方法名描述：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Element updateChild(Element child, Widget newWidget, dynamic newSlot)</span><br></pre></td></tr></table></figure>
-<p>方法体描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@protected</span><br><span class="line">Element updateChild(Element child, Widget newWidget, dynamic newSlot) &#123;</span><br><span class="line">  assert(() &#123;</span><br><span class="line">    if (newWidget != null &amp;&amp; newWidget.key is GlobalKey) &#123;</span><br><span class="line">      final GlobalKey key = newWidget.key;</span><br><span class="line">      key._debugReserveFor(this);</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;());</span><br><span class="line">  if (newWidget == null) &#123;</span><br><span class="line">    if (child != null)</span><br><span class="line">      deactivateChild(child);</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  if (child != null) &#123;</span><br><span class="line">    if (child.widget == newWidget) &#123;</span><br><span class="line">      if (child.slot != newSlot)</span><br><span class="line">        updateSlotForChild(child, newSlot);</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    if (Widget.canUpdate(child.widget, newWidget)) &#123;</span><br><span class="line">      if (child.slot != newSlot)</span><br><span class="line">        updateSlotForChild(child, newSlot);</span><br><span class="line">      child.update(newWidget);</span><br><span class="line">      assert(child.widget == newWidget);</span><br><span class="line">      assert(() &#123;</span><br><span class="line">        child.owner._debugElementWasRebuilt(child);</span><br><span class="line">        return true;</span><br><span class="line">      &#125;());</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    deactivateChild(child);</span><br><span class="line">    assert(child._parent == null);</span><br><span class="line">  &#125;</span><br><span class="line">  return inflateWidget(newWidget, newSlot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Element生命周期</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum _ElementLifecycle &#123;</span><br><span class="line">  initial,</span><br><span class="line">  active,</span><br><span class="line">  inactive,</span><br><span class="line">  defunct,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Element是元素模型中所有元素的基类。一般来说，元素模型是<code>程序的语义模型</code>，它表示<strong><code>用名称</code>声明的事物</strong>，因此可以在代码的其他地方引用。</p>
-<p>一般情况有两个例外：</p>
-<ul>
-<li><p>首先元素模型中的元素是为了方便各种分析而创建的，但在源代码中没有任何相应的声明。这些元素被标记为<i>合成&lt;/ i&gt;。合成元素的示例包括<em>未定义任何显式构造函数的类中的默认构造函数，由显式字段声明引起的</em> getter和setter，由getter和setter的显式声明引起的<em>字段，以及表示初始化表达式的</em>函数对于变量。</i></p>
-</li>
-<li><p>其次，元素模型中有一些没有名称的元素。这些对应于未命名的函数并且存在是为了更准确地表示<code>程序的语义结构</code>。</p>
-</li>
-</ul>
-<p><strong>树中特定位置的Widget实例化。</strong></p>
-<p>Widget描述了如何配置子树，但同一Widget可用于同时配置多个子树，因为Widget是不可变的。元素表示使用Widget来配置树中的特定位置。随着时间的推移，与给定元素关联的Widget可以更改，例如，如果父Widget重建并为此位置创建新Widget。</p>
-<p><strong>元素形成一棵树。</strong>大多数元素都有一个唯一的子元素，但是一些Widget（例如，RenderObjectElement的子类）可以有多个子元素。</p>
-<p>元素具有以下生命周期：</p>
-<ol>
-<li><strong>创建</strong>：<code>框架</code>通过在Widget上调用<code>Widget.createElement</code>来创建元素，该Widget将用作<code>元素的初始配置</code>。</li>
-<li><p><strong>安装/激活</strong>：<code>框架</code>调用<code>mount</code>以将新创建​​的元素添加到给定<code>父级</code>中给定<code>插槽（slot）</code>的树中。<code>mount()</code>负责对任何子Widget进行填充，并根据需要调用<a href="https://api.flutter.dev/flutter/widgets/Element/attachRenderObject.html" target="_blank" rel="noopener">attachRenderObject</a>（将<code>renderObject</code>添加到<code>slot</code>指定的位置的渲染树中。此函数的默认实现只是在其子项上递归调用<code>attachRenderObject</code>。）以将任何关联的渲染对象附加到渲染树。<br> 此时，该元素被视为“<strong>active</strong>（<code>_active = true</code>）”并可能出现在屏幕上。</p>
-</li>
-<li><p><strong>更新</strong>：在某些时候，<code>父级</code>可能决定<code>更改</code>用于<code>配置此元素</code>的<code>Widget</code>，例如，因为父级使用新状态重建。发生这种情况时，<code>框架</code>将使用<code>新Widget</code>调用<code>update()</code>。<code>新Widget</code>将始终具有与<code>旧Widget</code>相同的<code>runtimeType</code>和<code>key</code>。如果<code>父级</code>希望在树中的<code>此位置更改</code>Widget的<code>runtimeType</code>或<code>key</code>，则可以通过<strong><code>卸载</code></strong> <code>此元素</code>并在<code>**此位置**填充新Widget</code>来实现。</p>
-</li>
-<li><p><strong>删除</strong>：在某些时候，祖先可能会决定从树中删除此元素（或中间祖先），祖先通过自己调用<code>deactivateChild()</code>来执行此操作。取消激活中间祖先将从<code>渲染树</code>中<code>删除``该元素</code>的<code>渲染对象</code>，并将此元素添加到所有者的<code>非活动元素列表</code>中，从而导致框架对此元素调用<code>deactivate()</code>。</p>
-<p>此时，该元素被视为“<code>无效</code>”，不会出现在屏幕上。元素只能保持在<code>非活动状态</code>即：<strong>inactive</strong>，直到当前动画帧结束。在<code>动画帧</code>结束时，将卸载仍处于<code>非活动状态的</code>所有元素。</p>
-</li>
-<li><p><strong>复活</strong>：如果<code>元素</code>被<code>重新并入树中</code>（例如，因为它或其祖先之一具有重用的全局key），框架将从所有者的<code>非活动元素列表</code>中删除该元素，对<code>元素</code>调用<code>activate()</code>，并将<code>元素</code>的<code>渲染对象</code>重新附加到<code>渲染树</code>。 （此时，该元素再次被视为“<code>活动</code>”即：<strong>active</strong>并可能出现在屏幕上。）</p>
-</li>
-<li><p><strong>卸载</strong>：如果元素在<code>当前动画帧结束时</code>没有重新并入树中，则框架将在<code>元素</code>上调用<code>unmount()</code>。此时，<code>该元素</code>被视为“<code>已不存在</code>”即：<strong>defunct</strong>，并且将来不会合并到树中。</p>
-</li>
-</ol>
-<p>按照惯例：Widget构造函数仅使用<code>命名参数</code>。可以使用<code>@required</code>将命名参数标记为<code>必需</code>。<br>按照惯例：<code>第一个参数</code>是<code>key</code>，<code>最后一个参数</code>是<code>child</code>、<code>children</code>或<code>等价物</code>。</p>
 
       
     </div>
@@ -691,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Dart-网络/" rel="next" title="Dart-网络">
-                <i class="fa fa-chevron-left"></i> Dart-网络
+              <a href="/Flutter-binding/" rel="next" title="Flutter-binding">
+                <i class="fa fa-chevron-left"></i> Flutter-binding
               </a>
             
           </div>
@@ -701,8 +575,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Flutter-导航与路由/" rel="prev" title="Flutter-导航与路由">
-                Flutter-导航与路由 <i class="fa fa-chevron-right"></i>
+              <a href="/Flutter-Element/" rel="prev" title="Flutter-Element">
+                Flutter-Element <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -784,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">164</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -855,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">1.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GlobalKey"><span class="nav-number">2.</span> <span class="nav-text">GlobalKey</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#State"><span class="nav-number">3.</span> <span class="nav-text">State</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build"><span class="nav-number">3.1.</span> <span class="nav-text">Build()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么-Build-在State类中而不是-StatefulWidget？"><span class="nav-number">3.2.</span> <span class="nav-text">为什么 Build() 在State类中而不是 StatefulWidget？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装概念"><span class="nav-number">3.3.</span> <span class="nav-text">安装概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命周期概述"><span class="nav-number">3.4.</span> <span class="nav-text">State对象生命周期概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命状态：4种"><span class="nav-number">3.5.</span> <span class="nav-text">State对象生命状态：4种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命周期函数：6个"><span class="nav-number">3.6.</span> <span class="nav-text">State对象生命周期函数：6个</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InheritedWidget"><span class="nav-number">4.</span> <span class="nav-text">InheritedWidget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget"><span class="nav-number">5.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatefulWidget"><span class="nav-number">5.1.</span> <span class="nav-text">StatefulWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素"><span class="nav-number">5.1.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatelessWidget"><span class="nav-number">5.2.</span> <span class="nav-text">StatelessWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Element"><span class="nav-number">6.</span> <span class="nav-text">Element</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#State"><span class="nav-number">1.</span> <span class="nav-text">State</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build"><span class="nav-number">1.1.</span> <span class="nav-text">Build()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么-Build-在State类中而不是-StatefulWidget？"><span class="nav-number">1.2.</span> <span class="nav-text">为什么 Build() 在State类中而不是 StatefulWidget？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装概念"><span class="nav-number">1.3.</span> <span class="nav-text">安装概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命周期概述"><span class="nav-number">1.4.</span> <span class="nav-text">State对象生命周期概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命状态：4种"><span class="nav-number">1.5.</span> <span class="nav-text">State对象生命状态：4种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State对象生命周期函数：6个"><span class="nav-number">1.6.</span> <span class="nav-text">State对象生命周期函数：6个</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -889,7 +763,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">381.5k</span>
+    <span title="Site words total count">388.4k</span>
   
 </div>
 
