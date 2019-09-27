@@ -87,12 +87,12 @@
 <meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter-Widget">
-<meta property="og:url" content="http://yannischeng.com/Flutter-Widget/index.html">
+<meta property="og:url" content="http://yannischeng.com/Flutter-Widget1/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Widget相关">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-widget%E4%B8%8Eelement%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20.png">
-<meta property="og:updated_time" content="2019-08-31T07:13:17.623Z">
+<meta property="og:updated_time" content="2019-08-31T08:28:52.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-Widget">
 <meta name="twitter:description" content="Widget相关">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yannischeng.com/Flutter-Widget/">
+  <link rel="canonical" href="http://yannischeng.com/Flutter-Widget1/">
 
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-Widget/">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-Widget1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YannisCheng">
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-31T15:13:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-31T16:28:52+08:00">
                 2019-08-31
               </time>
             
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,936 字
+                  3,265 字
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -417,7 +417,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yannischeng.com/Flutter-Widget/" title="Flutter-Widget">http://yannischeng.com/Flutter-Widget/</a>
+    <a href="http://yannischeng.com/Flutter-Widget1/" title="Flutter-Widget">http://yannischeng.com/Flutter-Widget1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -526,6 +526,8 @@
 <li>考虑将<code>无状态窗口小部件</code>重构为<code>有状态窗口小部件</code>，以便它可以使用<code>StatefulWidget</code>中描述的一些技术，例如<code>缓存子树的公共部分</code>以及在<code>更改树结构</code>时使用<code>GlobalKeys</code>。</li>
 <li>如果由于使用<code>InheritedWidgets</code>而可能<code>经常重建</code>窗口小部件，请考虑将<code>无状态窗口小部件</code>重构为<code>多个窗口小部件</code>，并将<code>更改</code>的树部分推送到<code>树叶</code>。例如，不是构建具有四个小部件的树，而是取决于主题的最内部小部件，考虑将构建函数的部分分解出来</li>
 </ul>
+<h1 id="RenderObjectWidget"><a href="#RenderObjectWidget" class="headerlink" title="RenderObjectWidget"></a>RenderObjectWidget</h1><p><code>RenderObjectWidgets</code>提供<code>RenderObjectElement</code>的配置，它包装<code>RenderObject</code>，它提供应用程序的实际呈现。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RenderObjectWidget</span> <span class="keyword">extends</span> <span class="title">Widget</span> </span>&#123;</span><br><span class="line">  <span class="comment">/// 抽象const构造函数。 </span></span><br><span class="line">  <span class="comment">/// 此构造函数使子类能够提供const构造函数，以便它们可以在const表达式中使用。</span></span><br><span class="line">  <span class="keyword">const</span> RenderObjectWidget(&#123; Key key &#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// RenderObjectWidgets总是膨胀为[RenderObjectElement]子类。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectElement createElement();</span><br><span class="line"></span><br><span class="line">  <span class="comment">///使用此[RenderObjectWidget]描述的配置创建此[RenderObjectWidget]表示的[RenderObject]类的实例。</span></span><br><span class="line">  <span class="comment">/// 此方法不应对渲染对象的子项执行任何操作。</span></span><br><span class="line">  <span class="comment">/// 应该由覆盖此对象的[createElement]方法呈现的对象中的[RenderObjectElement.mount]的方法来处理。 例如，请参见[SingleChildRenderObjectElement.mount]。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  RenderObject createRenderObject(BuildContext context);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 将此[RenderObjectWidget]描述的配置复制到给定的[RenderObject]，该类型与此对象的[createRenderObject]返回的类型相同。</span></span><br><span class="line">  <span class="comment">/// 此方法不应执行任何操作来更新渲染对象的子项。 相反，应该由覆盖此对象的[createElement]方法呈现的对象中的[RenderObjectElement.update]的方法来处理。 例如，参见[SingleChildRenderObjectElement.update]。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> updateRenderObject(BuildContext context, covariant RenderObject renderObject) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 以前与此窗口小部件关联的渲染对象已从树中删除。 </span></span><br><span class="line">  <span class="comment">/// 给定的[RenderObject]与此对象的[createRenderObject]返回的类型相同。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> didUnmountRenderObject(covariant RenderObject renderObject) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -640,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">167</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -711,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">1.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GlobalKey"><span class="nav-number">2.</span> <span class="nav-text">GlobalKey</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InheritedWidget"><span class="nav-number">3.</span> <span class="nav-text">InheritedWidget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget"><span class="nav-number">4.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatefulWidget"><span class="nav-number">4.1.</span> <span class="nav-text">StatefulWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素"><span class="nav-number">4.1.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatelessWidget"><span class="nav-number">4.2.</span> <span class="nav-text">StatelessWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">1.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GlobalKey"><span class="nav-number">2.</span> <span class="nav-text">GlobalKey</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InheritedWidget"><span class="nav-number">3.</span> <span class="nav-text">InheritedWidget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget"><span class="nav-number">4.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatefulWidget"><span class="nav-number">4.1.</span> <span class="nav-text">StatefulWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素"><span class="nav-number">4.1.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatelessWidget"><span class="nav-number">4.2.</span> <span class="nav-text">StatelessWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑因素-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">性能考虑因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RenderObjectWidget"><span class="nav-number">5.</span> <span class="nav-text">RenderObjectWidget</span></a></li></ol></div>
             
 
           </div>
@@ -745,7 +747,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">388.4k</span>
+    <span title="Site words total count">401.7k</span>
   
 </div>
 

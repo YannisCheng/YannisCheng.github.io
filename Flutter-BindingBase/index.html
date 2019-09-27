@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-BindingBase">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-BindingBase">
+<meta property="og:url" content="http://yannischeng.com/Flutter-BindingBase/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-BindingBase">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-25T02:18:50.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-BindingBase">
+<meta name="twitter:description" content="Flutter-BindingBase">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-BindingBase/">
+
+
+
+
+
+  <title>Flutter-BindingBase | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-BindingBase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-BindingBase</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T18:55:54+08:00">
+                2019-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-25T10:18:50+08:00">
+                2019-09-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,233 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-BindingBase/" title="Flutter-BindingBase">http://yannischeng.com/Flutter-BindingBase/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-BindingBase</p>
+<a id="more"></a>
+<p><strong>future.whenComplete()</strong>的在源码中的使用</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="keyword">void</span>&gt; lockEvents(Future&lt;<span class="keyword">void</span>&gt; callback()) &#123;</span><br><span class="line">  developer.Timeline.startSync(<span class="string">'Lock events'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">assert</span>(callback != <span class="keyword">null</span>);</span><br><span class="line">  _lockCount += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">final</span> Future&lt;<span class="keyword">void</span>&gt; future = callback();</span><br><span class="line">  <span class="keyword">assert</span>(future != <span class="keyword">null</span>, <span class="string">'The lockEvents() callback returned null; it should return a Future&lt;void&gt; that completes when the lock is to expire.'</span>);</span><br><span class="line">  future.whenComplete(() &#123;</span><br><span class="line">    _lockCount -= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (!locked) &#123;</span><br><span class="line">      developer.Timeline.finishSync();</span><br><span class="line">      unlocked();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> future;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="BindingBase源码"><a href="#BindingBase源码" class="headerlink" title="BindingBase源码"></a>BindingBase源码</h1><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Signature for service extensions.</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// The returned map must not contain the keys "type" or "method", as</span></span><br><span class="line"><span class="comment">/// they will be replaced before the value is sent to the client. The</span></span><br><span class="line"><span class="comment">/// "type" key will be set to the string `_extensionType` to indicate</span></span><br><span class="line"><span class="comment">/// that this is a return value from a service extension, and the</span></span><br><span class="line"><span class="comment">/// "method" key will be set to the full name of the method.</span></span><br><span class="line"><span class="keyword">typedef</span> ServiceExtensionCallback = Future&lt;<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&gt; <span class="built_in">Function</span>(<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters);</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 用于提供单例服务的 "mixins的基类（也称为“绑定”）"。</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// 要在mixin的`on`子句中使用此类，请继承它并实现[initInstances()]。 </span></span><br><span class="line"><span class="comment">/// mixin保证只在应用程序的生命周期中构造一次（更确切地说，如果在检查模式下构造两次，它将断言）。</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// 用于编写应用程序的"最顶层"将具有一个继承自[BindingBase]并使用所有各种[BindingBase] mixins（例如[ServicesBinding]）的具体类。 </span></span><br><span class="line"><span class="comment">/// 例如，Flutter中的Widgets库引入了一个名为[WidgetsFlutterBinding]的绑定。 相关库定义了如何创建绑定。 </span></span><br><span class="line"><span class="comment">/// 可以暗示（例如，[WidgetsFlutterBinding]自动从[runApp]启动），或者可能需要应用程序显式调用构造函数。</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BindingBase</span> </span>&#123;</span><br><span class="line">  <span class="comment">/// "绑定"的默认抽象构造函数。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 首先调用[initInstances]以使"绑定"初始化"其实例指针"和"其他状态"，然后调用[initServiceExtensions]以使"绑定"初始化"其天文台服务扩展（如果有）"。</span></span><br><span class="line">  BindingBase() &#123;</span><br><span class="line">    developer.Timeline.startSync(<span class="string">'Framework initialization'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(!_debugInitialized);</span><br><span class="line">    initInstances();</span><br><span class="line">    <span class="keyword">assert</span>(_debugInitialized);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(!_debugServiceExtensionsRegistered);</span><br><span class="line">    initServiceExtensions();</span><br><span class="line">    <span class="keyword">assert</span>(_debugServiceExtensionsRegistered);</span><br><span class="line"></span><br><span class="line">    developer.postEvent(<span class="string">'Flutter.FrameworkInitialization'</span>, &lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;&#123;&#125;);</span><br><span class="line"></span><br><span class="line">    developer.Timeline.finishSync();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="built_in">bool</span> _debugInitialized = <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="built_in">bool</span> _debugServiceExtensionsRegistered = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 绑定此"绑定"的窗口。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 许多“其他绑定”被定义为[BindingBase]的扩展，例如[ServicesBinding]，[RendererBinding]和[WidgetsBinding]。 </span></span><br><span class="line">  <span class="comment">/// 这些绑定中的每一个都定义了与[ui.Window]交互的行为，例如：</span></span><br><span class="line">  <span class="comment">/// [ServicesBinding]注册了[ui.Window.onPlatformMessage]处理程序，</span></span><br><span class="line">  <span class="comment">/// [RendererBinding]注册了[ui.Window.onMetricsChanged]、[ui.Window. onTextScaleFactorChanged]、[ui.Window.onSemanticsEnabledChanged]和[ui.Window.onSemanticsAction]处理程序。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 这些“其他绑定”中的每一个都可以静态地单独访问[Window]，但这会妨碍使用假窗口测试这些行为以进行验证的能力。 </span></span><br><span class="line">  <span class="comment">/// 因此，[BindingBase]公开此[Window]以供其他绑定使用。 </span></span><br><span class="line">  <span class="comment">/// [BindingBase]的子类，例如[TestWidgetsFlutterBinding]，可以覆盖此访问器以返回不同的[Window]实现，例如[TestWindow]。</span></span><br><span class="line">  ui.Window <span class="keyword">get</span> <span class="built_in">window</span> =&gt; ui.<span class="built_in">window</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 初始化方法。 子类重写此方法以挂接到平台并以其他方式配置其服务。 子类必须调用“super.initInstances()”。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 按照惯例，如果要将服务作为单例提供，它应该公开为`MixinClassName.instance`，一个返回`MixinClassName._instance`的静态getter，一个由`initInstances（）设置的静态字段`。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> initInstances() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!_debugInitialized);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _debugInitialized = <span class="keyword">true</span>; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 初始化绑定时调用，注册服务扩展。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// "绑定"想要公开服务的扩展应该重载此方法，以使用对[registerSignalServiceExtension]，[registerBoolServiceExtension]，[registerNumericServiceExtension]和[registerServiceExtension]的调用（按复杂程度递增的顺序）注册它们。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 此方法的实现必须调用其超类实现。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.foundation.bindingBase.registerServiceExtension&#125;</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// See also:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///  * &lt;https://github.com/dart-lang/sdk/blob/master/runtime/vm/service/service.md#rpcs-requests-and-responses&gt;</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> initServiceExtensions() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!_debugServiceExtensionsRegistered);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      registerSignalServiceExtension(</span><br><span class="line">        name: <span class="string">'reassemble'</span>,</span><br><span class="line">        callback: reassembleApplication,</span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode &amp;&amp; !kIsWeb) &#123;</span><br><span class="line">      registerSignalServiceExtension(</span><br><span class="line">        name: <span class="string">'exit'</span>,</span><br><span class="line">        callback: _exitApplication,</span><br><span class="line">      );</span><br><span class="line">      registerServiceExtension(</span><br><span class="line">        name: <span class="string">'saveCompilationTrace'</span>,</span><br><span class="line">        callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">            <span class="string">'value'</span>: ui.saveCompilationTrace(),</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="built_in">String</span> platformOverrideExtensionName = <span class="string">'platformOverride'</span>;</span><br><span class="line">      registerServiceExtension(</span><br><span class="line">        name: platformOverrideExtensionName,</span><br><span class="line">        callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (parameters.containsKey(<span class="string">'value'</span>)) &#123;</span><br><span class="line">            <span class="keyword">switch</span> (parameters[<span class="string">'value'</span>]) &#123;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'android'</span>:</span><br><span class="line">                debugDefaultTargetPlatformOverride = TargetPlatform.android;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'iOS'</span>:</span><br><span class="line">                debugDefaultTargetPlatformOverride = TargetPlatform.iOS;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'fuchsia'</span>:</span><br><span class="line">                debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'default'</span>:</span><br><span class="line">              <span class="keyword">default</span>:</span><br><span class="line">                debugDefaultTargetPlatformOverride = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            _postExtensionStateChangedEvent(</span><br><span class="line">              platformOverrideExtensionName,</span><br><span class="line">              defaultTargetPlatform.toString().substring(<span class="string">'$TargetPlatform.'</span>.length),</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">await</span> reassembleApplication();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">            <span class="string">'value'</span>: defaultTargetPlatform</span><br><span class="line">                     .toString()</span><br><span class="line">                     .substring(<span class="string">'$TargetPlatform.'</span>.length),</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _debugServiceExtensionsRegistered = <span class="keyword">true</span>; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// [lockEvents]当前是否锁定事件。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// “绑定子类”的触发事件应首先检查它，如果已设置，则排队事件而不是触发事件。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 调用[unlocked]时应刷新事件</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> locked =&gt; _lockCount &gt; <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">int</span> _lockCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 锁定异步事件和callbacks的dispatching（调度），直到callback's future完成。</span></span><br><span class="line">  <span class="comment">/// 这会导致输入滞后，因此应尽可能避免。 它主要用于“非用户交互时间”，例如允许[reassembleApplication]在它走遍树时阻塞输入（它部分异步地执行）。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// [Future]是由[lockEvents]返回`callback`参数返回的。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; lockEvents(Future&lt;<span class="keyword">void</span>&gt; callback()) &#123;</span><br><span class="line">    developer.Timeline.startSync(<span class="string">'Lock events'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(callback != <span class="keyword">null</span>);</span><br><span class="line">    _lockCount += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">final</span> Future&lt;<span class="keyword">void</span>&gt; future = callback();</span><br><span class="line">    <span class="keyword">assert</span>(future != <span class="keyword">null</span>, <span class="string">'The lockEvents() callback returned null; it should return a Future&lt;void&gt; that completes when the lock is to expire.'</span>);</span><br><span class="line">    future.whenComplete(() &#123;</span><br><span class="line">      _lockCount -= <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">if</span> (!locked) &#123;</span><br><span class="line">        developer.Timeline.finishSync();</span><br><span class="line">        unlocked();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> future;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 当事件解锁时由[lockEvents]调用。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 这应该刷新[locked]为真时排队的所有事件。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> unlocked() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!locked);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 导致整个应用程序redraw（重绘），例如 hot reload 后。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 当应用程序代码发生变化时，开发工具会使用它，以使应用程序获取任何已更改的代码。 </span></span><br><span class="line">  <span class="comment">/// 它可以通过发送`ext.flutter.reassemble`服务扩展信号手动触发。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 此方法计算量非常大，不应在生产代码中使用。 </span></span><br><span class="line">  <span class="comment">/// 永远不会有正当理由导致整个应用程序在生产中重新绘制。 Flutter框架的所有方面都知道如何在必要时重绘。 只有在开发中，当代码在运行中（例如在热加载中）或者在调试标志被切换时才需要进行开发。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 当此方法运行时，事件被锁定（例如，不dispatched（调度）pointer（指针）事件）。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 子类（绑定类）应覆盖[performReassemble()]以响应被调用的此方法。 不应该覆盖此方法本身。</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; reassembleApplication() &#123;</span><br><span class="line">    <span class="keyword">return</span> lockEvents(performReassemble);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// This method is called by [reassembleApplication] to actually cause the</span></span><br><span class="line">  <span class="comment">/// application to reassemble, e.g. after a hot reload.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// "绑定"应该使用此方法重新注册使用闭包的任何内容，以便它们不会指向旧代码，并刷新以前计算的值的任何缓存，以防新代码以不同方式计算它们。 </span></span><br><span class="line">  <span class="comment">/// 例如，渲染层触发整个应用程序在调用它时重新绘制。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 不要直接调用此方法。 相反，使用[reassembleApplication]。</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; performReassemble() &#123;</span><br><span class="line">    FlutterError.resetErrorCount();</span><br><span class="line">    <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.value();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 使用给定名称（全名“ext.flutter.name”）注册服务扩展方法，该方法不接受任何参数并且不返回任何值。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///调用服务扩展时调用`callback`回调。</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.foundation.bindingBase.registerServiceExtension&#125;</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> registerSignalServiceExtension(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">String</span> name,</span><br><span class="line">    <span class="meta">@required</span> AsyncCallback callback,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(callback != <span class="keyword">null</span>);</span><br><span class="line">    registerServiceExtension(</span><br><span class="line">      name: name,</span><br><span class="line">      callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> callback();</span><br><span class="line">        <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;&#125;;</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 注册具有给定名称（全名“ext.flutter.name”）的服务扩展方法，该方法采用单个参数“enabled”，其值可以为“true”或值为“false”，或者可以省略以读取 当前值。 （“true”以外的任何值都被视为等于“false”。其他参数将被忽略。）</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///调用`getter`回调以在响应被调用的服务扩展方法时获取值。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///使用新值调用服务扩展方法时，使用新值调用`setter`回调。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> registerBoolServiceExtension(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">String</span> name,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueGetter&lt;<span class="built_in">bool</span>&gt; getter,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueSetter&lt;<span class="built_in">bool</span>&gt; setter,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(getter != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(setter != <span class="keyword">null</span>);</span><br><span class="line">    registerServiceExtension(</span><br><span class="line">      name: name,</span><br><span class="line">      callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (parameters.containsKey(<span class="string">'enabled'</span>)) &#123;</span><br><span class="line">          <span class="keyword">await</span> setter(parameters[<span class="string">'enabled'</span>] == <span class="string">'true'</span>);</span><br><span class="line">          _postExtensionStateChangedEvent(name, <span class="keyword">await</span> getter() ? <span class="string">'true'</span> : <span class="string">'false'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;<span class="string">'enabled'</span>: <span class="keyword">await</span> getter() ? <span class="string">'true'</span> : <span class="string">'false'</span>&#125;;</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 注册具有给定名称（全名“ext.flutter.name”）的服务扩展方法，该方法采用与方法同名的单个参数，如果存在，则必须具有可由以下方法解析的值： [double.parse]，可以省略读取当前值。 （其他参数被忽略。）</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///调用`getter`回调以在响应被调用的服务扩展方法时获取值。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///使用新值调用服务扩展方法时，使用新值调用`setter`回调。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.foundation.bindingBase.registerServiceExtension&#125;</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> registerNumericServiceExtension(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">String</span> name,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueGetter&lt;<span class="built_in">double</span>&gt; getter,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueSetter&lt;<span class="built_in">double</span>&gt; setter,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(getter != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(setter != <span class="keyword">null</span>);</span><br><span class="line">    registerServiceExtension(</span><br><span class="line">      name: name,</span><br><span class="line">      callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (parameters.containsKey(name)) &#123;</span><br><span class="line">          <span class="keyword">await</span> setter(<span class="built_in">double</span>.parse(parameters[name]));</span><br><span class="line">          _postExtensionStateChangedEvent(name, (<span class="keyword">await</span> getter()).toString());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;name: (<span class="keyword">await</span> getter()).toString()&#125;;</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 更改服务扩展的状态时发送事件。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///客户端应该监听此事件以了解当前的服务扩展状态。 管理状态的任何服务扩展都应该在状态更改时调用此方法。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///“value”反映了新更新的服务扩展值。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">///将通过[registerBoolServiceExtension]，[registerNumericServiceExtension]或[registerStringServiceExtension]注册的服务扩展自动调用。</span></span><br><span class="line">  <span class="keyword">void</span> _postExtensionStateChangedEvent(<span class="built_in">String</span> name, <span class="keyword">dynamic</span> value) &#123;</span><br><span class="line">    postEvent(</span><br><span class="line">      <span class="string">'Flutter.ServiceExtensionStateChanged'</span>,</span><br><span class="line">      &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">        <span class="string">'extension'</span>: <span class="string">'ext.flutter.$name'</span>,</span><br><span class="line">        <span class="string">'value'</span>: value,</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 由[BindingBase]调度的所有事件都使用此方法而不是直接调用[developer.postEvent]，以便[BindingBase]的测试可以通过覆盖此方法来跟踪调度的事件。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> postEvent(<span class="built_in">String</span> eventKind, <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt; eventData) &#123;</span><br><span class="line">    developer.postEvent(eventKind, eventData);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Registers a service extension method with the given name (full name</span></span><br><span class="line">  <span class="comment">/// "ext.flutter.name"), which optionally takes a single argument with the</span></span><br><span class="line">  <span class="comment">/// name "value". If the argument is omitted, the value is to be read,</span></span><br><span class="line">  <span class="comment">/// otherwise it is to be set. Returns the current value.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Calls the `getter` callback to obtain the value when</span></span><br><span class="line">  <span class="comment">/// responding to the service extension method being called.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Calls the `setter` callback with the new value when the</span></span><br><span class="line">  <span class="comment">/// service extension method is called with a new value.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@macro flutter.foundation.bindingBase.registerServiceExtension&#125;</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> registerStringServiceExtension(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">String</span> name,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueGetter&lt;<span class="built_in">String</span>&gt; getter,</span><br><span class="line">    <span class="meta">@required</span> AsyncValueSetter&lt;<span class="built_in">String</span>&gt; setter,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(getter != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(setter != <span class="keyword">null</span>);</span><br><span class="line">    registerServiceExtension(</span><br><span class="line">      name: name,</span><br><span class="line">      callback: (<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (parameters.containsKey(<span class="string">'value'</span>)) &#123;</span><br><span class="line">          <span class="keyword">await</span> setter(parameters[<span class="string">'value'</span>]);</span><br><span class="line">          _postExtensionStateChangedEvent(name, <span class="keyword">await</span> getter());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;<span class="string">'value'</span>: <span class="keyword">await</span> getter()&#125;;</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 调用扩展方法时会调用给定的回调。 </span></span><br><span class="line">  <span class="comment">/// 回调必须返回一个[Future]，它最终以名称/值映射的形式完成返回值，其中值可以使用`json.encode（）`转换为JSON（参见[JsonEncoder]），或者失败。 </span></span><br><span class="line">  <span class="comment">/// 如果发生故障，将向远程呼叫者报告故障并将其转储到日志中。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 返回的map将发生变异。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@template flutter.foundation.bindingBase.registerServiceExtension&#125;</span></span><br><span class="line">  <span class="comment">/// 只有在构建中包含vm-service时才能激活已注册的服务扩展，这仅在调试和配置文件模式下发生。</span></span><br><span class="line">  <span class="comment">/// 虽然服务扩展不能在发布模式下使用，但是如果它没有包含在允许树振动器移除它的防护中，它的代码可能仍然包含在Dart快照中并炸掉二进制大小（参见下面的示例代码）。</span></span><br><span class="line">  <span class="comment">/// &#123;@tool sample&#125;</span></span><br><span class="line">  <span class="comment">/// The following code registers a service extension that is only included in</span></span><br><span class="line">  <span class="comment">/// debug builds.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="comment">/// void myRegistrationFunction() &#123;</span></span><br><span class="line">  <span class="comment">///   assert(() &#123;</span></span><br><span class="line">  <span class="comment">///     // Register your service extension here.</span></span><br><span class="line">  <span class="comment">///     return true;</span></span><br><span class="line">  <span class="comment">///   &#125;());</span></span><br><span class="line">  <span class="comment">/// &#125;</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="comment">/// &#123;@end-tool&#125;</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// &#123;@tool sample&#125;</span></span><br><span class="line">  <span class="comment">/// A service extension registered with the following code snippet is</span></span><br><span class="line">  <span class="comment">/// available in debug and profile mode.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="comment">/// void myRegistrationFunction() &#123;</span></span><br><span class="line">  <span class="comment">///   // kReleaseMode is defined in the 'flutter/foundation.dart' package.</span></span><br><span class="line">  <span class="comment">///   if (!kReleaseMode) &#123;</span></span><br><span class="line">  <span class="comment">///     // Register your service extension here.</span></span><br><span class="line">  <span class="comment">///   &#125;</span></span><br><span class="line">  <span class="comment">/// &#125;</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="comment">/// &#123;@end-tool&#125;</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Both guards ensure that Dart's tree shaker can remove the code for the</span></span><br><span class="line">  <span class="comment">/// service extension in release builds.</span></span><br><span class="line">  <span class="comment">/// &#123;@endtemplate&#125;</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> registerServiceExtension(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">String</span> name,</span><br><span class="line">    <span class="meta">@required</span> ServiceExtensionCallback callback,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(callback != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">String</span> methodName = <span class="string">'ext.flutter.$name'</span>;</span><br><span class="line">    developer.registerExtension(methodName, (<span class="built_in">String</span> method, <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; parameters) <span class="keyword">async</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span>(method == methodName);</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        <span class="keyword">if</span> (debugInstrumentationEnabled)</span><br><span class="line">          debugPrint(<span class="string">'service extension method received: $method($parameters)'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line"></span><br><span class="line">      <span class="comment">// VM service extensions are handled as "out of band" messages by the VM,</span></span><br><span class="line">      <span class="comment">// which means they are handled at various times, generally ASAP.</span></span><br><span class="line">      <span class="comment">// Notably, this includes being handled in the middle of microtask loops.</span></span><br><span class="line">      <span class="comment">// While this makes sense for some service extensions (e.g. "dump current</span></span><br><span class="line">      <span class="comment">// stack trace", which explicitly doesn't want to wait for a loop to</span></span><br><span class="line">      <span class="comment">// complete), Flutter extensions need not be handled with such high</span></span><br><span class="line">      <span class="comment">// priority. Further, handling them with such high priority exposes us to</span></span><br><span class="line">      <span class="comment">// the possibility that they're handled in the middle of a frame, which</span></span><br><span class="line">      <span class="comment">// breaks many assertions. As such, we ensure they we run the callbacks</span></span><br><span class="line">      <span class="comment">// on the outer event loop here.</span></span><br><span class="line">      <span class="keyword">await</span> debugInstrumentAction&lt;<span class="keyword">void</span>&gt;(<span class="string">'Wait for outer event loop'</span>, () &#123;</span><br><span class="line">        <span class="keyword">return</span> Future&lt;<span class="keyword">void</span>&gt;.delayed(<span class="built_in">Duration</span>.zero);</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">dynamic</span> caughtException;</span><br><span class="line">      StackTrace caughtStack;</span><br><span class="line">      <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt; result;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        result = <span class="keyword">await</span> callback(parameters);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (exception, stack) &#123;</span><br><span class="line">        caughtException = exception;</span><br><span class="line">        caughtStack = stack;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (caughtException == <span class="keyword">null</span>) &#123;</span><br><span class="line">        result[<span class="string">'type'</span>] = <span class="string">'_extensionType'</span>;</span><br><span class="line">        result[<span class="string">'method'</span>] = method;</span><br><span class="line">        <span class="keyword">return</span> developer.ServiceExtensionResponse.result(json.encode(result));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        FlutterError.reportError(FlutterErrorDetails(</span><br><span class="line">          exception: caughtException,</span><br><span class="line">          stack: caughtStack,</span><br><span class="line">          context: ErrorDescription(<span class="string">'during a service extension callback for "$method"'</span>),</span><br><span class="line">        ));</span><br><span class="line">        <span class="keyword">return</span> developer.ServiceExtensionResponse.error(</span><br><span class="line">          developer.ServiceExtensionResponse.extensionError,</span><br><span class="line">          json.encode(&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;&#123;</span><br><span class="line">            <span class="string">'exception'</span>: caughtException.toString(),</span><br><span class="line">            <span class="string">'stack'</span>: caughtStack.toString(),</span><br><span class="line">            <span class="string">'method'</span>: method,</span><br><span class="line">          &#125;),</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">String</span> toString() =&gt; <span class="string">'&lt;$runtimeType&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Terminate the Flutter application.</span></span><br><span class="line">Future&lt;<span class="keyword">void</span>&gt; _exitApplication() <span class="keyword">async</span> &#123;</span><br><span class="line">  exit(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-Scheduler/" rel="next" title="Flutter-Scheduler">
+                <i class="fa fa-chevron-left"></i> Flutter-Scheduler
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BindingBase源码"><span class="nav-number">1.</span> <span class="nav-text">BindingBase源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">401.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Flutter-Scheduler">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter-Scheduler">
+<meta property="og:url" content="http://yannischeng.com/Flutter-Scheduler/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Flutter-Scheduler">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-scheduler%E5%8C%85.png">
+<meta property="og:updated_time" content="2019-09-19T03:40:01.863Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter-Scheduler">
+<meta name="twitter:description" content="Flutter-Scheduler">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-scheduler%E5%8C%85.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Flutter-Scheduler/">
+
+
+
+
+
+  <title>Flutter-Scheduler | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-Scheduler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter-Scheduler</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-01T20:10:24+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-19T11:40:01+08:00">
+                2019-09-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,981 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Flutter-Scheduler/" title="Flutter-Scheduler">http://yannischeng.com/Flutter-Scheduler/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flutter-Scheduler</p>
+<a id="more"></a>
+<p>延伸阅读：<a href="https://blog.csdn.net/zhaizu/article/details/51882768" target="_blank" rel="noopener">理解 VSync</a></p>
+<p>flutter中<code>scheduler</code>包的内容：</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/flutter-scheduler%E5%8C%85.png" alt></p>
+<p><code>scheduler</code> 包中涉及的主要内容：</p>
+<ul>
+<li><p><strong>mixin SchedulerBinding</strong>：</p>
+<ul>
+<li><code>SchedulePhase</code>：5个调度阶段</li>
+<li>决定是否能够绘制的前提<code>App生命周期</code>： —— <code>AppLifecycleState</code>；</li>
+<li><code>各个调度阶段的回调事件</code>： —— <code>瞬态回调</code>、<code>持久回调</code>、<code>后帧回调</code>、<code>非渲染任务</code></li>
+<li><code>Frame各个阶段对应的方法，并在方法中标明各个调度阶段</code>： —— <code>scheduleFrame()</code>、<code>handleBeginFrame()</code>、<code>handleDrawFrame()</code>、<code>endFrame()</code>、<code>scheduleTask()</code></li>
+<li><code>3种scheduleFrame()</code>： —— <code>scheduleFrame()</code>、<code>scheduleForcedFrame()</code>、<code>scheduleWarmUpFrame()</code></li>
+<li><code>单调递增时间（时间戳）的处理</code>：  —— <code>resetEpoch()</code></li>
+</ul>
+</li>
+<li><p><strong>debug</strong>：<code>调试模式</code>的每一帧的<code>开头/结束</code>显示横幅</p>
+</li>
+<li><strong>Priority</strong>：优先级</li>
+<li><strong>Ticker</strong>：每个动画帧调用一次回调</li>
+</ul>
+<h1 id="binding-dart"><a href="#binding-dart" class="headerlink" title="binding.dart"></a>binding.dart</h1><h2 id="SchedulerPhase"><a href="#SchedulerPhase" class="headerlink" title="SchedulerPhase"></a>SchedulerPhase</h2><p><code>SchedulerBinding</code> 在 <strong><code>SchedulerBinding.handleBeginFrame</code></strong> 中经历的 <code>各个阶段</code>。<br>此枚举的值按照相位的顺序排序，因此它们的相对索引值可以相互比较。<br>另见 <code>WidgetsBinding.drawFrame</code> 中的讨论。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> SchedulerPhase &#123;</span><br><span class="line">  <span class="comment">/// 没有正在处理的帧。 </span></span><br><span class="line">  <span class="comment">/// 任务（由[WidgetsBinding.scheduleTask]调度）、微任务（由[scheduleMicrotask]调度）、[Timer]回调、事件处理程序（例如来自用户输入）和其他回调（例如来自[Future] s，[Stream] s， 等等可能正在执行。</span></span><br><span class="line">  idle,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 瞬态回调（由[WidgetsBinding.scheduleFrameCallback]调度）当前正在执行。</span></span><br><span class="line">  <span class="comment">/// 通常，这些回调处理将对象更新为新的动画状态。</span></span><br><span class="line">  <span class="comment">/// 请参阅[SchedulerBinding.handleBeginFrame]。</span></span><br><span class="line">  transientCallbacks,</span><br><span class="line"></span><br><span class="line">  <span class="comment">///在处理瞬态回调期间安排的Microtasks是当前正在执行的。</span></span><br><span class="line">  <span class="comment">///这可能包括，例如，在[transientCallbacks]阶段期间产生的futures resulted回调。</span></span><br><span class="line">  midFrameMicrotasks,</span><br><span class="line"></span><br><span class="line">  <span class="comment">///持久回调（由[WidgetsBinding.addPersistentFrameCallback]调度）当前正在执行。</span></span><br><span class="line">  <span class="comment">///通常，这是构建/布局/绘制管道。 请参阅[WidgetsBinding.drawFrame]和[SchedulerBinding.handleDrawFrame]。</span></span><br><span class="line">  persistentCallbacks,</span><br><span class="line"></span><br><span class="line">  <span class="comment">///后帧回调（由[WidgetsBinding.addPostFrameCallback]调度）当前正在执行。</span></span><br><span class="line">  <span class="comment">///通常，这些回调将会为下一帧处理清理和工作安排。</span></span><br><span class="line">  <span class="comment">///请参阅[SchedulerBinding.handleDrawFrame]。</span></span><br><span class="line">  postFrameCallbacks,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>持久回调</code> 与 <code>后帧回调</code> 之间的调用关系：<strong>mixin WidgetInspectorService</strong> 源码说明</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Duration</span> _frameStart;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _onFrameStart(<span class="built_in">Duration</span> timeStamp) &#123;</span><br><span class="line">  _frameStart = timeStamp;</span><br><span class="line">  SchedulerBinding.instance.addPostFrameCallback(_onFrameEnd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _onFrameEnd(<span class="built_in">Duration</span> timeStamp) &#123;</span><br><span class="line">  <span class="keyword">if</span> (_trackRebuildDirtyWidgets) &#123;</span><br><span class="line">    _postStatsEvent(<span class="string">'Flutter.RebuiltWidgets'</span>, _rebuildStats);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (_trackRepaintWidgets) &#123;</span><br><span class="line">    _postStatsEvent(<span class="string">'Flutter.RepaintWidgets'</span>, _repaintStats);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _postStatsEvent(<span class="built_in">String</span> eventName, _ElementLocationStatsTracker stats) &#123;</span><br><span class="line">  postEvent(eventName, stats.exportToJson(_frameStart));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mixin-SchedulerBinding"><a href="#mixin-SchedulerBinding" class="headerlink" title="mixin SchedulerBinding"></a>mixin SchedulerBinding</h2><p>用于运行以下内容的调度程序：</p>
+<ul>
+<li><strong><em>Transient callbacks</em>（瞬态回调）</strong>：由系统的 <code>Window.onBeginFrame()</code> 回调触发，用于将 <code>应用程序的行为</code> <strong>同步</strong> 到 <code>系统的显示</code>。 例如，<code>Ticker</code> 和 <code>AnimationController</code> 从由此触发。</li>
+<li><strong><em>Persistent callbacks</em>（持久回调）</strong>：由系统的 <code>Window.onDrawFrame()</code> 回调触发，用于在 <code>执行瞬态回调后</code> 以 <strong>更新</strong> <code>系统的显示</code>。 例如，渲染层使用它来驱动其渲染管道。</li>
+<li><strong><em>Post-frame callbacks</em>（后帧回调）</strong>：在<code>持久回调之后</code> 运行，就在 <code>Window.onDrawFrame</code> 回调返回之前。</li>
+<li><strong>Non-rendering tasks（非渲染任务）</strong>：在 <strong>帧之间</strong> 运行。 它们具有 <code>优先级</code>，并根据 <code>schedulingStrategy</code> 按 <code>优先级顺序执行</code>。</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br></pre></td><td class="code"><pre><span class="line">mixin SchedulerBinding on BindingBase, ServicesBinding &#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initInstances() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initInstances();</span><br><span class="line">    _instance = <span class="keyword">this</span>;</span><br><span class="line">    <span class="built_in">window</span>.onBeginFrame = _handleBeginFrame;</span><br><span class="line">    <span class="built_in">window</span>.onDrawFrame = _handleDrawFrame;</span><br><span class="line">    SystemChannels.lifecycle.setMessageHandler(_handleLifecycleMessage);</span><br><span class="line">    readInitialLifecycleStateFromNativeWindow();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      <span class="built_in">int</span> frameNumber = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">window</span>.onReportTimings = (<span class="built_in">List</span>&lt;FrameTiming&gt; timings) &#123;</span><br><span class="line">        <span class="keyword">for</span> (FrameTiming frameTiming <span class="keyword">in</span> timings) &#123;</span><br><span class="line">          frameNumber += <span class="number">1</span>;</span><br><span class="line">          _profileFramePostEvent(frameNumber, frameTiming);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// The current [SchedulerBinding], if one has been created.</span></span><br><span class="line">  <span class="keyword">static</span> SchedulerBinding <span class="keyword">get</span> instance =&gt; _instance;</span><br><span class="line">  <span class="keyword">static</span> SchedulerBinding _instance;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initServiceExtensions() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initServiceExtensions();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!kReleaseMode) &#123;</span><br><span class="line">      registerNumericServiceExtension(</span><br><span class="line">        name: <span class="string">'timeDilation'</span>,</span><br><span class="line">        getter: () <span class="keyword">async</span> =&gt; timeDilation,</span><br><span class="line">        setter: (<span class="built_in">double</span> value) <span class="keyword">async</span> &#123;</span><br><span class="line">          timeDilation = value;</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 生命周期 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">///应用程序是否可见，如果可见，是否当前是交互式的。</span></span><br><span class="line">  <span class="comment">///当调度[SystemChannels.lifecycle]通知时，这由[handleAppLifecycleStateChanged]设置。</span></span><br><span class="line">  <span class="comment">///监视此值更改的首选方法是使用[WidgetsBindingObserver.didChangeAppLifecycleState]。</span></span><br><span class="line">  AppLifecycleState <span class="keyword">get</span> lifecycleState =&gt; _lifecycleState;</span><br><span class="line">  AppLifecycleState _lifecycleState;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///使用窗口中的[initialLifecycleState]初始化[lifecycleState]。</span></span><br><span class="line">  <span class="comment">///通过任何方式（包括此方法）填充[lifecycleState]后，此方法将不执行任何操作。 这是因为[initialLifecycleState]可能已经过时，并且再次使用dart vm启动时的初始状态作为当前状态不再有意义。</span></span><br><span class="line">  <span class="comment">///应通过订阅[WidgetsBindingObserver.didChangeAppLifecycleState]获取最新状态。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> readInitialLifecycleStateFromNativeWindow() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_lifecycleState == <span class="keyword">null</span> &amp;&amp; _parseAppLifecycleMessage(<span class="built_in">window</span>.initialLifecycleState) != <span class="keyword">null</span>) &#123;</span><br><span class="line">      _handleLifecycleMessage(<span class="built_in">window</span>.initialLifecycleState);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///在应用程序生命周期状态发生变化时调用。</span></span><br><span class="line">  <span class="comment">///使用WidgetsBindingObserver.didChangeAppLifecycleState]通知所有观察者。</span></span><br><span class="line">  <span class="comment">///此方法公开来自[SystemChannels.lifecycle]的通知。</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="meta">@mustCallSuper</span></span><br><span class="line">  <span class="keyword">void</span> handleAppLifecycleStateChanged(AppLifecycleState state) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(state != <span class="keyword">null</span>);</span><br><span class="line">    _lifecycleState = state;</span><br><span class="line">    <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">      <span class="keyword">case</span> AppLifecycleState.resumed:</span><br><span class="line">      <span class="keyword">case</span> AppLifecycleState.inactive:</span><br><span class="line">        _setFramesEnabledState(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> AppLifecycleState.paused:</span><br><span class="line">      <span class="keyword">case</span> AppLifecycleState.suspending:</span><br><span class="line">        _setFramesEnabledState(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="built_in">String</span>&gt; _handleLifecycleMessage(<span class="built_in">String</span> message) <span class="keyword">async</span> &#123;</span><br><span class="line">    handleAppLifecycleStateChanged(_parseAppLifecycleMessage(message));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> AppLifecycleState _parseAppLifecycleMessage(<span class="built_in">String</span> message) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (message) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'AppLifecycleState.paused'</span>:</span><br><span class="line">        <span class="keyword">return</span> AppLifecycleState.paused;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'AppLifecycleState.resumed'</span>:</span><br><span class="line">        <span class="keyword">return</span> AppLifecycleState.resumed;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'AppLifecycleState.inactive'</span>:</span><br><span class="line">        <span class="keyword">return</span> AppLifecycleState.inactive;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'AppLifecycleState.suspending'</span>:</span><br><span class="line">        <span class="keyword">return</span> AppLifecycleState.suspending;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ========== 非渲染任务 按照优先级调度执行 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">///决定是否运行任务时使用的策略。</span></span><br><span class="line">  <span class="comment">///默认为[defaultSchedulingStrategy]。</span></span><br><span class="line">  SchedulingStrategy schedulingStrategy = defaultSchedulingStrategy;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="built_in">int</span> _taskSorter (_TaskEntry&lt;<span class="keyword">dynamic</span>&gt; e1, _TaskEntry&lt;<span class="keyword">dynamic</span>&gt; e2) &#123;</span><br><span class="line">    <span class="keyword">return</span> -e1.priority.compareTo(e2.priority);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">final</span> PriorityQueue&lt;_TaskEntry&lt;<span class="keyword">dynamic</span>&gt;&gt; _taskQueue = HeapPriorityQueue&lt;_TaskEntry&lt;<span class="keyword">dynamic</span>&gt;&gt;(_taskSorter);</span><br><span class="line"></span><br><span class="line">  <span class="comment">///用给定的`priority（优先级）`schedule给定的`task`，并返回一个完成`task`的最终返回值的[Future]。</span></span><br><span class="line">  <span class="comment">///“debugLabel”和“flow”用于将任务报告给[Timeline]，以便在分析时使用。</span></span><br><span class="line">  <span class="comment">/// ##处理模型</span></span><br><span class="line">  <span class="comment">///任务将按优先级顺序在帧之间执行，不包括当前[schedulingStrategy]跳过的任务。 任务应该很短（例如，最多一毫秒），以免导致常规帧回调延迟。</span></span><br><span class="line">  <span class="comment">///如果动画正在运行，包括，例如，[ProgressIndicator]指示有待处理的任务，则优先级低于[Priority.animation]的任务将不会运行（至少不会运行[defaultSchedulingStrategy] ;这可以使用[schedulingStrategy]配置。</span></span><br><span class="line">  Future&lt;T&gt; scheduleTask&lt;T&gt;(</span><br><span class="line">    TaskCallback&lt;T&gt; task,</span><br><span class="line">    Priority priority, &#123;</span><br><span class="line">    <span class="built_in">String</span> debugLabel,</span><br><span class="line">    Flow flow,</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">bool</span> isFirstTask = _taskQueue.isEmpty;</span><br><span class="line">    <span class="keyword">final</span> _TaskEntry&lt;T&gt; entry = _TaskEntry&lt;T&gt;(</span><br><span class="line">      task,</span><br><span class="line">      priority.value,</span><br><span class="line">      debugLabel,</span><br><span class="line">      flow,</span><br><span class="line">    );</span><br><span class="line">    _taskQueue.add(entry);</span><br><span class="line">    <span class="keyword">if</span> (isFirstTask &amp;&amp; !locked)</span><br><span class="line">      _ensureEventLoopCallback();</span><br><span class="line">    <span class="keyword">return</span> entry.completer.future;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> unlocked() &#123;</span><br><span class="line">    <span class="keyword">super</span>.unlocked();</span><br><span class="line">    <span class="keyword">if</span> (_taskQueue.isNotEmpty)</span><br><span class="line">      _ensureEventLoopCallback();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 此调度程序是否已请求从事件循环中调用。</span></span><br><span class="line">  <span class="built_in">bool</span> _hasRequestedAnEventLoopCallback = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确保调度程序为[scheduleTask]计划的任务提供服务。</span></span><br><span class="line">  <span class="keyword">void</span> _ensureEventLoopCallback() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(!locked);</span><br><span class="line">    <span class="keyword">assert</span>(_taskQueue.isNotEmpty);</span><br><span class="line">    <span class="keyword">if</span> (_hasRequestedAnEventLoopCallback)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    _hasRequestedAnEventLoopCallback = <span class="keyword">true</span>;</span><br><span class="line">    Timer.run(_runTasks);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Scheduled by _ensureEventLoopCallback.</span></span><br><span class="line">  <span class="keyword">void</span> _runTasks() &#123;</span><br><span class="line">    _hasRequestedAnEventLoopCallback = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (handleEventLoopCallback())</span><br><span class="line">      _ensureEventLoopCallback(); <span class="comment">// 有时间运行下一个任务</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 执行优先级最高的任务，如果它具有足够高的优先级。</span></span><br><span class="line">  <span class="comment">/// 如果任务已执行且剩余其他任务（即使它们的优先级不够高），则返回true。</span></span><br><span class="line">  <span class="comment">/// 如果没有执行任务，则返回false，如果没有调度任务，调度程序被[锁定]，或者如果最高优先级任务在给定当前[schedulingStrategy]时优先级太低，则会返回。</span></span><br><span class="line">  <span class="comment">/// 如果没有剩余任务，也返回false。</span></span><br><span class="line">  <span class="meta">@visibleForTesting</span></span><br><span class="line">  <span class="built_in">bool</span> handleEventLoopCallback() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_taskQueue.isEmpty || locked)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">final</span> _TaskEntry&lt;<span class="keyword">dynamic</span>&gt; entry = _taskQueue.first;</span><br><span class="line">    <span class="keyword">if</span> (schedulingStrategy(priority: entry.priority, scheduler: <span class="keyword">this</span>)) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        _taskQueue.removeFirst();</span><br><span class="line">        entry.run();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (exception, exceptionStack) &#123;</span><br><span class="line">        StackTrace callbackStack;</span><br><span class="line">        <span class="keyword">assert</span>(() &#123;</span><br><span class="line">          callbackStack = entry.debugStack;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;());</span><br><span class="line">        FlutterError.reportError(FlutterErrorDetails(</span><br><span class="line">          exception: exception,</span><br><span class="line">          stack: exceptionStack,</span><br><span class="line">          <span class="keyword">library</span>: <span class="string">'scheduler library'</span>,</span><br><span class="line">          context: ErrorDescription(<span class="string">'during a task callback'</span>),</span><br><span class="line">          informationCollector: (callbackStack == <span class="keyword">null</span>) ? <span class="keyword">null</span> : () <span class="keyword">sync</span>* &#123;</span><br><span class="line">            <span class="keyword">yield</span> DiagnosticsStackTrace(</span><br><span class="line">              <span class="string">'\nThis exception was thrown in the context of a scheduler callback. '</span></span><br><span class="line">              <span class="string">'When the scheduler callback was _registered_ (as opposed to when the '</span></span><br><span class="line">              <span class="string">'exception was thrown), this was the stack'</span>,</span><br><span class="line">              callbackStack,</span><br><span class="line">            );</span><br><span class="line">          &#125;,</span><br><span class="line">        ));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> _taskQueue.isNotEmpty;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// ========== 瞬态回调 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> _nextFrameCallbackId = <span class="number">0</span>; <span class="comment">// positive</span></span><br><span class="line">  <span class="built_in">Map</span>&lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt; _transientCallbacks = &lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt;&#123;&#125;;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">Set</span>&lt;<span class="built_in">int</span>&gt; _removedIds = HashSet&lt;<span class="built_in">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="comment">///瞬态帧回调的当前数量。</span></span><br><span class="line">  <span class="comment">///在一帧的开始处，调用所有当前调度的瞬态回调之前，将数量值重置为0。</span></span><br><span class="line">  <span class="comment">///这个数字主要是公开的，这样测试可以验证在测试资源被正常处理后仍然没有注册意外的瞬态回调。</span></span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> transientCallbackCount =&gt; _transientCallbacks.length;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///Schedules给定的瞬态帧回调。</span></span><br><span class="line">  <span class="comment">///将给定的回调添加到帧回调列表中，并确保调度帧。</span></span><br><span class="line">  <span class="comment">///如果这是一次性注册，请忽略`rescheduling`参数。</span></span><br><span class="line">  <span class="comment">///如果这是一个每次触发时都会重新注册的回调，那么当你重新注册回调时，将`rescheduling`参数设置为true。 这在发布版本中没有任何影响，但在调试版本中，它确保为此回调存储的堆栈跟踪是回调是_first_ registered时的原始堆栈跟踪，而不是回调重新启动时的堆栈跟踪 注册。 这样可以更轻松地跟踪调用特定回调的原始原因。 如果`rescheduling`为真，则调用必须在帧回调的上下文中。</span></span><br><span class="line">  <span class="comment">///使用[cancelFrameCallbackWithId]可以取消使用此方法注册的回调。</span></span><br><span class="line">  <span class="built_in">int</span> scheduleFrameCallback(FrameCallback callback, &#123; <span class="built_in">bool</span> rescheduling = <span class="keyword">false</span> &#125;) &#123;</span><br><span class="line">    scheduleFrame();</span><br><span class="line">    _nextFrameCallbackId += <span class="number">1</span>;</span><br><span class="line">    _transientCallbacks[_nextFrameCallbackId] = _FrameCallbackEntry(callback, rescheduling: rescheduling);</span><br><span class="line">    <span class="keyword">return</span> _nextFrameCallbackId;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///用给定的[id]取消瞬态帧回调。</span></span><br><span class="line">  <span class="comment">///从帧回调列表中删除给定的回调。 如果已请求帧，则不会取消该请求。</span></span><br><span class="line">  <span class="comment">///瞬态帧回调是使用[scheduleFrameCallback]注册的回调。</span></span><br><span class="line">  <span class="keyword">void</span> cancelFrameCallbackWithId(<span class="built_in">int</span> id) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(id &gt; <span class="number">0</span>);</span><br><span class="line">    _transientCallbacks.remove(id);</span><br><span class="line">    _removedIds.add(id);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Asserts that there are no registered transient callbacks; if</span></span><br><span class="line">  <span class="comment">/// there are, prints their locations and throws an exception.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// A transient frame callback is one that was registered with</span></span><br><span class="line">  <span class="comment">/// [scheduleFrameCallback].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This is expected to be called at the end of tests (the</span></span><br><span class="line">  <span class="comment">/// flutter_test framework does it automatically in normal cases).</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Call this method when you expect there to be no transient</span></span><br><span class="line">  <span class="comment">/// callbacks registered, in an assert statement with a message that</span></span><br><span class="line">  <span class="comment">/// you want printed when a transient callback is registered:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 代码示例</span></span><br><span class="line">  <span class="comment">/// assert(SchedulerBinding.instance.debugAssertNoTransientCallbacks(</span></span><br><span class="line">  <span class="comment">///   'A leak of transient callbacks was detected while doing foo.'</span></span><br><span class="line">  <span class="comment">/// ));</span></span><br><span class="line">  <span class="comment">/// </span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Does nothing if asserts are disabled. Always returns true.</span></span><br><span class="line">  <span class="built_in">bool</span> debugAssertNoTransientCallbacks(<span class="built_in">String</span> reason) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (transientCallbackCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// We cache the values so that we can produce them later</span></span><br><span class="line">        <span class="comment">// even if the information collector is called after</span></span><br><span class="line">        <span class="comment">// the problem has been resolved.</span></span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">int</span> count = transientCallbackCount;</span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">Map</span>&lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt; callbacks = <span class="built_in">Map</span>&lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt;.from(_transientCallbacks);</span><br><span class="line">        FlutterError.reportError(FlutterErrorDetails(</span><br><span class="line">          exception: reason,</span><br><span class="line">          <span class="keyword">library</span>: <span class="string">'scheduler library'</span>,</span><br><span class="line">            informationCollector: () <span class="keyword">sync</span>* &#123;</span><br><span class="line">            <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">              <span class="comment">// TODO(jacobr): I have added an extra line break in this case.</span></span><br><span class="line">              <span class="keyword">yield</span> ErrorDescription(</span><br><span class="line">                <span class="string">'There was one transient callback left. '</span></span><br><span class="line">                <span class="string">'The stack trace for when it was registered is as follows:'</span></span><br><span class="line">              );</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">yield</span> ErrorDescription(</span><br><span class="line">                <span class="string">'There were $count transient callbacks left. '</span></span><br><span class="line">                <span class="string">'The stack traces for when they were registered are as follows:'</span></span><br><span class="line">              );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> id <span class="keyword">in</span> callbacks.keys) &#123;</span><br><span class="line">              <span class="keyword">final</span> _FrameCallbackEntry entry = callbacks[id];</span><br><span class="line">              <span class="keyword">yield</span> DiagnosticsStackTrace(<span class="string">'── callback $id ──'</span>, entry.debugStack, showSeparator: <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">        ));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Prints the stack for where the current transient callback was registered.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// A transient frame callback is one that was registered with</span></span><br><span class="line">  <span class="comment">/// [scheduleFrameCallback].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// When called in debug more and in the context of a transient callback, this</span></span><br><span class="line">  <span class="comment">/// function prints the stack trace from where the current transient callback</span></span><br><span class="line">  <span class="comment">/// was registered (i.e. where it first called [scheduleFrameCallback]).</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// When called in debug mode in other contexts, it prints a message saying</span></span><br><span class="line">  <span class="comment">/// that this function was not called in the context a transient callback.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// In release mode, this function does nothing.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// To call this function, use the following code:</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="comment">/// SchedulerBinding.debugPrintTransientCallbackRegistrationStack();</span></span><br><span class="line">  <span class="comment">/// 代码</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">void</span> debugPrintTransientCallbackRegistrationStack() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (_FrameCallbackEntry.debugCurrentCallbackStack != <span class="keyword">null</span>) &#123;</span><br><span class="line">        debugPrint(<span class="string">'When the current transient callback was registered, this was the stack:'</span>);</span><br><span class="line">        debugPrint(</span><br><span class="line">          FlutterError.defaultStackFilter(</span><br><span class="line">            _FrameCallbackEntry.debugCurrentCallbackStack.toString().trimRight().split(<span class="string">'\n'</span>)</span><br><span class="line">          ).join(<span class="string">'\n'</span>)</span><br><span class="line">        );</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        debugPrint(<span class="string">'No transient callback is currently executing.'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 持久回调 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span>&lt;FrameCallback&gt; _persistentCallbacks = &lt;FrameCallback&gt;[];</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 添加持久帧回调。</span></span><br><span class="line">  <span class="comment">/// 在瞬态（非持久）帧回调之后调用持久回调。</span></span><br><span class="line">  <span class="comment">/// 不请求新frame。 从概念上讲，持久帧回调是“开始帧”事件的观察者。 由于它们是在瞬态帧回调之后执行的，因此它们可以驱动渲染管道。</span></span><br><span class="line">  <span class="comment">/// 不能取消注册持久帧回调。 注册后，将在应用程序生命周期内为每个帧调用它们。</span></span><br><span class="line">  <span class="keyword">void</span> addPersistentFrameCallback(FrameCallback callback) &#123;</span><br><span class="line">    _persistentCallbacks.add(callback);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 后帧回调 ========== </span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span>&lt;FrameCallback&gt; _postFrameCallbacks = &lt;FrameCallback&gt;[];</span><br><span class="line"></span><br><span class="line">  <span class="comment">///为此帧的结尾安排回调。</span></span><br><span class="line">  <span class="comment">///不请求新Frame。</span></span><br><span class="line">  <span class="comment">///这个回调是在一个帧期间运行的，就在持久帧回调之后（即主渲染管道被刷新的时候）。 如果帧正在进行且帧后回调尚未执行，则在帧期间仍然执行注册的回调。 否则，在下一帧期间执行注册的回调。</span></span><br><span class="line"> <span class="comment">///</span></span><br><span class="line">  <span class="comment">///回调按照添加顺序执行。</span></span><br><span class="line">  <span class="comment">///无法取消注册后帧回调。 它们只被称为一次。</span></span><br><span class="line">  <span class="comment">/// 也可以看看：  [scheduleFrameCallback]，它为下一帧的开始注册一个回调。</span></span><br><span class="line">  <span class="keyword">void</span> addPostFrameCallback(FrameCallback callback) &#123;</span><br><span class="line">    _postFrameCallbacks.add(callback);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Completer&lt;<span class="keyword">void</span>&gt; _nextFrameCompleter;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 当前Frame结束 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">///返回在帧完成后完成的Future。</span></span><br><span class="line">  <span class="comment">///如果在帧之间调用此帧，则会在必要时立即调度帧。 如果在帧期间调用此函数，则Future将在当前帧之后完成。</span></span><br><span class="line">  <span class="comment">///如果设备的屏幕当前已关闭，则可能需要等待很长时间，因为在设备屏幕关闭时未安排帧。</span></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; <span class="keyword">get</span> endOfFrame &#123;</span><br><span class="line">    <span class="keyword">if</span> (_nextFrameCompleter == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (schedulerPhase == SchedulerPhase.idle)</span><br><span class="line">        scheduleFrame();</span><br><span class="line">      _nextFrameCompleter = Completer&lt;<span class="keyword">void</span>&gt;();</span><br><span class="line">      addPostFrameCallback((<span class="built_in">Duration</span> timeStamp) &#123;</span><br><span class="line">        _nextFrameCompleter.complete();</span><br><span class="line">        _nextFrameCompleter = <span class="keyword">null</span>;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _nextFrameCompleter.future;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 当前Frame开始 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 此调度程序是否已请求尽快调用[handleBeginFrame]。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> hasScheduledFrame =&gt; _hasScheduledFrame;</span><br><span class="line">  <span class="built_in">bool</span> _hasScheduledFrame = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 调度程序当前正在运行的阶段。</span></span><br><span class="line">  SchedulerPhase <span class="keyword">get</span> schedulerPhase =&gt; _schedulerPhase;</span><br><span class="line">  SchedulerPhase _schedulerPhase = SchedulerPhase.idle;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 调用[scheduleFrame]时是否正在调度帧。</span></span><br><span class="line">  <span class="comment">/// 该值取决于[lifecycleState]的值。</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> framesEnabled =&gt; _framesEnabled;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> _framesEnabled = <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">void</span> _setFramesEnabledState(<span class="built_in">bool</span> enabled) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_framesEnabled == enabled)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    _framesEnabled = enabled;</span><br><span class="line">    <span class="keyword">if</span> (enabled)</span><br><span class="line">      scheduleFrame();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 3种Frame开始方法 ========== </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">///如果此对象当前未生成帧，则使用[scheduleFrame]计划新帧。</span></span><br><span class="line">  <span class="comment">///调用此方法可确保最终调用[handleDrawFrame]，除非它已在进行中。</span></span><br><span class="line">  <span class="comment">///如果[schedulerPhase]是[SchedulerPhase.transientCallbacks]或[SchedulerPhase.midFrameMicrotasks]（因为在这种情况下已经准备好了帧）或[SchedulerPhase.persistentCallbacks]（因为正在积极地渲染帧），这没有任何效果 在这种情况下）。 如果[schedulerPhase]是[SchedulerPhase.idle]（在帧之间）或[SchedulerPhase.postFrameCallbacks]（在帧之后），它将调度帧。</span></span><br><span class="line">  <span class="keyword">void</span> ensureVisualUpdate() &#123;</span><br><span class="line">    <span class="keyword">switch</span> (schedulerPhase) &#123;</span><br><span class="line">      <span class="keyword">case</span> SchedulerPhase.idle:</span><br><span class="line">      <span class="keyword">case</span> SchedulerPhase.postFrameCallbacks:</span><br><span class="line">        scheduleFrame();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">case</span> SchedulerPhase.transientCallbacks:</span><br><span class="line">      <span class="keyword">case</span> SchedulerPhase.midFrameMicrotasks:</span><br><span class="line">      <span class="keyword">case</span> SchedulerPhase.persistentCallbacks:</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 最普通的Frame开始方法 ========== </span></span><br><span class="line">  <span class="comment">///如有必要，可以通过调用[Window.scheduleFrame]来调度新帧。</span></span><br><span class="line">  <span class="comment">///调用此函数后，引擎将（最终）调用[handleBeginFrame]。 （此呼叫可能会延迟，例如，如果设备的屏幕关闭，它通常会延迟，直到屏幕打开且应用程序可见。）在帧期间调用此部分会强制安排另一帧，即使当前帧已有尚未完成。</span></span><br><span class="line">  <span class="comment">///由操作系统提供的“Vsync”信号触发时，服务预定帧。 “Vsync”信号或垂直同步信号在历史上与显示器刷新有关，此时硬件在显示器的更新之间物理地移动电子束。当代硬件的操作稍微复杂一些，但概念性的“Vsync”刷新信号继续用于指示应用程序何时应更新其渲染。</span></span><br><span class="line">  <span class="comment">///要在此函数调度帧的任何时候打印到控制台的堆栈跟踪，请将[debugPrintScheduleFrameStacks]设置为true。</span></span><br><span class="line">  <span class="comment">/// 也可以看看：</span></span><br><span class="line">  <span class="comment">/// * [scheduleForcedFrame]，忽略[lifecycleState]的时候</span></span><br><span class="line">  <span class="comment">///安排一个框架。</span></span><br><span class="line">  <span class="comment">/// * [scheduleWarmUpFrame]，它完全忽略“Vsync”信号并立即触发帧。</span></span><br><span class="line">  <span class="keyword">void</span> scheduleFrame() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_hasScheduledFrame || !_framesEnabled)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (debugPrintScheduleFrameStacks)</span><br><span class="line">        debugPrintStack(label: <span class="string">'scheduleFrame() called. Current phase is $schedulerPhase.'</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="built_in">window</span>.scheduleFrame();</span><br><span class="line">    _hasScheduledFrame = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ========== 强制Frame开始方法 ========== </span></span><br><span class="line">  <span class="comment">///通过schedule[Window.scheduleFrame]来安排新帧。</span></span><br><span class="line">  <span class="comment">///调用此函数后，引擎将调用[handleBeginFrame]，即使[scheduleFrame]通常不会调度帧（例如，即使设备的屏幕已关闭）。</span></span><br><span class="line">  <span class="comment">///框架使用它来强制在旋转手机时以正确的大小渲染帧，以便在重新打开屏幕时可以使用正确大小的渲染。</span></span><br><span class="line">  <span class="comment">///要在此函数调度帧的任何时候打印到控制台的堆栈跟踪，请将[debugPrintScheduleFrameStacks]设置为true。</span></span><br><span class="line">  <span class="comment">///首选使用[scheduleFrame]，除非必须立即调度帧，因为使用[scheduleForceFrame]会导致设备空闲时电池使用量显着增加。</span></span><br><span class="line">  <span class="comment">///如果目标是尽快更新渲染（例如在应用程序启动时），请考虑使用[scheduleWarmUpFrame]。</span></span><br><span class="line">  <span class="keyword">void</span> scheduleForcedFrame() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_hasScheduledFrame)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      <span class="keyword">if</span> (debugPrintScheduleFrameStacks)</span><br><span class="line">        debugPrintStack(label: <span class="string">'scheduleForcedFrame() called. Current phase is $schedulerPhase.'</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">    <span class="built_in">window</span>.scheduleFrame();</span><br><span class="line">    _hasScheduledFrame = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> _warmUpFrame = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ========== 预渲染Frame开始方法 ========== </span></span><br><span class="line">  <span class="comment">///安排帧尽快运行，而不是等待引擎响应系统“Vsync”信号请求帧。</span></span><br><span class="line">  <span class="comment">///在应用程序启动期间使用它，以便第一帧（可能非常昂贵）运行几毫秒。</span></span><br><span class="line">  <span class="comment">///锁定事件调度，直到计划的帧完成。</span></span><br><span class="line">  <span class="comment">///如果已经使用[scheduleFrame]或[scheduleForcedFrame]调度了一个帧，则此调用可能会延迟该帧。</span></span><br><span class="line">  <span class="comment">///如果任何已调度的帧已经开始或者已经调用了另一个[scheduleWarmUpFrame]，则将忽略此调用。</span></span><br><span class="line">  <span class="comment">///首选[scheduleFrame]在正常操作中更新显示。</span></span><br><span class="line">  <span class="keyword">void</span> scheduleWarmUpFrame() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_warmUpFrame || schedulerPhase != SchedulerPhase.idle)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    _warmUpFrame = <span class="keyword">true</span>;</span><br><span class="line">    Timeline.startSync(<span class="string">'Warm-up frame'</span>);</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">bool</span> hadScheduledFrame = _hasScheduledFrame;</span><br><span class="line">    <span class="comment">// 我们在这里使用定时器来确保微任务在两者之间冲洗。</span></span><br><span class="line">    Timer.run(() &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_warmUpFrame);</span><br><span class="line">      handleBeginFrame(<span class="keyword">null</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    Timer.run(() &#123;</span><br><span class="line">      <span class="keyword">assert</span>(_warmUpFrame);</span><br><span class="line">      handleDrawFrame();</span><br><span class="line">      <span class="comment">//我们在此帧之后调用resetEpoch()，以便在热重载情况下，下一帧假装在此预热帧(warm-up frame)之后立即发生。</span></span><br><span class="line">      <span class="comment">//预热帧的时间戳通常会在过去（最后一个真实帧的时间），所以如果我们没有重置时期，我们会看到从预热帧中的旧时间突然跳转到 “真实”frame中的新时间。</span></span><br><span class="line">      <span class="comment">//最大的问题是隐式动画最终会在过去被触发，然后跳过每一帧并在新时间结束。</span></span><br><span class="line">      resetEpoch();</span><br><span class="line">      _warmUpFrame = <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">if</span> (hadScheduledFrame)</span><br><span class="line">        scheduleFrame();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 锁定事件，因此触摸事件等不会插入自己，直到计划的帧完成。</span></span><br><span class="line">    lockEvents(() <span class="keyword">async</span> &#123;</span><br><span class="line">      <span class="keyword">await</span> endOfFrame;</span><br><span class="line">      Timeline.finishSync();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Duration</span> _firstRawTimeStampInEpoch;</span><br><span class="line">  <span class="built_in">Duration</span> _epochStart = <span class="built_in">Duration</span>.zero;</span><br><span class="line">  <span class="built_in">Duration</span> _lastRawTimeStamp = <span class="built_in">Duration</span>.zero;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///准备Schedule程序，以便对计算时间戳的方式进行非单调更改。</span></span><br><span class="line">  <span class="comment">///从Schedule程序收到的回调假设它们的时间戳是单调递增的。 传递给[handleBeginFrame]的原始时间戳是单调的，但Schedule程序可能会调整这些时间戳以提供[timeDilation]。 如果不小心处理，这些调整可能会导致时间倒流。</span></span><br><span class="line">  <span class="comment">/// [resetEpoch]函数通过将用于将来时间戳调整的基本时间戳重置为当前值来确保时间戳是单调的。 例如，如果[timeDilation]减小，而不是从时间开始缩小[持续时间]，[resetEpoch]将确保我们只缩小自调用[resetEpoch]以来的持续时间。</span></span><br><span class="line">  <span class="comment">///设置[timeDilation]自动调用[resetEpoch]。 您不需要自己调用[resetEpoch]。</span></span><br><span class="line">  <span class="keyword">void</span> resetEpoch() &#123;</span><br><span class="line">    _epochStart = _adjustForEpoch(_lastRawTimeStamp);</span><br><span class="line">    _firstRawTimeStampInEpoch = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///将给定的时间戳调整为当前时期。</span></span><br><span class="line">  <span class="comment">///这两者都抵消了纪元开始时的时间戳（原始时间和纪元自己的时间线），并缩放时间戳以反映当前时期的时间膨胀。</span></span><br><span class="line">  <span class="comment">///这些机制结合起来确保我们在帧回调期间给出的持续时间是单调递增的。</span></span><br><span class="line">  <span class="built_in">Duration</span> _adjustForEpoch(<span class="built_in">Duration</span> rawTimeStamp) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">Duration</span> rawDurationSinceEpoch = _firstRawTimeStampInEpoch == <span class="keyword">null</span> ? <span class="built_in">Duration</span>.zero : rawTimeStamp - _firstRawTimeStampInEpoch;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Duration</span>(microseconds: (rawDurationSinceEpoch.inMicroseconds / timeDilation).round() + _epochStart.inMicroseconds);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///当前正在处理的帧的时间戳。</span></span><br><span class="line">  <span class="comment">///这仅在[handleBeginFrame]的开始和相应的[handleDrawFrame]的结尾之间有效，即在生成帧时。</span></span><br><span class="line">  <span class="built_in">Duration</span> <span class="keyword">get</span> currentFrameTimeStamp &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_currentFrameTimeStamp != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">return</span> _currentFrameTimeStamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">Duration</span> _currentFrameTimeStamp;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///由引擎提供给当前正在处理的帧的[Window.onBeginFrame]的原始时间戳。</span></span><br><span class="line">  <span class="comment">///与[currentFrameTimeStamp]不同，此时间戳既不会在纪元开始时调整为偏移，也不会缩放以反映当前纪元中的[timeDilation]。</span></span><br><span class="line">  <span class="comment">///在大多数平台上，这是一个或多或少的任意值，通常应该被忽略。 在Fuchsia上，这对应于系统提供的演示时间，可用于确保在不同进程中运行的动画是同步的。</span></span><br><span class="line">  <span class="built_in">Duration</span> <span class="keyword">get</span> currentSystemFrameTimeStamp &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_lastRawTimeStamp != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">return</span> _lastRawTimeStamp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> _debugFrameNumber = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">String</span> _debugBanner;</span><br><span class="line">  <span class="built_in">bool</span> _ignoreNextEngineDrawFrame = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _handleBeginFrame(<span class="built_in">Duration</span> rawTimeStamp) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_warmUpFrame) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(!_ignoreNextEngineDrawFrame);</span><br><span class="line">      _ignoreNextEngineDrawFrame = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    handleBeginFrame(rawTimeStamp);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _handleDrawFrame() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_ignoreNextEngineDrawFrame) &#123;</span><br><span class="line">      _ignoreNextEngineDrawFrame = <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    handleDrawFrame();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ========== 处理开始Frame方法 ==========</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 由引擎调用以准备框架以生成新frame。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 此函数调用[scheduleFrameCallback]注册的所有瞬态帧回调。</span></span><br><span class="line">  <span class="comment">/// 然后返回，运行任何预定的微任务（例如，通过瞬时帧回调解析的任何[Future]的处理程序），并调用[handleDrawFrame]继续该帧。</span></span><br><span class="line">  <span class="comment">/// 如果给定的时间戳为空，则重复使用最后一帧的时间戳。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 要在调试模式的每一帧的开头显示横幅，请将[debugPrintBeginFrameBanner]设置为true。</span></span><br><span class="line">  <span class="comment">/// 横幅将使用[debugPrint]打印到控制台，并包含帧编号（每帧增加1）和帧的时间戳。</span></span><br><span class="line">  <span class="comment">/// 如果给定的时间戳为空，则显示字符串“预热帧”而不是时间戳。</span></span><br><span class="line">  <span class="comment">/// 这允许框架急切推动的帧与响应来自操作系统的“Vsync”信号的引擎所请求的帧区分开。</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// 您还可以通过将[debugPrintEndFrameBanner]设置为true来在每个帧的末尾显示横幅。</span></span><br><span class="line">  <span class="comment">/// 这允许您区分帧中打印的日志语句与帧之间打印的日志语句（例如，响应事件或计时器）。</span></span><br><span class="line">  <span class="keyword">void</span> handleBeginFrame(<span class="built_in">Duration</span> rawTimeStamp) &#123;</span><br><span class="line">    Timeline.startSync(<span class="string">'Frame'</span>, arguments: timelineWhitelistArguments);</span><br><span class="line">    _firstRawTimeStampInEpoch ??= rawTimeStamp;</span><br><span class="line">    _currentFrameTimeStamp = _adjustForEpoch(rawTimeStamp ?? _lastRawTimeStamp);</span><br><span class="line">    <span class="keyword">if</span> (rawTimeStamp != <span class="keyword">null</span>)</span><br><span class="line">      _lastRawTimeStamp = rawTimeStamp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      _debugFrameNumber += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (debugPrintBeginFrameBanner || debugPrintEndFrameBanner) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">StringBuffer</span> frameTimeStampDescription = <span class="built_in">StringBuffer</span>();</span><br><span class="line">        <span class="keyword">if</span> (rawTimeStamp != <span class="keyword">null</span>) &#123;</span><br><span class="line">          _debugDescribeTimeStamp(_currentFrameTimeStamp, frameTimeStampDescription);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          frameTimeStampDescription.write(<span class="string">'(warm-up frame)'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        _debugBanner = <span class="string">'▄▄▄▄▄▄▄▄ Frame <span class="subst">$&#123;_debugFrameNumber.toString().padRight(<span class="number">7</span>)&#125;</span>   <span class="subst">$&#123;frameTimeStampDescription.toString().padLeft(<span class="number">18</span>)&#125;</span> ▄▄▄▄▄▄▄▄'</span>;</span><br><span class="line">        <span class="keyword">if</span> (debugPrintBeginFrameBanner)</span><br><span class="line">          debugPrint(_debugBanner);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span>(schedulerPhase == SchedulerPhase.idle);</span><br><span class="line">    _hasScheduledFrame = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// TRANSIENT FRAME CALLBACKS</span></span><br><span class="line">      Timeline.startSync(<span class="string">'Animate'</span>, arguments: timelineWhitelistArguments);</span><br><span class="line">      _schedulerPhase = SchedulerPhase.transientCallbacks;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Map</span>&lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt; callbacks = _transientCallbacks;</span><br><span class="line">      _transientCallbacks = &lt;<span class="built_in">int</span>, _FrameCallbackEntry&gt;&#123;&#125;;</span><br><span class="line">      callbacks.forEach((<span class="built_in">int</span> id, _FrameCallbackEntry callbackEntry) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!_removedIds.contains(id))</span><br><span class="line">          _invokeFrameCallback(callbackEntry.callback, _currentFrameTimeStamp, callbackEntry.debugStack);</span><br><span class="line">      &#125;);</span><br><span class="line">      _removedIds.clear();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _schedulerPhase = SchedulerPhase.midFrameMicrotasks;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// 由引擎调用以生成新帧。</span></span><br><span class="line">  <span class="comment">/// 在[handleBeginFrame]之后立即调用此方法。 </span></span><br><span class="line">  <span class="comment">/// 它调用[addPersistentFrameCallback]注册的所有回调，它通常驱动渲染管道，然后调用[addPostFrameCallback]注册的回调。</span></span><br><span class="line">  <span class="comment">/// 有关调试hooks的讨论，请参阅[handleBeginFrame]，这些钩子在处理帧回调时可能很有用。</span></span><br><span class="line">  <span class="keyword">void</span> handleDrawFrame() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_schedulerPhase == SchedulerPhase.midFrameMicrotasks);</span><br><span class="line">    Timeline.finishSync(); <span class="comment">// end the "Animate" phase</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// PERSISTENT FRAME CALLBACKS</span></span><br><span class="line">      _schedulerPhase = SchedulerPhase.persistentCallbacks;</span><br><span class="line">      <span class="keyword">for</span> (FrameCallback callback <span class="keyword">in</span> _persistentCallbacks)</span><br><span class="line">        _invokeFrameCallback(callback, _currentFrameTimeStamp);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// POST-FRAME CALLBACKS</span></span><br><span class="line">      _schedulerPhase = SchedulerPhase.postFrameCallbacks;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">List</span>&lt;FrameCallback&gt; localPostFrameCallbacks =</span><br><span class="line">          <span class="built_in">List</span>&lt;FrameCallback&gt;.from(_postFrameCallbacks);</span><br><span class="line">      _postFrameCallbacks.clear();</span><br><span class="line">      <span class="keyword">for</span> (FrameCallback callback <span class="keyword">in</span> localPostFrameCallbacks)</span><br><span class="line">        _invokeFrameCallback(callback, _currentFrameTimeStamp);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _schedulerPhase = SchedulerPhase.idle;</span><br><span class="line">      Timeline.finishSync(); <span class="comment">// end the Frame</span></span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        <span class="keyword">if</span> (debugPrintEndFrameBanner)</span><br><span class="line">          debugPrint(<span class="string">'▀'</span> * _debugBanner.length);</span><br><span class="line">        _debugBanner = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">      _currentFrameTimeStamp = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _profileFramePostEvent(<span class="built_in">int</span> frameNumber, FrameTiming frameTiming) &#123;</span><br><span class="line">    postEvent(<span class="string">'Flutter.Frame'</span>, &lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt;&#123;</span><br><span class="line">      <span class="string">'number'</span>: frameNumber,</span><br><span class="line">      <span class="string">'startTime'</span>: frameTiming.timestampInMicroseconds(FramePhase.buildStart),</span><br><span class="line">      <span class="string">'elapsed'</span>: frameTiming.totalSpan.inMicroseconds,</span><br><span class="line">      <span class="string">'build'</span>: frameTiming.buildDuration.inMicroseconds,</span><br><span class="line">      <span class="string">'raster'</span>: frameTiming.rasterDuration.inMicroseconds,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">void</span> _debugDescribeTimeStamp(<span class="built_in">Duration</span> timeStamp, <span class="built_in">StringBuffer</span> buffer) &#123;</span><br><span class="line">    <span class="keyword">if</span> (timeStamp.inDays &gt; <span class="number">0</span>)</span><br><span class="line">      buffer.write(<span class="string">'<span class="subst">$&#123;timeStamp.inDays&#125;</span>d '</span>);</span><br><span class="line">    <span class="keyword">if</span> (timeStamp.inHours &gt; <span class="number">0</span>)</span><br><span class="line">      buffer.write(<span class="string">'<span class="subst">$&#123;timeStamp.inHours - timeStamp.inDays * Duration.hoursPerDay&#125;</span>h '</span>);</span><br><span class="line">    <span class="keyword">if</span> (timeStamp.inMinutes &gt; <span class="number">0</span>)</span><br><span class="line">      buffer.write(<span class="string">'<span class="subst">$&#123;timeStamp.inMinutes - timeStamp.inHours * Duration.minutesPerHour&#125;</span>m '</span>);</span><br><span class="line">    <span class="keyword">if</span> (timeStamp.inSeconds &gt; <span class="number">0</span>)</span><br><span class="line">      buffer.write(<span class="string">'<span class="subst">$&#123;timeStamp.inSeconds - timeStamp.inMinutes * Duration.secondsPerMinute&#125;</span>s '</span>);</span><br><span class="line">    buffer.write(<span class="string">'<span class="subst">$&#123;timeStamp.inMilliseconds - timeStamp.inSeconds * Duration.millisecondsPerSecond&#125;</span>'</span>);</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> microseconds = timeStamp.inMicroseconds - timeStamp.inMilliseconds * <span class="built_in">Duration</span>.microsecondsPerMillisecond;</span><br><span class="line">    <span class="keyword">if</span> (microseconds &gt; <span class="number">0</span>)</span><br><span class="line">      buffer.write(<span class="string">'.<span class="subst">$&#123;microseconds.toString().padLeft(<span class="number">3</span>, <span class="string">"0"</span>)&#125;</span>'</span>);</span><br><span class="line">    buffer.write(<span class="string">'ms'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//使用[timestamp]作为参数调用给定的[callback]。</span></span><br><span class="line">  <span class="comment">//在try / catch中包装回调并将任何错误转发给[debugSchedulerExceptionHandler]（如果已设置）。 如果未设置，则只需打印错误。</span></span><br><span class="line">  <span class="keyword">void</span> _invokeFrameCallback(FrameCallback callback, <span class="built_in">Duration</span> timeStamp, [ StackTrace callbackStack ]) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(callback != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(_FrameCallbackEntry.debugCurrentCallbackStack == <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _FrameCallbackEntry.debugCurrentCallbackStack = callbackStack; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      callback(timeStamp);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (exception, exceptionStack) &#123;</span><br><span class="line">      FlutterError.reportError(FlutterErrorDetails(</span><br><span class="line">        exception: exception,</span><br><span class="line">        stack: exceptionStack,</span><br><span class="line">        <span class="keyword">library</span>: <span class="string">'scheduler library'</span>,</span><br><span class="line">        context: ErrorDescription(<span class="string">'during a scheduler callback'</span>),</span><br><span class="line">        informationCollector: (callbackStack == <span class="keyword">null</span>) ? <span class="keyword">null</span> : () <span class="keyword">sync</span>* &#123;</span><br><span class="line">          <span class="keyword">yield</span> DiagnosticsStackTrace(</span><br><span class="line">            <span class="string">'\nThis exception was thrown in the context of a scheduler callback. '</span></span><br><span class="line">            <span class="string">'When the scheduler callback was _registered_ (as opposed to when the '</span></span><br><span class="line">            <span class="string">'exception was thrown), this was the stack'</span>,</span><br><span class="line">            callbackStack,</span><br><span class="line">          );</span><br><span class="line">        &#125;,</span><br><span class="line">      ));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _FrameCallbackEntry.debugCurrentCallbackStack = <span class="keyword">null</span>; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>callback(timeStamp)</strong> 说明</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 从scheduler签名与帧相关的回调。</span></span><br><span class="line"><span class="comment">///`timeStamp`是自scheduler的纪元开始以来的毫秒数。 使用timeStamp确定推进动画时间轴的距离，以便系统中的所有动画同步到公共时基。</span></span><br><span class="line"><span class="keyword">typedef</span> FrameCallback = <span class="keyword">void</span> <span class="built_in">Function</span>(<span class="built_in">Duration</span> timeStamp);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Flutter-注解/" rel="next" title="Flutter-注解">
+                <i class="fa fa-chevron-left"></i> Flutter-注解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-BindingBase/" rel="prev" title="Flutter-BindingBase">
+                Flutter-BindingBase <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binding-dart"><span class="nav-number">1.</span> <span class="nav-text">binding.dart</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SchedulerPhase"><span class="nav-number">1.1.</span> <span class="nav-text">SchedulerPhase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mixin-SchedulerBinding"><span class="nav-number">1.2.</span> <span class="nav-text">mixin SchedulerBinding</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">401.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
