@@ -104,11 +104,21 @@
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_全局工具配置.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_全局工具配置_02.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_项目创建.png">
-<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/源码管理配置6.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/yiban.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/vcs-yuanmaguanli.png">
 <meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_配置_创建item.png">
-<meta property="og:image" content="https://www.oschina.net/question/3147266_2277036?sort=time">
-<meta property="og:updated_time" content="2019-11-04T12:28:10.870Z">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/构建触发器.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-配置-账号.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件-配置-配置.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/客户端授权码.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-数据.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件扩展设置.png">
+<meta property="og:image" content="https://blog.csdn.net/wangpingtaohn/article/details/99979996">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件-自定义内容.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件配置-debugpng">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/配置-邮件-添加.png">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-添加-收件人.png">
+<meta property="og:updated_time" content="2019-11-05T07:34:18.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS下搭建Jenkins">
 <meta name="twitter:description" content="macOS下搭建Jenkins">
@@ -330,8 +340,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-04T20:28:10+08:00">
-                2019-11-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-05T15:34:18+08:00">
+                2019-11-05
               </time>
             
           </span>
@@ -380,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,306 字
+                  2,307 字
                 </span>
               
 
@@ -396,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -474,9 +484,20 @@
 <h2 id="Jenkins-是什么？"><a href="#Jenkins-是什么？" class="headerlink" title="Jenkins 是什么？"></a>Jenkins 是什么？</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Jenkins_icon.png" alt></p>
 <p><a href="https://jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a> 是一个<code>开源的</code>、<code>可扩展</code>的<code>持续集成</code>、<code>交付</code>、<code>部署</code>（软件/代码的编译、打包、部署）的<code>基于web界面的平台</code>。允许持续集成和持续交付项目，无论用的是什么平台，可以处理任何类型的构建或持续集成。</p>
 <h2 id="Jenkins-如何做到集成？"><a href="#Jenkins-如何做到集成？" class="headerlink" title="Jenkins 如何做到集成？"></a>Jenkins 如何做到集成？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jenkins本质是一个特殊的http服务器，我们使用Git Push一个commit 到远程服务器，Jenkins通过Git钩子得知服务器有新的提交，就会通过配置的Git仓库路径把新提交的代码pull下来，进行编译，打包，上传等操作。</span><br></pre></td></tr></table></figure>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p> 通过 <a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">Homebrew</a> 进行安装。</p>
+<h1 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h1><p><strong>安装</strong></p>
+<p> 通过 <a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">Homebrew</a> 进行安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jenkins</span><br></pre></td></tr></table></figure>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p> 首次安装接收后，提示：</p>
+<p><strong>卸载</strong></p>
+<ul>
+<li>方法1：执行命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Application Support/Jenkins/Uninstall.command</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法2：前往文件夹：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Application Support/Jenkins</span><br></pre></td></tr></table></figure>
+<p>双击 <code>Uninstall.command</code>。完成之后再次打开<code>http://localhost:8080</code> 访问不了，说明卸载成功。</p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p> 首次安装接收后，提示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Note: When using launchctl the port will be 8080.</span><br><span class="line"></span><br><span class="line">To have launchd start jenkins now and restart at login:</span><br><span class="line">  brew services start jenkins</span><br><span class="line">Or, if you don&apos;t want/need a background service you can just run:</span><br><span class="line">  jenkins</span><br></pre></td></tr></table></figure>
 <p>即2种启动方式：</p>
 <ul>
@@ -489,13 +510,13 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jenkins</span><br></pre></td></tr></table></figure>
 <p>执行启动命令后，会出现 <code>用户名</code> 和 <code>初始密码</code> 提示。<br><strong>重点！！！</strong> 一定要记住在命令行中生成的密码，在之后的首次登录中会用到。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Jenkins initial setup is required. An admin user has been created and a password generated.</span><br><span class="line">Please use the following password to proceed to installation:</span><br><span class="line"></span><br><span class="line">5a9e3ba1344e47f399c79f6f82fc91e8</span><br><span class="line"></span><br><span class="line">This may also be found at: /Users/yannischeng/.jenkins/secrets/initialAdminPassword</span><br><span class="line"></span><br><span class="line">*************************************************************</span><br><span class="line">*************************************************************</span><br><span class="line">*************************************************************</span><br></pre></td></tr></table></figure>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="初次登陆"><a href="#初次登陆" class="headerlink" title="初次登陆"></a>初次登陆</h4><p>在成功启动服务后，在浏览器输入 <code>http://localhost:8080</code>  即可进入 <code>Jenkins</code>。<br>如果是 <code>首次登录</code> 需要输入<code>初始密码</code>：</p>
+<h2 id="初次登陆"><a href="#初次登陆" class="headerlink" title="初次登陆"></a>初次登陆</h2><p>在成功启动服务后，在浏览器输入 <code>http://localhost:8080</code>  即可进入 <code>Jenkins</code>。<br>如果是 <code>首次登录</code> 需要输入<code>初始密码</code>：</p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins解锁.png" alt></p>
-<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p><code>Jenkins</code> 只是提供一个 <code>可以进行持续集成的环境</code> ，所以在进行持续集成的时候，我们还需要安装各种 <code>插件</code>。点击 <code>选择插件来安装</code>即可，之后就会对插件进行顺序安装。</p>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p><code>Jenkins</code> 只是提供一个 <code>可以进行持续集成的环境</code> ，所以在进行持续集成的时候，我们还需要安装各种 <code>插件</code>。点击 <code>选择插件来安装</code>即可，之后就会对插件进行顺序安装。</p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins.png" alt></p>
-<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_login.png" alt></p>
-<h4 id="url设置"><a href="#url设置" class="headerlink" title="url设置"></a>url设置</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_url.png" alt></p>
-<h4 id="初始化结束"><a href="#初始化结束" class="headerlink" title="初始化结束"></a>初始化结束</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Jenkins_init_end_1.png" alt></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_login.png" alt></p>
+<h2 id="url设置"><a href="#url设置" class="headerlink" title="url设置"></a>url设置</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_url.png" alt></p>
+<h2 id="初始化结束"><a href="#初始化结束" class="headerlink" title="初始化结束"></a>初始化结束</h2><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Jenkins_init_end_1.png" alt></p>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/Jenkins_init_end_2.png" alt></p>
 <p>等待所有的插件安装完毕，在浏览器地址栏输入：<code>http://localhost:8080/restart</code>。<br>至此安装阶段结束 。</p>
 <h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><h2 id="Jenkins全局配置"><a href="#Jenkins全局配置" class="headerlink" title="Jenkins全局配置"></a>Jenkins全局配置</h2><p><strong>配置重点！！！</strong></p>
@@ -505,17 +526,19 @@
 <li><strong>Java JDK</strong> 路径配置</li>
 </ul>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_配置_o2.png" alt></p>
-<h3 id="url-Android-SDK配置"><a href="#url-Android-SDK配置" class="headerlink" title="url/Android SDK配置"></a>url/Android SDK配置</h3><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins配置_03.png" alt></p>
-<h3 id="全局工具配置"><a href="#全局工具配置" class="headerlink" title="全局工具配置"></a>全局工具配置</h3><h4 id="JDK路径"><a href="#JDK路径" class="headerlink" title="JDK路径"></a>JDK路径</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_全局工具配置.png" alt></p>
+<h3 id="Configure-System"><a href="#Configure-System" class="headerlink" title="Configure System"></a>Configure System</h3><p><strong>url/Android SDK配置</strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins配置_03.png" alt></p>
+<h3 id="Global-Tool-Configuration"><a href="#Global-Tool-Configuration" class="headerlink" title="Global Tool Configuration"></a>Global Tool Configuration</h3><h4 id="JDK路径"><a href="#JDK路径" class="headerlink" title="JDK路径"></a>JDK路径</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_全局工具配置.png" alt></p>
 <h4 id="Gradle路径"><a href="#Gradle路径" class="headerlink" title="Gradle路径"></a>Gradle路径</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_全局工具配置_02.png" alt></p>
-<h2 id="单个任务配置"><a href="#单个任务配置" class="headerlink" title="单个任务配置"></a>单个任务配置</h2><p><strong>配置重点！！！</strong></p>
+<h2 id="Android-单个任务配置"><a href="#Android-单个任务配置" class="headerlink" title="Android 单个任务配置"></a>Android 单个任务配置</h2><p><strong>配置重点！！！</strong></p>
 <ul>
 <li><strong>General-&gt;高级-&gt;使用自定义工作空间</strong></li>
 <li><strong>源码管理-&gt;版本控制信息填写</strong></li>
 <li><strong>构建-&gt;Invoke Gradle-&gt;Gradle Version选择、Task填写</strong></li>
 </ul>
 <p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/jenkins_项目创建.png" alt></p>
-<h3 id="创建单个项目"><a href="#创建单个项目" class="headerlink" title="创建单个项目"></a>创建单个项目</h3><h4 id="General-高级"><a href="#General-高级" class="headerlink" title="General-高级"></a>General-高级</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/源码管理配置6.png" alt></p>
+<p>点击 <strong>新建Item</strong>执行设置 。</p>
+<h3 id="创建单个项目"><a href="#创建单个项目" class="headerlink" title="创建单个项目"></a>创建单个项目</h3><h4 id="General-高级"><a href="#General-高级" class="headerlink" title="General-高级"></a>General-高级</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/yiban.png" alt></p>
 <ul>
 <li><strong>目录</strong>：可以设置为当前项目所在目录。</li>
 <li><strong>显示名称</strong>：指的是在<code>Jenkins</code>中能够看到的名称。</li>
@@ -528,14 +551,76 @@
 <li><strong>Task的编写如果不符合规范，将会导致编译出错。</strong></li>
 </ul>
 <p>一般而言，只要完成以上简单的配置后，就可以进行最基础的Jenkins操作了。<br>以上配置结束后，点击<strong>应用</strong>、<strong>保存</strong>即可。</p>
-<h2 id="邮箱配置"><a href="#邮箱配置" class="headerlink" title="邮箱配置"></a>邮箱配置</h2><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Plugin-with-id-‘com-android-application’-not-found"><a href="#Plugin-with-id-‘com-android-application’-not-found" class="headerlink" title="Plugin with id ‘com.android.application’ not found."></a>Plugin with id ‘com.android.application’ not found.</h3><p><img src="https://www.oschina.net/question/3147266_2277036?sort=time" alt></p>
-<h3 id="ERROR-Can’t-retrieve-the-Gradle-executable"><a href="#ERROR-Can’t-retrieve-the-Gradle-executable" class="headerlink" title="[ERROR] Can’t retrieve the Gradle executable."></a>[ERROR] Can’t retrieve the Gradle executable.</h3><p><a href="https://blog.csdn.net/ouyang_peng/article/details/83828626" target="_blank" rel="noopener"></a></p>
+<h1 id="更多配置"><a href="#更多配置" class="headerlink" title="更多配置"></a>更多配置</h1><h2 id="构建触发器"><a href="#构建触发器" class="headerlink" title="构建触发器"></a>构建触发器</h2><h3 id="定时构建-amp-轮询SCM"><a href="#定时构建-amp-轮询SCM" class="headerlink" title="定时构建&amp;轮询SCM"></a>定时构建&amp;轮询SCM</h3><blockquote>
+<p>参考：<a href="https://www.cnblogs.com/hong-fithing/p/10547176.html" target="_blank" rel="noopener">https://www.cnblogs.com/hong-fithing/p/10547176.html</a><br>参考：<a href="https://blog.csdn.net/MenofGod/article/details/81288987" target="_blank" rel="noopener">https://blog.csdn.net/MenofGod/article/details/81288987</a></p>
+</blockquote>
+<ul>
+<li><p><strong>定时构建（Build periodically）</strong>：不管SVN或Git中数据有无变化，均执行定时化的构建任务 ；</p>
+</li>
+<li><p><strong>轮询SCM（Poll SCM）</strong>：只要SVN或Git中数据有更新，则执行构建任务；</p>
+</li>
+</ul>
+<h4 id="设置结果"><a href="#设置结果" class="headerlink" title="设置结果"></a>设置结果</h4><p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/构建触发器.png" alt></p>
+<h4 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h4><ul>
+<li><strong>格式为（五个星）</strong>：</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * *</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>释义</strong></p>
+<ul>
+<li>第1个*表示：分钟，取值0~59</li>
+<li>第2个*表示：小时，取值0~23</li>
+<li>第3个*表示：一个月的第几天，取值1~31</li>
+<li>第4个*表示：第几月，取值1~12</li>
+<li>第5个*表示：一周中的第几天，取值0~7，其中0和7代表的都是周日</li>
+</ul>
+</li>
+<li><p><strong>使用举例</strong>：</p>
+<ul>
+<li>每隔10分钟构建一次：<code>H/5 * * * *</code></li>
+<li>每隔1小时构建一次：  <code>H H/1 * * *</code></li>
+<li>每月30号构建一次：   <code>H H 30 * *</code></li>
+</ul>
+</li>
+<li><p><strong>定时构建</strong> 和 <strong>轮询SCM</strong> 使用 <code>互不冲突</code>，具体如何组合，需要根据项目情况合理配置。</p>
+</li>
+</ul>
+<h2 id="构建后操作"><a href="#构建后操作" class="headerlink" title="构建后操作"></a>构建后操作</h2><h3 id="邮箱配置"><a href="#邮箱配置" class="headerlink" title="邮箱配置"></a>邮箱配置</h3><blockquote>
+<p>参考：<a href="https://blog.csdn.net/qq_36396763/article/details/100115092" target="_blank" rel="noopener">https://blog.csdn.net/qq_36396763/article/details/100115092</a></p>
+</blockquote>
+<h4 id="Jenkins-配置"><a href="#Jenkins-配置" class="headerlink" title="Jenkins-配置"></a>Jenkins-配置</h4><p><strong>注意：<code>系统管理员邮箱</code> 必须和 <code>发件人邮箱</code> 一致</strong></p>
+<h5 id="账号配置"><a href="#账号配置" class="headerlink" title="账号配置"></a>账号配置</h5><p>账号名称</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-配置-账号.png" alt></p>
+<p>账号信息设置</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件-配置-配置.png" alt></p>
+<p><strong>注意：此处的密码指的是 <code>邮箱客户端授权码</code>，不是自己设置的 <code>邮箱密码</code></strong></p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/客户端授权码.png" alt></p>
+<p>端口设置</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-数据.png" alt></p>
+<h5 id="扩展电子邮件通知配置（Extended-E-mail-Notification）"><a href="#扩展电子邮件通知配置（Extended-E-mail-Notification）" class="headerlink" title="扩展电子邮件通知配置（Extended E-mail Notification）"></a>扩展电子邮件通知配置（Extended E-mail Notification）</h5><p>信息设置</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件扩展设置.png" alt></p>
+<p><strong>注意：此处的密码指的是 <code>邮箱客户端授权码</code>，不是自己设置的 <code>邮箱密码</code></strong></p>
+<p>在执行下一步“自定义邮件展示内容”前需要先设置内容显示格式，否则不显示格式。</p>
+<p><img src="https://blog.csdn.net/wangpingtaohn/article/details/99979996" alt></p>
+<p>自定义邮件展示内容</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件-自定义内容.png" alt></p>
+<p>具体内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;$&#123;ENV, var=&quot;JOB_NAME&quot;&#125;-第$&#123;BUILD_NUMBER&#125;次构建日志&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot;</span><br><span class="line">    offset=&quot;0&quot;&gt;</span><br><span class="line">    &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;</span><br><span class="line">        style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;(本邮件是程序自动下发的，请勿回复！)&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;h2&gt;</span><br><span class="line">                    &lt;font color=&quot;#0000FF&quot;&gt;构建结果 - $&#123;BUILD_STATUS&#125;&lt;/font&gt;</span><br><span class="line">                &lt;/h2&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;br /&gt;</span><br><span class="line">            &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;</span><br><span class="line">            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;ul&gt;</span><br><span class="line">                    &lt;li&gt;项目名称&amp;nbsp;：&amp;nbsp;$&#123;PROJECT_NAME&#125;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;构建编号&amp;nbsp;：&amp;nbsp;第$&#123;BUILD_NUMBER&#125;次构建&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;SVN&amp;nbsp;版本：&amp;nbsp;$&#123;SVN_REVISION&#125;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;触发原因：&amp;nbsp;$&#123;CAUSE&#125;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;构建日志：&amp;nbsp;&lt;a href=&quot;$&#123;BUILD_URL&#125;console&quot;&gt;$&#123;BUILD_URL&#125;console&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;构建&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;&lt;a href=&quot;$&#123;BUILD_URL&#125;&quot;&gt;$&#123;BUILD_URL&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;工作目录&amp;nbsp;：&amp;nbsp;&lt;a href=&quot;$&#123;PROJECT_URL&#125;ws&quot;&gt;$&#123;PROJECT_URL&#125;ws&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;项目&amp;nbsp;&amp;nbsp;Url&amp;nbsp;：&amp;nbsp;&lt;a href=&quot;$&#123;PROJECT_URL&#125;&quot;&gt;$&#123;PROJECT_URL&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                &lt;/ul&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;Changes Since Last</span><br><span class="line">                        Successful Build:&lt;/font&gt;&lt;/b&gt;</span><br><span class="line">            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;ul&gt;</span><br><span class="line">                    &lt;li&gt;历史变更记录 : &lt;a href=&quot;$&#123;PROJECT_URL&#125;changes&quot;&gt;$&#123;PROJECT_URL&#125;changes&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                &lt;/ul&gt; $&#123;CHANGES_SINCE_LAST_SUCCESS,reverse=true, format=&quot;Changes for Build #%n:&lt;br /&gt;%c&lt;br /&gt;&quot;,showPaths=true,changesFormat=&quot;&lt;pre&gt;[%a]&lt;br /&gt;%m&lt;/pre&gt;&quot;,pathFormat=&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;%p&quot;&#125;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;b&gt;Failed Test Results&lt;/b&gt;</span><br><span class="line">            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;pre</span><br><span class="line">                    style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&quot;&gt;$FAILED_TESTS&lt;/pre&gt;</span><br><span class="line">                &lt;br /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建日志 (最后 100行):&lt;/font&gt;&lt;/b&gt;</span><br><span class="line">            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;!-- &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;Test Logs (if test has ran): &lt;a</span><br><span class="line">                href=&quot;$&#123;PROJECT_URL&#125;ws/TestResult/archive_logs/Log-Build-$&#123;BUILD_NUMBER&#125;.zip&quot;&gt;$&#123;PROJECT_URL&#125;/ws/TestResult/archive_logs/Log-Build-$&#123;BUILD_NUMBER&#125;.zip&lt;/a&gt;</span><br><span class="line">                &lt;br /&gt;</span><br><span class="line">            &lt;br /&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt; --&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;pre&gt;&lt;textarea cols=&quot;80&quot; rows=&quot;30&quot; readonly=&quot;readonly&quot;</span><br><span class="line">                    style=&quot;font-family: Courier New&quot;&gt;$&#123;BUILD_LOG, maxLines=100&#125;&lt;pre&gt;&lt;/textarea&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>设置<code>debug</code>模式，在这种模式下能够看到关于邮件的各种信息</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮件配置-debugpng" alt></p>
+<h4 id="增加构建后操作"><a href="#增加构建后操作" class="headerlink" title="增加构建后操作"></a>增加构建后操作</h4><p>设置触发条件</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/配置-邮件-添加.png" alt></p>
+<p>添加收件人</p>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/邮箱-添加-收件人.png" alt></p>
+<h3 id="上传fir-im"><a href="#上传fir-im" class="headerlink" title="上传fir.im"></a>上传fir.im</h3><blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/9a245918a219" target="_blank" rel="noopener">https://www.jianshu.com/p/9a245918a219</a></p>
+</blockquote>
+<h3 id="上传蒲公英"><a href="#上传蒲公英" class="headerlink" title="上传蒲公英"></a>上传蒲公英</h3><blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/8cd8c1236c16" target="_blank" rel="noopener">https://www.jianshu.com/p/8cd8c1236c16</a><br><a href="https://blog.csdn.net/wangpingtaohn/article/details/99979996" target="_blank" rel="noopener">https://blog.csdn.net/wangpingtaohn/article/details/99979996</a></p>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Plugin-with-id-‘com-android-application’-not-found"><a href="#Plugin-with-id-‘com-android-application’-not-found" class="headerlink" title="Plugin with id ‘com.android.application’ not found."></a>Plugin with id ‘com.android.application’ not found.</h3><p>链接：<a href="https://www.oschina.net/question/3147266_2277036?sort=time" target="_blank" rel="noopener">https://www.oschina.net/question/3147266_2277036?sort=time</a></p>
+<h3 id="ERROR-Can’t-retrieve-the-Gradle-executable"><a href="#ERROR-Can’t-retrieve-the-Gradle-executable" class="headerlink" title="[ERROR] Can’t retrieve the Gradle executable."></a>[ERROR] Can’t retrieve the Gradle executable.</h3><p>链接：<a href="https://blog.csdn.net/ouyang_peng/article/details/83828626" target="_blank" rel="noopener">https://blog.csdn.net/ouyang_peng/article/details/83828626</a></p>
 <p>肯定是gradle的路径没有配置对。</p>
-<h2 id="Android项目"><a href="#Android项目" class="headerlink" title="Android项目"></a>Android项目</h2><h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>方法1：执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Application Support/Jenkins/Uninstall.command</span><br></pre></td></tr></table></figure>
-<p>方法2：前往文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Application Support/Jenkins</span><br></pre></td></tr></table></figure>
-<p>双击 <code>Uninstall.command</code>。完成之后再次打开<code>http://localhost:8080</code> 访问不了，说明卸载成功。</p>
 
       
     </div>
@@ -566,6 +651,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Flutter-自定义绘制Widget/" rel="prev" title="Flutter-自定义绘制Widget">
+                Flutter-自定义绘制Widget <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -646,7 +735,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">169</span>
+                  <span class="site-state-item-count">173</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +757,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -717,7 +806,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CI（持续集成，Continuous-Integration）"><span class="nav-number">1.1.1.</span> <span class="nav-text">CI（持续集成，Continuous Integration）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD（持续交付，Continuous-Delivery）"><span class="nav-number">1.1.2.</span> <span class="nav-text">CD（持续交付，Continuous Delivery）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD（持续部署，Continuous-Deployment）"><span class="nav-number">1.1.3.</span> <span class="nav-text">CD（持续部署，Continuous Deployment）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins-是什么？"><span class="nav-number">1.2.</span> <span class="nav-text">Jenkins 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins-如何做到集成？"><span class="nav-number">1.3.</span> <span class="nav-text">Jenkins 如何做到集成？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">2.2.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务"><span class="nav-number">2.2.1.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">2.2.2.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初次登陆"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">初次登陆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件安装"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">插件安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#url设置"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">url设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化结束"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">初始化结束</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础配置"><span class="nav-number">3.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins全局配置"><span class="nav-number">3.1.</span> <span class="nav-text">Jenkins全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url-Android-SDK配置"><span class="nav-number">3.1.1.</span> <span class="nav-text">url/Android SDK配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局工具配置"><span class="nav-number">3.1.2.</span> <span class="nav-text">全局工具配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK路径"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">JDK路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradle路径"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">Gradle路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单个任务配置"><span class="nav-number">3.2.</span> <span class="nav-text">单个任务配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建单个项目"><span class="nav-number">3.2.1.</span> <span class="nav-text">创建单个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General-高级"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">General-高级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码管理"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">源码管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">构建</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮箱配置"><span class="nav-number">3.3.</span> <span class="nav-text">邮箱配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin-with-id-‘com-android-application’-not-found"><span class="nav-number">3.4.1.</span> <span class="nav-text">Plugin with id ‘com.android.application’ not found.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERROR-Can’t-retrieve-the-Gradle-executable"><span class="nav-number">3.4.2.</span> <span class="nav-text">[ERROR] Can’t retrieve the Gradle executable.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android项目"><span class="nav-number">3.5.</span> <span class="nav-text">Android项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#卸载"><span class="nav-number">4.</span> <span class="nav-text">卸载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CI（持续集成，Continuous-Integration）"><span class="nav-number">1.1.1.</span> <span class="nav-text">CI（持续集成，Continuous Integration）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD（持续交付，Continuous-Delivery）"><span class="nav-number">1.1.2.</span> <span class="nav-text">CD（持续交付，Continuous Delivery）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD（持续部署，Continuous-Deployment）"><span class="nav-number">1.1.3.</span> <span class="nav-text">CD（持续部署，Continuous Deployment）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins-是什么？"><span class="nav-number">1.2.</span> <span class="nav-text">Jenkins 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins-如何做到集成？"><span class="nav-number">1.3.</span> <span class="nav-text">Jenkins 如何做到集成？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装与卸载"><span class="nav-number">2.</span> <span class="nav-text">安装与卸载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">3.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务"><span class="nav-number">3.1.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初次登陆"><span class="nav-number">3.2.</span> <span class="nav-text">初次登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件安装"><span class="nav-number">3.3.</span> <span class="nav-text">插件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建用户"><span class="nav-number">3.4.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#url设置"><span class="nav-number">3.5.</span> <span class="nav-text">url设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化结束"><span class="nav-number">3.6.</span> <span class="nav-text">初始化结束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础配置"><span class="nav-number">4.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins全局配置"><span class="nav-number">4.1.</span> <span class="nav-text">Jenkins全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-System"><span class="nav-number">4.1.1.</span> <span class="nav-text">Configure System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-Tool-Configuration"><span class="nav-number">4.1.2.</span> <span class="nav-text">Global Tool Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK路径"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">JDK路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradle路径"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">Gradle路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-单个任务配置"><span class="nav-number">4.2.</span> <span class="nav-text">Android 单个任务配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建单个项目"><span class="nav-number">4.2.1.</span> <span class="nav-text">创建单个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General-高级"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">General-高级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码管理"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">源码管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">构建</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多配置"><span class="nav-number">5.</span> <span class="nav-text">更多配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建触发器"><span class="nav-number">5.1.</span> <span class="nav-text">构建触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定时构建-amp-轮询SCM"><span class="nav-number">5.1.1.</span> <span class="nav-text">定时构建&amp;轮询SCM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置结果"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">设置结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法说明"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">语法说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建后操作"><span class="nav-number">5.2.</span> <span class="nav-text">构建后操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#邮箱配置"><span class="nav-number">5.2.1.</span> <span class="nav-text">邮箱配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins-配置"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">Jenkins-配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#账号配置"><span class="nav-number">5.2.1.1.1.</span> <span class="nav-text">账号配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展电子邮件通知配置（Extended-E-mail-Notification）"><span class="nav-number">5.2.1.1.2.</span> <span class="nav-text">扩展电子邮件通知配置（Extended E-mail Notification）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加构建后操作"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">增加构建后操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传fir-im"><span class="nav-number">5.2.2.</span> <span class="nav-text">上传fir.im</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传蒲公英"><span class="nav-number">5.2.3.</span> <span class="nav-text">上传蒲公英</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">5.3.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin-with-id-‘com-android-application’-not-found"><span class="nav-number">5.3.1.</span> <span class="nav-text">Plugin with id ‘com.android.application’ not found.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERROR-Can’t-retrieve-the-Gradle-executable"><span class="nav-number">5.3.2.</span> <span class="nav-text">[ERROR] Can’t retrieve the Gradle executable.</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -737,7 +826,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -751,7 +840,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">404.2k</span>
+    <span title="Site words total count">407.4k</span>
   
 </div>
 

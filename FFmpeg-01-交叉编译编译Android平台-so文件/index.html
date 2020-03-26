@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FFmpeg,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="FFmpeg编译 —— 能够编译出so库是基础中的基础">
+<meta name="keywords" content="FFmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmpeg-01-交叉编译编译Android平台.so文件">
+<meta property="og:url" content="http://yannischeng.com/FFmpeg-01-交叉编译编译Android平台-so文件/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="FFmpeg编译 —— 能够编译出so库是基础中的基础">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/ffmpeg脚本输出.png">
+<meta property="og:updated_time" content="2020-03-26T06:52:12.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFmpeg-01-交叉编译编译Android平台.so文件">
+<meta name="twitter:description" content="FFmpeg编译 —— 能够编译出so库是基础中的基础">
+<meta name="twitter:image" content="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/ffmpeg脚本输出.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/FFmpeg-01-交叉编译编译Android平台-so文件/">
+
+
+
+
+
+  <title>FFmpeg-01-交叉编译编译Android平台.so文件 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/FFmpeg-01-交叉编译编译Android平台-so文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FFmpeg-01-交叉编译编译Android平台.so文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T11:03:06+08:00">
+                2020-03-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-26T14:52:12+08:00">
+                2020-03-26
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,442 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/FFmpeg/" rel="tag"># FFmpeg</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/FFmpeg-01-交叉编译编译Android平台-so文件/" title="FFmpeg-01-交叉编译编译Android平台.so文件">http://yannischeng.com/FFmpeg-01-交叉编译编译Android平台-so文件/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://trac.ffmpeg.org/wiki/CompilationGuide/Generic" target="_blank" rel="noopener">FFmpeg编译</a> —— 能够编译出so库是基础中的基础</p>
+<a id="more"></a>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/350f8e083e82?hmsr=toutiao.io" target="_blank" rel="noopener">【Android 音视频开发打怪升级：FFmpeg音视频编解码篇】一、FFmpeg so库编译</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1453110" target="_blank" rel="noopener">问题排查</a></li>
+</ul>
+<p><em>注意：本文使用 <code>Clang</code> 方式进行编译。</em></p>
+<h1 id="涉及概念"><a href="#涉及概念" class="headerlink" title="涉及概念"></a>涉及概念</h1><ul>
+<li><p><strong>交叉编译</strong> 是在<code>一个平台</code>上生成<code>另一个平台</code>上的<code>可执行代码</code>。</p>
+<p>例如：在<code>PC</code>上编译一个<code>apk</code>，这个<code>apk</code>可以跑在<code>Android手机</code>上，这其实就是一个<code>交叉编译过程</code>。</p>
+<p>使用<code>交叉编译</code>的原因：利用<code>编译平台</code>的 <strong>性能</strong> 及 <strong>资源</strong> 快速有效的生成目标平台文件。</p>
+</li>
+<li><p><strong>交叉编译环境</strong> <code>交叉编译</code>最重要的是：配置好<code>编译过程中使用到的相关的环境</code>，而这个环境其实就是<code>目标机器（比如Android手机）运行的环境</code>。</p>
+</li>
+<li><p><strong>C/C++编译工具链</strong> </p>
+<ul>
+<li><strong>GCC</strong> 老牌编译工具，不仅可以编译C/C++，也可以编译Java，Object-C，Go等语言。</li>
+<li><strong>Clang</strong> 则是一个效率更高的C/C++编译工具，并且兼容GCC，在 <code>ndk 17</code> 以后，把 <code>GCC</code> 移除了，全面推行使用 <code>Clang</code> 。</li>
+</ul>
+</li>
+<li><p><a href="https://www.llvm.org/" target="_blank" rel="noopener">LLVM</a> 是<code>模块化</code>、<code>可重用的编译器</code>及<code>工具链技术</code>的<strong>集合</strong>。尽管名称如此，<code>LLVM</code>与传统虚拟机关系不大。名称 “LLVM”本身不是缩写，它是项目的全名。</p>
+</li>
+<li><p><a href="https://clang.llvm.org/" target="_blank" rel="noopener">Clang</a> 为<code>LLVM项目</code> 的<code>主要子项目 —— C语言家族（C，C ++，Objective C / C ++，OpenCL，CUDA和RenderScript）</code>中的语言提供了语言前端和工具基础结构。同时提供了<code>GCC兼容</code>的<code>编译器驱动程序（clang）</code>和<code>MSVC兼容</code>的<code>编译器驱动程序（clang-cl.exe）</code>。</p>
+<p><code>LLVM</code>最初是伊利诺伊大学的一个研究项目，目的是提供一种<code>基于SSA</code>的 <strong>现代编译策略</strong>，该策略能够支持<code>任意编程语言</code> 的 <strong>静态编译</strong>、<strong>动态编译</strong>。</p>
+</li>
+</ul>
+<h1 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h1><ul>
+<li>编译环境：<code>macOS</code></li>
+<li>编译方式：<code>Clang</code></li>
+<li><a href="https://developer.android.google.cn/ndk/downloads?hl=zh_cn" target="_blank" rel="noopener">Android NDK 20</a></li>
+<li><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">FFmpeg 4.2.2</a></li>
+</ul>
+<h1 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h1><ul>
+<li>执行 <code>./configure</code> （只在第一次解压ffmpeg压缩包后执行。生成基础文件，供后续编译使用，否则提示“各种文件找不到”）</li>
+<li>配置（使用配置脚本）</li>
+<li>编译（使用<code>make</code>）</li>
+<li>安装（使用<code>make install</code>）</li>
+</ul>
+<h1 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h1><p>配置基础条件：</p>
+<ul>
+<li>macOS</li>
+<li>FFmpeg 4.2.2</li>
+<li>Android NDK-20b</li>
+<li>编译方式：Clang</li>
+</ul>
+<h2 id="configure配置文件修改"><a href="#configure配置文件修改" class="headerlink" title="configure配置文件修改"></a>configure配置文件修改</h2><p>修改<code>ffmpeg-4.2.2/configure</code>文件（这是一个<code>shell</code>脚本，用于生成一些 <code>FFmpeg</code> 编译需要的<code>配置文件</code>）：</p>
+<ol>
+<li>新增 <code>cross_prefix_clang</code> 参数</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">CMDLINE_SET=&quot;</span><br><span class="line">	    $PATHS_LIST</span><br><span class="line">	    ar</span><br><span class="line">	    arch</span><br><span class="line">	    as</span><br><span class="line">	    assert_level</span><br><span class="line">	    build_suffix</span><br><span class="line">	    cc</span><br><span class="line">	    objcc</span><br><span class="line">	    cpu</span><br><span class="line">	    cross_prefix</span><br><span class="line">	    # 新增命令行参数</span><br><span class="line">	    cross_prefix_clang</span><br><span class="line">	    custom_allocator</span><br><span class="line">	    cxx</span><br><span class="line">	    dep_cc</span><br><span class="line">	    # 省略其他.....</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>修改编译工具路径设置</p>
+<p>搜索 <code>ar_default=&quot;${cross_prefix}${ar_default}&quot;</code> , 找到以下代码</p>
+</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ar_default=&quot;$&#123;cross_prefix&#125;$&#123;ar_default&#125;&quot;</span><br><span class="line">cc_default=&quot;$&#123;cross_prefix&#125;$&#123;cc_default&#125;&quot;</span><br><span class="line">cxx_default=&quot;$&#123;cross_prefix&#125;$&#123;cxx_default&#125;&quot;</span><br><span class="line">nm_default=&quot;$&#123;cross_prefix&#125;$&#123;nm_default&#125;&quot;</span><br><span class="line">pkg_config_default=&quot;$&#123;cross_prefix&#125;$&#123;pkg_config_default&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>将中间两行修改为</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ar_default=&quot;$&#123;cross_prefix&#125;$&#123;ar_default&#125;&quot;</span><br><span class="line">#------------------------------------------------</span><br><span class="line">cc_default=&quot;$&#123;cross_prefix_clang&#125;$&#123;cc_default&#125;&quot;</span><br><span class="line">cxx_default=&quot;$&#123;cross_prefix_clang&#125;$&#123;cxx_default&#125;&quot;</span><br><span class="line">#------------------------------------------------</span><br><span class="line">nm_default=&quot;$&#123;cross_prefix&#125;$&#123;nm_default&#125;&quot;</span><br><span class="line">pkg_config_default=&quot;$&#123;cross_prefix&#125;$&#123;pkg_config_default&#125;&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="新建编译配置脚本"><a href="#新建编译配置脚本" class="headerlink" title="新建编译配置脚本"></a>新建编译配置脚本</h2><p>脚本名称可自行命名，例如：<code>build_android_clang.sh</code>，脚本文件内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/zsh</span><br><span class="line">set -x</span><br><span class="line"># NDK的路径</span><br><span class="line">NDK=/Users/yannischeng/FFmpeg/android-ndk-r20b</span><br><span class="line"># 编译工具链路径</span><br><span class="line">TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin</span><br><span class="line"># 交叉编译环境目录：</span><br><span class="line">SYSROOT=$NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot</span><br><span class="line"># 平台</span><br><span class="line">OS=android</span><br><span class="line"># CPU架构</span><br><span class="line">CPU=armv7-a</span><br><span class="line">ARCH=arm</span><br><span class="line"># Android版本</span><br><span class="line">API=21</span><br><span class="line">#so库输出目录</span><br><span class="line">PREFIX=/Users/yannischeng/FFmpeg/Android</span><br><span class="line"></span><br><span class="line">function build</span><br><span class="line">&#123;</span><br><span class="line">    ./configure \</span><br><span class="line">    --prefix=$PREFIX \</span><br><span class="line">    --target-os=$OS \</span><br><span class="line">    --arch=$ARCH \</span><br><span class="line">    --cpu=$CPU \</span><br><span class="line">    --enable-shared \</span><br><span class="line">    --disable-static \</span><br><span class="line">    --enable-asm \</span><br><span class="line">    --enable-neon \</span><br><span class="line">    --enable-cross-compile \</span><br><span class="line">    --disable-doc \</span><br><span class="line">    --disable-ffplay \</span><br><span class="line">    --disable-ffprobe \</span><br><span class="line">    --disable-symver \</span><br><span class="line">    --disable-ffmpeg \</span><br><span class="line">    --sysroot=$SYSROOT \</span><br><span class="line">    --cross-prefix=$TOOLCHAIN/arm-linux-androideabi- \</span><br><span class="line">    --cross-prefix-clang=$TOOLCHAIN/armv7a-linux-androideabi$API- \</span><br><span class="line">    --extra-cflags=&quot;-fPIC&quot;</span><br><span class="line"></span><br><span class="line">    make clean all</span><br><span class="line">    make -j8</span><br><span class="line">    make install</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">build</span><br></pre></td></tr></table></figure>
+<p><img src="https://yannischeng-img-1258109292.cos.ap-beijing.myqcloud.com/ffmpeg脚本输出.png" alt></p>
+<h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><ol>
+<li><code>./configure</code>执行后，提示：</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nasm/yasm not found or too old. Use --disable-x86asm for a crippled build.</span><br></pre></td></tr></table></figure>
+<p> 解决：安装 <code>yasm</code>就能将解决</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install yasm</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Error 127</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh: ranlib/usr/local/lib/libavdevice.a: No such file or directory</span><br><span class="line">make: *** [install-libavdevice-static] Error 127</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>  解决：由于 <code>LIB_INSTALL_EXTRA_CMD=&#39;$$(RANLIB)&quot;$(LIBDIR)/$(LIBNAME)</code> 这个命令少打了一个空格，应该改为<code>`LIB_INSTALL_EXTRA_CMD=&#39;$$(RANLIB) &quot;$(LIBDIR)/$(LIBNAME)&quot;&#39;</code>。之后要重新执行下 <code>./configure</code>，不然还是报这个错。</p>
+<ol>
+<li>类似：C compiler test failed.</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Users/xxx/android-ndk-r20/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc is unable to create an executable file.</span><br><span class="line">C compiler test failed.</span><br></pre></td></tr></table></figure>
+<p> 原因是没有<code>arm-linux-androideabi-gcc</code>这个文件了。</p>
+<ol>
+<li><p>编译Android平台后，生成后缀.a的库，不是so库</p>
+<p>解决办法：看下编译脚本，要这么写</p>
+</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--enable-shared \</span><br><span class="line">--disable-static \</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>有可能会遇到：<code>无法打开“armv7a-linux-androideabi21-clang”，因为无法验证开发者。</code> 弹窗，而且只有<code>移到废纸篓</code>和<code>取消</code>这2个按钮。</p>
+<p>解决：</p>
+<ol>
+<li><p>进入：<code>系统偏好设置-&gt;安全与隐私-&gt;通用</code>选项卡。如果“左下角的小锁”处于<code>锁定🔒状态</code>，且同时选中<code>任何来源</code>选项，此时改变原选项，选择<code>App Store 和被认可的开发者</code>选项。注意：<strong>此时保持此界面状态，暂不做任何修改。</strong></p>
+</li>
+<li><p>在终端界面再次运行自己编写的配置脚本，此时会再次弹出窗口，提示：<code>无法打开“armv7a-linux-androideabi21-clang”，因为无法验证开发者。</code> </p>
+</li>
+<li><p>此时转到刚才修改过的：<code>系统偏好设置-&gt;安全与隐私-&gt;通用</code>选项卡，此时在<code>任何来源</code>附近会有一个<code>灰色的文字提示，且旁边有一个 允许XXX 按钮</code>，单击<code>允许按钮</code> 。</p>
+</li>
+<li>再次在端界面再次运行自己编写的配置脚本，此时会弹出：<code>macOS无法验证“armv7a-linux-androideabi21-clang”的开发者。您确定要打开它吗？</code>，点击弹窗中的<code>打开</code>按钮即可。问题解决。</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/FFmpeg-00-readme/" rel="next" title="FFmpeg-00-readme">
+                <i class="fa fa-chevron-left"></i> FFmpeg-00-readme
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#涉及概念"><span class="nav-number">1.</span> <span class="nav-text">涉及概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资源下载"><span class="nav-number">2.</span> <span class="nav-text">资源下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译步骤"><span class="nav-number">3.</span> <span class="nav-text">编译步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置脚本"><span class="nav-number">4.</span> <span class="nav-text">配置脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure配置文件修改"><span class="nav-number">4.1.</span> <span class="nav-text">configure配置文件修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建编译配置脚本"><span class="nav-number">4.2.</span> <span class="nav-text">新建编译配置脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题总结"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">407.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
