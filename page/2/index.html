@@ -266,6 +266,294 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-Element/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Flutter-Element/" itemprop="url">Flutter-Element</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-31T15:11:22+08:00">
+                2019-08-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-01T10:33:14+08:00">
+                2019-09-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,211 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Flutter-Element</p>
+<h1 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h1><h2 id="Element类中的部分构造："><a href="#Element类中的部分构造：" class="headerlink" title="Element类中的部分构造："></a>Element类中的<code>部分构造</code>：</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Element</span> <span class="keyword">extends</span> <span class="title">DiagnosticableTree</span> <span class="keyword">implements</span> <span class="title">BuildContext</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///由父设置的信息，用于定义此子项在其父项子列表中的位置。</span></span><br><span class="line">  <span class="comment">///只有一个子元素的Element的子类应该为该子节点的插槽使用null。</span></span><br><span class="line">  <span class="keyword">dynamic</span> <span class="keyword">get</span> slot =&gt; _slot;</span><br><span class="line">  <span class="keyword">dynamic</span> _slot;</span><br><span class="line"></span><br><span class="line">  <span class="comment">///保证大于父级的整数（如果有的话）。</span></span><br><span class="line">  <span class="comment">///树根处的元素必须具有大于0的深度。</span></span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> depth =&gt; _depth;</span><br><span class="line">  <span class="built_in">int</span> _depth;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">///此元素的配置。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget <span class="keyword">get</span> widget =&gt; _widget;</span><br><span class="line">  Widget _widget;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">///管理此元素生命周期的对象。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  BuildOwner <span class="keyword">get</span> owner =&gt; _owner;</span><br><span class="line">  BuildOwner _owner;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">bool</span> _active = <span class="keyword">false</span>;</span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">///树中此位置（或下方）的渲染对象。</span></span><br><span class="line">  <span class="comment">///如果此对象是[RenderObjectElement]，则渲染对象是树中此位置的对象。 否则，此getter将沿树向下走，直到找到[RenderObjectElement]。</span></span><br><span class="line">  RenderObject <span class="keyword">get</span> renderObject &#123;</span><br><span class="line">    RenderObject result;</span><br><span class="line">    <span class="keyword">void</span> visit(<span class="built_in">Element</span> element) &#123;</span><br><span class="line">      <span class="keyword">assert</span>(result == <span class="keyword">null</span>); <span class="comment">// this verifies that there's only one child</span></span><br><span class="line">      <span class="keyword">if</span> (element <span class="keyword">is</span> RenderObjectElement)</span><br><span class="line">        result = element.renderObject;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        element.visitChildren(visit);</span><br><span class="line">    &#125;</span><br><span class="line">    visit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//这用于验证Element对象是否以有序的方式在生命中移动。</span></span><br><span class="line">  _ElementLifecycle _debugLifecycleState = _ElementLifecycle.initial;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重要方法"><a href="#重要方法" class="headerlink" title="重要方法"></a>重要方法</h2><h3 id="visitChildren"><a href="#visitChildren" class="headerlink" title="visitChildren()"></a>visitChildren()</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///为每一个孩子调用参数。 必须由支持子项的子类重写。</span></span><br><span class="line"><span class="comment">///没有保证可以访问孩子的顺序，尽管它应该随着时间的推移而保持一致。</span></span><br><span class="line"><span class="comment">///在构建期间调用此方法很危险：子列表可能仍在更新，因此可能尚未构建子项，或者可能是要替换的旧子项。 只有在可以证明孩子有空的情况下才应该调用此方法。</span></span><br><span class="line"><span class="keyword">void</span> visitChildren(ElementVisitor visitor) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="reassemble"><a href="#reassemble" class="headerlink" title="reassemble()"></a>reassemble()</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &#123;@template flutter.widgets.reassemble&#125;在调试期间重新组装应用程序时调用，例如在热重新加载期间。</span></span><br><span class="line"> <span class="comment">///此方法应重新运行依赖于全局状态的任何初始化逻辑，例如，从资产包中加载图像（因为资产包可能已更改）。</span></span><br><span class="line"> <span class="comment">///此功能仅在开发期间调用。在发布版本中，`ext.flutter.reassemble`钩子不可用，因此这段代码永远不会执行。</span></span><br><span class="line"> <span class="comment">///在启动热重新加载后，实施者不应依赖任何热重新加载源更新，重组和构建方法的顺序。附加到隔离的[Timer]（例如[Animation]）或调试会话可能会触发带有重新加载的代码的构建_before_ reassemble被调用。期望在热重新加载之后通过重新组装来设置前提条件的代码必须具有弹性以便无序调用，例如，通过嘶嘶声而不是投掷。也就是说，一旦调用reassemble，就会在它之后调用build至少一次。</span></span><br><span class="line"> <span class="comment">/// &#123;@endtemplate&#125;</span></span><br><span class="line"> <span class="comment">///  也可以看看：</span></span><br><span class="line"> <span class="comment">/// * [State.reassemble]</span></span><br><span class="line"> <span class="comment">/// * [BindingBase.reassembleApplication]</span></span><br><span class="line"> <span class="comment">/// * [Image]，使用它来重新加载图像。</span></span><br><span class="line"><span class="meta">@mustCallSuper</span></span><br><span class="line"><span class="meta">@protected</span></span><br><span class="line"><span class="keyword">void</span> reassemble() &#123;</span><br><span class="line">   markNeedsBuild();</span><br><span class="line">   visitChildren((<span class="built_in">Element</span> child) &#123;</span><br><span class="line">     child.reassemble();</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Widget系统核心方法-updateChild-："><a href="#Widget系统核心方法-updateChild-：" class="headerlink" title="Widget系统核心方法 - updateChild()："></a>Widget系统核心方法 - updateChild()：</h2><p>使用给定的新配置更新给定的子项。<br>这个方法是小部件系统的核心。每次我们根据更新的配置添加，更新或删除子项时都会调用它。<br>如果<code>child</code>为null，并且<code>newWidget</code>不为null，那么我们有一个新的子节点，我们需要创建一个[Element]，配置为<code>newWidget</code>。<br>如果<code>newWidget</code>为null，并且<code>child</code>不为null，那么我们需要删除它，因为它不再有配置。<br>如果两者都不为null，那么我们需要将<code>child</code>的配置更新为<code>newWidget</code>给出的新配置。如果<code>newWidget</code>可以给现有的子节点（由[Widget.canUpdate]确定），那么就给出了它。否则，需要处理旧子项并为新配置创建新子项。<br>如果两者都为null，那么我们没有孩子，也没有孩子，所以我们什么都不做。<br> [updateChild]方法返回新的子节点，如果必须创建一个子节点，或者传入的子节点，如果它只是必须更新子节点，则返回null，如果它删除了子节点并且没有替换它。<br>下表总结了上述内容：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>newWidget == null</strong></th>
+<th><strong>newWidget != null</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>child == null</strong></td>
+<td>返回null</td>
+<td>返回新的[Element]</td>
+</tr>
+<tr>
+<td><strong>child != null</strong></td>
+<td>删除旧子，返回null</td>
+<td>如果可能，更新旧子，返回子或新[元素]</td>
+</tr>
+</tbody>
+</table>
+<p>方法名描述：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Element</span> updateChild(<span class="built_in">Element</span> child, Widget newWidget, <span class="keyword">dynamic</span> newSlot)</span><br></pre></td></tr></table></figure>
+<p>方法体描述</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@protected</span></span><br><span class="line"><span class="built_in">Element</span> updateChild(<span class="built_in">Element</span> child, Widget newWidget, <span class="keyword">dynamic</span> newSlot) &#123;</span><br><span class="line">  <span class="keyword">assert</span>(() &#123;</span><br><span class="line">    <span class="keyword">if</span> (newWidget != <span class="keyword">null</span> &amp;&amp; newWidget.key <span class="keyword">is</span> GlobalKey) &#123;</span><br><span class="line">      <span class="keyword">final</span> GlobalKey key = newWidget.key;</span><br><span class="line">      key._debugReserveFor(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;());</span><br><span class="line">  <span class="keyword">if</span> (newWidget == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (child != <span class="keyword">null</span>)</span><br><span class="line">      deactivateChild(child);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (child != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (child.widget == newWidget) &#123;</span><br><span class="line">      <span class="keyword">if</span> (child.slot != newSlot)</span><br><span class="line">        updateSlotForChild(child, newSlot);</span><br><span class="line">      <span class="keyword">return</span> child;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Widget.canUpdate(child.widget, newWidget)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (child.slot != newSlot)</span><br><span class="line">        updateSlotForChild(child, newSlot);</span><br><span class="line">      child.update(newWidget);</span><br><span class="line">      <span class="keyword">assert</span>(child.widget == newWidget);</span><br><span class="line">      <span class="keyword">assert</span>(() &#123;</span><br><span class="line">        child.owner._debugElementWasRebuilt(child);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;());</span><br><span class="line">      <span class="keyword">return</span> child;</span><br><span class="line">    &#125;</span><br><span class="line">    deactivateChild(child);</span><br><span class="line">    <span class="keyword">assert</span>(child._parent == <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> inflateWidget(newWidget, newSlot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Element生命周期"><a href="#Element生命周期" class="headerlink" title="Element生命周期"></a>Element生命周期</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> _ElementLifecycle &#123;</span><br><span class="line">  initial,</span><br><span class="line">  active,</span><br><span class="line">  inactive,</span><br><span class="line">  defunct,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Element是元素模型中所有元素的基类。一般来说，元素模型是<code>程序的语义模型</code>，它表示<strong><code>用名称</code>声明的事物</strong>，因此可以在代码的其他地方引用。</p>
+<p>一般情况有两个例外：</p>
+<ul>
+<li><p>首先元素模型中的元素是为了方便各种分析而创建的，但在源代码中没有任何相应的声明。这些元素被标记为<i>合成&lt;/ i&gt;。合成元素的示例包括<em>未定义任何显式构造函数的类中的默认构造函数，由显式字段声明引起的</em> getter和setter，由getter和setter的显式声明引起的<em>字段，以及表示初始化表达式的</em>函数对于变量。</i></p>
+</li>
+<li><p>其次，元素模型中有一些没有名称的元素。这些对应于未命名的函数并且存在是为了更准确地表示<code>程序的语义结构</code>。</p>
+</li>
+</ul>
+<p><strong>树中特定位置的Widget实例化。</strong></p>
+<p>Widget描述了如何配置子树，但同一Widget可用于同时配置多个子树，因为Widget是不可变的。元素表示使用Widget来配置树中的特定位置。随着时间的推移，与给定元素关联的Widget可以更改，例如，如果父Widget重建并为此位置创建新Widget。</p>
+<p><strong>元素形成一棵树。</strong>大多数元素都有一个唯一的子元素，但是一些Widget（例如，RenderObjectElement的子类）可以有多个子元素。</p>
+<p>Element具有以下生命周期：</p>
+<ol>
+<li><strong>创建</strong>：<code>框架</code>通过在Widget上调用<code>Widget.createElement</code>来创建元素，该Widget将用作<code>元素的初始配置</code>。</li>
+<li><p><strong>安装/激活</strong>：<code>框架</code>调用<code>mount</code>以将新创建​​的元素添加到给定<code>父级</code>中给定<code>插槽（slot）</code>的树中。<code>mount()</code>负责对任何子Widget进行填充，并根据需要调用<a href="https://api.flutter.dev/flutter/widgets/Element/attachRenderObject.html" target="_blank" rel="noopener">attachRenderObject</a>（将<code>renderObject</code>添加到<code>slot</code>指定的位置的渲染树中。此函数的默认实现只是在其子项上递归调用<code>attachRenderObject</code>。）以将任何关联的渲染对象附加到渲染树。<br> 此时，该元素被视为“<strong>active</strong>（<code>_active = true</code>）”并可能出现在屏幕上。</p>
+</li>
+<li><p><strong>更新</strong>：在某些时候，<code>父级</code>可能决定<code>更改</code>用于<code>配置此元素</code>的<code>Widget</code>，例如，因为父级使用新状态重建。发生这种情况时，<code>框架</code>将使用<code>新Widget</code>调用<code>update()</code>。<code>新Widget</code>将始终具有与<code>旧Widget</code>相同的<code>runtimeType</code>和<code>key</code>。如果<code>父级</code>希望在树中的<code>此位置更改</code>Widget的<code>runtimeType</code>或<code>key</code>，则可以通过<strong><code>卸载</code></strong> <code>此元素</code>并在<code>**此位置**填充新Widget</code>来实现。</p>
+</li>
+<li><p><strong>删除</strong>：在某些时候，祖先可能会决定从树中删除此元素（或中间祖先），祖先通过自己调用<code>deactivateChild()</code>来执行此操作。取消激活中间祖先将从<code>渲染树</code>中<code>删除``该元素</code>的<code>渲染对象</code>，并将此元素添加到所有者的<code>非活动元素列表</code>中，从而导致框架对此元素调用<code>deactivate()</code>。</p>
+<p>此时，该元素被视为“<code>无效</code>”，不会出现在屏幕上。元素只能保持在<code>非活动状态</code>即：<strong>inactive</strong>，直到当前动画帧结束。在<code>动画帧</code>结束时，将卸载仍处于<code>非活动状态的</code>所有元素。</p>
+</li>
+<li><p><strong>复活</strong>：如果<code>元素</code>被<code>重新并入树中</code>（例如，因为它或其祖先之一具有重用的全局key），框架将从所有者的<code>非活动元素列表</code>中删除该元素，对<code>元素</code>调用<code>activate()</code>，并将<code>元素</code>的<code>渲染对象</code>重新附加到<code>渲染树</code>。 （此时，该元素再次被视为“<code>活动</code>”即：<strong>active</strong>并可能出现在屏幕上。）</p>
+</li>
+<li><p><strong>卸载</strong>：如果元素在<code>当前动画帧结束时</code>没有重新并入树中，则框架将在<code>元素</code>上调用<code>unmount()</code>。此时，<code>该元素</code>被视为“<code>已不存在</code>”即：<strong>defunct</strong>，并且将来不会合并到树中。</p>
+</li>
+</ol>
+<p>按照惯例：Widget构造函数仅使用<code>命名参数</code>。可以使用<code>@required</code>将命名参数标记为<code>必需</code>。<br>按照惯例：<code>第一个参数</code>是<code>key</code>，<code>最后一个参数</code>是<code>child</code>、<code>children</code>或<code>等价物</code>。</p>
+<h1 id="RenderObjectElement"><a href="#RenderObjectElement" class="headerlink" title="RenderObjectElement"></a>RenderObjectElement</h1><p>一个<code>Element</code>使用<code>RenderObjectWidget</code>作为其配置。</p>
+<p><code>RenderObjectElement</code> 对象在<code>渲染树(render tree)</code>中具有关联的 <code>RenderObject</code> widget，该widget处理<code>布局</code>、<code>绘制</code>和<code>命中测试</code>等具体操作。</p>
+<p>与<code>ComponentElement(构成其他[Element]的[Element]。)</code>对比。</p>
+<h2 id="编写-RenderObjectElement-子类"><a href="#编写-RenderObjectElement-子类" class="headerlink" title="编写 RenderObjectElement 子类"></a>编写 RenderObjectElement 子类</h2><p>大多数 <code>RenderObject</code> 使用三种常见的子模型：</p>
+<ul>
+<li><p><strong>叶子渲染(Leaf render)对象</strong>，没有子节点：<code>LeafRenderObjectElement</code> 类处理这种情况。</p>
+</li>
+<li><p><strong>单个子项(A single child)</strong>：<code>SingleChildRenderObjectElement</code> 类处理此案例。</p>
+</li>
+<li><p><strong>子链接列表(A linked list of children)</strong>：<code>MultiChildRenderObjectElement</code> 类处理这种情况。</p>
+</li>
+</ul>
+<p>但是，有时渲染对象的子 <code>模型更复杂</code>，也许它有一个二维儿童阵列。 也许它按需建造孩子。 也许它有多个列表。 </p>
+<p>在这种情况下，配置<code>RenderObject</code>的<code>Widget</code>的相应<code>Element</code>将是<code>RenderObjectElement</code>的新子类。</p>
+<p>这样的子类负责管理孩子，特别是<code>Element</code>这个对象的子节点，以及它的<code>RenderObject</code>子节点对应的<code>RenderObject</code>。</p>
+<h3 id="专门化的getters"><a href="#专门化的getters" class="headerlink" title="专门化的getters"></a>专门化的getters</h3><p><code>RenderObjectElement</code> 对象花费大量时间 <strong>充当</strong> <code>widget</code> 和 <code>renderObject</code> 他们之间的 <strong>中介</strong>。 </p>
+<p>为了使它更容易处理，大多数 <strong><code>RenderObjectElement</code>子类</strong> <code>重写</code> 这些 <code>getter</code>，以便它们 <strong><code>返回元素所需的特定类型</code></strong>，例如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooElement</span> <span class="keyword">extends</span> <span class="title">RenderObjectElement</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Foo <span class="keyword">get</span> widget =&gt; <span class="keyword">super</span>.widget;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderFoo <span class="keyword">get</span> renderObject =&gt; <span class="keyword">super</span>.renderObject;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>每个 <code>子元素(Element)</code> 对应一个 <code>RenderObject</code>，这个 <code>RenderObject</code> 应作为 <code>子元素</code> 附加到 <code>此元素</code> 的 <code>渲染对象</code>。</p>
+<p>但是，元素的直接子元素可能不是最终生成它们对应的实际[RenderObject]的元素。<br>  例如，[StatelessElement]（[StatelessWidget]的元素）简单地对应于其子项（由其[StatelessWidget.build]方法返回的元素）对应的任何[RenderObject]。</p>
+<p>因此，为每个子项分配一个 <code>_slot_标记(token)</code>。 这是一个 <code>标识符</code>，其含义对于此<code>RenderObjectElement</code> 节点是 <code>私有</code> 的。</p>
+<p> 当准备将最终生成的 <code>RenderObject</code> 后代 <code>附加(attached)</code> 到 <strong>此节点</strong> 的  <code>RenderObject</code> 时，它会将该 <code>_slot_标记(token)</code> 传递回 <strong>此节点</strong>，并允许此节点方便地<code>识别</code> 子渲染对象相对于其他对象在父渲染对象中的 <code>放置位置</code> 。</p>
+<h3 id="更新-children"><a href="#更新-children" class="headerlink" title="更新 children"></a>更新 children</h3><p>在元素生命周期的早期，框架调用[mount]方法。此方法应为每个子项调用[updateChild]，传入该子项的窗口小部件以及该子项的插槽，从而获取子项[Element]的列表。</p>
+<p>随后，框架将调用[update]方法。在这个方法中，[RenderObjectElement]应该为每个子节点调用[updateChild]，传递n [在[mount]期间获得的[Element]或者最后一次[update]运行时（最近发生的那个），新的[Widget] ]和插槽。<br>这为对象提供了[Element]对象的新列表。</p>
+<p>在可能的情况下，[update]方法应尝试将最后一个传递中的元素映射到新传递中的小部件。例如，如果最后一个传递中的一个元素配置了特定的[Key]，并且此新传递中的一个小部件具有相同的键，则它们应该配对，并且旧元素应该使用小部件（以及与新小部件的新位置对应的插槽）。在这方面，[updateChildren]方法可能很有用。</p>
+<p>应按逻辑顺序为子项调用[updateChild]。订单很重要;例如，如果两个孩子在他们的构建方法中使用[PageStorage]的<code>writeState</code>特性（并且没有[Widget.key]），那么第一个孩子写的状态将被第二个覆盖。</p>
+<h4 id="Dynamically-determining-the-children-during-the-build-phase"><a href="#Dynamically-determining-the-children-during-the-build-phase" class="headerlink" title="Dynamically determining the children during the build phase"></a>Dynamically determining the children during the build phase</h4><p>The child widgets need not necessarily come from this element’s widget<br>verbatim. They could be generated dynamically from a callback, or generated<br>in other more creative ways.</p>
+<h4 id="Dynamically-determining-the-children-during-layout"><a href="#Dynamically-determining-the-children-during-layout" class="headerlink" title="Dynamically determining the children during layout"></a>Dynamically determining the children during layout</h4><p>If the widgets are to be generated at layout time, then generating them when<br>the [update] method won’t work: layout of this element’s render object<br>hasn’t started yet at that point. Instead, the [update] method can mark the<br>render object as needing layout (see [RenderObject.markNeedsLayout]), and<br>then the render object’s [RenderObject.performLayout] method can call back<br>to the element to have it generate the widgets and call [updateChild]<br>accordingly.</p>
+<p>For a render object to call an element during layout, it must use<br>[RenderObject.invokeLayoutCallback]. For an element to call [updateChild]<br>outside of its [update] method, it must use [BuildOwner.buildScope].</p>
+<p>The framework provides many more checks in normal operation than it does<br>when doing a build during layout. For this reason, creating widgets with<br>layout-time build semantics should be done with great care.</p>
+<h4 id="Handling-errors-when-building"><a href="#Handling-errors-when-building" class="headerlink" title="Handling errors when building"></a>Handling errors when building</h4><p>If an element calls a builder function to obtain widgets for its children,<br>it may find that the build throws an exception. Such exceptions should be<br>caught and reported using [FlutterError.reportError]. If a child is needed<br>but a builder has failed in this way, an instance of [ErrorWidget] can be<br>used instead.</p>
+<h3 id="Detaching-children"><a href="#Detaching-children" class="headerlink" title="Detaching children"></a>Detaching children</h3><p>It is possible, when using [GlobalKey]s, for a child to be proactively<br>removed by another element before this element has been updated.<br>(Specifically, this happens when the subtree rooted at a widget with a<br>particular [GlobalKey] is being moved from this element to an element<br>processed earlier in the build phase.) When this happens, this element’s<br>[forgetChild] method will be called with a reference to the affected child<br>element.</p>
+<p>The [forgetChild] method of a [RenderObjectElement] subclass must remove the<br>child element from its child list, so that when it next [update]s its<br>children, the removed child is not considered.</p>
+<p>For performance reasons, if there are many elements, it may be quicker to<br>track which elements were forgotten by storing them in a [Set], rather than<br>proactively mutating the local record of the child list and the identities<br>of all the slots. For example, see the implementation of<br>[MultiChildRenderObjectElement].</p>
+<h3 id="Maintaining-the-render-object-tree"><a href="#Maintaining-the-render-object-tree" class="headerlink" title="Maintaining the render object tree"></a>Maintaining the render object tree</h3><p>Once a descendant produces a render object, it will call<br>[insertChildRenderObject]. If the descendant’s slot changes identity, it<br>will call [moveChildRenderObject]. If a descendant goes away, it will call<br>[removeChildRenderObject].</p>
+<p>These three methods should update the render tree accordingly, attaching,<br>moving, and detaching the given child render object from this element’s own<br>render object respectively.</p>
+<h3 id="Walking-the-children"><a href="#Walking-the-children" class="headerlink" title="Walking the children"></a>Walking the children</h3><p>If a [RenderObjectElement] object has any children [Element]s, it must<br>expose them in its implementation of the [visitChildren] method. This method<br>is used by many of the framework’s internal mechanisms, and so should be<br>fast. It is also used by the test framework and [debugDumpApp].</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RenderObjectElement</span> <span class="keyword">extends</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line">  <span class="comment">/// Creates an element that uses the given widget as its configuration.</span></span><br><span class="line">  RenderObjectElement(RenderObjectWidget widget) : <span class="keyword">super</span>(widget);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObjectWidget <span class="keyword">get</span> widget =&gt; <span class="keyword">super</span>.widget;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// The underlying [RenderObject] for this element.</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  RenderObject <span class="keyword">get</span> renderObject =&gt; _renderObject;</span><br><span class="line">  RenderObject _renderObject;</span><br><span class="line"></span><br><span class="line">  RenderObjectElement _ancestorRenderObjectElement;</span><br><span class="line"></span><br><span class="line">  RenderObjectElement _findAncestorRenderObjectElement() &#123;</span><br><span class="line">    <span class="built_in">Element</span> ancestor = _parent;</span><br><span class="line">    <span class="keyword">while</span> (ancestor != <span class="keyword">null</span> &amp;&amp; ancestor <span class="keyword">is</span>! RenderObjectElement)</span><br><span class="line">      ancestor = ancestor._parent;</span><br><span class="line">    <span class="keyword">return</span> ancestor;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ParentDataElement&lt;RenderObjectWidget&gt; _findAncestorParentDataElement() &#123;</span><br><span class="line">    <span class="built_in">Element</span> ancestor = _parent;</span><br><span class="line">    <span class="keyword">while</span> (ancestor != <span class="keyword">null</span> &amp;&amp; ancestor <span class="keyword">is</span>! RenderObjectElement) &#123;</span><br><span class="line">      <span class="keyword">if</span> (ancestor <span class="keyword">is</span> ParentDataElement&lt;RenderObjectWidget&gt;)</span><br><span class="line">        <span class="keyword">return</span> ancestor;</span><br><span class="line">      ancestor = ancestor._parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> mount(<span class="built_in">Element</span> parent, <span class="keyword">dynamic</span> newSlot) &#123;</span><br><span class="line">    <span class="keyword">super</span>.mount(parent, newSlot);</span><br><span class="line">    _renderObject = widget.createRenderObject(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _debugUpdateRenderObjectOwner(); <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">    <span class="keyword">assert</span>(_slot == newSlot);</span><br><span class="line">    attachRenderObject(newSlot);</span><br><span class="line">    _dirty = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> update(covariant RenderObjectWidget newWidget) &#123;</span><br><span class="line">    <span class="keyword">super</span>.update(newWidget);</span><br><span class="line">    <span class="keyword">assert</span>(widget == newWidget);</span><br><span class="line">    <span class="keyword">assert</span>(() &#123; _debugUpdateRenderObjectOwner(); <span class="keyword">return</span> <span class="keyword">true</span>; &#125;());</span><br><span class="line">    widget.updateRenderObject(<span class="keyword">this</span>, renderObject);</span><br><span class="line">    _dirty = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _debugUpdateRenderObjectOwner() &#123;</span><br><span class="line">    <span class="keyword">assert</span>(() &#123;</span><br><span class="line">      _renderObject.debugCreator = DebugCreator(<span class="keyword">this</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> performRebuild() &#123;</span><br><span class="line">    widget.updateRenderObject(<span class="keyword">this</span>, renderObject);</span><br><span class="line">    _dirty = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Updates the children of this element to use new widgets.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// Attempts to update the given old children list using the given new</span></span><br><span class="line">  <span class="comment">/// widgets, removing obsolete elements and introducing new ones as necessary,</span></span><br><span class="line">  <span class="comment">/// and then returns the new child list.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// During this function the `oldChildren` list must not be modified. If the</span></span><br><span class="line">  <span class="comment">/// caller wishes to remove elements from `oldChildren` re-entrantly while</span></span><br><span class="line">  <span class="comment">/// this function is on the stack, the caller can supply a `forgottenChildren`</span></span><br><span class="line">  <span class="comment">/// argument, which can be modified while this function is on the stack.</span></span><br><span class="line">  <span class="comment">/// Whenever this function reads from `oldChildren`, this function first</span></span><br><span class="line">  <span class="comment">/// checks whether the child is in `forgottenChildren`. If it is, the function</span></span><br><span class="line">  <span class="comment">/// acts as if the child was not in `oldChildren`.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// This function is a convenience wrapper around [updateChild], which updates</span></span><br><span class="line">  <span class="comment">/// each individual child. When calling [updateChild], this function uses the</span></span><br><span class="line">  <span class="comment">/// previous element as the `newSlot` argument.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">Element</span>&gt; updateChildren(<span class="built_in">List</span>&lt;<span class="built_in">Element</span>&gt; oldChildren, <span class="built_in">List</span>&lt;Widget&gt; newWidgets, &#123; <span class="built_in">Set</span>&lt;<span class="built_in">Element</span>&gt; forgottenChildren &#125;) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(oldChildren != <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">assert</span>(newWidgets != <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Element</span> replaceWithNullIfForgotten(<span class="built_in">Element</span> child) &#123;</span><br><span class="line">      <span class="keyword">return</span> forgottenChildren != <span class="keyword">null</span> &amp;&amp; forgottenChildren.contains(child) ? <span class="keyword">null</span> : child;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This attempts to diff the new child list (newWidgets) with</span></span><br><span class="line">    <span class="comment">// the old child list (oldChildren), and produce a new list of elements to</span></span><br><span class="line">    <span class="comment">// be the new list of child elements of this element. The called of this</span></span><br><span class="line">    <span class="comment">// method is expected to update this render object accordingly.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// The cases it tries to optimize for are:</span></span><br><span class="line">    <span class="comment">//  - the old list is empty</span></span><br><span class="line">    <span class="comment">//  - the lists are identical</span></span><br><span class="line">    <span class="comment">//  - there is an insertion or removal of one or more widgets in</span></span><br><span class="line">    <span class="comment">//    only one place in the list</span></span><br><span class="line">    <span class="comment">// If a widget with a key is in both lists, it will be synced.</span></span><br><span class="line">    <span class="comment">// Widgets without keys might be synced but there is no guarantee.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// The general approach is to sync the entire new list backwards, as follows:</span></span><br><span class="line">    <span class="comment">// 1. Walk the lists from the top, syncing nodes, until you no longer have</span></span><br><span class="line">    <span class="comment">//    matching nodes.</span></span><br><span class="line">    <span class="comment">// 2. Walk the lists from the bottom, without syncing nodes, until you no</span></span><br><span class="line">    <span class="comment">//    longer have matching nodes. We'll sync these nodes at the end. We</span></span><br><span class="line">    <span class="comment">//    don't sync them now because we want to sync all the nodes in order</span></span><br><span class="line">    <span class="comment">//    from beginning to end.</span></span><br><span class="line">    <span class="comment">// At this point we narrowed the old and new lists to the point</span></span><br><span class="line">    <span class="comment">// where the nodes no longer match.</span></span><br><span class="line">    <span class="comment">// 3. Walk the narrowed part of the old list to get the list of</span></span><br><span class="line">    <span class="comment">//    keys and sync null with non-keyed items.</span></span><br><span class="line">    <span class="comment">// 4. Walk the narrowed part of the new list forwards:</span></span><br><span class="line">    <span class="comment">//     * Sync non-keyed items with null</span></span><br><span class="line">    <span class="comment">//     * Sync keyed items with the source if it exists, else with null.</span></span><br><span class="line">    <span class="comment">// 5. Walk the bottom of the list again, syncing the nodes.</span></span><br><span class="line">    <span class="comment">// 6. Sync null with any items in the list of keys that are still</span></span><br><span class="line">    <span class="comment">//    mounted.</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> newChildrenTop = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> oldChildrenTop = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> newChildrenBottom = newWidgets.length - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">int</span> oldChildrenBottom = oldChildren.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">List</span>&lt;<span class="built_in">Element</span>&gt; newChildren = oldChildren.length == newWidgets.length ?</span><br><span class="line">        oldChildren : <span class="built_in">List</span>&lt;<span class="built_in">Element</span>&gt;(newWidgets.length);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Element</span> previousChild;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update the top of the list.</span></span><br><span class="line">    <span class="keyword">while</span> ((oldChildrenTop &lt;= oldChildrenBottom) &amp;&amp; (newChildrenTop &lt;= newChildrenBottom)) &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> oldChild = replaceWithNullIfForgotten(oldChildren[oldChildrenTop]);</span><br><span class="line">      <span class="keyword">final</span> Widget newWidget = newWidgets[newChildrenTop];</span><br><span class="line">      <span class="keyword">assert</span>(oldChild == <span class="keyword">null</span> || oldChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      <span class="keyword">if</span> (oldChild == <span class="keyword">null</span> || !Widget.canUpdate(oldChild.widget, newWidget))</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> newChild = updateChild(oldChild, newWidget, previousChild);</span><br><span class="line">      <span class="keyword">assert</span>(newChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      newChildren[newChildrenTop] = newChild;</span><br><span class="line">      previousChild = newChild;</span><br><span class="line">      newChildrenTop += <span class="number">1</span>;</span><br><span class="line">      oldChildrenTop += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Scan the bottom of the list.</span></span><br><span class="line">    <span class="keyword">while</span> ((oldChildrenTop &lt;= oldChildrenBottom) &amp;&amp; (newChildrenTop &lt;= newChildrenBottom)) &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> oldChild = replaceWithNullIfForgotten(oldChildren[oldChildrenBottom]);</span><br><span class="line">      <span class="keyword">final</span> Widget newWidget = newWidgets[newChildrenBottom];</span><br><span class="line">      <span class="keyword">assert</span>(oldChild == <span class="keyword">null</span> || oldChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      <span class="keyword">if</span> (oldChild == <span class="keyword">null</span> || !Widget.canUpdate(oldChild.widget, newWidget))</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      oldChildrenBottom -= <span class="number">1</span>;</span><br><span class="line">      newChildrenBottom -= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Scan the old children in the middle of the list.</span></span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">bool</span> haveOldChildren = oldChildrenTop &lt;= oldChildrenBottom;</span><br><span class="line">    <span class="built_in">Map</span>&lt;Key, <span class="built_in">Element</span>&gt; oldKeyedChildren;</span><br><span class="line">    <span class="keyword">if</span> (haveOldChildren) &#123;</span><br><span class="line">      oldKeyedChildren = &lt;Key, <span class="built_in">Element</span>&gt;&#123;&#125;;</span><br><span class="line">      <span class="keyword">while</span> (oldChildrenTop &lt;= oldChildrenBottom) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">Element</span> oldChild = replaceWithNullIfForgotten(oldChildren[oldChildrenTop]);</span><br><span class="line">        <span class="keyword">assert</span>(oldChild == <span class="keyword">null</span> || oldChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">        <span class="keyword">if</span> (oldChild != <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (oldChild.widget.key != <span class="keyword">null</span>)</span><br><span class="line">            oldKeyedChildren[oldChild.widget.key] = oldChild;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">            deactivateChild(oldChild);</span><br><span class="line">        &#125;</span><br><span class="line">        oldChildrenTop += <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update the middle of the list.</span></span><br><span class="line">    <span class="keyword">while</span> (newChildrenTop &lt;= newChildrenBottom) &#123;</span><br><span class="line">      <span class="built_in">Element</span> oldChild;</span><br><span class="line">      <span class="keyword">final</span> Widget newWidget = newWidgets[newChildrenTop];</span><br><span class="line">      <span class="keyword">if</span> (haveOldChildren) &#123;</span><br><span class="line">        <span class="keyword">final</span> Key key = newWidget.key;</span><br><span class="line">        <span class="keyword">if</span> (key != <span class="keyword">null</span>) &#123;</span><br><span class="line">          oldChild = oldKeyedChildren[key];</span><br><span class="line">          <span class="keyword">if</span> (oldChild != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Widget.canUpdate(oldChild.widget, newWidget)) &#123;</span><br><span class="line">              <span class="comment">// we found a match!</span></span><br><span class="line">              <span class="comment">// remove it from oldKeyedChildren so we don't unsync it later</span></span><br><span class="line">              oldKeyedChildren.remove(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="comment">// Not a match, let's pretend we didn't see it for now.</span></span><br><span class="line">              oldChild = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">assert</span>(oldChild == <span class="keyword">null</span> || Widget.canUpdate(oldChild.widget, newWidget));</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> newChild = updateChild(oldChild, newWidget, previousChild);</span><br><span class="line">      <span class="keyword">assert</span>(newChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      <span class="keyword">assert</span>(oldChild == newChild || oldChild == <span class="keyword">null</span> || oldChild._debugLifecycleState != _ElementLifecycle.active);</span><br><span class="line">      newChildren[newChildrenTop] = newChild;</span><br><span class="line">      previousChild = newChild;</span><br><span class="line">      newChildrenTop += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We've scanned the whole list.</span></span><br><span class="line">    <span class="keyword">assert</span>(oldChildrenTop == oldChildrenBottom + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">assert</span>(newChildrenTop == newChildrenBottom + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">assert</span>(newWidgets.length - newChildrenTop == oldChildren.length - oldChildrenTop);</span><br><span class="line">    newChildrenBottom = newWidgets.length - <span class="number">1</span>;</span><br><span class="line">    oldChildrenBottom = oldChildren.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update the bottom of the list.</span></span><br><span class="line">    <span class="keyword">while</span> ((oldChildrenTop &lt;= oldChildrenBottom) &amp;&amp; (newChildrenTop &lt;= newChildrenBottom)) &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> oldChild = oldChildren[oldChildrenTop];</span><br><span class="line">      <span class="keyword">assert</span>(replaceWithNullIfForgotten(oldChild) != <span class="keyword">null</span>);</span><br><span class="line">      <span class="keyword">assert</span>(oldChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      <span class="keyword">final</span> Widget newWidget = newWidgets[newChildrenTop];</span><br><span class="line">      <span class="keyword">assert</span>(Widget.canUpdate(oldChild.widget, newWidget));</span><br><span class="line">      <span class="keyword">final</span> <span class="built_in">Element</span> newChild = updateChild(oldChild, newWidget, previousChild);</span><br><span class="line">      <span class="keyword">assert</span>(newChild._debugLifecycleState == _ElementLifecycle.active);</span><br><span class="line">      <span class="keyword">assert</span>(oldChild == newChild || oldChild == <span class="keyword">null</span> || oldChild._debugLifecycleState != _ElementLifecycle.active);</span><br><span class="line">      newChildren[newChildrenTop] = newChild;</span><br><span class="line">      previousChild = newChild;</span><br><span class="line">      newChildrenTop += <span class="number">1</span>;</span><br><span class="line">      oldChildrenTop += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Clean up any of the remaining middle nodes from the old list.</span></span><br><span class="line">    <span class="keyword">if</span> (haveOldChildren &amp;&amp; oldKeyedChildren.isNotEmpty) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="built_in">Element</span> oldChild <span class="keyword">in</span> oldKeyedChildren.values) &#123;</span><br><span class="line">        <span class="keyword">if</span> (forgottenChildren == <span class="keyword">null</span> || !forgottenChildren.contains(oldChild))</span><br><span class="line">          deactivateChild(oldChild);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newChildren;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> deactivate() &#123;</span><br><span class="line">    <span class="keyword">super</span>.deactivate();</span><br><span class="line">    <span class="keyword">assert</span>(!renderObject.attached,</span><br><span class="line">      <span class="string">'A RenderObject was still attached when attempting to deactivate its '</span></span><br><span class="line">      <span class="string">'RenderObjectElement: $renderObject'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> unmount() &#123;</span><br><span class="line">    <span class="keyword">super</span>.unmount();</span><br><span class="line">    <span class="keyword">assert</span>(!renderObject.attached,</span><br><span class="line">      <span class="string">'A RenderObject was still attached when attempting to unmount its '</span></span><br><span class="line">      <span class="string">'RenderObjectElement: $renderObject'</span>);</span><br><span class="line">    widget.didUnmountRenderObject(renderObject);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _updateParentData(ParentDataWidget&lt;RenderObjectWidget&gt; parentData) &#123;</span><br><span class="line">    parentData.applyParentData(renderObject);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> _updateSlot(<span class="keyword">dynamic</span> newSlot) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(slot != newSlot);</span><br><span class="line">    <span class="keyword">super</span>._updateSlot(newSlot);</span><br><span class="line">    <span class="keyword">assert</span>(slot == newSlot);</span><br><span class="line">    _ancestorRenderObjectElement.moveChildRenderObject(renderObject, slot);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> attachRenderObject(<span class="keyword">dynamic</span> newSlot) &#123;</span><br><span class="line">    <span class="keyword">assert</span>(_ancestorRenderObjectElement == <span class="keyword">null</span>);</span><br><span class="line">    _slot = newSlot;</span><br><span class="line">    _ancestorRenderObjectElement = _findAncestorRenderObjectElement();</span><br><span class="line">    _ancestorRenderObjectElement?.insertChildRenderObject(renderObject, newSlot);</span><br><span class="line">    <span class="keyword">final</span> ParentDataElement&lt;RenderObjectWidget&gt; parentDataElement = _findAncestorParentDataElement();</span><br><span class="line">    <span class="keyword">if</span> (parentDataElement != <span class="keyword">null</span>)</span><br><span class="line">      _updateParentData(parentDataElement.widget);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> detachRenderObject() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_ancestorRenderObjectElement != <span class="keyword">null</span>) &#123;</span><br><span class="line">      _ancestorRenderObjectElement.removeChildRenderObject(renderObject);</span><br><span class="line">      _ancestorRenderObjectElement = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    _slot = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Insert the given child into [renderObject] at the given slot.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// The semantics of `slot` are determined by this element. For example, if</span></span><br><span class="line">  <span class="comment">/// this element has a single child, the slot should always be null. If this</span></span><br><span class="line">  <span class="comment">/// element has a list of children, the previous sibling is a convenient value</span></span><br><span class="line">  <span class="comment">/// for the slot.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> insertChildRenderObject(covariant RenderObject child, covariant <span class="keyword">dynamic</span> slot);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Move the given child to the given slot.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// The given child is guaranteed to have [renderObject] as its parent.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// The semantics of `slot` are determined by this element. For example, if</span></span><br><span class="line">  <span class="comment">/// this element has a single child, the slot should always be null. If this</span></span><br><span class="line">  <span class="comment">/// element has a list of children, the previous sibling is a convenient value</span></span><br><span class="line">  <span class="comment">/// for the slot.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> moveChildRenderObject(covariant RenderObject child, covariant <span class="keyword">dynamic</span> slot);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Remove the given child from [renderObject].</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// The given child is guaranteed to have [renderObject] as its parent.</span></span><br><span class="line">  <span class="meta">@protected</span></span><br><span class="line">  <span class="keyword">void</span> removeChildRenderObject(covariant RenderObject child);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> debugFillProperties(DiagnosticPropertiesBuilder properties) &#123;</span><br><span class="line">    <span class="keyword">super</span>.debugFillProperties(properties);</span><br><span class="line">    properties.add(DiagnosticsProperty&lt;RenderObject&gt;(<span class="string">'renderObject'</span>, renderObject, defaultValue: <span class="keyword">null</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-State相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1999,203 +2287,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Flutter-window/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YannisCheng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YannisCheng's Technology Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Flutter-window/" itemprop="url">Flutter-Window</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T09:28:35+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-31T15:13:27+08:00">
-                2019-08-31
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  7,694 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  32 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Flutter-Window</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Flutter-window/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2250,7 +2341,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2272,7 +2363,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2339,7 +2430,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">407.4k</span>
+    <span title="Site words total count">410.5k</span>
   
 </div>
 

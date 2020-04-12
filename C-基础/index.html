@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="C++基础-01">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++基础">
+<meta property="og:url" content="http://yannischeng.com/C-基础/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="C++基础-01">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-12T02:54:15.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++基础">
+<meta name="twitter:description" content="C++基础-01">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/C-基础/">
+
+
+
+
+
+  <title>C++基础 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/C-基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T09:14:38+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-12T10:54:15+08:00">
+                2020-04-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,020 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/C-基础/" title="C++基础">http://yannischeng.com/C-基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>C++基础-01</p>
+<a id="more"></a>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>新版<code>头文件</code>使用方式：<code>#include &lt;iostream&gt;</code>，省略了<code>.h</code>。</p>
+<p><code>C++</code>是<code>C</code>的一个超集，包含C的语法和规则。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量、方法使用规则：</p>
+<ul>
+<li><code>先声明</code></li>
+<li><code>后初始化</code></li>
+</ul>
+<p>变量使用3步骤：</p>
+<ul>
+<li><code>声明</code></li>
+<li><code>定义</code></li>
+<li><code>初始化</code></li>
+</ul>
+<p>只有当变量被<code>定义</code>后，才能进行赋值。因为只有当变量被<code>定义</code>后才会<code>分配内存空间</code>，而<code>声明</code>是<code>不会为变量分配内存空间的</code>；</p>
+<p>在多个源文件中：一个<code>声明变量</code>在源文件A中被声明，在源文件B中被定义初始化后，在源文件C中是无法使用源文件B中定义初始化的变量值。</p>
+<h2 id="extern-关键字："><a href="#extern-关键字：" class="headerlink" title="extern 关键字："></a>extern 关键字：</h2><p><code>extern</code> 修饰符通常用于：当有<code>两个</code>或<code>多个文件</code> <strong>共享相同</strong> 的<code>全局变量或函数</code>的时候。</p>
+<ul>
+<li>作用在变量之前：变量只允许定义一次，但可以在多个文件中声明。<code>extend</code> 关键字可以声明在任何位置。即时声明是在作用域更小的范围内，定义初始化是在更大范围内。</li>
+<li>函数声明：extern 用于标识次函数为外部可调用函数</li>
+</ul>
+<p>在程序中，局部变量和全局变量的名称可以相同。但是在函数内的局部变量与全局变量是两个独立的变量，互不影响。</p>
+<h2 id="static-关键字："><a href="#static-关键字：" class="headerlink" title="static 关键字："></a>static 关键字：</h2><h3 id="作用域、生命周期"><a href="#作用域、生命周期" class="headerlink" title="作用域、生命周期"></a>作用域、生命周期</h3><p>从作用域看：</p>
+<ul>
+<li><code>全局变量</code> 具有<code>全局作用域</code>。全局变量只需在一个源文件中定义，就可以作用于所有的源文件。当然，其他不包含全局变量定义的源文件需要用extern 关键字再次声明这个全局变量。</li>
+<li><code>静态全局变量</code> 也具有<code>全局作用域</code>，它与全局变量的区别在于如果程序包含多个文件的话，它作用于定义它的文件里，不能作用到其它文件里，即被static关键字修饰过的变量<code>具有文件作用域</code>。这样即使两个不同的源文件都定义了相同名字的静态全局变量，它们也是不同的变量。</li>
+<li><code>局部变量</code>也只有<code>局部作用域</code>，它是自动对象（auto），它在程序运行期间不是一直存在，而是<code>只在函数执行期间存在</code>，函数的一次调用执行结束后，变量被撤销，其所占用的内存也被收回。</li>
+<li><code>静态局部变量</code> 具有<code>局部作用域</code>，它<code>只被初始化一次</code>，自从第一次被初始化直到程序运行结束都一直存在，它和全局变量的区别在于全局变量对所有的函数都是可见的，而静态局部变量只对定义自己的函数体始终可见。</li>
+</ul>
+<p>从分配内存空间看：</p>
+<ul>
+<li><code>全局变量</code>、<code>静态全局变量</code>、<code>静态局部变量</code>都在<code>静态存储区</code>分配空间，而<code>局部变量</code>在<code>栈</code>里分配空间。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>static 全局变量:改变作用范围，不改变存储位置</li>
+<li>static 局部变量：改变存储位置，不改变作用范围</li>
+<li>静态函数 ：在函数的返回类型前加上static关键字,函数即被定义为静态函数（内部函数）。静态函数与普通函数不同，它只能在声明它的文件当中可见，不能被其它文件使用。</li>
+</ul>
+<h2 id="宏定义-define-和常量-const-的区别"><a href="#宏定义-define-和常量-const-的区别" class="headerlink" title="宏定义(#define) 和常量 (const)的区别"></a>宏定义(#define) 和常量 (const)的区别</h2><p><code>预处理（#define）变量</code>定义值以后，<strong>不能用分号</strong>，否则就会计算错误，但是程序不会报错。</p>
+<ul>
+<li><p><strong>类型</strong> 和 <strong>安全检查</strong> 不同：</p>
+<ul>
+<li><code>宏定义</code>是 <strong>简单</strong>、<strong>机械</strong> 的 <code>字符替换</code>，<code>无数据类型区别</code>，同时这种替换没有类型安全检查，可能产生边际效应等错误；</li>
+<li><code>const常量</code>是<code>常量声明</code>，<code>有类型区别</code>，需要在编译阶段进行类型检查；</li>
+</ul>
+</li>
+<li><p><strong>编译器处理不同：</strong></p>
+<ul>
+<li><code>宏定义</code>是一个 <strong>“编译时”概念</strong>，在预处理阶段展开，不能对宏定义进行调试，生命周期结束与编译时期；</li>
+<li><code>const常量</code> 是一个 <strong>“运行时”概念</strong>，在程序运行使用，类似于一个只读行数据。</li>
+</ul>
+</li>
+<li><p><strong>存储方式不同：</strong></p>
+<ul>
+<li><code>宏定义</code>是 <strong>直接替换</strong>，<strong>不会分配内存</strong>，存储与程序的代码段中；</li>
+<li><code>const常量</code>需要 <strong>进行内存分配</strong>，存储与程序的数据段中</li>
+</ul>
+</li>
+<li><p><strong>定义域不同：</strong></p>
+</li>
+<li><p><strong>定义后能否取消</strong></p>
+<ul>
+<li><code>宏定义</code>可以通过<code>#undef</code>来使之前的<code>宏定义失效</code></li>
+<li><code>const常量</code>定义后将在<code>定义域内永久有效</code></li>
+</ul>
+</li>
+<li><p><strong>是否可以做函数参数：</strong></p>
+<ul>
+<li><code>宏定义</code> <strong>不能</strong>作为参数传递给函数</li>
+<li><code>const常量</code> <strong>可以</strong>在函数的参数列表中出现</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>C++中包含的7种数据类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布尔型</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+</tr>
+<tr>
+<td>整形</td>
+<td>int</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float</td>
+</tr>
+<tr>
+<td>双浮点型</td>
+<td>double</td>
+</tr>
+<tr>
+<td>无类型</td>
+<td>void</td>
+</tr>
+<tr>
+<td>宽字符</td>
+<td>wchar_t</td>
+</tr>
+</tbody>
+</table>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sizeof</td>
+<td>返回变量大小</td>
+</tr>
+<tr>
+<td>. 和 -&gt;</td>
+<td>成员运算符：用于引用类、结构体、共同体的成员</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>指针运算符：取变量地址</td>
+</tr>
+<tr>
+<td>*</td>
+<td>指针运算符：指向一个变量</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>逻辑与&amp;&amp;</td>
+<td>判断顺序：先左后右。左为假，则整个表达式为假；左为真，再判断右侧表达式是否为真。</td>
+</tr>
+<tr>
+<td>逻辑或</td>
+<td>判断顺序：先左后右。左为真，则整个表达式为真，不在计算右侧表达式是否为真；左为假，再计算右侧表达式是否为真。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>存储在一块固定大小、连续的内存中的相同类型的元素的顺序的集合。</p>
+<h2 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组"></a>普通数组</h2><h2 id="指向数组的指针"><a href="#指向数组的指针" class="headerlink" title="指向数组的指针"></a>指向数组的指针</h2><p><code>数组名</code>是一个指向数组中<code>第一个元素</code>的<code>常量指针</code>。</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> n2[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="comment">// 指向数组的指针</span></span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    <span class="keyword">int</span> *p2;</span><br><span class="line">    p = n2;</span><br><span class="line">    p2 = &amp;n2[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"n2[]自身地址为："</span> &lt;&lt; &amp;n2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"指向n2的指针p的地址为："</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"指向&amp;n2[0]的指针的p2的地址为"</span> &lt;&lt; p2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     n2[]自身地址为：0x7ffeeaa30404</span></span><br><span class="line"><span class="comment">     指向n2的指针p的地址为：0x7ffeeaa30404</span></span><br><span class="line"><span class="comment">     指向&amp;n2[0]的指针的p2的地址为0x7ffeeaa30404</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">","</span> &lt;&lt; *(p + <span class="number">1</span>) &lt;&lt; <span class="string">","</span> &lt;&lt; *(p + <span class="number">2</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//1,2,3</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>数组名</code>即是<code>常量指针</code>实例展示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n2[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l &lt; <span class="number">3</span>; ++l) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"*(n2 + "</span> &lt;&lt; l &lt;&lt; <span class="string">") : "</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *(n2 + l) &lt;&lt;<span class="string">"; \t地址为："</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; &amp;n2[l] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">      *(n2 + 0) : 1; 	地址为：0x7ffee6cdd404</span></span><br><span class="line"><span class="comment">      *(n2 + 1) : 2; 	地址为：0x7ffee6cdd408</span></span><br><span class="line"><span class="comment">      *(n2 + 2) : 3; 	地址为：0x7ffee6cdd40c</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="传递数组给函数"><a href="#传递数组给函数" class="headerlink" title="传递数组给函数"></a>传递数组给函数</h2><p>C++ 中可以通过指定<code>不带索引的数组名（指针常量）</code>来传递一个<code>指向数组</code>的<code>指针</code>。<br>C++ 传<code>数组</code>给一个<code>函数</code>，<code>数组类型</code>自动转换为<code>指针类型</code>，因而传的实际是<code>地址</code>。</p>
+<p>就函数而言，<code>数组的长度</code>是无关紧要的，因为 C++ <code>不会对形式参数执行边界检查</code>。</p>
+<p>想要在函数中传递一个数组作为参数，必须以下面三种方式来声明函数形式参数，这三种声明方式的结果是一样的，因为每种方式都会告诉编译器将要接收一个<code>整型指针</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funP</span><span class="params">(<span class="keyword">int</span> *p)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funP</span><span class="params">(<span class="keyword">int</span> num[])</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funP</span><span class="params">(<span class="keyword">int</span> num[<span class="number">10</span>])</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="从函数返回数组"><a href="#从函数返回数组" class="headerlink" title="从函数返回数组"></a>从函数返回数组</h2><p>C++ 不支持在函数外返回<code>局部变量的地址</code>，除非定义<code>局部变量为 static 变量</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">intArr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> arr[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr地址为："</span> &lt;&lt; &amp;arr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">// arr地址为：0x7ffeed55a2a0</span></span><br><span class="line">    <span class="comment">// 设置种子</span></span><br><span class="line">    srand((<span class="keyword">unsigned</span>) time(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">        arr[j] = rand() % <span class="number">10</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr["</span>&lt;&lt;j&lt;&lt;<span class="string">"] value is : "</span>&lt;&lt;arr[j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *pArr ;</span><br><span class="line">    pArr= intArr();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"pArr地址为："</span> &lt;&lt; pArr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; <span class="number">3</span>; ++m) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"pArr["</span>&lt;&lt;m&lt;&lt;<span class="string">"] value is : "</span>&lt;&lt;*(pArr+m) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arr地址为：0x10777f120</span><br><span class="line">arr[0] value is : 8</span><br><span class="line">arr[1] value is : 1</span><br><span class="line">arr[2] value is : 9</span><br><span class="line">pArr地址为：0x10777f120</span><br><span class="line">pArr[0] value is : 8</span><br><span class="line">pArr[1] value is : 1</span><br><span class="line">pArr[2] value is : 9</span><br></pre></td></tr></table></figure>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="使用步骤："><a href="#使用步骤：" class="headerlink" title="使用步骤："></a>使用步骤：</h2><ul>
+<li>声明：函数的<code>名称</code>、<code>返回类型</code>和<code>参数</code></li>
+<li>定义：提供了函数的<code>实际主体</code></li>
+</ul>
+<h2 id="声明方式："><a href="#声明方式：" class="headerlink" title="声明方式："></a>声明方式：</h2><ul>
+<li>完整声明：<code>int max(int num1, int num2)</code></li>
+<li>简略声明：<code>int max(int, int)</code>。参数的名称并不重要，只有参数的类型是必需的</li>
+</ul>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><table>
+<thead>
+<tr>
+<th>形参传递类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>值传递</td>
+<td>将实参的值赋值给形参。在函数体内，修改形参的值对实参的值没有影响</td>
+</tr>
+<tr>
+<td>指针传递</td>
+<td>将实参的地址赋值给形参。在函数体内，修改形参的值就是修改实参的值</td>
+</tr>
+<tr>
+<td>引用传递</td>
+<td>将实参的引用赋值给形参。在函数体内，修改形参的值就是修改实参的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b = <span class="number">10</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> numA = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> resultA;</span><br><span class="line">    resultA = sum(<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"resultA value is : "</span>&lt;&lt;resultA&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    resultA = sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"resultA value is : "</span>&lt;&lt;resultA&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resultA value is : 20</span><br><span class="line">resultA value is : 30</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda-函数与表达式"><a href="#Lambda-函数与表达式" class="headerlink" title="Lambda 函数与表达式"></a>Lambda 函数与表达式</h2><p>Lambda 表达式把函数看作对象。可以像对象一样使用，比如可以将它们赋给变量和作为参数传递，还可以像函数一样对其求值。</p>
+<h3 id="语法结构："><a href="#语法结构：" class="headerlink" title="语法结构："></a>语法结构：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[capture](parameters) mutable -&gt;return-type&#123;statement&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>[capture]</code>：<strong>捕捉列表</strong> —— <strong>捕捉列表能够捕捉<code>上下文</code>中的<code>变量以何种方式</code>供 lambda 函数使用</strong>。捕捉列表总是出现在 lambda 表达式的开始处。事实上，<code>[]</code> 是 <code>lambda 引出符</code>。编译器根据该引出符判断接下来的代码是否是 lambda 函数。</li>
+<li><code>(parameters)</code>：<strong>参数列表</strong>。与普通函数的参数列表一致。如果不需要参数传递，则可以连同括号 () 一起省略。</li>
+<li><code>mutable</code>：<strong>mutable 修饰符</strong>。默认情况下，lambda 函数总是一个 const 函数，mutable 可以取消其常量性。在使用该修饰符时，参数列表不可省略（即使参数为空）。</li>
+<li><code>-&gt;return_type</code>：<strong>返回类型</strong>。用追踪返回类型形式声明函数的返回类型。出于方便，不需要返回值的时候也可以连同符号 -&gt; 一起省略。此外，在返回类型明确的情况下，也可以省略该部分，让编译器对返回类型进行推导。</li>
+<li><code>{statement}</code>：<strong>函数体</strong>。内容与普通函数一样，不过除了可以使用参数之外，还可以使用所有捕获的变量。</li>
+</ul>
+<p>在 <code>lambda 函数</code>的定义式中，<code>参数列表</code>和<code>返回类型</code>都是<code>可选部分</code>，而<code>捕捉列表</code>和<code>函数体</code>都可能<code>为空</code>，C++ 中最简单的 lambda 函数只需要声明为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[]&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="capture-捕捉列表"><a href="#capture-捕捉列表" class="headerlink" title="[capture] 捕捉列表"></a>[capture] 捕捉列表</h3><table>
+<thead>
+<tr>
+<th>捕捉列表类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>默认不捕获任何变量</td>
+</tr>
+<tr>
+<td>[=]</td>
+<td>默认以值传递的方式捕获所有变量</td>
+</tr>
+<tr>
+<td>[&amp;]</td>
+<td>默认以引用的方式捕获所有变量</td>
+</tr>
+<tr>
+<td>[X]</td>
+<td>仅以值传递的方式捕获X，其他的变量不捕获</td>
+</tr>
+<tr>
+<td>[&amp;X]</td>
+<td>仅以引用传递的方式捕获X，其他变量不捕获</td>
+</tr>
+<tr>
+<td>[=,&amp;X]</td>
+<td>默认以值传递的方式捕获所有变量，但是X通过引用的方式捕获</td>
+</tr>
+<tr>
+<td>[&amp;,X]</td>
+<td>默认以引用的方式捕获所有变量，但是X通过值传递的方式捕获</td>
+</tr>
+<tr>
+<td>[this]</td>
+<td>通过引用（实际是复制指针）的方式获取当前对象</td>
+</tr>
+<tr>
+<td>[*this]</td>
+<td>通过值传递的方式捕获当前对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> resultA = <span class="number">30</span>;</span><br><span class="line">    <span class="comment">// 自动推断返回类型</span></span><br><span class="line">    <span class="comment">// resultA参数：引用传递</span></span><br><span class="line">    <span class="comment">//auto sumA = [&amp;resultA]&#123;return ++resultA;&#125;;</span></span><br><span class="line">    <span class="comment">// 执行sumA后，resultA 结果为：31</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指明返回类型</span></span><br><span class="line">    <span class="comment">// resultA参数：引用传递</span></span><br><span class="line">    <span class="comment">//auto sumA = [&amp;resultA]()-&gt;int &#123;return ++resultA;&#125;;</span></span><br><span class="line">    <span class="comment">// 执行sumA后，resultA 结果为：31</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// resultA参数：值传递</span></span><br><span class="line">    <span class="keyword">auto</span> sumA = [=]&#123; <span class="keyword">return</span> resultA+<span class="number">1</span>;&#125;;</span><br><span class="line">    <span class="comment">//auto sumA = [=]()&#123; return resultA+1;&#125;;</span></span><br><span class="line">    <span class="comment">//auto sumA = [=]()-&gt;int &#123; return resultA+1;&#125;;</span></span><br><span class="line">    <span class="comment">// 执行sumA后，resultA 结果为：30</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sumA value is : "</span> &lt;&lt; sumA() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"resultA change value is : "</span> &lt;&lt;resultA &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/FFmpeg-01-交叉编译编译Android平台-so文件/" rel="next" title="FFmpeg-01-交叉编译编译Android平台.so文件">
+                <i class="fa fa-chevron-left"></i> FFmpeg-01-交叉编译编译Android平台.so文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extern-关键字："><span class="nav-number">2.1.</span> <span class="nav-text">extern 关键字：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-关键字："><span class="nav-number">2.2.</span> <span class="nav-text">static 关键字：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域、生命周期"><span class="nav-number">2.2.1.</span> <span class="nav-text">作用域、生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.2.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏定义-define-和常量-const-的区别"><span class="nav-number">2.3.</span> <span class="nav-text">宏定义(#define) 和常量 (const)的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通数组"><span class="nav-number">5.1.</span> <span class="nav-text">普通数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指向数组的指针"><span class="nav-number">5.2.</span> <span class="nav-text">指向数组的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递数组给函数"><span class="nav-number">5.3.</span> <span class="nav-text">传递数组给函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从函数返回数组"><span class="nav-number">5.4.</span> <span class="nav-text">从函数返回数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">6.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用步骤："><span class="nav-number">7.1.</span> <span class="nav-text">使用步骤：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明方式："><span class="nav-number">7.2.</span> <span class="nav-text">声明方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数"><span class="nav-number">7.3.</span> <span class="nav-text">函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">7.4.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-函数与表达式"><span class="nav-number">7.5.</span> <span class="nav-text">Lambda 函数与表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法结构："><span class="nav-number">7.5.1.</span> <span class="nav-text">语法结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#capture-捕捉列表"><span class="nav-number">7.5.2.</span> <span class="nav-text">[capture] 捕捉列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">7.5.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">410.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
