@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Jetpack,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Jetpack-LiveData主要作用：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+<meta name="keywords" content="Jetpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jetpack-LiveData">
+<meta property="og:url" content="http://yannischeng.com/Jetpack-LiveData/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Jetpack-LiveData主要作用：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-15T06:27:51.640Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jetpack-LiveData">
+<meta name="twitter:description" content="Jetpack-LiveData主要作用：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Jetpack-LiveData/">
+
+
+
+
+
+  <title>Jetpack-LiveData | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Jetpack-LiveData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Jetpack-LiveData</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-15T08:51:53+08:00">
+                2020-04-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-15T14:27:51+08:00">
+                2020-04-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,081 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Jetpack/" rel="tag"># Jetpack</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Jetpack-LiveData/" title="Jetpack-LiveData">http://yannischeng.com/Jetpack-LiveData/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Jetpack-LiveData主要作用：</p>
+<ul>
+<li><code>LiveData 对象</code> 的 <code>生命周期</code> 感知能力；</li>
+<li><code>被修改数据</code> 从 <code>子线程</code> 到 <code>UI主线程</code> 间的切换。</li>
+</ul>
+<a id="more"></a>
+<h1 id="LiveData-使用步骤"><a href="#LiveData-使用步骤" class="headerlink" title="LiveData 使用步骤"></a>LiveData 使用步骤</h1><h2 id="自定义ViewModel类"><a href="#自定义ViewModel类" class="headerlink" title="自定义ViewModel类"></a>自定义ViewModel类</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserViewMode</span>: <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">	<span class="comment">// 1. 在 `自定义ViewModel类` 中创建 `LiveData对象`</span></span><br><span class="line">    <span class="keyword">val</span> curName:MutableLiveData&lt;String&gt; <span class="keyword">by</span> lazy &#123;</span><br><span class="line">        MutableLiveData&lt;String&gt;()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="所有者类中"><a href="#所有者类中" class="headerlink" title="所有者类中"></a>所有者类中</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">    setContentView(activity_main)</span><br><span class="line">    initView()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 在 `所有者` 中初始化 `自定义ViewModel类` 对象</span></span><br><span class="line">    model = ViewModelProvider(<span class="keyword">this</span>).<span class="keyword">get</span>(UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">    <span class="comment">// 3. 在 `所有者` 中创建一个 `观察者` 接收新数据然后更新UI</span></span><br><span class="line">    <span class="keyword">val</span> nameObserver = Observer&lt;String&gt;&#123;userResult-&gt;</span><br><span class="line">        tvName.text = userResult</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 在 `所有者` 中添加：`当前所有者` 和 `观察者` 的 对象，此时： LiveData对象 开始"具有感知生命周期的能力”。</span></span><br><span class="line">    model.curName.observe(<span class="keyword">this</span>,nameObserver)</span><br><span class="line">    <span class="comment">// 5. 在 `所有者` 中接收新修改的数据</span></span><br><span class="line">    btn.setOnClickListener &#123;</span><br><span class="line">        model.curName.value = <span class="string">"Dear Jodon"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="LiveData-中的角色："><a href="#LiveData-中的角色：" class="headerlink" title="LiveData 中的角色："></a>LiveData 中的角色：</h1><ul>
+<li>LifecycleOwner：界面控制器（Activity/Fragment）</li>
+<li>Observer：界面元素。</li>
+</ul>
+<h1 id="LiveData-类内容"><a href="#LiveData-类内容" class="headerlink" title="LiveData 类内容"></a>LiveData 类内容</h1><p>添加观察者；<br>向观察者通知修改数据（包括：线程切换）<br>生命周期感知内部类：</p>
+<ol>
+<li><p><code>抽象类ObserverWrapper</code>：对观察者进行（活跃）状态处理。</p>
+<ul>
+<li><code>onActive();</code>：活跃状态</li>
+<li><code>onInactive();</code>：非活跃状态</li>
+<li><code>dispatchingValue(this);</code>：观察者处于活跃时，进行被修改数据的分发</li>
+<li><code>isAttachedTo(LifecycleOwner owner)</code>：所有者的添加</li>
+<li><code>detachObserver()</code>：所有者的移除</li>
+</ul>
+</li>
+<li><p><code>类LifecycleBoundObserver</code> extends ObserverWrapper implements LifecycleEventObserver：观察者的生命周期范围。在 <code>observe()</code> 中处理<code>所有者</code>和<code>观察者</code>。</p>
+<ul>
+<li>重写 <code>shouldBeActive()</code>：判断当前观察者状态是否处于活跃状态</li>
+<li><code>onStateChanged()</code>：根具观察者生命周期状态判断是否移除观察者；调用<code>ObserverWrapper#onStateChanged(boolean newActive)</code></li>
+</ul>
+</li>
+<li><p><code>类AlwaysActiveObserver</code> extends ObserverWrapper。在<code>observeForever()</code>中处理<code>所有者</code>和<code>观察者</code>。：</p>
+<ul>
+<li>重写 <code>shouldBeActive()</code> 使其返回值总是为 <code>true</code>。</li>
+</ul>
+</li>
+</ol>
+<h1 id="LiveData-的使用流程大致分为3步："><a href="#LiveData-的使用流程大致分为3步：" class="headerlink" title="LiveData 的使用流程大致分为3步："></a>LiveData 的使用流程大致分为3步：</h1><ol>
+<li>初始化</li>
+<li>创建观察者</li>
+<li>为<code>所有者</code>和<code>观察者</code>建立联系。</li>
+<li>新数据赋值</li>
+</ol>
+<h1 id="添加观察者"><a href="#添加观察者" class="headerlink" title="添加观察者"></a>添加观察者</h1><h2 id="LiveData-observe-生命周期内订阅"><a href="#LiveData-observe-生命周期内订阅" class="headerlink" title="LiveData#observe() 生命周期内订阅"></a>LiveData#observe() 生命周期内订阅</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">observe</span><span class="params">(@NonNull LifecycleOwner owner, @NonNull Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span></span></span><br></pre></td></tr></table></figure>
+<p>方法中的2个参数：</p>
+<ul>
+<li><strong>owner</strong> ：控制观察者的 <code>所有者LifecycleOwner</code>（其实就是Activity/Fragment）</li>
+<li><strong>observer</strong> ：将接收事件的 <code>Observer</code></li>
+</ul>
+<p><strong>1. 方法作用</strong>：</p>
+<p>将给定的 <code>观察者（observer）</code> 添加到 <code>给定所有者（owner）</code> 的 <code>生命周期内</code> 的 <code>观察者列表</code> 中。事件在 <code>主线程</code> 上调度。如果 <code>LiveData</code> 已经设置了数据，它将被传递给观察者。</p>
+<p><strong>2. 数据接收</strong>：</p>
+<p>如果 <code>所有者（owner）</code> 处于 <code>Lifecycle.State.STARTED</code> 或 <code>Lifecycle.State.RESUMED</code> 状态（<code>active</code>），则 <code>观察者</code> 将仅接收事件。</p>
+<p>如果 <code>所有者（owner）</code> 移至 <code>Lifecycle.State.DESTROYED</code> 状态，则 <code>观察者</code> 将被 <code>自动删除</code>。</p>
+<p>当 <code>所有者（owner）</code> <strong>不活动时</strong> 数据 <code>发生更改</code> 时，它将 <code>不会收到任何更新</code> 。如果 <code>再次激活</code>，它将 <code>自动接收</code> 最新的可用数据。</p>
+<p><strong>3. 引用问题</strong></p>
+<p>只要 <code>不销毁</code> 给定的 <code>LifecycleOwner</code>，<code>LiveData</code> 就会对  <code>观察者（observer）</code> 和 <code>所有者（owner）</code> 保持 <code>强引用</code>。<code>销毁</code> 后，<code>LiveData</code> 会 <code>删除</code> 对观察者和所有者的 <code>引用</code>。</p>
+<p>如果给定的 <code>所有者（owner）</code> 已经处于 <code>Lifecycle.State.DESTROYED</code> 状态，则 <code>LiveData</code> 将忽略<code>该调用，即：observe()</code>。</p>
+<p>如果给定的所有者观察者元组已经在列表中，则该调用将被忽略。如果观察者已经在列表中且具有另一个所有者，则LiveData会引发IllegalArgumentException。</p>
+<p>完整方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MainThread</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">observe</span><span class="params">(@NonNull LifecycleOwner owner, @NonNull Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 主线程</span></span><br><span class="line">    assertMainThread(<span class="string">"observe"</span>);</span><br><span class="line">    <span class="keyword">if</span> (owner.getLifecycle().getCurrentState() == DESTROYED) &#123;</span><br><span class="line">        <span class="comment">// ignore</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在 所有者生命周期范围内 处理 观察者。</span></span><br><span class="line">    LifecycleBoundObserver wrapper = <span class="keyword">new</span> LifecycleBoundObserver(owner, observer);</span><br><span class="line">    ObserverWrapper existing = mObservers.putIfAbsent(observer, wrapper);</span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="keyword">null</span> &amp;&amp; !existing.isAttachedTo(owner)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Cannot add the same observer"</span></span><br><span class="line">                + <span class="string">" with different lifecycles"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 所有者 添加 观察者，将 观察者 与 所有者的生命周期建立联系。</span></span><br><span class="line">    owner.getLifecycle().addObserver(wrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LiveData-observeForever-超越生命周期订阅"><a href="#LiveData-observeForever-超越生命周期订阅" class="headerlink" title="LiveData#observeForever() 超越生命周期订阅"></a>LiveData#observeForever() 超越生命周期订阅</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">observeForever</span><span class="params">(@NonNull Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span></span></span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>Observer: 将接收事件的observer</li>
+</ul>
+<p><strong>方法作用</strong>：</p>
+<p>将给定的 <code>observer</code> 添加到 <code>观察者列表</code> 中。 此调用类似于带有<code>始终处于活动状态</code>的<code>LifecycleOwner</code>的<code>observe(LifecycleOwner，Observer)</code>。 这意味着 <code>给定的观察者</code> 将收到 <code>所有事件</code>，并且 <code>永远不会被自动删除</code>。 您应该<code>手动</code>调用 <code>removeObserver(Observer)</code> 停止观察此LiveData。尽管LiveData具有此类观察者之一，但它将被视为活动的。</p>
+<p>完整代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MainThread</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">observeForever</span><span class="params">(@NonNull Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span> </span>&#123;</span><br><span class="line">    assertMainThread(<span class="string">"observeForever"</span>);</span><br><span class="line">    AlwaysActiveObserver wrapper = <span class="keyword">new</span> AlwaysActiveObserver(observer);</span><br><span class="line">    ObserverWrapper existing = mObservers.putIfAbsent(observer, wrapper);</span><br><span class="line">    <span class="keyword">if</span> (existing <span class="keyword">instanceof</span> LiveData.LifecycleBoundObserver) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Cannot add the same observer"</span></span><br><span class="line">                + <span class="string">" with different lifecycles"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    wrapper.activeStateChanged(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过方法体中的代码可以看到声明 <code>LifecycleObserver</code> 时用的是类 <code>AlwaysActiveObserver</code> ，而在这个私有内部类中重写 <code>shouldBeActive()</code>时，返回值是写死的永远为 <code>true</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">shouldBeActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以通过 <code>observeForever()</code> 进行订阅的 <code>观察者</code> 将一直处于 <code>活跃状态</code>。不会执行抽象类 <code>LifecycleBoundObserver</code>中对 <code>所有者</code> 生命周期状态的监管处理。想要停止观察此LiveData只能<code>手动</code>调用 <code>removeObserver(Observer)</code> </p>
+<h1 id="移除订阅观察"><a href="#移除订阅观察" class="headerlink" title="移除订阅观察"></a>移除订阅观察</h1><h2 id="LiveData-removeObserver"><a href="#LiveData-removeObserver" class="headerlink" title="LiveData#removeObserver()"></a>LiveData#removeObserver()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(@NonNull <span class="keyword">final</span> Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span></span></span><br></pre></td></tr></table></figure>
+<p>从 <code>观察者列表</code> 中删除给定的 <code>观察者</code>。</p>
+<h2 id="LiveData-removeObservers"><a href="#LiveData-removeObservers" class="headerlink" title="LiveData#removeObservers()"></a>LiveData#removeObservers()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObservers</span><span class="params">(@NonNull <span class="keyword">final</span> LifecycleOwner owner)</span></span></span><br></pre></td></tr></table></figure>
+<p>删除与给定的 <code>LifecycleOwner</code> 关联的 <code>所有观察者</code>。</p>
+<h1 id="被修改数据-到-观察者-的流程"><a href="#被修改数据-到-观察者-的流程" class="headerlink" title="被修改数据 到 观察者 的流程"></a>被修改数据 到 观察者 的流程</h1><h2 id="主要流程："><a href="#主要流程：" class="headerlink" title="主要流程："></a>主要流程：</h2><ol>
+<li><p>从 <code>工作线程</code> -&gt; <code>UI主线程</code>： </p>
+<p>被修改数据<br>-&gt; <strong><code>LiveData#postValue(T value)</code></strong><br>-&gt; <code>LiveData#mPostValueRunnable</code><br>-&gt; <strong><code>LiveData#setValue(T value)</code></strong><br>-&gt; <code>LiveData#dispatchingValue(@Nullable ObserverWrapper initiator)</code><br>-&gt; <code>LiveData#considerNotify(ObserverWrapper observer)</code><br>非活跃状态 -&gt; <strong><code>ObserverWrapper#activeStateChanged(boolean newActive)</code></strong> -&gt; <strong><code>onInactive()</code></strong><br>活跃状态 -&gt; <strong><code>Observer&lt;T&gt;#onChanged(T t)</code></strong> -&gt; <strong><code>onActive()</code></strong></p>
+</li>
+<li><p><code>UI主线程</code>：</p>
+<p>被修改数据<br>-&gt; <strong><code>LiveData#setValue(T value)</code></strong><br>-&gt; <code>LiveData#dispatchingValue(@Nullable ObserverWrapper initiator)</code><br>-&gt; <code>LiveData#considerNotify(ObserverWrapper observer)</code><br>非活跃状态 -&gt; <strong><code>ObserverWrapper#activeStateChanged(boolean newActive)</code></strong>  -&gt; <strong><code>onInactive()</code></strong><br>活跃状态 -&gt; <strong><code>Observer&lt;T&gt;#onChanged(T t)</code></strong> -&gt; <strong><code>onActive()</code></strong></p>
+</li>
+</ol>
+<h2 id="具体方法调用"><a href="#具体方法调用" class="headerlink" title="具体方法调用"></a>具体方法调用</h2><h3 id="子线程更新数据-postValue-T-value"><a href="#子线程更新数据-postValue-T-value" class="headerlink" title="子线程更新数据 #postValue(T value)"></a>子线程更新数据 #postValue(T value)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postValue</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> postTask;</span><br><span class="line">    <span class="keyword">synchronized</span> (mDataLock) &#123;</span><br><span class="line">        postTask = mPendingData == NOT_SET;</span><br><span class="line">        mPendingData = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!postTask) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 进行线程切换</span></span><br><span class="line">    ArchTaskExecutor.getInstance().postToMainThread(mPostValueRunnable);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="子线程与UI主线程切换处理-mPostValueRunnable对象"><a href="#子线程与UI主线程切换处理-mPostValueRunnable对象" class="headerlink" title="子线程与UI主线程切换处理 mPostValueRunnable对象"></a>子线程与UI主线程切换处理 mPostValueRunnable对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Runnable mPostValueRunnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Object newValue;</span><br><span class="line">        <span class="keyword">synchronized</span> (mDataLock) &#123;</span><br><span class="line">            newValue = mPendingData;</span><br><span class="line">            mPendingData = NOT_SET;</span><br><span class="line">        &#125;</span><br><span class="line">        setValue((T) newValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="UI主线程更新数据-setValue-T-value"><a href="#UI主线程更新数据-setValue-T-value" class="headerlink" title="UI主线程更新数据 #setValue(T value)"></a>UI主线程更新数据 #setValue(T value)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MainThread</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    assertMainThread(<span class="string">"setValue"</span>);</span><br><span class="line">    mVersion++;</span><br><span class="line">    mData = value;</span><br><span class="line">    dispatchingValue(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="新数据开始分发-dispatchingValue-Nullable-ObserverWrapper-initiator"><a href="#新数据开始分发-dispatchingValue-Nullable-ObserverWrapper-initiator" class="headerlink" title="新数据开始分发  #dispatchingValue(@Nullable ObserverWrapper initiator)"></a>新数据开始分发  #dispatchingValue(@Nullable ObserverWrapper initiator)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchingValue</span><span class="params">(@Nullable ObserverWrapper initiator)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mDispatchingValue) &#123;</span><br><span class="line">        mDispatchInvalidated = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mDispatchingValue = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        mDispatchInvalidated = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (initiator != <span class="keyword">null</span>) &#123;</span><br><span class="line">            considerNotify(initiator);</span><br><span class="line">            initiator = <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (Iterator&lt;Map.Entry&lt;Observer&lt;? <span class="keyword">super</span> T&gt;, ObserverWrapper&gt;&gt; iterator =</span><br><span class="line">                    mObservers.iteratorWithAdditions(); iterator.hasNext(); ) &#123;</span><br><span class="line">                considerNotify(iterator.next().getValue());</span><br><span class="line">                <span class="keyword">if</span> (mDispatchInvalidated) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (mDispatchInvalidated);</span><br><span class="line">    mDispatchingValue = <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="通知观察者更新数据-considerNotify-ObserverWrapper-observer"><a href="#通知观察者更新数据-considerNotify-ObserverWrapper-observer" class="headerlink" title="通知观察者更新数据 #considerNotify(ObserverWrapper observer)"></a>通知观察者更新数据 #considerNotify(ObserverWrapper observer)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">considerNotify</span><span class="params">(ObserverWrapper observer)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!observer.mActive) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//检查最新状态b4调度。也许它改变了状态，但是我们还没有得到这个事件。</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// 我们仍然要先检查observer.active，以将其作为事件的入口。So even if</span></span><br><span class="line">    <span class="comment">// the observer moved to an active state, if we've not received that event, we better not</span></span><br><span class="line">    <span class="comment">// notify for a more predictable notification order.</span></span><br><span class="line">    <span class="keyword">if</span> (!observer.shouldBeActive()) &#123;</span><br><span class="line">        observer.activeStateChanged(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (observer.mLastVersion &gt;= mVersion) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    observer.mLastVersion = mVersion;</span><br><span class="line">    observer.mObserver.onChanged((T) mData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h3><p>最终调用接口的<code>Observer&lt;T&gt;</code>的方法<code>#onChanged(T t)</code>，完成 <code>被修改数据</code> 被通知到 <code>观察者</code> 的全过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数据更改时调用</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t  The new data</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onChanged</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="LiveData-的生命周期感知能力"><a href="#LiveData-的生命周期感知能力" class="headerlink" title="LiveData 的生命周期感知能力"></a>LiveData 的生命周期感知能力</h1><p>抽象类 <code>ObserverWrapper#activeStateChanged(boolean newActive)</code> 处理 <code>被修改数据</code> 与 <code>观察者</code>活跃状态 之间的关系</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverWrapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">activeStateChanged</span><span class="params">(<span class="keyword">boolean</span> newActive)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (newActive == mActive) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 立即设置为活动状态，因此我们永远不会将任何内容分发给不活动的所有者</span></span><br><span class="line">        mActive = newActive;</span><br><span class="line">        <span class="keyword">boolean</span> wasInactive = LiveData.<span class="keyword">this</span>.mActiveCount == <span class="number">0</span>;</span><br><span class="line">        LiveData.<span class="keyword">this</span>.mActiveCount += mActive ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (wasInactive &amp;&amp; mActive) &#123;</span><br><span class="line">            onActive();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (LiveData.<span class="keyword">this</span>.mActiveCount == <span class="number">0</span> &amp;&amp; !mActive) &#123;</span><br><span class="line">            onInactive();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mActive) &#123;</span><br><span class="line">            dispatchingValue(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wasInactive &amp;&amp; mActive) &#123;</span><br><span class="line">	<span class="comment">// 有活跃观察者，处于活跃状态</span></span><br><span class="line">    onActive();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (LiveData.<span class="keyword">this</span>.mActiveCount == <span class="number">0</span> &amp;&amp; !mActive) &#123;</span><br><span class="line">	<span class="comment">// 无活跃观察者，处于非活跃状态</span></span><br><span class="line">    onInactive();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>告知观察者所处的激活状态，以便在 <code>活跃状态</code> 和 <code>非活跃状态</code> 处理不同的逻辑</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-Jetpack/" rel="next" title="Android-Jetpack">
+                <i class="fa fa-chevron-left"></i> Android-Jetpack
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">176</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-使用步骤"><span class="nav-number">1.</span> <span class="nav-text">LiveData 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义ViewModel类"><span class="nav-number">1.1.</span> <span class="nav-text">自定义ViewModel类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有者类中"><span class="nav-number">1.2.</span> <span class="nav-text">所有者类中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-中的角色："><span class="nav-number">2.</span> <span class="nav-text">LiveData 中的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-类内容"><span class="nav-number">3.</span> <span class="nav-text">LiveData 类内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的使用流程大致分为3步："><span class="nav-number">4.</span> <span class="nav-text">LiveData 的使用流程大致分为3步：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加观察者"><span class="nav-number">5.</span> <span class="nav-text">添加观察者</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observe-生命周期内订阅"><span class="nav-number">5.1.</span> <span class="nav-text">LiveData#observe() 生命周期内订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observeForever-超越生命周期订阅"><span class="nav-number">5.2.</span> <span class="nav-text">LiveData#observeForever() 超越生命周期订阅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移除订阅观察"><span class="nav-number">6.</span> <span class="nav-text">移除订阅观察</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObserver"><span class="nav-number">6.1.</span> <span class="nav-text">LiveData#removeObserver()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObservers"><span class="nav-number">6.2.</span> <span class="nav-text">LiveData#removeObservers()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#被修改数据-到-观察者-的流程"><span class="nav-number">7.</span> <span class="nav-text">被修改数据 到 观察者 的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要流程："><span class="nav-number">7.1.</span> <span class="nav-text">主要流程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体方法调用"><span class="nav-number">7.2.</span> <span class="nav-text">具体方法调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程更新数据-postValue-T-value"><span class="nav-number">7.2.1.</span> <span class="nav-text">子线程更新数据 #postValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程与UI主线程切换处理-mPostValueRunnable对象"><span class="nav-number">7.2.2.</span> <span class="nav-text">子线程与UI主线程切换处理 mPostValueRunnable对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI主线程更新数据-setValue-T-value"><span class="nav-number">7.2.3.</span> <span class="nav-text">UI主线程更新数据 #setValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新数据开始分发-dispatchingValue-Nullable-ObserverWrapper-initiator"><span class="nav-number">7.2.4.</span> <span class="nav-text">新数据开始分发  #dispatchingValue(@Nullable ObserverWrapper initiator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通知观察者更新数据-considerNotify-ObserverWrapper-observer"><span class="nav-number">7.2.5.</span> <span class="nav-text">通知观察者更新数据 #considerNotify(ObserverWrapper observer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据更新"><span class="nav-number">7.2.6.</span> <span class="nav-text">数据更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的生命周期感知能力"><span class="nav-number">8.</span> <span class="nav-text">LiveData 的生命周期感知能力</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">416.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

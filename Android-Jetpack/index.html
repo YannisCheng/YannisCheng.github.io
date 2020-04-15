@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Jetpack,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android Jetpack学习">
+<meta name="keywords" content="Jetpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Jetpack">
+<meta property="og:url" content="http://yannischeng.com/Android-Jetpack/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Android Jetpack学习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yannischeng.com/Android-Jetpack/media/android%20jetpack%20components-1.png">
+<meta property="og:image" content="http://yannischeng.com/Android-Jetpack/media/jetpack_donut.png">
+<meta property="og:updated_time" content="2020-04-14T09:06:50.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Jetpack">
+<meta name="twitter:description" content="Android Jetpack学习">
+<meta name="twitter:image" content="http://yannischeng.com/Android-Jetpack/media/android%20jetpack%20components-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Android-Jetpack/">
+
+
+
+
+
+  <title>Android-Jetpack | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Android-Jetpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android-Jetpack</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T10:32:17+08:00">
+                2020-04-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-14T17:06:50+08:00">
+                2020-04-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,804 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Jetpack/" rel="tag"># Jetpack</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Android-Jetpack/" title="Android-Jetpack">http://yannischeng.com/Android-Jetpack/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Android Jetpack学习</p>
+<a id="more"></a>
+<h1 id="Android-Jetpack是什么？"><a href="#Android-Jetpack是什么？" class="headerlink" title="Android Jetpack是什么？"></a>Android Jetpack是什么？</h1><p><code>Jetpack</code>是<code>一套库</code>、<code>工具</code>和<code>指南</code>，可帮助开发人员更轻松地编写高质量的应用程序。</p>
+<p><code>Jetpack</code>包含 <code>androidx.*</code> 程序包库，与<code>平台API 无关</code>。这意味着它提供了<code>向后兼容性</code>，并且比Android平台更频繁地更新，从而确保您始终可以访问<code>Jetpack组件</code>的最新和最新版本。</p>
+<h1 id="Android-Jetpack-组件"><a href="#Android-Jetpack-组件" class="headerlink" title="Android Jetpack 组件"></a>Android Jetpack 组件</h1><p><code>Android Jetpack组件</code>是一个<code>库的集合</code>，这些库可以单独采用，也可以构建在一起以协同工作。</p>
+<p>Jetpack包括的组件</p>
+<p><img src="media/android%20jetpack%20components-1.png" alt="android jetpack components"></p>
+<p><img src="media/jetpack_donut.png" alt="jetpack_donut"></p>
+<p>由上图可以看到，<code>Jetpack</code> 组件主要包括：<code>（Foundation）基础</code>、<code>（Architecture）架构组件</code>、<code>（Behavior）行为</code>、<code>UI</code>共计4个部分。</p>
+<p>目前学习的是 <code>（Architecture）架构组件</code> 这一部分，而且 <code>MVVM</code> 中用到最多的就是这个组件部分。</p>
+<h1 id="Lifecycler：处理生命周期"><a href="#Lifecycler：处理生命周期" class="headerlink" title="Lifecycler：处理生命周期"></a>Lifecycler：处理生命周期</h1><p>官网解释：使用 <code>一个具有Android生命周期的对象 —— 生命周期感知型组件（自定义）</code> 处理 <code>生命周期（如 Activity 和 Fragment）</code>的状态变化。</p>
+<p>注解+观察者</p>
+<p>使用关系：</p>
+<p>AppCompatActivity &lt;- FragmentActivity &lt;- ComponentActivity &lt;- LifecycleOwner,ViewModelStoreOwner,SavedStateRegistryOwner</p>
+<h2 id="一个具有生命周期的组件"><a href="#一个具有生命周期的组件" class="headerlink" title="一个具有生命周期的组件"></a>一个具有生命周期的组件</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserMode</span> </span>(<span class="keyword">private</span> <span class="keyword">val</span> lifecycle:Lifecycle):LifecycleObserver&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数初始化</span></span><br><span class="line">    init &#123;</span><br><span class="line">        <span class="comment">// 注册</span></span><br><span class="line">        lifecycle.addObserver(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Lifecycler.Event 的使用方式</span></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_CREATE)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:create"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_START)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">start</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:start"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Lifecycle.State的使用方式</span></span><br><span class="line">        <span class="keyword">if</span> (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) &#123;</span><br><span class="line">            Log.i(<span class="string">"UserModule"</span>, <span class="string">"当前已经处于STARTED状态"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_RESUME)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">resume</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:resume"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">pause</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:pause"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_STOP)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">stop</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:stop"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">destroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 反注册</span></span><br><span class="line">        lifecycle.removeObserver(<span class="keyword">this</span>)</span><br><span class="line">        Log.i(<span class="string">"UserModule"</span>, <span class="string">"UserModule:destroy"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义LifecycleOwner实现类"><a href="#自定义LifecycleOwner实现类" class="headerlink" title="自定义LifecycleOwner实现类"></a>自定义LifecycleOwner实现类</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>(), LifecycleOwner &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> module:UserMode = UserMode(lifecycle)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> lifecycleRegistry: LifecycleRegistry</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line"></span><br><span class="line">        lifecycleRegistry = LifecycleRegistry(<span class="keyword">this</span>)</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.CREATED)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStart</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart()</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.STARTED)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLifecycle</span><span class="params">()</span></span>: Lifecycle &#123;</span><br><span class="line">        <span class="keyword">return</span> lifecycleRegistry</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期感知型组件的最佳做法"><a href="#生命周期感知型组件的最佳做法" class="headerlink" title="生命周期感知型组件的最佳做法"></a>生命周期感知型组件的最佳做法</h2><ul>
+<li>使界面控制器（Activity 和 Fragment）尽可能保持精简。它们不应试图获取自己的数据，而应使用 <code>ViewModel</code> 执行此操作，并观察 <code>LiveData对象</code> 以将更改体现到视图中。</li>
+<li>设法编写<code>数据驱动型界面</code>，对于此类界面，界面控制器的责任是随着数据更改而更新视图，或者将用户操作通知给 <code>ViewModel</code>。</li>
+<li>将<code>数据逻辑</code> 放在 <code>ViewModel</code> 类中。 <code>ViewModel</code> 应充当 <code>界面控制器</code> 与应用 <code>其余部分</code> 之间的连接器。不过要注意，<code>ViewModel</code> 不负责获取数据（例如，从网络获取）。<code>ViewModel</code> 应 <code>调用相应的组件来获取数据</code>，然后将结果提供给界面控制器。</li>
+<li>如果界面很复杂，不妨考虑创建 <code>presenter</code> 类来处理界面的修改。这可能是一项艰巨的任务，但这样做可使界面组件更易于测试。</li>
+<li>避免在 <code>ViewModel</code> 中引用 <code>View</code> 或 <code>Activity</code> 的 <code>上下文</code>。 如果 ViewModel 存在的时间比 Activity 更长（在配置更改的情况下），Activity 将泄露并且不会由垃圾回收器妥善处置。</li>
+<li>使用 <code>Kotlin 协程</code> 管理长时间运行的任务和其他可以异步运行的操作。</li>
+</ul>
+<h1 id="LiveData：一种具有生命周期感知能力的可观察的数据存储器类"><a href="#LiveData：一种具有生命周期感知能力的可观察的数据存储器类" class="headerlink" title="LiveData：一种具有生命周期感知能力的可观察的数据存储器类"></a>LiveData：一种具有生命周期感知能力的可观察的数据存储器类</h1><p>与常规的可观察类不同，<code>LiveData</code> 具有<code>生命周期感知能力</code>，意指它遵循其他应用组件（如 <code>Activity</code>、<code>Fragment</code> 或 <code>Service</code>）的生命周期。这种感知能力可确保 <code>LiveData</code> 仅更新 <code>处于活跃生命周期状态</code> 的应用组件观察者。</p>
+<h2 id="使用-LiveData-的优势"><a href="#使用-LiveData-的优势" class="headerlink" title="使用 LiveData 的优势"></a>使用 LiveData 的优势</h2><ol>
+<li><p>确保界面符合数据状态</p>
+<p><code>LiveData</code> 遵循 <code>观察者模式</code>。当生命周期状态发生变化时，<code>LiveData</code> 会通知 <code>Observer对象</code>。您可以整合代码以在这些 <code>Observer对象</code>中更新界面。观察者可以在每次发生更改时更新界面，而不是在每次应用数据发生更改时更新界面。</p>
+</li>
+<li><p>不会发生内存泄露</p>
+<p><code>观察者</code> 会绑定到 <code>Lifecycle对象</code>，并在其关联的生命周期遭到销毁后进行自我清理。</p>
+</li>
+<li><p>不会因 Activity 停止而导致崩溃</p>
+<p>如果 <code>观察者</code> 的生命周期处于 <code>非活跃状态</code>（如返回栈中的 Activity），则它不会接收任何 <code>LiveData</code> 事件。</p>
+</li>
+<li><p>不再需要手动处理生命周期</p>
+<p><code>界面组件</code> 只是 <code>观察相关数据</code>，不会停止或恢复观察。<code>LiveData</code> 将自动管理所有这些操作，因为它在观察时可以感知相关的生命周期状态变化。</p>
+</li>
+<li><p>数据始终保持最新状态</p>
+<p>如果生命周期变为非活跃状态，它会在再次变为活跃状态时接收最新的数据。例如，曾经在后台的 Activity 会在返回前台后立即接收最新的数据。</p>
+</li>
+<li><p>适当的配置更改</p>
+<p>如果由于配置更改（如设备旋转）而重新创建了 Activity 或 Fragment，它会立即接收最新的可用数据。</p>
+</li>
+<li><p>共享资源</p>
+<p>您可以使用 <code>单一实例模式</code> <code>扩展 LiveData 对象</code> 以 <code>封装系统服务</code>，以便在应用中共享它们。LiveData 对象连接到系统服务一次，然后需要相应资源的任何观察者只需观察 <code>LiveData 对象</code>。</p>
+</li>
+</ol>
+<h2 id="使用-LiveData-对象"><a href="#使用-LiveData-对象" class="headerlink" title="使用 LiveData 对象"></a>使用 LiveData 对象</h2><h3 id="1-创建-LiveData-对象"><a href="#1-创建-LiveData-对象" class="headerlink" title="1. 创建 LiveData 对象"></a>1. 创建 LiveData 对象</h3><p><code>LiveData</code> 是一种可用于 <code>任何数据</code> 的 <code>封装容器</code>，其中包括可实现 <code>Collections</code> 的对象，如 <code>List</code>。<br>创建 <code>LiveData实例</code> 以存储某种类型的数据。这通常在 <code>ViewModel</code> 类中完成，并可通过 <code>getter</code> 方法进行访问。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserViewMode</span>: <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> curName:MutableLiveData&lt;String&gt; <span class="keyword">by</span> lazy &#123;</span><br><span class="line">        MutableLiveData&lt;String&gt;()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：请确保将用于更新界面的 <code>LiveData</code> 对象存储在 <code>ViewModel</code> 对象中，而不是将其存储在 <code>Activity</code> 或 <code>Fragment</code> 中，原因如下：</p>
+<ul>
+<li>避免 <code>Activity</code> 和 <code>Fragment</code> <strong>过于庞大</strong>。现在，这些界面控制器负责 <code>显示</code> 数据，但不负责存储数据状态。</li>
+<li>将 <code>LiveData</code> 实例与特定的 <code>Activity</code> 或 <code>Fragment</code> 实例 <code>分离</code> 开，并使对象在配置更改后继续存在。</li>
+</ul>
+<h3 id="2-观察-LiveData-对象"><a href="#2-观察-LiveData-对象" class="headerlink" title="2. 观察 LiveData 对象"></a>2. 观察 LiveData 对象</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> module:UserMode = UserMode(lifecycle)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span>  model:UserViewMode</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> tvName:TextView</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> btn:Button</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(activity_main)</span><br><span class="line">        </span><br><span class="line">        tvName = findViewById(R.id.tv_name) <span class="keyword">as</span> TextView</span><br><span class="line">        btn = findViewById(R.id.button) <span class="keyword">as</span> Button</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取 ViewMode</span></span><br><span class="line">        model = ViewModelProvider(<span class="keyword">this</span>).<span class="keyword">get</span>(UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">        <span class="comment">// 创建一个观察者更新UI</span></span><br><span class="line">        <span class="keyword">val</span> nameObserver = Observer&lt;String&gt;&#123;userResult-&gt;</span><br><span class="line">            tvName.text = userResult</span><br><span class="line">        &#125;</span><br><span class="line">        model.curName.observe(<span class="keyword">this</span>,nameObserver)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-更新-LiveData-对象"><a href="#3-更新-LiveData-对象" class="headerlink" title="3. 更新 LiveData 对象"></a>3. 更新 LiveData 对象</h3><p><strong>注意</strong>：您必须调用 <code>setValue(T)</code> 方法以从 <strong>主线程</strong> 更新 <code>LiveData 对象</code>。如果在 <code>worker 线程</code> 中执行代码，则您可以改用 <code>postValue(T)</code> 方法来更新 <code>LiveData</code> 对象。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">btn.setOnClickListener &#123;</span><br><span class="line">	model.curName.value = <span class="string">"Dear Jodon"</span></span><br><span class="line">	Log.e(<span class="string">"TAG"</span>,<span class="string">"tv value is : <span class="subst">$&#123;tvName.text&#125;</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展-LiveData"><a href="#扩展-LiveData" class="headerlink" title="扩展 LiveData"></a>扩展 LiveData</h2><h2 id="转换-LiveData"><a href="#转换-LiveData" class="headerlink" title="转换 LiveData"></a>转换 LiveData</h2><h2 id="合并多个-LiveData-源"><a href="#合并多个-LiveData-源" class="headerlink" title="合并多个 LiveData 源"></a>合并多个 LiveData 源</h2><h1 id="ViewModel-旨在以注重生命周期的方式存储和管理界面相关的数据"><a href="#ViewModel-旨在以注重生命周期的方式存储和管理界面相关的数据" class="headerlink" title="ViewModel 旨在以注重生命周期的方式存储和管理界面相关的数据"></a>ViewModel 旨在以注重生命周期的方式存储和管理界面相关的数据</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/C-基础/" rel="next" title="C++基础">
+                <i class="fa fa-chevron-left"></i> C++基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Jetpack-LiveData/" rel="prev" title="Jetpack-LiveData">
+                Jetpack-LiveData <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">176</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Jetpack是什么？"><span class="nav-number">1.</span> <span class="nav-text">Android Jetpack是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Jetpack-组件"><span class="nav-number">2.</span> <span class="nav-text">Android Jetpack 组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lifecycler：处理生命周期"><span class="nav-number">3.</span> <span class="nav-text">Lifecycler：处理生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个具有生命周期的组件"><span class="nav-number">3.1.</span> <span class="nav-text">一个具有生命周期的组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义LifecycleOwner实现类"><span class="nav-number">3.2.</span> <span class="nav-text">自定义LifecycleOwner实现类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期感知型组件的最佳做法"><span class="nav-number">3.3.</span> <span class="nav-text">生命周期感知型组件的最佳做法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData：一种具有生命周期感知能力的可观察的数据存储器类"><span class="nav-number">4.</span> <span class="nav-text">LiveData：一种具有生命周期感知能力的可观察的数据存储器类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-LiveData-的优势"><span class="nav-number">4.1.</span> <span class="nav-text">使用 LiveData 的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-LiveData-对象"><span class="nav-number">4.2.</span> <span class="nav-text">使用 LiveData 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建-LiveData-对象"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. 创建 LiveData 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-观察-LiveData-对象"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. 观察 LiveData 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-更新-LiveData-对象"><span class="nav-number">4.2.3.</span> <span class="nav-text">3. 更新 LiveData 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展-LiveData"><span class="nav-number">4.3.</span> <span class="nav-text">扩展 LiveData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换-LiveData"><span class="nav-number">4.4.</span> <span class="nav-text">转换 LiveData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并多个-LiveData-源"><span class="nav-number">4.5.</span> <span class="nav-text">合并多个 LiveData 源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewModel-旨在以注重生命周期的方式存储和管理界面相关的数据"><span class="nav-number">5.</span> <span class="nav-text">ViewModel 旨在以注重生命周期的方式存储和管理界面相关的数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">416.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
