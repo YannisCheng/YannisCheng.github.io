@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="Jetpack-LiveData：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+<meta name="description" content="Jetpack-LiveData：在底层数据更改时通知视图  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
 <meta name="keywords" content="Jetpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jetpack-LiveData">
 <meta property="og:url" content="http://yannischeng.com/Jetpack-LiveData/index.html">
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
-<meta property="og:description" content="Jetpack-LiveData：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+<meta property="og:description" content="Jetpack-LiveData：在底层数据更改时通知视图  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-15T07:08:39.031Z">
+<meta property="og:updated_time" content="2020-04-17T03:59:53.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetpack-LiveData">
-<meta name="twitter:description" content="Jetpack-LiveData：  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
+<meta name="twitter:description" content="Jetpack-LiveData：在底层数据更改时通知视图  LiveData 对象 的 生命周期 感知能力； 被修改数据 从 子线程 到 UI主线程 间的切换。">
 
 
 
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-15T15:08:39+08:00">
-                2020-04-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-17T11:59:53+08:00">
+                2020-04-17
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,696 字
+                  3,098 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -434,7 +434,7 @@
       
 
       
-        <p>Jetpack-LiveData：</p>
+        <p>Jetpack-LiveData：在底层数据更改时通知视图</p>
 <ul>
 <li><code>LiveData 对象</code> 的 <code>生命周期</code> 感知能力；</li>
 <li><code>被修改数据</code> 从 <code>子线程</code> 到 <code>UI主线程</code> 间的切换。</li>
@@ -558,7 +558,24 @@
 <p>通过：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wasInactive &amp;&amp; mActive) &#123;</span><br><span class="line">	<span class="comment">// 有活跃观察者，处于活跃状态</span></span><br><span class="line">    onActive();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (LiveData.<span class="keyword">this</span>.mActiveCount == <span class="number">0</span> &amp;&amp; !mActive) &#123;</span><br><span class="line">	<span class="comment">// 无活跃观察者，处于非活跃状态</span></span><br><span class="line">    onInactive();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>告知观察者所处的激活状态，以便在 <code>活跃状态</code> 和 <code>非活跃状态</code> 处理不同的逻辑</p>
-<h1 id="扩展-LiveData"><a href="#扩展-LiveData" class="headerlink" title="扩展 LiveData"></a>扩展 LiveData</h1><h1 id="转换-LiveData"><a href="#转换-LiveData" class="headerlink" title="转换 LiveData"></a>转换 LiveData</h1><h1 id="合并多个-LiveData-源"><a href="#合并多个-LiveData-源" class="headerlink" title="合并多个 LiveData 源"></a>合并多个 LiveData 源</h1>
+<h1 id="LiveData-扩展：Transformations"><a href="#LiveData-扩展：Transformations" class="headerlink" title="LiveData 扩展：Transformations"></a>LiveData 扩展：Transformations</h1><p><code>map()</code>和<code>switchMap()</code>允许<code>LiveData实例</code>功能的<code>组合</code>和<code>委托</code>。<br><code>转换</code>是<code>延迟计算</code>的，仅在观察到<code>返回的LiveData</code>时才运行。<br><code>生命周期</code>行为从输入的<code>源LiveData实例</code>到返回新值的行为为止。</p>
+<p>变换的本质：<strong><code>观察者模式</code>的嵌套</strong></p>
+<h2 id="涉及到的类-MutableLiveData"><a href="#涉及到的类-MutableLiveData" class="headerlink" title="涉及到的类-MutableLiveData"></a>涉及到的类-MutableLiveData</h2><p><code>Mediator</code> 中文翻译：<code>调解员</code>；<br><code>Mutable</code> 中文翻译：<code>可变的</code></p>
+<p>继承关系：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MediatorLiveData&lt;T&gt; : MutableLiveData&lt;T&gt; : LiveData&lt;T&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>嵌套观察者</strong>：<code>MutableLiveData</code> 是 <code>LiveData</code>子类，可以观察其他<code>LiveData对象</code>，并对其 <code>OnChanged()</code> 做出反应。</li>
+<li><strong>自身状态回传</strong>：此类正确地将自身<code>active/inactive</code> 状态传播到<code>源LiveData对象</code>。</li>
+</ul>
+<h2 id="Transformations-map"><a href="#Transformations-map" class="headerlink" title="Transformations#map()"></a>Transformations#map()</h2><p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MainThread</span></span><br><span class="line"><span class="meta">@NonNull</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;X, Y&gt; <span class="function">LiveData&lt;Y&gt; <span class="title">map</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        @NonNull LiveData&lt;X&gt; source,</span></span></span><br><span class="line"><span class="function"><span class="params">        @NonNull <span class="keyword">final</span> Function&lt;X, Y&gt; mapFunction)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> MediatorLiveData&lt;Y&gt; result = <span class="keyword">new</span> MediatorLiveData&lt;&gt;();</span><br><span class="line">    result.addSource(source, <span class="keyword">new</span> Observer&lt;X&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onChanged</span><span class="params">(@Nullable X x)</span> </span>&#123;</span><br><span class="line">            result.setValue(mapFunction.apply(x));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>涉及到的类：<code>MediatorLiveData</code>。这是在执行<code>addSource()</code>后得到的返回值类型，在这个方法中将<code>源LiveData</code>作为<code>被观察者</code>，将<code>源LiveData</code>中的<code>具体数据</code>作为<code>观察者</code>，只不过这个观察者的数据是传递给<code>MediatorLiveData&lt;Y&gt;</code>类型返回的。</p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LiveData userLiveData = ...; </span><br><span class="line">LiveData userName = Transformations.map(userLiveData, user -&gt; &#123; </span><br><span class="line">    <span class="keyword">return</span> user.firstName + <span class="string">" "</span> + user.lastName; <span class="comment">// Returns String </span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>示例解读：当<code>userLiveData</code>对象发生变化时，<code>Transformations#map()</code>将返回一个<code>String</code>类型的<code>userName</code>值。即：<code>userName</code>观察<code>userLiveData</code>，当<code>userLiveData</code>发生改变时通知<code>userName</code>进行更新。</p>
+<h2 id="Transformations-switchMap"><a href="#Transformations-switchMap" class="headerlink" title="Transformations#switchMap()"></a>Transformations#switchMap()</h2><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MutableLiveData userIdLiveData = ...; </span><br><span class="line">LiveData userLiveData = Transformations.switchMap(userIdLiveData, id -&gt; </span><br><span class="line">    repository.getUserById(id)); <span class="comment">// Returns LiveData </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setUserId</span><span class="params">(String userId)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.userIdLiveData.setValue(userId); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="转换-LiveData"><a href="#转换-LiveData" class="headerlink" title="转换 LiveData"></a>转换 LiveData</h1><h1 id="合并多个-LiveData-源"><a href="#合并多个-LiveData-源" class="headerlink" title="合并多个 LiveData 源"></a>合并多个 LiveData 源</h1>
       
     </div>
     
@@ -672,7 +689,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">178</span>
+                  <span class="site-state-item-count">181</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -743,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-释义"><span class="nav-number">1.</span> <span class="nav-text">LiveData 释义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-number">1.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-的优势"><span class="nav-number">1.2.</span> <span class="nav-text">LiveData 的优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-使用步骤"><span class="nav-number">2.</span> <span class="nav-text">LiveData 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义ViewModel类"><span class="nav-number">2.1.</span> <span class="nav-text">自定义ViewModel类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有者类中"><span class="nav-number">2.2.</span> <span class="nav-text">所有者类中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-中的角色："><span class="nav-number">3.</span> <span class="nav-text">LiveData 中的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-类内容"><span class="nav-number">4.</span> <span class="nav-text">LiveData 类内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的使用流程大致分为3步："><span class="nav-number">5.</span> <span class="nav-text">LiveData 的使用流程大致分为3步：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加观察者"><span class="nav-number">6.</span> <span class="nav-text">添加观察者</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observe-生命周期内订阅"><span class="nav-number">6.1.</span> <span class="nav-text">LiveData#observe() 生命周期内订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observeForever-超越生命周期订阅"><span class="nav-number">6.2.</span> <span class="nav-text">LiveData#observeForever() 超越生命周期订阅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移除订阅观察"><span class="nav-number">7.</span> <span class="nav-text">移除订阅观察</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObserver"><span class="nav-number">7.1.</span> <span class="nav-text">LiveData#removeObserver()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObservers"><span class="nav-number">7.2.</span> <span class="nav-text">LiveData#removeObservers()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#被修改数据-到-观察者-的流程"><span class="nav-number">8.</span> <span class="nav-text">被修改数据 到 观察者 的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要流程："><span class="nav-number">8.1.</span> <span class="nav-text">主要流程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体方法调用"><span class="nav-number">8.2.</span> <span class="nav-text">具体方法调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程更新数据-postValue-T-value"><span class="nav-number">8.2.1.</span> <span class="nav-text">子线程更新数据 #postValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程与UI主线程切换处理-mPostValueRunnable对象"><span class="nav-number">8.2.2.</span> <span class="nav-text">子线程与UI主线程切换处理 mPostValueRunnable对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI主线程更新数据-setValue-T-value"><span class="nav-number">8.2.3.</span> <span class="nav-text">UI主线程更新数据 #setValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新数据开始分发-dispatchingValue-Nullable-ObserverWrapper-initiator"><span class="nav-number">8.2.4.</span> <span class="nav-text">新数据开始分发  #dispatchingValue(@Nullable ObserverWrapper initiator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通知观察者更新数据-considerNotify-ObserverWrapper-observer"><span class="nav-number">8.2.5.</span> <span class="nav-text">通知观察者更新数据 #considerNotify(ObserverWrapper observer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据更新"><span class="nav-number">8.2.6.</span> <span class="nav-text">数据更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的生命周期感知能力"><span class="nav-number">9.</span> <span class="nav-text">LiveData 的生命周期感知能力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展-LiveData"><span class="nav-number">10.</span> <span class="nav-text">扩展 LiveData</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转换-LiveData"><span class="nav-number">11.</span> <span class="nav-text">转换 LiveData</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并多个-LiveData-源"><span class="nav-number">12.</span> <span class="nav-text">合并多个 LiveData 源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-释义"><span class="nav-number">1.</span> <span class="nav-text">LiveData 释义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-number">1.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-的优势"><span class="nav-number">1.2.</span> <span class="nav-text">LiveData 的优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-使用步骤"><span class="nav-number">2.</span> <span class="nav-text">LiveData 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义ViewModel类"><span class="nav-number">2.1.</span> <span class="nav-text">自定义ViewModel类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有者类中"><span class="nav-number">2.2.</span> <span class="nav-text">所有者类中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-中的角色："><span class="nav-number">3.</span> <span class="nav-text">LiveData 中的角色：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-类内容"><span class="nav-number">4.</span> <span class="nav-text">LiveData 类内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的使用流程大致分为3步："><span class="nav-number">5.</span> <span class="nav-text">LiveData 的使用流程大致分为3步：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加观察者"><span class="nav-number">6.</span> <span class="nav-text">添加观察者</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observe-生命周期内订阅"><span class="nav-number">6.1.</span> <span class="nav-text">LiveData#observe() 生命周期内订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-observeForever-超越生命周期订阅"><span class="nav-number">6.2.</span> <span class="nav-text">LiveData#observeForever() 超越生命周期订阅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移除订阅观察"><span class="nav-number">7.</span> <span class="nav-text">移除订阅观察</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObserver"><span class="nav-number">7.1.</span> <span class="nav-text">LiveData#removeObserver()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData-removeObservers"><span class="nav-number">7.2.</span> <span class="nav-text">LiveData#removeObservers()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#被修改数据-到-观察者-的流程"><span class="nav-number">8.</span> <span class="nav-text">被修改数据 到 观察者 的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要流程："><span class="nav-number">8.1.</span> <span class="nav-text">主要流程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体方法调用"><span class="nav-number">8.2.</span> <span class="nav-text">具体方法调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程更新数据-postValue-T-value"><span class="nav-number">8.2.1.</span> <span class="nav-text">子线程更新数据 #postValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子线程与UI主线程切换处理-mPostValueRunnable对象"><span class="nav-number">8.2.2.</span> <span class="nav-text">子线程与UI主线程切换处理 mPostValueRunnable对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI主线程更新数据-setValue-T-value"><span class="nav-number">8.2.3.</span> <span class="nav-text">UI主线程更新数据 #setValue(T value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新数据开始分发-dispatchingValue-Nullable-ObserverWrapper-initiator"><span class="nav-number">8.2.4.</span> <span class="nav-text">新数据开始分发  #dispatchingValue(@Nullable ObserverWrapper initiator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通知观察者更新数据-considerNotify-ObserverWrapper-observer"><span class="nav-number">8.2.5.</span> <span class="nav-text">通知观察者更新数据 #considerNotify(ObserverWrapper observer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据更新"><span class="nav-number">8.2.6.</span> <span class="nav-text">数据更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-的生命周期感知能力"><span class="nav-number">9.</span> <span class="nav-text">LiveData 的生命周期感知能力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LiveData-扩展：Transformations"><span class="nav-number">10.</span> <span class="nav-text">LiveData 扩展：Transformations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及到的类-MutableLiveData"><span class="nav-number">10.1.</span> <span class="nav-text">涉及到的类-MutableLiveData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformations-map"><span class="nav-number">10.2.</span> <span class="nav-text">Transformations#map()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformations-switchMap"><span class="nav-number">10.3.</span> <span class="nav-text">Transformations#switchMap()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转换-LiveData"><span class="nav-number">11.</span> <span class="nav-text">转换 LiveData</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并多个-LiveData-源"><span class="nav-number">12.</span> <span class="nav-text">合并多个 LiveData 源</span></a></li></ol></div>
             
 
           </div>
@@ -777,7 +794,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">416.1k</span>
+    <span title="Site words total count">420.1k</span>
   
 </div>
 

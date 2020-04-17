@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Kotlin中涉及到的编程思想  函数式编程 Lambda表达式 流式（Stream）API">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin与编程思想">
+<meta property="og:url" content="http://yannischeng.com/Kotlin与编程思想/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Kotlin中涉及到的编程思想  函数式编程 Lambda表达式 流式（Stream）API">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yannischeng.com/Kotlin与编程思想/media/%E6%88%AA%E5%B1%8F2020-04-1611.17.23.png">
+<meta property="og:image" content="http://yannischeng.com/Kotlin与编程思想/media/%E6%88%AA%E5%B1%8F2020-04-1611.26.11.png">
+<meta property="og:image" content="http://yannischeng.com/Kotlin与编程思想/media/%E6%88%AA%E5%B1%8F2020-04-1611.35.17.png">
+<meta property="og:image" content="http://yannischeng.com/Kotlin与编程思想/media/%E6%88%AA%E5%B1%8F2020-04-1611.40.38.png">
+<meta property="og:updated_time" content="2020-04-16T10:06:50.792Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin与编程思想">
+<meta name="twitter:description" content="Kotlin中涉及到的编程思想  函数式编程 Lambda表达式 流式（Stream）API">
+<meta name="twitter:image" content="http://yannischeng.com/Kotlin与编程思想/media/%E6%88%AA%E5%B1%8F2020-04-1611.17.23.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Kotlin与编程思想/">
+
+
+
+
+
+  <title>Kotlin与编程思想 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Kotlin与编程思想/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin与编程思想</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T11:12:44+08:00">
+                2020-04-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-16T18:06:50+08:00">
+                2020-04-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,762 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Kotlin与编程思想/" title="Kotlin与编程思想">http://yannischeng.com/Kotlin与编程思想/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Kotlin中涉及到的编程思想</p>
+<ul>
+<li>函数式编程</li>
+<li>Lambda表达式</li>
+<li>流式（Stream）API</li>
+</ul>
+<a id="more"></a>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p><a href="https://www.cnblogs.com/kym/archive/2011/03/07/1976519.html" target="_blank" rel="noopener">函数式编程扫盲篇</a></p>
+<h2 id="命令式编程-amp-函数式编程"><a href="#命令式编程-amp-函数式编程" class="headerlink" title="命令式编程 &amp; 函数式编程"></a>命令式编程 &amp; 函数式编程</h2><ul>
+<li><strong>命令式编程</strong>：一种是像输入命令一样，一步一步告诉计算机如何处理业务逻辑（还记得吗，计算机很笨，只会做它懂的事情）。</li>
+<li><p><strong>函数式编程</strong>：告诉计算机，我需要什么不用去详细地告诉它要怎么做，由于计算机不可能理解我们的需求，所以我们把函数拼接到一起，让数据按照我们设想的方式流动，我们只要在数据流的最前面输入参数，等数据自己流完整个处理过程，就能得到我们需要的数据。如果数据有误或者需要修改业务，我们就去调整这个数据流，将它里面的数据流动调整为我们需要的方式。</p>
+<p>函数式编程的运算过程是高度抽象的</p>
+<p><img src="media/%E6%88%AA%E5%B1%8F2020-04-1611.17.23.png" alt="截屏2020-04-1611.17.23"></p>
+</li>
+</ul>
+<h2 id="面向对象-amp-函数式编程-不同"><a href="#面向对象-amp-函数式编程-不同" class="headerlink" title="面向对象 &amp; 函数式编程 不同"></a>面向对象 &amp; 函数式编程 不同</h2><ul>
+<li><code>面向对象</code> 把真实世界抽象为 <code>类</code> 和 <code>对象</code>，<code>函数式编程</code> 则把真实世界抽象为 <code>函数</code>；</li>
+<li><code>面向对象</code> 关心的是 <code>对象</code> 的 <code>行为</code>、<code>之间的关系</code>， <code>函数式编程</code> 关心的是 <code>函数</code> 的 <code>行为</code>、<code>之间的组合运用</code>；</li>
+<li><code>面向对象</code> 只要对象不出错，对象关系不出错就可以，<code>函数式编程</code> 只要奔涌在 <code>函数组合</code> 里的<code>数据流</code> 按照预期进行转换就可以。</li>
+</ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h3><p>举例：在数学的范畴里，函数的运算是 <code>不受干扰</code> 的，比如你算一个数字的平方根，只要参数确定，计算的过程永远是一致的，算出来的 <code>结果永远是一样</code> 的。</p>
+<p><code>命令式编程</code> 中函数变得“不纯洁”了，函数的运算会 <code>受到干扰</code>，而且干扰无处不在。例如，我们可以在函数里使用一个会变化的 <code>全局变量</code>，只要在任何位置/时间/线程里 <code>修改</code> 这个全局变量，函数就会输出<code>不同的结果</code>。</p>
+<p>在 <code>函数式编程</code> 里，重心是 <code>函数组合</code> 和 <code>数据流</code>，更加不允许有干扰，所以要求我们编写 <code>纯函数</code>。</p>
+<p>不过，纯函数就像是编码规范，Kotlin鼓励而不是强制写出函数，毕竟，编程是为了与真实世界交互的，有时候必须使用一些“不纯洁”的函数，所以我们不要求彻底的纯函数化，只要求尽量写出纯函数。</p>
+<p><img src="media/%E6%88%AA%E5%B1%8F2020-04-1611.26.11.png" alt="截屏2020-04-1611.26.11"></p>
+<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><p><code>函数式编程</code> 不仅要求 <code>纯函数</code>，还要求 <code>保存不变性</code>（Kotlin用val和集合表示不变性）。<br>在<code>函数式编程</code> 里，<strong>没有可变变量，一个变量一旦被赋值，就不可更改</strong>。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>程序运行的整个流程是 <code>固定可重现</code> 的，如果出了问题，只要跟着数据流走一遍就能找到出错点。</li>
+<li><code>多线程安全</code>。它可以完美地规避多个线程同时修改一个数据时的同步问题（变量不再允许修改，每个线程需要各自生成变量），这一点对于目前大量应用多线程的工程现状来说，特别有实际价值。</li>
+</ul>
+<h4 id="一切都是函数"><a href="#一切都是函数" class="headerlink" title="一切都是函数"></a>一切都是函数</h4><p><code>函数式编程</code> 里 <code>没有变量</code>，<strong>一切都是函数</strong>（就像面向对象编程里，一切都是对象），<strong><code>变量</code>实际上<code>被函数取代</code>了</strong>。</p>
+<p>例如：如果变量不可变，我们还要怎样去做业务逻辑呢？函数式编程给出的方式就是——用函数去<code>返回</code>一个<code>复制的新对象</code>，在这个新的对象里，改掉你想改的那个值。</p>
+<p>所以，<code>函数式编程</code> 里 <strong>只能</strong> <code>新增变量</code>，<strong>不能</strong> <code>修改变量</code>，所以 <code>函数式编程</code> 可能会 <code>非常耗内存</code>（生成的变量太多了，而且业务不走完，变量不释放）</p>
+<p>在函数式编程里还有一个特点 —— <strong>没有循环</strong></p>
+<p><img src="media/%E6%88%AA%E5%B1%8F2020-04-1611.35.17.png" alt="截屏2020-04-1611.35.17"></p>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p><strong>“函数是一等公民”</strong>：函数拥有<code>和数据一样的地位</code>，<code>都可以作为</code> <strong>参数</strong> 和 <strong>返回值</strong>，相应的就出现了 <code>高阶函数</code> 的概念。<br>简单理解：</p>
+<p><strong><code>高阶函数</code> 就是 <code>参数为函数</code>，或者 <code>返回值为函数</code> 的 <code>函数</code>。</strong></p>
+<p><img src="media/%E6%88%AA%E5%B1%8F2020-04-1611.40.38.png" alt="截屏2020-04-1611.40.38"></p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p><code>闭包</code> <strong>不是函数</strong>，<code>在逻辑上</code>  <strong>是封闭</strong> 的，它使用 <code>自己内部的数据</code>，用 <code>自己内部的逻辑</code> 进行处理，<code>外部</code> 只能得到闭包的 <code>输出</code>，无法输入，也无法干扰。</p>
+<p>在系统资源上，闭包<code>是持久使用</code>的，它会一直在系统里，不像函数那样会被系统注销掉。<br><code>闭包</code> 在 <code>函数式编程</code>里可以<code>简化参数量</code>、<code>减少变量</code>，会更加方便我们的开发。</p>
+<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><p><strong>为了写<code>高阶函数</code> 和 <code>闭包</code>，Kotlin支持 <code>Lambda表达式</code>。</strong><br>在 <code>Kotlin</code> 中，<code>函数</code> 也是作为 <code>类型</code> 的一种出现的，即：<code>函数类型</code>。<br><code>Lambda表达式</code> 也叫 <code>λ表达式</code>，它看起来就是对 <code>匿名方法</code>（如：回调、事件响应、Runnable等）的 <code>简化写法</code>，目的是为了 <strong>更贴近<code>函数式编程</code>把<code>函数</code>作为<code>参数</code>的思想</strong>。</p>
+<p><code>Lambda表达式</code> 包括：</p>
+<ul>
+<li><code>最外面</code>的 <code>{}</code></li>
+<li>用 <code>()</code> 来定义的<code>参数列表</code>，</li>
+<li><code>-&gt;</code></li>
+<li><code>表达式或语句块</code>。</li>
+</ul>
+<p><code>Kotlin</code> 允许我们把<code>函数</code>的<code>最后一个Lambda表达式</code>参数<code>移除括号外</code>。即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在使用`lambda表达式`时，有时看似是：</span><br><span class="line">arrayCase.forEach &#123;</span><br><span class="line">    Log.e(&quot;TAG-forEach&quot;,&quot;arrayCase item is :$it&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">实际上是：</span><br><span class="line">arrayCase.forEach (&#123;</span><br><span class="line">    Log.e(&quot;TAG-forEach&quot;,&quot;arrayCase item is :$it&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当<code>1个接口</code>仅有1<code>个方法</code>需要实现时，是可以使用<code>Lambda表达式</code>的。</p>
+<p><strong>lambda表达式书写</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> lambdaCase = &#123;</span><br><span class="line">    <span class="comment">// 1. 参数及其类型</span></span><br><span class="line">    left: <span class="built_in">Int</span>, right: <span class="built_in">Int</span></span><br><span class="line">    <span class="comment">// 2. 箭头</span></span><br><span class="line">    -&gt;</span><br><span class="line">    <span class="comment">// 3. 函数体。函数体的最后一句的表达式结果就是: Lambda 表达式的返回值</span></span><br><span class="line">    left + right</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> lambdaStr = &#123;</span><br><span class="line">	<span class="comment">// 仅有一个函数体</span></span><br><span class="line">    <span class="string">"lambda表达式"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Log.e(<span class="string">"TAG-lambda"</span>, <span class="string">"lambdaCase value is <span class="subst">$&#123;lambdaCase(<span class="number">2</span>, <span class="number">3</span>)&#125;</span>"</span>)</span><br><span class="line"><span class="comment">// 结果为：TAG-lambda: lambdaCase value is 5</span></span><br><span class="line"></span><br><span class="line">Log.e(<span class="string">"TAG-lambda"</span>, <span class="string">"lambdaStr value is <span class="subst">$&#123;lambdaStr()&#125;</span>"</span>)</span><br><span class="line"><span class="comment">// 结果为：lambdaStr value is lambda表达式</span></span><br></pre></td></tr></table></figure>
+<p><strong>总结：</strong></p>
+<ul>
+<li><code>最后1个Lambda</code>可以移出 <code>()</code> 去;</li>
+<li><code>只有1个Lambda</code>，<code>()</code>可省略 ;</li>
+<li>当 <code>Lambda</code> 只有一个参数时，默认为 <code>it</code></li>
+<li><code>入参</code>、<code>返回值</code>与<code>形参</code><strong>一致</strong>的函数可以用函数引用的方式作为实参传入 </li>
+</ul>
+<h2 id="匿名内部类使用Lambda表达式"><a href="#匿名内部类使用Lambda表达式" class="headerlink" title="匿名内部类使用Lambda表达式"></a>匿名内部类使用Lambda表达式</h2><p>示例：<br>未使用<code>Lambda表达式</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;<span class="comment">// 接口名</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;<span class="comment">// 方法名</span></span><br><span class="line">		System.out.println(<span class="string">"Thread run()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+<p>使用<code>Lambda表达式</code>后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(</span><br><span class="line">		() -&gt; System.out.println(<span class="string">"Thread run()"</span>)<span class="comment">// 省略接口名和方法名</span></span><br><span class="line">).start();</span><br></pre></td></tr></table></figure>
+<h1 id="流式（Stream）API"><a href="#流式（Stream）API" class="headerlink" title="流式（Stream）API"></a>流式（Stream）API</h1><p>要让<code>数据流</code>在<code>组合函数</code>里<code>流动</code>起来，就需要使用<code>流式API</code>，流式API使我们更容易把函数组合起来，而且使整个数据流动过程更加直观。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Jetpack-Lifecycle/" rel="next" title="Jetpack-Lifecycle">
+                <i class="fa fa-chevron-left"></i> Jetpack-Lifecycle
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020-04-16/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数式编程"><span class="nav-number">1.</span> <span class="nav-text">函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令式编程-amp-函数式编程"><span class="nav-number">1.1.</span> <span class="nav-text">命令式编程 &amp; 函数式编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象-amp-函数式编程-不同"><span class="nav-number">1.2.</span> <span class="nav-text">面向对象 &amp; 函数式编程 不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.3.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">纯函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不变性"><span class="nav-number">1.3.2.</span> <span class="nav-text">不变性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一切都是函数"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">一切都是函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">1.3.4.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">2.</span> <span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#释义"><span class="nav-number">2.1.</span> <span class="nav-text">释义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类使用Lambda表达式"><span class="nav-number">2.2.</span> <span class="nav-text">匿名内部类使用Lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流式（Stream）API"><span class="nav-number">3.</span> <span class="nav-text">流式（Stream）API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">420.1k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

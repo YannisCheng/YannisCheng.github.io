@@ -91,10 +91,15 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Jetpack-ViewMode：旨在以 注重生命周期 的方式存储 和 管理 界面相关的数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-15T07:09:35.618Z">
+<meta property="og:image" content="http://yannischeng.com/Jetpack-ViewMode/media/viewmode%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://yannischeng.com/Jetpack-ViewMode/media/ViewMode-Activity%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0.png">
+<meta property="og:image" content="http://yannischeng.com/Jetpack-ViewMode/media/ViewMode-FragmentA%E6%9B%B4%E6%96%B0.png">
+<meta property="og:image" content="http://yannischeng.com/Jetpack-ViewMode/media/ViewMode-FragmentB%E6%9B%B4%E6%96%B0.png">
+<meta property="og:updated_time" content="2020-04-17T03:43:58.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetpack-ViewMode">
 <meta name="twitter:description" content="Jetpack-ViewMode：旨在以 注重生命周期 的方式存储 和 管理 界面相关的数据">
+<meta name="twitter:image" content="http://yannischeng.com/Jetpack-ViewMode/media/viewmode%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 
 
 
@@ -312,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-15T15:09:35+08:00">
-                2020-04-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-17T11:43:58+08:00">
+                2020-04-17
               </time>
             
           </span>
@@ -362,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  26 字
+                  1,236 字
                 </span>
               
 
@@ -378,7 +383,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -436,6 +441,63 @@
       
         <p>Jetpack-ViewMode：旨在以 <code>注重生命周期</code> 的方式<code>存储</code> 和 <code>管理</code> 界面相关的数据</p>
 <a id="more"></a>
+<h1 id="ViewMode-是什么"><a href="#ViewMode-是什么" class="headerlink" title="ViewMode 是什么"></a>ViewMode 是什么</h1><h2 id="ViewMode-设计出发点："><a href="#ViewMode-设计出发点：" class="headerlink" title="ViewMode 设计出发点："></a>ViewMode 设计出发点：</h2><ul>
+<li>屏幕旋转时的数据保存与恢复；</li>
+<li>在界面控制器中进行的子线程耗时处理易导致内存泄漏</li>
+</ul>
+<h2 id="ViewMode-出现的目的："><a href="#ViewMode-出现的目的：" class="headerlink" title="ViewMode 出现的目的："></a>ViewMode 出现的目的：</h2><p><strong>从 <code>界面控制器逻辑</code> 中 <code>分离</code> 出 <code>视图数据所有权</code> 的做法更易行且更高效。</strong></p>
+<p><code>ViewModel</code> 是 <code>架构组件</code> 为 <code>界面控制器</code> 提供的 <code>辅助程序类</code>，该类负责 <code>为界面准备数据</code>。<br>在配置更改期间会自动保留 <code>ViewModel对象</code>，以便它们存储的数据立即可供下一个 Activity 或 Fragment 实例使用。</p>
+<hr>
+<p><strong>注意</strong>：<code>ViewModel</code> 绝不能引用 <code>视图</code>、<code>Lifecycle</code> 或可能存储对 <code>Activity</code> 上下文的引用的任何类。<br><strong>因为</strong>：<code>ViewModel 对象</code> 存在的时间比 <code>View</code> 或 <code>LifecycleOwners</code> 的特定实例<code>存在的时间更长</code>。<br><strong>解决办法：</strong> 在<code>ViewModels</code> 和 <code>Views</code> 之间进行通信的推荐方法是使用 <code>LiveData</code> 或其他库中的<code>observables的观察者模式</code>。</p>
+<hr>
+<p><code>ViewModel 对象</code> 可以包含 <code>LifecycleObservers</code>，如 <code>LiveData 对象</code>。但是，<code>ViewModel 对象</code> 绝不能观察 <code>对生命周期感知型</code> 可观察对象（如 <code>LiveData 对象</code>）的更改。</p>
+<h1 id="ViewMode-生命周期"><a href="#ViewMode-生命周期" class="headerlink" title="ViewMode 生命周期"></a>ViewMode 生命周期</h1><p><code>ViewModel对象</code> 存在的 <strong><code>时间范围</code></strong> 是获取 <code>ViewModel</code> 时传递给 <code>ViewModelProvider</code> 的 <strong><code>Lifecycle</code></strong>。<br><code>ViewModel</code> 将<code>一直留在内存中</code>，直到限定其存在时间范围的 <code>Lifecycle 永久消失</code>：</p>
+<ul>
+<li>对于 <code>Activity</code> 是在其完成时；</li>
+<li>对于 <code>Fragment</code> 是在其分离时。</li>
+</ul>
+<p>下图表示了 <code>Activity</code> 经历屏幕旋转而后结束的过程中所处的各种生命周期状态。该图还在关联的 <code>Activity</code> 生命周期的旁边显示了 <code>ViewModel</code> 的生命周期。</p>
+<p>如果 <code>ViewModel</code> 需要 <code>Application 上下文</code>（例如，为了查找系统服务），它可以 <strong>扩展</strong> <code>AndroidViewModel类</code> 并设置用于接收 <code>Application</code> 的 <code>构造函数</code>，因为 <code>Application类</code>会扩展 <code>Context</code>。</p>
+<p>此图表说明了 <code>Activity</code> 的各种状态。这些基本状态同样适用于 <code>Fragment</code> 的生命周期。</p>
+<p><img src="media/viewmode%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="viewmode生命周期"></p>
+<h2 id="AndroidViewModel"><a href="#AndroidViewModel" class="headerlink" title="AndroidViewModel"></a>AndroidViewModel</h2><p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AndroidViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</span><br><span class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"StaticFieldLeak"</span>)</span><br><span class="line">    <span class="keyword">private</span> Application mApplication;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AndroidViewModel</span><span class="params">(@NonNull Application application)</span> </span>&#123;</span><br><span class="line">        mApplication = application;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Return the application.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"TypeParameterUnusedInFormals"</span>, <span class="string">"unchecked"</span>&#125;)</span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T extends Application&gt; <span class="function">T <span class="title">getApplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (T) mApplication;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造函数中传入<code>Application</code>，扩大了 <code>ViewModel</code> 的生命周期。</p>
+<h1 id="在-Fragment-之间共享数据"><a href="#在-Fragment-之间共享数据" class="headerlink" title="在 Fragment 之间共享数据"></a>在 Fragment 之间共享数据</h1><p>两个 <code>Fragment</code> 可以使用 <strong>其所在</strong> 的 <code>Activity</code> 范围 <code>共享ViewModel</code> 来处理此类通信。</p>
+<p>示例：</p>
+<p>建立2个Fragment</p>
+<ul>
+<li><p><strong>FragmentA</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> const <span class="keyword">val</span> ARG_PARAM1 = <span class="string">"param1"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FragmentA</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> param1: String? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> rootView:View? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> tv:TextView? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mode: UserViewMode</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        arguments?.let &#123;</span><br><span class="line">            param1 = it.getString(ARG_PARAM1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        <span class="comment">// Inflate the layout for this fragment</span></span><br><span class="line">        rootView  = inflater.inflate(R.layout.fragment_a, container, <span class="literal">false</span>)</span><br><span class="line">        setDataToView()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 与其他包含 UserViewMode 的界面控制器同步数据时，采用的初始化</span></span><br><span class="line">        mode = activity?.run &#123;</span><br><span class="line">            ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br><span class="line">        &#125;?:<span class="keyword">throw</span> Exception(<span class="string">"Invalid Activity"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不与其他包含 UserViewMode 的界面控制器同步数据时，采用的初始化</span></span><br><span class="line">        <span class="comment">// mode = ViewModelProvider(this)[UserViewMode::class.java]</span></span><br><span class="line"></span><br><span class="line">        mode.curName.observe(viewLifecycleOwner,Observer&lt;String&gt;&#123;</span><br><span class="line">            tv!!.text = it</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> rootView</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">setDataToView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 声明方式1</span></span><br><span class="line">        <span class="comment">//val tvShow: TextView = rootView?.findViewById(R.id.tv_fa) as TextView</span></span><br><span class="line">        <span class="comment">//tvShow.text = param1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 声明方式2</span></span><br><span class="line">        tv = rootView?.findViewById&lt;TextView&gt;(R.id.tv_fa)</span><br><span class="line">        tv!!.text = param1</span><br><span class="line">        <span class="keyword">val</span> btn: Button? = rootView?.findViewById(R.id.btn_a)</span><br><span class="line">        btn!!.setOnClickListener &#123;</span><br><span class="line">            mode.curName.value = <span class="string">"Changed A__F"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">newInstance</span><span class="params">(param1: <span class="type">String</span>)</span></span> =</span><br><span class="line">                FragmentA().apply &#123;</span><br><span class="line">                    arguments = Bundle().apply &#123;</span><br><span class="line">                        putString(ARG_PARAM1, param1)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>FragmentB</strong></p>
+</li>
+</ul>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> const <span class="keyword">val</span> ARG_PARAM1 = <span class="string">"param1"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FragmentB</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> param1: String? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> rootView:View? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> btn: Button? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> tv:TextView? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mode: UserViewMode</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        arguments?.let &#123;</span><br><span class="line">            param1 = it.getString(ARG_PARAM1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        rootView  = inflater.inflate(R.layout.fragment_b, container, <span class="literal">false</span>)</span><br><span class="line">        setDataToView()</span><br><span class="line"></span><br><span class="line">        mode = activity?.run &#123;</span><br><span class="line">            ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br><span class="line">        &#125;?:<span class="keyword">throw</span> Exception(<span class="string">"Invalid Activity"</span>)</span><br><span class="line">        mode.curName.observe(viewLifecycleOwner, Observer&lt;String&gt; &#123;</span><br><span class="line">            tv!!.text = it</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> rootView</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">setDataToView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        tv = rootView?.findViewById(R.id.tv_fb)</span><br><span class="line">        tv!!.text = param1</span><br><span class="line">        btn = rootView?.findViewById(R.id.btn_b)</span><br><span class="line">        btn!!.setOnClickListener &#123;</span><br><span class="line">            mode.curName.value = <span class="string">"Changed F--B"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">newInstance</span><span class="params">(param1: <span class="type">String</span>)</span></span> =</span><br><span class="line">                FragmentB().apply &#123;</span><br><span class="line">                    arguments = Bundle().apply &#123;</span><br><span class="line">                        putString(ARG_PARAM1, param1)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Activity</strong></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">initFragment</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fragmentA=FragmentA.newInstance(<span class="string">"FragmentA"</span>)</span><br><span class="line">    fragmentB = FragmentB.newInstance(<span class="string">"FragmentB"</span>)</span><br><span class="line">    supportFragmentManager.beginTransaction().replace(R.id.fl_one,fragmentA <span class="keyword">as</span> FragmentA).commit()</span><br><span class="line">    supportFragmentManager.beginTransaction().replace(R.id.fl_two,fragmentB <span class="keyword">as</span> FragmentB).commit()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现效果</p>
+<ul>
+<li>在 <strong>Activity</strong> 中点击 <code>A点我</code>按钮，<code>FragmentA</code> 与 <code>FragmentB</code> 中的数据同时改变。</li>
+</ul>
+<p><img src="media/ViewMode-Activity%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0.png" alt="ViewMode-Activity数据更新"></p>
+<ul>
+<li>在 <strong>FragmentA</strong> 中点击 <code>A点我</code>按钮，<code>Activity</code> 与 <code>FragmentB</code> 中的数据同时改变。</li>
+</ul>
+<p><img src="media/ViewMode-FragmentA%E6%9B%B4%E6%96%B0.png" alt="ViewMode-FragmentA更新"></p>
+<ul>
+<li>在 <strong>FragmentB</strong> 中点击 <code>A点我</code>按钮，<code>Activity</code> 与 <code>FragmentA</code> 中的数据同时改变。</li>
+</ul>
+<p><img src="media/ViewMode-FragmentB%E6%9B%B4%E6%96%B0.png" alt="ViewMode-FragmentB更新"></p>
+<ul>
+<li><strong>关键代码：</strong></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mode = activity?.run &#123;</span><br><span class="line">    ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br><span class="line">&#125;?:<span class="keyword">throw</span> Exception(<span class="string">"Invalid Activity"</span>)</span><br></pre></td></tr></table></figure>
+<p>如果在<code>FragmentA</code>中改成如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode = ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br></pre></td></tr></table></figure>
+<p>则结果是：仅<code>FragmentA</code>中的数据发生改变，<code>Activity</code>与<code>FragmentB</code>中展示的数据不会发生改变。</p>
 
       
     </div>
@@ -467,7 +529,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Jetpack-Lifecycler/" rel="prev" title="Jetpack-Lifecycle">
+              <a href="/Jetpack-Lifecycle/" rel="prev" title="Jetpack-Lifecycle">
                 Jetpack-Lifecycle <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -523,8 +585,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,7 +612,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">178</span>
+                  <span class="site-state-item-count">181</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -603,6 +674,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewMode-是什么"><span class="nav-number">1.</span> <span class="nav-text">ViewMode 是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewMode-设计出发点："><span class="nav-number">1.1.</span> <span class="nav-text">ViewMode 设计出发点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewMode-出现的目的："><span class="nav-number">1.2.</span> <span class="nav-text">ViewMode 出现的目的：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewMode-生命周期"><span class="nav-number">2.</span> <span class="nav-text">ViewMode 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AndroidViewModel"><span class="nav-number">2.1.</span> <span class="nav-text">AndroidViewModel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-Fragment-之间共享数据"><span class="nav-number">3.</span> <span class="nav-text">在 Fragment 之间共享数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -630,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">416.1k</span>
+    <span title="Site words total count">420.1k</span>
   
 </div>
 
