@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Jetpack-DataBing：以声明方式将可观察数据绑定到界面元素">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T07:09:44.932Z">
+<meta property="og:updated_time" content="2020-04-18T02:50:21.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetpack-DataBing">
 <meta name="twitter:description" content="Jetpack-DataBing：以声明方式将可观察数据绑定到界面元素">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-17T15:09:44+08:00">
-                2020-04-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-18T10:50:21+08:00">
+                2020-04-18
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  51 字
+                  1,264 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -437,7 +437,87 @@
         <p>Jetpack-DataBing：以声明方式将可观察数据绑定到界面元素</p>
 <a id="more"></a>
 <p>使用 <code>声明方式（而非程序化地）</code>将布局中的 <code>界面组件</code> <strong>绑定</strong> 到应用中的 <code>数据源</code>。</p>
-
+<h1 id="涉及内容："><a href="#涉及内容：" class="headerlink" title="涉及内容："></a>涉及内容：</h1><ul>
+<li><p>使用入门</p>
+<p>准备开发环境</p>
+</li>
+<li><p>布局和绑定表达式</p>
+<p>借助 <code>表达式</code> 语言，可以将 <code>变量</code> <strong>关联</strong> 到布局中的 <code>视图</code>。 一个xml文件示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"viewmodel"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.myapp.data.ViewModel"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ConstraintLayout...</span> /&gt;</span> <span class="comment">&lt;!-- UI layout's root element --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p> 在这个<code>xml</code>文件中与以往不同的是：根节点是<code>layout</code>，内部元素分为2类：<code>&lt;data&gt;</code>、<code>&lt;View&gt;</code></p>
+<ul>
+<li><p>使用可观察的数据对象</p>
+<p><code>数据绑定库</code> 可以生成用于访问<code>布局变量</code>和<code>视图</code>的<code>绑定类</code>。</p>
+</li>
+<li><p>生成的绑定类</p>
+</li>
+<li><p>绑定适配器</p>
+<p>每一个 <code>布局表达式</code> 都有一个对应的 <code>绑定适配器</code>，要求必须进行 <code>框架调用</code> 来设置相应的 <code>属性</code> 或 <code>监听器</code>。</p>
+</li>
+<li><p>将布局视图绑定到架构组件</p>
+</li>
+<li>双向数据绑定</li>
+</ul>
+<h1 id="使用入门"><a href="#使用入门" class="headerlink" title="使用入门"></a>使用入门</h1><p><code>数据绑定库</code>灵活、兼容性广，是一个支持库，因此可以运行在 <code>Android 4.0（API 级别 14）或更高</code> 的设备上。</p>
+<p>代码库支持设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="布局和绑定表达式"><a href="#布局和绑定表达式" class="headerlink" title="布局和绑定表达式"></a>布局和绑定表达式</h1><p><code>数据绑定库</code> 会自动生成将 <code>布局中的视图</code> 与 <code>数据对象绑定</code> 的 <code>类</code>。</p>
+<p><code>数据绑定布局文件</code>以根标记 <code>&lt;layout&gt;</code> 开头，后跟 <code>&lt;data&gt;</code> 元素和 <code>&lt;view&gt;</code> 根元素。</p>
+<p><code>数据绑定布局文件</code> 示例文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"duck"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.yannis.myapplication.bean.DuckBean"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"@&#123;duck.duckName&#125;"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"@&#123;duck.duckColor&#125;"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;data&gt;</code> 中的 <code>duck变量</code> 描述了可在此布局中使用的 <code>属性</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">        <span class="attr">name</span>=<span class="string">"duck"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">type</span>=<span class="string">"com.yannis.myapplication.bean.DuckBean"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>布局中的 <code>表达式</code> 使用 <code>@{}</code> 语法写入特性属性中。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"@&#123;duck.duckColor&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：<code>布局表达式</code> 应保持精简，因为它们无法进行单元测试，并且拥有的 IDE 支持也有限。为了简化布局表达式，可以使用 <code>自定义绑定适配器</code>。</p>
+<h2 id="数据对象-data"><a href="#数据对象-data" class="headerlink" title="数据对象-data"></a>数据对象-data</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">DuckBean</span></span>(<span class="keyword">var</span> duckName: String, <span class="keyword">val</span> duckColor: String)</span><br></pre></td></tr></table></figure>
+<h2 id="绑定数据"><a href="#绑定数据" class="headerlink" title="绑定数据"></a>绑定数据</h2><p>系统会为每个<code>布局文件</code>生成一个<code>绑定类</code>。默认情况下，类名称基于<code>布局文件的名称</code>，它会转换为 <code>Pascal 大小写形式</code> 并在末尾添加 <code>Binding</code> 后缀。如：<code>activity_main.xml</code> 布局文件的绑定类型为 <code>ActivityMainBinding</code>。</p>
+<ul>
+<li>在<code>Activity</code>中：</li>
+</ul>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        <span class="keyword">val</span> binding: ActivitySecondBinding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_second)</span><br><span class="line">        binding.duck = DuckBean(<span class="string">"Jakson"</span>,<span class="string">"Black"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在<code>Fragment</code>中：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> userModel: UserViewMode</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">    userModel = ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br><span class="line">    arguments?.let &#123;</span><br><span class="line">        userModel.curName.value = it.getString(ARG_PARAM1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                          savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">    userModel = ViewModelProvider(<span class="keyword">this</span>)[UserViewMode::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>]</span></span><br><span class="line">    userModel.curName.value = <span class="string">"Fragment_A"</span></span><br><span class="line">    <span class="keyword">val</span> binding = DataBindingUtil.inflate&lt;FragmentABinding&gt;(inflater, R.layout.fragment_a, container, <span class="literal">false</span>)</span><br><span class="line">            .apply &#123;</span><br><span class="line">                mode = userModel</span><br><span class="line">                tvFa.text = param1</span><br><span class="line">                btnA.setOnClickListener &#123;</span><br><span class="line">                    userModel.curName.value = <span class="string">"Changed A__F"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">return</span> binding.root</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="表达式语言"><a href="#表达式语言" class="headerlink" title="表达式语言"></a>表达式语言</h2><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions#expression_language" target="_blank" rel="noopener">表达式语言</a></p>
+<ul>
+<li><p><strong>Null 合并运算符</strong></p>
+<p>如果 <code>左边</code> 运算数 <strong>不是</strong> <code>null</code>，则 <code>Null 合并运算符 (??)</code> <strong>选择</strong> <code>左边</code> 运算数，如果<code>左边</code>运算数<strong>是</strong> <code>null</code> ，则选择 <code>右边</code> 运算数</p>
+</li>
+</ul>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text="@&#123;user.displayName ?? user.lastName&#125;"</span><br></pre></td></tr></table></figure>
+<p> 等价于</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text="@&#123;user.displayName != null ? user.displayName : user.lastName&#125;"</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>避免出现 Null 指针异常</strong></p>
+<p>生成的数据绑定代码会<code>自动检查</code> 有没有 <code>null 值</code> 并 <code>避免</code> 出现 <code>Null 指针异常</code>。例如，在表达式 <code>@{user.name}</code>中，如果 <code>user 为 Null</code>，则为 <code>user.name</code> 分配默认值 <code>null</code>。如果您引用 <code>user.age</code>，其中 <code>age</code> 的类型为 <code>int</code>，则数据绑定使用默认值 <code>0</code>。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>集合</strong></p>
+<p>为方便起见，在 <code>表达式</code> 中使用 <code>[]</code> 运算符访问常见<code>集合</code>例如：<code>数组</code>、<code>列表</code>、<code>稀疏列表</code>和<code>映射</code>。<br>为使 <code>XML</code> 不含语法错误，在声明数据变量时，必须 <strong>转义 <code>&lt;</code></strong> 字符。例如：不要写成 <code>List&lt;String&gt;</code> 形式，而是必须写成 <code>List&amp;lt;String&gt;</code>。</p>
+<p>示例：</p>
+</li>
+</ul>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"android.util.SparseArray"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"java.util.Map"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"java.util.List"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"list"</span> <span class="attr">type</span>=<span class="string">"List&amp;lt;String&gt;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"sparse"</span> <span class="attr">type</span>=<span class="string">"SparseArray&amp;lt;String&gt;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"map"</span> <span class="attr">type</span>=<span class="string">"Map&amp;lt;String, String&gt;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"index"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">type</span>=<span class="string">"String"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">…</span><br><span class="line">android:text="@&#123;list[index]&#125;"</span><br><span class="line">…</span><br><span class="line">android:text="@&#123;sparse[index]&#125;"</span><br><span class="line">…</span><br><span class="line">android:text="@&#123;map[key]&#125;"</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>字符串字面量</strong></p>
+<p>使用 <strong> <code>单引号</code> 括住特性值</strong>，这样就可以在 <code>表达式</code> 中使用 <code>双引号</code></p>
+</li>
+</ul>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text='@&#123;map["firstName"]&#125;'</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://developer.android.com/topic/libraries/data-binding/expressions#resources" target="_blank" rel="noopener">资源</a></li>
+</ul>
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理]"></a>事件处理]</h2><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions#event_handling" target="_blank" rel="noopener">事件处理</a></p>
+<blockquote>
+<p><a href="https://juejin.im/post/5d0b1e4ff265da1b96130a1b#heading-11" target="_blank" rel="noopener">https://juejin.im/post/5d0b1e4ff265da1b96130a1b#heading-11</a></p>
+</blockquote>
+<h2 id="导入、变量、包含"><a href="#导入、变量、包含" class="headerlink" title="导入、变量、包含"></a>导入、变量、包含</h2><h1 id="使用可观察的数据对象"><a href="#使用可观察的数据对象" class="headerlink" title="使用可观察的数据对象"></a>使用可观察的数据对象</h1><h1 id="生成的绑定类"><a href="#生成的绑定类" class="headerlink" title="生成的绑定类"></a>生成的绑定类</h1><h1 id="绑定适配器"><a href="#绑定适配器" class="headerlink" title="绑定适配器"></a>绑定适配器</h1><h1 id="将布局视图绑定到架构组件"><a href="#将布局视图绑定到架构组件" class="headerlink" title="将布局视图绑定到架构组件"></a>将布局视图绑定到架构组件</h1><h1 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h1>
       
     </div>
     
@@ -524,8 +604,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -604,6 +693,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#涉及内容："><span class="nav-number">1.</span> <span class="nav-text">涉及内容：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用入门"><span class="nav-number">2.</span> <span class="nav-text">使用入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布局和绑定表达式"><span class="nav-number">3.</span> <span class="nav-text">布局和绑定表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据对象-data"><span class="nav-number">3.1.</span> <span class="nav-text">数据对象-data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">3.2.</span> <span class="nav-text">绑定数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式语言"><span class="nav-number">3.3.</span> <span class="nav-text">表达式语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">3.4.</span> <span class="nav-text">事件处理]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入、变量、包含"><span class="nav-number">3.5.</span> <span class="nav-text">导入、变量、包含</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用可观察的数据对象"><span class="nav-number">4.</span> <span class="nav-text">使用可观察的数据对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成的绑定类"><span class="nav-number">5.</span> <span class="nav-text">生成的绑定类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定适配器"><span class="nav-number">6.</span> <span class="nav-text">绑定适配器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将布局视图绑定到架构组件"><span class="nav-number">7.</span> <span class="nav-text">将布局视图绑定到架构组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向数据绑定"><span class="nav-number">8.</span> <span class="nav-text">双向数据绑定</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -631,7 +736,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">421.6k</span>
+    <span title="Site words total count">422.8k</span>
   
 </div>
 
