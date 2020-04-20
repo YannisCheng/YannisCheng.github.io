@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
 <meta property="og:description" content="Jetpack-DataBing：以声明方式将可观察数据绑定到界面元素">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-18T08:55:03.287Z">
+<meta property="og:updated_time" content="2020-04-19T03:16:11.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetpack-DataBing">
 <meta name="twitter:description" content="Jetpack-DataBing：以声明方式将可观察数据绑定到界面元素">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-18T16:55:03+08:00">
-                2020-04-18
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-19T11:16:11+08:00">
+                2020-04-19
               </time>
             
           </span>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,119 字
+                  2,926 字
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -552,7 +552,45 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span> <span class="attr">class</span>=<span class="string">".ContactItem"</span>&gt;</span></span><br><span class="line">        …</span><br></pre></td></tr></table></figure>
 <p>还可以使用完整软件包名称来生成绑定类。以下示例在 <code>com.example</code> 包中创建 <code>ContactItem</code> 绑定类</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span> <span class="attr">class</span>=<span class="string">"com.example.ContactItem"</span>&gt;</span></span><br><span class="line">        …</span><br></pre></td></tr></table></figure>
-<h1 id="绑定适配器"><a href="#绑定适配器" class="headerlink" title="绑定适配器"></a>绑定适配器</h1><h1 id="将布局视图绑定到架构组件"><a href="#将布局视图绑定到架构组件" class="headerlink" title="将布局视图绑定到架构组件"></a>将布局视图绑定到架构组件</h1><h1 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h1>
+<h1 id="绑定适配器"><a href="#绑定适配器" class="headerlink" title="绑定适配器"></a>绑定适配器</h1><blockquote>
+<p><a href="https://developer.android.com/topic/libraries/data-binding/binding-adapters" target="_blank" rel="noopener">官网参考</a></p>
+</blockquote>
+<p><code>绑定适配器</code> 负责发出相应的 <code>框架调用</code> 来 <code>设置值</code>。<br><code>数据绑定库</code>允许您指定<code>调用的方法</code>来<code>设置值</code>，提供自己的<code>绑定逻辑</code>以及<code>使用适配器</code>指定返回<code>对象的类型</code>。</p>
+<h3 id="自定义属性绑定"><a href="#自定义属性绑定" class="headerlink" title="自定义属性绑定"></a>自定义属性绑定</h3><p><code>自定义属性绑定</code> 说明：</p>
+<ul>
+<li><code>@BindingAdapter</code>： 注解。作用于 <strong>方法</strong> <code>（和类无关，这个自定义属性的方法可以写在任何地方）</code>。</li>
+<li><code>自定义属性绑定</code> <strong>方法</strong> 必须为 <strong>公共静（public static）</strong>方法，可以有 <code>1个到多个</code> 参数。</li>
+<li>在 <code>Kotlin</code> 中，必须使用 <code>@JvmStatic</code> 表示静态，否则编译报错。<a href="https://www.jianshu.com/p/39d73a74ce99" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<p><code>自定义属性绑定</code> 实际示例 <a href="https://blog.csdn.net/z_x_Qiang/article/details/98774824" target="_blank" rel="noopener">参考</a>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> BindingAdapter &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JvmStatic</span></span><br><span class="line">    <span class="meta">@BindingAdapter(value = [<span class="meta-string">"url"</span>, <span class="meta-string">"placeHolder"</span>], requireAll = false)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">imgUrl</span><span class="params">(imageView: <span class="type">ImageView</span>, url: <span class="type">Int</span>, placeHolder: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        Glide.with(imageView)</span><br><span class="line">                .load(url)</span><br><span class="line">                .placeholder(placeHolder)</span><br><span class="line">                .into(imageView)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/image"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@id/btn_a"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:url</span>=<span class="string">"@&#123;mode.imgUrl&#125;"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:placeHolder</span>=<span class="string">"@&#123;mode.holder&#125;"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>示例说明：</p>
+<ul>
+<li>有2个参数，如果这2个参数 <code>无须同时</code> 调用，那么必须要设置 <code>requireAll = false</code>，<code>requireAll</code> 默认值为 <code>true</code>。</li>
+<li>如果只有 <code>1个</code> 参数时，可简写为 <code>@BindingAdapter(&quot;url&quot;)</code></li>
+</ul>
+<h3 id="使用旧值"><a href="#使用旧值" class="headerlink" title="使用旧值"></a>使用旧值</h3><p><strong>注意：</strong> 如果是 <code>多个属性</code>，那么方法的参数 <code>必须</code> 要把 <code>先</code> 所有的属性的 <code>旧值列举</code> 出来，<code>然后</code> 再 <code>列举新属性值</code>。这个 <code>顺序不能乱</code>的。并不是一个属性旧值跟一个属性新值。</p>
+<h2 id="对象转换"><a href="#对象转换" class="headerlink" title="对象转换"></a>对象转换</h2><p>类型转换</p>
+<h1 id="将布局视图绑定到架构组件"><a href="#将布局视图绑定到架构组件" class="headerlink" title="将布局视图绑定到架构组件"></a>将布局视图绑定到架构组件</h1><h2 id="使用-LiveData-将数据变化通知给界面"><a href="#使用-LiveData-将数据变化通知给界面" class="headerlink" title="使用 LiveData 将数据变化通知给界面"></a>使用 LiveData 将数据变化通知给界面</h2><ul>
+<li><p><strong>LiveData</strong></p>
+<p>要将 <code>LiveData</code> 对象与 <code>绑定类</code> 一起使用，您需要指定 <code>生命周期所有者</code> 来定义 <code>对象的范围</code>。以下示例在 <code>绑定类实例化后</code> 将 <code>Activity</code> 指定为 <code>生命周期所有者</code>：</p>
+</li>
+</ul>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewModelActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Inflate view and obtain an instance of the binding class.</span></span><br><span class="line">        <span class="keyword">val</span> binding: UserBinding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.user)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Specify the current activity as the lifecycle owner.</span></span><br><span class="line">        binding.setLifecycleOwner(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>ViewModel</strong></p>
+<p>使用 <code>ViewModel</code> 组件来将 <code>数据绑定到布局</code>。在 <code>ViewModel</code> 组件中，您可以使用 <code>LiveData</code> 对象 <code>转换数据</code> 或 <code>合并</code> 多个数据源。</p>
+</li>
+</ul>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScheduleViewModel</span> : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> userName: LiveData</span><br><span class="line"></span><br><span class="line">    init &#123;</span><br><span class="line">        <span class="keyword">val</span> result = Repository.userName</span><br><span class="line">        userName = Transformations.map(result) &#123; result -&gt; result.value &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-ViewModel-管理界面相关数据"><a href="#使用-ViewModel-管理界面相关数据" class="headerlink" title="使用 ViewModel 管理界面相关数据"></a>使用 ViewModel 管理界面相关数据</h2><p>通过将 <code>ViewModel</code> 组件与<code>数据绑定库</code>结合使用，可以将<code>界面逻辑</code>从布局移出之后移入到<code>ViewModel</code> 组件中，以便于测试。</p>
+<p><code>数据绑定库</code> 确保在需要时将<code>视图</code>与<code>数据源``绑定</code>或<code>解绑</code>。</p>
+<p> 要将 <code>ViewModel</code> 组件与 <code>数据绑定库</code> 一起使用，<code>必须实例化</code> 从类继承而来的组件，获取绑定类的实例，并将 <code>组件</code> 分配给 <code>绑定类</code> 中的 <code>属性</code>。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewModelActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Obtain the ViewModel component.</span></span><br><span class="line">        UserModel userModel = ViewModelProviders.of(getActivity())</span><br><span class="line">                                                  .<span class="keyword">get</span>(UserModel.<span class="keyword">class</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Inflate view and obtain an instance of the binding class.</span></span><br><span class="line">        <span class="keyword">val</span> binding: UserBinding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.user)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Assign the component to a property in the binding class.</span></span><br><span class="line">        binding.viewmodel = userModel</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在布局中，使用 <code>绑定表达式</code> 将 <code>ViewModel</code> 组件的<code>属性</code>和<code>方法</code>分配给对应的视图，如以下示例所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/rememberMeCheckBox"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:checked</span>=<span class="string">"@&#123;viewmodel.rememberMe&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onCheckedChanged</span>=<span class="string">"@&#123;() -&gt; viewmodel.rememberMeChanged()&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h1>
       
     </div>
     
@@ -666,7 +704,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">182</span>
+                  <span class="site-state-item-count">183</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +726,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -737,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#涉及内容："><span class="nav-number">1.</span> <span class="nav-text">涉及内容：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用入门"><span class="nav-number">2.</span> <span class="nav-text">使用入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布局和绑定表达式"><span class="nav-number">3.</span> <span class="nav-text">布局和绑定表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据对象-data"><span class="nav-number">3.1.</span> <span class="nav-text">数据对象-data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">3.2.</span> <span class="nav-text">绑定数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式语言"><span class="nav-number">3.3.</span> <span class="nav-text">表达式语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">3.4.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入、变量、包含"><span class="nav-number">3.5.</span> <span class="nav-text">导入、变量、包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入"><span class="nav-number">3.5.1.</span> <span class="nav-text">导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#别名"><span class="nav-number">3.5.2.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">3.5.3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.5.4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含"><span class="nav-number">3.5.5.</span> <span class="nav-text">包含</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用可观察的数据对象"><span class="nav-number">4.</span> <span class="nav-text">使用可观察的数据对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成的绑定类"><span class="nav-number">5.</span> <span class="nav-text">生成的绑定类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态变量"><span class="nav-number">5.1.</span> <span class="nav-text">动态变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义绑定类名称"><span class="nav-number">5.1.1.</span> <span class="nav-text">自定义绑定类名称</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定适配器"><span class="nav-number">6.</span> <span class="nav-text">绑定适配器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将布局视图绑定到架构组件"><span class="nav-number">7.</span> <span class="nav-text">将布局视图绑定到架构组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向数据绑定"><span class="nav-number">8.</span> <span class="nav-text">双向数据绑定</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#涉及内容："><span class="nav-number">1.</span> <span class="nav-text">涉及内容：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用入门"><span class="nav-number">2.</span> <span class="nav-text">使用入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布局和绑定表达式"><span class="nav-number">3.</span> <span class="nav-text">布局和绑定表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据对象-data"><span class="nav-number">3.1.</span> <span class="nav-text">数据对象-data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">3.2.</span> <span class="nav-text">绑定数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式语言"><span class="nav-number">3.3.</span> <span class="nav-text">表达式语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">3.4.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入、变量、包含"><span class="nav-number">3.5.</span> <span class="nav-text">导入、变量、包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入"><span class="nav-number">3.5.1.</span> <span class="nav-text">导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#别名"><span class="nav-number">3.5.2.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">3.5.3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.5.4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含"><span class="nav-number">3.5.5.</span> <span class="nav-text">包含</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用可观察的数据对象"><span class="nav-number">4.</span> <span class="nav-text">使用可观察的数据对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成的绑定类"><span class="nav-number">5.</span> <span class="nav-text">生成的绑定类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态变量"><span class="nav-number">5.1.</span> <span class="nav-text">动态变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义绑定类名称"><span class="nav-number">5.1.1.</span> <span class="nav-text">自定义绑定类名称</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定适配器"><span class="nav-number">6.</span> <span class="nav-text">绑定适配器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义属性绑定"><span class="nav-number">6.0.1.</span> <span class="nav-text">自定义属性绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用旧值"><span class="nav-number">6.0.2.</span> <span class="nav-text">使用旧值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象转换"><span class="nav-number">6.1.</span> <span class="nav-text">对象转换</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#将布局视图绑定到架构组件"><span class="nav-number">7.</span> <span class="nav-text">将布局视图绑定到架构组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-LiveData-将数据变化通知给界面"><span class="nav-number">7.1.</span> <span class="nav-text">使用 LiveData 将数据变化通知给界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-ViewModel-管理界面相关数据"><span class="nav-number">7.2.</span> <span class="nav-text">使用 ViewModel 管理界面相关数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向数据绑定"><span class="nav-number">8.</span> <span class="nav-text">双向数据绑定</span></a></li></div>
             
 
           </div>
@@ -771,7 +809,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">423.7k</span>
+    <span title="Site words total count">425.5k</span>
   
 </div>
 
