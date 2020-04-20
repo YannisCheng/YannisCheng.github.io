@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FFmpeg,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念">
+<meta name="keywords" content="FFmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmpeg-00-概览">
+<meta property="og:url" content="http://yannischeng.com/FFmpeg-00-概览/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="概念">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-20T01:44:25.974Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFmpeg-00-概览">
+<meta name="twitter:description" content="概念">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/FFmpeg-00-概览/">
+
+
+
+
+
+  <title>FFmpeg-00-概览 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/FFmpeg-00-概览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FFmpeg-00-概览</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T22:57:03+08:00">
+                2020-03-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T09:44:25+08:00">
+                2020-04-20
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  677 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/FFmpeg/" rel="tag"># FFmpeg</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/FFmpeg-00-概览/" title="FFmpeg-00-概览">http://yannischeng.com/FFmpeg-00-概览/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><a id="more"></a>
+<ul>
+<li><a href="https://ffmpeg.org/" target="_blank" rel="noopener">FFmpeg官网</a></li>
+<li><a href="https://trac.ffmpeg.org/wiki" target="_blank" rel="noopener">FFmpeg维基</a></li>
+</ul>
+<h2 id="关于FFmpeg"><a href="#关于FFmpeg" class="headerlink" title="关于FFmpeg"></a>关于FFmpeg</h2><p><code>FFmpeg</code> 是一套集<code>录制</code>、<code>转换</code>以及<code>流化音视频</code>的完整的<code>跨平台</code>解决方案、是领先的 <strong>多媒体框架</strong>，能够<code>解码</code>，<code>编码</code>， <code>转码</code>，<code>mux</code>，<code>demux</code>，<code>流</code>，<code>过滤</code>和<code>播放</code>人类和机器创建的几乎所有内容。<br>它还具有 <strong>高度的可移植性</strong>：<code>FFmpeg</code>可以在各种构建环境，机器体系结构和配置下，跨<code>Linux</code>，<code>Mac OS X</code>，<code>Microsoft Windows</code>，<code>BSD</code>，<code>Solaris</code>等编译</p>
+<h2 id="FFmpeg工具"><a href="#FFmpeg工具" class="headerlink" title="FFmpeg工具"></a>FFmpeg工具</h2><ul>
+<li><a href="https://ffmpeg.org/ffmpeg.html" target="_blank" rel="noopener">ffmpeg</a> 一个 <strong>命令行工具</strong>，来进行多媒体文件之间的格式转换。是一个非常快速的<code>视频</code>和<code>音频</code><strong>转换器</strong>，也可以从<code>实时音频/视频源</code>中获取。它还可以在<code>任意采样率</code>之间转换，并使用高质量的多相滤波器即时调整视频大小。</li>
+<li><a href="https://ffmpeg.org/ffplay.html" target="_blank" rel="noopener">ffplay</a> <code>FFplay</code>是使用<code>FFmpeg库</code>和<code>SDL库</code>的非常简单且可移植的 <strong>媒体播放器</strong>。它主要用作各种<code>FFmpeg API</code>的测试平台</li>
+<li><a href="https://ffmpeg.org/ffprobe.html" target="_blank" rel="noopener">ffprobe</a> <code>ffprobe</code>从多媒体流中 <strong>收集信息</strong>，并以人类和机器可读的方式进行打印。</li>
+</ul>
+<h2 id="FFmpeg开发人员库"><a href="#FFmpeg开发人员库" class="headerlink" title="FFmpeg开发人员库"></a>FFmpeg开发人员库</h2><ul>
+<li><a href="https://ffmpeg.org/libavutil.html" target="_blank" rel="noopener">libavutil</a> 库是用于辅助便携式多媒体编程的 <strong>实用程序库</strong>。它包含安全的便携式字符串函数，随机数生成器，数据结构，其他数学函数，密码学和与多媒体相关的功能（例如像素和样本格式的枚举）。它不是<code>libavcodec</code>和<code>libavformat</code>都需要的代码的库。</li>
+<li><a href="https://ffmpeg.org/libavcodec.html" target="_blank" rel="noopener">libavcodec</a> 库提供了通用的 <strong>编码/解码框架</strong>，并包含用于<code>音频</code>，<code>视频</code>和<code>字幕流</code>的多个<code>解码器</code>和<code>编码器</code>，以及几个<code>位流过滤器</code>。共享的体系结构提供各种服务，从位流I/O到DSP优化，使其适合于实现强大，快速的编解码器以及实验。</li>
+<li><a href="https://ffmpeg.org/libavformat.html" target="_blank" rel="noopener">libavformat</a> 库提供了一个<code>通用框架</code>，用于对<code>音频</code>，<code>视频</code>和<code>字幕流</code>进行<code>多路复用</code>和<code>多路分解</code>（混合和解混合）。它包含用于 <strong>多媒体容器格式</strong> 的 <strong>多个复用器</strong> 和 <strong>解复用器</strong>。它还支持多种<code>输入</code>和<code>输出协议</code>以访问媒体资源。</li>
+<li><a href="https://ffmpeg.org/libavdevice.html" target="_blank" rel="noopener">libavdevice</a> 库提供了用于从许多常见的 <strong>多媒体输入/输出设备</strong> 获取和呈现的<code>通用框架</code>，并支持多种输入和输出设备，包括Video4Linux2，VfW，DShow和ALSA。</li>
+<li><a href="https://ffmpeg.org/libavfilter.html" target="_blank" rel="noopener">libavfilter</a> 库提供了一个通用的 <strong>音频/视频过滤框架</strong>，其中包含多个过滤器，源和接收器。</li>
+<li><a href="https://ffmpeg.org/libswscale.html" target="_blank" rel="noopener">libswscale</a> 库<code>执行高度优化</code>的<code>图像缩放</code>以及<code>色彩空间</code>和<code>像素格式</code> <strong>转换操作</strong>。</li>
+<li><a href="https://ffmpeg.org/libswresample.html" target="_blank" rel="noopener">libswresample</a> 库<code>执行高度优化</code>的<code>音频重采样</code>，<code>重新矩阵化</code>和<code>样本格式</code> <strong>转换操作</strong>。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-Camera2/" rel="next" title="Android-Camera2">
+                <i class="fa fa-chevron-left"></i> Android-Camera2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/FFmpeg-01-交叉编译编译Android平台-so文件/" rel="prev" title="FFmpeg-01-交叉编译编译Android平台.so文件">
+                FFmpeg-01-交叉编译编译Android平台.so文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">187</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于FFmpeg"><span class="nav-number">1.1.</span> <span class="nav-text">关于FFmpeg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FFmpeg工具"><span class="nav-number">1.2.</span> <span class="nav-text">FFmpeg工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FFmpeg开发人员库"><span class="nav-number">1.3.</span> <span class="nav-text">FFmpeg开发人员库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">426.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
