@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Kotlin-协程 对于 异步 或 非阻塞 编程的现实，在 Kotlin 中采取了一种非常灵活的方法，即：在 语言级别 提供Coroutine（协程） 支持，并将大多数功能 委托给库，这与 Kotlin 的哲学非常一致。">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin-协程">
+<meta property="og:url" content="http://yannischeng.com/Kotlin-协程/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="Kotlin-协程 对于 异步 或 非阻塞 编程的现实，在 Kotlin 中采取了一种非常灵活的方法，即：在 语言级别 提供Coroutine（协程） 支持，并将大多数功能 委托给库，这与 Kotlin 的哲学非常一致。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-21T03:14:23.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin-协程">
+<meta name="twitter:description" content="Kotlin-协程 对于 异步 或 非阻塞 编程的现实，在 Kotlin 中采取了一种非常灵活的方法，即：在 语言级别 提供Coroutine（协程） 支持，并将大多数功能 委托给库，这与 Kotlin 的哲学非常一致。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/Kotlin-协程/">
+
+
+
+
+
+  <title>Kotlin-协程 | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/Kotlin-协程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin-协程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T09:45:29+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-21T11:14:23+08:00">
+                2020-04-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,649 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/Kotlin-协程/" title="Kotlin-协程">http://yannischeng.com/Kotlin-协程/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Kotlin-协程</p>
+<p>对于 <code>异步</code> 或 <code>非阻塞</code> 编程的现实，在 <code>Kotlin</code> 中采取了一种非常灵活的方法，即：在 <code>语言级别</code> 提供<code>Coroutine（协程）</code> 支持，并将大多数功能 <code>委托给库</code>，这与 <code>Kotlin</code> 的哲学非常一致。</p>
+<a id="more"></a>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p><strong>维基百科</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Coroutines are computer program components that generalize subroutines for non-preemptive multitasking, by allowing execution to be suspended and resumed. Coroutines are well-suited for implementing familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.</span><br></pre></td></tr></table></figure>
+<p><strong>翻译</strong></p>
+<p><strong>协程</strong> 是 <code>计算机程序组件</code>，通过允许<code>挂起</code> 和 <code>恢复</code> <strong>执行</strong> 来概括 <code>非抢占式多任务</code> 处理的 <strong>子例程</strong>。 <code>协程</code> 非常适合于实现熟悉的程序组件，例如协作任务，异常，事件循环，迭代器，无限列表和管道。</p>
+<p><code>非抢占</code>、<code>多任务</code>、<code>并发</code></p>
+<h1 id="协程？线程？"><a href="#协程？线程？" class="headerlink" title="协程？线程？"></a>协程？线程？</h1><h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><p><strong>维基百科</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Coroutines are very similar to threads. However, coroutines are cooperatively multitasked, whereas threads are typically preemptively multitasked. This means that coroutines provide concurrency but not parallelism. The advantages of coroutines over threads are that they may be used in a hard-realtime context (switching between coroutines need not involve any system calls or any blocking calls whatsoever), there is no need for synchronisation primitives such as mutexes, semaphores, etc. in order to guard critical sections, and there is no need for support from the operating system.</span><br><span class="line"></span><br><span class="line">It is possible to implement coroutines using preemptively-scheduled threads, in a way that will be transparent to the calling code, but some of the advantages (particularly the suitability for hard-realtime operation and relative cheapness of switching between them) will be lost.</span><br></pre></td></tr></table></figure>
+<p><strong>翻译：</strong></p>
+<p><code>协程</code> 与 <code>线程</code> 非常相似。 但是：</p>
+<ul>
+<li><code>协程</code> ： <code>协作式</code> <code>多任务</code> 。提供 <code>并发性</code>，但 <code>不</code> 提供 <code>并行性</code>。</li>
+<li><code>线程</code> ： <code>抢先式</code> <code>多任务</code>。</li>
+</ul>
+<p><code>协程</code> 相比于 <code>线程</code> 的 <code>优点</code>是：</p>
+<ul>
+<li>其可以在 <a href="https://en.wikipedia.org/wiki/Real-time_computing#Hard" target="_blank" rel="noopener">硬实时（Real-time computing）</a> 上下文中使用（<code>协程</code> 之间的 <code>切换</code> 不需要任何 <code>系统调用</code> 或任何 <code>阻塞调用</code>）</li>
+<li>不需要同步原语，例如互斥体，信号量等。 </li>
+<li>为了保护关键部分，并且 <code>不需要操作系统的支持</code>。</li>
+</ul>
+<p>可以使用抢先调度的线程来实现协程，这种方式对于调用代码将是透明的，但是某些优点（尤其是对硬实时操作的适用性以及在它们之间进行切换的相对便宜）将丢失。</p>
+<h1 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h1><h2 id="抢占（Preemption）"><a href="#抢占（Preemption）" class="headerlink" title="抢占（Preemption）"></a>抢占（Preemption）</h2><p><strong>维基百科</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In computing, preemption is the act of temporarily interrupting a task being carried out by a computer system, without requiring its cooperation, and with the intention of resuming the task at a later time. Such changes of the executed task are known as context switches. It is normally carried out by a privileged task or part of the system known as a preemptive scheduler, which has the power to preempt, or interrupt, and later resume, other tasks in the system.</span><br></pre></td></tr></table></figure>
+<p><strong>翻译</strong></p>
+<p>在计算中，<strong>抢占</strong> 是 <code>暂时</code> <strong>中断</strong> 计算机系统 <code>正在执行</code> 的 <strong>任务</strong> 而 <code>无需其配合</code>，并打算在 <code>以后恢复该任务</code> 的 <strong>行为</strong>。</p>
+<p>执行任务的 <code>此类更改</code> 称为 <code>上下文切换</code>。 </p>
+<p>它通常由 <code>特权任务</code> 或 <code>系统</code> 的一部分（称为<code>抢先调度程序</code>）执行，该任务可以 <code>抢占</code> 或 <code>中断</code> <strong>系统中的其他任务</strong>，或在 <code>以后继续执行其他任务</code>。</p>
+<h2 id="多任务（multitasking）"><a href="#多任务（multitasking）" class="headerlink" title="多任务（multitasking）"></a>多任务（multitasking）</h2><p>在计算中，<code>多任务处理</code> 是在<code>一定时间内</code> <code>并发执行</code> <code>多个任务</code>（也称为流程）。</p>
+<p><code>新任务</code> 可以在 <code>完成之前</code> <code>中断已经开始的任务</code>，而不是等待它们结束。结果，计算机以 <code>交错</code> 的方式执行 <code>多个任务</code> 的 <code>分段</code>，同时任务 <code>共享</code> 诸如中央处理单元（CPU）和主存储器之类的 <code>公共处理资源</code>。</p>
+<p><code>多任务</code> <code>自动中断</code> 正在运行的程序，<code>保存其状态</code>（部分结果，存储器内容和计算机寄存器内容），并加载 <code>另一个程序</code> 的 <code>保存状态</code> 并将 <code>控制权</code> 转移给它。</p>
+<p>该 <code>上下文切换</code> 可以按：</p>
+<ul>
+<li>固定的 <code>时间间隔</code> 启动（<strong>抢先式多任务处理</strong>），</li>
+<li>对 <code>正在运行</code> 的程序 <code>进行编码</code>，以使其在 <code>被中断</code> 时向 <code>监控软件</code> 发送信号（<strong>协作式多任务处理</strong>）。</li>
+</ul>
+<p><code>多任务</code> 不需要 <code>完全同时并行</code> 执行 <code>多个任务</code>。相反，它允许在给定的 <code>时间段内</code> 执行 <code>多个任务</code>。即使在多处理器计算机上，<code>多任务处理</code> 也可以运行比CPU多得多的任务。</p>
+<p><code>多任务处理</code> 是计算机操作系统的常见功能。它可以 <code>更有效地使用计算机硬件</code>。</p>
+<h2 id="并发（Concurrency）"><a href="#并发（Concurrency）" class="headerlink" title="并发（Concurrency）"></a>并发（Concurrency）</h2><p>在计算机科学中，<code>并发</code> 是 <code>无序</code> 或<code>部分顺序</code> 执行程序、算法或问题的不同部分或单元的能力，而不会影响最终结果。<br>这允许 <code>并行执行</code> <code>并发单元</code>，这可以显着提高 <code>多处理器</code> 和 <code>多核系统</code> 中执行的 <code>整体速度</code>。 用更多的技术术语来说：</p>
+<p><strong><code>并发</code>是指 程序、算法或问题的<code>可分解性</code>，可以分解为 <code>与顺序无关</code> 或 <code>部分有序</code> 的 <code>组件或单元</code></strong></p>
+<p><a href="https://en.wikipedia.org/wiki/Dining_philosophers_problem" target="_blank" rel="noopener">餐饮哲学家的问题</a></p>
+<h2 id="并行（Parallel）"><a href="#并行（Parallel）" class="headerlink" title="并行（Parallel）"></a>并行（Parallel）</h2><ul>
+<li><strong>背景：</strong></li>
+</ul>
+<p>传统上，计算机软件是为 <code>串行计算</code> 编写的。为了解决问题，将算法构造并实现为 <code>指令的串行流</code>。这些指令在一台计算机的中央处理单元上执行。<code>一次</code> 只能执行 <code>一条指令</code>-该指令完成后，将执行下一条指令。</p>
+<p>另一方面，<code>并​​行计算</code> <strong>同时</strong> 使用 <code>多个处理元素</code> 来解决问题。这是通过 <code>将问题分解</code> 为 <code>独立的部分</code> 来实现的，以便 <code>每个处理元素</code> 可以与 <code>其他元素</code> <strong>同时执行</strong>。</p>
+<p><code>处理元素</code> 可以是多种多样的，并且可以包括资源，例如具有多个处理器的单台计算机，数台联网的计算机，专用硬件或上述各项的任意组合。</p>
+<ul>
+<li><strong>并行计算：</strong></li>
+</ul>
+<p><code>并行计算</code> 是在 <code>一种类型</code>的计算中，<code>许多计算</code> 或 <code>执行过程</code> 是<code>同时进行</code> 的。<code>大问题</code> 通常可以 <code>分为小问题</code>，然后 <code>可以同时解决</code>。</p>
+<p><code>并行计算</code> 有几种不同的形式：<code>位级</code>、<code>指令级</code>、<code>数据</code> 和 <code>任务并行</code>。</p>
+<p><code>并行技术</code> 长期以来一直用于<code>高性能计算</code> 中。</p>
+<ul>
+<li><p><strong><code>并行计算</code> 与 <code>并发计算</code> 区别：</strong></p>
+<ul>
+<li><p>在 <strong>并行计算</strong> 中：通常将计算任务 <strong>分解</strong> 为几个，通常是 <strong>很多非常相似</strong> 的 <strong>子任务</strong>，这些 <code>子任务</code> 可以 <strong>独立处理</strong>，并在完成后将其 <strong>结果合并</strong>。</p>
+</li>
+<li><p>在 <strong>并发计算</strong> 中：各种过程通常 <strong>不解决相关任务</strong>。当他们这样做时，这在 <strong>分布式计算</strong> 中很常见，<code>各个任务</code> 的 <strong>性质</strong> 可能有所 <strong>不同</strong>，并且在执行过程中通常需要进行一些 <strong>进程间的通信</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/关于Kotlin/" rel="next" title="关于Kotlin">
+                <i class="fa fa-chevron-left"></i> 关于Kotlin
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">187</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#协程"><span class="nav-number">1.</span> <span class="nav-text">协程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程？线程？"><span class="nav-number">2.</span> <span class="nav-text">协程？线程？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#释义"><span class="nav-number">2.1.</span> <span class="nav-text">释义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念解释"><span class="nav-number">3.</span> <span class="nav-text">概念解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抢占（Preemption）"><span class="nav-number">3.1.</span> <span class="nav-text">抢占（Preemption）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多任务（multitasking）"><span class="nav-number">3.2.</span> <span class="nav-text">多任务（multitasking）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发（Concurrency）"><span class="nav-number">3.3.</span> <span class="nav-text">并发（Concurrency）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行（Parallel）"><span class="nav-number">3.4.</span> <span class="nav-text">并行（Parallel）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">430.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>

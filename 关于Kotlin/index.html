@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于Kotlin Kotlin 的 多平台 就是：就是通过expect/actual（预期声明/实际声明）机制来实现代码共享`">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Kotlin">
+<meta property="og:url" content="http://yannischeng.com/关于Kotlin/index.html">
+<meta property="og:site_name" content="YannisCheng&#39;s Technology Blogs">
+<meta property="og:description" content="关于Kotlin Kotlin 的 多平台 就是：就是通过expect/actual（预期声明/实际声明）机制来实现代码共享`">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-21T01:47:03.960Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Kotlin">
+<meta name="twitter:description" content="关于Kotlin Kotlin 的 多平台 就是：就是通过expect/actual（预期声明/实际声明）机制来实现代码共享`">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yannischeng.com/关于Kotlin/">
+
+
+
+
+
+  <title>关于Kotlin | YannisCheng's Technology Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YannisCheng's Technology Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不必一味的讨好别人，每个人都有自己的活法。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yannischeng.com/关于Kotlin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YannisCheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YannisCheng's Technology Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于Kotlin</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T08:11:57+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-21T09:47:03+08:00">
+                2020-04-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,084 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+
+    
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+    
+    
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    YannisCheng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yannischeng.com/关于Kotlin/" title="关于Kotlin">http://yannischeng.com/关于Kotlin/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    尊重个人劳动成果，转载请注明出处。 ─=≡Σ(((つ•̀ω•́)つ))
+  </li>
+</ul>
+
+      </div>
+    
+
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于Kotlin</p>
+<p><code>Kotlin</code> 的 <code>多平台</code> 就是：<strong><code>就是通过</code>expect/actual（预期声明/实际声明）机制<code>来实现</code>代码共享`</strong></p>
+<a id="more"></a>
+<h1 id="Kotlin-支持多平台开发"><a href="#Kotlin-支持多平台开发" class="headerlink" title="Kotlin-支持多平台开发"></a>Kotlin-支持多平台开发</h1><p>可使用 <code>Kotlin</code>开发<code>Android</code>、<code>iOS</code>、<code>后端</code> 、<code>原生</code>和 <code>Web应用程序</code> 。享受在平台之间 <code>共享通用代码</code> 的好处。</p>
+<p>Kotlin/Native 支持以下平台：</p>
+<ul>
+<li>iOS（arm32、 arm64、 模拟器 x86_64）</li>
+<li>macOS（x86_64）</li>
+<li>watchOS (arm32、 arm64、 x86)</li>
+<li>tvOS (arm64、 x86_64)</li>
+<li>Android（arm32、arm64、 x86、 x86_64）</li>
+<li>Windows（mingw x86_64、 x86）</li>
+<li>Linux（x86_64、 arm32、 arm64、 MIPS、 MIPS 小端次序）</li>
+<li>WebAssembly（wasm32）</li>
+</ul>
+<h1 id="多平台编程"><a href="#多平台编程" class="headerlink" title="多平台编程"></a>多平台编程</h1><p><a href="https://kotlinlang.org/docs/reference/multiplatform.html" target="_blank" rel="noopener">多平台编程</a></p>
+<p>有了对 <code>JVM</code>、<code>Android</code>、<code>JavaScript</code>、<code>iOS</code>、<code>Linux</code>、<code>Windows</code>、 <code>Mac</code> 甚至像 <code>STM32</code> 这样的嵌入式系统的支持，<code>Kotlin</code> 可以处理现代应用程序的 <code>任何组件</code> 与 <code>所有组件</code>。 </p>
+<p>这为 <code>代码</code> 与 <code>专业知识</code> 的 <code>复用</code> 带来了宝贵的收益，节省了工作量去完成更具挑战任务，而不是将所有东西都实现两次或多次。</p>
+<h1 id="多平台如何工作？"><a href="#多平台如何工作？" class="headerlink" title="多平台如何工作？"></a>多平台如何工作？</h1><p><code>多平台</code> 并不是为 <strong><code>所有平台</code> <code>编译全部代码</code></strong>。这个模型有其明显的局限性，我们知道现代应用程序需要访问其所运行平台的独有特性。<code>Kotlin</code> 并不会限制你只使用其中所有 API 的公共子集。 每个组件都可以根据需要与其他组件 <code>共享</code> 尽可能多的 <code>代码</code>， 而通过语言所提供的 <code>expect/actual机制</code> 可以随时访问平台 API。</p>
+<h1 id="Multiplatform-Programming-特定于平台的声明（Platform-Specific-Declarations）"><a href="#Multiplatform-Programming-特定于平台的声明（Platform-Specific-Declarations）" class="headerlink" title="Multiplatform Programming - 特定于平台的声明（Platform-Specific Declarations）"></a>Multiplatform Programming - 特定于平台的声明（Platform-Specific Declarations）</h1><p><a href="https://kotlinlang.org/docs/reference/platform-specific-declarations.html?_ga=2.24976312.309860652.1587429009-833750250.1586942164" target="_blank" rel="noopener">特定于平台的声明</a></p>
+<hr>
+<p><strong>原文</strong></p>
+<p><code>One of the key capabilities of Kotlin&#39;s multiplatform code is a way for common code to depend on platform-specific declarations.</code></p>
+<p><strong>翻译</strong></p>
+<p><code>Kotlin</code> 的 <strong><code>多平台代码</code></strong> 的关键功能之一是使 <strong><code>通用代码</code></strong> <code>依赖</code> 于 <code>特定于平台</code> 的 <strong><code>声明方式</code></strong>。</p>
+<p><strong>原文</strong></p>
+<p><code>As an alternative, Kotlin provides a mechanism of expected and actual declarations. With this mechanism, a common module can define expected declarations, and a platform module can provide actual declarations corresponding to the expected ones.</code></p>
+<p><strong>翻译</strong></p>
+<p>作为替代方案（在 <code>通用代码</code> 中 <code>构建一组接口</code>），<code>Kotlin</code> 提供了 <code>预期声明</code> 和 <code>实际声明</code> 的机制。<br>通过这种机制，通用 <code>公共模块</code> 定义<code>预期声明</code>，而具体 <code>平台模块</code> 可以提供与 <code>期望声明</code> 相对应的 <code>实际声明</code>。</p>
+<hr>
+<p>如果使用其他语言的方案来实现<code>多平台</code>，它们通常在 <code>通用代码</code> 中 <code>构建一组接口</code>，然后在 <code>对应平台</code> 的 <code>特定模块</code> 中 <code>实现这些接口</code>。 但是这样的实现存在2个问题：</p>
+<ul>
+<li>如果在实现所需功能的平台上有一个 <code>库</code>，并且希望 <code>直接使用</code> 该库的API而<code>无需额外</code>的<code>包装程序</code>，则这种方法（构建并实现接口）并不理想。 </li>
+<li>它要求将<code>公共声明</code>表示为<code>接口</code>，但是这些接口并 <code>不能涵盖所有可能的情况</code>。</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="官网示例"><a href="#官网示例" class="headerlink" title="官网示例"></a>官网示例</h2><p>此代码是<code>公共模块</code>的一部分：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jetbrains.foo</span><br><span class="line"></span><br><span class="line">expect <span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>(bar: String) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">frob</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Foo(<span class="string">"Hello"</span>).frob()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是相应的 <code>JVM模块</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jetbrains.foo</span><br><span class="line"></span><br><span class="line"><span class="function">actual class Foo actual <span class="title">constructor</span><span class="params">(val bar: String)</span> </span>&#123;</span><br><span class="line">    <span class="function">actual fun <span class="title">frob</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        println(<span class="string">"Frobbing the $bar"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>要点：</strong></p>
+<ul>
+<li><code>公共模块</code> 中的 <code>预期声明</code> 与其对应的 <code>实际声明</code> 始终具有 <code>完全相同</code> 的 <code>完整限定名</code>。</li>
+<li><code>预期声明</code> 标有 <code>expect</code> 关键字；<code>实际声明</code> 标有 <code>actual</code> 关键字。</li>
+<li>与 <code>预期声明</code> 匹配的任何 <code>实际声明</code> 都要标记为 <code>actual</code>。</li>
+<li><code>预期声明</code> 决 <code>不包含任何实现代码</code>。</li>
+<li><code>预期声明</code> 并不限于 <code>接口</code> 与 <code>接口成员</code>。</li>
+<li>如果具有要在 <code>通用代码</code> 中使用的 <code>特定于平台的库</code>，同时为另一个平台提供自己的实现，则可以为 <code>现有类提供类型别名</code> 作为<code>实际声明</code>。如：</li>
+</ul>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">expect <span class="class"><span class="keyword">class</span> <span class="title">AtomicRef</span>&lt;<span class="type">V</span>&gt;</span>(value: V) &#123;</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">()</span></span>: V</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">set</span><span class="params">(value: <span class="type">V</span>)</span></span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">getAndSet</span><span class="params">(value: <span class="type">V</span>)</span></span>: V</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">compareAndSet</span><span class="params">(expect: <span class="type">V</span>, update: <span class="type">V</span>)</span></span>: <span class="built_in">Boolean</span></span><br><span class="line">&#125;</span><br><span class="line">actual typealias AtomicRef&lt;V&gt; = java.util.concurrent.atomic.AtomicReference&lt;V&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="ArrayList-示例："><a href="#ArrayList-示例：" class="headerlink" title="ArrayList 示例："></a>ArrayList 示例：</h2><p><strong>预期声明</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expect <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="type">E</span>&gt; : <span class="type">MutableList</span>&lt;<span class="type">E</span>&gt;, <span class="type">RandomAccess &#123;&#125;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>实际声明</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kotlin.collections</span><br><span class="line"></span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias RandomAccess = java.util.RandomAccess</span><br><span class="line"></span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias ArrayList&lt;E&gt; = java.util.ArrayList&lt;E&gt;</span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias LinkedHashMap&lt;K, V&gt; = java.util.LinkedHashMap&lt;K, V&gt;</span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias HashMap&lt;K, V&gt; = java.util.HashMap&lt;K, V&gt;</span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias LinkedHashSet&lt;E&gt; = java.util.LinkedHashSet&lt;E&gt;</span><br><span class="line"><span class="meta">@SinceKotlin(<span class="meta-string">"1.1"</span>)</span> <span class="keyword">public</span> actual typealias HashSet&lt;E&gt; = java.util.HashSet&lt;E&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Kotlin-集合/" rel="next" title="Kotlin-集合">
+                <i class="fa fa-chevron-left"></i> Kotlin-集合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Kotlin-协程/" rel="prev" title="Kotlin-协程">
+                Kotlin-协程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://oy991qm3u.bkt.clouddn.com/%E6%A2%B5%E9%AB%98.gif" alt="YannisCheng">
+            
+              <p class="site-author-name" itemprop="name">YannisCheng</p>
+              <p class="site-description motion-element" itemprop="description">不必一味的讨好别人，每个人都有自己的活法。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">187</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/YannisCheng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:cwj1714@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin-支持多平台开发"><span class="nav-number">1.</span> <span class="nav-text">Kotlin-支持多平台开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多平台编程"><span class="nav-number">2.</span> <span class="nav-text">多平台编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多平台如何工作？"><span class="nav-number">3.</span> <span class="nav-text">多平台如何工作？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiplatform-Programming-特定于平台的声明（Platform-Specific-Declarations）"><span class="nav-number">4.</span> <span class="nav-text">Multiplatform Programming - 特定于平台的声明（Platform-Specific Declarations）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例"><span class="nav-number">5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网示例"><span class="nav-number">5.1.</span> <span class="nav-text">官网示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList-示例："><span class="nav-number">5.2.</span> <span class="nav-text">ArrayList 示例：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YannisCheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">430.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+<script type="text/javascript" color="18,146,19" opacity="0.7" zindex="-1" count="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
